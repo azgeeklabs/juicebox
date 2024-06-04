@@ -11,12 +11,12 @@
   /* outline: 1px solid #53acff; */
 }
 .sidebar {
-  width: 3.938rem;
+  width: clamp(3.5rem, calc(3.2vw + 0.1rem), 12.25rem);
   transition: all 0.4s cubic-bezier(0.25, 0.73, 0.39, 1.2);
 }
 
 .sidebar:is(.open) {
-  width: 12.25rem;
+  width: clamp(3.5rem, calc(10.35vw + 0.1rem), 12.25rem);
 }
 
 .navbar {
@@ -29,7 +29,6 @@
 }
 
 .sidebar:is(.open) .navbar {
-  /* width: 12.25rem; */
   border-radius: 24px;
   box-shadow: 10px 4px 21.1px 0px #00000061;
 }
@@ -64,7 +63,6 @@
   position: absolute;
   align-items: start;
   top: 1.063rem;
-  left: 0rem;
   transition: all 0.2s ease-in-out, gap 0s;
 }
 .navbar ul > div {
@@ -172,7 +170,8 @@
 .navbar footer {
   position: absolute;
   bottom: 0;
-  right: 0.6rem;
+  /* right: 0.6rem; */
+  right: clamp(0.3rem, calc(0.39vw + 0.1rem), 100%);
 }
 .sidebar:is(.open) .navbar footer {
   right: 0.85rem;
@@ -194,16 +193,16 @@
   transform: rotateX(360deg) rotateY(0deg);
 }
 
-.navbar footer .footer_profile {
+.navbar footer .footer {
   border-radius: 12px;
   padding: 0.3rem 0.4rem;
   transition: all 0.5s cubic-bezier(0.11, 0.59, 0.18, 1.63);
 }
 
-.navbar footer .footer_profile:hover {
+.navbar footer .footer:hover {
   background-color: #2f2f2f;
 }
 
-.navbar footer .footer_profile:hover path {
+.navbar footer .footer:hover path {
   fill: #f8f24b;
 }
