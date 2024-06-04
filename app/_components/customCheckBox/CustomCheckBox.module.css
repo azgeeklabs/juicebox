@@ -25,9 +25,6 @@
 .customCheckBox input + span svg {
   fill: #616161;
 }
-.customCheckBox input + span {
-  color: #616161;
-}
 
 /* Hover */
 .customCheckBox:hover span {
@@ -36,9 +33,6 @@
 .customCheckBox:hover input + span svg {
   fill: #282828;
 }
-.customCheckBox:hover input + span {
-  color: #282828;
-}
 
 /* Checked */
 .customCheckBox input:checked + span {
@@ -46,7 +40,4 @@
 }
 .customCheckBox input:checked + span svg {
   fill: #282828;
-}
-.customCheckBox input:checked + span {
-  color: #282828;
 }
