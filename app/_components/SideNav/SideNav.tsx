@@ -1,3 +1,4 @@
+"use client";
 import classNames from "classnames";
 import styles from "./SideNav.module.css";
 import image from "@/public/assets/image.png";

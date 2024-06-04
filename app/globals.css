@@ -13,3 +13,7 @@
   --white: #ffffff;
   --transparent-yellow: #f8f24b1a;
 }
+
+body{
+  background-color: var(--primary-black);
+}
