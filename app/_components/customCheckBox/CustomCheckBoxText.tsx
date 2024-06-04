@@ -11,7 +11,7 @@ interface IProps extends React.DetailedHTMLProps<
   inputType: string;
 }
 
-function CustomCheckBoxText({ btnSize, inputType, label, ...props }: IProps) {
+function CustomCheckBoxText({ btnSize, inputType, label, children, ...props }: IProps) {
   const sizeClass = styles[`size-${btnSize}`];
 
   return (
@@ -21,7 +21,7 @@ function CustomCheckBoxText({ btnSize, inputType, label, ...props }: IProps) {
         className="opacity-0 w-full h-full absolute"
         {...props}
       />
-      <span className={styles.label}>{label}</span>
+      <span className={styles.label}>{children}</span>
     </div>
   );
 }

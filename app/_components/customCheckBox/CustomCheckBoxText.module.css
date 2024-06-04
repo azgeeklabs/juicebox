@@ -1,8 +1,8 @@
 .customCheckBox {
   /* width: 40px; */
   /* height: 25px; */
-  width: clamp(20px, calc(2.2vw + 0.1rem), 100px);
-  height: clamp(20px, calc(1.2vw + 0.1rem), 100px);
+  /* width: clamp(20px, calc(2.2vw + 0.1rem), 100px);
+  height: clamp(20px, calc(1.2vw + 0.1rem), 100px); */
   border-radius: 22.79px;
   overflow: hidden;
 }
@@ -42,26 +42,34 @@
   color: #282828;
 }
 
-.size-sm {
-  width: 76px;
-  height: 29px;
+.size-sm > span {
+  /* width: 76px;
+  height: 29px; */
+  width: fit-content;
+  padding: 9px 20px;
   border-radius: 33px;
 }
 
-.size-md {
-  width: 96px;
-  height: 37px;
+.size-md > span {
+  /* width: 96px;
+  height: 37px; */
+  width: fit-content;
+  padding: 13px 30px;
   border-radius: 33px;
 }
 
-.size-lg {
-  width: 136px;
-  height: 43.32px;
+.size-lg > span {
+  /* width: 136px;
+  height: 43.32px; */
+  width: fit-content;
+  padding: 16.16px 50px;
   border-radius: 41px;
 }
 
-.size-xl {
-  width: 186px;
-  height: 51px;
+.size-xl > span {
+  /* width: 186px;
+  height: 51px; */
+  width: fit-content;
+  padding: 20px 75px;
   border-radius: 41px;
 }
