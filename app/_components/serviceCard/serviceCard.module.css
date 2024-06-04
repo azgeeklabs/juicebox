@@ -1,0 +1,29 @@
+.serviceCard .card:not(:last-child) {
+  border-right: 1px solid white;
+}
+.serviceCard.active .card:not(:last-child) {
+  border-right: 1px solid #1f1f1f;
+}
+.serviceCard {
+  background-color: #484848;
+}
+.serviceCard h3 {
+  color: #f8f24b;
+  font-weight: 700;
+  font-size: clamp(10px, calc(0.6vw + 0.1rem), 80px);
+}
+.serviceCard h6 {
+  font-size: clamp(10px, calc(0.6vw + 0.1rem), 80px);
+}
+.serviceCard.active h3,.serviceCard.active h6 {
+  color: black;
+}
+.serviceCard:hover {
+  background-color: #1f1f1f;
+}
+.serviceCard:hover .card:not(:last-child) {
+  border-right: 1px solid #484848;
+}
+.serviceCard.active {
+  background: #f8f24b;
+}
