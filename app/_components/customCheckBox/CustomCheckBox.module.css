@@ -1,8 +1,8 @@
 .customCheckBox {
   /* width: 40px; */
+  /* height: 25px; */
   width: clamp(20px, calc(2.2vw + 0.1rem), 100px);
   height: clamp(20px, calc(1.2vw + 0.1rem), 100px);
-  /* height: 25px; */
   border-radius: 22.79px;
   overflow: hidden;
 }
@@ -11,6 +11,7 @@
   opacity: 0;
   /* z-index: -1; */
 }
+
 /* Normal */
 .customCheckBox span {
   background-color: #282828;
@@ -24,6 +25,9 @@
 .customCheckBox input + span svg {
   fill: #616161;
 }
+.customCheckBox input + span {
+  color: #616161;
+}
 
 /* Hover */
 .customCheckBox:hover span {
@@ -32,6 +36,9 @@
 .customCheckBox:hover input + span svg {
   fill: #282828;
 }
+.customCheckBox:hover input + span {
+  color: #282828;
+}
 
 /* Checked */
 .customCheckBox input:checked + span {
@@ -39,4 +46,7 @@
 }
 .customCheckBox input:checked + span svg {
   fill: #282828;
+}
+.customCheckBox input:checked + span {
+  color: #282828;
 }

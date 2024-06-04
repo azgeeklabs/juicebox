@@ -5,14 +5,12 @@
     fill: none;
 stroke-dasharray: 440;
 stroke-dashoffset: 440;
-/* transform: translate(5px, 5px) rotate(-90deg); */
-/* transform-origin: 50% 50%; */
 }
 .percent svg circle:nth-child(1) {
     stroke-dashoffset: 0;
     stroke: #3f3f3f;
 }
 .percent svg circle:nth-child(2) {
-    stroke-dashoffset: 410;
+    stroke-dashoffset: 340;
     stroke: #F8F24B;
 }

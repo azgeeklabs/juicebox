@@ -1,14 +1,17 @@
 import React from "react";
 import styles from "./serviceCard.module.css";
+import Link from "next/link";
 
 type Iprops = {
-  paddingVal?: string;
-  children?:any;
+  paddingVal?: string,
+  children?:any,
+  href?:string,
 };
 
 const ServiceCard = (props: Iprops) => {
   return (
-    <div
+    <Link href={props.href || ""}>
+      <div
       className={`${styles.serviceCard} rounded-[2.75vw] text-white w-fit flex justify-center cursor-pointer`}
     >
       <div className={`flex py-[0.5vw] px-[0.5vw] rounded-[2.75vw]`}>
@@ -31,6 +34,7 @@ const ServiceCard = (props: Iprops) => {
         </div> */}
       </div>
     </div>
+    </Link>
   );
 };
 

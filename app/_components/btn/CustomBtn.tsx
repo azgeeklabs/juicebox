@@ -1,5 +1,6 @@
 import React, { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react'
 import styles from "./customBtn.module.css"
+import "./customBtn.module.css"
 
 
 type Iprops = ButtonHTMLAttributes<HTMLButtonElement> & {
