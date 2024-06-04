@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import styles from "./ServicesTable.module.css";
+import CustomCheckBoxText from "../CustomCheckBox/CustomCheckBoxText";
 
 
 /**
@@ -24,6 +25,38 @@ export default function ServicesTable() {
       getStarted: "Start Now!",
     },
   ];
+
+  const filtersByIndustry = [
+    "Marketing",
+    "Tech",
+    "Content Creation",
+    "PR",
+    "Web Development",
+    "Video Editing",
+    "Human Resources",
+    "Content Writing",
+    "Domain Host",
+    "UX/UI",
+    "UX Research",
+    "SEO Campaigns",
+    "SEO Backlinks",
+    "Hedge Fund Formation",
+    "Post Sale",
+    "ORM",
+    "Automation & AI",
+    "Content",
+    "Newsletter",
+    "Repurposing"
+  ]
+
+  const filtersByNiche = [
+    "SEO Backlinks",
+    "Post Sale",
+    "ORM",
+    "Content",
+    "Newsletter",
+    "Repurposing"
+  ]
 
   return (
     <div className={`${styles.tableContainer} h-[68vh] flex`}>
@@ -65,9 +98,40 @@ export default function ServicesTable() {
           ))}
         </div>
       </div>
+      
+      {/* Table Advanced Filters */}
+      <div className={styles.advancedFilter + "  w-1/4 flex flex-col items-center space-y-6"}>
+        <span className={"text-center"}>Advanced Filter</span>
+        {/* Filter By Industry */}
+          <div>
+            <span>Industry</span>
+            <div className="flex flex-wrap gap-2">
+            {filtersByIndustry.map((e, idx) => (
+        <CustomCheckBoxText key={idx} btnSize="sm" inputType="checkbox">
+          {e}
+        </CustomCheckBoxText>
+      ))}
+            </div>
+          </div>
 
-      <div>
-        <h1>hi</h1>
+
+
+        {/* Filter By Niche */}
+        <div>
+            <span>Industry</span>
+            <div className="flex flex-wrap gap-2">
+            {filtersByNiche.map((e, idx) => (
+        <CustomCheckBoxText key={idx} btnSize="sm" inputType="checkbox">
+          {e}
+        </CustomCheckBoxText>
+      ))}
+            </div>
+          </div>
+
+
+        {/* Apply Filter Button */}
+        <button>Apply Filter</button>
+
       </div>
       {/* End Table */}
     </div>

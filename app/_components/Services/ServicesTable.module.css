@@ -1,11 +1,6 @@
 /* ===== Start Table Container ===== */
 .tableContainer {
     overflow: hidden;
-    -webkit-border-radius: clamp(16px, calc(1vw + 0.1rem), 1000px);
-    -moz-border-radius: clamp(16px, calc(1vw + 0.1rem), 1000px);
-    -ms-border-radius: clamp(16px, calc(1vw + 0.1rem), 1000px);
-    -o-border-radius: clamp(16px, calc(1vw + 0.1rem), 1000px);
-    border-radius: clamp(16px, calc(1vw + 0.1rem), 1000px);
   }
   
   /* ===== Start Table ===== */
@@ -109,7 +104,9 @@
     font-weight: 500;
   }
   
-  /* .table .table_body ul:hover li svg path {
-    fill: var(--white);
-  } */
-  
+/* ===== Advanced Filter ===== */
+.advancedFilter {
+  border-radius: clamp(16px, calc(1vw + 0.1rem), 1000px);
+  padding: 1vw;
+}
+
