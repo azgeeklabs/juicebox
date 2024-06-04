@@ -3,7 +3,7 @@ import styles from "./customBtn.module.css"
 import "./customBtn.module.css"
 
 
-type Iprops = ButtonHTMLAttributes<HTMLButtonElement> & {
+type Iprops = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & {
     paddingVal?: string;
     children?: React.ReactNode;
 };

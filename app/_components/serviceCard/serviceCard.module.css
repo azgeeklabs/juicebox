@@ -10,12 +10,15 @@
 .serviceCard h3 {
   color: #f8f24b;
   font-weight: 700;
-  font-size: clamp(10px, calc(0.6vw + 0.1rem), 80px);
+  line-height: clamp(10px, calc(0.6vw + 0.1rem), 800px);
+  font-size: clamp(10px, calc(0.7vw + 0.1rem), 800px);
 }
-.serviceCard h6 {
-  font-size: clamp(10px, calc(0.6vw + 0.1rem), 80px);
+.serviceCard span {
+  font-weight: 500;
+  line-height: clamp(10px, calc(0.4vw + 0.1rem), 80px);
+  font-size: clamp(10px, calc(0.4vw + 0.1rem), 80px);
 }
-.serviceCard.active h3,.serviceCard.active h6 {
+.serviceCard.active h3,.serviceCard.active span {
   color: black;
 }
 .serviceCard:hover {
@@ -26,4 +29,11 @@
 }
 .serviceCard.active {
   background: #f8f24b;
+}
+
+.serviceCard h6 {
+
+  font-weight: 500;
+  line-height: clamp(10px, calc(0.6vw + 0.1rem), 800px);
+  font-size: clamp(10px, calc(0.7vw + 0.1rem), 800px);
 }
