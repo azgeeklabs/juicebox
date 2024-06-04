@@ -14,8 +14,12 @@
   --transparent-yellow: #f8f24b1a;
 }
 
+*{
+  box-sizing: border-box;
+}
+
 body {
   background-color: var(--primary-black);
   color: var(--white);
-  padding: clamp(1rem, calc(1vw + 0.1rem), 1000px);
+  font-family: "Barlow", sans-serif;
 }

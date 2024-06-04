@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import SideNav from "./_components/SideNav/SideNav";
-import CircularProgressBar from "./_components/progressBar/CircularProgressBar";
+
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -18,10 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="h-screen w-full flex">
+        <div className="p-[1vw] h-[100vh] w-[100vw] flex">
           <SideNav />
           {/*   dynamic width */}
-          <div className="m-auto">
+          <div>
             {/* header */}
             {children}
           </div>

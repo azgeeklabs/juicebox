@@ -7,18 +7,12 @@
   white-space: nowrap;
 }
 
-@media (hover: none) and (max-width: 768px) {
-}
 
-@media (hover: hover) and (min-width: 768px) {
   .navbar header * {
     /* outline: 1px solid #53acff; */
   }
   .sidebar {
-    /* position: fixed; */
     width: 3.938rem;
-    z-index: 19;
-    /* top: 0; */
     transition: all 0.4s cubic-bezier(0.25, 0.73, 0.39, 1.2);
   }
 
@@ -214,4 +208,3 @@
   .navbar footer .footer_profile:hover path {
     fill: #f8f24b;
   }
-}

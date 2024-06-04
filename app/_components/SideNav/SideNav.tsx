@@ -149,7 +149,7 @@ function SideNav() {
   return (
     <div
       className={classNames(
-        "flex flex-col items-center gap-4 h-dvh relative px-1",
+        "flex flex-col items-center gap-4 h-[100%] relative px-1",
         styles.sidebar,
         open && styles.open
       )}
