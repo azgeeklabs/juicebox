@@ -14,12 +14,26 @@
   --transparent-yellow: #f8f24b1a;
 }
 
-*{
-  box-sizing: border-box;
-}
-
 body {
   background-color: var(--primary-black);
   color: var(--white);
   font-family: "Barlow", sans-serif;
 }
+
+.pageWrapper {
+  width: calc(100% - 3.938rem);
+  padding-left: clamp(1rem, calc(1vw + 0.1rem), 1000px);
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
+}
+.navOpened {
+  width: calc(100% - 12.25rem);
+}
+.pageContent {
+  border-radius: clamp(15px, calc(1.042vw + 0.1rem), 100px);
+  background-color: var(--dark-gray-1);
+  padding: 1vw;
+  height: 100%;
+}
+
