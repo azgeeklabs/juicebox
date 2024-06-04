@@ -1,0 +1,8 @@
+.filterTabs {
+  /* width: 140px; */
+  /* height: 49px; */
+  padding: 16px 16px 16px 10px;
+  gap: 16px;
+  border-radius: 72px;
+  background-color: var(--primary-black);
+}

@@ -9,6 +9,7 @@
 
 .customCheckBox input {
   opacity: 0;
+  cursor: pointer;
   /* z-index: -1; */
 }
 

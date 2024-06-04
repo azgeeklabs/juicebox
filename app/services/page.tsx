@@ -1,26 +1,30 @@
 "use client";
 import React from "react";
-import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
+import styles from "./services.module.css";
+import CustomCheckBoxText from "../_components/CustomCheckBox/CustomCheckBoxText";
 
 export default function page() {
+  const filters = [
+    "Finance",
+    "Design",
+    "Marketing",
+    "Sales",
+    "Human Resources",
+    "Web Development",
+    "UX/UI",
+    "Content Creation",
+    "Video Editing",
+    "Motion Graphics",
+  ];
+
   return (
-    <div>
-      <h1>ddddd</h1>
-      <CustomCheckBoxText btnSize="sm" inputType="checkbox" >
-              hubbton
-        </ CustomCheckBoxText>
-
-        <CustomCheckBoxText btnSize="md" inputType="checkbox" >
-              hubbton
-        </ CustomCheckBoxText>
-        <CustomCheckBoxText btnSize="lg" inputType="checkbox" >
-              hubbton
-        </ CustomCheckBoxText>
-        <CustomCheckBoxText btnSize="xl" inputType="checkbox" >
-              hubbton
-        </ CustomCheckBoxText>
-  
-
+    // Filter Tabs
+    <div className={styles.filterTabs + " flex"}>
+      {filters.map((e, idx) => (
+        <CustomCheckBoxText key={idx} btnSize="sm" inputType="checkbox">
+          {e}
+        </CustomCheckBoxText>
+      ))}
     </div>
   );
 }

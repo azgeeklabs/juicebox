@@ -51,11 +51,11 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: clamp(5px, calc(0.4vvw + 0.1rem), 100px) clamp(10px, calc(1.5vw + 0.1rem), 100px) !important;
+    padding: clamp(5px, calc(0.3vw + 0.1rem), 100px) clamp(10px, calc(1.5vw + 0.1rem), 100px) !important;
 }
 
 .service_phases>div>div>p {
-    font-size: clamp(9px, calc(0.6vvw + 0.1rem), 100px);
+    font-size: clamp(9px, calc(0.6vw + 0.1rem), 100px);
     font-weight: 600;
 }
 
