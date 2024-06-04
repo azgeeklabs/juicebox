@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import styles from "./footageSelection.module.css";
-import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
+// import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 
 const page = () => {
   return (
@@ -24,7 +24,12 @@ const page = () => {
               type="checkbox"
               className=" opacity-0  w-full h-full absolute"
             />
-            <div className="py-[0.899vw] px-[0.615vw] bg-[#484848]" style={{borderRadius:"clamp(4px,calc(0.653vw + 0.1rem), 100px)"}}>
+            <div
+              className="mb-[1vw] py-[0.899vw] bg-[#484848]"
+              style={{
+                borderRadius: "clamp(4px,calc(0.653vw + 0.1rem), 100px)",
+              }}
+            >
               <svg
                 width="100%"
                 height="243"
@@ -162,7 +167,9 @@ const page = () => {
                 </defs>
               </svg>
             </div>
-            <CustomCheckBoxText btnSize="xl" inputType="checkbox" >YouTube</CustomCheckBoxText>
+            <button className="w-[100%] py-[0.3vw] block text-center bg-[#484848]" style={{
+                borderRadius: "clamp(4px,calc(1.742vw + 0.1rem), 100px)",
+              }}>YouTube</button>
           </div>
         </div>
       </div>
