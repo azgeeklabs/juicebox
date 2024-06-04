@@ -1,5 +1,8 @@
 "use client"
 import React from 'react'
+import CircularProgressBar from './_components/progressBar/CircularProgressBar';
+import CustomBtn from './_components/btn/CustomBtn';
+import ServiceCard from './_components/serviceCard/ServiceCard';
 
 
 
@@ -53,7 +56,8 @@ export default function page() {
   return (
     <div className='flex items-center justify-center h-screen'>
      hi
-
+     <CustomBtn>Back</CustomBtn>
+     <ServiceCard href='www.google.com'/>
     </div>
   )
 }
