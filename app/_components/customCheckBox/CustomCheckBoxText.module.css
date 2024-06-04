@@ -5,11 +5,11 @@
   height: clamp(20px, calc(1.2vw + 0.1rem), 100px); */
   border-radius: 22.79px;
   overflow: hidden;
-  cursor: pointer;
 }
 
 .customCheckBox input {
   opacity: 0;
+  cursor: pointer;
   /* z-index: -1; */
 }
 
