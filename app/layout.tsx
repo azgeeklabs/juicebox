@@ -29,9 +29,7 @@ export default function RootLayout({
           <div className={` ${open && "navOpened"} pageWrapper`}>
             {/* header */}
             <SubscribedServices />
-            <div className="pageContent">
-              {children}
-            </div>
+            <div className="pageContent">{children}</div>
           </div>
         </div>
       </body>
