@@ -1,10 +1,7 @@
-"use client"
-import React from 'react'
-
-
+"use client";
+import React from "react";
 
 export default function page() {
-
   const people = [
     {
       id: 1,
@@ -51,9 +48,8 @@ export default function page() {
   ];
 
   return (
-    <div className='flex items-center justify-center h-screen'>
-     hi
-
+    <div className="">
+      <h1>Home Page</h1>
     </div>
-  )
+  );
 }
