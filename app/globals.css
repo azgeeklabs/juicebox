@@ -17,4 +17,6 @@
 body{
   background-color: var(--primary-black);
   color: var(--white);
+  padding: clamp(1rem, calc(1vw + 0.1rem), 1000px);
+  
 }
