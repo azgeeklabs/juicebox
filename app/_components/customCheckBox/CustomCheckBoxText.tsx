@@ -20,7 +20,7 @@ function CustomCheckBoxText({ btnSize, inputType, children, ...props }: IProps) 
         className="opacity-0 w-full h-full absolute"
         {...props}
       />
-      <span className={styles.label}>{children}</span>
+      <div className={styles.label}>{children}</div>
     </div>
   );
 }
