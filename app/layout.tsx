@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import SideNav from "./_components/SideNav/SideNav";
+import CircularProgressBar from "./_components/progressBar/CircularProgressBar";
 
 // const inter = Inter({ subsets: ["latin"] });
 
