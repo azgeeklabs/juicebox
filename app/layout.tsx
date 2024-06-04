@@ -17,11 +17,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-<<<<<<< HEAD
-      <body className="flex gap-4">
-        <SideNav />
-        {children}
-=======
       <body>
         <div className="h-screen w-full flex">
           <SideNav />
@@ -31,7 +26,6 @@ export default function RootLayout({
             {children}
           </div>
         </div>
->>>>>>> 47c25482cd52af4362e9df0fe8b377a604bc8c65
       </body>
     </html>
   );
