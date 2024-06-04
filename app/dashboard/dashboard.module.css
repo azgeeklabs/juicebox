@@ -32,10 +32,16 @@
     font-weight: 600;
 }
 
-.card .service_phases_part > h6{
+.card .body{
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, calc(1vw + 0.1rem), 100px);
+}
+
+.card .service_phases_part > h6 , .card .current_phase_part > h6{
     font-size: clamp(10px, calc(0.8vw + 0.1rem), 100px);
     line-height: clamp(10px, calc(0.8vw + 0.1rem), 100px);
-    margin-bottom: clamp(10px, calc(0.9vw + 0.1rem), 100px);
+    margin-bottom: clamp(10px, calc(0.8vw + 0.1rem), 100px);
     font-weight: 600;
 }
 
@@ -62,3 +68,5 @@
 .service_phases>div>div>p:last-child {
     font-weight: 400;
 }
+
+
