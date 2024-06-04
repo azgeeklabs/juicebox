@@ -110,23 +110,6 @@
     text-decoration: none;
   }
 
-  /* .navbar ul svg {
-    position: relative;
-  }
-
-  .navbar ul svg::after {
-    content: "";
-    position: absolute;
-    display: block;
-    inset: 0;
-    height: 100%;
-    width: 100%;
-    background-color: #f8f24b;
-} */
-
-  /* .navbar ul svg:hover {
-    background-color: #f8f24b;
-}*/
   .navbar ul li a:hover path {
     fill: #f8f24b;
   }
@@ -136,9 +119,11 @@
   }
   .sidebar:not(.open) .navbar ul li a .navbar_item_title {
     position: absolute;
-    left: 90%;
+    left: 40%;
     color: #1c1c1c;
     background-color: #f8f24b;
+    visibility: hidden;
+    opacity: 0;
     padding: 6px 8px 6px 8px;
     border-radius: 50px;
     box-shadow: -4px 1px 4.4px 0px #00000075;
@@ -186,8 +171,9 @@
     visibility: hidden;
     overflow: clip;
     display: inline-block;
-    width: 0px;
-    transition: padding 0.6s cubic-bezier(0.11, 0.59, 0.18, 1.63);
+    transition: left 0.3s cubic-bezier(0.11, 0.59, 0.18, 1.63),
+      visibility 0.3s cubic-bezier(0.11, 0.59, 0.18, 1.63),
+      padding 0s cubic-bezier(0.11, 0.59, 0.18, 1.63);
   }
 
   .sidebar:is(.open) .navbar ul .navbar_item_title {
@@ -195,53 +181,6 @@
     opacity: 1;
     width: 100%;
   }
-
-  /* 
-  .navbar:hover li {
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-  }
-  .navbar li:hover {
-    color: #1c1c1c;
-    background-color: #f8f24b;
-  }
-
-  .navbar li:hover .navbar_item_title {
-    color: #1c1c1c;
-  } */
-
-  /* .navbar li:not(.active)::after {
-    content: "Coming Soon";
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    font-weight: 700;
-    font-size: 0.875rem;
-    height: 100%;
-    width: 100%;
-    background: radial-gradient(
-        rgba(40, 80, 109, 0.932),
-        rgba(36, 58, 82, 0.89)
-        );
-        border-radius: 0.275rem;
-        background-clip: padding-box;
-        backdrop-filter: blur(1px);
-        -webkit-backdrop-filter: blur(1px);
-        box-shadow: 1px 1px 15px 1px rgba(35, 49, 63, 0.863),
-        -1px -1px 15px 1px rgba(35, 49, 63, 0.863);
-        inset: 0;
-        visibility: hidden;
-        opacity: 0;
-        text-shadow: 0px 0px 5px #000000;
-        transition: opacity 0.5s cubic-bezier(0.11, 0.59, 0.18, 1.63),
-        visibility 0.5s cubic-bezier(0.11, 0.59, 0.18, 1.63);
-    }
-
-    li:not(.active):hover::after {
-        visibility: visible;
-    opacity: 1;
-} */
 
   .navbar footer {
     position: absolute;
@@ -261,17 +200,17 @@
     font-size: 2rem;
     flex-shrink: 0;
     transform: rotateY(180deg);
-    transition: all 0.2s cubic-bezier(0.11, 0.59, 0.18, 1.63);
+    transition: all 1s cubic-bezier(0.11, 0.59, 0.18, 1.63);
   }
 
   .sidebar:is(.open) .navbar footer svg {
-    transform: rotateY(0deg);
+    transform: rotateZ(0deg) rotateY(0deg);
   }
 
   .navbar footer .footer_profile {
     border-radius: 12px;
     padding: 0.3rem 0.4rem;
-    transition: all 0.2s cubic-bezier(0.11, 0.59, 0.18, 1.63);
+    transition: all 0.5s cubic-bezier(0.11, 0.59, 0.18, 1.63);
   }
 
   .navbar footer .footer_profile:hover {
@@ -281,31 +220,4 @@
   .navbar footer .footer_profile:hover path {
     fill: #f8f24b;
   }
-
-  /* .navbar:hover footer .footer_noti_text,
-  .navbar:hover footer .footer_profile_text {
-    margin-left: 0.5rem;
-    visibility: visible;
-    opacity: 1;
-    width: 100%;
-  } */
-
-  /* .navbar .footer .footer_trademark {
-    position: absolute;
-    display: block;
-    color: #424242;
-    font-size: 0.875rem;
-    bottom: -5px;
-    white-space: nowrap;
-    margin-left: 0.789rem;
-    visibility: hidden;
-    opacity: 0;
-    transition: all 0.5s cubic-bezier(0.11, 0.59, 0.18, 1.63),
-      opacity 0.9s cubic-bezier(0.11, 0.59, 0.18, 1.63);
-  } */
-
-  /* .navbar:hover footer .footer_trademark {
-    visibility: visible;
-    opacity: 1;
-  } */
 }

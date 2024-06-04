@@ -1,13 +1,7 @@
-"use client"
-import React from 'react'
-import CircularProgressBar from './_components/progressBar/CircularProgressBar';
-import CustomBtn from './_components/btn/CustomBtn';
-import ServiceCard from './_components/serviceCard/ServiceCard';
-
-
+"use client";
+import React from "react";
 
 export default function page() {
-
   const people = [
     {
       id: 1,
@@ -54,10 +48,8 @@ export default function page() {
   ];
 
   return (
-    <div className='flex items-center justify-center h-screen'>
-     hi
-     <CustomBtn>Back</CustomBtn>
-     <ServiceCard href='www.google.com'/>
+    <div className="">
+      <h1>Home Page</h1>
     </div>
-  )
+  );
 }
