@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import CustomCheckBoxText from "../_components/CustomCheckBox/CustomCheckBoxText";
+import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 
 export default function page() {
   return (
