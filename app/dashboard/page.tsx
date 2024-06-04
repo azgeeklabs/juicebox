@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import styles from './dashboard.module.css'
+import CustomCheckBoxText from '../_components/customCheckBox/CustomCheckBoxText';
 
 export default function page() {
   return (
@@ -13,9 +14,29 @@ export default function page() {
           </div>
           <div className={styles.body}>
             <div className={styles.service_phases_part}>
-              <p>Service Phases</p>
+              <h6>Service Phases</h6>
               <div className={styles.service_phases}>
-                
+              <CustomCheckBoxText btnSize="sm" inputType="checkbox" >
+                    <p>Sales Call</p>
+                    <p>Phase 1</p>
+                </CustomCheckBoxText>
+                <CustomCheckBoxText btnSize="sm" inputType="checkbox" >
+                    <p>Sales Call</p>
+                    <p>Phase 1</p>
+                </CustomCheckBoxText>
+                <CustomCheckBoxText btnSize="sm" inputType="checkbox" >
+                    <p>Sales Call</p>
+                    <p>Phase 1</p>
+                </CustomCheckBoxText>
+                <CustomCheckBoxText btnSize="sm" inputType="checkbox" >
+                    <p>Sales Call</p>
+                    <p>Phase 1</p>
+                </CustomCheckBoxText>
+                <CustomCheckBoxText btnSize="sm" inputType="checkbox" >
+                    <p>Sales Call</p>
+                    <p>Phase 1</p>
+                </CustomCheckBoxText>
+
               </div>
             </div>
           </div>
