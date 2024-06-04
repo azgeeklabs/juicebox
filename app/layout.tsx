@@ -18,20 +18,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        
-
-        <div className="h-screen w-full flex" >
-        <SideNav />
-        {/*   dynamic width */}
-            <div className='m-auto'>            
-              {/* header */}
-              {children}
-            </div>
+        <div className="h-screen w-full flex">
+          <SideNav />
+          {/*   dynamic width */}
+          <div className="m-auto">
+            {/* header */}
+            {children}
           </div>
-
-
-
-
+        </div>
       </body>
     </html>
   );

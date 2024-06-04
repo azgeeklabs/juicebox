@@ -4,7 +4,7 @@ type IProps = React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
 > & {
-  content: React.ReactNode;
+  content: React.ReactNode | string;
 };
 
 function CustomCheckBox({ content, ...props }: IProps) {
@@ -15,7 +15,7 @@ function CustomCheckBox({ content, ...props }: IProps) {
         className="opacity-0 w-full h-full absolute"
         {...props}
       />
-      <span>{content}</span>
+      <span className="text-center ">{content}</span>
     </div>
   );
 }
