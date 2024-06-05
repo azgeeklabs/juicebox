@@ -7,6 +7,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
   const path = [
     "",
     "service-projects",
+    "app-style",
     "custom-ecommerce",
     "service-features",
     "service-portfolio",
