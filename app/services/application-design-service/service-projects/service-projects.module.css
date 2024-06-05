@@ -2,14 +2,16 @@
   background-color: var(--dark-gray-3);
   border-radius: 12px;
   aspect-ratio: 1 / 1;
-  padding: 30px 50px 30px 50px;
+  width: clamp(6rem, calc(10.35vw + 0.1rem), 20rem);
+  height: clamp(6rem, calc(10.35vw + 0.1rem), 20rem);
+  padding: 24px;
   cursor: pointer;
   transition: background-color 0.2s ease-in, transform 0.2s ease-in;
 }
 
 .card div:nth-child(1) {
-  width: clamp(6rem, calc(4.35vw + 0.1rem), 20rem);
-  height: clamp(6rem, calc(4.35vw + 0.1rem), 20rem);
+  width: calc(4.35vw + 0.1rem);
+  height: calc(4.35vw + 0.1rem);
   aspect-ratio: 1 / 1;
 }
 
@@ -22,7 +24,16 @@
   gap: clamp(1rem, calc(2vw + 0.1rem), 50rem);
 }
 
-.card:hover {
+.card:not(:has(input:checked)):hover {
   background-color: #1f1f1f;
   transform: scale(1.1);
+}
+
+.card:has(input:checked) {
+  background-color: var(--highlight-yellow);
+  color: var(--primary-black);
+}
+
+.card:has(input:checked) div path {
+  fill: var(--primary-black);
 }

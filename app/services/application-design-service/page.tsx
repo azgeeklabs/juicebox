@@ -1411,6 +1411,12 @@ function page() {
             {gameSVG}
           </div>
           <div>Game</div>
+          <input
+            type="radio"
+            name="type"
+            value="game"
+            className="absolute opacity-0 inset-0 cursor-pointer"
+          />
         </div>
         <div className={classNames("flex flex-col gap-2", styles.card)}>
           <div className="flex items-center justify-center relative">
@@ -1421,6 +1427,12 @@ function page() {
             {appSVG}
           </div>
           <div>Application</div>
+          <input
+            type="radio"
+            name="type"
+            value="app"
+            className="absolute opacity-0 inset-0 cursor-pointer"
+          />
         </div>
       </div>
     </div>

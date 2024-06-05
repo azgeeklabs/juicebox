@@ -43,6 +43,16 @@
   color: #282828;
 }
 
+/* Disabled */
+.customCheckBoxText input:disabled + div {
+  background-color: #373737;
+  color: #939393;
+}
+
+.customCheckBoxText input:disabled {
+  cursor: not-allowed;
+}
+
 .size-sm > div {
   /* width: 76px;
   height: 29px; */

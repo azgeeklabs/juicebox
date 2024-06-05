@@ -7,6 +7,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
   const path = [
     "",
     "service-projects",
+    "custom-ecommerce",
     "service-features",
     "service-portfolio",
   ];
@@ -51,7 +52,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex flex-col justify-between h-full">
       <StepProgress
-        title={"Video Editing"}
+        title={"Application Design"}
         currentStep={currentPath + 1}
         steps={path.length}
       />
