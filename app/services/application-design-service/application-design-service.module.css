@@ -6,6 +6,7 @@
   aspect-ratio: 1 / 1;
   padding: 30px 50px 30px 50px;
   cursor: pointer;
+  transition: background-color 0.2s ease-in, transform 0.2s ease-in;
 }
 
 .card div:nth-child(1) {
@@ -45,6 +46,11 @@
   transform: translate(-50%, -50%);
   visibility: visible;
   opacity: 1;
+}
+
+.card:hover {
+  background-color: #1f1f1f;
+  transform: scale(1.15);
 }
 
 .card:hover img {
