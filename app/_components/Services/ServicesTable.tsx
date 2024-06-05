@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import styles from "./ServicesTable.module.css";
-import CustomCheckBoxText from "../CustomCheckBox/CustomCheckBoxText";
+import CustomCheckBoxText from "../customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
 
 /**
@@ -195,36 +195,43 @@ export default function ServicesTable({
         }
       >
         <span className={"text-center"}>Advanced Filter</span>
-        {/* Filter By Industry */}
-        <div>
-          <span>Industry</span>
-          <div className="flex flex-wrap gap-2">
-            {filtersByIndustry.map((e, idx) => (
-              <CustomCheckBoxText key={idx} btnSize="sm" inputType="checkbox">
-                {e}
-              </CustomCheckBoxText>
-            ))}
+        <div
+          className={
+            styles.filtersContainer +
+            " flex flex-col items-center space-y-[2vw]"
+          }
+        >
+          {/* Filter By Industry */}
+          <div className={styles.filtersByIndustry}>
+            <span>Industry</span>
+            <div className="flex flex-wrap gap-2">
+              {filtersByIndustry.map((e, idx) => (
+                <CustomCheckBoxText key={idx} btnSize="sm" inputType="checkbox">
+                  {e}
+                </CustomCheckBoxText>
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* Filter By Niche */}
-        <div>
-          <span>Niche</span>
-          <p>
-            Most of our offerings bundle several services, but you can always
-            choose the specific ones you need.
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {filtersByNiche.map((e, idx) => (
-              <CustomCheckBoxText key={idx} btnSize="sm" inputType="checkbox">
-                {e}
-              </CustomCheckBoxText>
-            ))}
+          {/* Filter By Niche */}
+          <div className={styles.filtersByNiche}>
+            <span>Niche</span>
+            <p>
+              Most of our offerings bundle several services, but you can always
+              choose the specific ones you need.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {filtersByNiche.map((e, idx) => (
+                <CustomCheckBoxText key={idx} btnSize="sm" inputType="checkbox">
+                  {e}
+                </CustomCheckBoxText>
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* Apply Filter Button */}
-        <button>Apply Filter</button>
+          {/* Apply Filter Button */}
+          <button>Apply Filter</button>
+        </div>
       </div>
       {/* ===== End Advanced Filters ===== */}
     </div>
