@@ -14,20 +14,28 @@
   padding: 20px;
   transition: 0.5s;
   left: 50%;
-  transform: translateX(-50%);
   top: 0;
   color: black;
   padding: 1vw;
   overflow: hidden;
-  z-index: 2;
+  z-index: 1;
+  filter: blur(1px);
+  opacity: 0.9;
+  transition: all 0.5s;
 }
-.item:nth-child(1) {
+.item.active {
+  left: 50%;
+  transform: translateX(-50%) !important;
+  z-index: 2 !important;
+  opacity: 1 !important;
+}
+.item.left {
   z-index: 1;
   filter: blur(1px);
   opacity: 0.9;
   transform: translateX(calc(-50% - 150px)) scale(0.8);
 }
-.item:nth-child(3) {
+.item.right {
   z-index: 1;
   filter: blur(1px);
   opacity: 0.9;
@@ -48,4 +56,10 @@
 }
 .btns input {
     cursor: pointer;
+}
+.btns input + div {
+  font-size: clamp(14px, calc(0.8vw + 0.1rem), 100px);
+  font-weight: 700;
+  padding-top: 0.7vw;
+  padding-bottom: 0.7vw;
 }
