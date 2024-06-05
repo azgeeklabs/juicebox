@@ -51,31 +51,29 @@ const layout = ({ children }: { children: React.ReactNode }) => {
 
       <div className="grow">{children}</div>
 
-      <div className="w-[100%] pt-2 relative">
+      <div className="w-[100%] pt-2">
         {currentPath > 0 && (
           <Link
             href={`/services/application-design-service/${getPreviousPath()}`}
+            className=" bg-[#484848] px-[2vw] py-[0.5vw] font-semibold rounded-[41.03px] cursor-pointer float-start"
             onClick={() =>
               setCurrentPath(currentPath > 0 ? currentPath - 1 : currentPath)
             }
           >
-            <button className=" bg-[#484848] px-[2vw] py-[0.5vw] font-semibold rounded-[41.03px] cursor-pointer absolute left-0 bottom-0">
-              Back
-            </button>
+            Back
           </Link>
         )}
         {currentPath === 0 && (
           <Link
             href={`/services/application-design-service/${getNextPath()}`}
+            className="bg-[#F8F24B] px-[2vw] py-[0.5vw] font-semibold rounded-[41.03px] text-[var(--primary-black)] cursor-pointer float-end"
             onClick={() =>
               setCurrentPath(
                 currentPath < path.length - 1 ? currentPath + 1 : currentPath
               )
             }
           >
-            <button className=" bg-[#F8F24B] px-[2vw] py-[0.5vw] font-semibold rounded-[41.03px] text-[var(--primary-black)] cursor-pointer absolute right-0 bottom-0">
-              Next
-            </button>
+            Next
           </Link>
         )}
       </div>

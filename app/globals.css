@@ -49,7 +49,7 @@ body {
 .pageContent {
   border-radius: clamp(15px, calc(1.042vw + 0.1rem), 100px);
   background-color: var(--dark-gray-1);
-  padding: 1vw;
+  padding: 1.5vw;
   height: 100%;
 }
 /* ===== End Layout ===== */
