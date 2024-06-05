@@ -16,6 +16,16 @@ export default function page() {
     "Content Creation",
     "Video Editing",
     "Motion Graphics",
+    "Finance",
+    "Design",
+    "Marketing",
+    "Sales",
+    "Human Resources",
+    "Web Development",
+    "UX/UI",
+    "Content Creation",
+    "Video Editing",
+    "Motion Graphics",
   ];
 
   return (
@@ -23,11 +33,13 @@ export default function page() {
 
     {/* ===== Start Filter Tabs ===== */}
     <div className={styles.filterTabs + " flex"}>
+      <div className="flex flex-shrink-0">
       {filters.map((e, idx) => (
         <CustomCheckBoxText key={idx} btnSize="sm" inputType="checkbox">
           {e}
         </CustomCheckBoxText>
       ))}
+      </div>
     </div>
     {/* ===== End Filter Tabs ===== */}
 
@@ -43,6 +55,7 @@ export default function page() {
   </div>
 
       <span className="w-[10%] flex justify-center items-center underline">Advanced Filter</span>
+      
     </div>
     {/* ===== End Search & Advanced Filters ===== */}
 
