@@ -50,13 +50,13 @@ function page() {
             <div className="flex flex-col gap-8">
               <div className="flex items-center gap-4">
                 <h2 className="text-2xl font-medium">Default Pages</h2>
-                <span>
+                <span className="relative">
                   <svg
                     width="18"
                     height="18"
                     viewBox="0 0 18 18"
                     fill="none"
-                    className="group cursor-pointer"
+                    className="cursor-pointer peer group"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
@@ -65,6 +65,10 @@ function page() {
                       className="group-hover:fill-white transition-colors duration-200"
                     />
                   </svg>
+                  <span className="bg-[#373737] py-[10px] px-[11px] rounded-[7px] opacity-0 text-[#E4E4E4] absolute top-1/2 left-full transform translate-x-4 -translate-y-1/2 w-[30vw] border-l-[3px] border-[var(--highlight-yellow)] peer-hover:opacity-100 peer-hover:visible transition-all duration-200">
+                    These pages are part of the default configuration and cannot
+                    be removed from the application.
+                  </span>
                 </span>
               </div>
               <div className="flex flex-wrap text-sm gap-2">
@@ -88,7 +92,7 @@ function page() {
                     height="18"
                     viewBox="0 0 18 18"
                     fill="none"
-                    className="group cursor-pointer"
+                    className="cursor-pointer peer group"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
@@ -97,9 +101,8 @@ function page() {
                       className="group-hover:fill-white transition-colors duration-200"
                     />
                   </svg>
-                  <span className="bg-[#373737] p-[10px 11px] rounded-[7px] text-[#E4E4E4] absolute top-1/2 left-full transform -translate-y-1/2 w-[30vw]">
-                    These pages are part of the default configuration and cannot
-                    be removed from the application.
+                  <span className="bg-[#373737] py-[10px] px-[11px] rounded-[7px] opacity-0 text-[#E4E4E4] absolute top-1/2 left-full transform translate-x-4 -translate-y-1/2 w-[30vw] border-l-[3px] border-[var(--highlight-yellow)] peer-hover:opacity-100 peer-hover:visible transition-all duration-200">
+                    Additional pages that you could add to your application.
                   </span>
                 </span>
               </div>
