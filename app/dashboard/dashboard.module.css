@@ -1,72 +1,73 @@
 .card {
-    border-radius: 15px;
-    background: #353535;
-    padding: clamp(10px, calc(1vw + 0.1rem), 100px);
+  border-radius: 15px;
+  background: #353535;
+  padding: clamp(10px, calc(1vw + 0.1rem), 100px);
 }
 
 .card .header {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1vw;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1vw;
 }
 
 .card .header h6 {
-    font-size: clamp(10px, calc(1.2vw + 0.1rem), 100px);
-    font-weight: 700;
-    color: var(--highlight-yellow);
+  font-size: clamp(10px, calc(1.2vw + 0.1rem), 100px);
+  font-weight: 700;
+  color: var(--highlight-yellow);
 }
 
 .card .header span {
-    font-size: clamp(10px, calc(0.8vw + 0.1rem), 100px);
-    line-height: clamp(10px, calc(0.8vw + 0.1rem), 100px);
-    color: var(--primary-black);
-    padding: clamp(5px, calc(0.4vw + 0.1rem), 100px) clamp(10px, calc(1.5vw + 0.1rem), 100px);
-    border-radius: clamp(10px, calc(1.5vw + 0.1rem), 100px);
-    -webkit-border-radius: clamp(10px, calc(1.5vw + 0.1rem), 100px);
-    -moz-border-radius: clamp(10px, calc(1.5vw + 0.1rem), 100px);
-    -ms-border-radius: clamp(10px, calc(1.5vw + 0.1rem), 100px);
-    -o-border-radius: clamp(10px, calc(1.5vw + 0.1rem), 100px);
-    background: var(--highlight-yellow);
-    font-weight: 600;
+  font-size: clamp(10px, calc(0.8vw + 0.1rem), 100px);
+  line-height: clamp(10px, calc(0.8vw + 0.1rem), 100px);
+  color: var(--primary-black);
+  padding: clamp(5px, calc(0.4vw + 0.1rem), 100px)
+    clamp(10px, calc(1.5vw + 0.1rem), 100px);
+  border-radius: clamp(10px, calc(1.5vw + 0.1rem), 100px);
+  -webkit-border-radius: clamp(10px, calc(1.5vw + 0.1rem), 100px);
+  -moz-border-radius: clamp(10px, calc(1.5vw + 0.1rem), 100px);
+  -ms-border-radius: clamp(10px, calc(1.5vw + 0.1rem), 100px);
+  -o-border-radius: clamp(10px, calc(1.5vw + 0.1rem), 100px);
+  background: var(--highlight-yellow);
+  font-weight: 600;
 }
 
-.card .body{
-    display: flex;
-    flex-direction: column;
-    gap: clamp(10px, calc(1vw + 0.1rem), 100px);
+.card .body {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, calc(1vw + 0.1rem), 100px);
 }
 
-.card .service_phases_part > h6 , .card .current_phase_part > h6{
-    font-size: clamp(10px, calc(0.8vw + 0.1rem), 100px);
-    line-height: clamp(10px, calc(0.8vw + 0.1rem), 100px);
-    margin-bottom: clamp(10px, calc(0.8vw + 0.1rem), 100px);
-    font-weight: 600;
+.card .service_phases_part > h6,
+.card .current_phase_part > h6 {
+  font-size: clamp(10px, calc(0.8vw + 0.1rem), 100px);
+  line-height: clamp(10px, calc(0.8vw + 0.1rem), 100px);
+  margin-bottom: clamp(10px, calc(0.8vw + 0.1rem), 100px);
+  font-weight: 600;
 }
 
-.card .service_phases_part .service_phases{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: clamp(10px, calc(0.8vw + 0.1rem), 100px);
+.card .service_phases_part .service_phases {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: clamp(10px, calc(0.8vw + 0.1rem), 100px);
 }
 
-.service_phases>div>div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: clamp(5px, calc(0.3vw + 0.1rem), 100px) clamp(10px, calc(1.5vw + 0.1rem), 100px) !important;
+.service_phases > div > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: clamp(5px, calc(0.3vw + 0.1rem), 100px)
+    clamp(10px, calc(1.5vw + 0.1rem), 100px) !important;
 }
 
-.service_phases>div>div>p {
-    font-size: clamp(9px, calc(0.6vw + 0.1rem), 100px);
-    font-weight: 600;
+.service_phases > div > div > p {
+  font-size: clamp(9px, calc(0.6vw + 0.1rem), 100px);
+  font-weight: 600;
 }
 
-.service_phases>div>div>p:last-child {
-    font-weight: 400;
+.service_phases > div > div > p:last-child {
+  font-weight: 400;
 }
-
-

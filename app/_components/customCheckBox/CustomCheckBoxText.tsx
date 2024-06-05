@@ -2,7 +2,8 @@ import styles from "./CustomCheckBoxText.module.css";
 
 type Size = "sm" | "md" | "lg" | "xl";
 
-interface IProps extends React.DetailedHTMLProps<
+interface IProps
+  extends React.DetailedHTMLProps<
     React.InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   > {
@@ -10,7 +11,12 @@ interface IProps extends React.DetailedHTMLProps<
   inputType: string;
 }
 
-function CustomCheckBoxText({ btnSize, inputType, children, ...props }: IProps) {
+function CustomCheckBoxText({
+  btnSize,
+  inputType,
+  children,
+  ...props
+}: IProps) {
   const sizeClass = styles[`size-${btnSize}`];
 
   return (
