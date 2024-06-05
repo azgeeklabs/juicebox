@@ -1,7 +1,7 @@
+"use client";
 import classNames from "classnames";
 import styles from "./custom-ecommerce.module.css";
 import CustomCheckBoxText from "@/app/_components/CustomCheckBox/CustomCheckBoxText";
-import { Span } from "next/dist/trace";
 
 const defaultPages = [
   "Sign Up",
@@ -65,9 +65,11 @@ function page() {
                       className="group-hover:fill-white transition-colors duration-200"
                     />
                   </svg>
-                  <span className="bg-[#373737] py-[10px] px-[11px] rounded-[7px] opacity-0 text-[#E4E4E4] absolute top-1/2 left-full transform translate-x-4 -translate-y-1/2 w-[30vw] border-l-[3px] border-[var(--highlight-yellow)] peer-hover:opacity-100 peer-hover:visible transition-all duration-200">
-                    These pages are part of the default configuration and cannot
-                    be removed from the application.
+                  <span className="bg-[#373737] py-[10px] pl-5 pr-[11px] rounded-[7px] opacity-0 text-[#E4E4E4] absolute top-1/2 left-full transform translate-x-4 -translate-y-1/2 max-w-[30vw] border-l-[3px] border-[var(--highlight-yellow)] peer-hover:opacity-100 peer-hover:visible transition-all duration-200">
+                    <p className="w-max max-w-full">
+                      These pages are part of the default configuration and
+                      cannot be removed from the application.
+                    </p>
                   </span>
                 </span>
               </div>
@@ -101,18 +103,69 @@ function page() {
                       className="group-hover:fill-white transition-colors duration-200"
                     />
                   </svg>
-                  <span className="bg-[#373737] py-[10px] px-[11px] rounded-[7px] opacity-0 text-[#E4E4E4] absolute top-1/2 left-full transform translate-x-4 -translate-y-1/2 w-[30vw] border-l-[3px] border-[var(--highlight-yellow)] peer-hover:opacity-100 peer-hover:visible transition-all duration-200">
-                    Additional pages that you could add to your application.
+                  <span className="bg-[#373737] py-[10px] pl-5 pr-[11px] rounded-[7px] opacity-0 text-[#E4E4E4] absolute top-1/2 left-full transform translate-x-4 -translate-y-1/2 max-w-[30vw] border-l-[3px] border-[var(--highlight-yellow)] peer-hover:opacity-100 peer-hover:visible transition-all duration-200">
+                    <p className="w-max max-w-full">
+                      Additional pages that you could add to your application.
+                    </p>
                   </span>
                 </span>
               </div>
               <div className="flex flex-wrap text-sm gap-2">
-                {additionalPages.map((page) => (
-                  <CustomCheckBoxText btnSize="sm" inputType="checkbox">
+                {additionalPages.map((page, i) => (
+                  <CustomCheckBoxText
+                    btnSize="sm"
+                    inputType="checkbox"
+                    onMouseMove={() => {
+                      document.querySelectorAll(".item").forEach((e) => {
+                        e.classList.remove("active");
+                      });
+                      document
+                        .querySelector(`.item${i}`)
+                        ?.classList.add("active");
+                    }}
+                    onClick={(e) => {
+                      document.querySelectorAll(".item").forEach((ele) => {
+                        ele.classList.remove("active");
+                      });
+                      if (!(e.target as HTMLInputElement).checked) {
+                        document
+                          .querySelector(`.item${i}`)
+                          ?.classList.remove("selected");
+                      } else {
+                        document
+                          .querySelector(`.item${i}`)
+                          ?.classList.add("selected");
+                      }
+                      document
+                        .querySelector(`.item${i}`)
+                        ?.classList.add("active");
+                    }}
+                  >
                     {page}
                   </CustomCheckBoxText>
                 ))}
               </div>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col gap-4 w-1/2">
+          <div>
+            <div className={`${styles.slider} slider`}>
+              {additionalPages.map((e, i) => (
+                <div
+                  key={i}
+                  className={`item${i} ${styles.item} item ${
+                    i == additionalPages.length / 2 - 1 ||
+                    i == additionalPages.length / 2 + 0.5 - 1
+                      ? `active ${styles.right}`
+                      : i > (additionalPages.length - 1) / 2
+                      ? styles.right
+                      : styles.left
+                  }`}
+                >
+                  <h1>{e}</h1>
+                </div>
+              ))}
             </div>
           </div>
         </div>
