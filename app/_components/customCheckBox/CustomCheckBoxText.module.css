@@ -38,8 +38,6 @@
 /* Checked */
 .customCheckBoxText input:checked + div {
   background-color: #f8f24b;
-}
-.customCheckBoxText input:checked + div {
   color: #282828;
 }
 
