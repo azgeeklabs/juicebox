@@ -10,7 +10,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const getCurrentPath = () => {
       const moduleName = window.location.pathname.split("/")[2];
-      if (moduleName === "video-service") {
+      if (moduleName === "seo-campaign") {
         setCurrentPath(0);
         return;
       }
@@ -55,7 +55,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
       <div className="w-[100%] pt-2 relative">
         {currentPath > 0 && (
           <Link
-            href={`/services/video-service/${getPreviousPath()}`}
+            href={`/services/seo-campaign/${getPreviousPath()}`}
             onClick={() =>
               setCurrentPath(currentPath > 0 ? currentPath - 1 : currentPath)
             }
@@ -67,7 +67,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
         )}
         {currentPath === 0 && (
           <Link
-            href={`/services/video-service/${getNextPath()}`}
+            href={`/services/seo-campaign/${getNextPath()}`}
             onClick={() =>
               setCurrentPath(
                 currentPath < path.length - 1 ? currentPath + 1 : currentPath

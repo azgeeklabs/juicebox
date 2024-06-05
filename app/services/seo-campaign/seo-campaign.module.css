@@ -36,17 +36,18 @@
   /* transition: visibility 1s ease-in, opacity 1s ease-in; */
 }
 
-.card img {
+.card img.gifImg {
   visibility: hidden;
   opacity: 0;
 }
 
-.card svg {
+.card img.svgImg {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   visibility: visible;
   opacity: 1;
+  /* width: 50px; */
 }
 
 .card:not(:has(input:checked)):hover {
@@ -59,12 +60,12 @@
   color: var(--primary-black);
 }
 
-.card:hover img {
+.card:hover img.gifImg {
   visibility: visible;
   opacity: 1;
 }
 
-.card:hover svg {
+.card:hover img.svgImg {
   visibility: hidden;
   opacity: 0;
 }
