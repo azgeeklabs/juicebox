@@ -70,7 +70,7 @@ export default function page() {
     {/* ===== End Search & Advanced Filters ===== */}
 
     {/* ===== Start Services Table ===== */}
-    <ServicesTable />
+    <ServicesTable isAdvancedFilterActive={isAdvancedFilterActive} />
     {/* ===== End Services Table ===== */}
 
 </section>
