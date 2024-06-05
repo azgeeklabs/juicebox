@@ -2,6 +2,7 @@
 import React from "react";
 import styles from "./ServicesTable.module.css";
 import CustomCheckBoxText from "../CustomCheckBox/CustomCheckBoxText";
+import Link from "next/link";
 
 /**
  * Renders a table component displaying services.
@@ -12,13 +13,75 @@ export default function ServicesTable() {
   // An array of objects representing the rows of the table body.
   const bodyRow = [
     {
+      service: "Video Editing",
+      information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      clientProjects: "656 Projects",
+      getStarted: "Start Now!",
+      path: "/services/video-service"
+    },
+    {
       service: "Application Design",
+      information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      clientProjects: "656 Projects",
+      getStarted: "Start Now!",
+      path: "/services/application-design-service"
+    },
+    {
+      service: "Lorem",
       information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
     },
     {
-      service: "Application Design",
+      service: "Lorem",
+      information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      clientProjects: "656 Projects",
+      getStarted: "Start Now!",
+    },
+    {
+      service: "Lorem",
+      information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      clientProjects: "656 Projects",
+      getStarted: "Start Now!",
+    },
+    {
+      service: "Lorem",
+      information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      clientProjects: "656 Projects",
+      getStarted: "Start Now!",
+    },
+    {
+      service: "Lorem",
+      information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      clientProjects: "656 Projects",
+      getStarted: "Start Now!",
+    },
+    {
+      service: "Lorem",
+      information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      clientProjects: "656 Projects",
+      getStarted: "Start Now!",
+    },
+    {
+      service: "Lorem",
+      information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      clientProjects: "656 Projects",
+      getStarted: "Start Now!",
+    },
+    {
+      service: "Lorem",
+      information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      clientProjects: "656 Projects",
+      getStarted: "Start Now!",
+    },
+    {
+      service: "Lorem",
+      information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      clientProjects: "656 Projects",
+      getStarted: "Start Now!",
+    },
+    {
+      service: "Lorem",
       information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
@@ -60,19 +123,19 @@ export default function ServicesTable() {
   return (
     <div className={`${styles.tableContainer} flex`}>
       {/* ===== Start Table ===== */}
-      <div className={styles.table + " max-w-full"}>
+      <div className={styles.table + " w-3/4"}>
         {/* Table Header */}
         <ul className={styles.table_header}>
-          <li className="w-[25%]">
+          <li className="w-[16.66%]">
             <span>Service</span>
           </li>
-          <li className="w-[25%]">
+          <li className="w-[50%]">
             <span>Information</span>
           </li>
-          <li className="w-[25%]">
+          <li className={styles.clientProjects + " w-[16.66%]"}>
             <span>Client Projects</span>
           </li>
-          <li className="w-[25%]">
+          <li className={styles.getStarted + " w-[16.66%]"}>
             <span>Get Started</span>
           </li>
         </ul>
@@ -81,17 +144,19 @@ export default function ServicesTable() {
         <div className={styles.table_body}>
           {bodyRow.map((e, idx) => (
             <ul key={idx}>
-              <li className="w-[25%]">
+              <li className="w-[16.66%] self-start">
                 <span>{e.service}</span>
               </li>
-              <li className="w-[25%]">
+              <li className="w-[50%] self-start">
                 <span>{e.information}</span>
               </li>
-              <li className="w-[25%]">
+              <li className={styles.clientProjects + " w-[16.66%]"}>
                 <span>{e.clientProjects}</span>
               </li>
-              <li className="w-[25%]">
+              <li className={styles.getStarted + " w-[16.66%]"}>
+                <Link href={e?.path || "#"}>
                 <span>{e.getStarted}</span>
+                </Link>
               </li>
             </ul>
           ))}
@@ -100,7 +165,7 @@ export default function ServicesTable() {
       {/* ===== End Table ===== */}
 
       {/* ===== Start Advanced Filters ===== */}
-      <div className={styles.advancedFilter + "  w-1/4 flex flex-col items-center space-y-6"}>
+      <div className={styles.advancedFilter + "  w-1/4 flex flex-col items-center space-y-6 bg-green-300"}>
         <span className={"text-center"}>Advanced Filter</span>
         {/* Filter By Industry */}
           <div>
