@@ -2,10 +2,39 @@
 import CustomCheckBox from "@/app/_components/customCheckBox/CustomCheckBox";
 import React, { useEffect } from "react";
 import styles from "./videoService.module.css";
-import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
+import CustomCheckBoxText from "@/app/_components/CustomCheckBox/CustomCheckBoxText";
 import Link from "next/link";
 
 export default function page() {
+
+  const slides = [
+    {
+      head: "Slide 1",
+      content:
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Faceremagni magnam unde ipsam repudiandae explicabo expedita labore,sequi minus neque beatae voluptatum, quasi accusamus quia quisvoluptas laborum ad! Ab totam doloribus, excepturi possimus remvel quia fugit molestiae officiis!",
+    },
+    {
+      head: "Slide 2",
+      content:
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Faceremagni magnam unde ipsam repudiandae explicabo expedita labore,sequi minus neque beatae voluptatum, quasi accusamus quia quisvoluptas laborum ad! Ab totam doloribus, excepturi possimus remvel quia fugit molestiae officiis!",
+    },
+    {
+      head: "Slide 3",
+      content:
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Faceremagni magnam unde ipsam repudiandae explicabo expedita labore,sequi minus neque beatae voluptatum, quasi accusamus quia quisvoluptas laborum ad! Ab totam doloribus, excepturi possimus remvel quia fugit molestiae officiis!",
+    },
+    {
+      head: "Slide 4",
+      content:
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Faceremagni magnam unde ipsam repudiandae explicabo expedita labore,sequi minus neque beatae voluptatum, quasi accusamus quia quisvoluptas laborum ad! Ab totam doloribus, excepturi possimus remvel quia fugit molestiae officiis!",
+    },
+    {
+      head: "Slide 5",
+      content:
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Faceremagni magnam unde ipsam repudiandae explicabo expedita labore,sequi minus neque beatae voluptatum, quasi accusamus quia quisvoluptas laborum ad! Ab totam doloribus, excepturi possimus remvel quia fugit molestiae officiis!",
+    },
+  ];
+
   // useEffect(() => {
   //   let items = document.getElementsByClassName("item") as any;
   //   let next = document.getElementById("next");
@@ -59,51 +88,126 @@ export default function page() {
           </h4>
         </div>
         <div className=" flex items-center justify-between pl-[4.021vw] pr-[1vw]">
-          <div className={`${styles.btns} flex flex-col gap-[1.041vw]`}>
-            <CustomCheckBoxText btnSize="xl" inputType="radio" name="type">Explainer</CustomCheckBoxText>
-            <CustomCheckBoxText btnSize="xl" inputType="radio" name="type">Educational</CustomCheckBoxText>
-            <CustomCheckBoxText btnSize="xl" inputType="radio" name="type">YouTube</CustomCheckBoxText>
-            <CustomCheckBoxText btnSize="xl" inputType="radio" name="type">Social Media Ad</CustomCheckBoxText>
-            <CustomCheckBoxText btnSize="xl" inputType="radio" name="type">Short Film</CustomCheckBoxText>
+        <div className={`${styles.btns} flex flex-col gap-[1.041vw]`}>
+            <CustomCheckBoxText
+              btnSize="xl"
+              inputType="radio"
+              name="type"
+              onMouseMove={()=>{
+                document.querySelectorAll(".item").forEach((e) => {
+                  e.classList.remove("active");
+                });
+                document.querySelector(`.item0`)?.classList.add("active");
+              }}
+              onClick={() => {
+                document.querySelectorAll(".item").forEach((e) => {
+                  e.classList.remove("active");
+                });
+                document.querySelector(`.item0`)?.classList.add("active");
+              }}
+            >
+              Explainer
+            </CustomCheckBoxText>
+            <CustomCheckBoxText
+              btnSize="xl"
+              inputType="radio"
+              name="type"
+              onMouseMove={()=>{
+                document.querySelectorAll(".item").forEach((e) => {
+                  e.classList.remove("active");
+                });
+                document.querySelector(`.item1`)?.classList.add("active");
+              }}
+              onClick={() => {
+                document.querySelectorAll(".item").forEach((e) => {
+                  e.classList.remove("active");
+                });
+                document.querySelector(`.item1`)?.classList.add("active");
+              }}
+            >
+              Educational
+            </CustomCheckBoxText>
+            <CustomCheckBoxText
+              btnSize="xl"
+              inputType="radio"
+              name="type"
+              onMouseMove={()=>{
+                document.querySelectorAll(".item").forEach((e) => {
+                  e.classList.remove("active");
+                });
+                document.querySelector(`.item2`)?.classList.add("active");
+              }}
+              onClick={() => {
+                document.querySelectorAll(".item").forEach((e) => {
+                  e.classList.remove("active");
+                });
+                document.querySelector(`.item2`)?.classList.add("active");
+              }}
+            >
+              YouTube
+            </CustomCheckBoxText>
+            <CustomCheckBoxText
+              btnSize="xl"
+              inputType="radio"
+              name="type"
+              onMouseMove={()=>{
+                document.querySelectorAll(".item").forEach((e) => {
+                  e.classList.remove("active");
+                });
+                document.querySelector(`.item3`)?.classList.add("active");
+              }}
+              onClick={() => {
+                document.querySelectorAll(".item").forEach((e) => {
+                  e.classList.remove("active");
+                });
+                document.querySelector(`.item3`)?.classList.add("active");
+              }}
+            >
+              Social Media Ad
+            </CustomCheckBoxText>
+            <CustomCheckBoxText
+              btnSize="xl"
+              inputType="radio"
+              name="type"
+              onMouseMove={()=>{
+                document.querySelectorAll(".item").forEach((e) => {
+                  e.classList.remove("active");
+                });
+                document.querySelector(`.item4`)?.classList.add("active");
+              }}
+              onClick={() => {
+                document.querySelectorAll(".item").forEach((e) => {
+                  e.classList.remove("active");
+                });
+                document.querySelector(`.item4`)?.classList.add("active");
+              }}
+            >
+              Short Film
+            </CustomCheckBoxText>
           </div>
           <div>
             <div className={`${styles.slider} slider`}>
-              <div className={`${styles.item} item`}>
-                <h1>Slide 1</h1>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere
-                magni magnam unde ipsam repudiandae explicabo expedita labore,
-                sequi minus neque beatae voluptatum, quasi accusamus quia quis
-                voluptas laborum ad! Ab totam doloribus, excepturi possimus rem
-                vel quia fugit molestiae officiis!
-              </div>
-              <div className={`${styles.item} item`}>
-                <h1>Slide 2</h1>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere
-                magni magnam unde ipsam repudiandae explicabo expedita labore,
-                sequi minus neque beatae voluptatum, quasi accusamus quia quis
-                voluptas laborum ad! Ab totam doloribus, excepturi possimus rem
-                vel quia fugit molestiae officiis!
-              </div>
-              <div className={`${styles.item} item`}>
-                <h1>Slide 3</h1>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere
-                magni magnam unde ipsam repudiandae explicabo expedita labore,
-                sequi minus neque beatae voluptatum, quasi accusamus quia quis
-                voluptas laborum ad! Ab totam doloribus, excepturi possimus rem
-                vel quia fugit molestiae officiis!
-              </div>
+            {slides.map((e, i) => (
+                <div
+                  key={i}
+                  className={`item${i} ${styles.item} item ${
+                    i == (slides.length - 1) / 2 ||
+                    i == slides.length / 2 + 0.5 - 1
+                      ? `active ${styles.right}`
+                      : i > (slides.length - 1) / 2
+                      ? styles.right
+                      : styles.left
+                  }`}
+                >
+                  <h1>{e.head}</h1>
+                  {e.content}
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
-      <div className="w-[100%] flex justify-between">
-        <button className=" bg-[#484848] px-[2vw] py-[0.5vw] font-semibold rounded-[41.03px] cursor-pointer">
-          Back
-        </button>
-        <Link href={"/services/video-service/footage-selection"}><button className=" bg-[#F8F24B] px-[2vw] py-[0.5vw] font-semibold rounded-[41.03px] text-[var(--primary-black)] cursor-pointer">
-          Next
-        </button></Link>
-      </div>
+      
     </div>
   );
 }

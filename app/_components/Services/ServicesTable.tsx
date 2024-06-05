@@ -3,9 +3,8 @@ import React from "react";
 import styles from "./ServicesTable.module.css";
 import CustomCheckBoxText from "../CustomCheckBox/CustomCheckBoxText";
 
-
 /**
- * Renders a table component displaying missing papers for employees.
+ * Renders a table component displaying services.
  *
  * @return {JSX.Element} The table component.
  */
@@ -59,9 +58,9 @@ export default function ServicesTable() {
   ]
 
   return (
-    <div className={`${styles.tableContainer} h-[68vh] flex`}>
-      {/* Start Table */}
-      <div className={styles.table + " max-w-full"} id="table">
+    <div className={`${styles.tableContainer} flex`}>
+      {/* ===== Start Table ===== */}
+      <div className={styles.table + " max-w-full"}>
         {/* Table Header */}
         <ul className={styles.table_header}>
           <li className="w-[25%]">
@@ -98,8 +97,9 @@ export default function ServicesTable() {
           ))}
         </div>
       </div>
-      
-      {/* Table Advanced Filters */}
+      {/* ===== End Table ===== */}
+
+      {/* ===== Start Advanced Filters ===== */}
       <div className={styles.advancedFilter + "  w-1/4 flex flex-col items-center space-y-6"}>
         <span className={"text-center"}>Advanced Filter</span>
         {/* Filter By Industry */}
@@ -133,7 +133,7 @@ export default function ServicesTable() {
         <button>Apply Filter</button>
 
       </div>
-      {/* End Table */}
+      {/* ===== End Advanced Filters ===== */}
     </div>
   );
 }

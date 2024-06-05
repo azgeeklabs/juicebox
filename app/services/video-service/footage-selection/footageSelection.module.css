@@ -31,10 +31,37 @@
 }
 .footage input:checked + div {
   background-color: #F8F24B ;
-
 }
 .footage input:checked ~ button {
   background-color: #F8F24B !important;
   color: #1c1c1c;
 
+}
+.footage img {
+  width: 7vw;
+  height: 100%;
+}
+.footage .checking input + span {
+  background-color: var(--dark-gray-2);
+}
+.footage .checking input[type="text"],.footage .checking input[type="number"] {
+  cursor: text;
+  color: white;
+  padding: 0.2vw 0.6vw ; 
+  text-align: center;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.footage .checking input[type="number"]::-webkit-outer-spin-button,
+.footage .checking input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.footage .checking input[type=number] {
+  -moz-appearance: textfield;
+}
+.checking {
+  font-size: clamp(12px, calc(0.8vw + 0.1rem), 100px);
 }

@@ -53,3 +53,10 @@ body {
   height: 100%;
 }
 /* ===== End Layout ===== */
+
+.item.active {
+  left: 50%;
+  transform: translateX(-50%) !important;
+  z-index: 2 !important;
+  opacity: 1 !important;
+}
