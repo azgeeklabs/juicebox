@@ -9,7 +9,11 @@ import Link from "next/link";
  *
  * @return {JSX.Element} The table component.
  */
-export default function ServicesTable() {
+export default function ServicesTable({
+  isAdvancedFilterActive,
+}: {
+  isAdvancedFilterActive: boolean;
+}) {
   // An array of objects representing the rows of the table body.
   const bodyRow = [
     {
@@ -135,7 +139,11 @@ export default function ServicesTable() {
   return (
     <div className={`${styles.tableContainer} flex`}>
       {/* ===== Start Table ===== */}
-      <div className={styles.table + " w-3/4"}>
+      <div
+        className={
+          styles.table + (isAdvancedFilterActive ? " w-3/4" : " w-full")
+        }
+      >
         {/* Table Header */}
         <ul className={styles.table_header}>
           <li className="w-[16.66%]">
@@ -179,7 +187,9 @@ export default function ServicesTable() {
       {/* ===== Start Advanced Filters ===== */}
       <div
         className={
-          styles.advancedFilter + " w-1/4 flex flex-col items-center space-y-6"
+          styles.advancedFilter +
+          " flex flex-col items-center space-y-[2vw] " +
+          (isAdvancedFilterActive ? styles.isAdvancedFilterActive : "")
         }
       >
         <span className={"text-center"}>Advanced Filter</span>
@@ -199,7 +209,8 @@ export default function ServicesTable() {
         <div>
           <span>Niche</span>
           <p>
-          Most of our offerings bundle several services, but you can always choose the specific ones you need.
+            Most of our offerings bundle several services, but you can always
+            choose the specific ones you need.
           </p>
           <div className="flex flex-wrap gap-2">
             {filtersByNiche.map((e, idx) => (
