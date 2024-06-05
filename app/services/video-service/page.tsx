@@ -103,7 +103,11 @@ export default function page() {
                 document.querySelectorAll(".item").forEach((e) => {
                   e.classList.remove("active");
                 });
+                document.querySelectorAll(".item").forEach((e) => {
+                  e.classList.remove("selected");
+                });
                 document.querySelector(`.item0`)?.classList.add("active");
+                document.querySelector(`.item0`)?.classList.add("selected");
               }}
             >
               Explainer
@@ -122,7 +126,12 @@ export default function page() {
                 document.querySelectorAll(".item").forEach((e) => {
                   e.classList.remove("active");
                 });
+                document.querySelectorAll(".item").forEach((e) => {
+                  e.classList.remove("selected");
+                });
                 document.querySelector(`.item1`)?.classList.add("active");
+                document.querySelector(`.item1`)?.classList.add("selected");
+
               }}
             >
               Educational
@@ -141,7 +150,12 @@ export default function page() {
                 document.querySelectorAll(".item").forEach((e) => {
                   e.classList.remove("active");
                 });
+                document.querySelectorAll(".item").forEach((e) => {
+                  e.classList.remove("selected");
+                })
                 document.querySelector(`.item2`)?.classList.add("active");
+                document.querySelector(`.item2`)?.classList.add("selected");
+
               }}
             >
               YouTube
@@ -160,7 +174,12 @@ export default function page() {
                 document.querySelectorAll(".item").forEach((e) => {
                   e.classList.remove("active");
                 });
+                document.querySelectorAll(".item").forEach((e) => {
+                  e.classList.remove("selected");
+                })
                 document.querySelector(`.item3`)?.classList.add("active");
+                document.querySelector(`.item3`)?.classList.add("selected");
+
               }}
             >
               Social Media Ad
@@ -179,7 +198,12 @@ export default function page() {
                 document.querySelectorAll(".item").forEach((e) => {
                   e.classList.remove("active");
                 });
+                document.querySelectorAll(".item").forEach((e) => {
+                  e.classList.remove("selected");
+                })
                 document.querySelector(`.item4`)?.classList.add("active");
+                document.querySelector(`.item4`)?.classList.add("selected");
+
               }}
             >
               Short Film
@@ -191,7 +215,7 @@ export default function page() {
                 <div
                   key={i}
                   className={`item${i} ${styles.item} item ${
-                    i == (slides.length - 1) / 2 ||
+                    i == (slides.length  / 2 -1) ||
                     i == slides.length / 2 + 0.5 - 1
                       ? `active ${styles.right}`
                       : i > (slides.length - 1) / 2
