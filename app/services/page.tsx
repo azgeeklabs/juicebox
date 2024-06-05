@@ -21,7 +21,7 @@ export default function page() {
   return (
 <section>
 
-{/* // Filter Tabs */}
+    {/* ===== Start Filter Tabs ===== */}
     <div className={styles.filterTabs + " flex"}>
       {filters.map((e, idx) => (
         <CustomCheckBoxText key={idx} btnSize="sm" inputType="checkbox">
@@ -29,8 +29,9 @@ export default function page() {
         </CustomCheckBoxText>
       ))}
     </div>
+    {/* ===== End Filter Tabs ===== */}
 
-    {/* // Search & Advanced Filters */}
+    {/* ===== Start Search & Advanced Filters ===== */}
     <div className={styles.searchAndFilter + " flex justify-between items-center my-4"}>
       
 
@@ -43,9 +44,11 @@ export default function page() {
 
       <span className="w-[10%] flex justify-center items-center underline">Advanced Filter</span>
     </div>
+    {/* ===== End Search & Advanced Filters ===== */}
 
-    {/* Services Table */}
+    {/* ===== Start Services Table ===== */}
     <ServicesTable />
+    {/* ===== End Services Table ===== */}
 
 </section>
   );

@@ -1,4 +1,4 @@
-.customCheckBox {
+.customCheckBoxText {
   /* width: 40px; */
   /* height: 25px; */
   /* width: clamp(20px, calc(2.2vw + 0.1rem), 100px);
@@ -7,14 +7,14 @@
   overflow: hidden;
 }
 
-.customCheckBox input {
+.customCheckBoxText input {
   opacity: 0;
   cursor: pointer;
   /* z-index: -1; */
 }
 
 /* Normal */
-.customCheckBox > div {
+.customCheckBoxText > div {
   background-color: var(--dark-gray-3);
   width: 100%;
   height: 100%;
@@ -23,23 +23,23 @@
   justify-content: center;
 }
 
-.customCheckBox input + div {
+.customCheckBoxText input + div {
   color: var(--white);
 }
 
 /* Hover */
-.customCheckBox:hover div {
+.customCheckBoxText:hover div {
   background-color: #616161;
 }
-.customCheckBox:hover input + div {
+.customCheckBoxText:hover input + div {
   color: var(--white);
 }
 
 /* Checked */
-.customCheckBox input:checked + div {
+.customCheckBoxText input:checked + div {
   background-color: #f8f24b;
 }
-.customCheckBox input:checked + div {
+.customCheckBoxText input:checked + div {
   color: #282828;
 }
 

@@ -20,13 +20,13 @@ function CustomCheckBoxText({
   const sizeClass = styles[`size-${btnSize}`];
 
   return (
-    <div className={`relative ${styles.customCheckBox} ${sizeClass}`}>
+    <div className={`relative ${styles.customCheckBoxText} ${sizeClass}`}>
       <input
         type={inputType}
         className="opacity-0 w-full h-full absolute"
         {...props}
       />
-      <div className={styles.label}>{children}</div>
+      <div>{children}</div>
     </div>
   );
 }

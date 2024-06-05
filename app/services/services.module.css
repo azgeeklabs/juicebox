@@ -1,12 +1,23 @@
+/* ===== Start Filter Tabs ===== */
 .filterTabs {
-  /* width: 140px; */
-  /* height: 49px; */
   padding: 10px;
   gap: 16px;
   border-radius: 72px;
   background-color: var(--primary-black);
 }
+/* ===== End Filter Tabs ===== */
 
+
+
+
+
+
+
+
+
+
+
+/* ===== Start Search & Advanced Filters ===== */
 .searchAndFilter input {
   /* width: 964px; */
   height: 37px;
@@ -14,3 +25,5 @@
   border-radius: 60px;
   background-color: var(--dark-gray-2);
 }
+/* ===== End Search & Advanced Filters ===== */
+
