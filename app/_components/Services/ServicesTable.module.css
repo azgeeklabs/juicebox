@@ -138,12 +138,13 @@
 .advancedFilter {
   background-color: #353535;
   border-radius: clamp(15px, calc(0.7vw + 0.1rem), 1000px);
-  width: 0;
   padding: 0;
-  overflow: hidden;
+  display: none;
+  width: 0;
   transform: translateX(100%);
   transition: transform 0.2s;
 }
+
 
 .advancedFilter > span {
   font-weight: 800;
@@ -189,9 +190,9 @@
 
 .advancedFilter.isAdvancedFilterActive {
   width: 25%;
+  display: flex;
   transform: translateX(0%);
   overflow: unset;
   padding: clamp(20px, calc(0.95vw + 0.1rem), 1000px);
 }
-
 /* ===== End Advanced Filters ===== */
