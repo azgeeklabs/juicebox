@@ -18,7 +18,7 @@ function page() {
           helps us understand the specific requirements for your project.
         </p>
       </div>
-      <div className={classNames("flex gap-20", styles.cards)}>
+      <div className={classNames("flex gap-20 relative", styles.cards)}>
         {Array(5)
           .fill(0)
           .map((_, i: number) => (
@@ -145,6 +145,10 @@ function page() {
                 </svg>
               </div>
               <div>Game</div>
+              {/* <input
+                type="checkbox"
+                className="absolute opacity-0 inset-0 cursor-pointer"
+              /> */}
             </div>
           ))}
       </div>

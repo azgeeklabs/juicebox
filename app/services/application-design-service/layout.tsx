@@ -4,13 +4,20 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
-  const path = ["", "service-projects"];
+  const path = [
+    "",
+    "service-projects",
+    "service-features",
+    "service-portfolio",
+  ];
   const [currentPath, setCurrentPath] = useState(0);
+  const [module, setModule] = useState("");
 
   useEffect(() => {
+    setModule(window.location.pathname.split("/")[2]);
+    const moduleName = window.location.pathname.split("/").pop();
     const getCurrentPath = () => {
-      const moduleName = window.location.pathname.split("/").pop();
-      if (moduleName === "application-design-service") {
+      if (moduleName === module) {
         setCurrentPath(0);
         return;
       }
@@ -54,7 +61,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
       <div className="w-[100%] pt-2">
         {currentPath > 0 && (
           <Link
-            href={`/services/application-design-service/${getPreviousPath()}`}
+            href={`/services/${module}/${getPreviousPath()}`}
             className=" bg-[#484848] px-[2vw] py-[0.5vw] font-semibold rounded-[41.03px] cursor-pointer float-start"
             onClick={() =>
               setCurrentPath(currentPath > 0 ? currentPath - 1 : currentPath)
@@ -63,9 +70,9 @@ const layout = ({ children }: { children: React.ReactNode }) => {
             Back
           </Link>
         )}
-        {currentPath === 0 && (
+        {currentPath < path.length - 1 && (
           <Link
-            href={`/services/application-design-service/${getNextPath()}`}
+            href={`/services/${module}/${getNextPath()}`}
             className="bg-[#F8F24B] px-[2vw] py-[0.5vw] font-semibold rounded-[41.03px] text-[var(--primary-black)] cursor-pointer float-end"
             onClick={() =>
               setCurrentPath(
