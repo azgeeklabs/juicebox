@@ -1393,9 +1393,9 @@ function page() {
           styles.container
         )}
       >
-        <h1 className="text-3xl font-bold">
+        <h2 className="text-3xl font-bold">
           What type of digital product are you looking to create?
-        </h1>
+        </h2>
         <p className="text-lg w-[60%]">
           Please choose whether you want to develop a regular app or a gamified
           app. This helps us tailor our recommendations to your project.

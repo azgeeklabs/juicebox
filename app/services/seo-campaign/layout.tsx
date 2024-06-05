@@ -4,7 +4,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
-  const path = ["", "footage-selection","advertising"];
+  const path = ["", "#", "#"];
   const [currentPath, setCurrentPath] = useState(0);
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex flex-col justify-between h-full">
       <StepProgress
-        title={"Video Editing"}
+        title={"SEO Campaign"}
         currentStep={currentPath + 1}
         steps={path.length}
       />

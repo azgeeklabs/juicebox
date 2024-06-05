@@ -59,6 +59,8 @@ body {
   transform: translateX(-50%) !important;
   z-index: 2 !important;
   opacity: 1 !important;
+  filter: blur(0) !important;
+
 
 }
 .item.selected {
