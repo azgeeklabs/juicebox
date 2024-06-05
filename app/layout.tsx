@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className={"mainWrapper h-[100vh] w-[100vw] flex"}>
+        <div className={"mainWrapper h-[100vh] w-[100vw] flex overflow-hidden"}>
           <SideNav open={open} setOpen={setOpen} />
           {/* dynamic width */}
           <div className={` ${open && "navOpened"} pageWrapper`}>
