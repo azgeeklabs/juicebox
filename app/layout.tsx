@@ -1,8 +1,7 @@
 "use client";
-import type { Metadata } from "next";
+// import type { Metadata } from "next";
 import "./globals.css";
 import SideNav from "./_components/SideNav/SideNav";
-import styles from "./layout.module.css";
 import { useState } from "react";
 import SubscribedServices from "./_components/SubscribedServices/SubscribedServices";
 
@@ -23,9 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className={styles.mainWrapper + " h-[100vh] w-[100vw] flex"}>
+        <div className={"mainWrapper h-[100vh] w-[100vw] flex"}>
           <SideNav open={open} setOpen={setOpen} />
-          {/*   dynamic width */}
+          {/* dynamic width */}
           <div className={` ${open && "navOpened"} pageWrapper`}>
             {/* header */}
             <SubscribedServices />

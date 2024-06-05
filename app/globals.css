@@ -14,14 +14,14 @@
   --transparent-yellow: #f8f24b1a;
 }
 
-*{
-  line-height: normal;
-}
-
 body {
   background-color: var(--primary-black);
   color: var(--white);
   font-family: "Barlow", sans-serif;
+}
+
+.mainWrapper {
+  padding: clamp(1rem, calc(1vw + 0.1rem), 1000px);
 }
 
 .pageWrapper {
@@ -31,9 +31,11 @@ body {
   flex-direction: column;
   gap: 1vw;
 }
-.navOpened {
+
+.pageWrapper.navOpened {
   width: calc(100% - clamp(3.5rem, calc(10.35vw + 0.1rem), 102.25rem));
 }
+
 .pageContent {
   border-radius: clamp(15px, calc(1.042vw + 0.1rem), 100px);
   background-color: var(--dark-gray-1);
@@ -41,3 +43,6 @@ body {
   height: 100%;
 }
 
+* {
+  line-height: normal;
+}
