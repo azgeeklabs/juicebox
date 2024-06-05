@@ -1,0 +1,28 @@
+.card {
+  background-color: var(--dark-gray-3);
+  border-radius: 12px;
+  aspect-ratio: 1 / 1;
+  padding: 30px 50px 30px 50px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in, transform 0.2s ease-in;
+}
+
+.card div:nth-child(1) {
+  width: clamp(6rem, calc(4.35vw + 0.1rem), 20rem);
+  height: clamp(6rem, calc(4.35vw + 0.1rem), 20rem);
+  aspect-ratio: 1 / 1;
+}
+
+.card div:nth-child(2) {
+  text-align: center;
+  font-size: 1.424rem;
+}
+
+.cards {
+  gap: clamp(1rem, calc(2vw + 0.1rem), 50rem);
+}
+
+.card:hover {
+  background-color: #1f1f1f;
+  transform: scale(1.1);
+}

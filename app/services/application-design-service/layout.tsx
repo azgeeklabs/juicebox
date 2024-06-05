@@ -9,7 +9,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     const getCurrentPath = () => {
-      const moduleName = window.location.pathname.split("/")[2];
+      const moduleName = window.location.pathname.split("/").pop();
       if (moduleName === "application-design-service") {
         setCurrentPath(0);
         return;
@@ -17,7 +17,6 @@ const layout = ({ children }: { children: React.ReactNode }) => {
       const Path = window.location.pathname.split("/").pop();
       path.findIndex((p, i) => {
         if (p === Path) {
-          console.log(i);
           setCurrentPath(i);
         }
       });
