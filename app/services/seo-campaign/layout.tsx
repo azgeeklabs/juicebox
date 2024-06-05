@@ -4,27 +4,20 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
-  const path = [
-    "",
-    "service-projects",
-    "custom-ecommerce",
-    "service-features",
-    "service-portfolio",
-  ];
+  const path = ["", "footage-selection","advertising"];
   const [currentPath, setCurrentPath] = useState(0);
-  const [module, setModule] = useState("");
 
   useEffect(() => {
-    setModule(window.location.pathname.split("/")[2]);
-    const moduleName = window.location.pathname.split("/").pop();
     const getCurrentPath = () => {
-      if (moduleName === module) {
+      const moduleName = window.location.pathname.split("/")[2];
+      if (moduleName === "video-service") {
         setCurrentPath(0);
         return;
       }
       const Path = window.location.pathname.split("/").pop();
       path.findIndex((p, i) => {
         if (p === Path) {
+          console.log(i);
           setCurrentPath(i);
         }
       });
@@ -52,36 +45,38 @@ const layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex flex-col justify-between h-full">
       <StepProgress
-        title={"Application Design"}
+        title={"Video Editing"}
         currentStep={currentPath + 1}
         steps={path.length}
       />
 
       <div className="grow">{children}</div>
 
-      <div className="w-[100%] pt-2">
+      <div className="w-[100%] pt-2 relative">
         {currentPath > 0 && (
           <Link
-            href={`/services/${module}/${getPreviousPath()}`}
-            className=" bg-[#484848] px-[2vw] py-[0.5vw] font-semibold rounded-[41.03px] cursor-pointer float-start"
+            href={`/services/video-service/${getPreviousPath()}`}
             onClick={() =>
               setCurrentPath(currentPath > 0 ? currentPath - 1 : currentPath)
             }
           >
-            Back
+            <button className=" bg-[#484848] px-[2vw] py-[0.5vw] font-semibold rounded-[41.03px] cursor-pointer absolute left-0 bottom-0">
+              Back
+            </button>
           </Link>
         )}
-        {currentPath < path.length - 1 && (
+        {currentPath === 0 && (
           <Link
-            href={`/services/${module}/${getNextPath()}`}
-            className="bg-[#F8F24B] px-[2vw] py-[0.5vw] font-semibold rounded-[41.03px] text-[var(--primary-black)] cursor-pointer float-end"
+            href={`/services/video-service/${getNextPath()}`}
             onClick={() =>
               setCurrentPath(
                 currentPath < path.length - 1 ? currentPath + 1 : currentPath
               )
             }
           >
-            Next
+            <button className=" bg-[#F8F24B] px-[2vw] py-[0.5vw] font-semibold rounded-[41.03px] text-[var(--primary-black)] cursor-pointer absolute right-0 bottom-0">
+              Next
+            </button>
           </Link>
         )}
       </div>

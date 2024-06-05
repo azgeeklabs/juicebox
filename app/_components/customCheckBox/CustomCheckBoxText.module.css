@@ -38,9 +38,17 @@
 /* Checked */
 .customCheckBoxText input:checked + div {
   background-color: #f8f24b;
-}
-.customCheckBoxText input:checked + div {
   color: #282828;
+}
+
+/* Disabled */
+.customCheckBoxText input:disabled + div {
+  background-color: #373737;
+  color: #939393;
+}
+
+.customCheckBoxText input:disabled {
+  cursor: not-allowed;
 }
 
 .size-sm > div {
