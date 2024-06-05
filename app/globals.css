@@ -54,6 +54,7 @@ body {
 }
 /* ===== End Layout ===== */
 
+/* ===== Start Slider ===== */
 .item.active {
   left: 50% !important;
   transform: translateX(-50%) !important;
@@ -67,3 +68,4 @@ body {
   border: 10px solid #F8F24B !important;
   box-shadow: 15px 3.42px 18.12px 0px #00000040;
 }
+/* ===== End Slider ===== */
