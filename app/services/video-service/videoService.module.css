@@ -20,25 +20,28 @@
   overflow: hidden;
   z-index: 1;
   filter: blur(1px);
-  opacity: 0.9;
+  opacity: 0.5;
   transition: all 0.5s;
+  border: 10px solid #1c1c1c;
 }
 .item.active {
   left: 50%;
   transform: translateX(-50%) !important;
   z-index: 2 !important;
   opacity: 1 !important;
+  border: 10px solid red !important;
+
 }
 .item.left {
   z-index: 1;
   filter: blur(1px);
-  opacity: 0.9;
+  opacity: 0.5;
   transform: translateX(calc(-50% - 150px)) scale(0.8);
 }
 .item.right {
   z-index: 1;
   filter: blur(1px);
-  opacity: 0.9;
+  opacity: 0.5;
   transform: translateX(calc(-50% + 150px)) scale(0.8);
 }
 .editing h2 {
