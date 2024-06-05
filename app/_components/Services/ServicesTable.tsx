@@ -14,75 +14,87 @@ export default function ServicesTable() {
   const bodyRow = [
     {
       service: "Video Editing",
-      information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      information:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
-      path: "/services/video-service"
+      path: "/services/video-service",
     },
     {
       service: "Application Design",
-      information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      information:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
-      path: "/services/application-design-service"
+      path: "/services/application-design-service",
     },
     {
       service: "Lorem",
-      information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      clientProjects: "656 Projects",
-      getStarted: "Start Now!",
-    },
-    {
-      service: "Lorem",
-      information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      information:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
     },
     {
       service: "Lorem",
-      information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      information:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
     },
     {
       service: "Lorem",
-      information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      information:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
     },
     {
       service: "Lorem",
-      information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      information:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
     },
     {
       service: "Lorem",
-      information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      information:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
     },
     {
       service: "Lorem",
-      information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      information:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
     },
     {
       service: "Lorem",
-      information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      information:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
     },
     {
       service: "Lorem",
-      information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      information:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
     },
     {
       service: "Lorem",
-      information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      information:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      clientProjects: "656 Projects",
+      getStarted: "Start Now!",
+    },
+    {
+      service: "Lorem",
+      information:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
     },
@@ -108,8 +120,8 @@ export default function ServicesTable() {
     "Automation & AI",
     "Content",
     "Newsletter",
-    "Repurposing"
-  ]
+    "Repurposing",
+  ];
 
   const filtersByNiche = [
     "SEO Backlinks",
@@ -117,8 +129,8 @@ export default function ServicesTable() {
     "ORM",
     "Content",
     "Newsletter",
-    "Repurposing"
-  ]
+    "Repurposing",
+  ];
 
   return (
     <div className={`${styles.tableContainer} flex`}>
@@ -155,7 +167,7 @@ export default function ServicesTable() {
               </li>
               <li className={styles.getStarted + " w-[16.66%]"}>
                 <Link href={e?.path || "#"}>
-                <span>{e.getStarted}</span>
+                  <span>{e.getStarted}</span>
                 </Link>
               </li>
             </ul>
@@ -165,38 +177,38 @@ export default function ServicesTable() {
       {/* ===== End Table ===== */}
 
       {/* ===== Start Advanced Filters ===== */}
-      <div className={styles.advancedFilter + "  w-1/4 flex flex-col items-center space-y-6 bg-green-300"}>
+      <div
+        className={
+          styles.advancedFilter + " w-1/4 flex flex-col items-center space-y-6 "
+        }
+      >
         <span className={"text-center"}>Advanced Filter</span>
         {/* Filter By Industry */}
-          <div>
-            <span>Industry</span>
-            <div className="flex flex-wrap gap-2">
+        <div>
+          <span>Industry</span>
+          <div className="flex flex-wrap gap-2">
             {filtersByIndustry.map((e, idx) => (
-        <CustomCheckBoxText key={idx} btnSize="sm" inputType="checkbox">
-          {e}
-        </CustomCheckBoxText>
-      ))}
-            </div>
+              <CustomCheckBoxText key={idx} btnSize="sm" inputType="checkbox">
+                {e}
+              </CustomCheckBoxText>
+            ))}
           </div>
-
-
+        </div>
 
         {/* Filter By Niche */}
         <div>
-            <span>Industry</span>
-            <div className="flex flex-wrap gap-2">
+          <span>Industry</span>
+          <div className="flex flex-wrap gap-2">
             {filtersByNiche.map((e, idx) => (
-        <CustomCheckBoxText key={idx} btnSize="sm" inputType="checkbox">
-          {e}
-        </CustomCheckBoxText>
-      ))}
-            </div>
+              <CustomCheckBoxText key={idx} btnSize="sm" inputType="checkbox">
+                {e}
+              </CustomCheckBoxText>
+            ))}
           </div>
-
+        </div>
 
         {/* Apply Filter Button */}
         <button>Apply Filter</button>
-
       </div>
       {/* ===== End Advanced Filters ===== */}
     </div>

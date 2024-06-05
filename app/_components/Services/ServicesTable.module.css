@@ -84,30 +84,6 @@
   content: none;
 }
 
-/* ==== Start Hover State ==== */
-.table .table_body ul:hover {
-  background-color: #f8f24b;
-}
-
-.table .table_body ul:hover li {
-  color: #1c1c1c;
-}
-
-.table .table_body ul:hover li:first-child {
-  font-weight: 600;
-}
-
-.table .table_body ul:hover li.clientProjects span{
-  background-color: #1c1c1c;
-  color: var(--white);
-}
-
-.table .table_body ul:hover li.getStarted span{
-  background-color: #1c1c1c;
-  color: #f8f24b;
-}
-/* ==== End Hover State ==== */
-
 .table .table_body li.clientProjects,
 .table .table_body li.getStarted {
   justify-content: center;
@@ -131,6 +107,30 @@
     clamp(20px, calc(0.95vw + 0.1rem), 1000px);
   border-radius: clamp(36px, calc(1.78vw + 0.1rem), 1000px);
 }
+
+/* ==== Start Hover State ==== */
+.table .table_body ul:hover {
+  background-color: #f8f24b;
+}
+
+.table .table_body ul:hover li {
+  color: #1c1c1c;
+}
+
+.table .table_body ul:hover li:first-child {
+  font-weight: 600;
+}
+
+.table .table_body ul:hover li.clientProjects span {
+  background-color: #1c1c1c;
+  color: var(--white);
+}
+
+.table .table_body ul:hover li.getStarted span {
+  background-color: #1c1c1c;
+  color: #f8f24b;
+}
+/* ==== End Hover State ==== */
 
 /* ===== Start Advanced Filters ===== */
 .advancedFilter {
