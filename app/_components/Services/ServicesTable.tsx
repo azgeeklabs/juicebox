@@ -124,12 +124,12 @@ export default function ServicesTable() {
   ];
 
   const filtersByNiche = [
-    "SEO Backlinks",
-    "Post Sale",
-    "ORM",
-    "Content",
-    "Newsletter",
-    "Repurposing",
+    "UX Research",
+    "UI Design",
+    "User Testing",
+    "Front End Development",
+    "Domain Host",
+    "Back End Development",
   ];
 
   return (
@@ -179,7 +179,7 @@ export default function ServicesTable() {
       {/* ===== Start Advanced Filters ===== */}
       <div
         className={
-          styles.advancedFilter + " w-1/4 flex flex-col items-center space-y-6 "
+          styles.advancedFilter + " w-1/4 flex flex-col items-center space-y-6"
         }
       >
         <span className={"text-center"}>Advanced Filter</span>
@@ -197,7 +197,10 @@ export default function ServicesTable() {
 
         {/* Filter By Niche */}
         <div>
-          <span>Industry</span>
+          <span>Niche</span>
+          <p>
+          Most of our offerings bundle several services, but you can always choose the specific ones you need.
+          </p>
           <div className="flex flex-wrap gap-2">
             {filtersByNiche.map((e, idx) => (
               <CustomCheckBoxText key={idx} btnSize="sm" inputType="checkbox">
