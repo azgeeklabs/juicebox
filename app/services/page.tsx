@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import styles from "./services.module.css";
-import CustomCheckBoxText from "../_components/customCheckBox/CustomCheckBoxText";
 import ServicesTable from "../_components/Services/ServicesTable";
+import CustomCheckBoxText from "../_components/CustomCheckBox/CustomCheckBoxText";
 
 export default function page() {
   const filters = [
