@@ -1,11 +1,21 @@
 "use client";
 import React from "react";
 import styles from "./services.module.css";
-import CustomCheckBoxText from "../_components/customCheckBox/CustomCheckBoxText";
 import ServicesTable from "../_components/Services/ServicesTable";
+import CustomCheckBoxText from "../_components/CustomCheckBox/CustomCheckBoxText";
 
 export default function page() {
   const filters = [
+    "Finance",
+    "Design",
+    "Marketing",
+    "Sales",
+    "Human Resources",
+    "Web Development",
+    "UX/UI",
+    "Content Creation",
+    "Video Editing",
+    "Motion Graphics",
     "Finance",
     "Design",
     "Marketing",
@@ -21,16 +31,19 @@ export default function page() {
   return (
 <section>
 
-{/* // Filter Tabs */}
+    {/* ===== Start Filter Tabs ===== */}
     <div className={styles.filterTabs + " flex"}>
+      <div className="flex flex-shrink-0">
       {filters.map((e, idx) => (
         <CustomCheckBoxText key={idx} btnSize="sm" inputType="checkbox">
           {e}
         </CustomCheckBoxText>
       ))}
+      </div>
     </div>
+    {/* ===== End Filter Tabs ===== */}
 
-    {/* // Search & Advanced Filters */}
+    {/* ===== Start Search & Advanced Filters ===== */}
     <div className={styles.searchAndFilter + " flex justify-between items-center my-4"}>
       
 
@@ -42,10 +55,13 @@ export default function page() {
   </div>
 
       <span className="w-[10%] flex justify-center items-center underline">Advanced Filter</span>
+      
     </div>
+    {/* ===== End Search & Advanced Filters ===== */}
 
-    {/* Services Table */}
+    {/* ===== Start Services Table ===== */}
     <ServicesTable />
+    {/* ===== End Services Table ===== */}
 
 </section>
   );
