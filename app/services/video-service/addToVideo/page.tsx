@@ -28,72 +28,92 @@ export default function page() {
   ];
 
   return (
-    <div className=" flex flex-col justify-between h-full">
-      <div className={`${styles.addToVideo} w-full `}>
-        <div className=" pt-[1.5vw] pl-[4.264vw] mb-[1.5vw]">
-          <h2 className=" mb-[1.041vw]">
-            Gotcha! <hr className="border-0" />
-            We can match your channel's style exactly, or if you want to mix
-            <hr className="border-0" /> things up, we have other YouTube video
-            styles to choose from.
-          </h2>
-          <h4>
-            we have a variety of video styles, pick the one you think would
-            complement <hr className="border-0" /> the video style you want!
-          </h4>
-        </div>
-        <div className=" flex items-center justify-between pl-[4.021vw] pr-[1vw]">
-          <div className={`${styles.btns} flex flex-col gap-[1.041vw]`}>
-            {options.map((e, i) => (
-              <CustomCheckBoxText
-                btnSize="xl"
-                inputType="radio"
-                name="type"
-                onMouseMove={() => {
-                  document.querySelectorAll(".item").forEach((e) => {
-                    e.classList.remove("active");
-                  });
-                  document.querySelector(`.item${i}`)?.classList.add("active");
-                }}
-                onClick={() => {
-                  document.querySelectorAll(".item").forEach((e) => {
-                    e.classList.remove("active");
-                  });
-                  document.querySelectorAll(".item").forEach((e) => {
-                    e.classList.remove("selected");
-                  });
-                  document.querySelector(`.item${i}`)?.classList.add("active");
-                  document
-                    .querySelector(`.item${i}`)
-                    ?.classList.add("selected");
-                }}
-              >
-                {e}
-              </CustomCheckBoxText>
-            ))}
-          </div>
-          <div>
-            <div className={`${styles.slider} slider`}>
-              {slides.map((e, i) => (
-                <Image
-                src={e.content} alt="" width={100} height={100}
-                  key={i}
-                  className={`relative item${i} ${styles.item} item ${
-                    i == slides.length / 2 - 1 ||
-                    i == slides.length / 2 + 0.5 - 1
-                      ? `active ${styles.right}`
-                      : i > (slides.length - 1) / 2
-                      ? styles.right
-                      : styles.left
-                  }`}
-                >
-                  
-                </Image>
-              ))}
-            </div>
-          </div>
+    // Main container div with full height, flexbox layout, and content vertically and horizontally centered
+<div className="flex flex-col justify-between h-full">
+  
+  {/* // Inner container with full width and custom styles for adding to the video section */}
+  <div className={`${styles.addToVideo} w-full `}>
+    
+    {/* // Header section with padding top, left padding, and bottom margin */}
+    <div className="pt-[1.5vw] pl-[4.264vw] mb-[1.5vw]">
+      
+      {/* // Main heading with bottom margin and embedded horizontal rules */}
+      <h2 className="mb-[1.041vw]">
+        Gotcha! <hr className="border-0" />
+        We can match your channel's style exactly, or if you want to mix
+        <hr className="border-0" /> things up, we have other YouTube video
+        styles to choose from.
+      </h2>
+      
+      {/* // Subheading with embedded horizontal rules */}
+      <h4>
+        We have a variety of video styles, pick the one you think would
+        complement <hr className="border-0" /> the video style you want!
+      </h4>
+    </div>
+    
+    {/* // Container for buttons and slider with flexbox layout, padding left, and padding right */}
+    <div className="flex items-center justify-between pl-[4.021vw] pr-[1vw]">
+      
+      {/* // Container for buttons with flexbox layout, column direction, and gap between buttons */}
+      <div className={`${styles.btns} flex flex-col gap-[1.041vw]`}>
+        
+        {/* // Mapping through options array to create CustomCheckBoxText components */}
+        {options.map((e, i) => (
+          <CustomCheckBoxText
+            btnSize="xl" // Extra large button size
+            inputType="radio" // Radio input type for selection
+            name="type" // Name attribute for radio buttons to group them
+            onMouseMove={() => { // Mouse move event to highlight button
+              document.querySelectorAll(".item").forEach((e) => {
+                e.classList.remove("active");
+              });
+              document.querySelector(`.item${i}`)?.classList.add("active");
+            }}
+            onClick={() => { // Click event to select button and highlight the corresponding slider item
+              document.querySelectorAll(".item").forEach((e) => {
+                e.classList.remove("active");
+              });
+              document.querySelectorAll(".item").forEach((e) => {
+                e.classList.remove("selected");
+              });
+              document.querySelector(`.item${i}`)?.classList.add("active");
+              document.querySelector(`.item${i}`)?.classList.add("selected");
+            }}
+          >
+            {e}
+          </CustomCheckBoxText>
+        ))}
+      </div>
+      
+      {/* // Container for the slider */}
+      <div>
+        <div className={`${styles.slider} slider`}>
+          
+          {/* // Mapping through slides array to create Image components */}
+          {slides.map((e, i) => (
+            <Image
+              src={e.content} // Image source from slides array
+              alt="" // Alternative text for the image
+              width={100} // Width of the image
+              height={100} // Height of the image
+              key={i} // Unique key for each item
+              className={`relative item${i} ${styles.item} item ${
+                i == slides.length / 2 - 1 || 
+                i == slides.length / 2 + 0.5 - 1 
+                  ? `active ${styles.right}` 
+                  : i > (slides.length - 1) / 2 
+                  ? styles.right 
+                  : styles.left
+              }`}
+            >
+            </Image>
+          ))}
         </div>
       </div>
     </div>
+  </div>
+</div>
+
   );
 }

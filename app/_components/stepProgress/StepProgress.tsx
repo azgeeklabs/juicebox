@@ -9,7 +9,7 @@ interface StepProgressProps {
 
 const StepProgress = ({ title, currentStep, steps }: StepProgressProps) => {
   return (
-    <div className=" mb-[3vw] rounded-[72px] bg-[#353535] p-[0.497vw]  flex items-center justify-between">
+    <div className=" mb-[2vw] rounded-[72px] bg-[#353535] p-[0.497vw]  flex items-center justify-between">
       <div className=" w-fit  border-r-[#616161] border-r-[1px] mr-[1.069vw]">
         <button className="font-bold mr-[1.069vw] px-[0.993vw] py-[0.473vw] rounded-[26.06px] bg-[var(--highlight-yellow)] text-black">
           {title}
