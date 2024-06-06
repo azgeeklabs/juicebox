@@ -3,6 +3,7 @@ import styles from "./additional-features.module.css";
 import CustomCheckBox from "@/app/_components/customCheckBox/CustomCheckBox";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import { title } from "process";
+import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
 function page() {
   const data = [
@@ -497,76 +498,61 @@ function page() {
   ];
 
   return (
-    <div
-      className={classNames(
-        "flex flex-col gap-16 justify-center mx-auto items-center h-full",
-        styles.container
-      )}
+    <NextPrevNav
+      nextLink="/services/application-design-service/app-wrapup"
+      backLink="/services/application-design-service/custom-ecommerce"
     >
-      <div className="flex flex-col items-center gap-4 text-center w-[60%]">
-        <h1 className="text-3xl font-bold">
-          Do you have any additional features in mind?
-        </h1>
-        <p className="text-lg">
-          Here are some common features that would go well with your project!
-        </p>
-      </div>
       <div
         className={classNames(
-          "flex flex-col justify-center gap-8",
-          styles.cards
+          "flex flex-col gap-16 justify-center mx-auto items-center h-full",
+          styles.container
         )}
       >
-        <div className={classNames("flex flex-col justify-center gap-7")}>
-          <h2 className="font-bold">Additional Features:</h2>
-          <div className="flex flex-wrap gap-y-3 gap-x-2">
-            {data.map((item, i) => (
-              <>
-                <CustomCheckBoxText btnSize="sm" inputType="checkbox">
-                  <div
-                    className={classNames(
-                      "flex items-center text-sm font-bold gap-3",
-                      styles.card
-                    )}
-                  >
-                    {item.image}
-                    <span>{item.title}</span>
-                  </div>
-                </CustomCheckBoxText>
-              </>
-            ))}
-          </div>
+        <div className="flex flex-col items-center gap-4 text-center w-[60%]">
+          <h1 className="text-3xl font-bold">
+            Do you have any additional features in mind?
+          </h1>
+          <p className="text-lg">
+            Here are some common features that would go well with your project!
+          </p>
         </div>
-        <div className={classNames("flex flex-col justify-center gap-7")}>
-          <h2 className="font-bold">Have more features in mind?</h2>
-          <textarea
-            className="w-full p-4 bg-[--dark-gray-3] rounded-lg resize-none"
-            placeholder="Type here..."
-            rows={4}
-          />
-        </div>
-        {/* {data.map((item, i) => (
-          <div
-            key={i}
-            className={classNames(
-              "flex flex-col justify-end items-center gap-2 group relative",
-              styles.card
-            )}
-          >
-            <div className="flex items-center grow justify-center relative">
-              {item.image}
+        <div
+          className={classNames(
+            "flex flex-col justify-center gap-8",
+            styles.cards
+          )}
+        >
+          <div className={classNames("flex flex-col justify-center gap-7")}>
+            <h2 className="font-bold">Additional Features:</h2>
+            <div className="flex flex-wrap gap-y-3 gap-x-2">
+              {data.map((item, i) => (
+                <>
+                  <CustomCheckBoxText btnSize="sm" inputType="checkbox">
+                    <div
+                      className={classNames(
+                        "flex items-center text-sm font-bold gap-3",
+                        styles.card
+                      )}
+                    >
+                      {item.image}
+                      <span>{item.title}</span>
+                    </div>
+                  </CustomCheckBoxText>
+                </>
+              ))}
             </div>
-            <div>{item.title}</div>
-
-            <input
-              type="radio"
-              name="project"
-              className="absolute opacity-0 inset-0 cursor-pointer"
+          </div>
+          <div className={classNames("flex flex-col justify-center gap-7")}>
+            <h2 className="font-bold">Have more features in mind?</h2>
+            <textarea
+              className="w-full p-4 bg-[--dark-gray-3] rounded-lg resize-none"
+              placeholder="Type here..."
+              rows={4}
             />
           </div>
-        ))} */}
+        </div>
       </div>
-    </div>
+    </NextPrevNav>
   );
 }
 

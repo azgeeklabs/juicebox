@@ -4,7 +4,20 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
-  const path = ["", "footage-selection","advertising","youtube-channel","video-style","choose-kind","channel-style","footage-edit","addToVideo","videoScript","video-duration","video-endpoint"];
+  const path = [
+    "",
+    "footage-selection",
+    "advertising",
+    "youtube-channel",
+    "video-style",
+    "choose-kind",
+    "channel-style",
+    "footage-edit",
+    "addToVideo",
+    "videoScript",
+    "video-duration",
+    "video-endpoint",
+  ];
   const [currentPath, setCurrentPath] = useState(0);
   const [module, setModule] = useState("");
 

@@ -1,5 +1,8 @@
+"use client";
 import classNames from "classnames";
 import styles from "./application-design-service.module.css";
+import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useRouter } from "next/navigation";
 
 const gameSVG = (
   <svg viewBox="0 0 150 118" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1385,57 +1388,66 @@ const appSVG = (
 );
 
 function page() {
+  const router = useRouter();
+
   return (
-    <div className="flex flex-col gap-16 justify-center items-center h-full">
-      <div
-        className={classNames(
-          "flex flex-col items-center gap-4 text-center",
-          styles.container
-        )}
-      >
-        <h2 className="text-3xl font-bold">
-          What type of digital product are you looking to create?
-        </h2>
-        <p className="text-lg w-[60%]">
-          Please choose whether you want to develop a regular app or a gamified
-          app. This helps us tailor our recommendations to your project.
-        </p>
-      </div>
-      <div className={classNames("flex gap-20", styles.cards)}>
-        <div className={classNames("flex flex-col gap-2 group", styles.card)}>
-          <div className="flex items-center justify-center relative">
-            <img
-              src="/assets/application-design-service-gamecard.gif"
-              className="w-full"
-            />
-            {gameSVG}
+    <>
+      <NextPrevNav nextLink="/services/application-design-service/service-projects">
+        <div className="flex flex-col gap-16 justify-center items-center h-full">
+          <div
+            className={classNames(
+              "flex flex-col items-center gap-4 text-center",
+              styles.container
+            )}
+          >
+            <h2 className="text-3xl font-bold">
+              What type of digital product are you looking to create?
+            </h2>
+            <p className="text-lg w-[60%]">
+              Please choose whether you want to develop a regular app or a
+              gamified app. This helps us tailor our recommendations to your
+              project.
+            </p>
           </div>
-          <div>Game</div>
-          <input
-            type="radio"
-            name="type"
-            value="game"
-            className="absolute opacity-0 inset-0 cursor-pointer"
-          />
-        </div>
-        <div className={classNames("flex flex-col gap-2", styles.card)}>
-          <div className="flex items-center justify-center relative">
-            <img
-              src="/assets/application-design-service-applicationcard.gif"
-              className="w-full"
-            />
-            {appSVG}
+          <div className={classNames("flex gap-20", styles.cards)}>
+            <div
+              className={classNames("flex flex-col gap-2 group", styles.card)}
+            >
+              <div className="flex items-center justify-center relative">
+                <img
+                  src="/assets/application-design-service-gamecard.gif"
+                  className="w-full"
+                />
+                {gameSVG}
+              </div>
+              <div>Game</div>
+              <input
+                type="radio"
+                name="type"
+                value="game"
+                className="absolute opacity-0 inset-0 cursor-pointer"
+              />
+            </div>
+            <div className={classNames("flex flex-col gap-2", styles.card)}>
+              <div className="flex items-center justify-center relative">
+                <img
+                  src="/assets/application-design-service-applicationcard.gif"
+                  className="w-full"
+                />
+                {appSVG}
+              </div>
+              <div>Application</div>
+              <input
+                type="radio"
+                name="type"
+                value="app"
+                className="absolute opacity-0 inset-0 cursor-pointer"
+              />
+            </div>
           </div>
-          <div>Application</div>
-          <input
-            type="radio"
-            name="type"
-            value="app"
-            className="absolute opacity-0 inset-0 cursor-pointer"
-          />
         </div>
-      </div>
-    </div>
+      </NextPrevNav>
+    </>
   );
 }
 

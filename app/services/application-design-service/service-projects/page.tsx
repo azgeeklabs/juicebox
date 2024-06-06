@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import styles from "./service-projects.module.css";
+import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
 function page() {
   const data = [
@@ -270,44 +271,49 @@ function page() {
   ];
 
   return (
-    <div className="flex flex-col gap-16 justify-center items-center h-full">
-      <div
-        className={classNames(
-          "flex flex-col items-center gap-4 text-center",
-          styles.container
-        )}
-      >
-        <h1 className="text-3xl font-bold">
-          What type of project are you working on?
-        </h1>
-        <p className="text-lg w-[60%]">
-          Please select the option that best describes your project type. This
-          helps us understand the specific requirements for your project.
-        </p>
-      </div>
-      <div className={classNames("flex gap-20", styles.cards)}>
-        {data.map((item, i) => (
-          <div
-            key={i}
-            className={classNames(
-              "flex flex-col justify-end items-center gap-2 group relative",
-              styles.card
-            )}
-          >
-            <div className="flex items-center grow justify-center relative">
-              {item.image}
-            </div>
-            <div>{item.title}</div>
+    <NextPrevNav
+      nextLink="/services/application-design-service/custom-ecommerce"
+      backLink="/services/application-design-service/app-style"
+    >
+      <div className="flex flex-col gap-16 justify-center items-center h-full">
+        <div
+          className={classNames(
+            "flex flex-col items-center gap-4 text-center",
+            styles.container
+          )}
+        >
+          <h1 className="text-3xl font-bold">
+            What type of project are you working on?
+          </h1>
+          <p className="text-lg w-[60%]">
+            Please select the option that best describes your project type. This
+            helps us understand the specific requirements for your project.
+          </p>
+        </div>
+        <div className={classNames("flex gap-20", styles.cards)}>
+          {data.map((item, i) => (
+            <div
+              key={i}
+              className={classNames(
+                "flex flex-col justify-end items-center gap-2 group relative",
+                styles.card
+              )}
+            >
+              <div className="flex items-center grow justify-center relative">
+                {item.image}
+              </div>
+              <div>{item.title}</div>
 
-            <input
-              type="radio"
-              name="project"
-              className="absolute opacity-0 inset-0 cursor-pointer"
-            />
-          </div>
-        ))}
+              <input
+                type="radio"
+                name="project"
+                className="absolute opacity-0 inset-0 cursor-pointer"
+              />
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </NextPrevNav>
   );
 }
 

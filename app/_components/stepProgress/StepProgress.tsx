@@ -3,7 +3,7 @@ import styles from "./stepProgress.module.css";
 
 interface StepProgressProps {
   title: string;
-  currentStep: number;
+  currentStep?: number;
   steps: number;
 }
 
@@ -18,7 +18,7 @@ const StepProgress = ({ title, currentStep, steps }: StepProgressProps) => {
       <div className="relative rounded-[35px] bg-[#484848] h-[1.088vw] w-[80%] mr-[1.069vw]">
         <div
           className="bg-[var(--highlight-yellow)] h-full rounded-[35px] transition-all duration-500 ease-in-out"
-          style={{ width: `${(currentStep / steps) * 100}%` }}
+          style={{ width: `${(currentStep || 5 / steps) * 100}%` }}
         ></div>
       </div>
       <button className="font-bold px-[0.993vw] py-[0.473vw] rounded-[26.06px] bg-[#272727] text-[#626262]">
