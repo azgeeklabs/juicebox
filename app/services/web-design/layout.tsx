@@ -4,7 +4,13 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
-  const path = ["", "article-selection", "advertising-details"];
+  const path = [
+    "",
+    "website-type",
+    "domain-selection",
+    "website-technology",
+    "brand-selection"
+  ];
   const [currentPath, setCurrentPath] = useState(0);
   const [module, setModule] = useState("");
 
@@ -46,7 +52,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex flex-col justify-between h-full">
       <StepProgress
-        title={"SEO Link Building"}
+        title={"Website Design"}
         currentStep={currentPath + 1}
         steps={path.length}
       />
