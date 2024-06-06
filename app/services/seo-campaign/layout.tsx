@@ -10,7 +10,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
     "rank-selection",
     "keyword-selection",
     "analysis-estimate",
-    "seo-campaign-endpoint"
+    "seo-campaign-endpoint",
   ];
   const [currentPath, setCurrentPath] = useState(0);
   const [module, setModule] = useState("");
@@ -58,9 +58,9 @@ const layout = ({ children }: { children: React.ReactNode }) => {
         steps={path.length}
       />
 
-      <div className="grow">{children}</div>
+      <div className="flex flex-col grow">{children}</div>
 
-      <div className="w-[100%] pt-2">
+      {/* <div className="w-[100%] pt-2">
         {currentPath > 0 && (
           <Link
             href={`/services/${module}/${getPreviousPath()}`}
@@ -85,7 +85,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
             Next
           </Link>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };
