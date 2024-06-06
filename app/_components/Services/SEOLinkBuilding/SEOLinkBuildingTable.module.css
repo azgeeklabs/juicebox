@@ -61,10 +61,6 @@
   align-items: center;
 }
 
-.table .table_body ul li:first-child {
-  color: #b1b1b1;
-}
-
 .table .table_body ul::after {
   /* Border Bottom */
   content: "";

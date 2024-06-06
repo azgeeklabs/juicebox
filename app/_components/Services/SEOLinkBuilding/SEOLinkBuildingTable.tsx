@@ -13,7 +13,133 @@ export default function SEOLinkBuildingTable() {
       niche: "Politics",
       followUnfollow: "Follow",
       cost: "230$",
-      getStarted: "Start Now!",
+      getStarted: "Get Back Link",
+    },
+    {
+      siteName: "PST Canada",
+      DA_DR: "DA",
+      traffic: "200k",
+      niche: "Politics",
+      followUnfollow: "Follow",
+      cost: "230$",
+      getStarted: "Get Back Link",
+    },
+    {
+      siteName: "PST Canada",
+      DA_DR: "DA",
+      traffic: "200k",
+      niche: "Politics",
+      followUnfollow: "Follow",
+      cost: "230$",
+      getStarted: "Get Back Link",
+    },
+    {
+      siteName: "PST Canada",
+      DA_DR: "DA",
+      traffic: "200k",
+      niche: "Politics",
+      followUnfollow: "Follow",
+      cost: "230$",
+      getStarted: "Get Back Link",
+    },
+    {
+      siteName: "PST Canada",
+      DA_DR: "DA",
+      traffic: "200k",
+      niche: "Politics",
+      followUnfollow: "Follow",
+      cost: "230$",
+      getStarted: "Get Back Link",
+    },
+    {
+      siteName: "PST Canada",
+      DA_DR: "DA",
+      traffic: "200k",
+      niche: "Politics",
+      followUnfollow: "Follow",
+      cost: "230$",
+      getStarted: "Get Back Link",
+    },
+    {
+      siteName: "PST Canada",
+      DA_DR: "DA",
+      traffic: "200k",
+      niche: "Politics",
+      followUnfollow: "Follow",
+      cost: "230$",
+      getStarted: "Get Back Link",
+    },
+    {
+      siteName: "PST Canada",
+      DA_DR: "DA",
+      traffic: "200k",
+      niche: "Politics",
+      followUnfollow: "Follow",
+      cost: "230$",
+      getStarted: "Get Back Link",
+    },
+    {
+      siteName: "PST Canada",
+      DA_DR: "DA",
+      traffic: "200k",
+      niche: "Politics",
+      followUnfollow: "Follow",
+      cost: "230$",
+      getStarted: "Get Back Link",
+    },
+    {
+      siteName: "PST Canada",
+      DA_DR: "DA",
+      traffic: "200k",
+      niche: "Politics",
+      followUnfollow: "Follow",
+      cost: "230$",
+      getStarted: "Get Back Link",
+    },
+    {
+      siteName: "PST Canada",
+      DA_DR: "DA",
+      traffic: "200k",
+      niche: "Politics",
+      followUnfollow: "Follow",
+      cost: "230$",
+      getStarted: "Get Back Link",
+    },
+    {
+      siteName: "PST Canada",
+      DA_DR: "DA",
+      traffic: "200k",
+      niche: "Politics",
+      followUnfollow: "Follow",
+      cost: "230$",
+      getStarted: "Get Back Link",
+    },
+    {
+      siteName: "PST Canada",
+      DA_DR: "DA",
+      traffic: "200k",
+      niche: "Politics",
+      followUnfollow: "Follow",
+      cost: "230$",
+      getStarted: "Get Back Link",
+    },
+    {
+      siteName: "PST Canada",
+      DA_DR: "DA",
+      traffic: "200k",
+      niche: "Politics",
+      followUnfollow: "Follow",
+      cost: "230$",
+      getStarted: "Get Back Link",
+    },
+    {
+      siteName: "PST Canada",
+      DA_DR: "DA",
+      traffic: "200k",
+      niche: "Politics",
+      followUnfollow: "Follow",
+      cost: "230$",
+      getStarted: "Get Back Link",
     },
   ];
 
@@ -42,7 +168,7 @@ export default function SEOLinkBuildingTable() {
             <span>Cost</span>
           </li>
           <li className={classNames(styles.center, "w-[14.28%]")}>
-            <span>Get Back Link</span>
+            <span>Get Started</span>
           </li>
         </ul>
 
@@ -90,9 +216,15 @@ export default function SEOLinkBuildingTable() {
                 <span>{e.followUnfollow}</span>
               </li>
               <li className={classNames(styles.center, "w-[14.28%]")}>
-                <span>{e.cost}</span>
+                <span className="font-bold">{e.cost}</span>
               </li>
-              <li className={classNames(styles.button, styles.center, "w-[14.28%]")}>
+              <li
+                className={classNames(
+                  styles.button,
+                  styles.center,
+                  "w-[14.28%]"
+                )}
+              >
                 <span>{e.getStarted}</span>
               </li>
             </ul>
