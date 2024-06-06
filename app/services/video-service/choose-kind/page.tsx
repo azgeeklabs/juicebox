@@ -2,7 +2,7 @@
 import CustomCheckBox from "@/app/_components/customCheckBox/CustomCheckBox";
 import React, { useEffect } from "react";
 import styles from "./chooseKind.module.css";
-import CustomCheckBoxText from "@/app/_components/CustomCheckBox/CustomCheckBoxText";
+import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
 
 export default function page() {

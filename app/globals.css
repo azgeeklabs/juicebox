@@ -61,11 +61,9 @@ body {
   z-index: 2 !important;
   opacity: 1 !important;
   filter: blur(0) !important;
-
-
 }
 .item.selected {
-  border: 10px solid #F8F24B !important;
+  border: 10px solid #f8f24b !important;
   box-shadow: 15px 3.42px 18.12px 0px #00000040;
 }
 /* ===== End Slider ===== */

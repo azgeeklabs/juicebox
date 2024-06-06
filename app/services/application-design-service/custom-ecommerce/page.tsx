@@ -1,7 +1,7 @@
 "use client";
 import classNames from "classnames";
 import styles from "./custom-ecommerce.module.css";
-import CustomCheckBoxText from "@/app/_components/CustomCheckBox/CustomCheckBoxText";
+import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 
 const defaultPages = [
   "Sign Up",

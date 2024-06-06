@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import styles from "./dashboard.module.css";
-import CustomCheckBoxText from "../_components/CustomCheckBox/CustomCheckBoxText";
+import CustomCheckBoxText from "../_components/customCheckBox/CustomCheckBoxText";
 import CustomCheckBox from "../_components/customCheckBox/CustomCheckBox";
 
 export default function page() {
