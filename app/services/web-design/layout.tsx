@@ -10,7 +10,11 @@ const layout = ({ children }: { children: React.ReactNode }) => {
     "domain-selection",
     "website-technology",
     "brand-selection",
-    "website-style"
+    "website-style",
+    "custom-ecommerce",
+    "additional-features",
+    "host-selection",
+    "web-design-endpoint"
   ];
   const [currentPath, setCurrentPath] = useState(0);
   const [module, setModule] = useState("");

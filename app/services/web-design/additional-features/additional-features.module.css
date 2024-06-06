@@ -1,0 +1,11 @@
+.container {
+  width: clamp(20rem, calc(60vw + 0.1rem), 100%);
+}
+
+.cards {
+  width: clamp(20rem, calc(36vw + 0.1rem), 100%);
+}
+
+.cards div:has(> input:checked) path {
+  stroke: var(--primary-black);
+}
