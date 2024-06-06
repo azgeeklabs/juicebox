@@ -49,11 +49,12 @@ export default function ServicesTable({
       path: "/services/seo-link-building",
     },
     {
-      service: "Lorem",
+      service: "PR Monetization",
       information:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
+      path: "/services/pr-monetization",
     },
     {
       service: "Lorem",
