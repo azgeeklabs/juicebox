@@ -12,49 +12,49 @@ const layout = ({ children }: { children: React.ReactNode }) => {
     "analysis-estimate",
     "seo-campaign-endpoint",
   ];
-  const [currentPath, setCurrentPath] = useState(0);
-  const [module, setModule] = useState("");
+  // const [currentPath, setCurrentPath] = useState(0);
+  // const [module, setModule] = useState("");
 
-  useEffect(() => {
-    setModule(window.location.pathname.split("/")[2]);
-    const moduleName = window.location.pathname.split("/").pop();
-    const getCurrentPath = () => {
-      if (moduleName === module) {
-        setCurrentPath(0);
-        return;
-      }
-      const Path = window.location.pathname.split("/").pop();
-      path.findIndex((p, i) => {
-        if (p === Path) {
-          setCurrentPath(i);
-        }
-      });
-    };
+  // useEffect(() => {
+  //   setModule(window.location.pathname.split("/")[2]);
+  //   const moduleName = window.location.pathname.split("/").pop();
+  //   const getCurrentPath = () => {
+  //     if (moduleName === module) {
+  //       setCurrentPath(0);
+  //       return;
+  //     }
+  //     const Path = window.location.pathname.split("/").pop();
+  //     path.findIndex((p, i) => {
+  //       if (p === Path) {
+  //         setCurrentPath(i);
+  //       }
+  //     });
+  //   };
 
-    getCurrentPath();
-  }, []);
+  //   getCurrentPath();
+  // }, []);
 
-  const getPreviousPath = () => {
-    if (currentPath === 0) {
-      return path[currentPath];
-    } else {
-      return path[currentPath - 1];
-    }
-  };
+  // const getPreviousPath = () => {
+  //   if (currentPath === 0) {
+  //     return path[currentPath];
+  //   } else {
+  //     return path[currentPath - 1];
+  //   }
+  // };
 
-  const getNextPath = () => {
-    if (currentPath === path.length - 1) {
-      return path[currentPath];
-    } else {
-      return path[currentPath + 1];
-    }
-  };
+  // const getNextPath = () => {
+  //   if (currentPath === path.length - 1) {
+  //     return path[currentPath];
+  //   } else {
+  //     return path[currentPath + 1];
+  //   }
+  // };
 
   return (
-    <div className="flex flex-col justify-between h-full">
+    <div className="flex flex-col h-full">
       <StepProgress
         title={"SEO Campaign"}
-        currentStep={currentPath + 1}
+        // currentStep={currentPath + 1}
         steps={path.length}
       />
 

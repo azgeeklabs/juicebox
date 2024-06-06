@@ -2,11 +2,13 @@ import React from "react";
 import styles from "./footageEdit.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
+import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
 const page = () => {
   return (
     // Main container div with full height, flexbox layout, centered content horizontally and vertically
-    <div className="h-full flex justify-center items-center">
+    <NextPrevNav nextLink="/services/video-service/addToVideo" backLink="/services/video-service/channel-style">
+      <div className="h-full flex justify-center items-center">
       {/* Inner container with full width and custom styles for footage editing section */}
       <div className={`${styles.footageEdit} w-full `}>
         {/* Header section with text centered, auto margins for horizontal centering, and vertical margins */}
@@ -53,6 +55,7 @@ const page = () => {
         </div>
       </div>
     </div>
+    </NextPrevNav>
   );
 };
 

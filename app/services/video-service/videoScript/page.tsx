@@ -1,11 +1,13 @@
 import React from "react";
 import styles from "./videoScript.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
+import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
 const page = () => {
   return (
     // Main container div
-    <div className=" flex items-center justify-center h-full">
+    <NextPrevNav nextLink="/services/video-service/video-duration" backLink="/services/video-service/addToVideo">
+      <div className=" flex items-center justify-center h-full">
       {/* Inner container for the video script section with custom styles */}
       <div className={`${styles.videoScript} w-full`}>
         {/* Text center alignment and margin bottom */}
@@ -34,6 +36,7 @@ const page = () => {
         </div>
       </div>
     </div>
+    </NextPrevNav>
   );
 };
 

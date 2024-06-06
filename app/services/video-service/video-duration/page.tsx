@@ -1,10 +1,12 @@
 import React from "react";
 import styles from "./videoDuration.module.css";
 import Link from "next/link";
+import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
 const page = () => {
   return (
-    <div className=" flex justify-center items-center h-full">
+    <NextPrevNav nextLink="/services/video-service/video-endpoint" backLink="/services/video-service/videoScript">
+      <div className=" flex justify-center items-center h-full w-full">
       <div className={`${styles.videoDuration} w-full`}>
         {/* Text center alignment and margin bottom */}
         <div className="text-center mx-auto mb-[3vw]">
@@ -40,6 +42,7 @@ const page = () => {
         </Link>
       </div>
     </div>
+    </NextPrevNav>
   );
 };
 
