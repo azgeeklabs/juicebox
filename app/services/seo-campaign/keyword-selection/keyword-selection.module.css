@@ -1,0 +1,13 @@
+.keywordSelection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.keywordSelection h2{
+    font-size: clamp(32px, calc(1.75vw + 0.1rem), 100px);
+    font-weight: 600;
+}
+

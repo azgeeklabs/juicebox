@@ -4,7 +4,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
-  const path = ["", "#", "#"];
+  const path = ["", "advertising-details", "rank-selection", "keyword-selection"];
   const [currentPath, setCurrentPath] = useState(0);
 
   useEffect(() => {
