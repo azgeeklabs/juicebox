@@ -2,17 +2,22 @@ import React from "react";
 import styles from "./app-wrapup.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
+import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
 const page = () => {
   return (
-    // Main container div with relative positioning
-    <div className="h-full relative">
-      {/* Inner container for the video end point section with custom styles */}
-      <div
-        className={`${styles.videoEndPoint} w-full h-full flex justify-center items-center`}
-      >
-        {/* Nested div for content */}
-        <div>
+    <NextPrevNav
+      nextLink="/services/application-design-service"
+      nextText="All Done"
+      backLink="/services/application-design-service/additional-features"
+    >
+      {/* // Main container div with relative positioning */}
+      <div className=" h-full relative">
+        {/* Inner container for the video end point section with custom styles */}
+        <div
+          className={`${styles.videoEndPoint} w-full h-full flex flex-col justify-center items-center`}
+        >
+          {/* Nested div for content */}
           {/* Text center alignment and margin bottom */}
           <div className="text-center mx-auto mb-[2.271vw]">
             {/* Main heading with margin bottom and underlined text */}
@@ -53,7 +58,7 @@ const page = () => {
           </Link>
         </div>
       </div>
-    </div>
+    </NextPrevNav>
   );
 };
 
