@@ -2,31 +2,63 @@
 import React from "react";
 import styles from "./keyword-selection.module.css";
 import classNames from "classnames";
+import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 
 export default function page() {
   return (
-    <section className={styles.keywordSelection}>
-      <h2 className="text-center">
-        What keywords do you want the user to search by when<br />finding your
-        product?
-      </h2>
-      <p className="text-center">
-        Please add the desired keywords for your product to appear in the<br />search
-        engine results.
-      </p>
-      {/* Keywords */}
-      <div className={classNames(styles.keywords, "self-start")}>
-        <label htmlFor="">
-          Keywords <span>(Max 5)</span>
-        </label>
-        <div>
-          <input type="text" />
-          <button>Add</button>
+    <section className={classNames(styles.keywordSelection, "")}>
+      <div className={classNames(styles.container, "")}>
+        <div className="text-center">
+          <h2 className="">
+            What keywords do you want the user to search by when finding your
+            product?
+          </h2>
+          <p>
+            Please add the desired keywords for your product to appear in the
+            search engine results.
+          </p>
         </div>
-      </div>
-      {/* Suggestions */}
-      <div className={styles.suggestions}>
-        <span>Suggestions</span>
+        {/* Keywords */}
+        <div className={classNames(styles.keywords, " flex justify-start")}>
+          <div>
+            <label htmlFor="keyword" className="">
+              Keywords <span>(Max 5)</span>
+            </label>
+            <div>
+              <input
+                type="text"
+                placeholder="Add a keyword"
+                name="keyword"
+                id="keyword"
+              />
+              <button>Add</button>
+            </div>
+          </div>
+        </div>
+        {/* Suggestions */}
+        <div className={styles.suggestions}>
+          <span>Suggestions</span>
+          <div>
+            <CustomCheckBoxText btnSize="sm" inputType="checkbox">
+              Automotive
+            </CustomCheckBoxText>
+            <CustomCheckBoxText btnSize="sm" inputType="checkbox">
+              Engineering
+            </CustomCheckBoxText>
+            <CustomCheckBoxText btnSize="sm" inputType="checkbox">
+              Vehicle
+            </CustomCheckBoxText>
+            <CustomCheckBoxText btnSize="sm" inputType="checkbox">
+              Auto
+            </CustomCheckBoxText>
+            <CustomCheckBoxText btnSize="sm" inputType="checkbox">
+              Automotive
+            </CustomCheckBoxText>
+            <CustomCheckBoxText btnSize="sm" inputType="checkbox">
+              Automotive
+            </CustomCheckBoxText>
+          </div>
+        </div>
       </div>
     </section>
   );
