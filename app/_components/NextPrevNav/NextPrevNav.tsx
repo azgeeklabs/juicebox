@@ -22,7 +22,7 @@ function NextPrevNav({
 }: nextPrevNavProps) {
   return (
     <>
-      <div className="grow">{children}</div>
+      <div className="flex justify-center items-center grow">{children}</div>
       <div className="w-[100%] pt-2">
         {(backLink || backOnClick) && (
           <Link

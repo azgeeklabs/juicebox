@@ -272,8 +272,8 @@ function page() {
 
   return (
     <NextPrevNav
-      nextLink="/services/application-design-service/custom-ecommerce"
-      backLink="/services/application-design-service/app-style"
+      nextLink="/services/application-design-service/app-style"
+      backLink="/services/application-design-service/"
     >
       <div className="flex flex-col gap-16 justify-center items-center h-full">
         <div

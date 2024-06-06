@@ -38,7 +38,7 @@ function page() {
       nextLink="/services/application-design-service/additional-features"
       backLink="/services/application-design-service/app-style"
     >
-      <div className="flex flex-col h-full">
+      <div className="flex flex-col justify-center">
         <div className={classNames("flex flex-col gap-4", styles.container)}>
           <h1 className="text-3xl font-bold">
             Customize Your E-commerce App Pages

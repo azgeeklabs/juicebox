@@ -78,7 +78,7 @@ export default function page() {
       nextLink="/services/application-design-service/custom-ecommerce"
       backLink="/services/application-design-service/service-projects"
     >
-      <div className=" flex flex-col items-center justify-between h-full">
+      <div className=" flex flex-col items-center justify-center h-full">
         <div className={`${styles.editing} w-full `}>
           <div className="flex flex-col justify-center items-center text-center mb-[3.5vw]">
             <h2 className=" mb-[1.041vw]">
