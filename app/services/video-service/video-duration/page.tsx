@@ -4,8 +4,8 @@ import Link from "next/link";
 
 const page = () => {
   return (
-    <div>
-      <div className={`${styles.videoDuration} w-full pt-20`}>
+    <div className=" flex justify-center items-center h-full">
+      <div className={`${styles.videoDuration} w-full`}>
         {/* Text center alignment and margin bottom */}
         <div className="text-center mx-auto mb-[3vw]">
           {/* Main heading with margin bottom */}

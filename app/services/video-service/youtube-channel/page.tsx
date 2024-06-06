@@ -6,11 +6,11 @@ import Link from "next/link";
 const page = () => {
   return (
     // Main outer container div
-    <div>
+    <div className="  h-full flex justify-center items-center">
       {/* Inner container with full width and custom YouTube channel styles */}
       <div className={`${styles.youtubeChannel} w-full`}>
         {/* Header section with centered text, auto margins for centering, and vertical margins */}
-        <div className="text-center mx-auto mb-[3vw] mt-14">
+        <div className="text-center mx-auto mb-[3vw]">
           {/* Main heading with bottom margin */}
           <h2 className="mb-[1.5vw]">
             Do you have an existing YouTube channel?

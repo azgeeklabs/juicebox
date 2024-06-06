@@ -35,7 +35,7 @@ const page = () => {
 
   return (
     // Main container div with full height, column flex direction, and space-between alignment
-<div className="flex flex-col justify-between h-full">
+<div className="flex justify-center items-center h-full">
   
   {/* Inner container with full width and custom footage styles */}
   <div className={`${styles.footage} w-full`}>
