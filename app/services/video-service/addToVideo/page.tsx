@@ -29,20 +29,17 @@ export default function page() {
 
   return (
     // Main container div with full height, flexbox layout, and content vertically and horizontally centered
-<div className="flex flex-col justify-between h-full">
+<div className="flex items-center justify-center h-full">
   
   {/* // Inner container with full width and custom styles for adding to the video section */}
   <div className={`${styles.addToVideo} w-full `}>
     
     {/* // Header section with padding top, left padding, and bottom margin */}
-    <div className="pt-[1.5vw] pl-[4.264vw] mb-[1.5vw]">
+    <div className=" pl-[4.264vw] mb-[1.5vw]">
       
       {/* // Main heading with bottom margin and embedded horizontal rules */}
-      <h2 className="mb-[1.041vw]">
-        Gotcha! <hr className="border-0" />
-        We can match your channel's style exactly, or if you want to mix
-        <hr className="border-0" /> things up, we have other YouTube video
-        styles to choose from.
+      <h2 className="mb-[1.041vw]">Would you like to include some add epic
+        <hr className="border-0" />elements to your video?
       </h2>
       
       {/* // Subheading with embedded horizontal rules */}

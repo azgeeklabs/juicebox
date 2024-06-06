@@ -5,9 +5,9 @@ import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxT
 const page = () => {
   return (
     // Main container div
-    <div>
+    <div className=" flex items-center justify-center h-full">
       {/* Inner container for the video script section with custom styles */}
-      <div className={`${styles.videoScript} w-full pt-20`}>
+      <div className={`${styles.videoScript} w-full`}>
         {/* Text center alignment and margin bottom */}
         <div className=" text-center mx-auto mb-[2.271vw]">
           {/* Main heading with margin bottom and embedded horizontal rule */}

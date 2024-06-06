@@ -4,7 +4,7 @@ import styles from "./advertising.module.css";
 const page = () => {
   return (
     // Main outer container div
-<div>
+<div className=" w-full h-full flex justify-center items-center">
   
   {/* Inner container with full width and custom advertising styles */}
   <div className={`${styles.advertising} w-full`}>

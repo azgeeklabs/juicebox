@@ -38,7 +38,7 @@ export default function page() {
 
   return (
     // Main container div with flexbox layout, column direction, and full height
-    <div className="flex flex-col justify-between h-full">
+    <div className="flex items-center justify-center h-full">
       {/* Inner container with full width and custom styles for channel style selection */}
       <div className={`${styles.channelStyle} w-full `}>
         {/* Header section with top padding, left padding, and bottom margin */}
