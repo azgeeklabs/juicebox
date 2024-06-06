@@ -28,7 +28,7 @@
 }
 
 /* Hover */
-.customCheckBoxText:hover div {
+.customCheckBoxText:hover > div {
   background-color: #616161;
 }
 .customCheckBoxText:hover input + div {

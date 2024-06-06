@@ -9,6 +9,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
     "service-projects",
     "app-style",
     "custom-ecommerce",
+    "additional-features",
     "service-features",
     "service-portfolio",
   ];

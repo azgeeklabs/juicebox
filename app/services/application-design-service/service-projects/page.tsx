@@ -273,7 +273,7 @@ function page() {
     <div className="flex flex-col gap-16 justify-center items-center h-full">
       <div
         className={classNames(
-          "flex flex-col items-center gap-4 text-end",
+          "flex flex-col items-center gap-4 text-center",
           styles.container
         )}
       >
