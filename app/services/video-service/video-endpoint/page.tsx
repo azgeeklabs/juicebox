@@ -2,11 +2,13 @@ import React from "react";
 import styles from "./videoEndPoint.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
+import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
 const page = () => {
   return (
     // Main container div with relative positioning
-    <div className="h-full relative">
+    <NextPrevNav nextLink="/services" backLink="/services/video-service/video-duration" nextText="All Done">
+      <div className="h-full relative">
       {/* Inner container for the video end point section with custom styles */}
       <div
         className={`${styles.videoEndPoint} w-full h-full flex justify-center items-center`}
@@ -53,6 +55,7 @@ const page = () => {
         </div>
       </div>
     </div>
+    </NextPrevNav>
   );
 };
 

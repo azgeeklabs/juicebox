@@ -1,9 +1,11 @@
 import React from "react";
 import styles from "./advertising.module.css";
+import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
 const page = () => {
   return (
     // Main outer container div
+<NextPrevNav nextLink="/services/video-service/youtube-channel" backLink="/services/video-service/footage-selection">
 <div className=" w-full h-full flex justify-center items-center">
   
   {/* Inner container with full width and custom advertising styles */}
@@ -65,6 +67,7 @@ const page = () => {
     </div>
   </div>
 </div>
+</NextPrevNav>
 
   );
 };

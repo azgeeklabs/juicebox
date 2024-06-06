@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import styles from "./channelStyle.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
+import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
 export default function page() {
   const options = [
@@ -38,7 +39,8 @@ export default function page() {
 
   return (
     // Main container div with flexbox layout, column direction, and full height
-    <div className="flex items-center justify-center h-full">
+    <NextPrevNav nextLink="/services/video-service/footage-edit" backLink="/services/video-service/choose-kind">
+      <div className="flex items-center justify-center h-full w-full">
       {/* Inner container with full width and custom styles for channel style selection */}
       <div className={`${styles.channelStyle} w-full `}>
         {/* Header section with top padding, left padding, and bottom margin */}
@@ -59,7 +61,7 @@ export default function page() {
         </div>
 
         {/* Container for buttons and slider with flexbox layout, padding, and justified content */}
-        <div className="flex items-center justify-between pl-[4.021vw] pr-[1vw]">
+        <div className="flex items-center justify-between pl-[4.021vw] pr-[1vw] w-full">
           {/* Buttons container with custom styles, flexbox layout, column direction, and gap between buttons */}
           <div className={`${styles.btns} flex flex-col gap-[1.041vw]`}>
             {/* Mapping through options to create custom checkbox buttons */}
@@ -120,5 +122,6 @@ export default function page() {
         </div>
       </div>
     </div>
+    </NextPrevNav>
   );
 }
