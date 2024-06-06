@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import styles from "./services.module.css";
 import ServicesTable from "../_components/Services/ServicesTable";
-import CustomCheckBoxText from "../_components/CustomCheckBox/CustomCheckBoxText";
+import CustomCheckBoxText from "../_components/customCheckBox/CustomCheckBoxText";
 
 export default function page() {
   const filters = [

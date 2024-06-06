@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./youtubeChannel.module.css";
-import CustomCheckBoxText from "@/app/_components/CustomCheckBox/CustomCheckBoxText";
+import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
 
 const page = () => {
