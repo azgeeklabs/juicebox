@@ -6,8 +6,8 @@ import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxT
 
 export default function page() {
   return (
-    <section className={classNames(styles.keywordSelection, "")}>
-      <div className={classNames(styles.container, "")}>
+    <section className={classNames(styles.keywordSelection)}>
+      <div className={classNames(styles.container)}>
         <div className="text-center">
           <h2 className="">
             What keywords do you want the user to search by when finding your
@@ -19,7 +19,7 @@ export default function page() {
           </p>
         </div>
         {/* Keywords */}
-        <div className={classNames(styles.keywords, " flex justify-start")}>
+        <div className={classNames(styles.keywords)}>
           <div>
             <label htmlFor="keyword" className="">
               Keywords <span>(Max 5)</span>
