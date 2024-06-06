@@ -28,8 +28,10 @@
   color: #ffffffcc;
 }
 
-.keywords{
+.keywords {
   margin-bottom: clamp(32px, calc(1.6vw + 0.1rem), 100px);
+  display: flex;
+  justify-content: flex-start;
 }
 
 .keywords label,
