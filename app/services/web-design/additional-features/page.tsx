@@ -498,56 +498,61 @@ function page() {
   ];
 
   return (
-    <div
-      className={classNames(
-        "flex flex-col gap-16 justify-center mx-auto items-center h-full",
-        styles.container
-      )}
+    <NextPrevNav
+      nextLink="/services/web-design/host-selection"
+      backLink="/services/web-design/custom-ecommerce"
     >
-      <div className="flex flex-col items-center gap-4 text-center w-[60%]">
-        <h1 className="text-3xl font-bold">
-          Do you have any additional features in mind?
-        </h1>
-        <p className="text-lg">
-          Here are some common features that would go well with your project!
-        </p>
-      </div>
       <div
         className={classNames(
-          "flex flex-col justify-center gap-8",
-          styles.cards
+          "flex flex-col gap-16 justify-center mx-auto items-center h-full",
+          styles.container
         )}
       >
-        <div className={classNames("flex flex-col justify-center gap-7")}>
-          <h2 className="font-bold">Additional Features:</h2>
-          <div className="flex flex-wrap gap-y-3 gap-x-2">
-            {data.map((item, i) => (
-              <>
-                <CustomCheckBoxText btnSize="sm" inputType="checkbox">
-                  <div
-                    className={classNames(
-                      "flex items-center text-sm font-bold gap-3",
-                      styles.card
-                    )}
-                  >
-                    {item.image}
-                    <span>{item.title}</span>
-                  </div>
-                </CustomCheckBoxText>
-              </>
-            ))}
+        <div className="flex flex-col items-center gap-4 text-center w-[60%]">
+          <h1 className="text-3xl font-bold">
+            Do you have any additional features in mind?
+          </h1>
+          <p className="text-lg">
+            Here are some common features that would go well with your project!
+          </p>
+        </div>
+        <div
+          className={classNames(
+            "flex flex-col justify-center gap-8",
+            styles.cards
+          )}
+        >
+          <div className={classNames("flex flex-col justify-center gap-7")}>
+            <h2 className="font-bold">Additional Features:</h2>
+            <div className="flex flex-wrap gap-y-3 gap-x-2">
+              {data.map((item, i) => (
+                <>
+                  <CustomCheckBoxText btnSize="sm" inputType="checkbox">
+                    <div
+                      className={classNames(
+                        "flex items-center text-sm font-bold gap-3",
+                        styles.card
+                      )}
+                    >
+                      {item.image}
+                      <span>{item.title}</span>
+                    </div>
+                  </CustomCheckBoxText>
+                </>
+              ))}
+            </div>
+          </div>
+          <div className={classNames("flex flex-col justify-center gap-7")}>
+            <h2 className="font-bold">Have more features in mind?</h2>
+            <textarea
+              className="w-full p-4 bg-[--dark-gray-3] rounded-lg resize-none"
+              placeholder="Features..."
+              rows={4}
+            />
           </div>
         </div>
-        <div className={classNames("flex flex-col justify-center gap-7")}>
-          <h2 className="font-bold">Have more features in mind?</h2>
-          <textarea
-            className="w-full p-4 bg-[--dark-gray-3] rounded-lg resize-none"
-            placeholder="Features..."
-            rows={4}
-          />
-        </div>
       </div>
-    </div>
+    </NextPrevNav>
   );
 }
 
