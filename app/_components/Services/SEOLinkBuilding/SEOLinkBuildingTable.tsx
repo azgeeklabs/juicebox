@@ -144,7 +144,7 @@ export default function SEOLinkBuildingTable() {
   ];
 
   return (
-    <div className={`${styles.tableContainer}`}>
+    <div className={`${styles.tableContainer} w-full`}>
       {/* ===== Start Table ===== */}
       <div className={styles.table + " w-full"}>
         {/* Table Header */}

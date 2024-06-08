@@ -8,8 +8,8 @@ import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 export default function page() {
   return (
     <NextPrevNav
-      backLink="/services/seo-campaign/rank-selection"
-      nextLink="/services/seo-campaign/keyword-selection"
+      backLink="/services/seo-campaign/keyword-selection"
+      nextLink="/services/seo-campaign/seo-campaign-endpoint"
     >
       <section className={classNames(styles.analysisEstimate)}>
         <div className={classNames(styles.container)}>

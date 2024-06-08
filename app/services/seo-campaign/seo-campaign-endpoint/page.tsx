@@ -7,8 +7,9 @@ import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 const page = () => {
   return (
     <NextPrevNav
-      backLink="/services/seo-campaign/rank-selection"
-      nextLink="/services/seo-campaign/keyword-selection"
+      backLink="/services/seo-campaign/analysis-estimate"
+      nextLink="/services/seo-campaign/"
+      nextText="All Done"
     >
       {/* // Main container div with relative positioning */}
       <div className="h-full relative">

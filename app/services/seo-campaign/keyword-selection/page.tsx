@@ -9,7 +9,7 @@ export default function page() {
   return (
     <NextPrevNav
       backLink="/services/seo-campaign/rank-selection"
-      nextLink="/services/seo-campaign/keyword-selection"
+      nextLink="/services/seo-campaign/analysis-estimate"
     >
       <section className={classNames(styles.keywordSelection)}>
         <div className={classNames(styles.container)}>
