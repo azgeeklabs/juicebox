@@ -6,6 +6,7 @@ import CustomCheckBox from "../_components/customCheckBox/CustomCheckBox";
 import ServiceCard from "../_components/serviceCard/ServiceCard";
 import CircularProgressBar from "../_components/progressBar/CircularProgressBar";
 import CongratulationMessage from "../_components/congratulationMessage/CongratulationMessage";
+import classNames from "classnames";
 
 const svg = (
   <svg
@@ -169,11 +170,11 @@ export default function page() {
         {/* ===== Start On Going Projects & This Week Deliverables Card ===== */}
         <div className="w-full flex gap-[1vw]">
           {/* ===== Start On Going Projects Card ===== */}
-          <div className={`w-1/2 ${styles.card}`}>
+          <div className={classNames("w-1/2", styles.card, styles.on_going_projects_card)}>
             <div className={styles.header}>
               <h6>On Going Projects</h6>
             </div>
-            <div className="flex flex-col gap-[0.7vw]">
+            <div className={classNames("flex flex-col gap-[0.7vw]", styles.on_going_projects_card_body)}>
               {Array.from({ length: 3 }).map((_, i) => (
                 <ServiceCard
                   title="Web Design"
@@ -284,11 +285,11 @@ export default function page() {
           {/* ===== End On Going Projects Card ===== */}
 
           {/* ===== Start This Week Deliverables Card ===== */}
-          <div className={`w-1/2 ${styles.card}`}>
+          <div className={classNames("w-1/2", styles.card, styles.this_week_deliverables_card)}>
             <div className={styles.header}>
               <h6>This Week Deliverables</h6>
             </div>
-            <div className="flex flex-col gap-[0.7vw]">
+            <div className={classNames("flex flex-col gap-[0.7vw]", styles.this_week_deliverables_card_body)}>
               {Array.from({ length: 3 }).map((_, i) => (
                 <CongratulationMessage icon={svg} />
               ))}
