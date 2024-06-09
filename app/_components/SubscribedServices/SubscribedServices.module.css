@@ -15,3 +15,11 @@
 .subscribedServices > div > button:hover > svg {
   fill: #f8f24b;
 }
+
+.servicesCards > a > div > div > div:first-child {
+  border-right: 1px solid #f8f24b !important;
+}
+
+.servicesCards > a > div > div:hover > div:first-child {
+  border-right: 1px solid #f8f24b;
+}
