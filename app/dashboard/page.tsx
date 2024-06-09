@@ -138,23 +138,23 @@ export default function page() {
             <div className={styles.current_phase_part}>
               <h6>Current Phase Milestones</h6>
               <div className={styles.current_phases + " flex gap-[1.5vw]"}>
-                <div className="flex items-center gap-[0.7vw]">
+                <div className="flex items-center gap-[0.5vw]">
                   <CustomCheckBox type="checkbox" name="current_phases" />
                   <label>UX Research</label>
                 </div>
-                <div className="flex items-center gap-[0.7vw]">
+                <div className="flex items-center gap-[0.5vw]">
                   <CustomCheckBox type="checkbox" name="current_phases" />
                   <label>Wireframing</label>
                 </div>
-                <div className="flex items-center gap-[0.7vw]">
+                <div className="flex items-center gap-[0.5vw]">
                   <CustomCheckBox type="checkbox" name="current_phases" />
                   <label>UI Design</label>
                 </div>
-                <div className="flex items-center gap-[0.7vw]">
+                <div className="flex items-center gap-[0.5vw]">
                   <CustomCheckBox type="checkbox" name="current_phases" />
                   <label>Design System</label>
                 </div>
-                <div className="flex items-center gap-[0.7vw]">
+                <div className="flex items-center gap-[0.5vw]">
                   <CustomCheckBox type="checkbox" name="current_phases" />
                   <label>Prototyping</label>
                 </div>
