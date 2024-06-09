@@ -157,6 +157,11 @@
   overflow-y: auto;
 }
 
+.filtersContainer::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
+
 .filtersContainer > div > span {
   display: block;
   font-weight: 700;
