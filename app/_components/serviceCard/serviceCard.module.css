@@ -1,4 +1,4 @@
-.serviceCard div:not(:last-child) {
+.serviceCard .card:not(:last-child) {
   border-right: 1px solid white;
 }
 .serviceCard.active .card:not(:last-child) {

@@ -4,6 +4,7 @@ import styles from "./dashboard.module.css";
 import CustomCheckBoxText from "../_components/customCheckBox/CustomCheckBoxText";
 import CustomCheckBox from "../_components/customCheckBox/CustomCheckBox";
 import ServiceCard from "../_components/serviceCard/ServiceCard";
+import CircularProgressBar from "../_components/progressBar/CircularProgressBar";
 
 export default function page() {
   return (
@@ -73,8 +74,15 @@ export default function page() {
               <h6>On Going Projects</h6>
             </div>
             <div>
-              <ServiceCard>
-                <h3>Web Design</h3>
+              <ServiceCard
+                title="Web Design"
+                phase="Ideation Phase"
+                timeleft="26 Days Left"
+              >
+                <div className="flex items-center gap-[0.5vw]">
+                  <h6>83% Progress</h6>
+                  {/* <CircularProgressBar /> */}
+                </div>
               </ServiceCard>
             </div>
           </div>
