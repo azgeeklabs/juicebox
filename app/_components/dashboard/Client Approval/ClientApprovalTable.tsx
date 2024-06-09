@@ -68,13 +68,13 @@ export default function ClientApprovalTable() {
                   "w-[33.33%]"
                 )}
               >
-                <span className="flex items-center justify-between">
+                <a href="" className="flex items-center justify-between gap-[0.2vw]">
                   <span>Files</span>
                   <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M2.30481 3.82981L2.30481 10.3753C2.30481 11.1687 3.10983 11.6134 3.65862 11.1232L7.32287 7.8505C7.74887 7.47019 7.74887 6.73599 7.32287 6.35462L3.65755 3.08187C3.10983 2.5917 2.30481 3.03645 2.30481 3.82981Z" fill="white"/>
-</svg>
+                    <path d="M2.30481 3.82981L2.30481 10.3753C2.30481 11.1687 3.10983 11.6134 3.65862 11.1232L7.32287 7.8505C7.74887 7.47019 7.74887 6.73599 7.32287 6.35462L3.65755 3.08187C3.10983 2.5917 2.30481 3.03645 2.30481 3.82981Z" fill="white" />
+                  </svg>
 
-                </span>
+                </a>
               </li>
             </ul>
           ))}
