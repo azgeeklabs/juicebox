@@ -405,7 +405,7 @@ export default function page() {
       {/* ===== End Left Side ===== */}
 
       {/* ===== Start Right Side ===== */}
-      <div className="w-1/3">
+      <div className="w-1/3 flex flex-col gap-[1vw]">
         {/* ===== Start Calendar & Up Coming Meetings Card ===== */}
         <div className={styles.card}>
           <div className={styles.header}>
@@ -414,29 +414,68 @@ export default function page() {
           <div className={styles.body}>
             <span className="font-semibold">Up Coming Meetings</span>
             <div className="flex flex-col gap-[0.5vw]">
-
-
-
               <div className="flex justify-between items-center">
-              <div className="flex flex-col gap-2">
-                <span>Sunday. Feb 9th</span>
-                <span>9:30 AM</span>
-              </div>
+                <div className="flex flex-col gap-2">
+                  <span className="text-[13.66px] text-[#F8F24B]">
+                    Sunday. Feb 9th
+                  </span>
+                  <span className="text-[13.66px]">9:30 AM</span>
+                </div>
 
-
-              <div className="flex items-center justify-center pr-[1vw]">
+                <div className="flex items-center justify-center pr-[1vw]">
                   <AnimatedTooltip items={people} />
+                </div>
               </div>
-              </div>
-
             </div>
+            <div className="flex flex-col gap-[0.5vw]">
+              <div className="flex justify-between items-center">
+                <div className="flex flex-col gap-2">
+                  <span className="text-[13.66px] text-[#F8F24B]">
+                    Sunday. Feb 9th
+                  </span>
+                  <span className="text-[13.66px]">9:30 AM</span>
+                </div>
 
+                <div className="flex items-center justify-center pr-[1vw]">
+                  <AnimatedTooltip items={people} />
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col gap-[0.5vw]">
+              <div className="flex justify-between items-center">
+                <div className="flex flex-col gap-2">
+                  <span className="text-[13.66px] text-[#F8F24B]">
+                    Sunday. Feb 9th
+                  </span>
+                  <span className="text-[13.66px]">9:30 AM</span>
+                </div>
 
-
-
+                <div className="flex items-center justify-center pr-[1vw]">
+                  <AnimatedTooltip items={people} />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        {/* ===== End Application Design Card ===== */}
+        {/* ===== End Calendar & Up Coming Meetings Card ===== */}
+
+
+
+        {/* ===== Start Client Approval Card ===== */}
+        <div className={styles.card}>
+          <div className={styles.header}>
+            <h6>Client Approval</h6>
+          </div>
+          <div className={styles.body}>
+            <span className="font-semibold">Up Coming Meetings</span>
+          </div>
+        </div>
+        {/* ===== End Client Approval Card ===== */}
+
+
+
+
+
       </div>
       {/* ===== End Right Side ===== */}
     </div>
