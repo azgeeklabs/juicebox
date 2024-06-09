@@ -5,7 +5,54 @@
   border-radius: clamp(72px, calc(5vw + 0.1rem), 100px);
 }
 
+/* ===== Start Services Cards ===== */
+/* Profile Card */
+.profileCard {
+  background-color: #efe8121a;
+  border-radius: 42px;
+  padding: 6px 20px 6px 5px;
+  gap: 10px;
+  position: relative;
+  margin-right: 1vw;
+}
+.profileCard::after {
+  position: absolute;
+  content: "";
+  height: 75%;
+  width: 1px;
+  background-color: #616161;
+  left: calc(100% + 1vw);
+  top: 50%;
+  transform: translateY(-50%);
+}
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.profileName {
+  font-size: 14px;
+  font-weight: 700;
+  color: #f8f24b;
+}
+.profileBalance {
+  font-size: 14px;
+  font-weight: 400;
+  color: #828282;
+}
+
+/* Services Cards */
+.servicesCards > a > div > div > div:first-child {
+  border-right: 1px solid #f8f24b !important;
+}
+
+.servicesCards > a > div > div:hover > div:first-child {
+  border-right: 1px solid #f8f24b;
+}
+
+/* Add Service Button */
 .subscribedServices > div > button {
+  padding: 14px;
   width: clamp(10px, calc(5vw + 0.1rem), 1000px);
   display: flex;
   justify-content: center;
@@ -15,11 +62,4 @@
 .subscribedServices > div > button:hover > svg {
   fill: #f8f24b;
 }
-
-.servicesCards > a > div > div > div:first-child {
-  border-right: 1px solid #f8f24b !important;
-}
-
-.servicesCards > a > div > div:hover > div:first-child {
-  border-right: 1px solid #f8f24b;
-}
+/* ===== End Services Cards ===== */
