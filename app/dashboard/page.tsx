@@ -5,6 +5,100 @@ import CustomCheckBoxText from "../_components/customCheckBox/CustomCheckBoxText
 import CustomCheckBox from "../_components/customCheckBox/CustomCheckBox";
 import ServiceCard from "../_components/serviceCard/ServiceCard";
 import CircularProgressBar from "../_components/progressBar/CircularProgressBar";
+import CongratulationMessage from "../_components/congratulationMessage/CongratulationMessage";
+
+const svg = (
+  <svg
+    width="21"
+    height="21"
+    viewBox="0 0 21 21"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <mask
+      id="mask0_1488_3803"
+      style={{ maskType: "luminance" }}
+      maskUnits="userSpaceOnUse"
+      x="0"
+      y="0"
+      width="21"
+      height="21"
+    >
+      <path
+        d="M20.9723 0.027832H0.027832V20.9723H20.9723V0.027832Z"
+        fill="white"
+      />
+    </mask>
+    <g mask="url(#mask0_1488_3803)">
+      <g opacity="0.01">
+        <path
+          d="M2.47139 16.8768C2.80545 17.0695 2.9196 17.4965 2.72691 17.8305C2.53422 18.1646 2.1073 18.2787 1.77324 18.086C1.43917 17.8933 1.32503 17.4664 1.51771 17.1324C1.7104 16.7983 2.13732 16.6842 2.47139 16.8768Z"
+          fill="#F6F04B"
+        />
+      </g>
+      <mask
+        id="mask1_1488_3803"
+        style={{ maskType: "luminance" }}
+        maskUnits="userSpaceOnUse"
+        x="0"
+        y="2"
+        width="19"
+        height="19"
+      >
+        <path
+          d="M0.754883 2.7915H18.2086V20.2452H0.754883V2.7915Z"
+          fill="white"
+        />
+      </mask>
+      <g mask="url(#mask1_1488_3803)">
+        <path
+          d="M3.64775 19.7349C4.54116 19.4372 16.2365 16.0799 17.3727 14.9436C18.509 13.8073 16.897 10.3528 13.7725 7.22798C10.6477 4.10354 7.19358 2.49149 6.0573 3.62777C4.92102 4.76405 1.56368 16.4593 1.26601 17.3528C0.968345 18.2462 1.20374 19.0765 1.56368 19.4368C1.92403 19.7968 2.75434 20.0326 3.64775 19.7349Z"
+          fill="#666666"
+        />
+        <path
+          d="M17.3842 14.9315C16.233 16.0828 12.7664 14.4823 9.64198 11.3579C6.51712 8.23345 4.91753 4.76692 6.06875 3.61611C7.21956 2.46489 10.6861 4.06448 13.8105 7.18934C16.935 10.3138 18.5354 13.7803 17.3842 14.9315Z"
+          fill="#080808"
+        />
+      </g>
+      <path
+        d="M12.5945 12.4106C14.4533 11.7784 16.3739 11.3797 18.3109 11.2153"
+        stroke="#FFFCA8"
+        stroke-width="1.3963"
+        stroke-linecap="round"
+      />
+      <path
+        d="M14.2839 8.41233C15.993 7.45447 17.7736 6.67045 19.5989 6.05957"
+        stroke="#FFFA7A"
+        stroke-width="1.3963"
+        stroke-linecap="round"
+      />
+      <path
+        d="M9.44849 5.78307C9.55426 4.81439 9.56927 3.83734 9.49387 2.86621"
+        stroke="#F8F6CD"
+        stroke-width="1.3963"
+        stroke-linecap="round"
+      />
+      <path
+        d="M11.158 8.47922C12.3818 6.86546 13.5268 5.21086 14.5921 3.521"
+        stroke="#F6F04B"
+        stroke-width="1.3963"
+        stroke-linecap="round"
+      />
+      <path
+        d="M6.66011 9.45264H7.35826C7.55095 9.45264 7.70733 9.60902 7.70733 9.80171V10.4999C7.70733 10.6925 7.55095 10.8489 7.35826 10.8489H6.66011C6.46742 10.8489 6.31104 10.6925 6.31104 10.4999V9.80171C6.31104 9.60902 6.46742 9.45264 6.66011 9.45264Z"
+        fill="white"
+      />
+      <path
+        d="M4.26356 3.43741L4.86816 3.78648C5.03502 3.88283 5.09226 4.09646 4.99592 4.26332L4.64685 4.86791C4.5505 5.03477 4.33687 5.09202 4.17001 4.99568L3.56541 4.6466C3.39856 4.55026 3.34131 4.33662 3.43765 4.16977L3.78673 3.56517C3.88307 3.39831 4.0967 3.34106 4.26356 3.43741Z"
+        fill="#EEE843"
+      />
+      <path
+        d="M12.85 17.8305C13.1841 18.0231 13.2983 18.4501 13.1056 18.7841C12.9129 19.1182 12.486 19.2323 12.1519 19.0397C11.8178 18.847 11.7037 18.42 11.8964 18.086C12.0891 17.7519 12.516 17.6378 12.85 17.8305Z"
+        fill="#F6F04B"
+      />
+    </g>
+  </svg>
+);
 
 export default function page() {
   return (
@@ -184,6 +278,11 @@ export default function page() {
           <div className={`w-1/2 ${styles.card}`}>
             <div className={styles.header}>
               <h6>This Week Deliverables</h6>
+            </div>
+            <div className="flex flex-col gap-[0.7vw]">
+              {Array.from({ length: 3 }).map((_, i) => (
+                <CongratulationMessage icon={svg} />
+              ))}
             </div>
           </div>
         </div>
