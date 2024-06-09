@@ -3,11 +3,13 @@ import React from "react";
 import styles from "./SubscribedServices.module.css";
 import ServiceCard from "../serviceCard/ServiceCard";
 import CustomBtn from "../btn/CustomBtn";
+import classNames from "classnames";
 
 export default function SubscribedServices() {
   return (
     <div className={styles.subscribedServices + " flex justify-between items-center"}>
-      <div className="flex gap-[1vw]">
+      {/* ===== Start Services Cards ===== */}
+      <div className={classNames(styles.servicesCards, "flex gap-[1vw]")}>
         <ServiceCard title="Web Design" phase="Ideation Phase" timeleft="26 Days Left" />
         <ServiceCard title="Application Design" phase="Ideation Phase" timeleft="26 Days Left" />
         <ServiceCard title="Web Development" phase="Ideation Phase" timeleft="26 Days Left" />
@@ -23,6 +25,8 @@ export default function SubscribedServices() {
         </svg>
         </CustomBtn>
       </div>
+      {/* ===== End Services Cards ===== */}
+      {/* ===== Start Notifications Icon ===== */}
       <div>
         <svg
           width="18"
@@ -37,6 +41,7 @@ export default function SubscribedServices() {
           />
         </svg>
       </div>
+      {/* ===== End Notifications Icon ===== */}
     </div>
   );
 }
