@@ -1,4 +1,4 @@
-.serviceCard .card:not(:last-child) {
+.serviceCard div:not(:last-child) {
   border-right: 1px solid white;
 }
 .serviceCard.active .card:not(:last-child) {
@@ -18,7 +18,8 @@
   line-height: clamp(10px, calc(0.4vw + 0.1rem), 80px);
   font-size: clamp(10px, calc(0.4vw + 0.1rem), 80px);
 }
-.serviceCard.active h3,.serviceCard.active span {
+.serviceCard.active h3,
+.serviceCard.active span {
   color: black;
 }
 .serviceCard:hover {
@@ -32,7 +33,6 @@
 }
 
 .serviceCard h6 {
-
   font-weight: 500;
   line-height: clamp(10px, calc(0.6vw + 0.1rem), 800px);
   font-size: clamp(10px, calc(0.7vw + 0.1rem), 800px);
