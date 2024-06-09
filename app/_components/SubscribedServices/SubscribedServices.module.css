@@ -3,6 +3,7 @@
   padding-right: clamp(16px, calc(1.5vw + 0.1rem), 100px);
   background-color: var(--dark-gray-1);
   border-radius: clamp(72px, calc(5vw + 0.1rem), 100px);
+  white-space: nowrap;
 }
 
 /* ===== Start Services Cards ===== */
