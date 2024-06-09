@@ -125,3 +125,33 @@
   border-radius: 20px;
 }
 /* ===== End This Week Deliverables Card ===== */
+
+/* ===== Start Today's Tasks Card ===== */
+.today_tasks_card_body_tabs {
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, calc(0.6vw + 0.1rem), 100px);
+}
+
+.today_tasks_card_body_tabs_tab > div > div {
+  padding: 6px 20px;
+}
+
+.today_tasks_card_body_tasks {
+  height: 20vh;
+  overflow-y: auto;
+}
+
+.today_tasks_card_body_tasks::-webkit-scrollbar {
+  width: 1px;
+}
+/* Track */
+.today_tasks_card_body_tasks::-webkit-scrollbar-track {
+  background: transparent;
+}
+/* Handle */
+.today_tasks_card_body_tasks::-webkit-scrollbar-thumb {
+  background: #b1b1b1;
+  border-radius: 20px;
+}
+/* ===== End Today's Tasks Card ===== */
