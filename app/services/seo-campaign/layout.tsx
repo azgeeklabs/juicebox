@@ -75,7 +75,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
         {currentPath < path.length - 1 && (
           <Link
             href={`/services/${module}/${getNextPath()}`}
-            className="bg-[#F8F24B] px-[2vw] py-[0.5vw] font-semibold rounded-[41.03px] text-[var(--primary-black)] cursor-pointer float-end"
+            className="bg-[var(--highlight-yellow)] px-[2vw] py-[0.5vw] font-semibold rounded-[41.03px] text-[var(--primary-black)] cursor-pointer float-end"
             onClick={() =>
               setCurrentPath(
                 currentPath < path.length - 1 ? currentPath + 1 : currentPath

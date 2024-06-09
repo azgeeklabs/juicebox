@@ -1,5 +1,6 @@
 "use client";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { useEffect } from "react";
 
 export default function page() {
 
@@ -41,8 +42,16 @@ export default function page() {
   //       loadShow();
   //   }
 
+  const router = useRouter()
+
+  useEffect(() => {
+    router.push("/dashboard")
+    
+  })
 
   return (
-    <div>Home</div>
+    <>
+      
+    </>
   );
 }

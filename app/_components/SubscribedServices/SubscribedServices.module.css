@@ -3,6 +3,7 @@
   padding-right: clamp(16px, calc(1.5vw + 0.1rem), 100px);
   background-color: var(--dark-gray-1);
   border-radius: clamp(72px, calc(5vw + 0.1rem), 100px);
+  white-space: nowrap;
 }
 
 /* ===== Start Services Cards ===== */
@@ -12,6 +13,18 @@
   border-radius: 42px;
   padding: 6px 20px 6px 5px;
   gap: 10px;
+  position: relative;
+  margin-right: 1vw;
+}
+.profileCard::after {
+  position: absolute;
+  content: "";
+  height: 75%;
+  width: 1px;
+  background-color: #616161;
+  left: calc(100% + 1vw);
+  top: 50%;
+  transform: translateY(-50%);
 }
 .profileInfo {
   display: flex;
@@ -25,7 +38,7 @@
 }
 .profileBalance {
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
   color: #828282;
 }
 

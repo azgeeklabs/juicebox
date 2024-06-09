@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import styles from "./website-type.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import Image from "next/image";
 
 function page() {
   return (
@@ -27,11 +28,11 @@ function page() {
           <div className={classNames("flex flex-col gap-2", styles.card)}>
             <div className="flex items-center justify-center relative">
               <img
-                src="/assets/website-type-healthcare.gif"
+                src="/assets/website-type-healthcare.gif" alt="/assets/website-type-healthcare.gif"
                 className={classNames(styles.gifImg, "w-full")}
               />
               <img
-                src="/assets/website-type-healthcare.svg"
+                src="/assets/website-type-healthcare.svg" alt="/assets/website-type-healthcare.svg"
                 className={classNames(styles.svgImg)}
               />
             </div>
@@ -46,11 +47,11 @@ function page() {
           <div className={classNames("flex flex-col gap-2", styles.card)}>
             <div className="flex items-center justify-center relative">
               <img
-                src="/assets/website-type-shipping.gif"
+                src="/assets/website-type-shipping.gif" alt="/assets/website-type-shipping.gif"
                 className={classNames(styles.gifImg, "w-full")}
               />
               <img
-                src="/assets/website-type-shipping.svg"
+                src="/assets/website-type-shipping.svg" alt="/assets/website-type-shipping.svg"
                 className={classNames(styles.svgImg)}
               />
             </div>
@@ -65,11 +66,11 @@ function page() {
           <div className={classNames("flex flex-col gap-2", styles.card)}>
             <div className="flex items-center justify-center relative">
               <img
-                src="/assets/website-type-company.gif"
+                src="/assets/website-type-company.gif" alt="/assets/website-type-company.gif"
                 className={classNames(styles.gifImg, "w-full")}
               />
               <img
-                src="/assets/website-type-company.svg"
+                src="/assets/website-type-company.svg" alt="/assets/website-type-company.svg"
                 className={classNames(styles.svgImg)}
               />
             </div>
@@ -84,11 +85,11 @@ function page() {
           <div className={classNames("flex flex-col gap-2", styles.card)}>
             <div className="flex items-center justify-center relative">
               <img
-                src="/assets/website-type-other.gif"
+                src="/assets/website-type-other.gif" alt="/assets/website-type-other.gif"
                 className={classNames(styles.gifImg, "w-full")}
               />
               <img
-                src="/assets/website-type-other.svg"
+                src="/assets/website-type-other.svg" alt="/assets/website-type-other.svg"
                 className={classNames(styles.svgImg)}
               />
             </div>

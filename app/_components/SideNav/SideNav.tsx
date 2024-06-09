@@ -3,6 +3,7 @@ import classNames from "classnames";
 import styles from "./SideNav.module.css";
 import image from "@/public/assets/image.png";
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 const navBarItems = [

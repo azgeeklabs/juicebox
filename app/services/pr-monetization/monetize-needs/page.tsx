@@ -47,7 +47,7 @@ const page = () => {
         {/* Next link with background color, text color, padding, fit width, rounded corners, and font styling */}
         <Link
           href={"/services/pr-monetization/monetize-impressions"}
-          className="bg-[#F8F24B] text-black px-[2vw] py-[0.5vw] w-fit rounded-[41.03px] font-semibold"
+          className="bg-[var(--highlight-yellow)] text-black px-[2vw] py-[0.5vw] w-fit rounded-[41.03px] font-semibold"
         >
           Next
         </Link>

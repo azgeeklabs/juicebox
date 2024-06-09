@@ -45,7 +45,7 @@ export default function page() {
       nextLink="/services/web-design/custom-ecommerce"
     >
       {/* // Main container div with full height, flexbox layout, and content vertically and horizontally centered */}
-      <div className="flex flex-col justify-between h-full">
+      <div className="flex flex-col justify-center h-full">
         {/* // Inner container with full width and custom styles for adding to the video section */}
         <div className={`${styles.websiteStyle} w-full `}>
           {/* // Header section with padding top, left padding, and bottom margin */}
@@ -107,7 +107,7 @@ export default function page() {
               <div className={`${styles.slider} slider`}>
                 {/* // Mapping through slides array to create Image components */}
                 {slides.map((e, i) => (
-                  <Image
+                  <img
                     src={e.content} // Image source from slides array
                     alt="" // Alternative text for the image
                     width={100} // Width of the image
@@ -121,7 +121,7 @@ export default function page() {
                         ? styles.right
                         : styles.left
                     }`}
-                  ></Image>
+                  />
                 ))}
               </div>
             </div>

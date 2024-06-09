@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import styles from "./pr.module.css";
 import Link from "next/link";
+import Image from "next/image";
 
 const gameSVG = (
   <svg viewBox="0 0 150 118" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1418,6 +1419,7 @@ function page() {
         {/* Game GIF with full width */}
         <img
           src="/assets/application-design-service-gamecard.gif"
+          alt="/assets/application-design-service-gamecard.gif"
           className="w-full"
         />
         
@@ -1444,6 +1446,7 @@ function page() {
         {/* Application GIF with full width */}
         <img
           src="/assets/application-design-service-applicationcard.gif"
+          alt="/assets/application-design-service-applicationcard.gif"
           className="w-full"
         />
         
@@ -1466,7 +1469,7 @@ function page() {
 </div>
 
 {/* Navigation link for proceeding to the next step, styled with background color, text color, padding, rounded corners, and margin-left auto for right alignment */}
-<Link href={"/services/pr-monetization/add-link"} className="bg-[#F8F24B] text-black px-[2vw] py-[0.5vw] w-fit rounded-[41.03px] font-semibold ml-auto">
+<Link href={"/services/pr-monetization/add-link"} className="bg-[var(--highlight-yellow)] text-black px-[2vw] py-[0.5vw] w-fit rounded-[41.03px] font-semibold ml-auto">
   Next
 </Link>
 </div>

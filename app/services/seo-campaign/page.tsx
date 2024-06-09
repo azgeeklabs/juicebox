@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import styles from "./seo-campaign.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import Image from "next/image";
 
 function page() {
   return (
@@ -24,11 +25,13 @@ function page() {
           <div className={classNames("flex flex-col gap-2", styles.card)}>
             <div className="flex items-center justify-center relative">
               <img
-                src="/assets/seo-campaign-product.gif"
+                                src="/assets/seo-campaign-product.gif"
+                alt="/assets/seo-campaign-product.gif"
                 className={classNames(styles.gifImg, "w-full")}
               />
               <img
-                src="/assets/seo-campaign-product.svg"
+                                src="/assets/seo-campaign-product.svg"
+                alt="/assets/seo-campaign-product.svg"
                 className={classNames(styles.svgImg)}
               />
             </div>
@@ -43,11 +46,13 @@ function page() {
           <div className={classNames("flex flex-col gap-2", styles.card)}>
             <div className="flex items-center justify-center relative">
               <img
-                src="/assets/seo-campaign-service.gif"
+                                src="/assets/seo-campaign-service.gif"
+                alt="/assets/seo-campaign-service.gif"
                 className={classNames(styles.gifImg, "w-full")}
               />
               <img
-                src="/assets/seo-campaign-service.svg"
+                                src="/assets/seo-campaign-service.svg"
+                alt="/assets/seo-campaign-service.svg"
                 className={classNames(styles.svgImg)}
               />
             </div>
@@ -62,11 +67,13 @@ function page() {
           <div className={classNames("flex flex-col gap-2", styles.card)}>
             <div className="flex items-center justify-center relative">
               <img
-                src="/assets/seo-campaign-content.gif"
+                                src="/assets/seo-campaign-content.gif"
+                alt="/assets/seo-campaign-content.gif"
                 className={classNames(styles.gifImg, "w-full")}
               />
               <img
-                src="/assets/seo-campaign-content.svg"
+                                src="/assets/seo-campaign-content.svg"
+                alt="/assets/seo-campaign-content.svg"
                 className={classNames(styles.svgImg)}
               />
             </div>

@@ -29,7 +29,7 @@ const page = () => {
                 placeholder="Product Link"
                 className="h-full mb-[1vw] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[71px] px-[1.088vw] py-[0.5vw] placeholder:text-[#FFFFFF80]"
               />
-              <button className=" bg-[#F8F24B] px-[1.892vw] py-[0.4vw] text-black rounded-[33px]">
+              <button className=" bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.4vw] text-black rounded-[33px]">
                 Paste Link
               </button>
             </div>

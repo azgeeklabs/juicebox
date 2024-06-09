@@ -15,9 +15,9 @@ const ServiceCard = (props: Iprops) => {
   return (
     <Link href={props.href || ""}>
       <div
-        className={`${styles.serviceCard} rounded-[2.75vw] text-white w-fit flex justify-center cursor-pointer`}
+        className={`${styles.serviceCard} rounded-[2.75vw] text-white w-full flex justify-center cursor-pointer`}
       >
-        <div className={`flex py-[0.4vw] px-[0.5vw] rounded-[2.75vw]`}>
+        <div className={`flex py-[0.4vw] px-[0.5vw] rounded-[2.75vw] w-full`}>
           <div className={`${styles.card} text-center px-[0.8vw] `}>
             <h3>{props.title || "Title"}</h3>
             <span>{props.phase || "Phase"}</span>

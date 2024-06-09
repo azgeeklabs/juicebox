@@ -46,7 +46,7 @@ function page() {
         />
 
         {/* Button with background color, padding, text color, and rounded corners */}
-        <button className="bg-[#F8F24B] px-[1.892vw] py-[0.4vw] text-black rounded-[33px]">
+        <button className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.4vw] text-black rounded-[33px]">
           Paste Link
         </button>
       </div>
@@ -69,7 +69,7 @@ function page() {
   {/* Next link with background color, text color, padding, fit width, rounded corners, and font styling */}
   <Link
     href={"/services/pr-monetization/monetize-needs"}
-    className="bg-[#F8F24B] text-black px-[2vw] py-[0.5vw] w-fit rounded-[41.03px] font-semibold"
+    className="bg-[var(--highlight-yellow)] text-black px-[2vw] py-[0.5vw] w-fit rounded-[41.03px] font-semibold"
   >
     Next
   </Link>

@@ -8,6 +8,7 @@ import {
   useMotionValue,
   useSpring,
 } from "framer-motion";
+import Image from "next/image";
 
 export const AnimatedTooltip = ({
   items,
@@ -41,7 +42,7 @@ export const AnimatedTooltip = ({
     <>
       {items.map((item, idx) => (
         <div
-          className="-mr-4  relative group w-[2vw] mt-20"
+          className="-mr-4 relative group w-[2vw]"
           key={item.name}
           onMouseEnter={() => setHoveredIndex(item.id)}
           onMouseLeave={() => setHoveredIndex(null)}
@@ -68,9 +69,9 @@ export const AnimatedTooltip = ({
                 }}
                 className="absolute -top-16 -left-1/2 translate-x-1/2 flex text-xs  flex-col items-center justify-center rounded-[50px] bg-black z-50 shadow-xl px-4 py-2"
               >
-                <div className="absolute inset-x-9 z-30 w-[20%] -bottom-px bg-gradient-to-r from-transparent via-[#F8F24B] to-transparent h-px " />
-                <div className="absolute left-9 w-[20%] z-30 -bottom-px bg-gradient-to-r from-transparent via-[#F8F24B] to-transparent h-px " />
-                <div className="font-bold text-white relative z-30 text-base">
+                <div className="absolute inset-x-9 z-30 w-[20%] -bottom-px bg-gradient-to-r from-transparent via-[var(--highlight-yellow)] to-transparent h-px " />
+                <div className="absolute left-9 w-[20%] z-30 -bottom-px bg-gradient-to-r from-transparent via-[var(--highlight-yellow)] to-transparent h-px " />
+                <div className="font-bold text-white relative z-30 text-sm">
                   {item.name}
                 </div>
                 <div className="text-white text-xs">{item.designation}</div>
@@ -81,7 +82,7 @@ export const AnimatedTooltip = ({
             onMouseMove={handleMouseMove}
             src={item.image}
             alt={item.name}
-            className="object-cover !m-0 !p-0 object-top rounded-full h-[2vw] w-14 border-2 group-hover:scale-105 border-[#F8F24B] relative transition duration-500"
+            className="object-cover !m-0 !p-0 object-top rounded-full h-[2vw] w-14 border-2 group-hover:scale-105 border-[var(--highlight-yellow)] relative transition duration-500"
           />
         </div>
       ))}
