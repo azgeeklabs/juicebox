@@ -103,7 +103,9 @@ const svg = (
 export default function page() {
   return (
     <div className="flex h-full gap-[1vw]">
+      {/* ===== Start Left Side ===== */}
       <div className="w-2/3 flex flex-col gap-[1vw]">
+        {/* ===== Start Application Design Card ===== */}
         <div className={styles.card}>
           <div className={styles.header}>
             <h6>Application Design </h6>
@@ -162,7 +164,11 @@ export default function page() {
             </div>
           </div>
         </div>
+        {/* ===== End Application Design Card ===== */}
+
+        {/* ===== Start On Going Projects & This Week Deliverables Card ===== */}
         <div className="w-full flex gap-[1vw]">
+          {/* ===== Start On Going Projects Card ===== */}
           <div className={`w-1/2 ${styles.card}`}>
             <div className={styles.header}>
               <h6>On Going Projects</h6>
@@ -275,6 +281,9 @@ export default function page() {
               ))}
             </div>
           </div>
+          {/* ===== End On Going Projects Card ===== */}
+
+          {/* ===== Start This Week Deliverables Card ===== */}
           <div className={`w-1/2 ${styles.card}`}>
             <div className={styles.header}>
               <h6>This Week Deliverables</h6>
@@ -285,14 +294,23 @@ export default function page() {
               ))}
             </div>
           </div>
+          {/* ===== End This Week Deliverables Card ===== */}
         </div>
+        {/* ===== End On Going Projects & This Week Deliverables Card ===== */}
+
+        {/* ===== Start Today's Tasks Card ===== */}
         <div className={`w-full grow ${styles.card}`}>
           <div className={styles.header}>
             <h6>Today's Tasks</h6>
           </div>
         </div>
+        {/* ===== End Today's Tasks Card ===== */}
       </div>
+      {/* ===== End Left Side ===== */}
+
+      {/* ===== Start Right Side ===== */}
       <div className="w-1/3"></div>
+      {/* ===== End Right Side ===== */}
     </div>
   );
 }
