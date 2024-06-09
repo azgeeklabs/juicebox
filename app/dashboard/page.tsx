@@ -9,6 +9,7 @@ import CongratulationMessage from "../_components/congratulationMessage/Congratu
 import classNames from "classnames";
 import Task from "../_components/dashboard/Today’s Tasks/Task";
 import { AnimatedTooltip } from "../_components/animatedTooltip/AnimatedTooltip";
+import ClientApprovalTable from "../_components/dashboard/Client Approval/ClientApprovalTable";
 
 const svg = (
   <svg
@@ -470,6 +471,7 @@ export default function page() {
           </div>
           <div className={styles.body}>
             <span className="font-semibold">Up Coming Meetings</span>
+            <ClientApprovalTable />
           </div>
         </div>
         {/* ===== End Client Approval Card ===== */}
