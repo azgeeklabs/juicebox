@@ -11,3 +11,7 @@
   justify-content: center;
   align-items: center;
 }
+
+.subscribedServices > div > button:hover > svg {
+  fill: #f8f24b;
+}

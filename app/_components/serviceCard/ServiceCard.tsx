@@ -6,6 +6,9 @@ type Iprops = {
   paddingVal?: string,
   children?:any,
   href?:string,
+  title?: string, // Title for h3
+  phase?: string, // Text for span
+  timeleft?: string, // Text for h6
 };
 
 const ServiceCard = (props: Iprops) => {
@@ -16,13 +19,13 @@ const ServiceCard = (props: Iprops) => {
     >
       <div className={`flex py-[0.4vw] px-[0.5vw] rounded-[2.75vw]`}>
         <div className={`${styles.card} text-center px-[0.8vw] `}>
-          <h3>Web Design</h3>
-          <span>Ideation Phase</span>
+        <h3>{props.title || "Title"}</h3>
+        <span>{props.phase || "Phase"}</span>
         </div>
         <div
           className={`text-center flex items-center justify-center px-[0.8vw]`}
         >
-          <h6>26 Days Left</h6>
+          <h6>{props.timeleft || "Timeleft"}</h6>
         </div>
         {props.children}
         {/* <div

@@ -7,6 +7,7 @@ const page = () => {
     <NextPrevNav
       backLink="/services/seo-link-building/article-selection"
       nextLink="/services/seo-link-building/"
+      nextText="All Done"
     >
       {/* // Main outer container div */}
       <div>
