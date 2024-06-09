@@ -8,6 +8,7 @@ import CircularProgressBar from "../_components/progressBar/CircularProgressBar"
 import CongratulationMessage from "../_components/congratulationMessage/CongratulationMessage";
 import classNames from "classnames";
 import Task from "../_components/dashboard/Today’s Tasks/Task";
+import { AnimatedTooltip } from "../_components/animatedTooltip/AnimatedTooltip";
 
 const svg = (
   <svg
@@ -102,6 +103,30 @@ const svg = (
   </svg>
 );
 
+const people = [
+  {
+    id: 1,
+    name: "John Doe",
+    designation: "Software Engineer",
+    image:
+      "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3387&q=80",
+  },
+  {
+    id: 2,
+    name: "Robert Johnson",
+    designation: "Product Manager",
+    image:
+      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+  },
+  {
+    id: 3,
+    name: "Jane Smith",
+    designation: "Data Scientist",
+    image:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+  },
+];
+
 export default function page() {
   return (
     <div className="flex h-full gap-[1vw]">
@@ -171,11 +196,22 @@ export default function page() {
         {/* ===== Start On Going Projects & This Week Deliverables Card ===== */}
         <div className="w-full flex gap-[1vw]">
           {/* ===== Start On Going Projects Card ===== */}
-          <div className={classNames("w-1/2", styles.card, styles.on_going_projects_card)}>
+          <div
+            className={classNames(
+              "w-1/2",
+              styles.card,
+              styles.on_going_projects_card
+            )}
+          >
             <div className={styles.header}>
               <h6>On Going Projects</h6>
             </div>
-            <div className={classNames("flex flex-col gap-[0.7vw]", styles.on_going_projects_card_body)}>
+            <div
+              className={classNames(
+                "flex flex-col gap-[0.7vw]",
+                styles.on_going_projects_card_body
+              )}
+            >
               {Array.from({ length: 3 }).map((_, i) => (
                 <ServiceCard
                   title="Web Design"
@@ -286,11 +322,22 @@ export default function page() {
           {/* ===== End On Going Projects Card ===== */}
 
           {/* ===== Start This Week Deliverables Card ===== */}
-          <div className={classNames("w-1/2", styles.card, styles.this_week_deliverables_card)}>
+          <div
+            className={classNames(
+              "w-1/2",
+              styles.card,
+              styles.this_week_deliverables_card
+            )}
+          >
             <div className={styles.header}>
               <h6>This Week Deliverables</h6>
             </div>
-            <div className={classNames("flex flex-col gap-[0.7vw]", styles.this_week_deliverables_card_body)}>
+            <div
+              className={classNames(
+                "flex flex-col gap-[0.7vw]",
+                styles.this_week_deliverables_card_body
+              )}
+            >
               {Array.from({ length: 3 }).map((_, i) => (
                 <CongratulationMessage icon={svg} />
               ))}
@@ -301,31 +348,56 @@ export default function page() {
         {/* ===== End On Going Projects & This Week Deliverables Card ===== */}
 
         {/* ===== Start Today's Tasks Card ===== */}
-        <div className={classNames("w-full grow", styles.card, styles.today_tasks_card)}>
+        <div
+          className={classNames(
+            "w-full grow",
+            styles.card,
+            styles.today_tasks_card
+          )}
+        >
           <div className={styles.header}>
             <h6>Today's Tasks</h6>
           </div>
-          <div className={classNames(styles.today_tasks_card_body, "flex flex-col gap-[0.7vw]")}>
-              {/* Tabs */}
-              <div className={styles.today_tasks_card_body_tabs}>
-                {["All Tasks", "Important  (11)", "Notes", "Links  (1)"].map((tab, i) => (
-                  <div key={i} className={styles.today_tasks_card_body_tabs_tab}>
-                    <CustomCheckBoxText btnSize="sm" inputType="radio" name="task_tab">
+          <div
+            className={classNames(
+              styles.today_tasks_card_body,
+              "flex flex-col gap-[0.7vw]"
+            )}
+          >
+            {/* Tabs */}
+            <div className={styles.today_tasks_card_body_tabs}>
+              {["All Tasks", "Important  (11)", "Notes", "Links  (1)"].map(
+                (tab, i) => (
+                  <div
+                    key={i}
+                    className={styles.today_tasks_card_body_tabs_tab}
+                  >
+                    <CustomCheckBoxText
+                      btnSize="sm"
+                      inputType="radio"
+                      name="task_tab"
+                    >
                       {tab}
                     </CustomCheckBoxText>
                   </div>
-                ))}
-              </div>
-                {/* Tasks */}
-                <div className={classNames(styles.today_tasks_card_body_tasks, "space-y-4")}>                
-                  {/* Task */}
-                  <Task />
-                  <Task />
-                  <Task />
-                  <Task />
-                  <Task />
-                  <Task />
-                </div>
+                )
+              )}
+            </div>
+            {/* Tasks */}
+            <div
+              className={classNames(
+                styles.today_tasks_card_body_tasks,
+                "space-y-4"
+              )}
+            >
+              {/* Task */}
+              <Task />
+              <Task />
+              <Task />
+              <Task />
+              <Task />
+              <Task />
+            </div>
           </div>
         </div>
         {/* ===== End Today's Tasks Card ===== */}
@@ -333,7 +405,39 @@ export default function page() {
       {/* ===== End Left Side ===== */}
 
       {/* ===== Start Right Side ===== */}
-      <div className="w-1/3"></div>
+      <div className="w-1/3">
+        {/* ===== Start Calendar & Up Coming Meetings Card ===== */}
+        <div className={styles.card}>
+          <div className={styles.header}>
+            {/* <h6>Application Design</h6> */}
+          </div>
+          <div className={styles.body}>
+            <span className="font-semibold">Up Coming Meetings</span>
+            <div className="flex flex-col gap-[0.5vw]">
+
+
+
+              <div className="flex justify-between items-center">
+              <div className="flex flex-col gap-2">
+                <span>Sunday. Feb 9th</span>
+                <span>9:30 AM</span>
+              </div>
+
+
+              <div className="flex items-center justify-center pr-[1vw]">
+                  <AnimatedTooltip items={people} />
+              </div>
+              </div>
+
+            </div>
+
+
+
+
+          </div>
+        </div>
+        {/* ===== End Application Design Card ===== */}
+      </div>
       {/* ===== End Right Side ===== */}
     </div>
   );
