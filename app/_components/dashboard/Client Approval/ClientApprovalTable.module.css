@@ -19,8 +19,8 @@
   align-items: center;
   justify-content: space-between;
   width: calc(100% - 1vw);
-  padding-bottom: clamp(16px, calc(0.7vw + 0.1rem), 1000px);
-  padding-left: clamp(16px, calc(0.7vw + 0.1rem), 1000px);
+  padding-bottom: clamp(10px, calc(0.7vw + 0.1rem), 1000px);
+  padding-left: clamp(10px, calc(0.7vw + 0.1rem), 1000px);
 }
 
 .table .table_header li {
@@ -62,9 +62,9 @@
 }
 
 .table .table_body ul {
-  padding-left: clamp(16px, calc(0.7vw + 0.1rem), 1000px);
-  padding-top: clamp(16px, calc(0.7vw + 0.1rem), 1000px);
-  padding-bottom: clamp(20px, calc(0.9vw + 0.1rem), 1000px);
+  padding-left: clamp(16px, calc(0.6vw + 0.1rem), 1000px);
+  padding-top: clamp(10px, calc(0.3vw + 0.1rem), 1000px);
+  padding-bottom: clamp(10px, calc(0.3vw + 0.1rem), 1000px);
   transition: all 0.2s;
 }
 
