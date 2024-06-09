@@ -3,6 +3,7 @@ import classNames from "classnames";
 import styles from "./SideNav.module.css";
 import image from "@/public/assets/image.png";
 import { useState } from "react";
+import Link from "next/link";
 
 const navBarItems = [
   {
@@ -133,12 +134,12 @@ function NavbarItems({ icon, link, active, title }: NavbarItemsProps) {
     <li
       className={classNames("w-fit", styles.nav_item, active && styles.active)}
     >
-      <a href={link} className="flex items-center">
+      <Link href={link} className="flex items-center">
         {icon}
         <span className={classNames("", styles.navbar_item_title)}>
           {title}
         </span>
-      </a>
+      </Link>
     </li>
   );
 }

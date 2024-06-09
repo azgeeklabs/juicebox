@@ -55,15 +55,33 @@ body {
 /* ===== End Layout ===== */
 
 /* ===== Start Slider ===== */
-.item.active {
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  z-index: 2 !important;
-  opacity: 1 !important;
-  filter: blur(0) !important;
+.selected {
+  border: 8px solid #f8f24b !important;
 }
-.item.selected {
-  border: 10px solid #f8f24b !important;
-  box-shadow: 15px 3.42px 18.12px 0px #00000040;
+
+.swiper {
+  width: 40vw;
 }
+
+.swiper .swiper-slide {
+  width: 60% !important;
+  transform: translateX(0) scale(0.7);
+}
+.swiper .swiper-slide.swiper-slide-prev {
+  transform: translateX(55%) scale(0.7);
+  transition: all 0.5s;
+}
+.swiper .swiper-slide.swiper-slide-next {
+  transform: translateX(-55%) scale(0.7);
+  transition: all 0.5s;
+}
+.swiper .swiper-slide.swiper-slide-active {
+  transform: translateX(0) scale(1);
+  transition: all 0.5s;
+  z-index: 99;
+}
+.swiper .slide {
+  border-radius: 18px;
+}
+
 /* ===== End Slider ===== */

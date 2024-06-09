@@ -3,6 +3,12 @@ import classNames from "classnames";
 import styles from "./custom-ecommerce.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import SwiperCore from "swiper";
+import { useRef } from "react";
 
 const defaultPages = [
   "Sign Up",
@@ -33,6 +39,28 @@ const additionalPages = [
 ];
 
 function page() {
+
+  const options = [
+    "Explainer",
+    "Educational",
+    "YouTube",
+    "Social Media Ad",
+    "Short Film",
+  ];
+
+  const swiperRef = useRef<SwiperCore | null>(null);
+
+  const slides = [
+    "https://swiperjs.com/demos/images/nature-1.jpg",
+    "https://swiperjs.com/demos/images/nature-2.jpg",
+    "https://swiperjs.com/demos/images/nature-3.jpg",
+    "https://swiperjs.com/demos/images/nature-4.jpg",
+    "https://swiperjs.com/demos/images/nature-5.jpg",
+    "https://swiperjs.com/demos/images/nature-6.jpg",
+    "https://swiperjs.com/demos/images/nature-7.jpg",
+    "https://swiperjs.com/demos/images/nature-8.jpg",
+  ];
+
   return (
     <NextPrevNav
       nextLink="/services/application-design-service/additional-features"
@@ -120,30 +148,18 @@ function page() {
                     <CustomCheckBoxText
                       btnSize="sm"
                       inputType="checkbox"
-                      onMouseMove={() => {
-                        document.querySelectorAll(".item").forEach((e) => {
-                          e.classList.remove("active");
-                        });
-                        document
-                          .querySelector(`.item${i}`)
-                          ?.classList.add("active");
-                      }}
-                      onClick={(e) => {
-                        document.querySelectorAll(".item").forEach((ele) => {
-                          ele.classList.remove("active");
-                        });
-                        if (!(e.target as HTMLInputElement).checked) {
-                          document
-                            .querySelector(`.item${i}`)
-                            ?.classList.remove("selected");
-                        } else {
-                          document
-                            .querySelector(`.item${i}`)
-                            ?.classList.add("selected");
+                      onMouseOver={() => {
+                        if (swiperRef.current) {
+                          swiperRef.current.slideTo(i); // Slide index is 0-based
                         }
+                      }}
+                      onClick={() => {
+                        // document.querySelectorAll("img.slide").forEach((e) => {
+                        //   // e.classList.remove("selected");
+                        // });
                         document
-                          .querySelector(`.item${i}`)
-                          ?.classList.add("active");
+                          .querySelector(`.slide${i}`)
+                          ?.classList.toggle("selected");
                       }}
                     >
                       {page}
@@ -153,27 +169,34 @@ function page() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col gap-4 w-1/2">
-            <div>
-              <div className={`${styles.slider} slider`}>
-                {additionalPages.map((e, i) => (
-                  <div
-                    key={i}
-                    className={`item${i} ${styles.item} item ${
-                      i == additionalPages.length / 2 - 1 ||
-                      i == additionalPages.length / 2 + 0.5 - 1
-                        ? `active ${styles.right}`
-                        : i > (additionalPages.length - 1) / 2
-                        ? styles.right
-                        : styles.left
-                    }`}
-                  >
-                    <h1>{e}</h1>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+          <Swiper
+              onSwiper={(swiper) => {
+                swiperRef.current = swiper;
+              }}
+              speed={500}
+              initialSlide={2}
+              effect={"coverflow"}
+              grabCursor={true}
+              centeredSlides={true}
+              slidesPerView={"auto"}
+              loop={false}
+              coverflowEffect={{
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+              }}
+              pagination={true}
+              // modules={[EffectCoverflow, Pagination]}
+              className="mySwiper"
+            >
+              {slides.map((e, i) => (
+                <SwiperSlide key={i}>
+                  <img src={e} className={`slide slide${i} `} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
         </div>
       </div>
     </NextPrevNav>

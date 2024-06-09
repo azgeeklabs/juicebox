@@ -1,42 +1,34 @@
 "use client";
 import CustomCheckBox from "@/app/_components/customCheckBox/CustomCheckBox";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./channelStyle.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import SwiperCore from "swiper";
 
 export default function page() {
   const options = [
-    "Maps Video",
-    "Motion Graphics Video",
-    "Video Style 1",
-    "Video Style 2",
+    "Explainer",
+    "Educational",
+    "YouTube",
+    "Social Media Ad",
+    "Short Film",
   ];
+
+  const swiperRef = useRef<SwiperCore | null>(null);
 
   const slides = [
-    {
-      head: "Slide 1",
-      content:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Faceremagni magnam unde ipsam repudiandae explicabo expedita labore,sequi minus neque beatae voluptatum, quasi accusamus quia quisvoluptas laborum ad! Ab totam doloribus, excepturi possimus remvel quia fugit molestiae officiis!",
-    },
-    {
-      head: "Slide 2",
-      content:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Faceremagni magnam unde ipsam repudiandae explicabo expedita labore,sequi minus neque beatae voluptatum, quasi accusamus quia quisvoluptas laborum ad! Ab totam doloribus, excepturi possimus remvel quia fugit molestiae officiis!",
-    },
-    {
-      head: "Slide 3",
-      content:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Faceremagni magnam unde ipsam repudiandae explicabo expedita labore,sequi minus neque beatae voluptatum, quasi accusamus quia quisvoluptas laborum ad! Ab totam doloribus, excepturi possimus remvel quia fugit molestiae officiis!",
-    },
-    {
-      head: "Slide 4",
-      content:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Faceremagni magnam unde ipsam repudiandae explicabo expedita labore,sequi minus neque beatae voluptatum, quasi accusamus quia quisvoluptas laborum ad! Ab totam doloribus, excepturi possimus remvel quia fugit molestiae officiis!",
-    },
+    "https://swiperjs.com/demos/images/nature-1.jpg",
+    "https://swiperjs.com/demos/images/nature-2.jpg",
+    "https://swiperjs.com/demos/images/nature-3.jpg",
+    "https://swiperjs.com/demos/images/nature-4.jpg",
+    "https://swiperjs.com/demos/images/nature-5.jpg",
   ];
-
   return (
     // Main container div with flexbox layout, column direction, and full height
     <NextPrevNav nextLink="/services/video-service/footage-edit" backLink="/services/video-service/choose-kind">
@@ -61,65 +53,62 @@ export default function page() {
         </div>
 
         {/* Container for buttons and slider with flexbox layout, padding, and justified content */}
-        <div className="flex items-center justify-between pl-[4.021vw] pr-[1vw] w-full">
-          {/* Buttons container with custom styles, flexbox layout, column direction, and gap between buttons */}
-          <div className={`${styles.btns} flex flex-col gap-[1.041vw]`}>
-            {/* Mapping through options to create custom checkbox buttons */}
-            {options.map((e, i) => (
-              <CustomCheckBoxText
-                btnSize="xl" // Large button size
-                inputType="radio" // Radio input type
-                name="type" // Name attribute for the input
-                onMouseMove={() => {
-                  // Remove 'active' class from all items on mouse move
-                  document.querySelectorAll(".item").forEach((e) => {
-                    e.classList.remove("active");
-                  });
-                  // Add 'active' class to the current item
-                  document.querySelector(`.item${i}`)?.classList.add("active");
-                }}
-                onClick={() => {
-                  // Remove 'active' and 'selected' classes from all items on click
-                  document.querySelectorAll(".item").forEach((e) => {
-                    e.classList.remove("active");
-                    e.classList.remove("selected");
-                  });
-                  // Add 'active' and 'selected' classes to the current item
-                  document.querySelector(`.item${i}`)?.classList.add("active");
-                  document
-                    .querySelector(`.item${i}`)
-                    ?.classList.add("selected");
-                }}
-              >
-                {e}
-              </CustomCheckBoxText>
-            ))}
-          </div>
-
-          {/* Slider container */}
-          <div>
-            <div className={`${styles.slider} slider`}>
-              {/* Mapping through slides to create individual slide items */}
-              {slides.map((e, i) => (
-                <div
-                  key={i} // Unique key for each item
-                  className={`item${i} ${styles.item} item ${
-                    // Conditional classes based on the position of the slide
-                    i == slides.length / 2 - 1 ||
-                    i == slides.length / 2 + 0.5 - 1
-                      ? `active ${styles.right}`
-                      : i > (slides.length - 1) / 2
-                      ? styles.right
-                      : styles.left
-                  }`}
+        <div className=" flex items-center justify-between pl-[4.021vw] pr-[1vw] w-full gap-[20vw]">
+            <div className={`${styles.btns} flex flex-col gap-[1.041vw]`}>
+              {/* Iterate over options array and create CustomCheckBoxText components */}
+              {options.map((e, i) => (
+                <CustomCheckBoxText
+                  btnSize="xl"
+                  inputType="radio"
+                  name="type"
+                  // Mouse move event to highlight the hovered item
+                  onMouseOver={() => {
+                    if (swiperRef.current) {
+                      swiperRef.current.slideTo(i); // Slide index is 0-based
+                    }
+                  }}
+                  onClick={() => {
+                    document.querySelectorAll("img.slide").forEach((e) => {
+                      e.classList.remove("selected");
+                    });
+                    document
+                      .querySelector(`.slide${i}`)
+                      ?.classList.add("selected");
+                  }}
                 >
-                  <h1>{e.head}</h1> 
-                  {e.content} 
-                </div>
+                  {e}
+                </CustomCheckBoxText>
               ))}
             </div>
+            <Swiper
+              onSwiper={(swiper) => {
+                swiperRef.current = swiper;
+              }}
+              speed={500}
+              initialSlide={2}
+              effect={"coverflow"}
+              grabCursor={true}
+              centeredSlides={true}
+              slidesPerView={"auto"}
+              loop={false}
+              coverflowEffect={{
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+              }}
+              pagination={true}
+              // modules={[EffectCoverflow, Pagination]}
+              className="mySwiper"
+            >
+              {slides.map((e, i) => (
+                <SwiperSlide key={i}>
+                  <img src={e} className={`slide slide${i} `} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
-        </div>
       </div>
     </div>
     </NextPrevNav>
