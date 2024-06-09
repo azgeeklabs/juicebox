@@ -71,3 +71,7 @@
 .service_phases > div > div > p:last-child {
   font-weight: 400;
 }
+
+.progress_text {
+  font-size: clamp(10px, calc(0.5vw + 0.1rem), 100px) !important;
+}
