@@ -102,7 +102,7 @@ const svg = (
 
 export default function page() {
   return (
-    <div className="flex gap-[1vw]">
+    <div className="flex h-full gap-[1vw]">
       <div className="w-2/3 flex flex-col gap-[1vw]">
         <div className={styles.card}>
           <div className={styles.header}>
@@ -284,6 +284,11 @@ export default function page() {
                 <CongratulationMessage icon={svg} />
               ))}
             </div>
+          </div>
+        </div>
+        <div className={`w-full grow ${styles.card}`}>
+          <div className={styles.header}>
+            <h6>Today's Tasks</h6>
           </div>
         </div>
       </div>
