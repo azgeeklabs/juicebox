@@ -45,7 +45,7 @@ export default function page() {
       nextLink="/services/web-design/custom-ecommerce"
     >
       {/* // Main container div with full height, flexbox layout, and content vertically and horizontally centered */}
-      <div className="flex flex-col justify-between h-full">
+      <div className="flex flex-col justify-center h-full">
         {/* // Inner container with full width and custom styles for adding to the video section */}
         <div className={`${styles.websiteStyle} w-full `}>
           {/* // Header section with padding top, left padding, and bottom margin */}
