@@ -1,16 +1,18 @@
-
+.percent svg {
+  height: 100px;
+}
 .percent svg circle {
-    stroke-width: 10px;
-    stroke: black;
-    fill: none;
-stroke-dasharray: 440;
-stroke-dashoffset: 440;
+  stroke-width: 10px;
+  stroke: black;
+  fill: none;
+  stroke-dasharray: 440;
+  stroke-dashoffset: 440;
 }
 .percent svg circle:nth-child(1) {
-    stroke-dashoffset: 0;
-    stroke: #3f3f3f;
+  stroke-dashoffset: 0;
+  stroke: #3f3f3f;
 }
 .percent svg circle:nth-child(2) {
-    stroke-dashoffset: 340;
-    stroke: #F8F24B;
+  stroke-dashoffset: 360;
+  stroke: #f8f24b;
 }

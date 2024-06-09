@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Children } from "react";
 import styles from "./serviceCard.module.css";
 import Link from "next/link";
 
@@ -23,11 +23,20 @@ const ServiceCard = (props: Iprops) => {
             <span>{props.phase || "Phase"}</span>
           </div>
           <div
-            className={`text-center flex items-center justify-center px-[0.8vw]`}
+            className={`text-center flex items-center justify-center px-[0.8vw] ${styles.card}`}
           >
             <h6>{props.timeleft || "Timeleft"}</h6>
           </div>
-          {props.children}
+          {Children.map(props.children, (child) => {
+            return (
+              <div
+                className={`${styles.card} text-center flex items-center justify-center px-[0.8vw]`}
+              >
+                {child}
+              </div>
+            );
+          })}
+
           {/* <div
           className={`${styles.card} text-center flex items-center justify-center px-[0.8vw]`}
         >

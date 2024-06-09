@@ -3,11 +3,13 @@ import React from "react";
 import styles from "./dashboard.module.css";
 import CustomCheckBoxText from "../_components/customCheckBox/CustomCheckBoxText";
 import CustomCheckBox from "../_components/customCheckBox/CustomCheckBox";
+import ServiceCard from "../_components/serviceCard/ServiceCard";
+import CircularProgressBar from "../_components/progressBar/CircularProgressBar";
 
 export default function page() {
   return (
     <div className="flex gap-[1vw]">
-      <div className="w-2/3">
+      <div className="w-2/3 flex flex-col gap-[1vw]">
         <div className={styles.card}>
           <div className={styles.header}>
             <h6>Application Design </h6>
@@ -63,6 +65,30 @@ export default function page() {
                   <label>Prototyping</label>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+        <div className="w-full flex gap-[1vw]">
+          <div className={`w-1/2 ${styles.card}`}>
+            <div className={styles.header}>
+              <h6>On Going Projects</h6>
+            </div>
+            <div>
+              <ServiceCard
+                title="Web Design"
+                phase="Ideation Phase"
+                timeleft="26 Days Left"
+              >
+                <div className="flex items-center gap-[0.5vw]">
+                  <h6>83% Progress</h6>
+                  {/* <CircularProgressBar /> */}
+                </div>
+              </ServiceCard>
+            </div>
+          </div>
+          <div className={`w-1/2 ${styles.card}`}>
+            <div className={styles.header}>
+              <h6>This Week Deliverables</h6>
             </div>
           </div>
         </div>
