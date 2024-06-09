@@ -54,7 +54,7 @@ function NextPrevNav({
         {(nextLink || nextOnClick) && (
           <Link
             href={nextLink || ""}
-            className="bg-[#F8F24B] px-[2vw] py-[0.5vw] font-semibold rounded-[41.03px] text-[var(--primary-black)] cursor-pointer float-end"
+            className="bg-[var(--highlight-yellow)] px-[2vw] py-[0.5vw] font-semibold rounded-[41.03px] text-[var(--primary-black)] cursor-pointer float-end"
             onClick={nextOnClick}
           >
             {/* Default text for the "Next" button */}

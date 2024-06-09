@@ -3,6 +3,7 @@ import classNames from "classnames";
 import styles from "./application-design-service.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const gameSVG = (
   <svg viewBox="0 0 150 118" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1416,6 +1417,7 @@ function page() {
               <div className="flex items-center justify-center relative">
                 <img
                   src="/assets/application-design-service-gamecard.gif"
+                  alt="/assets/application-design-service-gamecard.gif"
                   className="w-full"
                 />
                 {gameSVG}
@@ -1432,6 +1434,7 @@ function page() {
               <div className="flex items-center justify-center relative">
                 <img
                   src="/assets/application-design-service-applicationcard.gif"
+                  alt="/assets/application-design-service-applicationcard.gif"
                   className="w-full"
                 />
                 {appSVG}

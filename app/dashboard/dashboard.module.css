@@ -15,7 +15,7 @@
 .card .header h6 {
   font-size: clamp(10px, calc(1.2vw + 0.1rem), 100px);
   font-weight: 700;
-  color: var(--highlight-yellow);
+  color: #f8f24b;
 }
 
 .card .header span {
@@ -29,7 +29,7 @@
   -moz-border-radius: clamp(10px, calc(1.5vw + 0.1rem), 100px);
   -ms-border-radius: clamp(10px, calc(1.5vw + 0.1rem), 100px);
   -o-border-radius: clamp(10px, calc(1.5vw + 0.1rem), 100px);
-  background: var(--highlight-yellow);
+  background: #f8f24b;
   font-weight: 600;
 }
 

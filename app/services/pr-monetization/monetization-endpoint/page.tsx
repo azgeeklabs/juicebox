@@ -70,7 +70,7 @@ const page = () => {
         {/* Link for completing the process, styled with background color, text color, padding, rounded corners, and font weight */}
         <Link
           href={"/services"}
-          className="bg-[#F8F24B] text-black px-[2vw] py-[0.5vw] w-fit rounded-[41.03px] font-bold"
+          className="bg-[var(--highlight-yellow)] text-black px-[2vw] py-[0.5vw] w-fit rounded-[41.03px] font-bold"
         >
           All Done
         </Link>

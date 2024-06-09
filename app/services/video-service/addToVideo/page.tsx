@@ -101,7 +101,7 @@ export default function page() {
               <div className={`${styles.slider} slider`}>
                 {/* // Mapping through slides array to create Image components */}
                 {slides.map((e, i) => (
-                  <Image
+                  <img
                     src={e.content} // Image source from slides array
                     alt="" // Alternative text for the image
                     width={100} // Width of the image
@@ -115,7 +115,7 @@ export default function page() {
                         ? styles.right
                         : styles.left
                     }`}
-                  ></Image>
+                  />
                 ))}
               </div>
             </div>

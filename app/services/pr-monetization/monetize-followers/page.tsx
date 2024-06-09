@@ -51,7 +51,7 @@ const page = () => {
   {/* Link for proceeding to the next step, styled with background color, text color, padding, rounded corners, and font weight */}
   <Link
     href={"/services/pr-monetization/monetization-endpoint"}
-    className="bg-[#F8F24B] text-black px-[2vw] py-[0.5vw] w-fit rounded-[41.03px] font-semibold"
+    className="bg-[var(--highlight-yellow)] text-black px-[2vw] py-[0.5vw] w-fit rounded-[41.03px] font-semibold"
   >
     Next
   </Link>

@@ -82,7 +82,7 @@ const page = () => {
                   borderRadius: "clamp(4px,calc(0.653vw + 0.1rem), 100px)",
                 }}
               >
-                <Image src={e.img} alt="" width={100} height={100} />
+                <img src={e.img} alt="" width={100} height={100} />
               </div>
               
               {/* Platform title button with styles */}

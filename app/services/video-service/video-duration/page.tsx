@@ -27,7 +27,7 @@ const page = () => {
         <div className="rounded-[142px] bg-[#484848] w-[80%] h-[1.4vw] mx-auto relative mb-[1.5vw]">
           {/* Absolute positioned duration indicator with custom styles */}
           <div
-            className={`${styles.durationIndicator} absolute left-0 top-1/2 -translate-y-1/2 w-[10%] h-[140%] bg-black border-4 rounded-[35px] border-[#F8F24B] flex justify-center items-center cursor-pointer`}
+            className={`${styles.durationIndicator} absolute left-0 top-1/2 -translate-y-1/2 w-[10%] h-[140%] bg-black border-4 rounded-[35px] border-[var(--highlight-yellow)] flex justify-center items-center cursor-pointer`}
           >
             0 mins 00 Secs
           </div>

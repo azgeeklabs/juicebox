@@ -61,7 +61,7 @@
   }
   
   .card:has(input:checked) {
-    background-color: var(--highlight-yellow);
+    background-color: #f8f24b;
     color: var(--primary-black);
   }
   
