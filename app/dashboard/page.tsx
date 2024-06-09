@@ -212,7 +212,7 @@ export default function page() {
                 styles.on_going_projects_card_body
               )}
             >
-              {Array.from({ length: 3 }).map((_, i) => (
+              {Array.from({ length: 5 }).map((_, i) => (
                 <ServiceCard
                   title="Web Design"
                   phase="Ideation Phase"
@@ -338,7 +338,7 @@ export default function page() {
                 styles.this_week_deliverables_card_body
               )}
             >
-              {Array.from({ length: 3 }).map((_, i) => (
+              {Array.from({ length: 5 }).map((_, i) => (
                 <CongratulationMessage icon={svg} />
               ))}
             </div>
@@ -391,6 +391,8 @@ export default function page() {
               )}
             >
               {/* Task */}
+              <Task />
+              <Task />
               <Task />
               <Task />
               <Task />

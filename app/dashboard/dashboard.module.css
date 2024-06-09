@@ -89,19 +89,10 @@
 }
 
 .on_going_projects_card_body::-webkit-scrollbar {
-  width: 1px;
+  width: 0px;
+  display: none;
 }
 
-/* Track */
-.on_going_projects_card_body::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-/* Handle */
-.on_going_projects_card_body::-webkit-scrollbar-thumb {
-  background: #b1b1b1;
-  border-radius: 20px;
-}
 /* ===== End On Going Projects Card ===== */
 
 /* ===== Start This Week Deliverables Card ===== */
@@ -113,16 +104,8 @@
   overflow-y: auto;
 }
 .this_week_deliverables_card_body::-webkit-scrollbar {
-  width: 1px;
-}
-/* Track */
-.this_week_deliverables_card_body::-webkit-scrollbar-track {
-  background: transparent;
-}
-/* Handle */
-.this_week_deliverables_card_body::-webkit-scrollbar-thumb {
-  background: #b1b1b1;
-  border-radius: 20px;
+  width: 0px;
+  display: none;
 }
 /* ===== End This Week Deliverables Card ===== */
 
@@ -143,16 +126,9 @@
 }
 
 .today_tasks_card_body_tasks::-webkit-scrollbar {
-  width: 1px;
+  width: 0px;
+  display: none;
 }
-/* Track */
-.today_tasks_card_body_tasks::-webkit-scrollbar-track {
-  background: transparent;
-}
-/* Handle */
-.today_tasks_card_body_tasks::-webkit-scrollbar-thumb {
-  background: #b1b1b1;
-  border-radius: 20px;
-}
+
 /* ===== End Today's Tasks Card ===== */
 
