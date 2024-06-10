@@ -381,62 +381,6 @@ export default function page() {
         </div>
         {/* ===== End On Going Projects & This Week Deliverables Card ===== */}
 
-        {/* ===== Start Today's Tasks Card ===== */}
-        <div
-          className={classNames(
-            "w-full grow",
-            styles.card,
-            styles.today_tasks_card
-          )}
-        >
-          <div className={styles.header}>
-            <h6>Today's Tasks</h6>
-          </div>
-          <div
-            className={classNames(
-              styles.today_tasks_card_body,
-              "flex flex-col gap-[0.7vw]"
-            )}
-          >
-            {/* Tabs */}
-            <div className={styles.today_tasks_card_body_tabs}>
-              {["All Tasks", "Important  (11)", "Notes", "Links  (1)"].map(
-                (tab, i) => (
-                  <div
-                    key={i}
-                    className={styles.today_tasks_card_body_tabs_tab}
-                  >
-                    <CustomCheckBoxText
-                      btnSize="sm"
-                      inputType="radio"
-                      name="task_tab"
-                    >
-                      {tab}
-                    </CustomCheckBoxText>
-                  </div>
-                )
-              )}
-            </div>
-            {/* Tasks */}
-            <div
-              className={classNames(
-                styles.today_tasks_card_body_tasks,
-                "space-y-4"
-              )}
-            >
-              {/* Task */}
-              <Task />
-              <Task />
-              <Task />
-              <Task />
-              <Task />
-              <Task />
-              <Task />
-              <Task />
-            </div>
-          </div>
-        </div>
-        {/* ===== End Today's Tasks Card ===== */}
       </div>
       {/* ===== End Left Side ===== */}
 
@@ -459,9 +403,7 @@ export default function page() {
             <div className={styles.up_coming_meetings}>
               <div className="flex justify-between items-center">
                 <div className="flex flex-col gap-2">
-                  <span className=" text-[#F8F24B]">
-                    Sunday. Feb 9th
-                  </span>
+                  <span className=" text-[#F8F24B]">Sunday. Feb 9th</span>
                   <span className="">9:30 AM</span>
                 </div>
 
@@ -473,9 +415,7 @@ export default function page() {
             <div className={styles.up_coming_meetings}>
               <div className="flex justify-between items-center">
                 <div className="flex flex-col gap-2">
-                  <span className=" text-[#F8F24B]">
-                    Sunday. Feb 9th
-                  </span>
+                  <span className=" text-[#F8F24B]">Sunday. Feb 9th</span>
                   <span className="">9:30 AM</span>
                 </div>
 
@@ -487,9 +427,7 @@ export default function page() {
             <div className={styles.up_coming_meetings}>
               <div className="flex justify-between items-center">
                 <div className="flex flex-col gap-2">
-                  <span className=" text-[#F8F24B]">
-                    Sunday. Feb 9th
-                  </span>
+                  <span className=" text-[#F8F24B]">Sunday. Feb 9th</span>
                   <span className="">9:30 AM</span>
                 </div>
 

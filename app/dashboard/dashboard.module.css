@@ -109,28 +109,6 @@
 }
 /* ===== End This Week Deliverables Card ===== */
 
-/* ===== Start Today's Tasks Card ===== */
-.today_tasks_card_body_tabs {
-  display: flex;
-  align-items: center;
-  gap: clamp(10px, calc(0.6vw + 0.1rem), 100px);
-}
-
-.today_tasks_card_body_tabs_tab > div > div {
-  padding: 6px 20px;
-}
-
-.today_tasks_card_body_tasks {
-  height: 20vh;
-  overflow-y: auto;
-}
-
-.today_tasks_card_body_tasks::-webkit-scrollbar {
-  width: 0px;
-  display: none;
-}
-
-/* ===== End Today's Tasks Card ===== */
 .up_coming_meetings > div > div:first-child span {
   font-size: clamp(13px, calc(0.625vw + 0.1rem), 100px);
 }
