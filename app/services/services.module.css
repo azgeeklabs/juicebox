@@ -13,7 +13,7 @@
 }
 
 .filterTabs > div {
-  gap: clamp(16px, calc(0.75vw + 0.1rem), 100px);
+  gap: clamp(16px, calc(0.75vw + 0.1rem), 1000px);
 }
 
 .filterTabs > div > div > div {
@@ -26,7 +26,7 @@
 
 /* ===== Start Search & Advanced Filters ===== */
 .searchAndFilter {
-  margin-top: clamp(16px, calc(0.75vw + 0.1rem), 100px);
+  margin-top: clamp(16px, calc(0.75vw + 0.1rem), 1000px);
   margin-bottom: clamp(16px, calc(0.75vw + 0.1rem), 100px);
 }
 .searchAndFilter input {
