@@ -9,8 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/material": "^5.15.19",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.18",
+    "@mui/x-date-pickers": "^7.6.2",
     "classnames": "^2.5.1",
     "clsx": "^2.1.1",
+    "dayjs": "^1.11.11",
     "framer-motion": "^11.2.10",
     "next": "14.2.3",
     "react": "^18",
