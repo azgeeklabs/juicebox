@@ -1,7 +1,7 @@
 /* ===== Start Table Container ===== */
 .tableContainer {
   overflow: hidden;
-  height: 27vh;
+  height: 14vh;
 }
 
 /* ===== Start Table ===== */
@@ -39,6 +39,7 @@
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  height: 15vh;
 }
 
 .table .table_body::-webkit-scrollbar {

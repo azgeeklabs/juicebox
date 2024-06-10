@@ -444,9 +444,6 @@ export default function page() {
       <div className="w-1/3 flex flex-col gap-[1vw]">
         {/* ===== Start Calendar & Up Coming Meetings Card ===== */}
         <div className={styles.card}>
-          <div className={styles.header}>
-            {/* <h6>Application Design</h6> */}
-          </div>
           <div className={styles.body}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DateCalendar
@@ -508,7 +505,6 @@ export default function page() {
             <h6>Client Approval</h6>
           </div>
           <div className={styles.body}>
-            <span className="font-semibold">Up Coming Meetings</span>
             <ClientApprovalTable />
           </div>
         </div>
