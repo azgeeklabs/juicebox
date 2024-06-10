@@ -24,6 +24,9 @@ body {
   color: var(--white);
   font-family: "Barlow", sans-serif;
 }
+body * {
+  font-size: clamp(16px, calc(0.7vw + 0.1rem), 1000px);
+}
 * {
   line-height: normal;
 }
@@ -233,9 +236,9 @@ body {
   color: #f8f24b;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   width: 100%;
-  font-size: clamp(7px,calc(0.6vw + 0.1rem), 70px);
+  font-size: clamp(7px, calc(0.6vw + 0.1rem), 70px);
   text-align: center;
   white-space: nowrap;
 }
