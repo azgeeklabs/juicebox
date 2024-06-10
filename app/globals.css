@@ -137,7 +137,7 @@ body {
   font-size: clamp(10px, calc(0.8vw + 0.1rem), 60px);
   font-weight: 700;
 }
-.css-9reuh9-MuiPickersArrowSwitcher-root{
+.css-9reuh9-MuiPickersArrowSwitcher-root {
   background-color: #272727;
   padding: 2px;
   border-radius: 22px;
@@ -158,8 +158,10 @@ body {
   width: clamp(16px, calc(1vw + 0.1rem), 80px);
   height: clamp(16px, calc(1vw + 0.1rem), 80px);
 }
-.css-1nkg345-MuiButtonBase-root-MuiIconButton-root-MuiPickersArrowSwitcher-button:hover svg,
-.css-kg9q0s-MuiButtonBase-root-MuiIconButton-root-MuiPickersArrowSwitcher-button:hover svg {
+.css-1nkg345-MuiButtonBase-root-MuiIconButton-root-MuiPickersArrowSwitcher-button:hover
+  path,
+.css-kg9q0s-MuiButtonBase-root-MuiIconButton-root-MuiPickersArrowSwitcher-button:hover
+  path {
   /* background-color: red; */
   fill: #f8f24b;
   /* color: var(--white); */
@@ -199,5 +201,9 @@ body {
 .css-23p0if-MuiButtonBase-root-MuiPickersDay-root {
   background-color: rgb(248, 242, 75, 0.5) !important;
   color: var(--primary-black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1/1;
 }
 /* ===== End Calender ===== */
