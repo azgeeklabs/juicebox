@@ -11,9 +11,9 @@ const page = () => {
       {/* Inner container for the video script section with custom styles */}
       <div className={`${styles.videoScript} w-full`}>
         {/* Text center alignment and margin bottom */}
-        <div className=" text-center mx-auto mb-[2.271vw]">
+        <div className=" text-center mx-auto mb-[4.037vh]">
           {/* Main heading with margin bottom and embedded horizontal rule */}
-          <h2 className=" mb-[1.5vw]">
+          <h2 className=" mb-[2.667vh]">
             Do you already have a script for this video, or would
             <hr className=" border-0" />
             you like us to create one for you?

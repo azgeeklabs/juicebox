@@ -12,9 +12,9 @@ const page = () => {
       {/* Inner container with full width and custom styles for footage editing section */}
       <div className={`${styles.footageEdit} w-full `}>
         {/* Header section with text centered, auto margins for horizontal centering, and vertical margins */}
-        <div className="text-center mx-auto mb-[3vw] mt-14">
+        <div className="text-center mx-auto mb-[5.333vh] mt-14">
           {/* Main heading with bottom margin */}
-          <h2 className="mb-[1.5vw]">
+          <h2 className="mb-[2.667vh]">
             Do you have footage that you want us to edit?
           </h2>
 
@@ -31,16 +31,16 @@ const page = () => {
         {/* Container for upload input and button with auto margins for horizontal centering and fit width */}
         <div className="mx-auto w-fit">
           {/* Upload input and button container with flexbox layout, gap, and bottom margin */}
-          <div className="flex gap-[1vw] items-start mb-[1.5vw]">
+          <div className="flex gap-[1vw] items-start mb-[2.667vh]">
             {/* Input field for uploading footage with full height, bottom margin, specific width, background color, outline removal, rounded corners, padding, and placeholder styling */}
             <input
               type="text"
               placeholder="Upload Footage"
-              className="h-full mb-[1vw] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[71px] px-[1.088vw] py-[0.5vw] placeholder:text-[#FFFFFF80]"
+              className="h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[71px] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFF80]"
             />
 
             {/* Button for uploading footage with background color, padding, text color, and rounded corners */}
-            <button className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.4vw] text-black rounded-[33px]">
+            <button className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.711vh] text-black rounded-[33px]">
               Upload Footage
             </button>
           </div>
@@ -48,7 +48,7 @@ const page = () => {
           {/* Link for deferring the upload with underline, block display, fit width, auto margins for horizontal centering, padding, hover background color, rounded corners, and transition effect */}
           <Link
             href={""}
-            className="underline block w-fit mx-auto px-[0.52vw] py-[0.3vw] hover:bg-[#484848] rounded-[32px] transition-all duration-200"
+            className="underline block w-fit mx-auto px-[0.52vw] py-[0.533vh] hover:bg-[#484848] rounded-[32px] transition-all duration-200"
           >
             I’ll do this later
           </Link>

@@ -6,13 +6,13 @@ import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 const page = () => {
   return (
     // Main outer container div
-    <NextPrevNav nextLink="/services/video-service/choose-kind" backLink="/services/video-service/video-channel"><div className=" h-full flex items-center justify-center">
+    <NextPrevNav nextLink="/services/video-service/choose-kind" backLink="/services/video-service/youtube-channel"><div className=" h-full flex items-center justify-center">
     {/* Inner container with full width, custom video style styles, and top padding */}
     <div className={`${styles.videoStyle} w-full`}>
       {/* Header section with centered text, auto margins for centering, and bottom margin */}
-      <div className="text-center mx-auto mb-[2.271vw]">
+      <div className="text-center mx-auto mb-[4.037vh]">
         {/* Main heading with bottom margin */}
-        <h2 className="mb-[1.5vw]">
+        <h2 className="mb-[2.667vh]">
           Would you like this video to match the style of the videos
           <hr className="border-0" /> you've already published on your
           channel?
