@@ -7,6 +7,7 @@
 
 /* ===== Start Variables ===== */
 :root {
+  /* ===== Colors ===== */
   --highlight-yellow: #f8f24b;
   --primary-black: #1c1c1c;
   --dark-gray-1: #272727;
@@ -15,6 +16,54 @@
   --light-gray: #b1b1b1;
   --white: #ffffff;
   --transparent-yellow: #f8f24b1a;
+  /* ===== Values ===== */
+  --8px: clamp(8px, calc(0.35vw + 0.1rem), 1000px);
+  --9px: clamp(9px, calc(0.4vw + 0.1rem), 1000px);
+  --10px: clamp(10px, calc(0.45vw + 0.1rem), 1000px);
+  --11px: clamp(10px, calc(0.515vw + 0.1rem), 1000px);
+  --12px: clamp(10px, calc(0.56vw + 0.1rem), 1000px);
+  --13px: clamp(10px, calc(0.61vw + 0.1rem), 1000px);
+  --14px: clamp(10px, calc(0.66vw + 0.1rem), 1000px);
+  --15px: clamp(10px, calc(0.7vw + 0.1rem), 1000px);
+  --16px: clamp(10px, calc(0.75vw + 0.1rem), 1000px);
+  --17px: clamp(10px, calc(0.8vw + 0.1rem), 1000px);
+  --18px: clamp(10px, calc(0.85vw + 0.1rem), 1000px);
+  --19px: clamp(10px, calc(0.9vw + 0.1rem), 1000px);
+  --20px: clamp(10px, calc(0.94vw + 0.1rem), 1000px);
+  --21px: clamp(10px, calc(0.99vw + 0.1rem), 1000px);
+  --22px: clamp(10px, calc(1.035vw + 0.1rem), 1000px);
+  --23px: clamp(10px, calc(1.085vw + 0.1rem), 1000px);
+  --24px: clamp(10px, calc(1.13vw + 0.1rem), 1000px);
+  --25px: clamp(10px, calc(1.18vw + 0.1rem), 1000px);
+  --26px: clamp(10px, calc(1.225vw + 0.1rem), 1000px);
+  --27px: clamp(10px, calc(1.27vw + 0.1rem), 1000px);
+  --28px: clamp(10px, calc(1.32vw + 0.1rem), 1000px);
+  --29px: clamp(10px, calc(1.37vw + 0.1rem), 1000px);
+  --30px: clamp(10px, calc(1.415vw + 0.1rem), 1000px);
+  --31px: clamp(10px, calc(1.46vw + 0.1rem), 1000px);
+  --32px: clamp(10px, calc(1.51vw + 0.1rem), 1000px);
+  --33px: clamp(10px, calc(1.555vw + 0.1rem), 1000px);
+  --34px: clamp(10px, calc(1.605vw + 0.1rem), 1000px);
+  --35px: clamp(10px, calc(1.65vw + 0.1rem), 1000px);
+  --36px: clamp(10px, calc(1.7vw + 0.1rem), 1000px);
+  --37px: clamp(10px, calc(1.75vw + 0.1rem), 1000px);
+  --38px: clamp(10px, calc(1.8vw + 0.1rem), 1000px);
+  --39px: clamp(10px, calc(1.85vw + 0.1rem), 1000px);
+  --40px: clamp(10px, calc(1.89vw + 0.1rem), 1000px);
+  --41px: clamp(10px, calc(1.94vw + 0.1rem), 1000px);
+  --42px: clamp(10px, calc(1.99vw + 0.1rem), 1000px);
+  --43px: clamp(10px, calc(2.04vw + 0.1rem), 1000px);
+  --44px: clamp(10px, calc(2.09vw + 0.1rem), 1000px);
+  --45px: clamp(10px, calc(2.13vw + 0.1rem), 1000px);
+  --46px: clamp(10px, calc(2.18vw + 0.1rem), 1000px);
+  --47px: clamp(10px, calc(2.23vw + 0.1rem), 1000px);
+  --48px: clamp(10px, calc(2.27vw + 0.1rem), 1000px);
+  --49px: clamp(10px, calc(2.325vw + 0.1rem), 1000px);
+  --50px: clamp(10px, calc(2.375vw + 0.1rem), 1000px);
+  --51px: clamp(10px, calc(2.425vw + 0.1rem), 1000px);
+
+  /* Vertical Spacings */
+  --sy-1px: clamp(1px, calc(1.95vh + 0.1rem), 1000px);
 }
 /* ===== End Variables ===== */
 
@@ -26,7 +75,7 @@ body {
 }
 * {
   line-height: normal;
-  font-size: clamp(16px, calc(0.7vw + 0.1rem), 1000px);
+  font-size: var(--16px);
 }
 /* ===== End Global ===== */
 
