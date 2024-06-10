@@ -188,7 +188,7 @@ body {
   color: #f36f24;
 }
 .css-dplwbx-MuiPickersCalendarHeader-label {
-  font-size: 24px;
+  font-size: clamp(16px, calc(1.17vw + 0.1rem), 100px);
   font-weight: 700;
   color: #f8f24b;
 }
