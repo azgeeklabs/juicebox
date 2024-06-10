@@ -445,21 +445,24 @@ export default function page() {
         {/* ===== Start Calendar & Up Coming Meetings Card ===== */}
         <div className={styles.card}>
           <div className={styles.body}>
+            {/* ===== Start Calendar ===== */}
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DateCalendar
                 slots={{ rightArrowIcon: RightArrow, leftArrowIcon: LeftArrow }}
                 dayOfWeekFormatter={(weekday) => `${weekday.format("ddd")}`}
               />
             </LocalizationProvider>
+            {/* ===== End Calendar ===== */}
 
+            {/* ===== Start Up Coming Meetings ===== */}
             <span className="font-semibold">Up Coming Meetings</span>
-            <div>
+            <div className={styles.up_coming_meetings}>
               <div className="flex justify-between items-center">
                 <div className="flex flex-col gap-2">
-                  <span className="text-[13.66px] text-[#F8F24B]">
+                  <span className=" text-[#F8F24B]">
                     Sunday. Feb 9th
                   </span>
-                  <span className="text-[13.66px]">9:30 AM</span>
+                  <span className="">9:30 AM</span>
                 </div>
 
                 <div className="flex items-center justify-center pr-[1vw]">
@@ -467,13 +470,13 @@ export default function page() {
                 </div>
               </div>
             </div>
-            <div>
+            <div className={styles.up_coming_meetings}>
               <div className="flex justify-between items-center">
                 <div className="flex flex-col gap-2">
-                  <span className="text-[13.66px] text-[#F8F24B]">
+                  <span className=" text-[#F8F24B]">
                     Sunday. Feb 9th
                   </span>
-                  <span className="text-[13.66px]">9:30 AM</span>
+                  <span className="">9:30 AM</span>
                 </div>
 
                 <div className="flex items-center justify-center pr-[1vw]">
@@ -481,13 +484,13 @@ export default function page() {
                 </div>
               </div>
             </div>
-            <div>
+            <div className={styles.up_coming_meetings}>
               <div className="flex justify-between items-center">
                 <div className="flex flex-col gap-2">
-                  <span className="text-[13.66px] text-[#F8F24B]">
+                  <span className=" text-[#F8F24B]">
                     Sunday. Feb 9th
                   </span>
-                  <span className="text-[13.66px]">9:30 AM</span>
+                  <span className="">9:30 AM</span>
                 </div>
 
                 <div className="flex items-center justify-center pr-[1vw]">
@@ -495,6 +498,7 @@ export default function page() {
                 </div>
               </div>
             </div>
+            {/* ===== End Up Coming Meetings ===== */}
           </div>
         </div>
         {/* ===== End Calendar & Up Coming Meetings Card ===== */}
