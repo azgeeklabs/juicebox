@@ -13,6 +13,11 @@ import ClientApprovalTable from "../_components/dashboard/Client Approval/Client
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
+// import dynamic from "next/dynamic";
+
+// const LocalizationProvider = dynamic(() => import('@mui/x-date-pickers/LocalizationProvider'), { ssr: false })
+// const AdapterDayjs = dynamic(() => import('@mui/x-date-pickers/AdapterDayjs'), { ssr: false })
+// const DateCalendar = dynamic(() => import('@mui/x-date-pickers/DateCalendar'), { ssr: false })
 
 const svg = (
   <svg

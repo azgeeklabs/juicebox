@@ -211,17 +211,21 @@ body {
 }
 .css-1rtg91x-MuiDateCalendar-root {
   border: 1px solid transparent;
-  border-radius: clamp(10px, calc(0.5vw + 0.1rem), 60px);
-  height: 31vh;
+  border-radius: clamp(10px, calc(0.5vw + 0.1rem), 600px);
+  height: clamp(100px, calc(30vh + 0.1rem), 6000px);
   overflow-y: hidden;
   width: 100%;
   padding: 0;
   max-height: unset;
+  -webkit-border-radius: clamp(10px, calc(0.5vw + 0.1rem), 600px);
+  -moz-border-radius: clamp(10px, calc(0.5vw + 0.1rem), 600px);
+  -ms-border-radius: clamp(10px, calc(0.5vw + 0.1rem), 600px);
+  -o-border-radius: clamp(10px, calc(0.5vw + 0.1rem), 600px);
 }
 .css-1t0788u-MuiPickersSlideTransition-root-MuiDayCalendar-slideTransition {
   overflow-y: hidden;
-  height: 28vh;
-  height: 28vh;
+  height: clamp(100px, calc(30vh + 0.1rem), 6000px);
+
 }
 .css-dplwbx-MuiPickersCalendarHeader-label {
   font-size: clamp(10px, calc(0.8vw + 0.1rem), 60px);
@@ -261,7 +265,7 @@ body {
 .css-xb7uwb-MuiPickersArrowSwitcher-spacer {
   width: clamp(24px, calc(2vw + 0.1rem), 1400px);
 }
-.pagination_iconButton__7wOJj {
+.pagination_iconButton__7wOJj ,.css-1ayjnp4-MuiPickersDay-root {
   width: clamp(16px, calc(1.3vw + 0.1rem), 800px);
   height: clamp(16px, calc(1.3vw + 0.1rem), 800px);
 }
@@ -286,6 +290,7 @@ body {
   padding-left: 0;
   padding-right: 0;
   margin-top: 0;
+  max-height: unset;
 }
 
 .css-23p0if-MuiButtonBase-root-MuiPickersDay-root {
