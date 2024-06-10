@@ -17,6 +17,13 @@
   --white: #ffffff;
   --transparent-yellow: #f8f24b1a;
   /* ===== Values ===== */
+  --1px: clamp(1px, calc(0.013vw + 0.05rem), 1000px);
+  --2px: clamp(2px, calc(0.063vw + 0.05rem), 1000px);
+  --3px: clamp(3px, calc(0.115vw + 0.05rem), 1000px);
+  --4px: clamp(4px, calc(0.16vw + 0.05rem), 1000px);
+  --5px: clamp(5px, calc(0.22vw + 0.05rem), 1000px);
+  --6px: clamp(6px, calc(0.28vw + 0.05rem), 1000px);
+  --7px: clamp(7px, calc(0.31vw + 0.05rem), 1000px);
   --8px: clamp(8px, calc(0.35vw + 0.1rem), 1000px);
   --9px: clamp(9px, calc(0.4vw + 0.1rem), 1000px);
   --10px: clamp(10px, calc(0.45vw + 0.1rem), 1000px);
@@ -92,7 +99,10 @@
   --sy-27px: clamp(10px, calc(2.725vh + 0.1rem), 1000px);
   --sy-28px: clamp(10px, calc(2.835vh + 0.1rem), 1000px);
   --sy-29px: clamp(10px, calc(2.95vh + 0.1rem), 1000px);
-  --sy-30px: clamp(10px, calc(2.95vh + 0.1rem), 1000px);
+  --sy-30px: clamp(10px, calc(3.05vh + 0.1rem), 1000px);
+  --sy-31px: clamp(10px, calc(3.17vh + 0.1rem), 1000px);
+  --sy-32px: clamp(10px, calc(3.27vh + 0.1rem), 1000px);
+  --sy-33px: clamp(10px, calc(3.38vh + 0.1rem), 1000px);
 }
 /* ===== End Variables ===== */
 
