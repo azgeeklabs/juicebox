@@ -90,6 +90,9 @@
   --sy-25px: clamp(10px, calc(2.515vh + 0.1rem), 1000px);
   --sy-26px: clamp(10px, calc(2.625vh + 0.1rem), 1000px);
   --sy-27px: clamp(10px, calc(2.725vh + 0.1rem), 1000px);
+  --sy-28px: clamp(10px, calc(2.835vh + 0.1rem), 1000px);
+  --sy-29px: clamp(10px, calc(2.95vh + 0.1rem), 1000px);
+  --sy-30px: clamp(10px, calc(2.95vh + 0.1rem), 1000px);
 }
 /* ===== End Variables ===== */
 
