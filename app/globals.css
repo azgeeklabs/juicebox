@@ -124,7 +124,7 @@ body {
 }
 
 .pageWrapper {
-  width: calc(100% - clamp(3.5rem, calc(3.2vw + 0.1rem), 12.25rem));
+  width: calc(100% - clamp(0.5rem, calc(3.2vw + 0.1rem), 1000rem));
   padding-left: clamp(1rem, calc(1vw + 0.1rem), 1000px);
   display: flex;
   flex-direction: column;
@@ -132,7 +132,7 @@ body {
 }
 
 .pageWrapper.navOpened {
-  width: calc(100% - clamp(3.5rem, calc(10.35vw + 0.1rem), 102.25rem));
+  width: calc(100% - clamp(0.5rem, calc(10.35vw + 0.1rem), 1000rem));
 }
 
 .pageContent {
