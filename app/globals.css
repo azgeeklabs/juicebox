@@ -63,7 +63,33 @@
   --51px: clamp(10px, calc(2.425vw + 0.1rem), 1000px);
 
   /* Vertical Spacings */
-  --sy-1px: clamp(1px, calc(1.95vh + 0.1rem), 1000px);
+  --sy-1px: clamp(1px, calc(0.028vh + 0.05rem), 1000px);
+  --sy-2px: clamp(2px, calc(0.129vh + 0.05rem), 1000px);
+  --sy-3px: clamp(3px, calc(0.235vh + 0.05rem), 1000px);
+  --sy-4px: clamp(4px, calc(0.344vh + 0.05rem), 1000px);
+  --sy-5px: clamp(5px, calc(0.465vh + 0.05rem), 1000px);
+  --sy-6px: clamp(6px, calc(0.56vh + 0.05rem), 1000px);
+  --sy-7px: clamp(7px, calc(0.675vh + 0.05rem), 1000px);
+  --sy-8px: clamp(8px, calc(0.78vh + 0.05rem), 1000px);
+  --sy-9px: clamp(9px, calc(0.8vh + 0.1rem), 1000px);
+  --sy-10px: clamp(10px, calc(0.905vh + 0.1rem), 1000px);
+  --sy-11px: clamp(10px, calc(1.01vh + 0.1rem), 1000px);
+  --sy-12px: clamp(10px, calc(1.12vh + 0.1rem), 1000px);
+  --sy-13px: clamp(10px, calc(1.23vh + 0.1rem), 1000px);
+  --sy-14px: clamp(10px, calc(1.33vh + 0.1rem), 1000px);
+  --sy-15px: clamp(10px, calc(1.45vh + 0.1rem), 1000px);
+  --sy-16px: clamp(10px, calc(1.55vh + 0.1rem), 1000px);
+  --sy-17px: clamp(10px, calc(1.66vh + 0.1rem), 1000px);
+  --sy-18px: clamp(10px, calc(1.77vh + 0.1rem), 1000px);
+  --sy-19px: clamp(10px, calc(1.88vh + 0.1rem), 1000px);
+  --sy-20px: clamp(10px, calc(1.99vh + 0.1rem), 1000px);
+  --sy-21px: clamp(10px, calc(2.1vh + 0.1rem), 1000px);
+  --sy-22px: clamp(10px, calc(2.2vh + 0.1rem), 1000px);
+  --sy-23px: clamp(10px, calc(2.3vh + 0.1rem), 1000px);
+  --sy-24px: clamp(10px, calc(2.415vh + 0.1rem), 1000px);
+  --sy-25px: clamp(10px, calc(2.515vh + 0.1rem), 1000px);
+  --sy-26px: clamp(10px, calc(2.625vh + 0.1rem), 1000px);
+  --sy-27px: clamp(10px, calc(2.725vh + 0.1rem), 1000px);
 }
 /* ===== End Variables ===== */
 
