@@ -38,9 +38,9 @@ export default function page() {
         {/* // Inner container with full width and custom styles for adding to the video section */}
         <div className={`${styles.addToVideo} w-full `}>
           {/* // Header section with padding top, left padding, and bottom margin */}
-          <div className=" pl-[4.264vw] mb-[1.5vw]">
+          <div className=" pl-[4.264vw] mb-[2.667vh]">
             {/* // Main heading with bottom margin and embedded horizontal rules */}
-            <h2 className="mb-[1.041vw]">
+            <h2 className="mb-[1.851vh]">
               Would you like to include some add epic
               <hr className="border-0" />
               elements to your video?

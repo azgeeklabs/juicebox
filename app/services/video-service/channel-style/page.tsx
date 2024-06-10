@@ -36,9 +36,9 @@ export default function page() {
       {/* Inner container with full width and custom styles for channel style selection */}
       <div className={`${styles.channelStyle} w-full `}>
         {/* Header section with top padding, left padding, and bottom margin */}
-        <div className="pt-[1.5vw] pl-[4.264vw] mb-[1.5vw]">
+        <div className="pt-[2.667vh] pl-[4.264vw] mb-[2.667vh]">
           {/* Main heading with bottom margin and embedded horizontal rules */}
-          <h2 className="mb-[1.041vw]">
+          <h2 className="mb-[1.851vh]">
             Gotcha! <hr className="border-0" />
             We can match your channel's style exactly, or if you want to mix
             <hr className="border-0" /> things up, we have other YouTube video

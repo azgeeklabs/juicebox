@@ -33,7 +33,7 @@ const page = () => {
     toMinut(val)
     // setMinut(`${newValue}`)
 
-    
+  
   };
   useEffect(() => {
     const style = document.createElement("style");
@@ -43,6 +43,9 @@ const page = () => {
       0
     );
     // document.querySelector(".MuiSlider-thumb").sheet;
+    if (val == 0) {
+      toMinut(val)  
+    }
   }, [val]);
   return (
     <NextPrevNav
@@ -52,9 +55,9 @@ const page = () => {
       <div className=" flex justify-center items-center h-full w-full">
         <div className={`${styles.videoDuration} w-full`}>
           {/* Text center alignment and margin bottom */}
-          <div className="text-center mx-auto mb-[3vw]">
+          <div className="text-center mx-auto mb-[5.333vh]">
             {/* Main heading with margin bottom */}
-            <h2 className="mb-[1.5vw]">
+            <h2 className="mb-[2.667vh]">
               How long would you like the video to be?
             </h2>
 
@@ -81,7 +84,7 @@ const page = () => {
           {/* Link component for users who are not sure about the duration */}
           <Link
             href={""}
-            className="underline block w-fit mx-auto px-[0.52vw] py-[0.3vw] hover:bg-[#484848] rounded-[32px] transition-all duration-200 mt-[0.5vw]"
+            className="underline block w-fit mx-auto px-[0.52vw] py-[0.533vh] hover:bg-[#484848] rounded-[32px] transition-all duration-200 mt-[0.5vw]"
           >
             I’m not sure
           </Link>

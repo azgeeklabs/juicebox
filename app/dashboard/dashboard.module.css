@@ -110,6 +110,5 @@
 /* ===== End This Week Deliverables Card ===== */
 
 .up_coming_meetings > div > div:first-child span {
-  font-size: clamp(13px, calc(0.625vw + 0.1rem), 100px);
+  font-size: var(--14px);
 }
-

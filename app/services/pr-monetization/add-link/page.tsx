@@ -16,10 +16,10 @@ function page() {
   <div className={`${styles.addLinkEdit} w-full`}>
     
     {/* Header section with text centered, auto margins for horizontal centering, and vertical margins */}
-    <div className="text-center mx-auto mb-[2vw]">
+    <div className="text-center mx-auto mb-[3.556vh]">
       
       {/* Main heading with bottom margin */}
-      <h2 className="mb-[1.5vw]">Add a link to account</h2>
+      <h2 className="mb-[2.5vh]">Add a link to account</h2>
 
       {/* Subheading with text centered */}
       <h4 className="text-center">
@@ -31,22 +31,22 @@ function page() {
     <div className="mx-auto w-fit">
       
       {/* Subheading for input field */}
-      <h3 className="mb-[0.6vw]">
+      <h3 className="mb-[1.067vh]">
         Product Link <span>(if exists)</span>
       </h3>
       
       {/* Container for input field and button with flexbox layout, gap, and bottom margin */}
-      <div className="flex gap-[1vw] items-start mb-[1.5vw]">
+      <div className="flex gap-[1vw] items-start mb-[2.667vh]">
         
         {/* Input field with full height, bottom margin, specific width, background color, outline removal, rounded corners, padding, and placeholder styling */}
         <input
           type="text"
           placeholder="Product Name"
-          className="h-full mb-[1vw] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[71px] px-[1.088vw] py-[0.5vw] placeholder:text-[#FFFFFF80]"
+          className="h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[71px] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFF80]"
         />
 
         {/* Button with background color, padding, text color, and rounded corners */}
-        <button className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.4vw] text-black rounded-[33px]">
+        <button className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.711vh] text-black rounded-[33px]">
           Paste Link
         </button>
       </div>
@@ -61,7 +61,7 @@ function page() {
   <Link
     onClick={() => router.back()}
     href={""}
-    className="bg-[#484848] text-white px-[2vw] py-[0.5vw] w-fit rounded-[41.03px] font-semibold"
+    className="bg-[#484848] text-white px-[2vw] py-[0.889vh] w-fit rounded-[41.03px] font-semibold"
   >
     Back
   </Link>
@@ -69,7 +69,7 @@ function page() {
   {/* Next link with background color, text color, padding, fit width, rounded corners, and font styling */}
   <Link
     href={"/services/pr-monetization/monetize-needs"}
-    className="bg-[var(--highlight-yellow)] text-black px-[2vw] py-[0.5vw] w-fit rounded-[41.03px] font-semibold"
+    className="bg-[var(--highlight-yellow)] text-black px-[2vw] py-[0.889vh] w-fit rounded-[41.03px] font-semibold"
   >
     Next
   </Link>

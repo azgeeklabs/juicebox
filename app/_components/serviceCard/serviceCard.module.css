@@ -15,12 +15,12 @@
   color: #f8f24b;
   font-weight: 700;
   line-height: clamp(10px, calc(0.6vw + 0.1rem), 800px);
-  font-size: clamp(10px, calc(0.7vw + 0.1rem), 800px);
+  font-size: var(--14px);
 }
 .serviceCard span {
   font-weight: 500;
   line-height: clamp(10px, calc(0.4vw + 0.1rem), 80px);
-  font-size: clamp(10px, calc(0.4vw + 0.1rem), 80px);
+  font-size: var(--12px);
 }
 .serviceCard.active h3,
 .serviceCard.active span {
@@ -39,5 +39,5 @@
 .serviceCard h6 {
   font-weight: 500;
   line-height: clamp(10px, calc(0.6vw + 0.1rem), 800px);
-  font-size: clamp(10px, calc(0.7vw + 0.1rem), 800px);
+  font-size: var(--12px);
 }
