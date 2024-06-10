@@ -416,7 +416,7 @@ export default function page() {
           </div>
           <div className={styles.body}>
             <span className="font-semibold">Up Coming Meetings</span>
-            <div className="flex flex-col gap-[0.5vw]">
+            <div>
               <div className="flex justify-between items-center">
                 <div className="flex flex-col gap-2">
                   <span className="text-[13.66px] text-[#F8F24B]">
@@ -430,7 +430,7 @@ export default function page() {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col gap-[0.5vw]">
+            <div>
               <div className="flex justify-between items-center">
                 <div className="flex flex-col gap-2">
                   <span className="text-[13.66px] text-[#F8F24B]">
@@ -444,7 +444,7 @@ export default function page() {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col gap-[0.5vw]">
+            <div>
               <div className="flex justify-between items-center">
                 <div className="flex flex-col gap-2">
                   <span className="text-[13.66px] text-[#F8F24B]">
