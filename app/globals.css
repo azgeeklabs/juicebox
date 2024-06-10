@@ -213,14 +213,14 @@ body {
   /* box-shadow: 2px 2px 4px 3px #dfdfdf; */
   border: 1px solid transparent;
   border-radius: clamp(10px, calc(0.5vw + 0.1rem), 60px);
-  max-height: 30vh;
+  height: 30vh;
   overflow-y: hidden;
   width: 100%;
   padding: 0;
 }
 .css-1t0788u-MuiPickersSlideTransition-root-MuiDayCalendar-slideTransition {
   overflow-y: hidden;
-  max-height: 28vh;
+  height: 28vh;
 }
 .css-dplwbx-MuiPickersCalendarHeader-label {
   font-size: clamp(10px, calc(0.8vw + 0.1rem), 60px);
