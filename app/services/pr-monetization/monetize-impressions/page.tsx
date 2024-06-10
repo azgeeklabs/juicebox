@@ -16,9 +16,9 @@ const page = () => {
           {/* Nested div for content */}
           <div>
             {/* Text center alignment and margin bottom */}
-            <div className="text-center mx-auto mb-[1vw]">
+            <div className="text-center mx-auto mb-[1.778vh]">
               {/* Main heading with margin bottom and underlined text */}
-              <h2 className="mb-[1.5vw]">
+              <h2 className="mb-[2.667vh]">
                 To be monetized, You need <span>X</span> impressions more,<br />
                 and we will help you with that.
               </h2>
@@ -32,13 +32,13 @@ const page = () => {
         <Link
         onClick={()=>router.back()}
           href={""}
-          className=" bg-[#484848] text-white px-[2vw] py-[0.5vw] w-fit rounded-[41.03px] font-semibold"
+          className=" bg-[#484848] text-white px-[2vw] py-[0.889vh] w-fit rounded-[41.03px] font-semibold"
         >
           Back
         </Link>
         <Link
           href={"/services/pr-monetization/monetize-followers"}
-          className=" bg-[var(--highlight-yellow)] text-black px-[2vw] py-[0.5vw] w-fit rounded-[41.03px] font-semibold"
+          className=" bg-[var(--highlight-yellow)] text-black px-[2vw] py-[0.889vh] w-fit rounded-[41.03px] font-semibold"
         >
           Next
         </Link>

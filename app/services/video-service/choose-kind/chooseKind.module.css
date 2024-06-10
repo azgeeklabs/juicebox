@@ -16,7 +16,7 @@
     left: 50%;
     top: 0;
     color: black;
-    padding: 1vw;
+    padding: 1.778vh 1vw;
     overflow: hidden;
     z-index: 1;
     filter: blur(1px);
@@ -63,6 +63,6 @@
   .btns input + div {
     font-size: clamp(14px, calc(0.8vw + 0.1rem), 100px);
     font-weight: 700;
-    padding-top: 0.7vw;
-    padding-bottom: 0.7vw;
+    padding-top: 1.244vh;
+    padding-bottom: 1.244vh;
   }

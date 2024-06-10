@@ -9,6 +9,7 @@ import img3 from "../../../../public/assets/Frame 2.svg";
 import img4 from "../../../../public/assets/Frame 3.svg";
 import img5 from "../../../../public/assets/Frame 4.svg";
 import img6 from "../../../../public/assets/Frame 5.svg";
+import Image from "next/image";
 
 const page = () => {
   const [checked, setChecked] = useState(false);
@@ -82,17 +83,17 @@ const page = () => {
               
               {/* Platform image container with styles */}
               <div
-                className="mb-[1vw] py-[0.899vw] px-[1vw] bg-[#484848] mx-[0.615vw] h-[85%] transition-all duration-200"
+                className="mb-[1.778vh] py-[1.598vh] px-[1vw] bg-[#484848] mx-[0.615vw] h-[85%] transition-all duration-200"
                 style={{
                   borderRadius: "clamp(4px,calc(0.653vw + 0.1rem), 100px)",
                 }}
               >
-                <img src={e.img} alt="" width={100} height={100} />
+                <Image src={e.img} alt="" width={100} height={100} />
               </div>
               
               {/* Platform title button with styles */}
               <button
-                className="w-[100%] py-[0.4vw] block text-center bg-[#484848] transition-all duration-200"
+                className="w-[100%] py-[0.711vh] block text-center bg-[#484848] transition-all duration-200"
                 style={{
                   borderRadius: "clamp(4px,calc(1.742vw + 0.1rem), 100px)",
                 }}

@@ -18,9 +18,9 @@ const page = () => {
           {/* Nested div for content */}
           <div>
             {/* Text center alignment with auto horizontal margins and bottom margin */}
-            <div className="text-center mx-auto mb-[2.271vw]">
+            <div className="text-center mx-auto mb-[4.037vh]">
               {/* Main heading with bottom margin and underlined text */}
-              <h2 className="mb-[1.5vw]">
+              <h2 className="mb-[2.667vh]">
                 Based on everything you told us, the estimated
                 <br /> cost will be <span> $XXX </span> to get monetized.
               </h2>
@@ -28,7 +28,7 @@ const page = () => {
 
             {/* Container for buttons with flexbox layout, width fit, auto horizontal margins, and gap between buttons */}
             <div
-              className={`${styles.btns} flex w-fit mx-auto gap-[1.041vw] mb-[1.5vw]`}
+              className={`${styles.btns} flex w-fit mx-auto gap-[1.041vw] mb-[2.667vh]`}
             >
               {/* CustomCheckBoxText component for selecting "Let's get started" option */}
               <CustomCheckBoxText
@@ -50,7 +50,7 @@ const page = () => {
             </div>
 
             {/* Button for saving progress with various styling */}
-            <button className="block w-fit mx-auto px-[0.52vw] py-[0.3vw] hover:bg-[#484848] rounded-[32px] transition-all duration-200 underline">
+            <button className="block w-fit mx-auto px-[0.52vw] py-[0.533vh] hover:bg-[#484848] rounded-[32px] transition-all duration-200 underline">
               Save my Progress
             </button>
           </div>
@@ -62,7 +62,7 @@ const page = () => {
         {/* Link for going back, styled with background color, text color, padding, rounded corners, and font weight */}
         <button
           onClick={() => router.back()}
-          className="bg-[#484848] text-white px-[2vw] py-[0.5vw] w-fit rounded-[41.03px] font-semibold"
+          className="bg-[#484848] text-white px-[2vw] py-[0.889vh] w-fit rounded-[41.03px] font-semibold"
         >
           Back
         </button>
@@ -70,7 +70,7 @@ const page = () => {
         {/* Link for completing the process, styled with background color, text color, padding, rounded corners, and font weight */}
         <Link
           href={"/services"}
-          className="bg-[var(--highlight-yellow)] text-black px-[2vw] py-[0.5vw] w-fit rounded-[41.03px] font-bold"
+          className="bg-[var(--highlight-yellow)] text-black px-[2vw] py-[0.889vh] w-fit rounded-[41.03px] font-bold"
         >
           All Done
         </Link>

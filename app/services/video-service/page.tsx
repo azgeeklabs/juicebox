@@ -76,9 +76,9 @@ export default function page() {
         {/* Inner container with full width and custom editing styles */}
         <div className={`${styles.editing} w-full`}>
           {/* Header section with padding and bottom margin */}
-          <div className="pt-[1.5vw] pl-[4.264vw] mb-[3.5vw]">
+          <div className="pt-[2.667vh] pl-[4.264vw] mb-[6.222vh]">
             {/* Main heading with bottom margin */}
-            <h2 className="mb-[1.041vw]">
+            <h2 className="mb-[1.851vh]">
               {" "}
               What type of video would you like to create?
             </h2>
@@ -93,7 +93,7 @@ export default function page() {
 
           {/* Container for options and slider with padding */}
           <div className=" flex items-center justify-between pl-[4.021vw] pr-[1vw] w-full gap-[20vw]">
-            <div className={`${styles.btns} flex flex-col gap-[1.041vw]`}>
+            <div className={`${styles.btns} flex flex-col gap-[1.851vh]`}>
               {/* Iterate over options array and create CustomCheckBoxText components */}
               {options.map((e, i) => (
                 <CustomCheckBoxText

@@ -10,8 +10,8 @@
 
 .footage input + span {
   width: 100%;
-  padding-top: 0.3vw;
-  padding-bottom: 0.4vw;
+  padding-top: 0.533vh;
+  padding-bottom: 0.533vh;
 
 }
 .footage input {
@@ -47,7 +47,7 @@
 .footage .checking input[type="text"],.footage .checking input[type="number"] {
   cursor: text;
   color: white;
-  padding: 0.2vw 0.6vw ; 
+  padding: 0.356vh 0.6vw ; 
   text-align: center;
 }
 
