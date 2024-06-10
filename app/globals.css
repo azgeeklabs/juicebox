@@ -347,7 +347,6 @@ body {
 
 .css-12p2adl-MuiDayCalendar-monthContainer {
   overflow: hidden;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
