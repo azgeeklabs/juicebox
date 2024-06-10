@@ -1,35 +1,40 @@
 "use client";
 import React, { useState } from "react";
 import styles from "./footageSelection.module.css";
-import Image from "next/image";
 import CustomCheckBox from "@/app/_components/customCheckBox/CustomCheckBox";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import img from "../../../../public/assets/Frame 0.svg";
+import img2 from "../../../../public/assets/Frame 1.svg";
+import img3 from "../../../../public/assets/Frame 2.svg";
+import img4 from "../../../../public/assets/Frame 3.svg";
+import img5 from "../../../../public/assets/Frame 4.svg";
+import img6 from "../../../../public/assets/Frame 5.svg";
 
 const page = () => {
   const [checked, setChecked] = useState(false);
   const platforms = [
     {
-      img: "/assets/frame 0.svg",
+      img: img,
       title: "YouTube",
     },
     {
-      img: "/assets/frame 1.svg",
+      img: img2,
       title: "Facebook reel",
     },
     {
-      img: "/assets/frame 2.svg",
+      img: img3,
       title: "Instagram reel",
     },
     {
-      img: "/assets/frame 3.svg",
+      img: img4,
       title: "Instagram Post",
     },
     {
-      img: "/assets/frame 4.svg",
+      img: img5,
       title: "Facebook Post",
     },
     {
-      img: "/assets/frame 5.svg",
+      img: img6,
       title: "Twitter Post",
     },
   ];
