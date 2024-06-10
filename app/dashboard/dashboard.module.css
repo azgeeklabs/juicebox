@@ -14,13 +14,13 @@
 }
 
 .card .header h6 {
-  font-size: clamp(10px, calc(1vw + 0.1rem), 100px);
+  font-size: var(--20px);
   font-weight: 700;
   color: #f8f24b;
 }
 
 .card .header span {
-  font-size: clamp(10px, calc(0.6vw + 0.1rem), 100px);
+  font-size: var(--14px);
   line-height: clamp(10px, calc(0.6vw + 0.1rem), 100px);
   color: var(--primary-black);
   padding: clamp(5px, calc(0.25vw + 0.1rem), 100px)
@@ -37,7 +37,7 @@
 .card .body {
   display: flex;
   flex-direction: column;
-  gap: clamp(10px, calc(0.7vw + 0.1rem), 100px);
+  gap: clamp(10px, calc(1vw + 0.1rem), 100px);
 }
 /* ===== End Card ===== */
 
@@ -52,7 +52,7 @@
 }
 
 .service_phases > div > div > p {
-  font-size: clamp(8px, calc(0.6vw + 0.1rem), 100px);
+  font-size: var(--12px);
   font-weight: 600;
 }
 
@@ -62,9 +62,9 @@
 
 .card .service_phases_part > h6,
 .card .current_phase_part > h6 {
-  font-size: clamp(10px, calc(0.8vw + 0.1rem), 100px);
+  font-size: var(--14px);
   line-height: clamp(10px, calc(0.8vw + 0.1rem), 100px);
-  margin-bottom: clamp(10px, calc(0.6vw + 0.1rem), 100px);
+  margin-bottom: clamp(10px, calc(1vw + 0.1rem), 100px);
   font-weight: 600;
 }
 
@@ -78,16 +78,15 @@
 
 /* ===== Start On Going Projects Card ===== */
 .progress_text {
-  font-size: clamp(10px, calc(0.5vw + 0.1rem), 100px) !important;
+  font-size: var(--12px) !important;
 }
 .styles.on_going_projects_card {
   overflow: hidden;
 }
 .on_going_projects_card_body {
-  height: 12vh;
+  max-height: 19vh;
   overflow-y: auto;
 }
-
 .on_going_projects_card_body::-webkit-scrollbar {
   width: 0px;
   display: none;
@@ -100,7 +99,7 @@
   overflow: hidden;
 }
 .this_week_deliverables_card_body {
-  height: 12vh;
+  max-height: 19vh;
   overflow-y: auto;
 }
 .this_week_deliverables_card_body::-webkit-scrollbar {
@@ -110,6 +109,5 @@
 /* ===== End This Week Deliverables Card ===== */
 
 .up_coming_meetings > div > div:first-child span {
-  font-size: clamp(13px, calc(0.625vw + 0.1rem), 100px);
+  font-size: var(--14px);
 }
-

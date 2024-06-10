@@ -1,8 +1,8 @@
 .customCheckBox {
   /* width: 40px; */
   /* height: 25px; */
-  width: clamp(20px, calc(2vw + 0.1rem), 100px);
-  height: clamp(20px, calc(1vw + 0.1rem), 100px);
+  width: clamp(20px, calc(2vw + 0.1rem), 1000px);
+  height: clamp(20px, calc(1vw + 0.1rem), 1000px);
   border-radius: 22.79px;
   overflow: hidden;
 }
@@ -24,6 +24,8 @@
 
 .customCheckBox input + span svg {
   fill: #616161;
+  width: var(--11px);
+  height: var(--9px);
 }
 
 /* Hover */
