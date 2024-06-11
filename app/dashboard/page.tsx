@@ -394,7 +394,7 @@ export default function page() {
         {/* ===== End Calendar & Up Coming Meetings Card ===== */}
 
         {/* ===== Start Client Approval Card ===== */}
-        <div className={styles.card}>
+        <div className={styles.card + ' flex-grow'}>
           <div className={styles.header}>
             <h6>Client Approval</h6>
           </div>

@@ -1,52 +1,15 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
 import styles from "./videoDuration.module.css";
 import Link from "next/link";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
-import Box from "@mui/material/Box";
-import Slider from "@mui/material/Slider";
-import Typography from "@mui/material/Typography";
+// import CustomTypeRange from "@/app/_components/customTypeRange/CustomTypeRange";
+import dynamic from "next/dynamic";
+const CustomTypeRange = dynamic(() => import('@/app/_components/customTypeRange/CustomTypeRange'), { ssr: false })
 
-const MAX = 3600;
-const MIN = 0;
-const marks = [
-  {
-    value: MIN,
-    label: "",
-  },
-  {
-    value: MAX,
-    label: "",
-  },
-];
 
 const page = () => {
-  const [minut, setMinut] = useState("0");
-  const [val, setVal] = React.useState(MIN);
-  function toMinut(val:number){
-    const minutes = Math.floor(val / 60);
-    const seconds = val % 60;
-    setMinut(`${minutes} min ${seconds} sec`)
-  }
-  const handleChange = (_: any, newValue: any) => {
-    setVal(newValue);
-    toMinut(val)
-    // setMinut(`${newValue}`)
 
-  
-  };
-  useEffect(() => {
-    const style = document.createElement("style");
-    document.head.appendChild(style);
-    style?.sheet?.insertRule(
-      `.MuiSlider-thumb::before { content: "${minut}"; }`,
-      0
-    );
-    // document.querySelector(".MuiSlider-thumb").sheet;
-    if (val == 0) {
-      toMinut(val)  
-    }
-  }, [val]);
   return (
     <NextPrevNav
       nextLink="/services/video-service/video-endpoint"
@@ -70,16 +33,8 @@ const page = () => {
           </div>
 
           {/* Container for the duration indicator with custom background, width, height, and margin */}
-          <Box sx={{ width: 250, margin: 10 }}>
-            <Slider
-              marks={marks}
-              step={1}
-              value={val}
-              min={MIN}
-              max={MAX}
-              onChange={handleChange}
-            />
-          </Box>
+          
+          <CustomTypeRange />
 
           {/* Link component for users who are not sure about the duration */}
           <Link
