@@ -145,7 +145,7 @@ body {
 
 /* ===== Start Slider ===== */
 .selected {
-  border: 8px solid #f8f24b !important;
+  border: var(--8px) solid #f8f24b !important;
 }
 .swiper {
   width: 40vw;
@@ -231,7 +231,7 @@ body {
 }
 .css-9reuh9-MuiPickersArrowSwitcher-root {
   background-color: #272727;
-  border-radius: var(--2  2px);
+  border-radius: var(--22px);
 }
 .css-1nkg345-MuiButtonBase-root-MuiIconButton-root-MuiPickersArrowSwitcher-button,
 .css-kg9q0s-MuiButtonBase-root-MuiIconButton-root-MuiPickersArrowSwitcher-button {
@@ -246,8 +246,8 @@ body {
   svg,
 .css-kg9q0s-MuiButtonBase-root-MuiIconButton-root-MuiPickersArrowSwitcher-button
   svg {
-  width: clamp(16px, calc(1vw + 0.1rem), 80px);
-  height: clamp(16px, calc(1vw + 0.1rem), 80px);
+  width: var(--11px);
+  height: var(--16px);
 }
 .css-1nkg345-MuiButtonBase-root-MuiIconButton-root-MuiPickersArrowSwitcher-button:hover
   path,
