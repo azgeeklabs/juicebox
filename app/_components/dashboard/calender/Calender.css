@@ -45,11 +45,12 @@
   .custom-calender.MuiDateCalendar-root {
     border: none;
     border-radius: 0;
-    height: clamp(100px, calc(30vh + 0.1rem), 6000px);
+    height: clamp(100px, calc(27vh + 0.1rem), 6000px);
     overflow-y: hidden;
     width: 100%;
     padding: 0;
-    max-height: unset;
+    max-height: fit-content;
+    min-height: fit-content;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     -ms-border-radius: 0;
@@ -58,7 +59,7 @@
   
   .custom-calender  .MuiPickersSlideTransition-root.MuiDayCalendar-slideTransition {
     overflow-y: hidden;
-    height: clamp(100px, calc(30vh + 0.1rem), 6000px);
+    height: clamp(100px, calc(24vh + 0.1rem), 6000px);
   }
   
   .custom-calender  .MuiPickersCalendarHeader-labelContainer {
@@ -134,7 +135,8 @@
     padding-left: 0;
     padding-right: 0;
     margin-top: 0;
-    max-height: unset;
+    max-height: fit-content;
+    min-height: fit-content;
   }
   
   .custom-calender  .MuiButtonBase-root.MuiPickersDay-root.MuiPickersDay-dayWithMargin.MuiPickersDay-today {

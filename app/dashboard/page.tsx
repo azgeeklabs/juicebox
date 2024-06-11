@@ -4,7 +4,7 @@ import styles from "./dashboard.module.css";
 import CustomCheckBoxText from "../_components/customCheckBox/CustomCheckBoxText";
 import CustomCheckBox from "../_components/customCheckBox/CustomCheckBox";
 import ServiceCard from "../_components/serviceCard/ServiceCard";
-import CircularProgressBar from "../_components/progressBar/CircularProgressBar";
+// import CircularProgressBar from "../_components/progressBar/CircularProgressBar";
 import CongratulationMessage from "../_components/congratulationMessage/CongratulationMessage";
 import classNames from "classnames";
 import { AnimatedTooltip } from "../_components/animatedTooltip/AnimatedTooltip";
@@ -359,32 +359,34 @@ export default function page() {
         <div className={styles.card}>
           <div className={styles.body}>
             {/* ===== Start Calendar ===== */}
-              <Calender />
+            <Calender />
             {/* ===== End Calendar ===== */}
 
             {/* ===== Start Up Coming Meetings ===== */}
-            <span className="font-semibold">Up Coming Meetings</span>
-            <div className={styles.up_coming_meetings}>
-              <div className="flex justify-between items-center">
-                <div className="flex flex-col gap-[var(--sy-8px)]">
-                  <span className=" text-[#F8F24B]">Sunday. Feb 9th</span>
-                  <span className="">9:30 AM</span>
-                </div>
+            <div className="w-full h-full flex flex-col gap-[1vw]">
+              <span className="font-semibold">Up Coming Meetings</span>
+              <div className={styles.up_coming_meetings}>
+                <div className="flex justify-between items-center">
+                  <div className="flex flex-col gap-[var(--sy-8px)]">
+                    <span className=" text-[#F8F24B]">Sunday. Feb 9th</span>
+                    <span className="">9:30 AM</span>
+                  </div>
 
-                <div className="flex items-center justify-center pr-[1vw]">
-                  <AnimatedTooltip items={people} />
+                  <div className="flex items-center justify-center pr-[1vw]">
+                    <AnimatedTooltip items={people} />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className={styles.up_coming_meetings}>
-              <div className="flex justify-between items-center">
-                <div className="flex flex-col gap-[var(--sy-8px)]">
-                  <span className=" text-[#F8F24B]">Sunday. Feb 9th</span>
-                  <span className="">9:30 AM</span>
-                </div>
+              <div className={styles.up_coming_meetings}>
+                <div className="flex justify-between items-center">
+                  <div className="flex flex-col gap-[var(--sy-8px)]">
+                    <span className=" text-[#F8F24B]">Sunday. Feb 9th</span>
+                    <span className="">9:30 AM</span>
+                  </div>
 
-                <div className="flex items-center justify-center pr-[1vw]">
-                  <AnimatedTooltip items={people} />
+                  <div className="flex items-center justify-center pr-[1vw]">
+                    <AnimatedTooltip items={people} />
+                  </div>
                 </div>
               </div>
             </div>
@@ -394,7 +396,7 @@ export default function page() {
         {/* ===== End Calendar & Up Coming Meetings Card ===== */}
 
         {/* ===== Start Client Approval Card ===== */}
-        <div className={styles.card + ' flex-grow'}>
+        <div className={styles.card + ' flex-grow '}>
           <div className={styles.header}>
             <h6>Client Approval</h6>
           </div>
