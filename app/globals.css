@@ -112,6 +112,7 @@
 
   --sy-64px: clamp(10px, calc(6.03vh + 0.1rem), 1000px);
 }
+
 /* ===== End Variables ===== */
 
 /* ===== Start Global ===== */
@@ -120,10 +121,12 @@ body {
   color: var(--white);
   font-family: "Barlow", sans-serif;
 }
+
 * {
   line-height: normal;
   font-size: var(--16px);
 }
+
 /* ===== End Global ===== */
 
 /* ===== Start Layout ===== */
@@ -149,35 +152,43 @@ body {
   padding: 1.5vw;
   height: 100%;
 }
+
 /* ===== End Layout ===== */
 
 /* ===== Start Slider ===== */
 .selected {
   border: var(--8px) solid #f8f24b !important;
 }
+
 .swiper {
   width: 40vw;
 }
+
 .swiper .swiper-slide {
   width: 60% !important;
   transform: translateX(0) scale(0.7);
 }
+
 .swiper .swiper-slide.swiper-slide-prev {
   transform: translateX(55%) scale(0.7);
   transition: all 0.5s;
 }
+
 .swiper .swiper-slide.swiper-slide-next {
   transform: translateX(-55%) scale(0.7);
   transition: all 0.5s;
 }
+
 .swiper .swiper-slide.swiper-slide-active {
   transform: translateX(0) scale(1);
   transition: all 0.5s;
   z-index: 99;
 }
+
 .swiper .slide {
   border-radius: 18px;
 }
+
 /* ===== End Slider ===== */
 
 /* ===== Start Calender ===== */
@@ -291,9 +302,7 @@ body {
   height: clamp(16px, calc(1.3vw + 0.1rem), 800px);
 }
 
-.MuiButtonBase-root.MuiPickersDay-root.MuiPickersDay-dayWithMargin:not(
-    .Mui-selected
-  ) {
+.MuiButtonBase-root.MuiPickersDay-root.MuiPickersDay-dayWithMargin:not(.Mui-selected) {
   width: clamp(16px, calc(1.3vw + 0.1rem), 800px);
   height: clamp(16px, calc(1.3vw + 0.1rem), 800px);
 }
@@ -345,15 +354,19 @@ body {
   border: var(--2px) solid #f8f24b;
   box-shadow: none;
 }
+
 .MuiSlider-thumb:hover {
   box-shadow: none;
 }
+
 .MuiSlider-thumb.Mui:active {
   box-shadow: none;
 }
+
 .MuiSlider-thumb.Mui-focusVisible {
   box-shadow: none;
 }
+
 .MuiSlider-thumb::before {
   height: fit-content;
   color: #f8f24b;
@@ -366,18 +379,22 @@ body {
   white-space: nowrap;
   box-shadow: none;
 }
+
 .MuiSlider-rail {
   height: 1.5vw;
   background-color: #484848;
 }
+
 .MuiSlider-track {
   height: 1.5vw;
   background-color: #f8f24b;
   border: none;
 }
+
 .MuiSlider-mark {
   display: none;
 }
+
 .MuiBox-root {
   width: 90%;
   margin: 0 auto;
