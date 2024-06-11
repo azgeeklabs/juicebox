@@ -50,7 +50,7 @@ const page = () => {
             </div>
 
             {/* Button for saving progress with various styling */}
-            <button className="block w-fit mx-auto px-[0.52vw] py-[0.533vh] hover:bg-[#484848] rounded-[32px] transition-all duration-200 underline">
+            <button className="block w-fit mx-auto px-[0.52vw] py-[0.533vh] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200 underline">
               Save my Progress
             </button>
           </div>
