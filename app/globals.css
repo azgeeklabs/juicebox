@@ -68,6 +68,7 @@
   --49px: clamp(10px, calc(2.325vw + 0.1rem), 1000px);
   --50px: clamp(10px, calc(2.375vw + 0.1rem), 1000px);
   --51px: clamp(10px, calc(2.425vw + 0.1rem), 1000px);
+  --71px: clamp(10px, calc(3.25vw + 0.1rem), 1000px);
   --80px: clamp(10px, calc(4.3vw + 0.1rem), 1000px);
   --96px: clamp(10px, calc(5.222vw + 0.1rem), 1000px);
   --102px: clamp(10px, calc(5.556vw + 0.1rem), 1000px);
@@ -109,7 +110,6 @@
   --sy-31px: clamp(10px, calc(3.17vh + 0.1rem), 1000px);
   --sy-32px: clamp(10px, calc(3.27vh + 0.1rem), 1000px);
   --sy-33px: clamp(10px, calc(3.38vh + 0.1rem), 1000px);
-
   --sy-64px: clamp(10px, calc(6.03vh + 0.1rem), 1000px);
 }
 
