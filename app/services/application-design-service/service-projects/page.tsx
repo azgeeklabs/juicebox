@@ -275,7 +275,7 @@ function page() {
       nextLink="/services/application-design-service/app-style"
       backLink="/services/application-design-service/"
     >
-      <div className="flex flex-col gap-16 justify-center items-center h-full">
+      <div className="flex flex-col gap-[var(--64px)] justify-center items-center h-full">
         <div
           className={classNames(
             "flex flex-col items-center gap-[var(--16px)] text-center",

@@ -17,9 +17,14 @@
   /* width: clamp(15rem, calc(10.35vw + 0.1rem), 20rem);
     height: clamp(15rem, calc(10.35vw + 0.1rem), 20rem); */
   aspect-ratio: 1 / 1;
-  padding: var(--sy-30px) var(--50px);
+  width: clamp(6rem, calc(10.35vw + 0.1rem), 20rem);
+  height: clamp(6rem, calc(10.35vw + 0.1rem), 20rem);
+  padding: var(--24px);
   cursor: pointer;
   transition: background-color 0.2s ease-in, transform 0.2s ease-in;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .card div:nth-child(1) {
@@ -30,7 +35,7 @@
 
 .card div:nth-child(2) {
   text-align: center;
-  font-size: var(--27px);
+  font-size: var(--19px);
 }
 
 .cards {

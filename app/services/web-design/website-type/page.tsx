@@ -4,6 +4,7 @@ import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import Image from "next/image";
 
 function page() {
+
   return (
     <NextPrevNav
       nextLink="/services/web-design/domain-selection"
