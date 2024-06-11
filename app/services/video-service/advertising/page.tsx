@@ -61,7 +61,7 @@ const page = () => {
       <h3 className="mb-[0.6vw]">Product Description</h3>
       <textarea
         rows={5}
-        className="outline-none w-full rounded-[12px] bg-[var(--dark-gray-3)] px-[1.088vw] py-[0.889vh] resize-none"
+        className="outline-none w-full rounded-[var(--12px)] bg-[var(--dark-gray-3)] px-[1.088vw] py-[0.889vh] resize-none"
         placeholder="Describe the product you need..."
       ></textarea>
     </div>

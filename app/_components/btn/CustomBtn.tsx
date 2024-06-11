@@ -15,7 +15,7 @@ const CustomBtn = (props: Iprops) => {
     <button
       className={`${styles.customBtn} ${
         props.paddingVal ? props.paddingVal : "py-[0.2vw] px-[0.946vw]"
-      } rounded-[58px] text-white`}
+      } rounded-[var(--58px)] text-white`}
       {...props}
     >
       {props.children}

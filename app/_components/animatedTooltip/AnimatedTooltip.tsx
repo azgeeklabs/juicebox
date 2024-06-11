@@ -67,7 +67,7 @@ export const AnimatedTooltip = ({
                   rotate: rotate,
                   whiteSpace: "nowrap",
                 }}
-                className="absolute -top-16 -left-1/2 translate-x-1/2 flex text-[--12px]  flex-col items-center justify-center rounded-[50px] bg-black z-50 shadow-xl px-4 py-2"
+                className="absolute -top-16 -left-1/2 translate-x-1/2 flex text-[--12px]  flex-col items-center justify-center rounded-[var(--50px)] bg-black z-50 shadow-xl px-4 py-2"
               >
                 <div className="absolute inset-x-9 z-30 w-[20%] -bottom-px bg-gradient-to-r from-transparent via-[var(--highlight-yellow)] to-transparent h-px " />
                 <div className="absolute left-9 w-[20%] z-30 -bottom-px bg-gradient-to-r from-transparent via-[var(--highlight-yellow)] to-transparent h-px " />

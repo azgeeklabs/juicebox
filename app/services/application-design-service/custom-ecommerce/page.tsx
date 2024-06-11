@@ -87,7 +87,7 @@ function page() {
                         className="group-hover:fill-white transition-colors duration-200"
                       />
                     </svg>
-                    <span className="bg-[#373737] py-[10px] pl-5 pr-[11px] rounded-[7px] opacity-0 text-[#E4E4E4] absolute top-1/2 left-full transform translate-x-4 -translate-y-1/2 max-w-[30vw] border-l-[3px] border-[var(--highlight-yellow)] peer-hover:opacity-100 peer-hover:visible transition-all duration-200">
+                    <span className="bg-[#373737] py-[10px] pl-5 pr-[11px] rounded-[var(--7px)] opacity-0 text-[#E4E4E4] absolute top-1/2 left-full transform translate-x-4 -translate-y-1/2 max-w-[30vw] border-l-[3px] border-[var(--highlight-yellow)] peer-hover:opacity-100 peer-hover:visible transition-all duration-200">
                       <p className="w-max max-w-full">
                         These pages are part of the default configuration and
                         cannot be removed from the application.
@@ -123,7 +123,7 @@ function page() {
                         className="group-hover:fill-white transition-colors duration-200"
                       />
                     </svg>
-                    <span className="bg-[#373737] py-[10px] pl-5 pr-[11px] rounded-[7px] opacity-0 text-[#E4E4E4] absolute top-1/2 left-full transform translate-x-4 -translate-y-1/2 max-w-[30vw] border-l-[3px] border-[var(--highlight-yellow)] peer-hover:opacity-100 peer-hover:visible transition-all duration-200">
+                    <span className="bg-[#373737] py-[10px] pl-5 pr-[11px] rounded-[var(--7px)] opacity-0 text-[#E4E4E4] absolute top-1/2 left-full transform translate-x-4 -translate-y-1/2 max-w-[30vw] border-l-[3px] border-[var(--highlight-yellow)] peer-hover:opacity-100 peer-hover:visible transition-all duration-200">
                       <p className="w-max max-w-full">
                         Additional pages that you could add to your application.
                       </p>

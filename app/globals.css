@@ -68,16 +68,14 @@
   --49px: clamp(10px, calc(2.325vw + 0.1rem), 1000px);
   --50px: clamp(10px, calc(2.375vw + 0.1rem), 1000px);
   --51px: clamp(10px, calc(2.425vw + 0.1rem), 1000px);
-
+  --58px: clamp(10px, calc(3.111vw + 0.1rem), 1000px);
   --60px: clamp(10px, calc(3.222vw + 0.1rem), 1000px);
   --64px: clamp(10px, calc(3.444vw + 0.1rem), 1000px);
-
-
   --65px: clamp(10px, calc(3.5vw + 0.1rem), 1000px);
   --66px: clamp(10px, calc(3.556vw + 0.1rem), 1000px);
   --68px: clamp(10px, calc(3.667vw + 0.1rem), 1000px);
-
   --71px: clamp(10px, calc(3.25vw + 0.1rem), 1000px);
+  --72px: clamp(10px, calc(3.5vw + 0.1rem), 1000px);
   --75px: clamp(10px, calc(4.056vw + 0.1rem), 1000px);
   --77px: clamp(10px, calc(4.167vw + 0.1rem), 1000px);
   --78px: clamp(10px, calc(4.222vw + 0.1rem), 1000px);
@@ -203,6 +201,3 @@ body {
 }
 
 /* ===== End Slider ===== */
-
-
-

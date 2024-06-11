@@ -1469,7 +1469,7 @@ function page() {
 </div>
 
 {/* Navigation link for proceeding to the next step, styled with background color, text color, padding, rounded corners, and margin-left auto for right alignment */}
-<Link href={"/services/pr-monetization/add-link"} className="bg-[var(--highlight-yellow)] text-black px-[2vw] py-[0.5vw] w-fit rounded-[41.03px] font-semibold ml-auto">
+<Link href={"/services/pr-monetization/add-link"} className="bg-[var(--highlight-yellow)] text-black px-[2vw] py-[0.5vw] w-fit rounded-[var(--41px)] font-semibold ml-auto">
   Next
 </Link>
 </div>

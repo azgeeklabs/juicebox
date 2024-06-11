@@ -43,7 +43,7 @@ function NextPrevNav({
         {(backLink || backOnClick) && (
           <Link
             href={backLink || ""}
-            className=" bg-[#484848] px-[2vw] py-[0.5vw] font-semibold rounded-[41.03px] cursor-pointer float-start"
+            className=" bg-[#484848] px-[2vw] py-[0.5vw] font-semibold rounded-[var(--41px)] cursor-pointer float-start"
             onClick={() => backOnClick && backOnClick()}
           >
             {/* Default text for the "Back" button */}
@@ -54,7 +54,7 @@ function NextPrevNav({
         {(nextLink || nextOnClick) && (
           <Link
             href={nextLink || ""}
-            className="bg-[var(--highlight-yellow)] px-[2vw] py-[0.5vw] font-semibold rounded-[41.03px] text-[var(--primary-black)] cursor-pointer float-end"
+            className="bg-[var(--highlight-yellow)] px-[2vw] py-[0.5vw] font-semibold rounded-[var(--41px)] text-[var(--primary-black)] cursor-pointer float-end"
             onClick={nextOnClick}
           >
             {/* Default text for the "Next" button */}

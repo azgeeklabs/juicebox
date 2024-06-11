@@ -120,7 +120,7 @@ const page = () => {
           {/* Width input field, disabled based on checked state */}
           <input
             type="number"
-            className="w-[4vw] bg-[#353535] outline-none border-none rounded-[22px] caret-[var(--highlight-yellow)]"
+            className="w-[4vw] bg-[#353535] outline-none border-none rounded-[var(--22px)] caret-[var(--highlight-yellow)]"
             disabled={checked ? false : true}
           />
           
@@ -130,7 +130,7 @@ const page = () => {
           {/* Height input field, disabled based on checked state */}
           <input
             type="number"
-            className="w-[4vw] bg-[#353535] outline-none border-none rounded-[22px] caret-[var(--highlight-yellow)]"
+            className="w-[4vw] bg-[#353535] outline-none border-none rounded-[var(--22px)] caret-[var(--highlight-yellow)]"
             disabled={checked ? false : true}
           />
         </div>

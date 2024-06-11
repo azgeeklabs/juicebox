@@ -485,7 +485,7 @@ function page() {
           <div className={classNames("flex flex-col justify-center gap-[var(--28px)]")}>
             <h2 className="font-bold">Have more features in mind?</h2>
             <textarea
-              className="w-full p-4 bg-[--dark-gray-3] rounded-lg resize-none"
+              className="w-full p-4 bg-[--dark-gray-3] rounded-var(--8px) resize-none"
               placeholder="Features..."
               rows={4}
             />

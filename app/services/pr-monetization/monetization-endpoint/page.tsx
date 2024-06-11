@@ -62,7 +62,7 @@ const page = () => {
         {/* Link for going back, styled with background color, text color, padding, rounded corners, and font weight */}
         <button
           onClick={() => router.back()}
-          className="bg-[#484848] text-white px-[2vw] py-[0.889vh] w-fit rounded-[41.03px] font-semibold"
+          className="bg-[#484848] text-white px-[2vw] py-[0.889vh] w-fit rounded-[var(--41px)] font-semibold"
         >
           Back
         </button>
@@ -70,7 +70,7 @@ const page = () => {
         {/* Link for completing the process, styled with background color, text color, padding, rounded corners, and font weight */}
         <Link
           href={"/services"}
-          className="bg-[var(--highlight-yellow)] text-black px-[2vw] py-[0.889vh] w-fit rounded-[41.03px] font-bold"
+          className="bg-[var(--highlight-yellow)] text-black px-[2vw] py-[0.889vh] w-fit rounded-[var(--41px)] font-bold"
         >
           All Done
         </Link>

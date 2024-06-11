@@ -32,13 +32,13 @@ const page = () => {
         <Link
         onClick={()=>router.back()}
           href={""}
-          className=" bg-[#484848] text-white px-[2vw] py-[0.889vh] w-fit rounded-[41.03px] font-semibold"
+          className=" bg-[#484848] text-white px-[2vw] py-[0.889vh] w-fit rounded-[var(--41px)] font-semibold"
         >
           Back
         </Link>
         <Link
           href={"/services/pr-monetization/monetize-followers"}
-          className=" bg-[var(--highlight-yellow)] text-black px-[2vw] py-[0.889vh] w-fit rounded-[41.03px] font-semibold"
+          className=" bg-[var(--highlight-yellow)] text-black px-[2vw] py-[0.889vh] w-fit rounded-[var(--41px)] font-semibold"
         >
           Next
         </Link>
