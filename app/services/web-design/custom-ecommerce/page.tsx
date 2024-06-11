@@ -76,11 +76,9 @@ function page() {
                   <h2 className="text-2xl font-medium">Default Pages</h2>
                   <span className="relative">
                     <svg
-                      width="18"
-                      height="18"
                       viewBox="0 0 18 18"
                       fill="none"
-                      className="cursor-pointer peer group"
+                      className="cursor-pointer peer group h-[var(--18px)] w-[var(--18px)]"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
@@ -114,11 +112,9 @@ function page() {
                   <h2 className="text-2xl font-medium">Additional Pages</h2>
                   <span className="relative">
                     <svg
-                      width="18"
-                      height="18"
                       viewBox="0 0 18 18"
                       fill="none"
-                      className="cursor-pointer peer group"
+                      className="cursor-pointer peer group h-[var(--18px)] w-[var(--18px)]"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
