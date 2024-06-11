@@ -193,7 +193,6 @@ body {
 .css-i5q14k-MuiDayCalendar-header span {
   font-size: clamp(10px, calc(0.7vw + 0.1rem), 100px);
   color: white;
-  font-weight: 500;
   width: clamp(16px, calc(1.6vw + 0.1rem), 80px);
   height: clamp(16px, calc(1.6vw + 0.1rem), 80px);
   font-weight: 700;
@@ -210,7 +209,7 @@ body {
   color: #1c1c1c;
 }
 .css-1rtg91x-MuiDateCalendar-root {
-  border: 1px solid transparent;
+  border: var(--1px) solid transparent;
   border-radius: clamp(10px, calc(0.5vw + 0.1rem), 600px);
   height: clamp(100px, calc(30vh + 0.1rem), 6000px);
   overflow-y: hidden;
@@ -232,7 +231,7 @@ body {
 }
 .css-9reuh9-MuiPickersArrowSwitcher-root {
   background-color: #272727;
-  border-radius: 22px;
+  border-radius: var(--2  2px);
 }
 .css-1nkg345-MuiButtonBase-root-MuiIconButton-root-MuiPickersArrowSwitcher-button,
 .css-kg9q0s-MuiButtonBase-root-MuiIconButton-root-MuiPickersArrowSwitcher-button {
@@ -313,13 +312,14 @@ body {
   justify-content: space-between;
 }
 /* ===== End Calender ===== */
+
 /* ===== Start Range Slider ===== */
 .MuiSlider-thumb {
   width: 8vw;
   height: 2.2vw;
-  border-radius: 20px;
+  border-radius: var(--20px);
   background-color: #1c1c1c;
-  border: 2px solid #f8f24b;
+  border: var(--2px) solid #f8f24b;
   box-shadow: none;
 }
 .MuiSlider-thumb:hover {
@@ -360,4 +360,3 @@ body {
   margin: 0 auto;
 }
 /* ===== End Range Slider ===== */
-

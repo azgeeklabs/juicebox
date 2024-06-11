@@ -1,6 +1,6 @@
 /* ===== Start Card ===== */
 .card {
-  border-radius: 15px;
+  border-radius: var(--15px);
   background: #353535;
   padding: clamp(8px, calc(0.8vw + 0.1rem), 100px);
 }
@@ -80,6 +80,10 @@
 .progress_text {
   font-size: var(--12px) !important;
 }
+.progress_text + svg{
+  width: var(--23px);
+  height: var(--23px);
+}
 .styles.on_going_projects_card {
   overflow: hidden;
 }
@@ -105,6 +109,11 @@
 .this_week_deliverables_card_body::-webkit-scrollbar {
   width: 0px;
   display: none;
+}
+
+.this_week_deliverables_card_body svg{
+  width: var(--21px);
+  height: var(--21px);
 }
 /* ===== End This Week Deliverables Card ===== */
 

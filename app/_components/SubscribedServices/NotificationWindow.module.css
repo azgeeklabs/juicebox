@@ -6,7 +6,8 @@
 }
 
 .notificationBtn > svg {
-  width: 100%;
+  width: var(--18px);
+  height: var(--19px);
 }
 
 /* Notification window */
@@ -89,9 +90,9 @@
   position: absolute;
   width: 0;
   height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 10px solid #1c1c1c; /* Adjust the color to match the background of the notification window */
+  border-left: var(--10px) solid transparent;
+  border-right: var(--10px) solid transparent;
+  border-bottom: var(--10px) solid #1c1c1c; /* Adjust the color to match the background of the notification window */
   top: -10px; /* Adjust based on the size of the triangle */
   right: 1.5rem;
   /* transform: translateX(-50%); */

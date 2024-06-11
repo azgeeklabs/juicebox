@@ -57,7 +57,7 @@ const profilePic = (
 
         {/* Add Service Button */}
         <CustomBtn>
-        <svg width="19" height="19" viewBox="0 0 19 19" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 19 19" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M1.88208 9.5H16.8821M9.38208 2V17"
             stroke="white"
