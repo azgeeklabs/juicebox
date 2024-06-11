@@ -444,7 +444,7 @@ function page() {
     >
       <div
         className={classNames(
-          "flex flex-col gap-16 justify-center mx-auto items-center h-full",
+          "flex flex-col gap-[var(--64px)] justify-center mx-auto items-center h-full",
           styles.container
         )}
       >
@@ -464,7 +464,7 @@ function page() {
         >
           <div className={classNames("flex flex-col justify-center gap-[var(--28px)]")}>
             <h2 className="font-bold">Additional Features:</h2>
-            <div className="flex flex-wrap gap-y-3 gap-x-2">
+            <div className="flex flex-wrap gap-y-[var(--12px)] gap-x-[var(--8px)]">
               {data.map((item, i) => (
                 <>
                   <CustomCheckBoxText btnSize="sm" inputType="checkbox">
@@ -485,7 +485,7 @@ function page() {
           <div className={classNames("flex flex-col justify-center gap-[var(--28px)]")}>
             <h2 className="font-bold">Have more features in mind?</h2>
             <textarea
-              className="w-full p-4 bg-[--dark-gray-3] rounded-var(--8px) resize-none"
+              className="w-full p-[var(--16px)] bg-[--dark-gray-3] rounded-[var(--8px)] resize-none"
               placeholder="Features..."
               rows={4}
             />

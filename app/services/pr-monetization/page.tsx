@@ -1391,7 +1391,7 @@ function page() {
 <div className={`${styles.monetization} flex flex-col justify-between h-full`}>
 
 {/* Inner container with flexbox layout for column direction, gap between elements, center alignment, and full height */}
-<div className="flex flex-col gap-16 items-center h-full justify-center">
+<div className="flex flex-col gap-[var(--64px)] items-center h-full justify-center">
   
   {/* Content container with additional class names for styling */}
   <div className={classNames("flex flex-col items-center gap-[var(--16px)] text-center", styles.container)}>
