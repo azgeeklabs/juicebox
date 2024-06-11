@@ -31,10 +31,10 @@
 
 .divider {
   display: block;
-  height: 1px;
+  height: var(--1px);
   width: 100%;
   border: 0;
-  border-top: 1px solid #484848;
+  border-top: var(--1px) solid #484848;
   margin-top: clamp(42px, calc(2.1vw + 0.1rem), 60px);
   margin-bottom: clamp(42px, calc(2.1vw + 0.1rem), 60px);
   padding: 0;
