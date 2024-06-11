@@ -23,8 +23,7 @@ export default function page() {
           {/* Keywords */}
           <div className={classNames(styles.loading)}>
             <svg
-              width="158"
-              height="252"
+
               viewBox="0 0 158 252"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"

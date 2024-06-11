@@ -52,7 +52,7 @@ const page = () => {
                 inputType="radio"
                 name="styleAnswer"
               >
-                Let's make this video!
+                Let's get started
               </CustomCheckBoxText>
             </div>
 

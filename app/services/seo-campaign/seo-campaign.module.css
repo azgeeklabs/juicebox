@@ -1,11 +1,23 @@
+.container {
+  gap: var(--sy-16px);
+}
+
+.container > h2 {
+  font-size: var(--32px);
+}
+
+.container > p {
+  font-size: var(--18px);
+}
+
 .card {
   background-color: var(--dark-gray-3);
-  border-radius: 12px;
+  border-radius: var(--12px);
   position: relative;
   /* width: clamp(15rem, calc(10.35vw + 0.1rem), 20rem);
     height: clamp(15rem, calc(10.35vw + 0.1rem), 20rem); */
   aspect-ratio: 1 / 1;
-  padding: 30px 50px 30px 50px;
+  padding: var(--sy-30px) var(--50px);
   cursor: pointer;
   transition: background-color 0.2s ease-in, transform 0.2s ease-in;
 }
@@ -18,7 +30,7 @@
 
 .card div:nth-child(2) {
   text-align: center;
-  font-size: 2rem;
+  font-size: var(--27px);
 }
 
 .cards {
@@ -48,6 +60,21 @@
   visibility: visible;
   opacity: 1;
   /* width: 50px; */
+}
+
+.productCard .svgImg svg{
+  width: var(--102px);
+  height: var(--102px);
+}
+
+.serviceCard .svgImg svg{
+  width: var(--111px);
+  height: var(--111px);
+}
+
+.contentCard .svgImg svg{
+  width: var(--96px);
+  height: var(--96px);
 }
 
 .card:not(:has(input:checked)):hover {
