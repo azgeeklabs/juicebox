@@ -63,26 +63,22 @@
 }
 
 /* TODO */
-.healthcareCard .svgImg svg{
+.healthcareCard .svgImg svg {
   width: var(--78px);
   height: var(--78px);
 }
-.shippingCard .svgImg svg{
+.shippingCard .svgImg svg {
   width: var(--81px);
   height: var(--78px);
 }
-.companyCard .svgImg svg{
+.companyCard .svgImg svg {
   width: var(--77px);
   height: var(--78px);
 }
-.otherCard .svgImg svg{
+.otherCard .svgImg svg {
   width: var(--93px);
   height: var(--94px);
 }
-
-
-
-
 
 .card:not(:has(input:checked)):hover {
   background-color: #1f1f1f;

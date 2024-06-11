@@ -68,6 +68,12 @@
   --49px: clamp(10px, calc(2.325vw + 0.1rem), 1000px);
   --50px: clamp(10px, calc(2.375vw + 0.1rem), 1000px);
   --51px: clamp(10px, calc(2.425vw + 0.1rem), 1000px);
+
+  --60px: clamp(10px, calc(3.222vw + 0.1rem), 1000px);
+  --65px: clamp(10px, calc(3.5vw + 0.1rem), 1000px);
+  --66px: clamp(10px, calc(3.556vw + 0.1rem), 1000px);
+  --68px: clamp(10px, calc(3.667vw + 0.1rem), 1000px);
+
   --71px: clamp(10px, calc(3.25vw + 0.1rem), 1000px);
   --77px: clamp(10px, calc(4.167vw + 0.1rem), 1000px);
   --78px: clamp(10px, calc(4.222vw + 0.1rem), 1000px);
@@ -209,30 +215,30 @@ body {
 .MuiPickersCalendarHeader-root {
   display: flex !important;
   gap: 0.6vw !important;
-  justify-content: space-between !important;;
+  justify-content: space-between !important;
 }
 
 .MuiDayCalendar-weekContainer,
 .MuiDayCalendar-header {
   display: flex !important;
   gap: 0.6vw !important;
-  justify-content: space-between !important;;
+  justify-content: space-between !important;
 }
 
 .MuiTypography-root.MuiTypography-caption.MuiDayCalendar-weekDayLabel {
-  font-size: clamp(10px, calc(0.7vw + 0.1rem), 100px) !important;;
+  font-size: clamp(10px, calc(0.7vw + 0.1rem), 100px) !important;
   color: white !important;
-  width: clamp(16px, calc(1.6vw + 0.1rem), 80px) !important;;
-  height: clamp(16px, calc(1.6vw + 0.1rem), 80px) !important;;
+  width: clamp(16px, calc(1.6vw + 0.1rem), 80px) !important;
+  height: clamp(16px, calc(1.6vw + 0.1rem), 80px) !important;
   font-weight: 700 !important;
 }
 
 .MuiButtonBase-root.MuiPickersDay-root.MuiPickersDay-dayWithMargin {
   color: white !important;
-  font-size: clamp(10px, calc(0.7vw + 0.1rem), 100px) !important;;
+  font-size: clamp(10px, calc(0.7vw + 0.1rem), 100px) !important;
   font-weight: 500 !important;
-  width: clamp(16px, calc(1.3vw + 0.1rem), 80px) !important;;
-  height: clamp(16px, calc(1.3vw + 0.1rem), 80px) !important;;
+  width: clamp(16px, calc(1.3vw + 0.1rem), 80px) !important;
+  height: clamp(16px, calc(1.3vw + 0.1rem), 80px) !important;
 }
 
 .MuiButtonBase-root.MuiPickersDay-root.MuiPickersDay-dayWithMargin:hover {
@@ -243,7 +249,7 @@ body {
 .MuiDateCalendar-root {
   border: none !important;
   border-radius: 0 !important;
-  height: clamp(100px, calc(30vh + 0.1rem), 6000px) !important;;
+  height: clamp(100px, calc(30vh + 0.1rem), 6000px) !important;
   overflow-y: hidden !important;
   width: 100% !important;
   padding: 0 !important;
@@ -256,11 +262,11 @@ body {
 
 .MuiPickersSlideTransition-root.MuiDayCalendar-slideTransition {
   overflow-y: hidden !important;
-  height: clamp(100px, calc(30vh + 0.1rem), 6000px) !important;;
+  height: clamp(100px, calc(30vh + 0.1rem), 6000px) !important;
 }
 
 .MuiPickersCalendarHeader-labelContainer {
-  font-size: clamp(10px, calc(0.8vw + 0.1rem), 60px) !important;;
+  font-size: clamp(10px, calc(0.8vw + 0.1rem), 60px) !important;
   font-weight: 700 !important;
 }
 
@@ -272,8 +278,8 @@ body {
 .MuiButtonBase-root.MuiIconButton-root.MuiIconButton-edgeEnd.MuiPickersArrowSwitcher-button,
 .MuiButtonBase-root.MuiIconButton-root.MuiIconButton-edgeStart.MuiPickersArrowSwitcher-button {
   cursor: pointer !important;
-  width: clamp(16px, calc(1.5vw + 0.1rem), 80px) !important;;
-  height: clamp(16px, calc(1.5vw + 0.1rem), 80px) !important;;
+  width: clamp(16px, calc(1.5vw + 0.1rem), 80px) !important;
+  height: clamp(16px, calc(1.5vw + 0.1rem), 80px) !important;
   border-radius: 0.2vw !important;
   color: var(--white) !important;
 }
@@ -282,7 +288,7 @@ body {
   svg,
 .MuiButtonBase-root.MuiIconButton-root.MuiIconButton-edgeStart.MuiPickersArrowSwitcher-button
   svg {
-  width: clamp(16px, calc(1.2vw + 0.1rem), 80px) !important;;
+  width: clamp(16px, calc(1.2vw + 0.1rem), 80px) !important;
   /* height: clamp(16px, calc(1vw + 0.1rem), 80px) !important;; */
   transition: all 0.3s !important;
 }
@@ -299,17 +305,19 @@ body {
 }
 
 .MuiPickersArrowSwitcher-spacer {
-  width: clamp(16px, calc(1.5vw + 0.1rem), 1400px) !important;;
+  width: clamp(16px, calc(1.5vw + 0.1rem), 1400px) !important;
 }
 
 .MuiButtonBase-root.MuiPickersDay-root.MuiPickersDay-dayWithMargin {
-  width: clamp(16px, calc(1.3vw + 0.1rem), 800px) !important;;
-  height: clamp(16px, calc(1.3vw + 0.1rem), 800px) !important;;
+  width: clamp(16px, calc(1.3vw + 0.1rem), 800px) !important;
+  height: clamp(16px, calc(1.3vw + 0.1rem), 800px) !important;
 }
 
-.MuiButtonBase-root.MuiPickersDay-root.MuiPickersDay-dayWithMargin:not(.Mui-selected) {
-  width: clamp(16px, calc(1.3vw + 0.1rem), 800px) !important;;
-  height: clamp(16px, calc(1.3vw + 0.1rem), 800px) !important;;
+.MuiButtonBase-root.MuiPickersDay-root.MuiPickersDay-dayWithMargin:not(
+    .Mui-selected
+  ) {
+  width: clamp(16px, calc(1.3vw + 0.1rem), 800px) !important;
+  height: clamp(16px, calc(1.3vw + 0.1rem), 800px) !important;
 }
 
 /* .pagination_iconButton__7wOJj {
@@ -323,7 +331,7 @@ body {
 }
 
 .MuiPickersCalendarHeader-label {
-  font-size: clamp(16px, calc(1.17vw + 0.1rem), 1000px) !important;;
+  font-size: clamp(16px, calc(1.17vw + 0.1rem), 1000px) !important;
   font-weight: 700 !important;
   color: #f8f24b !important;
 }
@@ -345,7 +353,7 @@ body {
 }
 
 .MuiPickersArrowSwitcher-root svg {
-  height: clamp(14px, calc(0.65vw + 0.1rem), 1000px) !important;;
+  height: clamp(14px, calc(0.65vw + 0.1rem), 1000px) !important;
 }
 
 /* ===== End Calender ===== */
