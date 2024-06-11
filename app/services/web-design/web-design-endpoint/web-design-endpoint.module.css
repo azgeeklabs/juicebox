@@ -37,6 +37,8 @@
 }
 .seoCampaignEndPoint h2 span {
   color: #f8f24b;
+  font-weight: 600;
+  font-size: var(--32px);
 }
 
 .seoCampaignEndPoint a {
