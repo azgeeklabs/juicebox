@@ -36,11 +36,11 @@ const page = () => {
             <input
               type="text"
               placeholder="Upload Footage"
-              className="h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[71px] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFF80]"
+              className="h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFF80]"
             />
 
             {/* Button for uploading footage with background color, padding, text color, and rounded corners */}
-            <button className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.711vh] text-black rounded-[33px]">
+            <button className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.711vh] text-black rounded-[var(--33px)]">
               Upload Footage
             </button>
           </div>
@@ -48,7 +48,7 @@ const page = () => {
           {/* Link for deferring the upload with underline, block display, fit width, auto margins for horizontal centering, padding, hover background color, rounded corners, and transition effect */}
           <Link
             href={""}
-            className="underline block w-fit mx-auto px-[0.52vw] py-[0.533vh] hover:bg-[#484848] rounded-[32px] transition-all duration-200"
+            className="underline block w-fit mx-auto px-[0.52vw] py-[0.533vh] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200"
           >
             I’ll do this later
           </Link>

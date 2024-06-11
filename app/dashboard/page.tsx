@@ -9,14 +9,11 @@ import CongratulationMessage from "../_components/congratulationMessage/Congratu
 import classNames from "classnames";
 import { AnimatedTooltip } from "../_components/animatedTooltip/AnimatedTooltip";
 import ClientApprovalTable from "../_components/dashboard/Client Approval/ClientApprovalTable";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
-// import dynamic from "next/dynamic";
+import dynamic from "next/dynamic";
+// import Calender from "../_components/dashboard/calender/Calender";
 
-// const LocalizationProvider = dynamic(() => import('@mui/x-date-pickers/LocalizationProvider'), { ssr: false })
-// const AdapterDayjs = dynamic(() => import('@mui/x-date-pickers/AdapterDayjs'), { ssr: false })
-// const DateCalendar = dynamic(() => import('@mui/x-date-pickers/DateCalendar'), { ssr: false })
+const Calender = dynamic(() => import('../_components/dashboard/calender/Calender'), { ssr: false })
+
 
 const svg = (
   <svg
@@ -133,31 +130,7 @@ const people = [
   },
 ];
 
-const RightArrow = () => (
-  <svg
-    viewBox="0 0 11 16"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M0.279785 2.15107L0.279785 14.2489C0.279785 15.7153 1.76769 16.5373 2.78199 15.6313L9.55453 9.5824C10.3419 8.87949 10.3419 7.52248 9.55453 6.81762L2.78002 0.768678C1.76769 -0.137296 0.279784 0.68472 0.279785 2.15107Z"
-      fill="#616161"
-    />
-  </svg>
-);
 
-const LeftArrow = () => (
-  <svg
-    viewBox="0 0 11 16"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M10.7202 2.15107L10.7202 14.2489C10.7202 15.7153 9.23231 16.5373 8.21801 15.6313L1.44547 9.5824C0.658107 8.87949 0.658107 7.52248 1.44547 6.81762L8.21998 0.768678C9.23231 -0.137296 10.7202 0.68472 10.7202 2.15107Z"
-      fill="#616161"
-    />
-  </svg>
-);
 
 export default function page() {
   return (
@@ -386,19 +359,14 @@ export default function page() {
         <div className={styles.card}>
           <div className={styles.body}>
             {/* ===== Start Calendar ===== */}
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DateCalendar
-                slots={{ rightArrowIcon: RightArrow, leftArrowIcon: LeftArrow }}
-                dayOfWeekFormatter={(weekday) => `${weekday.format("ddd")}`}
-              />
-            </LocalizationProvider>
+              <Calender />
             {/* ===== End Calendar ===== */}
 
             {/* ===== Start Up Coming Meetings ===== */}
             <span className="font-semibold">Up Coming Meetings</span>
             <div className={styles.up_coming_meetings}>
               <div className="flex justify-between items-center">
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-[var(--sy-8px)]">
                   <span className=" text-[#F8F24B]">Sunday. Feb 9th</span>
                   <span className="">9:30 AM</span>
                 </div>
@@ -410,19 +378,7 @@ export default function page() {
             </div>
             <div className={styles.up_coming_meetings}>
               <div className="flex justify-between items-center">
-                <div className="flex flex-col gap-2">
-                  <span className=" text-[#F8F24B]">Sunday. Feb 9th</span>
-                  <span className="">9:30 AM</span>
-                </div>
-
-                <div className="flex items-center justify-center pr-[1vw]">
-                  <AnimatedTooltip items={people} />
-                </div>
-              </div>
-            </div>
-            <div className={styles.up_coming_meetings}>
-              <div className="flex justify-between items-center">
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-[var(--sy-8px)]">
                   <span className=" text-[#F8F24B]">Sunday. Feb 9th</span>
                   <span className="">9:30 AM</span>
                 </div>

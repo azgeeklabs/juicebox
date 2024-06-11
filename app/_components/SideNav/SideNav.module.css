@@ -66,7 +66,7 @@
 .sidebar .navbar ul {
   position: absolute;
   align-items: start;
-  top: calc(var(--32px) + var(--5px));
+  top: calc(var(--sy-32px) + var(--5px));
   transition: all 0.2s ease-in-out, gap 0s, transform 0s, left 0s;
 }
 .navbar ul > div {
@@ -175,8 +175,7 @@
 
 .navbar footer {
   position: absolute;
-  bottom: calc(var(--16px) + var(--5px));
-  /* right: 0.6rem; */
+  bottom: calc(var(--sy-16px) + var(--5px));
 }
 .sidebar:is(.open) .navbar footer {
   right: var(--20px);

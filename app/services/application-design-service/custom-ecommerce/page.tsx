@@ -39,15 +39,6 @@ const additionalPages = [
 ];
 
 function page() {
-
-  const options = [
-    "Explainer",
-    "Educational",
-    "YouTube",
-    "Social Media Ad",
-    "Short Film",
-  ];
-
   const swiperRef = useRef<SwiperCore | null>(null);
 
   const slides = [
@@ -68,10 +59,10 @@ function page() {
     >
       <div className="flex flex-col justify-center">
         <div className={classNames("flex flex-col gap-4", styles.container)}>
-          <h1 className="text-3xl font-bold">
+          <h1 className="text-[--30px] font-bold">
             Customize Your E-commerce App Pages
           </h1>
-          <p className="text-lg w-[50%] text-[#B1B1B1]">
+          <p className="text-[--18px] w-[50%] text-[#B1B1B1]">
             Below is a list of typical pages in an e-commerce app. You can add
             or remove pages by clicking on them. If you need additional
             features, you can type them in the box provided.
@@ -85,11 +76,9 @@ function page() {
                   <h2 className="text-2xl font-medium">Default Pages</h2>
                   <span className="relative">
                     <svg
-                      width="18"
-                      height="18"
                       viewBox="0 0 18 18"
                       fill="none"
-                      className="cursor-pointer peer group"
+                      className="cursor-pointer peer group h-[var(--18px)] w-[var(--18px)]"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
@@ -106,7 +95,7 @@ function page() {
                     </span>
                   </span>
                 </div>
-                <div className="flex flex-wrap text-sm gap-2">
+                <div className="flex flex-wrap text-[--14px] gap-[var(--8px)]">
                   {defaultPages.map((page) => (
                     <CustomCheckBoxText
                       btnSize="sm"
@@ -123,11 +112,9 @@ function page() {
                   <h2 className="text-2xl font-medium">Additional Pages</h2>
                   <span className="relative">
                     <svg
-                      width="18"
-                      height="18"
                       viewBox="0 0 18 18"
                       fill="none"
-                      className="cursor-pointer peer group"
+                      className="cursor-pointer peer group h-[var(--18px)] w-[var(--18px)]"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
@@ -143,7 +130,7 @@ function page() {
                     </span>
                   </span>
                 </div>
-                <div className="flex flex-wrap text-sm gap-2">
+                <div className="flex flex-wrap text-[--14px] gap-[var(--8px)]">
                   {additionalPages.map((page, i) => (
                     <CustomCheckBoxText
                       btnSize="sm"
@@ -170,33 +157,33 @@ function page() {
             </div>
           </div>
           <Swiper
-              onSwiper={(swiper) => {
-                swiperRef.current = swiper;
-              }}
-              speed={500}
-              initialSlide={2}
-              effect={"coverflow"}
-              grabCursor={true}
-              centeredSlides={true}
-              slidesPerView={"auto"}
-              loop={false}
-              coverflowEffect={{
-                rotate: 50,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: true,
-              }}
-              pagination={true}
-              // modules={[EffectCoverflow, Pagination]}
-              className="mySwiper"
-            >
-              {slides.map((e, i) => (
-                <SwiperSlide key={i}>
-                  <img src={e} className={`slide slide${i} `} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+            speed={500}
+            initialSlide={2}
+            effect={"coverflow"}
+            grabCursor={true}
+            centeredSlides={true}
+            slidesPerView={"auto"}
+            loop={false}
+            coverflowEffect={{
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true,
+            }}
+            pagination={true}
+            // modules={[EffectCoverflow, Pagination]}
+            className="mySwiper"
+          >
+            {slides.map((e, i) => (
+              <SwiperSlide key={i}>
+                <img src={e} className={`slide slide${i} `} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </NextPrevNav>

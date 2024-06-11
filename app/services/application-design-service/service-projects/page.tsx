@@ -282,15 +282,15 @@ function page() {
             styles.container
           )}
         >
-          <h1 className="text-3xl font-bold">
+          <h1 className="text-[--30px] font-bold">
             What type of project are you working on?
           </h1>
-          <p className="text-lg w-[60%]">
+          <p className="text-[--18px] w-[60%]">
             Please select the option that best describes your project type. This
             helps us understand the specific requirements for your project.
           </p>
         </div>
-        <div className={classNames("flex gap-20", styles.cards)}>
+        <div className={classNames("flex ", styles.cards)}>
           {data.map((item, i) => (
             <div
               key={i}

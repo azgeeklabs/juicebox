@@ -39,7 +39,7 @@ const page = () => {
           {/* Link component for users who are not sure about the duration */}
           <Link
             href={""}
-            className="underline block w-fit mx-auto px-[0.52vw] py-[0.533vh] hover:bg-[#484848] rounded-[32px] transition-all duration-200 mt-[0.5vw]"
+            className="underline block w-fit mx-auto px-[0.52vw] py-[0.533vh] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200 mt-[0.5vw]"
           >
             I’m not sure
           </Link>

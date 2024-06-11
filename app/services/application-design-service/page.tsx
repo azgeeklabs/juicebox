@@ -1401,16 +1401,16 @@ function page() {
               styles.container
             )}
           >
-            <h2 className="text-3xl font-bold">
+            <h2 className="text-[--30px] font-bold">
               What type of digital product are you looking to create?
             </h2>
-            <p className="text-lg w-[60%]">
+            <p className="text-[--18px] w-[60%]">
               Please choose whether you want to develop a regular app or a
               gamified app. This helps us tailor our recommendations to your
               project.
             </p>
           </div>
-          <div className={classNames("flex gap-20", styles.cards)}>
+          <div className={classNames("flex ", styles.cards)}>
             <div
               className={classNames("flex flex-col gap-2 group", styles.card)}
             >
@@ -1430,7 +1430,7 @@ function page() {
                 className="absolute opacity-0 inset-0 cursor-pointer"
               />
             </div>
-            <div className={classNames("flex flex-col gap-2", styles.card)}>
+            <div className={classNames("flex flex-col gap-[var(--sy-8px)]", styles.card)}>
               <div className="flex items-center justify-center relative">
                 <img
                   src="/assets/application-design-service-applicationcard.gif"
