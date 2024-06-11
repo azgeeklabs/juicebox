@@ -33,3 +33,8 @@
   justify-content: center;
 }
 
+.loading > svg{
+  width: var(--158px);
+  height: var(--252px);
+}
+
