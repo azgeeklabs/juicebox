@@ -399,24 +399,13 @@ export default function page() {
               <DateCalendar
                 slots={{ rightArrowIcon: RightArrow, leftArrowIcon: LeftArrow }}
                 dayOfWeekFormatter={(weekday) => `${weekday.format("ddd")}`}
+                className={styles.custom_calender}
               />
             </LocalizationProvider>
             {/* ===== End Calendar ===== */}
 
             {/* ===== Start Up Coming Meetings ===== */}
             <span className="font-semibold">Up Coming Meetings</span>
-            <div className={styles.up_coming_meetings}>
-              <div className="flex justify-between items-center">
-                <div className="flex flex-col gap-2">
-                  <span className=" text-[#F8F24B]">Sunday. Feb 9th</span>
-                  <span className="">9:30 AM</span>
-                </div>
-
-                <div className="flex items-center justify-center pr-[1vw]">
-                  <AnimatedTooltip items={people} />
-                </div>
-              </div>
-            </div>
             <div className={styles.up_coming_meetings}>
               <div className="flex justify-between items-center">
                 <div className="flex flex-col gap-2">
