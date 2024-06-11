@@ -1,0 +1,47 @@
+/* ===== Start Range Slider ===== */
+.customInputRange .MuiSlider-thumb {
+    width: 8vw;
+    height: 2.2vw;
+    border-radius: var(--20px);
+    background-color: #1c1c1c;
+    border: var(--2px) solid #f8f24b;
+    box-shadow: none;
+  }
+  .customInputRange .MuiSlider-thumb:hover {
+    box-shadow: none;
+  }
+  .customInputRange .MuiSlider-thumb.Mui:active {
+    box-shadow: none;
+  }
+  .customInputRange .MuiSlider-thumb.Mui-focusVisible {
+    box-shadow: none;
+  }
+  .customInputRange .MuiSlider-thumb::before {
+    height: fit-content;
+    color: #f8f24b;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    font-size: clamp(7px, calc(0.6vw + 0.1rem), 700px);
+    text-align: center;
+    white-space: nowrap;
+    box-shadow: none;
+  }
+  .customInputRange .MuiSlider-rail {
+    height: 1.5vw;
+    background-color: #484848;
+  }
+  .customInputRange .MuiSlider-track {
+    height: 1.5vw;
+    background-color: #f8f24b;
+    border: none;
+  }
+  .customInputRange .MuiSlider-mark {
+    display: none;
+  }
+  .customInputRange .MuiBox-root {
+    width: 90%;
+    margin: 0 auto;
+  }
+  /* ===== End Range Slider ===== */
