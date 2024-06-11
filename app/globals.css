@@ -75,6 +75,7 @@
   --68px: clamp(10px, calc(3.667vw + 0.1rem), 1000px);
 
   --71px: clamp(10px, calc(3.25vw + 0.1rem), 1000px);
+  --75px: clamp(10px, calc(4.056vw + 0.1rem), 1000px);
   --77px: clamp(10px, calc(4.167vw + 0.1rem), 1000px);
   --78px: clamp(10px, calc(4.222vw + 0.1rem), 1000px);
   --80px: clamp(10px, calc(4.3vw + 0.1rem), 1000px);

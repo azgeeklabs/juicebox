@@ -97,7 +97,7 @@ export default function page() {
               {/* Iterate over options array and create CustomCheckBoxText components */}
               {options.map((e, i) => (
                 <CustomCheckBoxText
-                  btnSize="xl"
+                  btnSize="lg"
                   inputType="radio"
                   name="type"
                   // Mouse move event to highlight the hovered item
