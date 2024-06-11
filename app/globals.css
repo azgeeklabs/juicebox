@@ -225,7 +225,6 @@ body {
 .css-1t0788u-MuiPickersSlideTransition-root-MuiDayCalendar-slideTransition {
   overflow-y: hidden;
   height: clamp(100px, calc(30vh + 0.1rem), 6000px);
-
 }
 .css-dplwbx-MuiPickersCalendarHeader-label {
   font-size: clamp(10px, calc(0.8vw + 0.1rem), 60px);
@@ -265,7 +264,8 @@ body {
 .css-xb7uwb-MuiPickersArrowSwitcher-spacer {
   width: clamp(24px, calc(2vw + 0.1rem), 1400px);
 }
-.pagination_iconButton__7wOJj ,.css-1ayjnp4-MuiPickersDay-root {
+.pagination_iconButton__7wOJj,
+.css-1ayjnp4-MuiPickersDay-root {
   width: clamp(16px, calc(1.3vw + 0.1rem), 800px);
   height: clamp(16px, calc(1.3vw + 0.1rem), 800px);
 }
@@ -304,6 +304,13 @@ body {
 
 .css-9reuh9-MuiPickersArrowSwitcher-root svg {
   height: clamp(14px, calc(0.65vw + 0.1rem), 1000px);
+}
+
+.css-12p2adl-MuiDayCalendar-monthContainer {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 /* ===== End Calender ===== */
 /* ===== Start Range Slider ===== */
@@ -352,10 +359,5 @@ body {
   width: 90%;
   margin: 0 auto;
 }
+/* ===== End Range Slider ===== */
 
-.css-12p2adl-MuiDayCalendar-monthContainer {
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
