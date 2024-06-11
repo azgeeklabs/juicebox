@@ -1394,7 +1394,7 @@ function page() {
 <div className="flex flex-col gap-16 items-center h-full justify-center">
   
   {/* Content container with additional class names for styling */}
-  <div className={classNames("flex flex-col items-center gap-4 text-center", styles.container)}>
+  <div className={classNames("flex flex-col items-center gap-[var(--16px)] text-center", styles.container)}>
     
     {/* Heading with bold font */}
     <h2 className="font-bold">
@@ -1411,7 +1411,7 @@ function page() {
   <div className={classNames("flex ", styles.cards)}>
     
     {/* Game card with flexbox layout for column direction, gap between elements, and group styling */}
-    <div className={classNames("flex flex-col gap-2 group", styles.card)}>
+    <div className={classNames("flex flex-col gap-[var(--8px)] group", styles.card)}>
       
       {/* Image container with center alignment, relative positioning */}
       <div className="flex items-center justify-center relative">

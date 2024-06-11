@@ -448,7 +448,7 @@ function page() {
           styles.container
         )}
       >
-        <div className="flex flex-col items-center gap-4 text-center w-[60%]">
+        <div className="flex flex-col items-center gap-[var(--16px)] text-center w-[60%]">
           <h1 className="text-[--30px] font-bold">
             Do you have any additional features in mind?
           </h1>
@@ -458,11 +458,11 @@ function page() {
         </div>
         <div
           className={classNames(
-            "flex flex-col justify-center gap-8",
+            "flex flex-col justify-center gap-[var(--32px)]",
             styles.cards
           )}
         >
-          <div className={classNames("flex flex-col justify-center gap-7")}>
+          <div className={classNames("flex flex-col justify-center gap-[var(--28px)]")}>
             <h2 className="font-bold">Additional Features:</h2>
             <div className="flex flex-wrap gap-y-3 gap-x-2">
               {data.map((item, i) => (
@@ -470,7 +470,7 @@ function page() {
                   <CustomCheckBoxText btnSize="sm" inputType="checkbox">
                     <div
                       className={classNames(
-                        "flex items-center text-[--14px] font-bold gap-3",
+                        "flex items-center text-[--14px] font-bold gap-[var(--12px)]",
                         styles.card
                       )}
                     >
@@ -482,7 +482,7 @@ function page() {
               ))}
             </div>
           </div>
-          <div className={classNames("flex flex-col justify-center gap-7")}>
+          <div className={classNames("flex flex-col justify-center gap-[var(--28px)]")}>
             <h2 className="font-bold">Have more features in mind?</h2>
             <textarea
               className="w-full p-4 bg-[--dark-gray-3] rounded-lg resize-none"

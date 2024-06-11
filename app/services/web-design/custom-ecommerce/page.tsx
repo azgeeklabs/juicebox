@@ -58,7 +58,7 @@ function page() {
       nextLink="/services/web-design/additional-features"
     >
       <div className="flex flex-col justify-center">
-        <div className={classNames("flex flex-col gap-4", styles.container)}>
+        <div className={classNames("flex flex-col gap-[var(--16px)]", styles.container)}>
           <h1 className="text-[--30px] font-bold">
             Customize Your E-commerce App Pages
           </h1>
@@ -69,10 +69,10 @@ function page() {
           </p>
         </div>
         <div className="flex grow">
-        <div className="flex gap-4 w-1/2">
+        <div className="flex gap-[var(--16px)] w-1/2">
             <div className="flex flex-col justify-evenly">
-              <div className="flex flex-col gap-8">
-                <div className="flex items-center gap-4">
+              <div className="flex flex-col gap-[var(--32px)]">
+                <div className="flex items-center gap-[var(--16px)]">
                   <h2 className="text-2xl font-medium">Default Pages</h2>
                   <span className="relative">
                     <svg
@@ -107,8 +107,8 @@ function page() {
                   ))}
                 </div>
               </div>
-              <div className="flex flex-col gap-8">
-                <div className="flex items-center gap-4">
+              <div className="flex flex-col gap-[var(--32px)]">
+                <div className="flex items-center gap-[var(--16px)]">
                   <h2 className="text-2xl font-medium">Additional Pages</h2>
                   <span className="relative">
                     <svg

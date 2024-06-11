@@ -278,7 +278,7 @@ function page() {
       <div className="flex flex-col gap-16 justify-center items-center h-full">
         <div
           className={classNames(
-            "flex flex-col items-center gap-4 text-center",
+            "flex flex-col items-center gap-[var(--16px)] text-center",
             styles.container
           )}
         >
@@ -295,7 +295,7 @@ function page() {
             <div
               key={i}
               className={classNames(
-                "flex flex-col justify-end items-center gap-2 group relative",
+                "flex flex-col justify-end items-center gap-[var(--8px)] group relative",
                 styles.card
               )}
             >
