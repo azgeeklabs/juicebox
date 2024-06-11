@@ -1,4 +1,4 @@
-.slider {
+/* .slider {
   position: relative;
   width: 950px;
   height: 370px;
@@ -43,7 +43,7 @@
   filter: blur(1px);
   opacity: 0.5;
   transform: translateX(calc(-50% + 150px)) scale(0.8);
-}
+} */
 .editing h2 {
   font-size: clamp(14px, calc(1.1vw + 0.1rem), 100px);
   font-weight: 600;

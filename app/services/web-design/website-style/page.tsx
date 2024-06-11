@@ -1,11 +1,16 @@
 "use client";
 import CustomCheckBox from "@/app/_components/customCheckBox/CustomCheckBox";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./website-style.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
 import Image from "next/image";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import SwiperCore from "swiper";
 
 export default function page() {
   const options = [
@@ -16,27 +21,14 @@ export default function page() {
     "Dark Mode",
   ];
 
+  const swiperRef = useRef<SwiperCore | null>(null);
+
   const slides = [
-    {
-      head: "Slide 1",
-      content: "/assets/ATV1.svg",
-    },
-    {
-      head: "Slide 2",
-      content: "/assets/ATV2.svg",
-    },
-    {
-      head: "Slide 3",
-      content: "/assets/ATV3.svg",
-    },
-    {
-      head: "Slide 4",
-      content: "/assets/ATV3.svg",
-    },
-    {
-      head: "Slide 5",
-      content: "/assets/ATV1.svg",
-    },
+    "https://swiperjs.com/demos/images/nature-1.jpg",
+    "https://swiperjs.com/demos/images/nature-2.jpg",
+    "https://swiperjs.com/demos/images/nature-3.jpg",
+    "https://swiperjs.com/demos/images/nature-4.jpg",
+    "https://swiperjs.com/demos/images/nature-5.jpg",
   ];
 
   return (
@@ -49,7 +41,7 @@ export default function page() {
         {/* // Inner container with full width and custom styles for adding to the video section */}
         <div className={`${styles.websiteStyle} w-full `}>
           {/* // Header section with padding top, left padding, and bottom margin */}
-          <div className="pt-[1.5vw] pl-[4.264vw] mb-[1.5vw] mx-auto text-center">
+          <div className="pt-[1.5vw] pl-[4.264vw] mb-[2.5vw] mx-auto text-center">
             {/* // Main heading with bottom margin and embedded horizontal rules */}
             <h2 className="mb-[1.041vw]">
               What style do you want for your website?
@@ -63,37 +55,27 @@ export default function page() {
           </div>
 
           {/* // Container for buttons and slider with flexbox layout, padding left, and padding right */}
-          <div className="flex items-center justify-between pl-[4.021vw] pr-[1vw]">
+          <div className="flex items-center justify-between pl-[4.021vw] pr-[1vw] w-full gap-[20vw]">
             {/* // Container for buttons with flexbox layout, column direction, and gap between buttons */}
-            <div className={`${styles.btns} flex flex-col gap-[1.041vw]`}>
-              {/* // Mapping through options array to create CustomCheckBoxText components */}
+            <div className={`${styles.btns} flex flex-col gap-[1.851vh]`}>
+              {/* Iterate over options array and create CustomCheckBoxText components */}
               {options.map((e, i) => (
                 <CustomCheckBoxText
-                  btnSize="xl" // Extra large button size
-                  inputType="radio" // Radio input type for selection
-                  name="type" // Name attribute for radio buttons to group them
-                  onMouseMove={() => {
-                    // Mouse move event to highlight button
-                    document.querySelectorAll(".item").forEach((e) => {
-                      e.classList.remove("active");
-                    });
-                    document
-                      .querySelector(`.item${i}`)
-                      ?.classList.add("active");
+                  btnSize="xl"
+                  inputType="radio"
+                  name="type"
+                  // Mouse move event to highlight the hovered item
+                  onMouseOver={() => {
+                    if (swiperRef.current) {
+                      swiperRef.current.slideTo(i); // Slide index is 0-based
+                    }
                   }}
                   onClick={() => {
-                    // Click event to select button and highlight the corresponding slider item
-                    document.querySelectorAll(".item").forEach((e) => {
-                      e.classList.remove("active");
-                    });
-                    document.querySelectorAll(".item").forEach((e) => {
+                    document.querySelectorAll("img.slide").forEach((e) => {
                       e.classList.remove("selected");
                     });
                     document
-                      .querySelector(`.item${i}`)
-                      ?.classList.add("active");
-                    document
-                      .querySelector(`.item${i}`)
+                      .querySelector(`.slide${i}`)
                       ?.classList.add("selected");
                   }}
                 >
@@ -103,28 +85,34 @@ export default function page() {
             </div>
 
             {/* // Container for the slider */}
-            <div>
-              <div className={`${styles.slider} slider`}>
-                {/* // Mapping through slides array to create Image components */}
-                {slides.map((e, i) => (
-                  <img
-                    src={e.content} // Image source from slides array
-                    alt="" // Alternative text for the image
-                    width={100} // Width of the image
-                    height={100} // Height of the image
-                    key={i} // Unique key for each item
-                    className={`relative item${i} ${styles.item} item ${
-                      i == slides.length / 2 - 1 ||
-                      i == slides.length / 2 + 0.5 - 1
-                        ? `active ${styles.right}`
-                        : i > (slides.length - 1) / 2
-                        ? styles.right
-                        : styles.left
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
+            <Swiper
+              onSwiper={(swiper) => {
+                swiperRef.current = swiper;
+              }}
+              speed={500}
+              initialSlide={2}
+              effect={"coverflow"}
+              grabCursor={true}
+              centeredSlides={true}
+              slidesPerView={"auto"}
+              loop={false}
+              coverflowEffect={{
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+              }}
+              pagination={true}
+              // modules={[EffectCoverflow, Pagination]}
+              className="mySwiper"
+            >
+              {slides.map((e, i) => (
+                <SwiperSlide key={i}>
+                  <img src={e} className={`slide slide${i} `} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </div>
       </div>
