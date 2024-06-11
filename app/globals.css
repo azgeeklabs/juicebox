@@ -149,7 +149,7 @@ body {
 
 /* ===== Start Slider ===== */
 .selected {
-  border: 8px solid #f8f24b !important;
+  border: var(--8px) solid #f8f24b !important;
 }
 
 .swiper {
@@ -209,7 +209,6 @@ body {
 .MuiTypography-root.MuiTypography-caption.MuiDayCalendar-weekDayLabel {
   font-size: clamp(10px, calc(0.7vw + 0.1rem), 100px);
   color: white;
-  font-weight: 500;
   width: clamp(16px, calc(1.6vw + 0.1rem), 80px);
   height: clamp(16px, calc(1.6vw + 0.1rem), 80px);
   font-weight: 700;
@@ -245,7 +244,6 @@ body {
 .MuiPickersSlideTransition-root.MuiDayCalendar-slideTransition {
   overflow-y: hidden;
   height: clamp(100px, calc(30vh + 0.1rem), 6000px);
-
 }
 
 .MuiPickersCalendarHeader-labelContainer {
@@ -255,7 +253,7 @@ body {
 
 .MuiPickersArrowSwitcher-root {
   background-color: #272727;
-  border-radius: 22px;
+  border-radius: var(--22px);
 }
 
 .MuiButtonBase-root.MuiIconButton-root.MuiIconButton-edgeEnd.MuiPickersArrowSwitcher-button,
@@ -334,13 +332,14 @@ body {
 }
 
 /* ===== End Calender ===== */
+
 /* ===== Start Range Slider ===== */
 .MuiSlider-thumb {
   width: 8vw;
   height: 2.2vw;
-  border-radius: 20px;
+  border-radius: var(--20px);
   background-color: #1c1c1c;
-  border: 2px solid #f8f24b;
+  border: var(--2px) solid #f8f24b;
   box-shadow: none;
 }
 
@@ -388,10 +387,4 @@ body {
   width: 90%;
   margin: 0 auto;
 }
-
-.css-12p2adl-MuiDayCalendar-monthContainer {
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+/* ===== End Range Slider ===== */

@@ -3,7 +3,7 @@
   /* height: 25px; */
   width: clamp(20px, calc(2vw + 0.1rem), 1000px);
   height: clamp(20px, calc(1vw + 0.1rem), 1000px);
-  border-radius: 22.79px;
+  border-radius: var(--22px);
   overflow: hidden;
 }
 

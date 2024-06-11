@@ -73,13 +73,11 @@
 
 .table .table_body ul li:nth-child(3) {
   font-size: var(--13px);
-
 }
-.table .table_body ul li:nth-child(3) svg{
+.table .table_body ul li:nth-child(3) svg {
   width: var(--10px);
   height: var(--14px);
 }
-
 
 .table .table_body ul {
   /* padding-left: clamp(16px, calc(0.6vw + 0.1rem), 1000px); */

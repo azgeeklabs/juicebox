@@ -7,7 +7,6 @@ import ServiceCard from "../_components/serviceCard/ServiceCard";
 import CircularProgressBar from "../_components/progressBar/CircularProgressBar";
 import CongratulationMessage from "../_components/congratulationMessage/CongratulationMessage";
 import classNames from "classnames";
-import Task from "../_components/dashboard/Today’s Tasks/Task";
 import { AnimatedTooltip } from "../_components/animatedTooltip/AnimatedTooltip";
 import ClientApprovalTable from "../_components/dashboard/Client Approval/ClientApprovalTable";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -21,8 +20,6 @@ import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 
 const svg = (
   <svg
-    width="21"
-    height="21"
     viewBox="0 0 21 21"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -138,8 +135,6 @@ const people = [
 
 const RightArrow = () => (
   <svg
-    width="11"
-    height="16"
     viewBox="0 0 11 16"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -153,8 +148,6 @@ const RightArrow = () => (
 
 const LeftArrow = () => (
   <svg
-    width="11"
-    height="16"
     viewBox="0 0 11 16"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -262,8 +255,6 @@ export default function page() {
                       83% Progress
                     </span>
                     <svg
-                      width="23"
-                      height="23"
                       viewBox="0 0 23 23"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"

@@ -10,9 +10,9 @@
 /* Profile Card */
 .profileCard {
   background-color: #efe8121a;
-  border-radius: 42px;
-  padding: 6px 20px 6px 5px;
-  gap: 10px;
+  border-radius: var(--42px);
+  padding: var(--sy-6px) var(--20px) var(--sy-6px) var(--5px);
+  gap: var(--10px);
   position: relative;
   margin-right: 1vw;
 }
@@ -20,7 +20,7 @@
   position: absolute;
   content: "";
   height: 75%;
-  width: 1px;
+  width: var(--1px);
   background-color: #616161;
   left: calc(100% + 1vw);
   top: 50%;
@@ -29,35 +29,41 @@
 .profileInfo {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: var(--3px);
 }
 .profileName {
-  font-size: 14px;
+  font-size: var(--14px);
   font-weight: 700;
   color: #f8f24b;
 }
 .profileBalance {
-  font-size: 14px;
+  font-size: var(--14px);
   font-weight: 500;
   color: #828282;
 }
 
 /* Services Cards */
 .servicesCards > a > div > div > div:first-child {
-  border-right: 1px solid #f8f24b !important;
+  border-right: var(--1px) solid #f8f24b !important;
 }
 
 .servicesCards > a > div > div:hover > div:first-child {
-  border-right: 1px solid #f8f24b;
+  border-right: var(--1px) solid #f8f24b;
 }
 
 /* Add Service Button */
 .subscribedServices > div > button {
-  padding: 14px;
+  padding: var(--sy-14px) var(--14px);
   width: clamp(10px, calc(5vw + 0.1rem), 1000px);
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.subscribedServices > div > button > svg {
+  width: var(--19px);
+  height: var(--19px);
+  fill: var(--white);
 }
 
 .subscribedServices > div > button:hover > svg {

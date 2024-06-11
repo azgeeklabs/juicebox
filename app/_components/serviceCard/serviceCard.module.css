@@ -30,7 +30,7 @@
   background-color: #1f1f1f;
 }
 .serviceCard:hover .card:not(:last-child) {
-  border-right: 1px solid #484848;
+  border-right: var(--1px) solid #484848;
 }
 .serviceCard.active {
   background: #f8f24b;

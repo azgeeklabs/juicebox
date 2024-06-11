@@ -3,7 +3,7 @@
   /* height: 25px; */
   /* width: clamp(20px, calc(2.2vw + 0.1rem), 100px);
   height: clamp(20px, calc(1.2vw + 0.1rem), 100px); */
-  border-radius: 22.79px;
+  border-radius: var(--22px);
   overflow: hidden;
 }
 
@@ -54,27 +54,27 @@
 .size-sm > div {
   /* width: 76px;
   height: 29px; */
-  padding: 9px 20px;
-  border-radius: 33px;
+  padding: var(--sy-9px) var(--20px);
+  border-radius: var(--33px);
 }
 
 .size-md > div {
   /* width: 96px;
   height: 37px; */
-  padding: 13px 30px;
-  border-radius: 33px;
+  padding: var(--sy-13px) var(--30px);
+  border-radius: var(--33px);
 }
 
 .size-lg > div {
   /* width: 136px;
   height: 43.32px; */
-  padding: 16.16px 50px;
-  border-radius: 41px;
+  padding: var(--sy-16px) var(--50px);
+  border-radius: var(--41px);
 }
 
 .size-xl > div {
   /* width: 186px;
   height: 51px; */
-  padding: 20px 75px;
-  border-radius: 41px;
+  padding: var(--sy-20px) var(--75px);
+  border-radius: var(--41px);
 }
