@@ -40,6 +40,7 @@ const Calender = () => {
                 <DateCalendar
                     slots={{ rightArrowIcon: RightArrow, leftArrowIcon: LeftArrow }}
                     dayOfWeekFormatter={(weekday) => `${weekday.format("ddd")}`}
+                    className='custom-calender'
                 />
             </LocalizationProvider>
         </>
