@@ -23,8 +23,8 @@ function page() {
             Choose the technology you want your website to be build with
           </p>
         </div>
-        <div className={classNames("flex gap-20", styles.cards)}>
-          <div className={classNames("flex flex-col gap-2", styles.card)}>
+        <div className={classNames("flex ", styles.cards)}>
+          <div className={classNames("flex flex-col gap-[var(--sy-8px)]", styles.card)}>
             <div className="flex items-center justify-center relative">
               <img
                                 src="/assets/website-technology-custom.gif"
@@ -45,7 +45,7 @@ function page() {
               className="absolute opacity-0 inset-0 cursor-pointer"
             />
           </div>
-          <div className={classNames("flex flex-col gap-2", styles.card)}>
+          <div className={classNames("flex flex-col gap-[var(--sy-8px)]", styles.card)}>
             <div className="flex items-center justify-center relative">
               <img
                 src="/assets/website-technology-shopify.gif"
@@ -66,7 +66,7 @@ function page() {
               className="absolute opacity-0 inset-0 cursor-pointer"
             />
           </div>
-          <div className={classNames("flex flex-col gap-2", styles.card)}>
+          <div className={classNames("flex flex-col gap-[var(--sy-8px)]", styles.card)}>
             <div className="flex items-center justify-center relative">
               <img
                                 src="/assets/website-technology-wordpress.gif"
@@ -87,7 +87,7 @@ function page() {
               className="absolute opacity-0 inset-0 cursor-pointer"
             />
           </div>
-          <div className={classNames("flex flex-col gap-2", styles.card)}>
+          <div className={classNames("flex flex-col gap-[var(--sy-8px)]", styles.card)}>
             <div className="flex items-center justify-center relative">
               <img
                                 src="/assets/website-technology-webflow.gif"

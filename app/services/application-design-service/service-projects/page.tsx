@@ -290,7 +290,7 @@ function page() {
             helps us understand the specific requirements for your project.
           </p>
         </div>
-        <div className={classNames("flex gap-20", styles.cards)}>
+        <div className={classNames("flex ", styles.cards)}>
           {data.map((item, i) => (
             <div
               key={i}

@@ -399,7 +399,7 @@ export default function page() {
             <span className="font-semibold">Up Coming Meetings</span>
             <div className={styles.up_coming_meetings}>
               <div className="flex justify-between items-center">
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-[var(--sy-8px)]">
                   <span className=" text-[#F8F24B]">Sunday. Feb 9th</span>
                   <span className="">9:30 AM</span>
                 </div>
@@ -411,7 +411,7 @@ export default function page() {
             </div>
             <div className={styles.up_coming_meetings}>
               <div className="flex justify-between items-center">
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-[var(--sy-8px)]">
                   <span className=" text-[#F8F24B]">Sunday. Feb 9th</span>
                   <span className="">9:30 AM</span>
                 </div>
