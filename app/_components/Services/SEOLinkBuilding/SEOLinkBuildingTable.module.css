@@ -1,7 +1,12 @@
 /* ===== Start Table Container ===== */
 .tableContainer {
   overflow: hidden;
-  height: 67vh;
+  height: 65vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: var(--sy-13px);
 }
 
 /* ===== Start Table ===== */

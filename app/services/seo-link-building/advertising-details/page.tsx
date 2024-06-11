@@ -43,7 +43,7 @@ const page = () => {
               />
 
               {/* Paste Link button */}
-              <button className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.4vw] text-black rounded-[33px]">
+              <button className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.4vw] text-black rounded-[var(--33px)]">
                 Paste Link
               </button>
             </div>
@@ -52,7 +52,7 @@ const page = () => {
             <h3 className="mb-[0.6vw]">Anchor Text</h3>
             <textarea
               rows={4}
-              className="outline-none w-full rounded-[12px] bg-[var(--dark-gray-3)] px-[1.088vw] py-[0.5vw] resize-none"
+              className="outline-none w-full rounded-[var(--12px)] bg-[var(--dark-gray-3)] px-[1.088vw] py-[0.5vw] resize-none"
               placeholder="Anchor Text"
             ></textarea>
             {/* Keywords */}
