@@ -3,6 +3,12 @@ import classNames from "classnames";
 import styles from "./custom-ecommerce.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import SwiperCore from "swiper";
+import { useRef } from "react";
 
 const defaultPages = [
   "Sign Up",
@@ -33,6 +39,20 @@ const additionalPages = [
 ];
 
 function page() {
+
+  const swiperRef = useRef<SwiperCore | null>(null);
+
+  const slides = [
+    "https://swiperjs.com/demos/images/nature-1.jpg",
+    "https://swiperjs.com/demos/images/nature-2.jpg",
+    "https://swiperjs.com/demos/images/nature-3.jpg",
+    "https://swiperjs.com/demos/images/nature-4.jpg",
+    "https://swiperjs.com/demos/images/nature-5.jpg",
+    "https://swiperjs.com/demos/images/nature-6.jpg",
+    "https://swiperjs.com/demos/images/nature-7.jpg",
+    "https://swiperjs.com/demos/images/nature-8.jpg",
+  ];
+
   return (
     <NextPrevNav
       backLink="/services/web-design/website-style"
@@ -40,10 +60,10 @@ function page() {
     >
       <div className="flex flex-col h-full">
         <div className={classNames("flex flex-col gap-4", styles.container)}>
-          <h1 className="text-3xl font-bold">
+          <h1 className="text-[--30px] font-bold">
             Customize Your E-commerce App Pages
           </h1>
-          <p className="text-lg w-[50%] text-[#B1B1B1]">
+          <p className="text-[--18px] w-[50%] text-[#B1B1B1]">
             Below is a list of typical pages in an e-commerce app. You can add
             or remove pages by clicking on them. If you need additional
             features, you can type them in the box provided.
@@ -78,7 +98,7 @@ function page() {
                     </span>
                   </span>
                 </div>
-                <div className="flex flex-wrap text-sm gap-[var(--8px)]">
+                <div className="flex flex-wrap text-[--14px] gap-[var(--8px)]">
                   {defaultPages.map((page) => (
                     <CustomCheckBoxText
                       btnSize="sm"
@@ -115,7 +135,7 @@ function page() {
                     </span>
                   </span>
                 </div>
-                <div className="flex flex-wrap text-sm gap-[var(--8px)]">
+                <div className="flex flex-wrap text-[--14px] gap-[var(--8px)]">
                   {additionalPages.map((page, i) => (
                     <CustomCheckBoxText
                       btnSize="sm"

@@ -509,10 +509,10 @@ function page() {
         )}
       >
         <div className="flex flex-col items-center gap-4 text-center w-[60%]">
-          <h1 className="text-3xl font-bold">
+          <h1 className="text-[--30px] font-bold">
             Do you have any additional features in mind?
           </h1>
-          <p className="text-lg">
+          <p className="text-[--18px]">
             Here are some common features that would go well with your project!
           </p>
         </div>
@@ -530,7 +530,7 @@ function page() {
                   <CustomCheckBoxText btnSize="sm" inputType="checkbox">
                     <div
                       className={classNames(
-                        "flex items-center text-sm font-bold gap-3",
+                        "flex items-center text-[--14px] font-bold gap-3",
                         styles.card
                       )}
                     >
