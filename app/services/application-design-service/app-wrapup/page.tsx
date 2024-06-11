@@ -52,7 +52,7 @@ const page = () => {
           {/* Link component for saving progress */}
           <Link
             href={""}
-            className="block text-[0.813rem] underline w-fit mx-auto px-[0.52vw] py-[0.3vw] rounded-[32px] transition-all duration-200"
+            className="block text-[0.813rem] underline w-fit mx-auto px-[0.52vw] py-[0.3vw] rounded-[var(--32px)] transition-all duration-200"
           >
             Save my Progress
           </Link>

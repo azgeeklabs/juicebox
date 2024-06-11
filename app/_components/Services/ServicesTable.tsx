@@ -206,7 +206,7 @@ export default function ServicesTable({
           {/* Filter By Industry */}
           <div className={styles.filtersByIndustry}>
             <span>Industry</span>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-[var(--8px)]">
               {filtersByIndustry.map((e, idx) => (
                 <CustomCheckBoxText key={idx} btnSize="sm" inputType="checkbox">
                   {e}
@@ -222,7 +222,7 @@ export default function ServicesTable({
               Most of our offerings bundle several services, but you can always
               choose the specific ones you need.
             </p>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-[var(--8px)]">
               {filtersByNiche.map((e, idx) => (
                 <CustomCheckBoxText key={idx} btnSize="sm" inputType="checkbox">
                   {e}

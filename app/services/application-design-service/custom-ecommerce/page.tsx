@@ -106,7 +106,7 @@ function page() {
                     </span>
                   </span>
                 </div>
-                <div className="flex flex-wrap text-sm gap-2">
+                <div className="flex flex-wrap text-sm gap-[var(--8px)]">
                   {defaultPages.map((page) => (
                     <CustomCheckBoxText
                       btnSize="sm"
@@ -143,7 +143,7 @@ function page() {
                     </span>
                   </span>
                 </div>
-                <div className="flex flex-wrap text-sm gap-2">
+                <div className="flex flex-wrap text-sm gap-[var(--8px)]">
                   {additionalPages.map((page, i) => (
                     <CustomCheckBoxText
                       btnSize="sm"

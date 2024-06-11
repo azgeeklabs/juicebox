@@ -16,23 +16,33 @@ function page() {
             styles.container
           )}
         >
-          <h2 className="font-bold">
-            What is the type of your website?
-          </h2>
+          <h2 className="font-bold">What is the type of your website?</h2>
           <p className="w-[60%]">
             Please select the option that best describes your project type. This
             helps us understand the specific requirements for your project.
           </p>
         </div>
         <div className={classNames("flex", styles.cards)}>
-          <div className={classNames("flex flex-col gap-[var(--sy-8px)]", styles.card)}>
-            <div className={classNames("flex items-center justify-center relative", styles.healthcareCard)}>
+          <div
+            className={classNames(
+              "flex flex-col gap-[var(--sy-8px)]",
+              styles.card
+            )}
+          >
+            <div
+              className={classNames(
+                "flex items-center justify-center relative",
+                styles.healthcareCard
+              )}
+            >
               <img
-                src="/assets/website-type-healthcare.gif" alt="/assets/website-type-healthcare.gif"
+                src="/assets/website-type-healthcare.gif"
+                alt="/assets/website-type-healthcare.gif"
                 className={classNames(styles.gifImg, "w-full")}
               />
               <img
-                src="/assets/website-type-healthcare.svg" alt="/assets/website-type-healthcare.svg"
+                src="/assets/website-type-healthcare.svg"
+                alt="/assets/website-type-healthcare.svg"
                 className={classNames(styles.svgImg)}
               />
             </div>
@@ -44,14 +54,26 @@ function page() {
               className="absolute opacity-0 inset-0 cursor-pointer"
             />
           </div>
-          <div className={classNames("flex flex-col gap-[var(--sy-8px)]", styles.card)}>
-            <div className={classNames("flex items-center justify-center relative", styles.shippingCard)}>
+          <div
+            className={classNames(
+              "flex flex-col gap-[var(--sy-8px)]",
+              styles.card
+            )}
+          >
+            <div
+              className={classNames(
+                "flex items-center justify-center relative",
+                styles.shippingCard
+              )}
+            >
               <img
-                src="/assets/website-type-shipping.gif" alt="/assets/website-type-shipping.gif"
+                src="/assets/website-type-shipping.gif"
+                alt="/assets/website-type-shipping.gif"
                 className={classNames(styles.gifImg, "w-full")}
               />
               <img
-                src="/assets/website-type-shipping.svg" alt="/assets/website-type-shipping.svg"
+                src="/assets/website-type-shipping.svg"
+                alt="/assets/website-type-shipping.svg"
                 className={classNames(styles.svgImg)}
               />
             </div>
@@ -63,14 +85,26 @@ function page() {
               className="absolute opacity-0 inset-0 cursor-pointer"
             />
           </div>
-          <div className={classNames("flex flex-col gap-[var(--sy-8px)]", styles.card)}>
-            <div className={classNames("flex items-center justify-center relative", styles.companyCard)}>
+          <div
+            className={classNames(
+              "flex flex-col gap-[var(--sy-8px)]",
+              styles.card
+            )}
+          >
+            <div
+              className={classNames(
+                "flex items-center justify-center relative",
+                styles.companyCard
+              )}
+            >
               <img
-                src="/assets/website-type-company.gif" alt="/assets/website-type-company.gif"
+                src="/assets/website-type-company.gif"
+                alt="/assets/website-type-company.gif"
                 className={classNames(styles.gifImg, "w-full")}
               />
               <img
-                src="/assets/website-type-company.svg" alt="/assets/website-type-company.svg"
+                src="/assets/website-type-company.svg"
+                alt="/assets/website-type-company.svg"
                 className={classNames(styles.svgImg)}
               />
             </div>
@@ -82,14 +116,26 @@ function page() {
               className="absolute opacity-0 inset-0 cursor-pointer"
             />
           </div>
-          <div className={classNames("flex flex-col gap-[var(--sy-8px)]", styles.card)}>
-            <div className={classNames("flex items-center justify-center relative", styles.otherCard)}>
+          <div
+            className={classNames(
+              "flex flex-col gap-[var(--sy-8px)]",
+              styles.card
+            )}
+          >
+            <div
+              className={classNames(
+                "flex items-center justify-center relative",
+                styles.otherCard
+              )}
+            >
               <img
-                src="/assets/website-type-other.gif" alt="/assets/website-type-other.gif"
+                src="/assets/website-type-other.gif"
+                alt="/assets/website-type-other.gif"
                 className={classNames(styles.gifImg, "w-full")}
               />
               <img
-                src="/assets/website-type-other.svg" alt="/assets/website-type-other.svg"
+                src="/assets/website-type-other.svg"
+                alt="/assets/website-type-other.svg"
                 className={classNames(styles.svgImg)}
               />
             </div>
