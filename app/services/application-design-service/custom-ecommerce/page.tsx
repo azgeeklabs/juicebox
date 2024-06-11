@@ -39,8 +39,6 @@ const additionalPages = [
 ];
 
 function page() {
-
-
   const swiperRef = useRef<SwiperCore | null>(null);
 
   const slides = [
@@ -163,33 +161,33 @@ function page() {
             </div>
           </div>
           <Swiper
-              onSwiper={(swiper) => {
-                swiperRef.current = swiper;
-              }}
-              speed={500}
-              initialSlide={2}
-              effect={"coverflow"}
-              grabCursor={true}
-              centeredSlides={true}
-              slidesPerView={"auto"}
-              loop={false}
-              coverflowEffect={{
-                rotate: 50,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: true,
-              }}
-              pagination={true}
-              // modules={[EffectCoverflow, Pagination]}
-              className="mySwiper"
-            >
-              {slides.map((e, i) => (
-                <SwiperSlide key={i}>
-                  <img src={e} className={`slide slide${i} `} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+            speed={500}
+            initialSlide={2}
+            effect={"coverflow"}
+            grabCursor={true}
+            centeredSlides={true}
+            slidesPerView={"auto"}
+            loop={false}
+            coverflowEffect={{
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true,
+            }}
+            pagination={true}
+            // modules={[EffectCoverflow, Pagination]}
+            className="mySwiper"
+          >
+            {slides.map((e, i) => (
+              <SwiperSlide key={i}>
+                <img src={e} className={`slide slide${i} `} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </NextPrevNav>

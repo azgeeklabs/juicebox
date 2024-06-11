@@ -39,7 +39,6 @@ const additionalPages = [
 ];
 
 function page() {
-
   const swiperRef = useRef<SwiperCore | null>(null);
 
   const slides = [
@@ -58,7 +57,7 @@ function page() {
       backLink="/services/web-design/website-style"
       nextLink="/services/web-design/additional-features"
     >
-      <div className="flex flex-col h-full">
+      <div className="flex flex-col justify-center">
         <div className={classNames("flex flex-col gap-4", styles.container)}>
           <h1 className="text-[--30px] font-bold">
             Customize Your E-commerce App Pages
@@ -70,7 +69,7 @@ function page() {
           </p>
         </div>
         <div className="flex grow">
-          <div className="flex gap-4 w-1/2">
+        <div className="flex gap-4 w-1/2">
             <div className="flex flex-col justify-evenly">
               <div className="flex flex-col gap-8">
                 <div className="flex items-center gap-4">
@@ -140,30 +139,18 @@ function page() {
                     <CustomCheckBoxText
                       btnSize="sm"
                       inputType="checkbox"
-                      onMouseMove={() => {
-                        document.querySelectorAll(".item").forEach((e) => {
-                          e.classList.remove("active");
-                        });
-                        document
-                          .querySelector(`.item${i}`)
-                          ?.classList.add("active");
-                      }}
-                      onClick={(e) => {
-                        document.querySelectorAll(".item").forEach((ele) => {
-                          ele.classList.remove("active");
-                        });
-                        if (!(e.target as HTMLInputElement).checked) {
-                          document
-                            .querySelector(`.item${i}`)
-                            ?.classList.remove("selected");
-                        } else {
-                          document
-                            .querySelector(`.item${i}`)
-                            ?.classList.add("selected");
+                      onMouseOver={() => {
+                        if (swiperRef.current) {
+                          swiperRef.current.slideTo(i); // Slide index is 0-based
                         }
+                      }}
+                      onClick={() => {
+                        // document.querySelectorAll("img.slide").forEach((e) => {
+                        //   // e.classList.remove("selected");
+                        // });
                         document
-                          .querySelector(`.item${i}`)
-                          ?.classList.add("active");
+                          .querySelector(`.slide${i}`)
+                          ?.classList.toggle("selected");
                       }}
                     >
                       {page}
@@ -173,27 +160,34 @@ function page() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col gap-4 w-1/2">
-            <div>
-              <div className={`${styles.slider} slider`}>
-                {additionalPages.map((e, i) => (
-                  <div
-                    key={i}
-                    className={`item${i} ${styles.item} item ${
-                      i == additionalPages.length / 2 - 1 ||
-                      i == additionalPages.length / 2 + 0.5 - 1
-                        ? `active ${styles.right}`
-                        : i > (additionalPages.length - 1) / 2
-                        ? styles.right
-                        : styles.left
-                    }`}
-                  >
-                    <h1>{e}</h1>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+          <Swiper
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+            speed={500}
+            initialSlide={2}
+            effect={"coverflow"}
+            grabCursor={true}
+            centeredSlides={true}
+            slidesPerView={"auto"}
+            loop={false}
+            coverflowEffect={{
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true,
+            }}
+            pagination={true}
+            // modules={[EffectCoverflow, Pagination]}
+            className="mySwiper"
+          >
+            {slides.map((e, i) => (
+              <SwiperSlide key={i}>
+                <img src={e} className={`slide slide${i} `} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </NextPrevNav>
