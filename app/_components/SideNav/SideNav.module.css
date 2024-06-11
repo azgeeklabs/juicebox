@@ -175,7 +175,7 @@
 
 .navbar footer {
   position: absolute;
-  bottom: calc(var(--16px) + var(--5px));
+  bottom: calc(var(--sy-16px) + var(--5px));
   /* right: 0.6rem; */
 }
 .sidebar:is(.open) .navbar footer {
