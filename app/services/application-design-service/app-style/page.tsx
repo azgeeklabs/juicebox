@@ -83,7 +83,7 @@ export default function page() {
               speed={500}
               initialSlide={2}
               effect={"coverflow"}
-              grabCursor={true}
+              grabCursor={false}
               centeredSlides={true}
               slidesPerView={"auto"}
               loop={false}
@@ -95,6 +95,7 @@ export default function page() {
                 slideShadows: true,
               }}
               pagination={true}
+              allowTouchMove={false}  // Disable slide navigation by mouse drag
               // modules={[EffectCoverflow, Pagination]}
               className="mySwiper"
             >
