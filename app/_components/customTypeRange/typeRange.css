@@ -17,16 +17,21 @@
     box-shadow: none;
   }
   .customInputRange .MuiSlider-thumb::before {
-    height: fit-content;
+    /* height: fit-content; */
     color: #f8f24b;
-    left: 50%;
+    /* left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
+    left: 0;
+    top: 0;
     width: 100%;
     font-size: clamp(7px, calc(0.6vw + 0.1rem), 700px);
     text-align: center;
     white-space: nowrap;
     box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .customInputRange .MuiSlider-rail {
     height: 1.5vw;
@@ -40,8 +45,8 @@
   .customInputRange .MuiSlider-mark {
     display: none;
   }
-  .customInputRange .MuiBox-root {
+  /* .customInputRange .MuiBox-root {
     width: 90%;
     margin: 0 auto;
-  }
+  } */
   /* ===== End Range Slider ===== */
