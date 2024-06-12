@@ -92,7 +92,6 @@ export default function page() {
               speed={500}
               initialSlide={2}
               effect={"coverflow"}
-              grabCursor={true}
               centeredSlides={true}
               slidesPerView={"auto"}
               loop={false}
@@ -103,13 +102,16 @@ export default function page() {
                 modifier: 1,
                 slideShadows: true,
               }}
+              allowTouchMove={false} // Disable slide navigation by mouse drag
+              grabCursor={false}
               pagination={true}
               // modules={[EffectCoverflow, Pagination]}
-              className="mySwiper"
+              className="mySwiper desktop-swiper"
             >
               {slides.map((e, i) => (
                 <SwiperSlide key={i}>
                   <img src={e} className={`slide slide${i} `} />
+                  <div className="custom-shadow"></div>
                 </SwiperSlide>
               ))}
             </Swiper>

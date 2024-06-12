@@ -24,16 +24,19 @@ export default function page() {
   const swiperRef = useRef<SwiperCore | null>(null);
 
   const slides = [
-    "https://swiperjs.com/demos/images/nature-1.jpg",
-    "https://swiperjs.com/demos/images/nature-2.jpg",
-    "https://swiperjs.com/demos/images/nature-3.jpg",
-    "https://swiperjs.com/demos/images/nature-4.jpg",
-    "https://swiperjs.com/demos/images/nature-5.jpg",
+    "/assets/desktop-slide-1.png",
+    "/assets/desktop-slide-2.png",
+    "/assets/desktop-slide-3.png",
+    "/assets/desktop-slide-4.png",
+    "/assets/desktop-slide-1.png",
   ];
 
   return (
     // Main container div with full height, flexbox layout, and content vertically and horizontally centered
-    <NextPrevNav nextLink="/services/video-service/videoScript" backLink="/services/video-service/footage-edit">
+    <NextPrevNav
+      nextLink="/services/video-service/videoScript"
+      backLink="/services/video-service/footage-edit"
+    >
       <div className="flex items-center justify-center h-full w-full">
         {/* // Inner container with full width and custom styles for adding to the video section */}
         <div className={`${styles.addToVideo} w-full `}>
@@ -88,7 +91,6 @@ export default function page() {
               speed={500}
               initialSlide={2}
               effect={"coverflow"}
-              grabCursor={true}
               centeredSlides={true}
               slidesPerView={"auto"}
               loop={false}
@@ -100,12 +102,15 @@ export default function page() {
                 slideShadows: true,
               }}
               pagination={true}
+              allowTouchMove={false} // Disable slide navigation by mouse drag
+              grabCursor={false}
               // modules={[EffectCoverflow, Pagination]}
-              className="mySwiper"
+              className="mySwiper desktop-swiper"
             >
               {slides.map((e, i) => (
                 <SwiperSlide key={i}>
                   <img src={e} className={`slide slide${i} `} />
+                  <div className="custom-shadow"></div>
                 </SwiperSlide>
               ))}
             </Swiper>
