@@ -13,59 +13,24 @@ import SwiperCore from "swiper";
 
 export default function page() {
   const options = [
-    "Explainer",
-    "Educational",
-    "YouTube",
-    "Social Media Ad",
-    "Short Film",
+    "Light Mode",
+    "Dark Mode",
+    "Playful",
+    "Playful",
+    "Dark Mode",
   ];
 
   const swiperRef = useRef<SwiperCore | null>(null);
 
   const slides = [
-    "https://swiperjs.com/demos/images/nature-1.jpg",
-    "https://swiperjs.com/demos/images/nature-2.jpg",
-    "https://swiperjs.com/demos/images/nature-3.jpg",
-    "https://swiperjs.com/demos/images/nature-4.jpg",
-    "https://swiperjs.com/demos/images/nature-5.jpg",
+    "/assets/slide-1.png",
+    "/assets/slide-2.png",
+    "/assets/slide-3.png",
+    "/assets/slide-1.png",
+    "/assets/slide-2.png",
+    "/assets/slide-3.png",
   ];
-  // useEffect(() => {
-  //   let items = document.getElementsByClassName("item") as any;
-  //   let next = document.getElementById("next");
-  //   let prev = document.getElementById("prev");
 
-  //   let active = 3;
-  //   function loadShow() {
-  //     let stt = 0;
-  //     items[active].style.transform = `none`;
-  //     items[active].style.zIndex = 1;
-  //     items[active].style.filter = "none";
-  //     items[active].style.opacity = 1;
-  //     for (var i = active + 1; i < items.length; i++) {
-  //       stt++;
-  //       items[i].style.transform = `translateX(${120 * stt}px) scale(${
-  //         1 - 0.2 * stt
-  //       }) perspective(16px) rotateY(-1deg)`;
-  //       items[i].style.zIndex = -stt;
-  //       items[i].style.filter = "blur(5px)";
-  //       items[i].style.opacity = stt > 2 ? 0 : 0.6;
-  //     }
-  //     stt = 0;
-  //     for (var i = active - 1; i >= 0; i--) {
-  //       stt++;
-  //       items[i].style.transform = `translateX(${-120 * stt}px) scale(${
-  //         1 - 0.2 * stt
-  //       }) perspective(16px) rotateY(1deg)`;
-  //       items[i].style.zIndex = -stt;
-  //       items[i].style.filter = "blur(5px)";
-  //       items[i].style.opacity = stt > 2 ? 0 : 0.6;
-  //     }
-  //   }
-
-  //   console.log(items);
-
-  //   // loadShow();
-  // }, []);
 
   return (
     <NextPrevNav
@@ -74,7 +39,7 @@ export default function page() {
     >
       <div className=" flex flex-col items-center justify-center h-full">
         <div className={`${styles.editing} w-full `}>
-          <div className="flex flex-col justify-center items-center text-center mb-[3.5vw]">
+          <div className="flex flex-col justify-center items-center text-center mb-[2vw]">
             <h2 className=" mb-[1.041vw]">
               What type of video would you like to create?
             </h2>
