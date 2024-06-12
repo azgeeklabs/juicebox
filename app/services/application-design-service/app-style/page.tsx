@@ -28,7 +28,6 @@ export default function page() {
     "/assets/mobile-slide-3.png",
     "/assets/mobile-slide-4.png",
     "/assets/mobile-slide-1.png",
-    "/assets/mobile-slide-2.png",
   ];
 
 
