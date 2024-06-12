@@ -27,7 +27,7 @@ export default function page() {
     "/assets/slide-2.png",
     "/assets/slide-3.png",
     "/assets/slide-1.png",
-    "/assets/slide-2.png",
+    "/assets/slide-4.png",
     "/assets/slide-3.png",
   ];
 
