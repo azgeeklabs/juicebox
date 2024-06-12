@@ -168,37 +168,86 @@ body {
 /* ===== End Layout ===== */
 
 /* ===== Start Slider ===== */
-.selected {
-  border: var(--8px) solid #f8f24b !important;
-}
-
-.swiper {
+/* 01. Mobile Slides */
+.mobile-swiper.swiper {
   width: 17vw;
 }
 
-.swiper .swiper-slide {
+.mobile-swiper.swiper .swiper-slide {
   width: 60% !important;
   transform: translateX(0) scale(0.7);
 }
 
-.swiper .swiper-slide.swiper-slide-prev {
-  transform: translateX(65%) scale(0.7);
+.mobile-swiper.swiper .swiper-slide.swiper-slide-prev {
+  transform: translateX(52%) scale(0.7);
   transition: all 0.5s;
 }
 
-.swiper .swiper-slide.swiper-slide-next {
-  transform: translateX(-65%) scale(0.7);
+.mobile-swiper.swiper .swiper-slide.swiper-slide-next {
+  transform: translateX(-50%) scale(0.7);
   transition: all 0.5s;
 }
 
-.swiper .swiper-slide.swiper-slide-active {
+.mobile-swiper.swiper .swiper-slide.swiper-slide-active {
   transform: translateX(0) scale(1);
   transition: all 0.5s;
   z-index: 99;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.mobile-swiper.swiper .swiper-slide.swiper-slide-active .custom-shadow {
+  background: radial-gradient(50% 50% at 50% 50%, #1c1c1c 0%, rgba(28, 28, 28, 0.6) 51%, var(--dark-gray-1) 100%);
+  width: 150%;
+  height: var(--50px);
+}
+
+/* 02. Desktop Slides */
+.desktop-swiper.swiper {
+  width: 45vw;
+}
+
+.desktop-swiper.swiper .swiper-slide {
+  width: 90% !important;
+  transform: translateX(0) scale(0.7);
+}
+
+.desktop-swiper.swiper .swiper-slide.swiper-slide-prev {
+  transform: translateX(80%) scale(0.7);
+  transition: all 0.5s;
+}
+
+.desktop-swiper.swiper .swiper-slide.swiper-slide-next {
+  transform: translateX(-50%) scale(0.7);
+  transition: all 0.5s;
+}
+
+.desktop-swiper.swiper .swiper-slide.swiper-slide-active {
+  transform: translateX(0) scale(1);
+  transition: all 0.5s;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.desktop-swiper.swiper .swiper-slide.swiper-slide-active .custom-shadow {
+  background: radial-gradient(50% 50% at 50% 50%, #1c1c1c 0%, rgba(28, 28, 28, 0.6) 51%, var(--dark-gray-1) 100%);
+  width: 85%;
+  height: var(--50px);
+}
+
+.selected {
+  border: var(--8px) solid #f8f24b !important;
 }
 
 .swiper .slide {
-  border-radius: 18px;
+  border-radius: var(--18px);
 }
+
 
 /* ===== End Slider ===== */

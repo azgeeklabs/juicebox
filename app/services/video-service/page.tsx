@@ -24,50 +24,13 @@ export default function page() {
   const swiperRef = useRef<SwiperCore | null>(null);
 
   const slides = [
-    "https://swiperjs.com/demos/images/nature-1.jpg",
-    "https://swiperjs.com/demos/images/nature-2.jpg",
-    "https://swiperjs.com/demos/images/nature-3.jpg",
-    "https://swiperjs.com/demos/images/nature-4.jpg",
-    "https://swiperjs.com/demos/images/nature-5.jpg",
+    "/assets/desktop-slide-1.png",
+    "/assets/desktop-slide-2.png",
+    "/assets/desktop-slide-3.png",
+    "/assets/desktop-slide-4.png",
+    "/assets/desktop-slide-1.png",
   ];
 
-  // useEffect(() => {
-  //   let items = document.getElementsByClassName("item") as any;
-  //   let next = document.getElementById("next");
-  //   let prev = document.getElementById("prev");
-
-  //   let active = 3;
-  //   function loadShow() {
-  //     let stt = 0;
-  //     items[active].style.transform = `none`;
-  //     items[active].style.zIndex = 1;
-  //     items[active].style.filter = "none";
-  //     items[active].style.opacity = 1;
-  //     for (var i = active + 1; i < items.length; i++) {
-  //       stt++;
-  //       items[i].style.transform = `translateX(${120 * stt}px) scale(${
-  //         1 - 0.2 * stt
-  //       }) perspective(16px) rotateY(-1deg)`;
-  //       items[i].style.zIndex = -stt;
-  //       items[i].style.filter = "blur(5px)";
-  //       items[i].style.opacity = stt > 2 ? 0 : 0.6;
-  //     }
-  //     stt = 0;
-  //     for (var i = active - 1; i >= 0; i--) {
-  //       stt++;
-  //       items[i].style.transform = `translateX(${-120 * stt}px) scale(${
-  //         1 - 0.2 * stt
-  //       }) perspective(16px) rotateY(1deg)`;
-  //       items[i].style.zIndex = -stt;
-  //       items[i].style.filter = "blur(5px)";
-  //       items[i].style.opacity = stt > 2 ? 0 : 0.6;
-  //     }
-  //   }
-
-  //   console.log(items);
-
-  //   // loadShow();
-  // }, []);
 
   return (
     // Main container div with full height, column flex direction, and space-between alignment
@@ -139,11 +102,12 @@ export default function page() {
               }}
               pagination={true}
               // modules={[EffectCoverflow, Pagination]}
-              className="mySwiper"
+              className="mySwiper desktop-swiper"
             >
               {slides.map((e, i) => (
                 <SwiperSlide key={i}>
                   <img src={e} className={`slide slide${i} `} />
+                  <div className="custom-shadow"></div>
                 </SwiperSlide>
               ))}
             </Swiper>

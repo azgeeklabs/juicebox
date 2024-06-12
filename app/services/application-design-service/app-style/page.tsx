@@ -23,12 +23,12 @@ export default function page() {
   const swiperRef = useRef<SwiperCore | null>(null);
 
   const slides = [
-    "/assets/slide-1.png",
-    "/assets/slide-2.png",
-    "/assets/slide-3.png",
-    "/assets/slide-1.png",
-    "/assets/slide-4.png",
-    "/assets/slide-3.png",
+    "/assets/mobile-slide-1.png",
+    "/assets/mobile-slide-2.png",
+    "/assets/mobile-slide-3.png",
+    "/assets/mobile-slide-4.png",
+    "/assets/mobile-slide-1.png",
+    "/assets/mobile-slide-2.png",
   ];
 
 
@@ -97,11 +97,12 @@ export default function page() {
               pagination={true}
               allowTouchMove={false}  // Disable slide navigation by mouse drag
               // modules={[EffectCoverflow, Pagination]}
-              className="mySwiper"
+              className="mySwiper mobile-swiper"
             >
               {slides.map((e, i) => (
                 <SwiperSlide key={i}>
                   <img src={e} className={`slide slide${i} `} />
+                  <div className="custom-shadow"></div>
                 </SwiperSlide>
               ))}
             </Swiper>
