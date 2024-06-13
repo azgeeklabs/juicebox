@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box"; // Importing the Box component from MUI for layout.
 import Slider from "@mui/material/Slider"; // Importing the Slider component from MUI for creating a range slider.
-import React, { useEffect, useState } from 'react'; // Importing React and necessary hooks.
+import React, { useEffect, useState } from "react"; // Importing React and necessary hooks.
 import "./typeRange.css"; // Importing custom CSS for styling.
 
 const MAX = 3600; // Maximum value for the slider, representing 3600 seconds (1 hour).
@@ -17,7 +17,15 @@ const marks = [
   },
 ];
 
-const CustomTypeRange = ({ max }:{max?:number}) => {
+const CustomTypeRange = ({
+  max,
+  width,
+  minWidth,
+}: {
+  max?: number;
+  width?: string;
+  minWidth?: string;
+}) => {
   const [minut, setMinut] = useState("0"); // State for displaying time in minutes and seconds.
   const [val, setVal] = React.useState(MIN); // State for the current slider value.
 
@@ -51,7 +59,11 @@ const CustomTypeRange = ({ max }:{max?:number}) => {
   }, [minut]); // Dependency array includes 'minut', so this effect runs whenever 'minut' changes.
 
   return (
-    <Box sx={{ width: "80%", margin: "auto" }}> {/* Container for the slider with width and margin styling. */}
+    <Box
+      sx={{ width: width ? width : "80%", margin: "auto", minWidth: minWidth }}
+    >
+      {" "}
+      {/* Container for the slider with width and margin styling. */}
       <Slider
         className="customInputRange" // Custom CSS class for additional styling.
         marks={marks} // Marks for the slider (min and max values).

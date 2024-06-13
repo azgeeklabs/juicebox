@@ -1388,7 +1388,7 @@ function NicheSelection() {
   return (
     <>
       <NextPrevNav
-        nextLink="/services/application-design-service/service-projects"
+        nextLink="/services/influencer-marketing/follower-range"
         backLink="/services/influencer-marketing"
       >
         <div className="flex flex-col gap-[var(--64px)] justify-center items-center h-full">
