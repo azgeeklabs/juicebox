@@ -1,5 +1,6 @@
 "use client";
 // import type { Metadata } from "next";
+// import { Barlow } from "next/font/google";
 import "./globals.css";
 import SideNav from "./_components/SideNav/SideNav";
 import { useState } from "react";
@@ -7,7 +8,10 @@ import SubscribedServices from "./_components/SubscribedServices/SubscribedServi
 // Import Context (provider only)
 import GlobalContextProvider from "./_context/GlobalContext";
 
-// const inter = Inter({ subsets: ["latin"] });
+// const barlow = Barlow({
+//   subsets: ["latin"],
+//   weight: ["100", "200", "300", "500", "600", "800", "900"],
+// });
 
 // export const metadata: Metadata = {
 //   title: "Create Next App",
