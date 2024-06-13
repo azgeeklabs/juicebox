@@ -42,14 +42,14 @@ function page() {
   const swiperRef = useRef<SwiperCore | null>(null);
 
   const slides = [
-    "https://swiperjs.com/demos/images/nature-1.jpg",
-    "https://swiperjs.com/demos/images/nature-2.jpg",
-    "https://swiperjs.com/demos/images/nature-3.jpg",
-    "https://swiperjs.com/demos/images/nature-4.jpg",
-    "https://swiperjs.com/demos/images/nature-5.jpg",
-    "https://swiperjs.com/demos/images/nature-6.jpg",
-    "https://swiperjs.com/demos/images/nature-7.jpg",
-    "https://swiperjs.com/demos/images/nature-8.jpg",
+    "/assets/mobile-slide-1.png",
+    "/assets/mobile-slide-2.png",
+    "/assets/mobile-slide-3.png",
+    "/assets/mobile-slide-4.png",
+    "/assets/mobile-slide-1.png",
+    "/assets/mobile-slide-2.png",
+    "/assets/mobile-slide-3.png",
+    "/assets/mobile-slide-4.png",
   ];
 
   return (
@@ -58,7 +58,12 @@ function page() {
       backLink="/services/application-design-service/app-style"
     >
       <div className="flex flex-col justify-center">
-        <div className={classNames("flex flex-col gap-[var(--16px)]", styles.container)}>
+        <div
+          className={classNames(
+            "flex flex-col gap-[var(--16px)]",
+            styles.container
+          )}
+        >
           <h1 className="text-[--30px] font-bold">
             Customize Your E-commerce App Pages
           </h1>
@@ -109,7 +114,9 @@ function page() {
               </div>
               <div className="flex flex-col gap-[var(--32px)]">
                 <div className="flex items-center gap-[var(--16px)]">
-                  <h2 className="text-[--24px] font-medium">Additional Pages</h2>
+                  <h2 className="text-[--24px] font-medium">
+                    Additional Pages
+                  </h2>
                   <span className="relative">
                     <svg
                       viewBox="0 0 18 18"
@@ -163,7 +170,6 @@ function page() {
             speed={500}
             initialSlide={2}
             effect={"coverflow"}
-            grabCursor={true}
             centeredSlides={true}
             slidesPerView={"auto"}
             loop={false}
@@ -175,12 +181,15 @@ function page() {
               slideShadows: true,
             }}
             pagination={true}
+            allowTouchMove={false} // Disable slide navigation by mouse drag
+            grabCursor={false}
             // modules={[EffectCoverflow, Pagination]}
-            className="mySwiper"
+            className="mySwiper mobile-swiper"
           >
             {slides.map((e, i) => (
               <SwiperSlide key={i}>
                 <img src={e} className={`slide slide${i} `} />
+                <div className="custom-shadow"></div>
               </SwiperSlide>
             ))}
           </Swiper>

@@ -31,7 +31,6 @@ export default function page() {
     "/assets/desktop-slide-1.png",
   ];
 
-
   return (
     // Main container div with full height, column flex direction, and space-between alignment
     <NextPrevNav nextLink="/services/video-service/footage-selection">
@@ -89,7 +88,6 @@ export default function page() {
               speed={500}
               initialSlide={2}
               effect={"coverflow"}
-              grabCursor={true}
               centeredSlides={true}
               slidesPerView={"auto"}
               loop={false}
@@ -101,6 +99,8 @@ export default function page() {
                 slideShadows: true,
               }}
               pagination={true}
+              allowTouchMove={false} // Disable slide navigation by mouse drag
+              grabCursor={false}
               // modules={[EffectCoverflow, Pagination]}
               className="mySwiper desktop-swiper"
             >

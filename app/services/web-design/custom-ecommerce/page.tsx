@@ -42,14 +42,14 @@ function page() {
   const swiperRef = useRef<SwiperCore | null>(null);
 
   const slides = [
-    "https://swiperjs.com/demos/images/nature-1.jpg",
-    "https://swiperjs.com/demos/images/nature-2.jpg",
-    "https://swiperjs.com/demos/images/nature-3.jpg",
-    "https://swiperjs.com/demos/images/nature-4.jpg",
-    "https://swiperjs.com/demos/images/nature-5.jpg",
-    "https://swiperjs.com/demos/images/nature-6.jpg",
-    "https://swiperjs.com/demos/images/nature-7.jpg",
-    "https://swiperjs.com/demos/images/nature-8.jpg",
+    "/assets/mobile-slide-1.png",
+    "/assets/mobile-slide-2.png",
+    "/assets/mobile-slide-3.png",
+    "/assets/mobile-slide-4.png",
+    "/assets/mobile-slide-1.png",
+    "/assets/mobile-slide-2.png",
+    "/assets/mobile-slide-3.png",
+    "/assets/mobile-slide-4.png",
   ];
 
   return (
@@ -170,7 +170,6 @@ function page() {
             speed={500}
             initialSlide={2}
             effect={"coverflow"}
-            grabCursor={true}
             centeredSlides={true}
             slidesPerView={"auto"}
             loop={false}
@@ -181,13 +180,16 @@ function page() {
               modifier: 1,
               slideShadows: true,
             }}
+            allowTouchMove={false} // Disable slide navigation by mouse drag
+            grabCursor={false}
             pagination={true}
             // modules={[EffectCoverflow, Pagination]}
-            className="mySwiper"
+            className="mySwiper mobile-swiper"
           >
             {slides.map((e, i) => (
               <SwiperSlide key={i}>
                 <img src={e} className={`slide slide${i} `} />
+                <div className="custom-shadow"></div>
               </SwiperSlide>
             ))}
           </Swiper>

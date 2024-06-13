@@ -2,8 +2,6 @@
 import classNames from "classnames";
 import styles from "./application-design-service.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
 
 const gameSVG = (
   <svg viewBox="0 0 150 118" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1389,8 +1387,6 @@ const appSVG = (
 );
 
 function page() {
-  const router = useRouter();
-
   return (
     <>
       <NextPrevNav nextLink="/services/application-design-service/service-projects">
@@ -1412,7 +1408,10 @@ function page() {
           </div>
           <div className={classNames("flex ", styles.cards)}>
             <div
-              className={classNames("flex flex-col gap-[var(--8px)] group", styles.card)}
+              className={classNames(
+                "flex flex-col gap-[var(--8px)] group",
+                styles.card
+              )}
             >
               <div className="flex items-center justify-center relative">
                 <img
@@ -1430,7 +1429,12 @@ function page() {
                 className="absolute opacity-0 inset-0 cursor-pointer"
               />
             </div>
-            <div className={classNames("flex flex-col gap-[var(--sy-8px)]", styles.card)}>
+            <div
+              className={classNames(
+                "flex flex-col gap-[var(--sy-8px)]",
+                styles.card
+              )}
+            >
               <div className="flex items-center justify-center relative">
                 <img
                   src="/assets/application-design-service-applicationcard.gif"

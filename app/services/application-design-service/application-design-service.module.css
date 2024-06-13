@@ -1,28 +1,26 @@
 .card {
   background-color: var(--dark-gray-3);
-  border-radius: 12px;
+  border-radius: var(--12px);
   position: relative;
-  /* width: clamp(15rem, calc(10.35vw + 0.1rem), 20rem);
-  height: clamp(15rem, calc(10.35vw + 0.1rem), 20rem); */
   aspect-ratio: 1 / 1;
-  padding: 30px 50px 30px 50px;
+  padding: var(--30px) var(--50px);
   cursor: pointer;
   transition: background-color 0.2s ease-in, transform 0.2s ease-in;
 }
 
 .card div:nth-child(1) {
-  width: clamp(6rem, calc(7.35vw + 0.1rem), 20rem);
-  height: clamp(6rem, calc(7.35vw + 0.1rem), 20rem);
+  width: clamp(1rem, calc(7.35vw + 0.1rem), 1000rem);
+  height: clamp(1rem, calc(7.35vw + 0.1rem), 1000rem);
   aspect-ratio: 1 / 1;
 }
 
 .card div:nth-child(2) {
   text-align: center;
-  font-size: 2rem;
+  font-size: var(--32px);
 }
 
 .cards {
-  gap: clamp(1rem, calc(5vw + 0.1rem), 50rem);
+  gap: clamp(2px, calc(5vw + 0.1rem), 50rem);
 }
 
 /* .card > div {
@@ -32,8 +30,6 @@
 .card > div * {
   position: absolute;
   width: 100%;
-
-  /* transition: visibility 1s ease-in, opacity 1s ease-in; */
 }
 
 .card img {
