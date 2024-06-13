@@ -1,0 +1,53 @@
+/* remove scroll bar */
+
+.container *::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.container * {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.container > div:last-child {
+  transition: all 0.5s cubic-bezier(0.11, 0.59, 0.18, 1.63);
+}
+
+.influencerCard {
+  height: 100px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.11, 0.59, 0.6, 1.3);
+}
+
+.influencerCard:has(input:checked) {
+  background-color: var(--highlight-yellow);
+}
+.influencerCard:has(input:checked) * {
+  color: var(--primary-black);
+}
+.influencerCard:has(input:checked) p {
+  font-weight: 500;
+}
+
+.influencerCard:has(input:checked) button {
+  background-color: var(--dark-gray-3);
+  color: var(--light-gray);
+}
+
+.influencerCard:has(input:checked) button:hover {
+  background-color: var(--primary-black);
+  color: var(--white);
+}
+
+.influencerCard:hover {
+  height: 400px;
+  background-color: var(--primary-black);
+}
+.influencerCard > div:last-child {
+  height: 0;
+  overflow-y: hidden;
+  transition: height 0.3s cubic-bezier(0.11, 0.59, 0.18, 1.63);
+}
+.influencerCard:hover > div:last-child {
+  height: 100%;
+}
