@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import styles from "./influencer-marketing.module.css";
+import styles from "./niche-selection.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
 const gameSVG = (
@@ -1384,11 +1384,13 @@ const appSVG = (
     </defs>
   </svg>
 );
-
-function InfluencerMarketing() {
+function NicheSelection() {
   return (
     <>
-      <NextPrevNav nextLink="/services/influencer-marketing/niche-selection">
+      <NextPrevNav
+        nextLink="/services/application-design-service/service-projects"
+        backLink="/services/influencer-marketing"
+      >
         <div className="flex flex-col gap-[var(--64px)] justify-center items-center h-full">
           <div
             className={classNames(
@@ -1397,10 +1399,10 @@ function InfluencerMarketing() {
             )}
           >
             <h2 className="text-[--30px] font-bold">
-              What type of campaign would you like to run?
+              Identifying the Niche for Your Campaign
             </h2>
             <p className="text-[--18px] w-[60%]">
-              Please select the option that best describes your campaign type.
+              Please select the option that best describes your campaign niche.
               This helps us understand the specific requirements for your
               campaign.
             </p>
@@ -1441,4 +1443,4 @@ function InfluencerMarketing() {
   );
 }
 
-export default InfluencerMarketing;
+export default NicheSelection;
