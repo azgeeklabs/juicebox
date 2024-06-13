@@ -10,7 +10,7 @@ const CustomTypeRange = dynamic(
 function FollowerRange() {
   return (
     <NextPrevNav
-      nextLink="/services/video-service/video-endpoint"
+      nextLink="/services/influencer-marketing/influencer-list"
       backLink="/services/influencer-marketing/niche-selection"
     >
       <div className=" flex justify-center items-center h-full w-full">
