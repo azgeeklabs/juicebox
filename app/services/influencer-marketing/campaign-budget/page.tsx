@@ -33,8 +33,13 @@ const page = () => {
 
           {/* Container for the duration indicator with custom background, width, height, and margin */}
 
+          
+
           <div className=" w-full md:w-1/2 mx-auto">
-            <CustomTypeRange />
+          <div className=" w-fit pl-[1vw]">
+          <h5 className=" text-[--20px] mb-[3vh]">Budget Range</h5>
+          </div>
+            <CustomTypeRange word="USD"/>
           </div>
         </div>
       </div>
