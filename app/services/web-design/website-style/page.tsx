@@ -24,11 +24,11 @@ export default function page() {
   const swiperRef = useRef<SwiperCore | null>(null);
 
   const slides = [
-    "https://swiperjs.com/demos/images/nature-1.jpg",
-    "https://swiperjs.com/demos/images/nature-2.jpg",
-    "https://swiperjs.com/demos/images/nature-3.jpg",
-    "https://swiperjs.com/demos/images/nature-4.jpg",
-    "https://swiperjs.com/demos/images/nature-5.jpg",
+    "/assets/desktop-slide-1.png",
+    "/assets/desktop-slide-2.png",
+    "/assets/desktop-slide-3.png",
+    "/assets/desktop-slide-4.png",
+    "/assets/desktop-slide-1.png",
   ];
 
   return (

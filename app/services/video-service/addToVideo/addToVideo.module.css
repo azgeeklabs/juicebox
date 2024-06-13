@@ -64,3 +64,6 @@
     padding-top: 1.244vh;
     padding-bottom: 1.244vh;
   }
+  .btns{
+    margin-top: calc(-1 * var(--50px));
+  }
