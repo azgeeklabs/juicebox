@@ -21,10 +21,12 @@ const CustomTypeRange = ({
   max,
   width,
   minWidth,
+  word
 }: {
   max?: number;
   width?: string;
   minWidth?: string;
+  word?:string
 }) => {
   const [minut, setMinut] = useState("0"); // State for displaying time in minutes and seconds.
   const [val, setVal] = React.useState(MIN); // State for the current slider value.
@@ -53,7 +55,7 @@ const CustomTypeRange = ({
     const style = document.createElement("style"); // Create a new style element.
     document.head.appendChild(style); // Append the style element to the document head.
     style?.sheet?.insertRule(
-      `.MuiSlider-thumb::before { content: "${minut}"; }`, // CSS rule to display the formatted time.
+      `.MuiSlider-thumb::before { content: "${word ? `${val} ${word}` : minut}"; }`, // CSS rule to display the formatted time.
       0 // Insert at the first position.
     );
   }, [minut]); // Dependency array includes 'minut', so this effect runs whenever 'minut' changes.
