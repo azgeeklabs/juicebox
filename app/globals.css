@@ -215,6 +215,11 @@ body {
   transform: translateX(0) scale(0.7);
 }
 
+.desktop-swiper.swiper .swiper-slide .custom-shadow {
+  background: transparent;
+  width: 85%;
+  height: var(--50px);
+}
 .desktop-swiper.swiper .swiper-slide.swiper-slide-prev {
   transform: translateX(80%) scale(0.7);
   transition: all 0.5s;
