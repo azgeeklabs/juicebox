@@ -46,3 +46,7 @@
 .emailContacts input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
   }
+  .emailContacts svg {
+    width: var(--16px);
+    height: var(--16px);
+  }

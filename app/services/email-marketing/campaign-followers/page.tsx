@@ -36,7 +36,7 @@ const page = () => {
           {/* Container for the duration indicator with custom background, width, height, and margin */}
 
           <div className=" w-full md:w-1/2 mx-auto">
-            <CustomTypeRange />
+            <CustomTypeRange word="Follow Up" max={100}/>
           </div>
         </div>
       </div>
