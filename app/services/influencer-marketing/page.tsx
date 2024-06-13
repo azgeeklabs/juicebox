@@ -1,6 +1,6 @@
 "use client";
 import classNames from "classnames";
-import styles from "./application-design-service.module.css";
+import styles from "./influencer-marketing.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
 const gameSVG = (
@@ -1386,7 +1386,7 @@ const appSVG = (
   </svg>
 );
 
-function page() {
+function InfluencerMarketing() {
   return (
     <>
       <NextPrevNav nextLink="/services/application-design-service/service-projects">
@@ -1407,50 +1407,34 @@ function page() {
             </p>
           </div>
           <div className={classNames("flex ", styles.cards)}>
-            <div
-              className={classNames(
-                "flex flex-col gap-[var(--8px)] group",
-                styles.card
-              )}
-            >
-              <div className="flex items-center justify-center relative">
-                <img
-                  src="/assets/application-design-service-gamecard.gif"
-                  alt="/assets/application-design-service-gamecard.gif"
-                  className="w-full"
-                />
-                {gameSVG}
-              </div>
-              <div>Game</div>
-              <input
-                type="radio"
-                name="type"
-                value="game"
-                className="absolute opacity-0 inset-0 cursor-pointer"
-              />
-            </div>
-            <div
-              className={classNames(
-                "flex flex-col gap-[var(--sy-8px)]",
-                styles.card
-              )}
-            >
-              <div className="flex items-center justify-center relative">
-                <img
-                  src="/assets/application-design-service-applicationcard.gif"
-                  alt="/assets/application-design-service-applicationcard.gif"
-                  className="w-full"
-                />
-                {appSVG}
-              </div>
-              <div>Application</div>
-              <input
-                type="radio"
-                name="type"
-                value="app"
-                className="absolute opacity-0 inset-0 cursor-pointer"
-              />
-            </div>
+            {Array(3)
+              .fill(0)
+              .map((_, i) => (
+                <>
+                  <div
+                    className={classNames(
+                      "flex flex-col gap-[var(--8px)] group",
+                      styles.card
+                    )}
+                  >
+                    <div className="flex items-center justify-center relative">
+                      <img
+                        src="/assets/application-design-service-gamecard.gif"
+                        alt="/assets/application-design-service-gamecard.gif"
+                        className="w-full"
+                      />
+                      {gameSVG}
+                    </div>
+                    <div>Game</div>
+                    <input
+                      type="radio"
+                      name="type"
+                      value="game"
+                      className="absolute opacity-0 inset-0 cursor-pointer"
+                    />
+                  </div>
+                </>
+              ))}
           </div>
         </div>
       </NextPrevNav>
@@ -1458,4 +1442,4 @@ function page() {
   );
 }
 
-export default page;
+export default InfluencerMarketing;

@@ -20,7 +20,7 @@
 }
 
 .cards {
-  gap: clamp(2px, calc(5vw + 0.1rem), 50rem);
+  gap: clamp(2px, calc(3vw + 0.1rem), 50rem);
 }
 
 /* .card > div {
