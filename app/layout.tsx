@@ -4,6 +4,8 @@ import "./globals.css";
 import SideNav from "./_components/SideNav/SideNav";
 import { useState } from "react";
 import SubscribedServices from "./_components/SubscribedServices/SubscribedServices";
+// Import Context (provider only)
+import GlobalContextProvider from "./_context/GlobalContext";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -21,17 +23,21 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body>
-        <div className={"mainWrapper h-[100vh] w-[100vw] flex overflow-hidden"}>
-          <SideNav open={open} setOpen={setOpen} />
-          {/* dynamic width */}
-          <div className={` ${open && "navOpened"} pageWrapper`}>
-            {/* header */}
-            <SubscribedServices />
-            <div className="pageContent">{children}</div>
+      <GlobalContextProvider>
+        <body>
+          <div
+            className={"mainWrapper h-[100vh] w-[100vw] flex overflow-hidden"}
+          >
+            <SideNav open={open} setOpen={setOpen} />
+            {/* dynamic width */}
+            <div className={` ${open && "navOpened"} pageWrapper`}>
+              {/* header */}
+              <SubscribedServices />
+              <div className="pageContent">{children}</div>
+            </div>
           </div>
-        </div>
-      </body>
+        </body>
+      </GlobalContextProvider>
     </html>
   );
 }
