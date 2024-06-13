@@ -14,7 +14,7 @@ function page() {
   return (
     <NextPrevNav
       nextLink="/services/influencer-marketing/influencerEndPoint"
-      backLink="/services/influencer-marketing/landing-page-link"
+      backLink="/services/influencer-marketing/campaign-budget"
     >
       <div
         className={`${styles.promoOptions} flex flex-col justify-between h-full`}
@@ -33,7 +33,8 @@ function page() {
 
               {/* Subheading with text centered */}
               <h4 className="text-center">
-              We can use your existing video or create a custom one to fit your campaign's needs. 
+                We can use your existing video or create a custom one to fit
+                your campaign's needs.
                 <br />
                 Let us know how we can assist.
               </h4>

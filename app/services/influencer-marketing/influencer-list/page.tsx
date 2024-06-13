@@ -4,11 +4,16 @@ import styles from "./influencer-list.module.css";
 import { useState } from "react";
 
 function InfluencerList() {
+  // State to keep track of selected influencers
   const [selectedInfluencers, setSelectedInfluencers] = useState<string[]>([]);
+
+  // Handle selecting and deselecting influencers
   const handleSelectInfluencer = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
+      // Add influencer to the list if checked
       setSelectedInfluencers([...selectedInfluencers, e.target.value]);
     } else {
+      // Remove influencer from the list if unchecked
       setSelectedInfluencers(
         selectedInfluencers.filter(
           (influencer) => influencer !== e.target.value
@@ -19,18 +24,20 @@ function InfluencerList() {
 
   return (
     <NextPrevNav
-      nextLink="/influencer-marketing/influencer-list/step-2"
-      backLink="/influencer-marketing/influencer-list/step-1"
+      backLink="/services/influencer-marketing/follower-range"
+      nextLink="/services/influencer-marketing/campaign-budget"
     >
+      {/* Main container for the influencer list */}
       <div
         className={`flex flex-col items-center justify-center py-[--sy-20px] gap-[--sy-20px] h-full w-full ${styles.container}`}
       >
+        {/* Header section with title and regenerate button */}
         <div className="flex justify-between items-end w-full">
           <div className="flex flex-col gap-[--16px] items-center w-full md:w-1/2 lg:w-1/3">
             <h1 className="text-[--32px] font-bold w-full">Influencer List</h1>
             <p className="text-[#AFAFAF] w-full">
-              Those ae the lis of influencers available based on your previous
-              selections, you can multi-select influencers or regenerated more
+              Those are the list of influencers available based on your previous
+              selections. You can multi-select influencers or regenerate more
               influencers!
             </p>
           </div>
@@ -38,6 +45,8 @@ function InfluencerList() {
             Regenerate
           </button>
         </div>
+
+        {/* Main content section displaying influencer cards */}
         <div className="flex gap-[--16px] max-h-[50vh] grow items-center w-full">
           {Array.from({ length: 4 }).map((_, i) => (
             <div
@@ -50,7 +59,7 @@ function InfluencerList() {
                   Marketing
                 </span>
               </div>
-              <div className="w-full grow max-h-[90%] ">
+              <div className="w-full grow max-h-[90%]">
                 <div className="flex flex-col gap-[--10px] pb-[--19px] pt-[--2px] items-center h-full overflow-y-auto">
                   {Array.from({ length: 10 }).map((_, index) => (
                     <div
@@ -77,7 +86,7 @@ function InfluencerList() {
                           </p>
                         </div>
                       </div>
-                      <div className="flex font-light flex-col justify-around items-center pt-[--15px] text-center px-[--20px]  gap-[--15px] w-full">
+                      <div className="flex font-light flex-col justify-around items-center pt-[--15px] text-center px-[--20px] gap-[--15px] w-full">
                         <div className="w-[90%] h-[--1px] bg-[#616161]"></div>
                         <p>
                           Lorem ipsum dolor sit amet consectetur adipisicing
@@ -85,7 +94,7 @@ function InfluencerList() {
                           suscipit? Et, veritatis molestias?
                         </p>
                         <p>
-                          soluta eius repellat quidem voluptatem architecto
+                          Soluta eius repellat quidem voluptatem architecto
                           nesciunt repudiandae placeat natus dolore, modi
                           ratione dicta illum sequi sed reiciendis consequatur!
                         </p>
@@ -107,6 +116,8 @@ function InfluencerList() {
             </div>
           ))}
         </div>
+
+        {/* Footer section showing the number of selected influencers */}
         <div className="flex justify-between items-center text-[--highlight-yellow] ml-auto w-[var(--252px)]">
           <span>Selected Influencers</span>
           <span>({selectedInfluencers.length})</span>
