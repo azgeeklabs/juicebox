@@ -177,6 +177,7 @@
   position: absolute;
   bottom: calc(var(--sy-16px) + var(--5px));
 }
+
 .sidebar:is(.open) .navbar footer {
   right: var(--20px);
 }

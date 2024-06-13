@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./ServicesTable.module.css";
 import CustomCheckBoxText from "../customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
+import path from "path";
 
 /**
  * Renders a table component displaying services.
@@ -63,6 +64,22 @@ export default function ServicesTable({
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
       path: "/services/web-design",
+    },
+    {
+      service: "Influencer Marketing",
+      information:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      clientProjects: "656 Projects",
+      getStarted: "Start Now!",
+      path: "/services/influencer-marketing",
+    },
+    {
+      service: "Email Marketing",
+      information:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      clientProjects: "656 Projects",
+      getStarted: "Start Now!",
+      path: "/services/email-marketing",
     },
     {
       service: "Lorem",
