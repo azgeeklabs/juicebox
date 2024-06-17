@@ -20,7 +20,7 @@
   padding: clamp(6.5px, calc(0.2vw + 0.1rem), 100px)
     clamp(21px, calc(1vw + 0.1rem), 100px);
   font-weight: 700;
-  font-size: clamp(14px, calc(0.6vw + 0.1rem), 100px);
+  font-size: var(--12px);
 }
 /* ===== End Filter Tabs ===== */
 
@@ -50,7 +50,7 @@
 
 .searchAndFilter > span {
   font-weight: 500;
-  font-size: clamp(16px, calc(0.7vw + 0.1rem), 100px);
+  font-size: var(--16px);
   text-decoration: underline;
   cursor: pointer;
   transition: all 0.20s;
