@@ -2,17 +2,14 @@
 // import type { Metadata } from "next";
 // import { Barlow } from "next/font/google";
 import "./globals.css";
-import SideNav from "./_components/SideNav/SideNav";
-import { useState } from "react";
-import SubscribedServices from "./_components/SubscribedServices/SubscribedServices";
+import MainWrapper from "./_components/layout/MainWrapper";
 // const inter = Inter({ subsets: ["latin"] });
-// Import Context (provider only)
-import GlobalContextProvider from "./_context/GlobalContext";
-
 // const barlow = Barlow({
 //   subsets: ["latin"],
 //   weight: ["100", "200", "300", "500", "600", "800", "900"],
 // });
+// Import Context (provider only)
+import GlobalContextProvider from "./_context/GlobalContext";
 
 // export const metadata: Metadata = {
 //   title: "Create Next App",
@@ -23,23 +20,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [open, setOpen] = useState<boolean>(false);
 
   return (
     <html lang="en">
       <GlobalContextProvider>
         <body>
-          <div
-            className={"mainWrapper h-[100vh] w-[100vw] flex overflow-hidden"}
-          >
-            <SideNav open={open} setOpen={setOpen} />
-            {/* dynamic width */}
-            <div className={` ${open && "navOpened"} pageWrapper`}>
-              {/* header */}
-              <SubscribedServices />
-              <div className="pageContent">{children}</div>
-            </div>
-          </div>
+        <MainWrapper>{children}</MainWrapper>
         </body>
       </GlobalContextProvider>
     </html>
