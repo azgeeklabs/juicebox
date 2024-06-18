@@ -1,155 +1,162 @@
 /* ===== Start Calender ===== */
-.custom-calender .MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeSmall.MuiPickersCalendarHeader-switchViewButton {
-    display: none;
-  }
-  
-  .custom-calender  .MuiButtonBase-root.MuiPickersDay-root.Mui-selected.MuiPickersDay-dayWithMargin {
-    background-color: #f8f24b ;
-    color: var(--primary-black);
-  }
-  
-  .custom-calender  .MuiPickersCalendarHeader-root {
-    display: flex;
-    gap: 0.6vw;
-    justify-content: space-between;
-  }
-  
-  .custom-calender  .MuiDayCalendar-weekContainer,
-  .custom-calender  .MuiDayCalendar-header {
-    display: flex;
-    gap: 0.6vw;
-    justify-content: space-between;
-  }
-  
-  .custom-calender   .MuiTypography-root.MuiTypography-caption.MuiDayCalendar-weekDayLabel {
-    font-size: clamp(10px, calc(0.7vw + 0.1rem), 100px);
-    color: white;
-    width: clamp(16px, calc(1.6vw + 0.1rem), 80px);
-    height: clamp(16px, calc(1.6vw + 0.1rem), 80px);
-    font-weight: 700;
-  }
-  
-  .custom-calender  .MuiButtonBase-root.MuiPickersDay-root.MuiPickersDay-dayWithMargin {
-    color: white;
-    font-size: clamp(10px, calc(0.7vw + 0.1rem), 100px);
-    font-weight: 500;
-    width: clamp(16px, calc(1.3vw + 0.1rem), 80px);
-    height: clamp(16px, calc(1.3vw + 0.1rem), 80px);
-  }
-  
-  .custom-calender  .MuiButtonBase-root.MuiPickersDay-root.MuiPickersDay-dayWithMargin:hover {
-    background-color: #f8f24b;
-    color: #1c1c1c;
-  }
-  
-  .custom-calender.MuiDateCalendar-root {
-    border: none;
-    border-radius: 0;
-    height: clamp(100px, calc(27vh + 0.1rem), 6000px);
-    overflow-y: hidden;
-    width: 100%;
-    padding: 0;
-    max-height: fit-content;
-    min-height: fit-content;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    -ms-border-radius: 0;
-    -o-border-radius: 0;
-  }
-  
-  .custom-calender  .MuiPickersSlideTransition-root.MuiDayCalendar-slideTransition {
-    overflow-y: hidden;
-    height: clamp(100px, calc(24vh + 0.1rem), 6000px);
-  }
-  
-  .custom-calender  .MuiPickersCalendarHeader-labelContainer {
-    font-size: clamp(10px, calc(0.8vw + 0.1rem), 60px);
-    font-weight: 700;
-  }
-  
-  .custom-calender  .MuiPickersArrowSwitcher-root {
-    background-color: #272727;
-    border-radius: var(--22px);
-  }
-  
-  .custom-calender   .MuiButtonBase-root.MuiIconButton-root.MuiIconButton-edgeEnd.MuiPickersArrowSwitcher-button,
+.custom-calender.MuiDateCalendar-root {
+  border: none;
+  border-radius: 0;
+  height: clamp(100px, calc(27vh + 0.1rem), 6000px);
+  overflow-y: hidden;
+  width: 100%;
+  padding: 0;
+  max-height: fit-content;
+  min-height: fit-content;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+}
+
+.custom-calender
+  .MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeSmall.MuiPickersCalendarHeader-switchViewButton {
+  display: none;
+}
+
+.custom-calender
+  .MuiButtonBase-root.MuiPickersDay-root.Mui-selected.MuiPickersDay-dayWithMargin {
+  background-color: #f8f24b;
+  color: var(--primary-black);
+}
+
+.custom-calender .MuiPickersCalendarHeader-root {
+  display: flex;
+  /* gap: 0.6vw; */
+  justify-content: space-between;
+  padding-left: 0;
+  padding-right: 0;
+  margin-top: 0;
+  max-height: fit-content;
+  min-height: fit-content;
+  margin-bottom: var(--sy-20px);
+}
+
+.custom-calender .MuiPickersCalendarHeader-label {
+  font-size: var(--24px);
+  font-weight: 600;
+  color: #f8f24b;
+}
+
+.custom-calender .MuiPickersArrowSwitcher-root {
+  background-color: #272727;
+  border-radius: var(--22px);
+  padding: 0 var(--2px);
+}
+.custom-calender
+  .MuiButtonBase-root.MuiIconButton-root.MuiIconButton-edgeEnd.MuiPickersArrowSwitcher-button,
+.custom-calender
   .MuiButtonBase-root.MuiIconButton-root.MuiIconButton-edgeStart.MuiPickersArrowSwitcher-button {
-    cursor: pointer;
-    width: clamp(16px, calc(1.5vw + 0.1rem), 80px);
-    height: clamp(16px, calc(1.5vw + 0.1rem), 80px);
-    border-radius: 0.2vw;
-    color: var(--white);
-  }
-  
-  .custom-calender  .MuiButtonBase-root.MuiIconButton-root.MuiIconButton-edgeEnd.MuiPickersArrowSwitcher-button
-    svg,
-    .custom-calender  .MuiButtonBase-root.MuiIconButton-root.MuiIconButton-edgeStart.MuiPickersArrowSwitcher-button
-    svg {
-    width: clamp(16px, calc(1.2vw + 0.1rem), 80px);
-    /* height: clamp(16px, calc(1vw + 0.1rem), 80px); */
-    transition: all 0.3s;
-  }
-  
-  .custom-calender  .MuiButtonBase-root.MuiIconButton-root.MuiIconButton-edgeEnd.MuiPickersArrowSwitcher-button:hover
-    path,
-    .custom-calender  .MuiButtonBase-root.MuiIconButton-root.MuiIconButton-edgeStart.MuiPickersArrowSwitcher-button:hover
-    path {
-    fill: #f8f24b;
-  }
-  
-  .custom-calender  .MuiButtonBase-root.MuiIconButton-root.MuiIconButton-edgeEnd.MuiPickersArrowSwitcher-button:disabled {
-    background-color: #d9d9d9;
-  }
-  
-  .custom-calender  .MuiPickersArrowSwitcher-spacer {
-    width: clamp(16px, calc(1.5vw + 0.1rem), 1400px);
-  }
-  
-  .custom-calender  .MuiButtonBase-root.MuiPickersDay-root.MuiPickersDay-dayWithMargin {
-    width: clamp(16px, calc(1.3vw + 0.1rem), 800px);
-    height: clamp(16px, calc(1.3vw + 0.1rem), 800px);
-  }
-  
-  .custom-calender  .MuiButtonBase-root.MuiPickersDay-root.MuiPickersDay-dayWithMargin:not(.Mui-selected) {
-    width: clamp(16px, calc(1.3vw + 0.1rem), 800px);
-    height: clamp(16px, calc(1.3vw + 0.1rem), 800px);
-  }
-  
-  /* .pagination_iconButton__7wOJj {
+  cursor: pointer;
+  width: var(--30px);
+  height: var(--30px);
+  border-radius: 0.2vw;
+  color: var(--white);
+}
+
+.custom-calender
+  .MuiButtonBase-root.MuiIconButton-root.MuiIconButton-edgeEnd.MuiPickersArrowSwitcher-button
+  svg,
+.custom-calender
+  .MuiButtonBase-root.MuiIconButton-root.MuiIconButton-edgeStart.MuiPickersArrowSwitcher-button
+  svg {
+  width: var(--20px);
+  height: var(--14px);
+  transition: all 0.3s;
+}
+
+.custom-calender
+  .MuiButtonBase-root.MuiIconButton-root.MuiIconButton-edgeEnd.MuiPickersArrowSwitcher-button:hover
+  path,
+.custom-calender
+  .MuiButtonBase-root.MuiIconButton-root.MuiIconButton-edgeStart.MuiPickersArrowSwitcher-button:hover
+  path {
+  fill: #f8f24b;
+}
+
+.custom-calender
+  .MuiButtonBase-root.MuiIconButton-root.MuiIconButton-edgeEnd.MuiPickersArrowSwitcher-button:disabled {
+  background-color: #d9d9d9;
+}
+
+.custom-calender .MuiPickersArrowSwitcher-spacer {
+  width: var(--32px);
+}
+
+.custom-calender .MuiDayCalendar-weekContainer,
+.custom-calender .MuiDayCalendar-header {
+  display: flex;
+  /* gap: 0.6vw; */
+  justify-content: space-between;
+  padding: var(--10px);
+}
+
+.custom-calender
+  .MuiTypography-root.MuiTypography-caption.MuiDayCalendar-weekDayLabel {
+  font-size: var(--15px);
+  color: white;
+  /* width: clamp(16px, calc(1.6vw + 0.1rem), 80px); */
+  /* height: clamp(16px, calc(1.6vw + 0.1rem), 80px); */
+  font-weight: 500;
+}
+
+.custom-calender
+  .MuiButtonBase-root.MuiPickersDay-root.MuiPickersDay-dayWithMargin {
+  color: white;
+  font-size: var(--13px);
+  font-weight: 400;
+  width: clamp(16px, calc(1.3vw + 0.1rem), 80px);
+  height: clamp(16px, calc(1.3vw + 0.1rem), 80px);
+}
+
+.custom-calender
+  .MuiButtonBase-root.MuiPickersDay-root.MuiPickersDay-dayWithMargin:hover {
+  background-color: #f8f24b;
+  color: #1c1c1c;
+}
+
+.custom-calender
+  .MuiPickersSlideTransition-root.MuiDayCalendar-slideTransition {
+  overflow-y: hidden;
+  height: clamp(100px, calc(24vh + 0.1rem), 6000px);
+}
+
+.custom-calender
+  .MuiButtonBase-root.MuiPickersDay-root.MuiPickersDay-dayWithMargin {
+  width: clamp(16px, calc(1.3vw + 0.1rem), 800px);
+  height: clamp(16px, calc(1.3vw + 0.1rem), 800px);
+}
+
+.custom-calender
+  .MuiButtonBase-root.MuiPickersDay-root.MuiPickersDay-dayWithMargin:not(
+    .Mui-selected
+  ) {
+  width: clamp(16px, calc(1.3vw + 0.1rem), 800px);
+  height: clamp(16px, calc(1.3vw + 0.1rem), 800px);
+}
+
+/* .pagination_iconButton__7wOJj {
     display: flex;
     justify-content: center;
     align-items: center;
   } */
-  
-  .custom-calender  .MuiBreadcrumbs-separator {
-    color: #f36f24;
-  }
-  
-  .custom-calender  .MuiPickersCalendarHeader-label {
-    font-size: clamp(16px, calc(1.17vw + 0.1rem), 1000px);
-    font-weight: 700;
-    color: #f8f24b;
-  }
-  
-  .custom-calender  .MuiPickersCalendarHeader-root {
-    padding-left: 0;
-    padding-right: 0;
-    margin-top: 0;
-    max-height: fit-content;
-    min-height: fit-content;
-  }
-  
-  .custom-calender  .MuiButtonBase-root.MuiPickersDay-root.MuiPickersDay-dayWithMargin.MuiPickersDay-today {
-    background-color: rgb(248, 242, 75, 0.5) !important;
-    color: var(--primary-black);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    aspect-ratio: 1/1;
-  }
-  
-  .custom-calender .MuiPickersArrowSwitcher-root svg {
-    height: clamp(14px, calc(0.65vw + 0.1rem), 1000px);
-  }
-  
-  /* ===== End Calender ===== */
+
+.custom-calender .MuiBreadcrumbs-separator {
+  color: #f36f24;
+}
+
+.custom-calender
+  .MuiButtonBase-root.MuiPickersDay-root.MuiPickersDay-dayWithMargin.MuiPickersDay-today {
+  background-color: rgb(248, 242, 75, 0.5) !important;
+  color: var(--primary-black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===== End Calender ===== */

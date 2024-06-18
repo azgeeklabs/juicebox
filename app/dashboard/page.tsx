@@ -10,7 +10,6 @@ import classNames from "classnames";
 import { AnimatedTooltip } from "../_components/animatedTooltip/AnimatedTooltip";
 import ClientApprovalTable from "../_components/dashboard/Client Approval/ClientApprovalTable";
 import dynamic from "next/dynamic";
-// import Calender from "../_components/dashboard/calender/Calender";
 
 const Calender = dynamic(() => import('../_components/dashboard/calender/Calender'), { ssr: false })
 
