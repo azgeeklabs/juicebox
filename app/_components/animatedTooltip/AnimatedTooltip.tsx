@@ -1,5 +1,4 @@
 "use client";
-// import Image from "next/image";
 import React, { useState } from "react";
 import {
   motion,
@@ -8,7 +7,6 @@ import {
   useMotionValue,
   useSpring,
 } from "framer-motion";
-import Image from "next/image";
 
 export const AnimatedTooltip = ({
   items,
@@ -67,14 +65,16 @@ export const AnimatedTooltip = ({
                   rotate: rotate,
                   whiteSpace: "nowrap",
                 }}
-                className="absolute -top-16 -left-1/2 translate-x-1/2 flex text-[--12px]  flex-col items-center justify-center rounded-[var(--50px)] bg-black z-50 shadow-xl px-4 py-2"
+                className="absolute -top-16 -left-full translate-x-1/2 flex text-[--12px] flex-col items-center justify-center rounded-[--50px] bg-black z-50 shadow-xl px-[--16px] py-[--sy-8px]"
               >
-                <div className="absolute inset-x-9 z-30 w-[20%] -bottom-px bg-gradient-to-r from-transparent via-[var(--highlight-yellow)] to-transparent h-px " />
-                <div className="absolute left-9 w-[20%] z-30 -bottom-px bg-gradient-to-r from-transparent via-[var(--highlight-yellow)] to-transparent h-px " />
+                <div className="absolute left-1/2 -translate-x-1/2 z-30 w-[20%] -bottom-[--1px] bg-gradient-to-r from-transparent via-[var(--highlight-yellow)] to-transparent h-[--1px]" />
+                <div className="absolute left-1/2 -translate-x-1/2 w-[20%] z-30 -bottom-[--1px] bg-gradient-to-r from-transparent via-[var(--highlight-yellow)] to-transparent h-[--1px]" />
                 <div className="font-bold text-white relative z-30 text-[--14px]">
                   {item.name}
                 </div>
-                <div className="text-white text-[--12px]">{item.designation}</div>
+                <div className="text-white text-[--12px]">
+                  {item.designation}
+                </div>
               </motion.div>
             )}
           </AnimatePresence>
@@ -82,7 +82,7 @@ export const AnimatedTooltip = ({
             onMouseMove={handleMouseMove}
             src={item.image}
             alt={item.name}
-            className="object-cover !m-0 !p-0 object-top rounded-full h-[2vw] w-14 border-2 group-hover:scale-105 border-[var(--highlight-yellow)] relative transition duration-500"
+            className="object-cover !m-0 !p-0 object-top rounded-full h-[2vw] w-[--55px] border-[--2px] group-hover:scale-105 border-[var(--highlight-yellow)] relative transition duration-500"
           />
         </div>
       ))}
