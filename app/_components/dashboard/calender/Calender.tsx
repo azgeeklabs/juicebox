@@ -25,7 +25,7 @@ const LeftArrow = () => (
 
 const Calender = () => {
   return (
-    <>
+    <section className="overflow-x-hidden overflow-y-auto py-[--sy-5px]">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DateCalendar
           slots={{ rightArrowIcon: RightArrow, leftArrowIcon: LeftArrow }}
@@ -33,7 +33,7 @@ const Calender = () => {
           className="custom-calender"
         />
       </LocalizationProvider>
-    </>
+    </section>
   );
 };
 

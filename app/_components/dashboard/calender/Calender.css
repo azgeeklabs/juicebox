@@ -1,4 +1,14 @@
 /* ===== Start Calender ===== */
+.custom-calender{
+  padding-left: var(--10px) !important;
+  padding-right: var(--10px) !important;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.custom-calender::-webkit-scrollbar{
+  display: none;
+}
+
 .custom-calender.MuiDateCalendar-root {
   border: none;
   border-radius: 0;
@@ -36,6 +46,7 @@
   min-height: fit-content;
   margin-bottom: var(--sy-20px);
 }
+
 
 .custom-calender .MuiPickersCalendarHeader-label {
   font-size: var(--24px);
@@ -93,7 +104,11 @@
   display: flex;
   /* gap: 0.6vw; */
   justify-content: space-between;
-  padding: var(--10px);
+}
+
+.custom-calender .MuiDayCalendar-header{
+  padding-left: var(--1px) !important;
+  padding-right: var(--1px) !important;
 }
 
 .custom-calender
@@ -103,6 +118,7 @@
   /* width: clamp(16px, calc(1.6vw + 0.1rem), 80px); */
   /* height: clamp(16px, calc(1.6vw + 0.1rem), 80px); */
   font-weight: 500;
+  margin: 0;
 }
 
 .custom-calender
