@@ -5,7 +5,7 @@ import classNames from "classnames";
 
 interface StepProgressProps {
   title: string;
-  currentStep: number;
+  currentStep?: number;
   steps: number;
 }
 
@@ -19,7 +19,7 @@ const StepProgress = ({ title, currentStep, steps }: StepProgressProps) => {
       <div className="relative rounded-[var(--35px)] bg-[#484848] h-[1.088vw] w-[80%] overflow-hidden">
         <div
           className="bg-[var(--highlight-yellow)] h-full rounded-[--35px] transition-all duration-500 ease-in-out"
-          style={{ width: `${currentStep / steps * 100}%` }}
+          style={{ width: `${currentStep ? currentStep / steps * 100 : 0}%` }}
         ></div>
       </div>
       
