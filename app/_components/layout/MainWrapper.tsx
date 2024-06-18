@@ -1,3 +1,5 @@
+"use client";
+import "../../globals.css";
 import React, { useContext } from "react";
 import SideNav from "../SideNav/SideNav";
 import SubscribedServices from "../SubscribedServices/SubscribedServices";
