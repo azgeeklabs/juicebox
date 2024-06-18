@@ -53,9 +53,9 @@ const layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex flex-col h-full">
       <StepProgress
-        title={"Application Design"}
-        // currentStep={currentPath + 1}
-        steps={path.length}
+        title={"Video Editing"}
+        // currentStep={step}
+        steps={11}
       />
 
       <div className="flex flex-col grow">{children}</div>

@@ -58,8 +58,8 @@ const layout = ({ children }: { children: React.ReactNode }) => {
     <div className="flex flex-col h-full">
       <StepProgress
         title={"Web Design"}
-        // currentStep={currentPath + 1}
-        steps={path.length}
+        // currentStep={step}
+        steps={9}
       />
 
       <div className="flex flex-col grow">{children}</div>
