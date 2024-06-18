@@ -1,9 +1,10 @@
+"use client";
 import classNames from "classnames";
 import styles from "./additional-features.module.css";
-import CustomCheckBox from "@/app/_components/customCheckBox/CustomCheckBox";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
-import { title } from "process";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useContext } from "react";
+import { globalContext } from "@/app/_context/GlobalContext";
 
 function page() {
   const data = [
@@ -496,11 +497,13 @@ function page() {
       ),
     },
   ];
-
+  const { step, setStep } = useContext(globalContext);
   return (
     <NextPrevNav
       nextLink="/services/application-design-service/app-wrapup"
       backLink="/services/application-design-service/custom-ecommerce"
+      nextOnClick={() => setStep(step + 1)}
+backOnClick={() => setStep(step - 1)}
     >
       <div
         className={classNames(

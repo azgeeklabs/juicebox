@@ -1,22 +1,20 @@
 /* ===== Start Title Styles ===== */
 .divider {
+  display: block;
   height: 100%;
   width: var(--1px);
   background-color: #616161;
 }
-
-
-
-
-
-
 /* ===== End Title Styles ===== */
 
-
-
 /* ===== Start Horray Indicator Styles ===== */
-
-.horrayIndicator{
-
+.horrayIndicator {
+  background-color: #272727;
+  color: #626262;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.horrayIndicator.active {
+  background-color: var(--highlight-yellow);
+  color: var(--primary-black);
 }
 /* ===== End Horray Indicator Styles ===== */

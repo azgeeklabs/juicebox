@@ -4,6 +4,8 @@ import { createContext, useState } from "react";
 const initialContextState = {
   open: false,
   setOpen: (open: boolean) => {},
+  step: 1,
+  setStep: (step: number) => {},
 };
 
 // 1- create context, export it
@@ -18,10 +20,15 @@ export default function GlobalContextProvider({
   // SideNav state
   const [open, setOpen] = useState<boolean>(false);
 
+  // StepProgress state
+  const [step, setStep] = useState<number>(0);
+
   // Create a context value object
   const contextValue = {
     open,
     setOpen,
+    step,
+    setStep,
   };
 
   return (

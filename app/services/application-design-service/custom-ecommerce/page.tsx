@@ -9,6 +9,8 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import SwiperCore from "swiper";
 import { useRef } from "react";
+import { useContext } from "react";
+import { globalContext } from "@/app/_context/GlobalContext";
 
 const defaultPages = [
   "Sign Up",
@@ -40,6 +42,7 @@ const additionalPages = [
 
 function page() {
   const swiperRef = useRef<SwiperCore | null>(null);
+  const { step, setStep } = useContext(globalContext);
 
   const slides = [
     "/assets/mobile-slide-1.png",
@@ -56,6 +59,8 @@ function page() {
     <NextPrevNav
       nextLink="/services/application-design-service/additional-features"
       backLink="/services/application-design-service/app-style"
+      nextOnClick={() => setStep(step + 1)}
+backOnClick={() => setStep(step - 1)}
     >
       <div className="flex flex-col justify-center">
         <div

@@ -1,6 +1,7 @@
 "use client";
 import StepProgress from "@/app/_components/stepProgress/StepProgress";
-import React, { useEffect, useState } from "react";
+import { globalContext } from "@/app/_context/GlobalContext";
+import React, { useContext, useEffect, useState } from "react";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
   const path = [
@@ -12,12 +13,14 @@ const layout = ({ children }: { children: React.ReactNode }) => {
     "app-wrapup",
   ];
 
+  const { step } = useContext(globalContext);
+
   return (
     <div className="flex flex-col h-full">
       <StepProgress
         title={"Application Design"}
-        // currentStep={currentPath + 1}
-        steps={path.length}
+        steps={5}
+        currentStep={step}
       />
 
       <div className="flex flex-col grow">{children}</div>

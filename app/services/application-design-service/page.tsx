@@ -2,6 +2,8 @@
 import classNames from "classnames";
 import styles from "./application-design-service.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useContext } from "react";
+import { globalContext } from "@/app/_context/GlobalContext";
 
 const gameSVG = (
   <svg viewBox="0 0 150 118" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1387,9 +1389,12 @@ const appSVG = (
 );
 
 function page() {
+
+  const { step, setStep } = useContext(globalContext);
+
   return (
     <>
-      <NextPrevNav nextLink="/services/application-design-service/service-projects">
+      <NextPrevNav nextLink="/services/application-design-service/service-projects" nextOnClick={() => setStep(step + 1)}>
         <div className="flex flex-col gap-[var(--64px)] justify-center items-center h-full">
           <div
             className={classNames(
