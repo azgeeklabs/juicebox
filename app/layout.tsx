@@ -18,12 +18,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <html lang="en">
       <GlobalContextProvider>
         <body>
-        <MainWrapper>{children}</MainWrapper>
+          {/* <MainWrapper>{children}</MainWrapper> */}
+          {children}
         </body>
       </GlobalContextProvider>
     </html>

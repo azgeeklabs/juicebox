@@ -1,0 +1,8 @@
+.hero {
+  font-family: Alfa Slab One;
+  /* padding-top: var(--50px); */
+}
+
+.hero__starp {
+  transform-origin: bottom right;
+}

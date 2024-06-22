@@ -130,6 +130,7 @@
 /* ===== Start Global ===== */
 body {
   background-color: var(--primary-black);
+  height: 100vh;
   color: var(--white);
   font-family: "Barlow", sans-serif;
 }
@@ -206,7 +207,12 @@ body {
 }
 
 .mobile-swiper.swiper .swiper-slide.swiper-slide-active .custom-shadow {
-  background: radial-gradient(50% 50% at 50% 50%, #1c1c1c 0%, rgba(28, 28, 28, 0.6) 51%, var(--dark-gray-1) 100%);
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    #1c1c1c 0%,
+    rgba(28, 28, 28, 0.6) 51%,
+    var(--dark-gray-1) 100%
+  );
   width: 150%;
   height: var(--50px);
 }
@@ -247,7 +253,12 @@ body {
   position: relative;
 }
 .desktop-swiper.swiper .swiper-slide.swiper-slide-active .custom-shadow {
-  background: radial-gradient(50% 50% at 50% 50%, #1c1c1c 0%, rgba(28, 28, 28, 0.6) 51%, var(--dark-gray-1) 100%);
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    #1c1c1c 0%,
+    rgba(28, 28, 28, 0.6) 51%,
+    var(--dark-gray-1) 100%
+  );
   width: 85%;
   height: var(--50px);
 }
@@ -259,6 +270,5 @@ body {
 .swiper .slide {
   border-radius: var(--18px);
 }
-
 
 /* ===== End Slider ===== */
