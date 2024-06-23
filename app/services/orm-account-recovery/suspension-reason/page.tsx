@@ -1,22 +1,19 @@
+"use client";
 import classNames from "classnames";
 import styles from "./suspension-reason.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
-
+import { accountRecoveryContext } from "../_accountRecoveryContext/_accountRecoveryContext";
+import { useContext } from "react";
 const SuspensionReason = () => {
-  const data = [
-    "Hacked",
-    "Spam",
-    "Impersonation",
-    "Harassment",
+  const data = ["Hacked", "Spam", "Impersonation", "Sexual", "Misinformation"];
 
-    "Misinformation",
-  ];
+  const { isSexual, setIsSexual } = useContext(accountRecoveryContext);
 
   return (
     <NextPrevNav
       backLink="/services/orm-account-recovery"
-      nextLink="/services/orm-account-recovery/suspended-account"
+      nextLink="/services/orm-account-recovery/suspended-date"
     >
       <div
         className={classNames(
@@ -40,14 +37,20 @@ const SuspensionReason = () => {
             styles.cards
           )}
         >
-          {data.map((item) => (
-            <>
-              <CustomCheckBoxText btnSize="md" inputType="checkbox">
+          {data.map((item, i) => (
+            <div
+              onClick={() => {
+                if (item === "Sexual") {
+                  setIsSexual(!isSexual);
+                }
+              }}
+            >
+              <CustomCheckBoxText key={i} btnSize="md" inputType="checkbox">
                 <div className={classNames("flex items-center", styles.card)}>
                   <span className="text-[--16px] px-[--50px]">{item}</span>
                 </div>
               </CustomCheckBoxText>
-            </>
+            </div>
           ))}
         </div>
       </div>
