@@ -16,7 +16,7 @@ const SuspensionReason = () => {
   return (
     <NextPrevNav
       backLink="/services/orm-account-recovery"
-      nextLink="/services/orm-account-recovery/suspension-reason"
+      nextLink="/services/orm-account-recovery/suspended-account"
     >
       <div
         className={classNames(
@@ -42,9 +42,9 @@ const SuspensionReason = () => {
         >
           {data.map((item) => (
             <>
-              <CustomCheckBoxText btnSize="xl" inputType="checkbox">
+              <CustomCheckBoxText btnSize="md" inputType="checkbox">
                 <div className={classNames("flex items-center", styles.card)}>
-                  <span className="text-[--16px]">{item}</span>
+                  <span className="text-[--16px] px-[--50px]">{item}</span>
                 </div>
               </CustomCheckBoxText>
             </>
