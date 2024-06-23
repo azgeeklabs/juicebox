@@ -1,8 +1,11 @@
 import React from 'react'
+import styles from "./unknown.module.css"
 
 const page = () => {
   return (
-    <div>page</div>
+    <div>
+      <div className={`${styles.try}`}></div>
+    </div>
   )
 }
 

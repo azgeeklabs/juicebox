@@ -4,6 +4,7 @@ import "./Calender.css";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
+import dayjs from "dayjs";
 
 const RightArrow = () => (
   <svg viewBox="0 0 11 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -28,6 +29,7 @@ const Calender = () => {
     <section className="overflow-x-hidden overflow-y-auto py-[--sy-5px]">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DateCalendar
+        defaultValue={dayjs('2022-04-19')}
           slots={{ rightArrowIcon: RightArrow, leftArrowIcon: LeftArrow }}
           dayOfWeekFormatter={(weekday) => `${weekday.format("ddd")}`}
           className="custom-calender"
