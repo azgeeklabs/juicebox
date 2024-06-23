@@ -82,6 +82,14 @@ export default function ServicesTable({
       path: "/services/email-marketing",
     },
     {
+      service: "ORM Account Recovery",
+      information:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      clientProjects: "656 Projects",
+      getStarted: "Start Now!",
+      path: "/services/orm-account-recovery",
+    },
+    {
       service: "Lorem",
       information:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
