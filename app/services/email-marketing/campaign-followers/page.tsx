@@ -22,7 +22,7 @@ const page = () => {
           <div className="text-center mx-auto mb-[5.333vh]">
             {/* Main heading with margin bottom */}
             <h2 className="mb-[2.667vh]">
-              How many follow ups would you like your <br /> campaign to have?
+            How many follow ups would you like in your campaign?
             </h2>
 
             {/* Subheading with embedded horizontal rule */}

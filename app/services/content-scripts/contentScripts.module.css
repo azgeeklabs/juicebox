@@ -1,0 +1,32 @@
+.contentScripts h2 {
+    font-size: clamp(14px, calc(1.3vw + 0.1rem), 100px);
+    font-weight: 600;
+  }
+  .contentScripts h4 {
+    font-size: clamp(12px, calc(0.75vw + 0.1rem), 100px);
+    font-weight: 400;
+    color: #ffffffcc;
+  }
+
+
+  .contentScripts button {
+    font-size: clamp(12px, calc(0.85vw + 0.1rem), 100px);
+    font-weight: 600;
+    
+  }
+
+.contentScripts .btns > div {
+    width: 12vw;
+    padding: 0;
+}
+.contentScripts .btns > div > div {
+    padding: 1.422vh 1vw;
+    font-size: clamp(12px, calc(0.8vw + 0.1rem), 100px);
+    font-weight: 600;
+    transition: all 0.2s;
+}
+.contentScripts .btns input:checked + div {
+    font-size: clamp(12px, calc(0.8vw + 0.1rem), 100px);
+    font-weight: 600;
+
+}

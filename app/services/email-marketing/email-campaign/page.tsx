@@ -3,6 +3,7 @@ import styles from "./emailCampaign.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 
 const gameSVG = (
   <svg viewBox="0 0 150 118" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1423,76 +1424,25 @@ function page() {
             </p>
           </div>
 
-          <div className={classNames("flex ", styles.cards)}>
-            {/* Cards container with flexbox layout and gap between cards */}
-
-            <div
-              className={classNames(
-                "flex flex-col gap-[var(--8px)] group",
-                styles.card
-              )}
+          {/* Container for buttons with flexbox layout, width fit, margin auto, and gap between buttons */}
+          <div
+            className={`${styles.btns} flex w-fit mx-auto gap-[1.041vw] mb-[1.5vw]`}
+          >
+            {/* CustomCheckBoxText component for selecting options */}
+            <CustomCheckBoxText
+              btnSize="xl"
+              inputType="radio"
+              name="emailCampaignType"
             >
-              {/* Game card with flexbox layout for column direction, gap between elements, and group styling */}
-
-              <div className="flex items-center justify-center relative">
-                {/* Image container with center alignment, relative positioning */}
-
-                <img
-                  src="/assets/application-design-service-gamecard.gif"
-                  alt="/assets/application-design-service-gamecard.gif"
-                  className="w-full"
-                />
-                {/* Game GIF with full width */}
-
-                {gameSVG}
-                {/* Game SVG icon */}
-              </div>
-
-              <div>Game</div>
-              {/* Label for game */}
-
-              <input
-                type="radio"
-                name="type"
-                value="game"
-                className="absolute opacity-0 inset-0 cursor-pointer"
-              />
-              {/* Radio input for game selection, hidden but covering the whole card area for easy clicking */}
-            </div>
-
-            <div
-              className={classNames(
-                "flex flex-col gap-[var(--sy-8px)]",
-                styles.card
-              )}
+              Person
+            </CustomCheckBoxText>
+            <CustomCheckBoxText
+              btnSize="xl"
+              inputType="radio"
+              name="emailCampaignType"
             >
-              {/* Application card with similar structure to the game card */}
-
-              <div className="flex items-center justify-center relative">
-                {/* Image container with center alignment, relative positioning */}
-
-                <img
-                  src="/assets/application-design-service-applicationcard.gif"
-                  alt="/assets/application-design-service-applicationcard.gif"
-                  className="w-full"
-                />
-                {/* Application GIF with full width */}
-
-                {appSVG}
-                {/* Application SVG icon */}
-              </div>
-
-              <div>Application</div>
-              {/* Label for application */}
-
-              <input
-                type="radio"
-                name="type"
-                value="app"
-                className="absolute opacity-0 inset-0 cursor-pointer"
-              />
-              {/* Radio input for application selection, hidden but covering the whole card area for easy clicking */}
-            </div>
+              Brand
+            </CustomCheckBoxText>
           </div>
         </div>
       </div>

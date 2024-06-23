@@ -37,20 +37,20 @@ const page = () => {
               inputType="radio"
               name="styleAnswer"
             >
-              Book a call with our experts
+              Book a call
             </CustomCheckBoxText>
             <CustomCheckBoxText
               btnSize="xl"
               inputType="radio"
               name="styleAnswer"
             >
-              Let’s get started
+              Start now
             </CustomCheckBoxText>
           </div>
 
           {/* Link component for saving progress */}
           <button
-            className="block w-fit mx-auto px-[0.52vw] py-[0.3vw] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200 underline"
+            className="block w-fit mx-auto px-[0.52vw] py-[0.3vw] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200"
           >
             Save my progress for later
           </button>
