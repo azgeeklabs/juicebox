@@ -90,18 +90,21 @@ export default function ServicesTable({
       path: "/services/orm-account-recovery",
     },
     {
-      service: "Lorem",
+      service: "Press Release",
       information:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
+      path:"/services/press-release"
     },
     {
-      service: "Lorem",
+      service: "Social Media",
       information:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
+      path:"/services/social-media"
+
     },
     {
       service: "Lorem",
