@@ -12,7 +12,7 @@
 .custom-calender.MuiDateCalendar-root {
   border: none;
   border-radius: 0;
-  height: clamp(100px, calc(27vh + 0.1rem), 6000px);
+  height: clamp(100px, calc(29vh + 0.1rem), 6000px);
   overflow-y: hidden;
   width: 100%;
   padding: 0;

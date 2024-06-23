@@ -141,110 +141,139 @@ const page = () => {
   }, [selectedDay, selectedMonth, selectedYear]);
   return (
     <div
-      className={`${styles.BookACall} flex w-full h-full justify-center items-center `}
-    >
-      <div>
-        <div className=" mb-[6vh]">
-          <h2 className=" font-semibold text-[--32px] mb-[--sy-16px] text-center">
-            Excited to get started? <br />
-            Book your appointment with us today!
-          </h2>
-          <p className=" text-[--18px] text-center">
-            Choose a date and time that works best for you and we’ll be there!
-          </p>
-        </div>
-        <div className="grid grid-cols-3 gap-[--40px]">
-          <div className=" col-span-1">
-            <h3 className=" font-bold text-[--20px] mb-[--sy-24px]">
-              Pick a date for your call
-            </h3>
-            <div className=" mb-[2vh]">
-              <label className="font-medium text-[--20px] mb-[--sy-16px] block">
-                Date
-              </label>
-              <div className=" flex gap-[--16px]">
-                <select
-                  onChange={(e) => setSelectedDay(e.target.value)}
-                  value={selectedDay}
-                >
-                  {selectedMonth ?
-                    monthsDays[parseInt(selectedMonth) - 1].days.map((day) => (
-                      <option key={day} value={day}>
-                        {day}
-                      </option>
-                    )):monthsDays[0].days.map((day) => (
-                        <option key={day} value={day}>
-                          {day}
-                        </option>
-                      ))}
-                </select>
+  className={`${styles.BookACall} flex w-full h-full justify-center items-center `}
+>
+  {/* Container for the booking form */}
+  <div>
+    {/* Section with introductory text */}
+    <div className="mb-[6vh]">
+      <h2 className="font-semibold text-[--32px] mb-[--sy-16px] text-center">
+        Excited to get started? <br />
+        Book your appointment with us today!
+      </h2>
+      <p className="text-[--18px] text-center">
+        Choose a date and time that works best for you and we’ll be there!
+      </p>
+    </div>
+    {/* Grid layout for date and time selection */}
+    <div className="grid grid-cols-3 gap-[--40px]">
+      {/* Left column for date selection */}
+      <div className="col-span-1">
+        <h3 className="font-bold text-[--20px] mb-[--sy-24px]">
+          Pick a date for your call
+        </h3>
+        <div className="mb-[2vh]">
+          {/* Date selection inputs */}
+          <label className="font-medium text-[--20px] mb-[--sy-16px] block">
+            Date
+          </label>
+          <div className="flex gap-[--16px]">
+            {/* Select inputs for day, month, and year */}
+            <select
+              onChange={(e) => setSelectedDay(e.target.value)}
+              value={selectedDay}
+            >
+              {/* Options dynamically generated based on selected month */}
+              {selectedMonth ?
+                monthsDays[parseInt(selectedMonth) - 1].days.map((day) => (
+                  <option key={day} value={day}>
+                    {day}
+                  </option>
+                )) :
+                monthsDays[0].days.map((day) => (
+                  <option key={day} value={day}>
+                    {day}
+                  </option>
+                ))}
+            </select>
 
-                <select onChange={handleMonthChange} value={selectedMonth}>
-                  {monthsDays.map((month, index) => (
-                    <option key={month.month} value={index + 1}>
-                      {month.month}
-                    </option>
-                  ))}
-                </select>
+            <select onChange={handleMonthChange} value={selectedMonth}>
+              {/* Options for selecting month */}
+              {monthsDays.map((month, index) => (
+                <option key={month.month} value={index + 1}>
+                  {month.month}
+                </option>
+              ))}
+            </select>
 
-                <select
-                  onChange={(e) => setSelectedYear(e.target.value)}
-                  value={selectedYear}
-                >
-                  {years.map((year) => (
-                    <option key={year} value={year}>
-                      {year}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-            <div className=" mb-[3vh]">
-              <label className="font-medium text-[--20px] mb-[--sy-16px] block">
-              Time
-              </label>
-              <div className=" flex gap-[--16px] items-center">
-               <input type="number" placeholder="00" className="w-[3vw] text-center py-[--sy-10px] rounded-[5px] bg-[#484848] inline-block outline-none"/>
-               <span>:</span>
-               <input type="number" placeholder="00" className="w-[3vw] py-[--sy-10px] text-center rounded-[5px] bg-[#484848] inline-block outline-none"/>
-               <span className="bg-[#484848] py-[--sy-10px] inline-block px-[--10px] rounded-[5px]">PM</span>
-              </div>
-            </div>
-            <button className="bg-[--highlight-yellow] font-bold py-[--sy-15px] px-[--38px] rounded-[33px] text-black">Book Call</button>
-          </div>
-          <div className=" col-span-2 ">
-            <div className="rounded-[17px] bg-[--dark-gray-2] mb-[--sy-16px] flex justify-center items-center">
-              <section className="overflow-x-hidden overflow-y-auto py-[--sy-5px] w-[90%]">
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <DateCalendar
-                    value={ dayjs(changedDate)}
-                    onChange={(e)=>{console.log(e);
-                        setChangedDate(`${e.$y}-${e.$M+1}-${e.$D}`)
-                    }
-                    }
-                    slots={{
-                      rightArrowIcon: RightArrow,
-                      leftArrowIcon: LeftArrow,
-                    }}
-                    dayOfWeekFormatter={(weekday) => `${weekday.format("ddd")}`}
-                    className="custom-calender"
-                  />
-                </LocalizationProvider>
-              </section>
-            </div>
+            <select
+              onChange={(e) => setSelectedYear(e.target.value)}
+              value={selectedYear}
+            >
+              {/* Options for selecting year */}
+              {years.map((year) => (
+                <option key={year} value={year}>
+                  {year}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
-        <div className=" w-[65%] ml-auto">
-          <div className=" relative">
-            <div className=" bg-[#353535] rounded-[5px] py-[--sy-10px] px-[--23px] ml-[0.2vw] relative z-[10] text-[--18px] font-medium">
-              Unfortunately, we’re unavailable at the time you selected. Could
-              you please choose another time?
-            </div>
-            <div className=" absolute w-full h-full bg-[--highlight-yellow] rounded-[7px] top-0 z-[0] left-0"></div>
+        <div className="mb-[3vh]">
+          {/* Time selection inputs */}
+          <label className="font-medium text-[--20px] mb-[--sy-16px] block">
+            Time
+          </label>
+          <div className="flex gap-[--16px] items-center">
+            {/* Input fields for hours and minutes */}
+            <input
+              type="number"
+              placeholder="00"
+              className="w-[3vw] text-center py-[--sy-10px] rounded-[5px] bg-[#484848] inline-block outline-none"
+            />
+            <span>:</span>
+            <input
+              type="number"
+              placeholder="00"
+              className="w-[3vw] py-[--sy-10px] text-center rounded-[5px] bg-[#484848] inline-block outline-none"
+            />
+            <span className="bg-[#484848] py-[--sy-10px] inline-block px-[--10px] rounded-[5px]">
+              PM
+            </span>
           </div>
+        </div>
+        {/* Button to book the call */}
+        <button className="bg-[--highlight-yellow] font-bold py-[--sy-15px] px-[--38px] rounded-[33px] text-black">
+          Book Call
+        </button>
+      </div>
+      {/* Right column for calendar display */}
+      <div className="col-span-2">
+        <div className="rounded-[17px] bg-[--dark-gray-2] mb-[--sy-16px] flex justify-center items-center">
+          {/* Calendar component */}
+          <section className="overflow-x-hidden overflow-y-auto py-[--sy-5px] w-[90%]">
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DateCalendar
+                value={dayjs(changedDate)}
+                onChange={(e) => {
+                  console.log(e);
+                  setChangedDate(`${e.$y}-${e.$M + 1}-${e.$D}`);
+                }}
+                slots={{
+                  rightArrowIcon: RightArrow,
+                  leftArrowIcon: LeftArrow,
+                }}
+                dayOfWeekFormatter={(weekday) => `${weekday.format("ddd")}`}
+                className="custom-calender"
+              />
+            </LocalizationProvider>
+          </section>
         </div>
       </div>
     </div>
+    {/* Message for unavailable time */}
+    <div className="w-[65%] ml-auto">
+      <div className="relative">
+        <div className="bg-[#353535] rounded-[5px] py-[--sy-10px] px-[--23px] ml-[0.2vw] relative z-[10] text-[--18px] font-medium">
+          Unfortunately, we’re unavailable at the time you selected. Could you
+          please choose another time?
+        </div>
+        {/* Highlight overlay */}
+        <div className="absolute w-full h-full bg-[--highlight-yellow] rounded-[7px] top-0 z-[0] left-0"></div>
+      </div>
+    </div>
+  </div>
+</div>
   );
 };
 

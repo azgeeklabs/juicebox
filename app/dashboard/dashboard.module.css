@@ -37,7 +37,7 @@
 .card .body {
   display: flex;
   flex-direction: column;
-  gap: clamp(10px, calc(1vw + 0.1rem), 100px);
+  gap: clamp(10px, calc(0.5vw + 0.1rem), 100px);
 }
 /* ===== End Card ===== */
 

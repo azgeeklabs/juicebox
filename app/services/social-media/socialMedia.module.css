@@ -1,0 +1,17 @@
+.container {
+    width: clamp(20rem, calc(60vw + 0.1rem), 100%);
+  }
+  
+  .cards {
+    width: clamp(20rem, calc(50vw + 0.1rem), 100%);
+  }
+  
+  .cards div:has(> input:checked) path {
+    stroke: var(--primary-black);
+  }
+  
+  .card svg {
+    width: var(--24px);
+    height: var(--20px);
+  }
+  
