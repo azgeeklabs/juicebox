@@ -5,7 +5,10 @@ import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
 function SuspendedAccount() {
   return (
-    <NextPrevNav backLink="/services/orm-account-recovery/suspension-reason">
+    <NextPrevNav
+      backLink="/services/orm-account-recovery/suspension-reason"
+      nextLink="/services/orm-account-recovery/suspension-approvel"
+    >
       {/* Inner container with full height and center alignment */}
       <div className="h-full flex justify-center items-center">
         {/* Inner container with full width and custom styles for the footage editing section */}
