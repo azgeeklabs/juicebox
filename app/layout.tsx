@@ -22,8 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <GlobalContextProvider>
         <body>
-          {/* <MainWrapper>{children}</MainWrapper> */}
-          {children}
+          <MainWrapper>{children}</MainWrapper>
         </body>
       </GlobalContextProvider>
     </html>
