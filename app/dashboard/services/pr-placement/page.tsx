@@ -1,11 +1,12 @@
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import React from "react";
+import styles from "./prPlacement.module.css"
 
 const page = () => {
   return (
     <>
       <NextPrevNav nextLink="/dashboard/services/pr-placement/create-article">
-        <div className=" w-full">
+        <div className={`${styles.scroller} w-full `}>
           <ul className=" flex w-full py-[--sy-22px] font-semibold">
             <li className=" w-[14.285%] flex justify-center items-center">
             Site Name
@@ -29,7 +30,7 @@ const page = () => {
             Get Started
             </li>
           </ul>
-          <div className=" w-full relative max-h-[60vh] overflow-y-scroll">
+          <div className={`${styles.scroller} w-full relative max-h-[60vh] overflow-y-scroll`}>
             {Array(30)
               .fill(0)
               .map((_, i) => (
