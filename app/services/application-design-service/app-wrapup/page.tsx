@@ -1,21 +1,16 @@
 "use client";
-import React, { useContext } from "react";
+
 import styles from "./app-wrapup.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
-import { globalContext } from "@/app/_context/GlobalContext";
 
 const page = () => {
-  const { step, setStep } = useContext(globalContext);
-
   return (
     <NextPrevNav
       nextLink="/services/application-design-service"
       nextText="All Done"
       backLink="/services/application-design-service/additional-features"
-      nextOnClick={() => setStep(0)}
-      backOnClick={() => setStep(step - 1)}
     >
       {/* // Main container div with relative positioning */}
       <div className=" h-full relative">

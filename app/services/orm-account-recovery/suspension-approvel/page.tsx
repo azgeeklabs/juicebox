@@ -17,7 +17,7 @@ function SuspensionApprovel() {
       nextLink={
         isSexual
           ? "/services/orm-account-recovery/reject-recovery"
-          : "/services/orm-account-recovery/proof-of-hack-date"
+          : "/services/orm-account-recovery/estimated-cost"
       }
     >
       {/* Inner container with full height and center alignment */}
