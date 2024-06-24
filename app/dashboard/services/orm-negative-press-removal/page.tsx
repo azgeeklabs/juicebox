@@ -84,15 +84,17 @@ function ORMNegativePressRemoval() {
             </div>
 
             <h3 className="mb-[1.067vh]">Added Links</h3>
-            <div className="h-[clamp(10px,calc(28.03vh+0.1rem),1000px)] w-full">
-              <div className="rounded-[--10px] bg-[--dark-gray-3] max-h-full">
-                <ul className="h-[clamp(10px,calc(28.03vh+0.1rem),1000px)] overflow-y-auto flex flex-col rounded-[--10px]">
+            <div className="h-[clamp(10px,calc(28.03vh+0.1rem),1000px)] overflow-y-auto w-[calc(100%-var(--111px))]">
+              <div className="rounded-[--10px] bg-[--dark-gray-3]">
+                <ul className="flex-col rounded-[--10px] overflow-hidden">
                   {links.map((link, index) => (
                     <li
                       key={index}
-                      className="flex items-center justify-between px-[1.088vw] py-[1vh] border-b border-[#FFFFFF80] group"
+                      className="flex items-center justify-between px-[1.088vw] py-[1vh] border-b border-[#FFFFFF80] group hover:bg-[#353535] hover:border-transparent transition-colors"
                     >
-                      <span>{link}</span>
+                      <span className="ml-[--24px] text-[#B1B1B1] group-hover:text-white transition-color">
+                        {link}
+                      </span>
                       <button
                         className="focus:outline-none opacity-0 group-hover:opacity-100 transition-opacity"
                         onClick={() => {

@@ -32,6 +32,10 @@
   color: white;
 }
 
-.addLinkEdit li:not(:last-child) {
-  margin-bottom: 1rem;
+.addLinkEdit li:last-child {
+  border-color: transparent;
+}
+
+.addLinkEdit li:has(+ li:is(:hover)) {
+  border-color: transparent;
 }

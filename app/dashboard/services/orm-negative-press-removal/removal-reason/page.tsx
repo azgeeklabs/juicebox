@@ -9,7 +9,7 @@ const RemovalReason = () => {
   return (
     <NextPrevNav
       backLink="/services/orm-negative-press-removal"
-      nextLink="/services/orm-account-recovery/suspended-date"
+      nextLink="/services/orm-negative-press-removal/reason-proof"
     >
       <div
         className={classNames(

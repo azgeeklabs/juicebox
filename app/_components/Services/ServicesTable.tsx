@@ -90,6 +90,14 @@ export default function ServicesTable({
       path: "/dashboard/services/orm-account-recovery",
     },
     {
+      service: "ORM Service",
+      information:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      clientProjects: "656 Projects",
+      getStarted: "Start Now!",
+      path: "/services/orm-service",
+    },
+    {
       service: "Press Release",
       information:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
