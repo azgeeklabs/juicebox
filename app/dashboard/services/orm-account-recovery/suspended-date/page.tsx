@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import "../../../_components/dashboard/calender/calender.css";
+import "../../../../_components/dashboard/calender/calender.css";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
@@ -151,8 +151,8 @@ const suspendedDate = () => {
 
   return (
     <NextPrevNav
-      nextLink="/services/orm-account-recovery/suspended-account"
-      backLink="/services/orm-account-recovery/suspension-reason"
+      nextLink="/dashboard/services/orm-account-recovery/suspended-account"
+      backLink="/dashboard/services/orm-account-recovery/suspension-reason"
     >
       <div
         className={`${styles.BookACall} flex w-full h-full justify-center items-center `}

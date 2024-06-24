@@ -17,7 +17,7 @@ function ORMNegativePressRemoval() {
   };
 
   return (
-    <NextPrevNav nextLink="/services/orm-negative-press-removal/removal-reason">
+    <NextPrevNav nextLink="/dashboard/services/orm-negative-press-removal/removal-reason">
       {/* Inner container with full height and center alignment */}
       <div className="h-full flex justify-center items-center">
         {/* Inner container with full width and custom styles for the footage editing section */}

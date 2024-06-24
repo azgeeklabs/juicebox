@@ -3,8 +3,8 @@ import styles from "./reject-recovery.module.css";
 const RejectRecovery = () => {
   return (
     <NextPrevNav
-      backLink="/services/orm-account-recovery/suspension-approvel"
-      nextLink="/services"
+      backLink="/dashboard/services/orm-account-recovery/suspension-approvel"
+      nextLink="/dashboard/services"
       nextText="All done"
     >
       <div className={`${styles.addLinkEdit} flex justify-center  w-full`}>

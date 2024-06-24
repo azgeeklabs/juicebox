@@ -12,8 +12,8 @@ const SuspensionReason = () => {
 
   return (
     <NextPrevNav
-      backLink="/services/orm-account-recovery"
-      nextLink="/services/orm-account-recovery/suspended-date"
+      backLink="/dashboard/services/orm-account-recovery"
+      nextLink="/dashboard/services/orm-account-recovery/suspended-date"
     >
       <div
         className={classNames(

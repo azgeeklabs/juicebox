@@ -90,12 +90,20 @@ export default function ServicesTable({
       path: "/dashboard/services/orm-account-recovery",
     },
     {
+      service: "ORM Negative Press Removal/Reviewed",
+      information:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      clientProjects: "656 Projects",
+      getStarted: "Start Now!",
+      path: "/dashboard/services/orm-negative-press-removal",
+    },
+    {
       service: "ORM Service",
       information:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
-      path: "/services/orm-service",
+      path: "/dashboard/services/orm-service",
     },
     {
       service: "Press Release",
@@ -103,7 +111,7 @@ export default function ServicesTable({
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
-      path:"/dashboard/services/press-release"
+      path: "/dashboard/services/press-release",
     },
     {
       service: "Social Media",
@@ -111,8 +119,7 @@ export default function ServicesTable({
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
-      path:"/dashboard/services/social-media"
-
+      path: "/dashboard/services/social-media",
     },
     {
       service: "Content Blog",
@@ -120,8 +127,7 @@ export default function ServicesTable({
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
-      path:"/dashboard/services/content-blog"
-
+      path: "/dashboard/services/content-blog",
     },
     {
       service: "Lorem",

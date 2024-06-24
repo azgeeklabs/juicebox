@@ -13,11 +13,11 @@ function SuspensionApprovel() {
   }, []);
   return (
     <NextPrevNav
-      backLink="/services/orm-account-recovery/suspended-account/"
+      backLink="/dashboard/services/orm-account-recovery/suspended-account/"
       nextLink={
         isSexual
-          ? "/services/orm-account-recovery/reject-recovery"
-          : "/services/orm-account-recovery/proof-of-hack-date"
+          ? "/dashboard/services/orm-account-recovery/reject-recovery"
+          : "/dashboard/services/orm-account-recovery/estimated-cost"
       }
     >
       {/* Inner container with full height and center alignment */}

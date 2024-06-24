@@ -227,8 +227,8 @@ function AccountRecovery() {
   return (
     // Custom component for navigation between pages, passing props for the next and back links
     <NextPrevNav
-      nextLink="/services/content-scripts/product-advertising"
-      backLink="/services/content-scripts/kind-of-video"
+      nextLink="/dashboard/services/content-scripts/product-advertising"
+      backLink="/dashboard/services/content-scripts/kind-of-video"
     >
       {/* Main container for the content, styled using Tailwind CSS and custom styles */}
       <div
