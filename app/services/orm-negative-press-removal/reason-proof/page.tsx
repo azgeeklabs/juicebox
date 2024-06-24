@@ -3,13 +3,13 @@ import classNames from "classnames";
 import styles from "./suspension-reason.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
-const RemovalReason = () => {
+const ReasonProof = () => {
   const data = ["Fake", "Defamation"];
 
   return (
     <NextPrevNav
       backLink="/services/orm-negative-press-removal"
-      nextLink="/services/orm-negative-press-removal/reason-proof"
+      nextLink="/services/orm-account-recovery/suspended-date"
     >
       <div
         className={classNames(
@@ -49,4 +49,4 @@ const RemovalReason = () => {
   );
 };
 
-export default RemovalReason;
+export default ReasonProof;
