@@ -307,7 +307,7 @@ export default function Landing() {
     },
     { scope: screen6 }
   );
-  // ===== Start Screen(6) =====
+  // ===== End Screen(6) =====
 
   // ===== Start Screen(7) =====
   useGSAP(
@@ -365,7 +365,7 @@ export default function Landing() {
     { scope: screen7 }
   );
 
-  // ===== Start Screen(7) =====
+  // ===== End Screen(7) =====
 
   // ===== Start Screen(8) =====
   useGSAP(
@@ -388,7 +388,7 @@ export default function Landing() {
     },
     { scope: screen8 }
   );
-  // ===== Start Screen(8) =====
+  // ===== End Screen(8) =====
 
   return (
     <main className="landing-main overflow-hidden">
