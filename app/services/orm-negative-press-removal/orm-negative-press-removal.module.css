@@ -31,3 +31,7 @@
   font-weight: 400;
   color: white;
 }
+
+.addLinkEdit li:not(:last-child) {
+  margin-bottom: 1rem;
+}

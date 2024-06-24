@@ -2,8 +2,20 @@
 import classNames from "classnames";
 import styles from "./orm-negative-press-removal.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useRef, useState } from "react";
 
 function ORMNegativePressRemoval() {
+  const [links, setLinks] = useState<string[]>([]);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleAddLink = () => {
+    const link = inputRef.current?.value;
+    if (link) {
+      setLinks([...links, link]);
+      inputRef.current!.value = "";
+    }
+  };
+
   return (
     <NextPrevNav nextLink="/services/orm-negative-press-removal/removal-reason">
       {/* Inner container with full height and center alignment */}
@@ -39,8 +51,8 @@ function ORMNegativePressRemoval() {
               <div className="relative mb-[1.778vh]">
                 <input
                   type="text"
-                  placeholder="URL
-                "
+                  placeholder="URL"
+                  ref={inputRef}
                   className="h-full  w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[--10px] pl-[--35px] px-[1.088vw] py-[1vh] placeholder:text-[#FFFFFF80]"
                 />
                 <svg
@@ -63,9 +75,57 @@ function ORMNegativePressRemoval() {
               </div>
 
               {/* Button with background color, padding, text color, and rounded corners */}
-              <button className="bg-[var(--highlight-yellow)] font-extrabold px-[1.892vw] py-[0.711vh] text-black rounded-[var(--33px)]">
+              <button
+                className="bg-[var(--highlight-yellow)] font-extrabold px-[1.892vw] py-[0.711vh] text-black rounded-[var(--33px)]"
+                onClick={handleAddLink}
+              >
                 Add
               </button>
+            </div>
+
+            <h3 className="mb-[1.067vh]">Added Links</h3>
+            <div className="h-[clamp(10px,calc(28.03vh+0.1rem),1000px)] w-full">
+              <div className="rounded-[--10px] bg-[--dark-gray-3] max-h-full">
+                <ul className="h-[clamp(10px,calc(28.03vh+0.1rem),1000px)] overflow-y-auto flex flex-col rounded-[--10px]">
+                  {links.map((link, index) => (
+                    <li
+                      key={index}
+                      className="flex items-center justify-between px-[1.088vw] py-[1vh] border-b border-[#FFFFFF80] group"
+                    >
+                      <span>{link}</span>
+                      <button
+                        className="focus:outline-none opacity-0 group-hover:opacity-100 transition-opacity"
+                        onClick={() => {
+                          setLinks(links.filter((_, i) => i !== index));
+                        }}
+                      >
+                        <svg
+                          className="w-[--28px] h-[--27px]"
+                          viewBox="0 0 28 27"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M9.87909 17.6208L18.1207 9.37921M9.87909 9.37921L18.1207 17.6208"
+                            stroke="white"
+                            stroke-width="2.81671"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+
+                {links.length === 0 && (
+                  <div className="flex items-center justify-center h-full">
+                    <span className="text-[#FFFFFF80] text-[--20px] p-[--15px]">
+                      No links added
+                    </span>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
