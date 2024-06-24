@@ -5,7 +5,7 @@ import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 const page = () => {
   return (
     // Main outer container div
-<NextPrevNav nextLink="/services/content-scripts/choose-niche" backLink="/services/content-scripts/ad-platforms">
+<NextPrevNav nextLink="/dashboard/services/content-scripts/choose-niche" backLink="/dashboard/services/content-scripts/ad-platforms">
 <div className=" w-full h-full flex justify-center items-center">
   
   {/* Inner container with full width and custom advertising styles */}
@@ -20,7 +20,7 @@ const page = () => {
       </h2>
       
       {/* Subheading with horizontal rule (line) */}
-      <h4>
+      <h4 className="text-[#FFFFFFCC]">
         Almost done! Please provide the product link, name, and a brief
         description of the <hr className="border-0" /> product or service
         you are advertising.

@@ -73,6 +73,7 @@ const page = () => {
                         type="file"
                         className="hidden"
                         onChange={handleFileChange}
+                        accept=".pdf,.xlsx,image/*,application/vnd.ms-excel"
                       />
                     </label>
                   </div>

@@ -1405,8 +1405,8 @@ function page() {
             <h2 className="text-[--30px] font-bold">
             What is the type of Wikipedia page do you want?
             </h2>
-            <p className="text-[--18px]">
-            Please select the option that best describes your Wiki page. <br /> This helps us understand the specific requirements for yourpage.
+            <p className="text-[--18px] text-[#FFFFFFCC]">
+            Please select the option that best describes your Wiki page. <br /> This helps us understand the specific requirements for your page.
             </p>
           </div>
           <div className={classNames("flex ", styles.cards)}>

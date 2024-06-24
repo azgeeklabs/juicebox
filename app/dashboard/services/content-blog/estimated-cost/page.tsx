@@ -6,10 +6,9 @@ import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import { useRouter } from "next/navigation";
 
 const page = () => {
-  const router = useRouter()
   return (
     // Main container div with relative positioning
-    <NextPrevNav nextLink="/dashboard/services" nextText="All Done" backLink="/dashboard/services/content-scripts/duration-of-video">
+    <NextPrevNav nextLink="/dashboard/services" nextText="All Done" backLink="/dashboard/services/content-blog/reference-sources">
       <div className="h-full relative w-full">
       {/* Inner container for the video end point section with custom styles */}
       <div

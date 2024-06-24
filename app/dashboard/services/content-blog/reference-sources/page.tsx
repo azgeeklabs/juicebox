@@ -1,10 +1,14 @@
 "use client";
 import classNames from "classnames";
-import styles from "./orm-negative-press-removal.module.css";
+import styles from "./referenceSources.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import { useRef, useState } from "react";
+import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 
 function ORMNegativePressRemoval() {
+
+    const [haveSources,setHaveSources] = useState<boolean>(false)
+
   const [links, setLinks] = useState<string[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -17,11 +21,11 @@ function ORMNegativePressRemoval() {
   };
 
   return (
-    <NextPrevNav nextLink="/dashboard/services/orm-negative-press-removal/removal-reason">
+    <NextPrevNav nextLink="/dashboard/services/content-blog/estimated-cost" backLink="/dashboard/services/content-blog/word-count">
       {/* Inner container with full height and center alignment */}
       <div className="h-full flex justify-center items-center">
         {/* Inner container with full width and custom styles for the footage editing section */}
-        <div className={`${styles.addLinkEdit} w-full`}>
+        <div className={`${styles.addLinkEdit} w-full `}>
           {/* Header section with text centered, auto margins for horizontal centering, and vertical margins */}
           <div
             className={classNames(
@@ -30,26 +34,33 @@ function ORMNegativePressRemoval() {
             )}
           >
             {/* Main heading with bottom margin */}
-            <h2 className="mb-[2.5vh]">What links would you like to remove?</h2>
+            <h2 className="mb-[2.5vh]">Do you have specific sources you would like us to reference?</h2>
 
             {/* Subheading with text centered */}
-            <h4 className="text-center">
-              Please provide the specific links you want removed. This
-              information will help us address your request promptly and
-              effectively.
+            <h4 className="text-center w-[65%] mx-auto text-[#FFFFFFCC]">
+            Please let us know if there are specific sources you'd like us to reference in your content.
             </h4>
+          </div>
+          <div className=" flex gap-[--8px] items-center justify-center border-b border-b-[#484848] pb-[--sy-33px] mb-[--sy-33px]">
+            <CustomCheckBoxText btnSize="xl" inputType="radio" name="sourcesAnswer" onClick={()=>setHaveSources(true)}>
+            Input sources
+            </CustomCheckBoxText>
+            <CustomCheckBoxText btnSize="xl" inputType="radio" name="sourcesAnswer" onClick={()=>setHaveSources(false)}>
+            I have no sources
+            </CustomCheckBoxText>
           </div>
 
           {/* Container for input and button with auto margins for horizontal centering and fit width */}
-          <div className="mx-auto w-fit">
+          <div className={`${haveSources ? "" : " opacity-20 grayscale-[60%]"} mx-auto w-fit`}>
             {/* Subheading for input field */}
-            <h3 className="mb-[1.067vh]">Links</h3>
+            <h3 className="mb-[1.067vh]">Sources</h3>
 
             {/* Container for input field and button with flexbox layout, gap, and bottom margin */}
             <div className="flex gap-[1vw] items-start mb-[2.667vh]">
               {/* Input field with full height, bottom margin, specific width, background color, outline removal, rounded corners, padding, and placeholder styling */}
               <div className="relative mb-[1.778vh]">
                 <input
+                disabled={!haveSources}
                   type="text"
                   placeholder="URL"
                   ref={inputRef}
@@ -76,6 +87,7 @@ function ORMNegativePressRemoval() {
 
               {/* Button with background color, padding, text color, and rounded corners */}
               <button
+              disabled={!haveSources}
                 className="bg-[var(--highlight-yellow)] font-extrabold px-[1.892vw] py-[0.711vh] text-black rounded-[var(--33px)]"
                 onClick={handleAddLink}
               >
@@ -83,10 +95,10 @@ function ORMNegativePressRemoval() {
               </button>
             </div>
 
-            <h3 className="mb-[1.067vh]">Added Links</h3>
-            <div className="h-[clamp(10px,calc(28.03vh+0.1rem),1000px)] overflow-y-auto w-[calc(100%-var(--111px))]">
+            <h3 className="mb-[1.067vh]">Added Sources</h3>
+            <div className={` h-[clamp(10px,calc(20.03vh+0.1rem),1000px)] overflow-y-auto w-[calc(100%-var(--111px))] rounded-[--10px]`}>
               <div className="rounded-[--10px] bg-[--dark-gray-3]">
-                <ul className="flex-col rounded-[--10px] overflow-hidden">
+                <ul className="flex-col overflow-hidden">
                   {links.map((link, index) => (
                     <li
                       key={index}

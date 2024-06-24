@@ -7,7 +7,7 @@ import CustomTypeRange from '@/app/_components/customTypeRange/CustomTypeRange'
 const page = () => {
   return (
     // Custom component for navigation between pages, passing props for the next and back links
-<NextPrevNav nextLink="/services/content-scripts/estimated-cost" backLink="/services/content-scripts/choose-niche" >
+<NextPrevNav nextLink="/dashboard/services/content-scripts/estimated-cost" backLink="/dashboard/services/content-scripts/choose-niche" >
     {/* Main container for the content, styled using Tailwind CSS and custom styles */}
     <div className={`${styles.durationVideo} w-full h-full flex justify-center items-center`}>
         <div className='w-full'>
@@ -15,12 +15,11 @@ const page = () => {
             <div className="mb-[--sy-64px]">
                 {/* Heading for the section, centered text */}
                 <h2 className="mb-[--sy-10px] text-[--32px] font-semibold text-center">
-                    Do you have a specific niche for your video?
+                How long would you like the video to be?
                 </h2>
                 {/* Description paragraph, centered text */}
-                <p className="text-[--18px] text-center">
-                    Specifying your niche enables us to tailor our approach for <br />
-                    maximum impact and engagement.
+                <p className="text-[--18px] text-center text-[#FFFFFFCC]">
+                Slide to your required video duration. If you're not sure, that's okay! We can help <br /> determine the ideal length for your project.
                 </p>
             </div>
             {/* Container for the custom input component, centered with margin */}

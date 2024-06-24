@@ -9,7 +9,7 @@ const page = () => {
   const router = useRouter();
   return (
     // Main container div with relative positioning
-    <NextPrevNav nextLink="/services" nextText="All Done">
+    <NextPrevNav nextLink="/dashboard/services" nextText="All Done">
       <div className="h-full relative w-full">
         {/* Inner container for the video end point section with custom styles */}
         <div

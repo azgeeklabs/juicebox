@@ -227,8 +227,8 @@ function AccountRecovery() {
   return (
     // Custom component for navigation between pages, passing props for the next and back links
     <NextPrevNav
-      nextLink="/services/content-scripts/product-advertising"
-      backLink="/services/content-scripts/kind-of-video"
+      nextLink="/dashboard/services/content-scripts/product-advertising"
+      backLink="/dashboard/services/content-scripts/kind-of-video"
     >
       {/* Main container for the content, styled using Tailwind CSS and custom styles */}
       <div
@@ -242,7 +242,7 @@ function AccountRecovery() {
           <h1 className="text-[--30px] font-bold">
             What platform are you running your ad on?
           </h1>
-          <p className="text-[--18px] font-light">
+          <p className="text-[--18px] font-light text-[#FFFFFFCC]">
             Please select the option that best describes your project type.{" "}
             <br />
             This helps us understand the specific requirements for your project.

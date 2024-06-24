@@ -8,8 +8,8 @@ const RemovalReason = () => {
 
   return (
     <NextPrevNav
-      backLink="/services/orm-negative-press-removal"
-      nextLink="/services/orm-negative-press-removal/reason-proof"
+      backLink="/dashboard/services/orm-negative-press-removal"
+      nextLink="/dashboard/services/orm-negative-press-removal/reason-proof"
     >
       <div
         className={classNames(

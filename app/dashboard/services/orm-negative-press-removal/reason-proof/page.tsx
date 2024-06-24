@@ -13,8 +13,8 @@ const ReasonProof = () => {
 
   return (
     <NextPrevNav
-      backLink="/services/orm-negative-press-removal/removal-reason"
-      nextLink="/services/orm-negative-press-removal/estimated-cost"
+      backLink="/dashboard/services/orm-negative-press-removal/removal-reason"
+      nextLink="/dashboard/services/orm-negative-press-removal/estimated-cost"
     >
       <div
         className={classNames(

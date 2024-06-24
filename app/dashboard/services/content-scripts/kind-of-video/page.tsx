@@ -31,7 +31,7 @@ export default function page() {
 
   return (
     // Main container div with full height, column flex direction, and space-between alignment
-    <NextPrevNav nextLink="/services/content-scripts/ad-platforms" backLink="/services/content-scripts/video-style">
+    <NextPrevNav nextLink="/dashboard/services/content-scripts/ad-platforms" backLink="/dashboard/services/content-scripts/video-style">
       <div className="flex items-center justify-center h-full w-full">
         {/* Inner container with full width and custom editing styles */}
         <div className={`${styles.kindOfVideo} w-full`}>
@@ -43,7 +43,7 @@ export default function page() {
             </h2>
 
             {/* Subheading with horizontal rule (line) */}
-            <h4>
+            <h4 className="text-[#FFFFFFCC]">
             we have a variety of video styles, pick the one you think would complement <br /> the video style you want!
             </h4>
           </div>

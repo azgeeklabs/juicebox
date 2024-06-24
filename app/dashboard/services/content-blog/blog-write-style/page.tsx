@@ -1,28 +1,24 @@
 import React from "react";
-import styles from "./videoStyle.module.css";
+import styles from "./blogWriteStyle.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
 const page = () => {
   return (
     // Main outer container div
-    <NextPrevNav nextLink="/dashboard/services/content-scripts/kind-of-video" backLink="/dashboard/services/content-scripts/channel-choice"><div className=" h-full flex items-center justify-center">
+    <NextPrevNav nextLink="/dashboard/services/content-blog/word-count" backLink="/dashboard/services/content-blog/create-website"><div className=" h-full flex items-center justify-center">
     {/* Inner container with full width, custom video style styles, and top padding */}
-    <div className={`${styles.videoStyle} w-full`}>
+    <div className={`${styles.blogWriteStyle} w-full`}>
       {/* Header section with centered text, auto margins for centering, and bottom margin */}
       <div className="text-center mx-auto mb-[4.037vh]">
         {/* Main heading with bottom margin */}
-        <h2 className="mb-[2.667vh]">
-          Would you like this video to match the style of the videos
-          <hr className="border-0" /> you've already published on your
-          channel?
+        <h2 className="mb-[2.667vh] w-[60%] mx-auto">
+        Would you like you blog to match your existing tone or should we enhance the current writing style
         </h2>
 
         {/* Subheading with horizontal rule (line) */}
-        <h4 className="text-[#FFFFFFCC]">
-          This helps ensure consistency with your existing content, or we can
-          let our creative juices <hr className="border-0" /> flow to create
-          an exceptional video for your channel!
+        <h4 className=" w-[50%] mx-auto text-[#FFFFFFCC]">
+        Our expert writers can craft a blog in the same tone, or we can enhance your current writing style!
         </h4>
       </div>
 
@@ -30,12 +26,12 @@ const page = () => {
       <div className={`${styles.btns} flex w-fit mx-auto gap-[1.041vw]`}>
         {/* Yes option with large button size and radio input type */}
         <CustomCheckBoxText btnSize="xl" inputType="radio" name="styleAnswer">
-          Yes!
+        Same Tone
         </CustomCheckBoxText>
 
         {/* No option with large button size and radio input type */}
         <CustomCheckBoxText btnSize="xl" inputType="radio" name="styleAnswer">
-          Nah, impress me!
+        Improve Style
         </CustomCheckBoxText>
       </div>
     </div>

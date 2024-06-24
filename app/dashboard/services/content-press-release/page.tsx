@@ -1394,7 +1394,7 @@ function page() {
   return (
     <>
       <NextPrevNav
-        nextLink="/dashboard/services/content-blog/create-website"
+        nextLink="/dashboard/services/content-press-release/release-content"
         nextOnClick={() => setStep(step + 1)}
       >
         <div className="flex flex-col gap-[var(--64px)] justify-center items-center h-full">
@@ -1404,14 +1404,13 @@ function page() {
               styles.container
             )}
           >
-            <h2 className="text-[--30px] font-bold">
-              What type of project are you working on?
+            <h2 className="text-[--30px] font-bold w-[73%] mx-auto">
+            Could you please specify the niche or focus area of your press releases?
             </h2>
-            <p className="text-[--18px]">
-              Please select the option that best describes your project type.{" "}
-              <br />
-              This helps us understand the specific requirements for your
-              project.
+            <p className="text-[--18px] text-[#FFFFFFCC]">
+            Please select the option that best describes your project type. 
+            <br />
+            This helps us understand the specific requirements for your project.
             </p>
           </div>
           <div className={classNames("flex ", styles.cards)}>

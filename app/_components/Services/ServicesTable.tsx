@@ -95,7 +95,7 @@ export default function ServicesTable({
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
-      path: "/services/orm-service",
+      path: "/dashboard/services/orm-service",
     },
     {
       service: "Press Release",
@@ -124,25 +124,31 @@ export default function ServicesTable({
 
     },
     {
-      service: "Lorem",
+      service: "PR Creation Wikipedia",
       information:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
+      path:"/dashboard/services/pr-creation"
+
     },
     {
-      service: "Lorem",
+      service: "Content Press Release",
       information:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
+      path:"/dashboard/services/content-press-release"
+
     },
     {
-      service: "Lorem",
+      service: "Content Scripts",
       information:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
+      path:"/dashboard/services/content-scripts"
+
     },
   ];
 
