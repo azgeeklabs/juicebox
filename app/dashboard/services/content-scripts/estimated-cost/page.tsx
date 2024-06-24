@@ -54,12 +54,7 @@ const page = () => {
             </button>
           </div>
         </div>
-        <button
-          className=" absolute left-0 bottom-0 translate-y-full bg-[#484848] text-white py-[0.5vw] px-[--50px] rounded-[41px]"
-          onClick={() => router.back()}
-        >
-          Back
-        </button>
+        
       </div>
     </NextPrevNav>
   );
