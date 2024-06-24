@@ -1,6 +1,6 @@
 import Hero from "./Hero/Hero";
 
-const landing = () => {
+const Landing = () => {
   return (
     <div className="h-full">
       <Hero />;
@@ -8,4 +8,4 @@ const landing = () => {
   );
 };
 
-export default landing;
+export default Landing;
