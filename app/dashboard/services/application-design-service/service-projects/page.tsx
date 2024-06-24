@@ -275,8 +275,6 @@ function page() {
     <NextPrevNav
       nextLink="/dashboard/services/application-design-service/app-style"
       backLink="/dashboard/services/application-design-service/"
-      nextOnClick={() => setStep(step + 1)}
-      backOnClick={() => setStep(step - 1)}
     >
       <div className="flex flex-col gap-[var(--64px)] justify-center items-center h-full">
         <div
