@@ -1389,7 +1389,7 @@ const page = () => {
       );
 
   return (
-    <NextPrevNav nextLink="/services/pr-creation/wikipedia-info" backLink='/services/pr-creation/wikipedia-copy'>
+    <NextPrevNav nextLink="/dashboard/services/pr-creation/wikipedia-info" backLink='/dashboard/services/pr-creation/wikipedia-copy'>
         <div className="flex flex-col gap-[var(--64px)] justify-center items-center h-full">
           <div
             className={classNames(

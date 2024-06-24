@@ -12,7 +12,7 @@ const page = () => {
   };
   return (
     <>
-      <NextPrevNav nextLink="/services/pr-creation/product-service" backLink="/services/pr-creation/">
+      <NextPrevNav nextLink="/dashboard/services/pr-creation/product-service" backLink="/dashboard/services/pr-creation/">
         <div className={`${styles.wikipediaCopy} w-full h-full flex justify-center items-center`}>
           <div className=" w-full">
             <h2 className="mb-[--sy-16px] text-[--32px] font-semibold w-[40%] text-center mx-auto">
