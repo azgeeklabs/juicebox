@@ -79,7 +79,7 @@ const RemoveReviews = () => {
   return (
     <NextPrevNav
       backLink="/dashboard/services/orm-service"
-      nextLink="/dashboard/services/orm-service/remove-reviews"
+      nextLink="/dashboard/services/orm-service/estimated-cost"
     >
       {/* // Main container div with relative positioning */}
       {/* Inner container for the video end point section with custom styles */}
