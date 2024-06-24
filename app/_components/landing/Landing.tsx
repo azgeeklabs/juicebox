@@ -119,14 +119,14 @@ export default function Landing() {
     if (direction === "prev" && currentSlide > 0) {
       const newSlide = currentSlide - 1;
       setCurrentSlide(newSlide);
-      console.log(newSlide); // Log the updated slide index
+      // console.log(newSlide); // Log the updated slide index
       if (swiperRef.current) {
         swiperRef.current.slideTo(newSlide); // Use updated slide index
       }
     } else if (direction === "next" && currentSlide < slides.length - 1) {
       const newSlide = currentSlide + 1;
       setCurrentSlide(newSlide);
-      console.log(newSlide); // Log the updated slide index
+      // console.log(newSlide); // Log the updated slide index
       if (swiperRef.current) {
         swiperRef.current.slideTo(newSlide); // Use updated slide index
       }
