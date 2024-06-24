@@ -113,7 +113,7 @@ const ORMService = () => {
   ];
 
   return (
-    <NextPrevNav nextLink="/dashboard/services/orm-service/step-2">
+    <NextPrevNav nextLink="/dashboard/services/orm-service/remove-reviews">
       {/* // Main container div with relative positioning */}
       <div className="h-full relative">
         {/* Inner container for the video end point section with custom styles */}
