@@ -8,7 +8,8 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import SwiperCore from "swiper";
-import { useRef } from "react";
+import { useContext, useRef } from "react";
+import { globalContext } from "@/app/_context/GlobalContext";
 
 const defaultPages = [
   "Sign Up",
@@ -51,6 +52,9 @@ function page() {
     "/assets/mobile-slide-3.png",
     "/assets/mobile-slide-4.png",
   ];
+
+  const { step, setStep } = useContext(globalContext);
+
 
   return (
     <NextPrevNav

@@ -3,12 +3,12 @@ import React, { useState } from "react";
 import styles from "./footageSelection.module.css";
 import CustomCheckBox from "@/app/_components/customCheckBox/CustomCheckBox";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
-import img from "../../../../public/assets/Frame 0.svg";
-import img2 from "../../../../public/assets/Frame 1.svg";
-import img3 from "../../../../public/assets/Frame 2.svg";
-import img4 from "../../../../public/assets/Frame 3.svg";
-import img5 from "../../../../public/assets/Frame 4.svg";
-import img6 from "../../../../public/assets/Frame 5.svg";
+import img from "../../../../../public/assets/Frame0.svg";
+import img2 from "../../../../../public/assets/Frame1.svg";
+import img3 from "../../../../../public/assets/Frame2.svg";
+import img4 from "../../../../../public/assets/Frame3.svg";
+import img5 from "../../../../../public/assets/Frame4.svg";
+import img6 from "../../../../../public/assets/Frame5.svg";
 import Image from "next/image";
 
 const page = () => {
