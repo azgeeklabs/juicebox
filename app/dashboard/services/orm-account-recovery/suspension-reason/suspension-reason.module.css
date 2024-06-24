@@ -1,0 +1,16 @@
+.container {
+  width: clamp(20rem, calc(60vw + 0.1rem), 100%);
+}
+
+.cards {
+  width: clamp(20rem, calc(40vw + 0.1rem), 100%);
+}
+
+.cards div:has(> input:checked) {
+  font-weight: 700;
+}
+
+.card svg {
+  width: var(--24px);
+  height: var(--20px);
+}
