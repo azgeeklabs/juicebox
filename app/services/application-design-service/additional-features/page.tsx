@@ -3,8 +3,6 @@ import classNames from "classnames";
 import styles from "./additional-features.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
-import { useContext } from "react";
-import { globalContext } from "@/app/_context/GlobalContext";
 
 function page() {
   const data = [
@@ -497,13 +495,10 @@ function page() {
       ),
     },
   ];
-  const { step, setStep } = useContext(globalContext);
   return (
     <NextPrevNav
       nextLink="/services/application-design-service/app-wrapup"
       backLink="/services/application-design-service/custom-ecommerce"
-      nextOnClick={() => setStep(step + 1)}
-backOnClick={() => setStep(step - 1)}
     >
       <div
         className={classNames(
@@ -525,7 +520,11 @@ backOnClick={() => setStep(step - 1)}
             styles.cards
           )}
         >
-          <div className={classNames("flex flex-col justify-center gap-[var(--28px)]")}>
+          <div
+            className={classNames(
+              "flex flex-col justify-center gap-[var(--28px)]"
+            )}
+          >
             <h2 className="font-bold">Additional Features:</h2>
             <div className="flex flex-wrap gap-y-[var(--12px)] gap-x-[var(--8px)]">
               {data.map((item, i) => (
@@ -545,7 +544,11 @@ backOnClick={() => setStep(step - 1)}
               ))}
             </div>
           </div>
-          <div className={classNames("flex flex-col justify-center gap-[var(--28px)]")}>
+          <div
+            className={classNames(
+              "flex flex-col justify-center gap-[var(--28px)]"
+            )}
+          >
             <h2 className="font-bold">Have more features in mind?</h2>
             <textarea
               className="w-full p-[var(--16px)] bg-[--dark-gray-3] rounded-[var(--8px)] resize-none"

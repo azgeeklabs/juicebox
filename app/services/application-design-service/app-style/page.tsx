@@ -1,5 +1,5 @@
 "use client";
-import React, {  useRef } from "react";
+import React, { useRef } from "react";
 import styles from "./app-style.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
@@ -8,8 +8,6 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import SwiperCore from "swiper";
-import { useContext } from "react";
-import { globalContext } from "@/app/_context/GlobalContext";
 
 export default function page() {
   const options = [
@@ -30,14 +28,10 @@ export default function page() {
     "/assets/mobile-slide-1.png",
   ];
 
-  const { step, setStep } = useContext(globalContext);
-
   return (
     <NextPrevNav
       nextLink="/services/application-design-service/custom-ecommerce"
       backLink="/services/application-design-service/service-projects"
-      nextOnClick={() => setStep(step + 1)}
-backOnClick={() => setStep(step - 1)}
     >
       <div className=" flex flex-col items-center justify-center h-full">
         <div className={`${styles.editing} w-full `}>
@@ -97,7 +91,7 @@ backOnClick={() => setStep(step - 1)}
                 slideShadows: true,
               }}
               pagination={true}
-              allowTouchMove={false}  // Disable slide navigation by mouse drag
+              allowTouchMove={false} // Disable slide navigation by mouse drag
               // modules={[EffectCoverflow, Pagination]}
               className="mySwiper mobile-swiper"
             >

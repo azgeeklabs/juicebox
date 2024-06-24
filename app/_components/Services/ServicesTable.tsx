@@ -90,12 +90,20 @@ export default function ServicesTable({
       path: "/services/orm-account-recovery",
     },
     {
+      service: "ORM Negative Press Removal/Review",
+      information:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      clientProjects: "656 Projects",
+      getStarted: "Start Now!",
+      path: "/services/orm-negative-press-removal",
+    },
+    {
       service: "Press Release",
       information:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
-      path:"/services/press-release"
+      path: "/services/press-release",
     },
     {
       service: "Social Media",
@@ -103,8 +111,7 @@ export default function ServicesTable({
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
-      path:"/services/social-media"
-
+      path: "/services/social-media",
     },
     {
       service: "Lorem",
