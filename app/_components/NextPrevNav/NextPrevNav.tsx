@@ -1,5 +1,7 @@
 "use client";
 import Link from "next/link";
+import { useContext } from "react";
+import { globalContext } from "@/app/_context/GlobalContext";
 
 // Define the props for the NextPrevNav component
 interface nextPrevNavProps {
@@ -34,6 +36,7 @@ function NextPrevNav({
   nextOnClick,
   children,
 }: nextPrevNavProps) {
+  const { step, setStep } = useContext(globalContext);
   return (
     <>
       {/* Render the content */}
@@ -44,7 +47,10 @@ function NextPrevNav({
           <Link
             href={backLink || ""}
             className=" bg-[#484848] px-[2vw] py-[0.5vw] font-semibold rounded-[var(--41px)] cursor-pointer float-start"
-            onClick={() => backOnClick && backOnClick()}
+            onClick={() => {
+              backOnClick && backOnClick();
+              setStep(step - 1);
+            }}
           >
             {/* Default text for the "Back" button */}
             {backText || "Back"}
@@ -55,7 +61,10 @@ function NextPrevNav({
           <Link
             href={nextLink || ""}
             className="bg-[var(--highlight-yellow)] px-[2vw] py-[0.5vw] font-semibold rounded-[var(--41px)] text-[var(--primary-black)] cursor-pointer float-end"
-            onClick={nextOnClick}
+            onClick={() => {
+              nextOnClick && nextOnClick();
+              setStep(step + 1);
+            }}
           >
             {/* Default text for the "Next" button */}
             {nextText || "Next"}

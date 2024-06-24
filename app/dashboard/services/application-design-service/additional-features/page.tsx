@@ -7,6 +7,9 @@ import { useContext } from "react";
 import { globalContext } from "@/app/_context/GlobalContext";
 
 function page() {
+
+  const { step, setStep } = useContext(globalContext);
+
   const data = [
     {
       title: "Notifications",
@@ -497,7 +500,6 @@ function page() {
       ),
     },
   ];
-  const { step, setStep } = useContext(globalContext);
   return (
     <NextPrevNav
       nextLink="/dashboard/services/application-design-service/app-wrapup"
@@ -525,7 +527,11 @@ backOnClick={() => setStep(step - 1)}
             styles.cards
           )}
         >
-          <div className={classNames("flex flex-col justify-center gap-[var(--28px)]")}>
+          <div
+            className={classNames(
+              "flex flex-col justify-center gap-[var(--28px)]"
+            )}
+          >
             <h2 className="font-bold">Additional Features:</h2>
             <div className="flex flex-wrap gap-y-[var(--12px)] gap-x-[var(--8px)]">
               {data.map((item, i) => (
@@ -545,7 +551,11 @@ backOnClick={() => setStep(step - 1)}
               ))}
             </div>
           </div>
-          <div className={classNames("flex flex-col justify-center gap-[var(--28px)]")}>
+          <div
+            className={classNames(
+              "flex flex-col justify-center gap-[var(--28px)]"
+            )}
+          >
             <h2 className="font-bold">Have more features in mind?</h2>
             <textarea
               className="w-full p-[var(--16px)] bg-[--dark-gray-3] rounded-[var(--8px)] resize-none"

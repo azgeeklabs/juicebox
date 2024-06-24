@@ -1,20 +1,21 @@
 "use client";
 import StepProgress from "@/app/_components/stepProgress/StepProgress";
-import { globalContext } from "@/app/_context/GlobalContext";
-import React, { useContext, useEffect, useState } from "react";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
   const path = [
     "",
-    "service-projects",
-    "app-style",
+    "website-type",
+    "domain-selection",
+    "website-technology",
+    "brand-selection",
+    "website-style",
     "custom-ecommerce",
     "additional-features",
-    "app-wrapup",
+    "host-selection",
+    "web-design-endpoint",
   ];
-
-  const { step } = useContext(globalContext);
-
   // const [currentPath, setCurrentPath] = useState(0);
   // const [module, setModule] = useState("");
 
@@ -55,8 +56,11 @@ const layout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div className="flex flex-col h-full">
-      <StepProgress title={"Application Design"} steps={5} currentStep={step} />
-
+      <StepProgress
+        title={"PR Creation"}
+        // currentStep={step}
+        steps={6}
+      />
       <div className="flex flex-col grow">{children}</div>
     </div>
   );

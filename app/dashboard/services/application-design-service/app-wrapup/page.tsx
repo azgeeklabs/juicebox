@@ -1,10 +1,11 @@
 "use client";
-import React, { useContext } from "react";
+
 import styles from "./app-wrapup.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import { globalContext } from "@/app/_context/GlobalContext";
+import { useContext } from "react";
 
 const page = () => {
   const { step, setStep } = useContext(globalContext);

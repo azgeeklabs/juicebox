@@ -2,12 +2,8 @@
 import classNames from "classnames";
 import styles from "./service-projects.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
-import { useContext } from "react";
-import { globalContext } from "@/app/_context/GlobalContext";
 
 function page() {
-  const { step, setStep } = useContext(globalContext);
-
   const data = [
     {
       title: "Healthcare",

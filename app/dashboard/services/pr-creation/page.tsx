@@ -1,6 +1,6 @@
 "use client";
 import classNames from "classnames";
-import styles from "./application-design-service.module.css";
+import styles from "./prCreation.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import { useContext } from "react";
 import { globalContext } from "@/app/_context/GlobalContext";
@@ -1390,13 +1390,11 @@ const appSVG = (
 
 function page() {
 
-
   const { step, setStep } = useContext(globalContext);
-
 
   return (
     <>
-      <NextPrevNav nextLink="/dashboard/services/application-design-service/service-projects" nextOnClick={() => setStep(step + 1)}>
+      <NextPrevNav nextLink="/services/pr-creation/wikipedia-copy" nextOnClick={() => setStep(step + 1)}>
         <div className="flex flex-col gap-[var(--64px)] justify-center items-center h-full">
           <div
             className={classNames(
@@ -1405,12 +1403,10 @@ function page() {
             )}
           >
             <h2 className="text-[--30px] font-bold">
-              What type of digital product are you looking to create?
+            What is the type of Wikipedia page do you want?
             </h2>
-            <p className="text-[--18px] w-[60%]">
-              Please choose whether you want to develop a regular app or a
-              gamified app. This helps us tailor our recommendations to your
-              project.
+            <p className="text-[--18px]">
+            Please select the option that best describes your Wiki page. <br /> This helps us understand the specific requirements for yourpage.
             </p>
           </div>
           <div className={classNames("flex ", styles.cards)}>
