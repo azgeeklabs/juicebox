@@ -115,11 +115,13 @@ export default function ServicesTable({
 
     },
     {
-      service: "Lorem",
+      service: "Content Blog",
       information:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
+      path:"/dashboard/services/content-blog"
+
     },
     {
       service: "Lorem",

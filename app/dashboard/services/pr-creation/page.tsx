@@ -1394,7 +1394,7 @@ function page() {
 
   return (
     <>
-      <NextPrevNav nextLink="/services/pr-creation/wikipedia-copy" nextOnClick={() => setStep(step + 1)}>
+      <NextPrevNav nextLink="/dashboard/services/pr-creation/wikipedia-copy" nextOnClick={() => setStep(step + 1)}>
         <div className="flex flex-col gap-[var(--64px)] justify-center items-center h-full">
           <div
             className={classNames(
