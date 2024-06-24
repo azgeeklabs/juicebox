@@ -164,10 +164,6 @@ body {
   width: 100vw;
 }
 
-img {
-  width: 100%;
-}
-
 * {
   line-height: normal;
   font-size: var(--16px);

@@ -391,7 +391,7 @@ export default function Landing() {
   // ===== Start Screen(8) =====
 
   return (
-    <main className="overflow-hidden">
+    <main className="landing-main overflow-hidden">
       {/* ===== Start Screen(1) ===== */}
       <section className="screen1" ref={screen1}>
         <p>IF WE DONT PROVIDE IT</p>
