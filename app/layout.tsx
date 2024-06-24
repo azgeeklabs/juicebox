@@ -8,6 +8,7 @@ import MainWrapper from "./_components/layout/MainWrapper";
 // });
 // Import Context (provider only)
 import GlobalContextProvider from "./_context/GlobalContext";
+// import Landing from "./landing/page";
 
 export const metadata: Metadata = {
   title: "Creative Juicebox",
@@ -22,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <GlobalContextProvider>
         <body>
-          <MainWrapper>{children}</MainWrapper>
+          {children}
         </body>
       </GlobalContextProvider>
     </html>

@@ -29,7 +29,7 @@ const Calender = () => {
     <section className="overflow-x-hidden overflow-y-auto py-[--sy-5px]">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DateCalendar
-        defaultValue={dayjs('2022-04-19')}
+        // defaultValue={dayjs('2022-04-19')}
           slots={{ rightArrowIcon: RightArrow, leftArrowIcon: LeftArrow }}
           dayOfWeekFormatter={(weekday) => `${weekday.format("ddd")}`}
           className="custom-calender"

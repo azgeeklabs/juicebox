@@ -23,7 +23,7 @@ export default function ServicesTable({
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
-      path: "/services/video-service",
+      path: "/dashboard/services/video-service",
     },
     {
       service: "Application Design",
@@ -31,7 +31,7 @@ export default function ServicesTable({
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
-      path: "/services/application-design-service",
+      path: "/dashboard/services/application-design-service",
     },
     {
       service: "SEO Campaign",
@@ -39,7 +39,7 @@ export default function ServicesTable({
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
-      path: "/services/seo-campaign",
+      path: "/dashboard/services/seo-campaign",
     },
     {
       service: "SEO Link Building",
@@ -47,7 +47,7 @@ export default function ServicesTable({
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
-      path: "/services/seo-link-building",
+      path: "/dashboard/services/seo-link-building",
     },
     {
       service: "PR Monetization",
@@ -55,7 +55,7 @@ export default function ServicesTable({
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
-      path: "/services/pr-monetization",
+      path: "/dashboard/services/pr-monetization",
     },
     {
       service: "Web Design",
@@ -63,7 +63,7 @@ export default function ServicesTable({
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
-      path: "/services/web-design",
+      path: "/dashboard/services/web-design",
     },
     {
       service: "Influencer Marketing",
@@ -71,7 +71,7 @@ export default function ServicesTable({
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
-      path: "/services/influencer-marketing",
+      path: "/dashboard/services/influencer-marketing",
     },
     {
       service: "Email Marketing",
@@ -79,7 +79,7 @@ export default function ServicesTable({
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
-      path: "/services/email-marketing",
+      path: "/dashboard/services/email-marketing",
     },
     {
       service: "ORM Account Recovery",
@@ -87,15 +87,7 @@ export default function ServicesTable({
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
-      path: "/services/orm-account-recovery",
-    },
-    {
-      service: "ORM Negative Press Removal/Review",
-      information:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      clientProjects: "656 Projects",
-      getStarted: "Start Now!",
-      path: "/services/orm-negative-press-removal",
+      path: "/dashboard/services/orm-account-recovery",
     },
     {
       service: "Press Release",
@@ -103,7 +95,7 @@ export default function ServicesTable({
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
-      path: "/services/press-release",
+      path:"/dashboard/services/press-release"
     },
     {
       service: "Social Media",
@@ -111,7 +103,8 @@ export default function ServicesTable({
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
-      path: "/services/social-media",
+      path:"/dashboard/services/social-media"
+
     },
     {
       service: "Lorem",
