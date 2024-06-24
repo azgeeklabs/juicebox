@@ -12,7 +12,7 @@ import GlobalContextProvider from "./_context/GlobalContext";
 
 export const metadata: Metadata = {
   title: "Creative Juicebox",
-  description: "Creative Juicebox",
+  description: "Creative Juicebox Website",
 };
 export default function RootLayout({
   children,
