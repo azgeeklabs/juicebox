@@ -1,9 +1,0 @@
-@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap");
-.hero {
-  font-family: Alfa Slab One;
-  /* padding-top: var(--50px); */
-}
-
-.hero__starp {
-  transform-origin: bottom right;
-}
