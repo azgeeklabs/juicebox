@@ -33,7 +33,7 @@ function FollowerRange() {
             <h3 className="text-[--20px] ml-[var(--16px)] font-bold">
               Follower Range
             </h3>
-            <CustomTypeRange />
+            <CustomTypeRange word="Follower" />
           </div>
         </div>
       </div>
