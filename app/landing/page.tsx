@@ -1,11 +1,11 @@
-import Hero from "./Hero/Hero";
+"use client";
+import React from "react";
+import Landing from "../_components/landing/Landing";
 
-const Landing = () => {
+export default function page() {
   return (
-    <div className="h-full">
-      <Hero />;
-    </div>
+    <>
+      <Landing />
+    </>
   );
-};
-
-export default Landing;
+}

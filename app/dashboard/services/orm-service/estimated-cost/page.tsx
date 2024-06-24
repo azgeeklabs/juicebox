@@ -9,7 +9,7 @@ const page = () => {
   const router = useRouter();
   return (
     // Main container div with relative positioning
-    <NextPrevNav nextLink="/dashboard/services" nextText="All Done" backLink="/dashboard/services/content-scripts/duration-of-video">
+    <NextPrevNav nextLink="/dashboard/services" nextText="All Done">
       <div className="h-full relative w-full">
         {/* Inner container for the video end point section with custom styles */}
         <div
@@ -20,10 +20,10 @@ const page = () => {
             {/* Text center alignment and margin bottom */}
             <div className="text-center mx-auto mb-[2.271vw]">
               {/* Main heading with margin bottom and underlined text */}
-              <h2 className="mb-[1.5vw] w-[55%] mx-auto">
-                Based on everything you told us, <u>the estimated cost</u> of
-                this service is <span>$XXX</span> and would take around{" "}
-                <span>40 Days</span> to finish.
+              <h2 className="mb-[1.5vw]">
+                Based on your selections, the estimated cost for your project
+                <hr className="border-0" /> is <span>$1000</span> and it will
+                take approximately <span>15-20</span> days to complete.
               </h2>
             </div>
 
@@ -44,7 +44,7 @@ const page = () => {
                 inputType="radio"
                 name="estimatedCost"
               >
-                Start Now
+                Start Now!
               </CustomCheckBoxText>
             </div>
 

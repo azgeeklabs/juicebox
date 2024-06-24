@@ -1,0 +1,459 @@
+/* ===== Start Screen(1) =====  */
+.screen1 {
+  /* border: 1px solid salmon; */
+  font-family: "Alfa Slab One", serif;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+.screen1 p {
+  color: #f8f24b;
+}
+.screen1 p:first-child {
+  font-size: var(--120px);
+}
+.screen1 p:nth-child(2),
+.screen1 span {
+  font-size: var(--258px);
+}
+.screen1 .screen1-span {
+  background-color: #f8f24b;
+  width: 110%;
+  /* width: 100%; */
+  transform: rotate(15deg);
+  margin-top: var(--sy-170px);
+}
+.screen1 .screen1-span span {
+  color: #1d1d1d;
+  padding-left: var(--sy-90px);
+}
+/* ===== End Screen(1) =====  */
+
+/* ===== Start Screen(2) =====  */
+.screen2 {
+  /* border: 1px solid cadetblue; */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100vh;
+  padding-top: var(--sy-30px);
+}
+.screen2 > div:nth-child(2) {
+  width: 30vw;
+}
+.screen2 p {
+  /* width: var(--635px); */
+  /* width: 30vw; */
+  font-family: "Chivo", sans-serif;
+  font-weight: 400;
+  font-size: var(--29px);
+  color: #ffffff40;
+  transition: color 0.3s ease-in-out;
+  margin-bottom: var(--sy-40px);
+}
+.screen2 p.active {
+  color: #ffffff;
+}
+.screen2 span {
+  background-color: #f8f24b;
+  padding: var(--sy-9px) var(--20px);
+  border-radius: var(--33px);
+  font-family: "Barlow", sans-serif;
+  font-size: var(--16px);
+  font-weight: 700;
+  color: #1c1c1c;
+  cursor: pointer;
+}
+/* ===== End Screen(2) =====  */
+
+/* ===== Start Screen(3) =====  */
+.screen3 {
+  /* border: 1px solid blueviolet; */
+  background-color: #f8f24b;
+  border-radius: var(--351px) var(--351px) 0 0;
+  color: #1d1d1d;
+  display: flex;
+  flex-direction: column;
+  gap: 8vh;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  padding: var(--sy-100px) var(--40px);
+  position: relative;
+  z-index: 3;
+}
+.screen3 h2 {
+  text-align: center;
+  font-family: "Alfa Slab One", serif;
+  font-weight: 400;
+  font-size: var(--146px);
+}
+.screen3 ul {
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sy-20px);
+}
+.screen3 li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding-bottom: var(--sy-20px);
+}
+.screen3 li:hover {
+  /* background-color: #1d1d1d; */
+  color: #f8f24b;
+}
+.screen3 li span:first-child {
+  font-family: "Chivo", sans-serif;
+  font-weight: 400;
+  font-size: var(--44px);
+  transform: translateY(0);
+  transition: transform 0.5s cubic-bezier(0.01, 0.71, 0.62, 1.36);
+}
+.screen3 li:hover span:first-child {
+  transform: translateY(var(--sy-10px));
+}
+.screen3 li span:last-child {
+  cursor: pointer;
+  transform: translateY(0) rotate(0);
+  transition: transform 0.5s cubic-bezier(0.01, 0.71, 0.6, 1.2);
+}
+.screen3 li:hover span:last-child {
+  transform: translateY(var(--sy-10px)) rotate(-30deg);
+}
+.screen3 li:hover span:last-child svg > g path {
+  fill: #1d1d1d;
+}
+.screen3 li:hover span:last-child svg rect {
+  fill: #f8f24b;
+}
+.screen3 li span {
+  position: relative;
+  z-index: 1;
+}
+.screen3 li::before {
+  content: "";
+  position: absolute;
+  bottom: calc(var(--sy-1px) * -1);
+  left: 0;
+  width: 102%;
+  height: 0;
+  background-color: #1d1d1d;
+  transition: height 0.5s cubic-bezier(0.01, 0.71, 0.6, 1.2),
+    width 0.5s cubic-bezier(0.01, 0.71, 0.6, 1.2),
+    left 0.5s cubic-bezier(0.01, 0.71, 0.6, 1.2);
+  z-index: 0;
+}
+.screen3 li:hover::before {
+  height: 100%;
+  width: 104%; /* Extend the width slightly */
+  left: -2%; /* Shift the pseudo-element to the left */
+}
+.screen3 li::after {
+  content: "";
+  position: absolute;
+  width: 102%;
+  height: var(--sy-1px);
+  background-color: #1d1d1d;
+  top: 100%;
+}
+/* ===== End Screen(3) =====  */
+
+/* ===== Start Screen(4) =====  */
+.screen4 {
+  /* border: 1px solid dodgerblue; */
+  height: 100vh;
+  width: 100vw;
+  padding: var(--40px) var(--60px);
+  padding-bottom: 0;
+  position: relative;
+  z-index: 4;
+  background-color: #1d1d1d;
+}
+.screen4 .waveSVG {
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  width: 100vw;
+}
+.screen4 .screen4-content {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+.screen4 .screen4-content .screen4-col1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.screen4 .screen4-content .screen4-col1 h2 {
+  font-family: "Alfa Slab One", serif;
+  font-size: var(--128px);
+  font-weight: 400;
+}
+.screen4 .screen4-content .screen4-col1 p {
+  font-family: "Alfa Slab One", serif;
+  font-size: var(--102px);
+  font-weight: 400;
+  color: #ffffff3b;
+}
+.screen4 .screen4-content .screen4-col2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background-image: url("/assets/bg.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat; */
+  position: relative;
+}
+.screen4 .screen4-content .screen4-col2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/assets/bg.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1; /* Ensure it stays behind the content */
+  animation-name: ani-float;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out; 
+}
+
+@keyframes ani-float {
+  0% { transform: translate(0,  0px); }
+  50% { transform: translate(0, var(--sy-15px)); }
+  100% { transform: translate(0, -0px); }    
+}
+/* ===== End Screen(4) =====  */
+
+/* ===== Start Screen(5) =====  */
+.screen5 {
+  /* border: 1px solid dodgerblue; */
+  height: 100vh;
+  width: 100vw;
+  padding: var(--40px) var(--60px);
+  padding-bottom: 0;
+  position: relative;
+  z-index: 5;
+  background-color: #1d1d1d;
+}
+.screen5 .screen5-content {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+.screen5 .screen5-content > div:first-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.screen5 .screen5-col1-up > p {
+  font-family: "Alfa Slab One", serif;
+  font-size: var(--102px);
+  font-weight: 400;
+  color: #ffffff3b;
+  margin-bottom: var(--sy-50px);
+}
+.screen5 .screen5-col1-up > div > p {
+  font-family: "Chivo", sans-serif;
+  font-size: var(--25px);
+  font-weight: 400;
+  margin-bottom: var(--sy-35px);
+}
+.screen5 .screen5-col1-up > div > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--10px);
+}
+.screen5 .screen5-col1-up > div > div input {
+  flex-grow: 1;
+  border-radius: var(--10px);
+  padding: var(--10px);
+  color: #1c1c1c;
+}
+.screen5 .screen5-col1-up > div > div span {
+  background-color: #f8f24b;
+  padding: var(--sy-9px) var(--20px);
+  border-radius: var(--33px);
+  font-family: "Barlow", sans-serif;
+  font-size: var(--16px);
+  font-weight: 700;
+  color: #1c1c1c;
+  cursor: pointer;
+}
+.screen5 .screen5-content > div:nth-child(2) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("/assets/bg.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+/* ===== End Screen(5) =====  */
+
+/* ===== Start Screen(6) =====  */
+.screen6 {
+  /* border: 1px solid dodgerblue; */
+  height: 100vh;
+  width: 100vw;
+  padding: var(--40px) var(--60px);
+  background-color: #1d1d1d;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.screen6 .screen6-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15vw;
+}
+.screen6 .screen6-content > div:first-child h2 {
+  font-family: "Alfa Slab One", serif;
+  font-size: var(--128px);
+  font-weight: 400;
+}
+.screen6 .screen6-content > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.screen6 .screen6-content > div:nth-child(2) p {
+  font-family: "Chivo", sans-serif;
+  font-size: var(--29px);
+  font-weight: 400;
+  margin-bottom: var(--sy-20px);
+}
+.screen6 .screen6-content > div:nth-child(2) span {
+  background-color: #f8f24b;
+  padding: var(--sy-9px) var(--20px);
+  border-radius: var(--33px);
+  font-family: "Barlow", sans-serif;
+  font-size: var(--16px);
+  font-weight: 700;
+  color: #1c1c1c;
+  cursor: pointer;
+}
+.screen6 .waves {
+  display: none;
+  pointer-events: none;
+}
+/* ===== End Screen(6) =====  */
+
+/* ===== Start Screen(7) =====  */
+.screen7 {
+  /* border: 1px solid dodgerblue; */
+  height: 100vh;
+  width: 100vw;
+  padding-top: var(--sy-80px);
+  position: relative;
+  z-index: 3;
+  background-color: #f8f24b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sy-40px);
+}
+.screen7.black {
+  background-color: #1d1d1d;
+}
+.screen7 h2 {
+  font-family: "Alfa Slab One", serif;
+  font-size: var(--128px);
+  font-weight: 400;
+  color: #1d1d1d;
+}
+.screen7 p {
+  font-family: "Chivo", sans-serif;
+  font-size: var(--25px);
+  font-weight: 400;
+  color: #1d1d1d;
+}
+.screen7 .screen7Span span {
+  font-family: "Alfa Slab One", serif;
+  font-size: var(--35px);
+  font-weight: 400;
+  color: #1d1d1d;
+}
+/* .screen7 > span > .dot {
+  font-family: "Chivo", sans-serif;
+} */
+/* ===== End Screen(7) =====  */
+
+/* ===== Start Screen(8) =====  */
+.screen8 {
+  /* border: 1px solid dodgerblue; */
+  height: 100vh;
+  width: 100vw;
+  padding: var(--40px) var(--60px);
+  position: absolute;
+  z-index: 9;
+  background-color: #1d1d1d;
+  opacity: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* transform: translate(-50%, -50%) scale(0); */
+  transition: opacity 0.3s ease;
+}
+.screen8 .screen8-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+.screen8 .screen8-content > div:first-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.screen8 .screen8-content > div:first-child > p {
+  font-family: "Alfa Slab One", serif;
+  font-size: var(--90px);
+  font-weight: 400;
+  color: #f8f24b;
+  margin-bottom: var(--sy-60px);
+}
+.screen8 .screen8-content > div:first-child > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--sy-35px);
+}
+.screen8 .screen8-content > div:first-child > div p {
+  font-family: "Chivo", sans-serif;
+  font-size: var(--25px);
+  font-weight: 400;
+}
+.screen8 .screen8-content > div:first-child > div input {
+  flex-grow: 1;
+  border-radius: var(--10px);
+  padding: var(--10px);
+  color: #1c1c1c;
+}
+.screen8 .screen8-content > div:first-child > div span {
+  background-color: #f8f24b;
+  padding: var(--sy-9px) var(--20px);
+  border-radius: var(--33px);
+  font-family: "Barlow", sans-serif;
+  font-size: var(--16px);
+  font-weight: 700;
+  color: #1c1c1c;
+  cursor: pointer;
+}
+/* ===== End Screen(8) =====  */

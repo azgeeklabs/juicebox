@@ -13,12 +13,7 @@ import "swiper/css/pagination";
 import SwiperCore from "swiper";
 
 export default function page() {
-  const options = [
-    "Explainer",
-    "Educational",
-    "YouTube",
-    "Social Media Ad",
-  ];
+  const options = ["Explainer", "Educational", "YouTube", "Social Media Ad"];
 
   const swiperRef = useRef<SwiperCore | null>(null);
 
@@ -39,7 +34,7 @@ export default function page() {
           <div className="pt-[2.667vh] pl-[4.264vw] mb-[6.222vh]">
             {/* Main heading with bottom margin */}
             <h2 className="mb-[1.851vh] w-[25%]">
-            What kind of video do you want to be published on your channel? 
+              What kind of video do you want to be published on your channel? 
             </h2>
 
             {/* Subheading with horizontal rule (line) */}

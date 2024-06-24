@@ -1,8 +1,8 @@
-"use client"
-import NextPrevNav from '@/app/_components/NextPrevNav/NextPrevNav'
-import React from 'react'
-import styles from "./durationOfVideo.module.css"
-import CustomTypeRange from '@/app/_components/customTypeRange/CustomTypeRange'
+"use client";
+import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import React from "react";
+import styles from "./durationOfVideo.module.css";
+import CustomTypeRange from "@/app/_components/customTypeRange/CustomTypeRange";
 
 const page = () => {
   return (
@@ -32,10 +32,9 @@ const page = () => {
                 Word Count: 200
             </span>
         </div>
-    </div>
-</NextPrevNav>
+      </div>
+    </NextPrevNav>
+  );
+};
 
-  )
-}
-
-export default page
+export default page;

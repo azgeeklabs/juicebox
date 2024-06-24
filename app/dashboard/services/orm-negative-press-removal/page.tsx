@@ -84,9 +84,9 @@ function ORMNegativePressRemoval() {
             </div>
 
             <h3 className="mb-[1.067vh]">Added Links</h3>
-            <div className="h-[clamp(10px,calc(28.03vh+0.1rem),1000px)] overflow-y-auto w-[calc(100%-var(--111px))]">
+            <div className="h-[clamp(10px,calc(28.03vh+0.1rem),1000px)] overflow-y-auto w-[calc(100%-var(--111px))] rounded-[--10px]">
               <div className="rounded-[--10px] bg-[--dark-gray-3]">
-                <ul className="flex-col rounded-[--10px] overflow-hidden">
+                <ul className="flex-col overflow-hidden">
                   {links.map((link, index) => (
                     <li
                       key={index}
