@@ -44,7 +44,7 @@ const navBarItems = [
         />
       </svg>
     ),
-    link: "/services",
+    link: "/dashboard/services",
     active: true,
   },
   {
@@ -58,7 +58,7 @@ const navBarItems = [
         />
       </svg>
     ),
-    link: "/white-label",
+    link: "/dashboard/white-label",
     active: false,
   },
   {
@@ -72,7 +72,7 @@ const navBarItems = [
         />
       </svg>
     ),
-    link: "/infinity",
+    link: "/dashboard/infinity",
     active: false,
   },
   {
@@ -88,7 +88,7 @@ const navBarItems = [
         />
       </svg>
     ),
-    link: "/settings",
+    link: "/dashboard/settings",
     active: false,
   },
 ];
