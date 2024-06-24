@@ -403,7 +403,7 @@ export default function Landing() {
       {/* ===== End Screen(1) ===== */}
       {/* ===== Start Screen(2) ===== */}
       <section className="screen2" ref={screen2}>
-        <div>
+        <div className="w-[--411px] max-w-[60%]">
           <img src="/assets/logo.svg" className="w-[--411px]" alt="logo" />
         </div>
         <div>
