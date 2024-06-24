@@ -9,12 +9,8 @@ const CreateArtical = () => {
   const [haveWebsite, setHaveWebsite] = useState(false);
   return (
     <NextPrevNav
-      nextLink={
-        haveWebsite
-          ? "/dashboard/services/content-blog/blog-write-style"
-          : "/dashboard/services/content-blog/word-count"
-      }
-      backLink="/dashboard/services/content-blog"
+      nextLink="/dashboard/services/pr-placement/estimated-cost"
+      backLink="/dashboard/services/pr-placement/questionnaire"
     >
       {/* // Main container div with relative positioning */}
       <div className="h-full relative">
@@ -28,12 +24,13 @@ const CreateArtical = () => {
             <div className="text-center mx-auto mb-[2.271vw]">
               {/* Main heading with margin bottom and underlined text */}
               <h2 className="mb-[1.5vw] w-[60%] mx-auto">
-                Do you already have an article, or would you like us to create
-                one for you?
+                Would you like your article to be centered around a brand or a
+                person?
               </h2>
               <p className=" w-[65%] mx-auto text-[#FFFFFFCC]">
-                Our talented writers can create an article for you in no time,
-                or you can provide your own!
+                Our talented writers can craft compelling content on nearly any
+                topic! Whether you want your article to focus on a brand or a
+                person, we've got you covered!
               </p>
             </div>
 
@@ -48,7 +45,7 @@ const CreateArtical = () => {
                 inputType="radio"
                 name="creationAnswer"
               >
-                I have an article
+                Brand
               </CustomCheckBoxText>
               <CustomCheckBoxText
                 onClick={() => setHaveWebsite(false)}
@@ -56,7 +53,7 @@ const CreateArtical = () => {
                 inputType="radio"
                 name="creationAnswer"
               >
-                Write one for me
+                Preson
               </CustomCheckBoxText>
             </div>
 
@@ -70,7 +67,7 @@ const CreateArtical = () => {
             >
               {/* Product Link field with optional span */}
               <h3 className="mb-[0.6vw] font-semibold text-[--20px]">
-                Upload Your Article
+                Please provide URL:
               </h3>
               <div className="flex gap-[1vw] items-start mb-[1.2vw]">
                 {/* Product Link input field */}
@@ -89,13 +86,6 @@ const CreateArtical = () => {
                   Paste Link
                 </button>
               </div>
-              {/* Link component for saving progress */}
-              <Link
-                href={""}
-                className="block w-fit mx-auto px-[0.52vw] py-[0.3vw] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200 underline"
-              >
-                I’ll do this later
-              </Link>
             </div>
           </div>
         </div>
