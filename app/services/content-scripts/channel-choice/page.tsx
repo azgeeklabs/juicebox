@@ -6,7 +6,7 @@ import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
 const page = () => {
   return (
-    <NextPrevNav nextLink="/services/web-design/website-type" backLink="/services/content-scripts">
+    <NextPrevNav nextLink="/services/content-scripts/video-style" backLink="/services/content-scripts">
       {/* // Main container div with relative positioning */}
       <div className="h-full relative">
         {/* Inner container for the video end point section with custom styles */}
