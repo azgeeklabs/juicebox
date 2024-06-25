@@ -363,7 +363,7 @@ export default function Landing() {
           // end: "120% 65%",
           toggleClass: "black",
           scrub: true,
-          // markers: true,.
+          // markers: true,
         },
         ease: "none",
         onStart: () => {
