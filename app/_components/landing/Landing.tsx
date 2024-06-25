@@ -12,6 +12,7 @@ import "swiper/css/pagination";
 import SwiperCore from "swiper";
 import "./landing.css";
 import classNames from "classnames";
+import NewsLetter from "../newsLetter/NewsLetter";
 
 const arrow = (
   <svg
@@ -430,14 +431,7 @@ export default function Landing() {
             transform your digital presence and unlock your potential with a
             wide range of services.
           </p>
-
-          <div className="flex justify-between items-center gap-[--10px]">
-            <input
-              className="flex-grow rounded-[--10px] p-[--10px] text-[#1c1c1c]"
-              type="email"
-            />
-            <span>Sign up</span>
-          </div>
+          <NewsLetter />
         </div>
       </section>
       {/* ===== End Screen(2) ===== */}
@@ -597,15 +591,12 @@ export default function Landing() {
             <div className="screen4-col1-content">
               <div className="screen4-col1-up">
                 <div>
-                  <p>
+                  <p className="join-juicebox">
                     Enter your email below to join Creative Juice Box
                     <br />
                     community and elevate your business to new heights.
                   </p>
-                  <div>
-                    <input type="email" />
-                    <span>Sign up</span>
-                  </div>
+                  <NewsLetter />
                 </div>
               </div>
               <div className="screen4-col1-down">
@@ -763,15 +754,12 @@ export default function Landing() {
                 OUT ON US!
               </p>
               <div>
-                <p>
+                <p className="join-juicebox">
                   Enter your email below to join Creative Juice Box
                   <br />
                   community and elevate your business to new heights.
                 </p>
-                <div className="flex gap-[--10px]">
-                  <input type="email" />
-                  <span>Sign up</span>
-                </div>
+                <NewsLetter />
               </div>
             </div>
             <div className="w-[40%]">
