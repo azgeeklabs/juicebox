@@ -9,7 +9,7 @@ const RewriteWebsite = () => {
   return (
     <NextPrevNav
       backLink="/dashboard/services/content-website/"
-      nextLink="/dashboard/services/orm-negative-press-removal/reason-proof"
+      nextLink="/dashboard/services/content-website/live-website"
     >
       <div
         className={classNames(
