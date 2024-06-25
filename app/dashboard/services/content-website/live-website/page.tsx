@@ -9,7 +9,7 @@ const LiveWebsite = () => {
   const [haveWebsite, setHaveWebsite] = useState(false);
   return (
     <NextPrevNav
-      nextLink="/dashboard/services/content-website/"
+      nextLink="/dashboard/services/content-website/select-pages"
       backLink="/dashboard/services/content-website/rewrite-website"
     >
       {/* // Main container div with relative positioning */}
