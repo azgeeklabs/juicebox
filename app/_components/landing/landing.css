@@ -170,7 +170,7 @@
 /* ===== Start Screen(4) =====  */
 .screen4 {
   /* border: 1px solid dodgerblue; */
-  height: 100vh;
+  height: 200vh;
   width: 100vw;
   padding: var(--40px) var(--60px);
   padding-bottom: 0;
@@ -184,27 +184,21 @@
   left: 0;
   width: 100vw;
 }
+
 .screen4 .screen4-content {
   display: flex;
   justify-content: space-between;
   height: 100%;
+  /* border: 1px solid salmon; */
 }
 .screen4 .screen4-content .screen4-col1 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-}
-.screen4 .screen4-content .screen4-col1 h2 {
-  font-family: "Alfa Slab One", serif;
-  font-size: var(--128px);
-  font-weight: 400;
-}
-.screen4 .screen4-content .screen4-col1 p {
-  font-family: "Alfa Slab One", serif;
-  font-size: var(--102px);
-  font-weight: 400;
-  color: #ffffff3b;
+  /* border: 1px solid skyblue; */
+  /* width: 50%; */
+  height: 100vh;
 }
 .screen4 .screen4-content .screen4-col2 {
   display: flex;
@@ -216,7 +210,91 @@
   background-position: center;
   background-repeat: no-repeat; */
   position: relative;
+  /* border: 1px solid darkviolet; */
+  width: 50%;
+  height: 100vh;
 }
+.screen4 .screen4-content .screen4-col1 .screen4-col1-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+}
+.screen4 .screen4-content .screen4-col1 .screen4-col1-content:first-child h2 {
+  font-family: "Alfa Slab One", serif;
+  font-size: var(--128px);
+  font-weight: 400;
+}
+.screen4 .screen4-content .screen4-col1 .screen4-col1-content:first-child p {
+  font-family: "Alfa Slab One", serif;
+  font-size: var(--102px);
+  font-weight: 400;
+  color: #ffffff3b;
+}
+
+.screen4 .screen4-content .screen4-col1 .screen4-col1-content:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.screen4
+  .screen4-content
+  .screen4-col1
+  .screen4-col1-content:nth-child(2)
+  .screen4-col1-up
+  p {
+  font-family: "Chivo", sans-serif;
+  font-size: var(--25px);
+  font-weight: 400;
+  margin-bottom: var(--sy-35px);
+}
+
+.screen4
+  .screen4-content
+  .screen4-col1
+  .screen4-col1-content:nth-child(2)
+  .screen4-col1-up
+  > div
+  > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--10px);
+}
+
+.screen4
+  .screen4-content
+  .screen4-col1
+  .screen4-col1-content:nth-child(2)
+  .screen4-col1-up
+  > div
+  > div
+  input {
+  flex-grow: 1;
+  border-radius: var(--10px);
+  padding: var(--10px);
+  color: #1c1c1c;
+}
+
+.screen4
+  .screen4-content
+  .screen4-col1
+  .screen4-col1-content:nth-child(2)
+  .screen4-col1-up
+  > div
+  > div
+  span {
+  background-color: #f8f24b;
+  padding: var(--sy-9px) var(--20px);
+  border-radius: var(--33px);
+  font-family: "Barlow", sans-serif;
+  font-size: var(--16px);
+  font-weight: 700;
+  color: #1c1c1c;
+  cursor: pointer;
+}
+
 .screen4 .screen4-content .screen4-col2::before {
   content: "";
   position: absolute;
@@ -232,93 +310,32 @@
   animation-name: ani-float;
   animation-duration: 3s;
   animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out; 
+  animation-timing-function: ease-in-out;
 }
-
 @keyframes ani-float {
-  0% { transform: translate(0,  0px); }
-  50% { transform: translate(0, var(--sy-15px)); }
-  100% { transform: translate(0, -0px); }    
+  0% {
+    transform: translate(0, 0px);
+  }
+  50% {
+    transform: translate(0, var(--sy-15px));
+  }
+  100% {
+    transform: translate(0, -0px);
+  }
 }
 /* ===== End Screen(4) =====  */
-
-/* ===== Start Screen(5) =====  */
-.screen5 {
-  /* border: 1px solid dodgerblue; */
-  height: 100vh;
-  width: 100vw;
-  padding: var(--40px) var(--60px);
-  padding-bottom: 0;
-  position: relative;
-  z-index: 5;
-  background-color: #1d1d1d;
-}
-.screen5 .screen5-content {
-  display: flex;
-  justify-content: space-between;
-  height: 100%;
-}
-.screen5 .screen5-content > div:first-child {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.screen5 .screen5-col1-up > p {
-  font-family: "Alfa Slab One", serif;
-  font-size: var(--102px);
-  font-weight: 400;
-  color: #ffffff3b;
-  margin-bottom: var(--sy-50px);
-}
-.screen5 .screen5-col1-up > div > p {
-  font-family: "Chivo", sans-serif;
-  font-size: var(--25px);
-  font-weight: 400;
-  margin-bottom: var(--sy-35px);
-}
-.screen5 .screen5-col1-up > div > div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--10px);
-}
-.screen5 .screen5-col1-up > div > div input {
-  flex-grow: 1;
-  border-radius: var(--10px);
-  padding: var(--10px);
-  color: #1c1c1c;
-}
-.screen5 .screen5-col1-up > div > div span {
-  background-color: #f8f24b;
-  padding: var(--sy-9px) var(--20px);
-  border-radius: var(--33px);
-  font-family: "Barlow", sans-serif;
-  font-size: var(--16px);
-  font-weight: 700;
-  color: #1c1c1c;
-  cursor: pointer;
-}
-.screen5 .screen5-content > div:nth-child(2) {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url("/assets/bg.svg");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-/* ===== End Screen(5) =====  */
 
 /* ===== Start Screen(6) =====  */
 .screen6 {
   /* border: 1px solid dodgerblue; */
-  height: 100vh;
+  height: 75vh;
   width: 100vw;
   padding: var(--40px) var(--60px);
+  padding-bottom: 0;
   background-color: #1d1d1d;
   position: relative;
-  display: flex;
-  align-items: center;
+  /* display: flex; */
+  /* align-items: center; */
 }
 .screen6 .screen6-content {
   display: flex;
