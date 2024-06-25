@@ -135,8 +135,7 @@ export default function ServicesTable({
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
-      path:"/dashboard/services/pr-creation"
-
+      path: "/dashboard/services/pr-creation",
     },
     {
       service: "Content Press Release",
@@ -144,8 +143,7 @@ export default function ServicesTable({
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
-      path:"/dashboard/services/content-press-release"
-
+      path: "/dashboard/services/content-press-release",
     },
     {
       service: "Content Scripts",
@@ -153,8 +151,7 @@ export default function ServicesTable({
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
-      path:"/dashboard/services/content-scripts"
-
+      path: "/dashboard/services/content-scripts",
     },
     {
       service: "PR Placement",
@@ -162,8 +159,15 @@ export default function ServicesTable({
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
-      path:"/dashboard/services/pr-placement"
-
+      path: "/dashboard/services/pr-placement",
+    },
+    {
+      service: "Content Website",
+      information:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      clientProjects: "656 Projects",
+      getStarted: "Start Now!",
+      path: "/dashboard/services/content-website",
     },
   ];
 
