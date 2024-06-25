@@ -1,0 +1,70 @@
+.container {
+  width: clamp(20rem, calc(60vw + 0.1rem), 100%);
+}
+
+.cards {
+  width: clamp(20rem, calc(30vw + 0.1rem), 100%);
+}
+
+.cards div:has(> input:checked) {
+  font-weight: 700;
+}
+
+.card svg {
+  width: var(--24px);
+  height: var(--20px);
+}
+
+.customCheckBoxText {
+  /* width: 40px; */
+  /* height: 25px; */
+  /* width: clamp(20px, calc(2.2vw + 0.1rem), 100px);
+  height: clamp(20px, calc(1.2vw + 0.1rem), 100px); */
+  border-radius: var(--50px);
+  overflow: hidden;
+}
+
+.customCheckBoxText input {
+  opacity: 0;
+  cursor: pointer;
+  /* z-index: -1; */
+}
+
+/* Normal */
+.customCheckBoxText > div {
+  background-color: var(--dark-gray-3);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--16px) var(--24px);
+}
+
+.customCheckBoxText input + div {
+  color: var(--white);
+}
+
+/* Hover */
+.customCheckBoxText:hover > div {
+  background-color: #616161;
+}
+.customCheckBoxText:hover input + div {
+  color: var(--white);
+}
+
+/* Checked */
+.customCheckBoxText input:checked + div {
+  background-color: #f8f24b;
+  color: #282828;
+}
+
+/* Disabled */
+.customCheckBoxText input:disabled + div {
+  background-color: #373737;
+  color: #939393;
+}
+
+.customCheckBoxText input:disabled {
+  cursor: not-allowed;
+}

@@ -599,7 +599,7 @@ const gameSVG = (
 function ContentWebsite() {
   return (
     <>
-      <NextPrevNav nextLink="/dashboard/services/influencer-marketing/follower-range">
+      <NextPrevNav nextLink="/dashboard/services/content-website/rewrite-website">
         <div className="flex flex-col gap-[var(--64px)] justify-center items-center h-full">
           <div
             className={classNames(
