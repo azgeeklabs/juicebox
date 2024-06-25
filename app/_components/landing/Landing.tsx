@@ -330,11 +330,11 @@ export default function Landing() {
       gsap.to(screen7Span.current, {
         // scale: 30,
         scale: 500,
-        duration: 15,
+        duration: 20,
         delay: 0.4,
         scrollTrigger: {
           trigger: screen7.current,
-          start: "-40% top",
+          start: "-10% top",
           // end: "bottom 65%",
           // end: "120% 65%",
           scrub: true,
@@ -358,12 +358,12 @@ export default function Landing() {
       gsap.to(screen7.current, {
         scrollTrigger: {
           trigger: screen7.current,
-          start: "-20% top",
+          start: "top top",
           // end: "bottom 65%",
           // end: "120% 65%",
           toggleClass: "black",
           scrub: true,
-          // markers: true,
+          // markers: true,.
         },
         ease: "none",
         onStart: () => {
