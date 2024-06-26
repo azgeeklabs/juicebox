@@ -132,7 +132,7 @@ function ORMNegativePressRemoval() {
                               ) => {
                                 setNum(Number(e?.target?.value));
                               }}
-                              className="h-full rounded-[8px] py-[--sy-10px] text-center outline-none w-[5vw] bg-transparent"
+                              className="h-full rounded-[8px] py-[--sy-10px] text-center outline-none w-[5vw] bg-transparent caret-transparent"
                             />
                             <svg
                               onClick={() => {
@@ -176,7 +176,7 @@ function ORMNegativePressRemoval() {
               </Swiper>
               <svg
                 onClick={handlePrev}
-                className=" absolute left-[--14px] top-1/2 -translate-y-1/2"
+                className=" absolute left-[--14px] top-1/2 -translate-y-1/2 cursor-pointer"
                 width="14"
                 height="22"
                 viewBox="0 0 14 22"
@@ -190,7 +190,7 @@ function ORMNegativePressRemoval() {
               </svg>
               <svg
               onClick={handleNext}
-              className=" absolute right-[--14px] top-1/2 -translate-y-1/2"
+              className=" absolute right-[--14px] top-1/2 -translate-y-1/2 cursor-pointer"
                 width="27"
                 height="34"
                 viewBox="0 0 27 34"
