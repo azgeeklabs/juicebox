@@ -48,3 +48,7 @@
 .sectionsNumber input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
   }
+  .sectionsNumber svg {
+    width: var(--22px);
+    height: var(--sy-20px);
+  }
