@@ -47,7 +47,7 @@
 .screen2 > div:nth-child(2) {
   width: 30vw;
 }
-.screen2 p {
+.screen2 > div:nth-child(2) > p {
   /* width: var(--635px); */
   /* width: 30vw; */
   font-family: "Chivo", sans-serif;
@@ -57,18 +57,8 @@
   transition: color 0.3s ease-in-out;
   margin-bottom: var(--sy-40px);
 }
-.screen2 p.active {
+.screen2 > div:nth-child(2) > p.active {
   color: #ffffff;
-}
-.screen2 span {
-  background-color: #f8f24b;
-  padding: var(--sy-9px) var(--20px);
-  border-radius: var(--33px);
-  font-family: "Barlow", sans-serif;
-  font-size: var(--16px);
-  font-weight: 700;
-  color: #1c1c1c;
-  cursor: pointer;
 }
 /* ===== End Screen(2) =====  */
 
@@ -238,61 +228,11 @@
   justify-content: space-evenly;
 }
 
-.screen4
-  .screen4-content
-  .screen4-col1
-  .screen4-col1-content:nth-child(2)
-  .screen4-col1-up
-  p {
+.screen4 .join-juicebox {
   font-family: "Chivo", sans-serif;
   font-size: var(--25px);
   font-weight: 400;
   margin-bottom: var(--sy-35px);
-}
-
-.screen4
-  .screen4-content
-  .screen4-col1
-  .screen4-col1-content:nth-child(2)
-  .screen4-col1-up
-  > div
-  > div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--10px);
-}
-
-.screen4
-  .screen4-content
-  .screen4-col1
-  .screen4-col1-content:nth-child(2)
-  .screen4-col1-up
-  > div
-  > div
-  input {
-  flex-grow: 1;
-  border-radius: var(--10px);
-  padding: var(--10px);
-  color: #1c1c1c;
-}
-
-.screen4
-  .screen4-content
-  .screen4-col1
-  .screen4-col1-content:nth-child(2)
-  .screen4-col1-up
-  > div
-  > div
-  span {
-  background-color: #f8f24b;
-  padding: var(--sy-9px) var(--20px);
-  border-radius: var(--33px);
-  font-family: "Barlow", sans-serif;
-  font-size: var(--16px);
-  font-weight: 700;
-  color: #1c1c1c;
-  cursor: pointer;
 }
 
 .screen4 .screen4-content .screen4-col2::before {
@@ -456,25 +396,10 @@
   justify-content: space-between;
   gap: var(--sy-35px);
 }
-.screen8 .screen8-content > div:first-child > div p {
+.screen8 .screen8-content > div:first-child .join-juicebox {
   font-family: "Chivo", sans-serif;
   font-size: var(--25px);
   font-weight: 400;
 }
-.screen8 .screen8-content > div:first-child > div input {
-  flex-grow: 1;
-  border-radius: var(--10px);
-  padding: var(--10px);
-  color: #1c1c1c;
-}
-.screen8 .screen8-content > div:first-child > div span {
-  background-color: #f8f24b;
-  padding: var(--sy-9px) var(--20px);
-  border-radius: var(--33px);
-  font-family: "Barlow", sans-serif;
-  font-size: var(--16px);
-  font-weight: 700;
-  color: #1c1c1c;
-  cursor: pointer;
-}
+
 /* ===== End Screen(8) =====  */
