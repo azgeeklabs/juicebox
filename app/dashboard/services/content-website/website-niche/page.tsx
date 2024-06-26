@@ -5,15 +5,11 @@ import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxT
 import Link from "next/link";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
-const LiveWebsite = () => {
+const WebsiteNiche = () => {
   const [haveWebsite, setHaveWebsite] = useState(false);
   return (
     <NextPrevNav
-      nextLink={
-        haveWebsite
-          ? "/dashboard/services/content-website/select-pages"
-          : "/dashboard/services/content-website/website-niche"
-      }
+      nextLink="/dashboard/services/content-website/select-pages"
       backLink="/dashboard/services/content-website/rewrite-website"
     >
       {/* // Main container div with relative positioning */}
@@ -27,11 +23,11 @@ const LiveWebsite = () => {
             {/* Text center alignment and margin bottom */}
             <div className="text-center mx-auto mb-[2.271vw]">
               {/* Main heading with margin bottom and underlined text */}
-              <h2 className="mb-[1vw] w-[60%] mx-auto">
-                Do you have a live website?
+              <h2 className="mb-[.6vw] w-[60%] mx-auto">
+                What Is the Focus and Niche of Your Website?
               </h2>
               <p className=" w-[65%] mx-auto text-[#FFFFFFCC]">
-                Please provide us with your website URL
+                Please select the type of your website.
               </p>
             </div>
 
@@ -46,7 +42,7 @@ const LiveWebsite = () => {
                 inputType="radio"
                 name="creationAnswer"
               >
-                I have a website
+                Service
               </CustomCheckBoxText>
               <CustomCheckBoxText
                 onClick={() => setHaveWebsite(false)}
@@ -54,47 +50,39 @@ const LiveWebsite = () => {
                 inputType="radio"
                 name="creationAnswer"
               >
-                Make one for me
+                Product
               </CustomCheckBoxText>
             </div>
 
             {/* Divider */}
             <hr className={`${styles.divider}`} />
 
-            <div
-              className={`mx-auto w-full ${
-                haveWebsite ? "" : "grayscale-[50%] opacity-50"
-              }`}
-            >
-              {/* Product Link field with optional span */}
-              <h3 className="mb-[0.6vw] font-semibold text-[--20px]">
-                Website URL
-              </h3>
-              <div className="flex gap-[1vw] items-start mb-[1.2vw]">
-                {/* Product Link input field */}
-                <input
-                  disabled={haveWebsite ? false : true}
-                  type="text"
-                  placeholder="URL"
-                  className="flex-grow h-full mb-[1vw] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.5vw] placeholder:text-[#FFFFFF80]"
-                />
+            <div className="mx-auto w-full md:w-[90%] lg:w-[80%]">
+              {/* Container for the video niche selection */}
+              <div>
+                {/* Label for the video niche dropdown */}
 
-                {/* Paste Link button */}
-                <button
-                  disabled={haveWebsite ? false : true}
-                  className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.4vw] text-black rounded-[var(--33px)] font-bold"
-                >
-                  Paste Link
-                </button>
+                <form className=" mx-auto">
+                  <label
+                    htmlFor="countries"
+                    className="block mb-[--sy-20px] font-bold"
+                  >
+                    Niche
+                  </label>
+                  <select
+                    id="countries"
+                    className=" outline-none rounded-lg block w-full p-2.5 bg-[#484848]"
+                  >
+                    <option selected className=" text-[#A3A3A3]">
+                      e-commerce
+                    </option>
+                    <option value="US">United States</option>
+                    <option value="CA">Canada</option>
+                    <option value="FR">France</option>
+                    <option value="DE">Germany</option>
+                  </select>
+                </form>
               </div>
-
-              {/* Link component for saving progress */}
-              <Link
-                href={""}
-                className="block w-fit mx-auto px-[0.52vw] py-[0.3vw] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200 underline"
-              >
-                I’ll do this later
-              </Link>
             </div>
           </div>
         </div>
@@ -103,4 +91,4 @@ const LiveWebsite = () => {
   );
 };
 
-export default LiveWebsite;
+export default WebsiteNiche;
