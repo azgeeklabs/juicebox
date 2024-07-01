@@ -1,16 +1,18 @@
 "use client"
 import React, { useState } from "react";
-import styles from "./createWebsite.module.css";
+import styles from "./createAccount.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useRouter } from "next/navigation";
 
 const page = () => {
-    const [haveWebsite,setHaveWebsite] = useState(false)
+  const router = useRouter()
+    const [haveAccount,setHaveAccount] = useState(false)
   return (
-    <NextPrevNav nextLink={haveWebsite ? "/dashboard/services/content-blog/blog-write-style" : "/dashboard/services/content-blog/word-count"} backLink="/dashboard/services/content-blog">
+    <NextPrevNav nextLink="/dashboard/services/paid-ads-flow/trying-paid-ads" >
       {/* // Main container div with relative positioning */}
-      <div className="h-full relative">
+      <div className=" h-full relative w-full">
         {/* Inner container for the video end point section with custom styles */}
         <div
           className={`${styles.createWebsite} w-full h-full flex justify-center items-center`}
@@ -21,10 +23,11 @@ const page = () => {
             <div className="text-center mx-auto mb-[2.271vw]">
               {/* Main heading with margin bottom and underlined text */}
               <h2 className="mb-[1.5vw] w-[60%] mx-auto">
-              Do you currently have a account to run ads on?
+                Do you already have an website, or would you like us to
+                create one for you?
               </h2>
               <p className=" w-[65%] mx-auto text-[#FFFFFFCC]">
-              If you're looking to run ads but don't yet have a page or account set up, don't worry! We're here to help you every step of the way.
+              Our expert developers can craft a website for you in no time, or you can provide your own design!
               </p>
             </div>
 
@@ -34,15 +37,15 @@ const page = () => {
             >
               {/* CustomCheckBoxText component for selecting options */}
               <CustomCheckBoxText
-              onClick={()=>setHaveWebsite(true)}
+              onClick={()=>setHaveAccount(true)}
                 btnSize="xl"
                 inputType="radio"
                 name="creationAnswer"
               >
-                I have an account
+                I have a website
               </CustomCheckBoxText>
               <CustomCheckBoxText
-              onClick={()=>setHaveWebsite(false)}
+              onClick={()=>setHaveAccount(false)}
                 btnSize="xl"
                 inputType="radio"
                 name="creationAnswer"
@@ -54,20 +57,20 @@ const page = () => {
             {/* Divider */}
             <hr className={`${styles.divider}`} />
 
-            <div className={`mx-auto w-full ${haveWebsite ? "" : "grayscale-[50%] opacity-50"}`}>
+            <div className={`mx-auto w-full ${haveAccount ? "" : "grayscale-[50%] opacity-50"}`}>
               {/* Product Link field with optional span */}
-              <h3 className="mb-[0.6vw] font-semibold text-[--20px]">Website URL</h3>
+              <h3 className="mb-[0.6vw] font-semibold text-[--20px]">Account URL</h3>
               <div className="flex gap-[1vw] items-start mb-[1.2vw]">
                 {/* Product Link input field */}
                 <input
-                disabled={haveWebsite ? false : true}
+                disabled={haveAccount ? false : true}
                   type="text"
                   placeholder="URL"
                   className="flex-grow h-full mb-[1vw] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.5vw] placeholder:text-[#FFFFFF80]"
                 />
 
                 {/* Paste Link button */}
-                <button disabled={haveWebsite ? false : true} className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.4vw] text-black rounded-[var(--33px)] font-bold">
+                <button disabled={haveAccount ? false : true} className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.4vw] text-black rounded-[var(--33px)] font-bold">
                   Paste Link
                 </button>
               </div>
@@ -81,6 +84,7 @@ const page = () => {
             </div>
           </div>
         </div>
+        <button onClick={()=>router.back()} className=" bg-[#484848] rounded-[41px] px-[2vw] py-[0.5vw] text-white absolute" style={{top:`calc(100% + 0.5rem)`}}>Back</button>
       </div>
     </NextPrevNav>
   );
