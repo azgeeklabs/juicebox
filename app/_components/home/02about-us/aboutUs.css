@@ -1,0 +1,118 @@
+.home_aboutAs {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--sy-48px);
+  padding-left: var(--64px);
+  position: relative;
+  overflow: hidden;
+}
+.home_aboutAs .home_aboutAs_sliderToken {
+  width: 100%;
+  position: absolute;
+  z-index: 9;
+  padding: 0;
+  pointer-events: none;
+  transform: rotate(45deg);
+}
+.home_aboutAs_sliderToken .slick-slide {
+  margin-right: var(--30px);
+}
+.home_aboutAs .home_aboutAs_sliderToken:first-child {
+  right: -43%;
+  top: -5%;
+}
+.home_aboutAs .home_aboutAs_sliderToken:nth-child(2) {
+  right: -23%;
+  top: -5%;
+}
+.home_aboutAs > h2 {
+  font-family: "Alfa Slab One", serif;
+  font-weight: 400;
+  font-size: var(--51px);
+  color: #f8f24b;
+}
+.home_aboutAs > p {
+  font-family: "Barlow", sans-serif;
+  font-weight: 400;
+  font-size: var(--20px);
+  color: white;
+  width: 45%;
+}
+.home_aboutAs > h3 {
+  font-family: "Alfa Slab One", serif;
+  font-weight: 400;
+  font-size: var(--24px);
+  color: #f8f24b;
+}
+.home_aboutAs_values {
+  display: flex;
+  gap: var(--45px);
+}
+.home_aboutAs_values_cardWapper {
+  position: relative;
+}
+.home_aboutAs_values_card {
+  padding: var(--18px) var(--24px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: clamp(0.7px, calc(0.039vw + 0.01rem), 1000px) solid #f8f24b;
+  border-radius: var(--111px);
+  width: var(--328px);
+  height: var(--151px);
+  background-color: #1d1d1d;
+}
+.home_aboutAs_values_card:first-child > p {
+  font-family: "Barlow", sans-serif;
+  font-size: var(--12px);
+  font-weight: 500;
+  padding-left: 55%;
+  /* opacity: 0; */
+}
+.home_aboutAs_values_card:nth-child(2) {
+  padding-right: var(--35px);
+  position: absolute;
+  left: 0;
+  top: 0;
+  /* z-index: 2; */
+  transition: all 0.5s ease-in-out;
+}
+.home_aboutAs_values_card:nth-child(2):hover {
+  background-color: #f8f24b;
+  transform: rotate(70deg);
+  transform-origin: 22.75% center;
+}
+.home_aboutAs_values_card:nth-child(2):hover > span {
+  color: white;
+  background-color: #1d1d1d;
+}
+.home_aboutAs_values_card:nth-child(2):hover > p > span {
+  color: #1d1d1d;
+}
+.home_aboutAs_values_card > span {
+  font-family: "Alfa Slab One", serif;
+  font-weight: 400;
+  font-size: var(--42px);
+  color: #1d1d1d;
+  background-color: #f8f24b;
+  width: var(--116px);
+  height: var(--115px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.home_aboutAs_values_card > p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.home_aboutAs_values_card > p > span {
+  font-family: "Barlow", sans-serif;
+  font-weight: 700;
+  font-size: var(--23px);
+  color: white;
+}
