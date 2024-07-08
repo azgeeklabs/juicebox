@@ -1,0 +1,40 @@
+.home_infinityServices {
+  height: 100vh;
+  padding: var(--64px);
+  padding-bottom: 0;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+.home_infinityServices_title > h2 {
+  font-family: "Alfa Slab One", serif;
+  font-weight: 400;
+  font-size: var(--51px);
+  color: #f8f24b;
+}
+.home_infinityServicesWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.home_infinityServicesWrapper_shape1 {
+  position: relative;
+}
+.home_infinityServicesWrapper_shape1 > img:first-child {
+}
+.home_infinityServicesWrapper_shape1 > img:last-child {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translateY(100%);
+  /* display: none; */
+}
+.home_infinityServicesWrapper_shape1:hover > img:first-child {
+  /* display: none; */
+}
+.home_infinityServicesWrapper_shape1:hover > img:last-child {
+  /* transform: translateY(0); */
+  /* display: inline; */
+}
