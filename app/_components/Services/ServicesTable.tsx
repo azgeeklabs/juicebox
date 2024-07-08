@@ -169,6 +169,14 @@ export default function ServicesTable({
       getStarted: "Start Now!",
       path: "/dashboard/services/content-website",
     },
+    {
+      service: "Paid Ads",
+      information:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      clientProjects: "656 Projects",
+      getStarted: "Start Now!",
+      path: "/dashboard/services/paid-ads-flow",
+    },
   ];
 
   const filtersByIndustry = [

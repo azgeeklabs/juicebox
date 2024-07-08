@@ -193,7 +193,7 @@ function AccountRecovery() {
                 console.log(item.title.split(" ")?.[0].toLowerCase());
                 setRoute(item.title.split(" ")?.[0].toLowerCase())
                 
-              }} btnSize="md" inputType="radio">
+              }} btnSize="md" inputType="radio" name="platform">
                 <div
                   className={classNames(
                     "flex items-center font-bold gap-[var(--12px)]",
