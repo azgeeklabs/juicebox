@@ -1,0 +1,48 @@
+.card::before {
+    content: '';
+    position: absolute;
+    top: -6px; /* Adjust based on border width */
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    background: linear-gradient(149.52deg, #F8F24B 0%, rgba(146, 142, 44, 0) 100%); /* Adjust the gradient */
+    z-index: 0;
+    border-radius: 15px; /* Optional: adjust for rounded corners */
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #353535; /* Same as the background of .gradient-border */
+    z-index: 0;
+    border-radius: 15px; /* Optional: adjust for rounded corners */
+}
+
+
+.card .checkbox {
+    border: 1px solid transparent;
+    border-radius: var(--4px);
+    transition: 0.4s;
+}
+.card .checkbox:hover {
+    border: 1px solid yellow;
+}
+.card .checkbox input + span svg {
+    fill: #1d1d1d;
+    width: var(--11px);
+    height: var(--9px);
+    opacity: 0;
+    transform: scale(0.4);
+    transition: all 0.4s;
+  }
+.card .checkbox input:checked + span {
+    background-color: yellow;
+  }
+.card .checkbox input:checked + span svg {
+    opacity: 1;
+    transform: scale(1);
+  }

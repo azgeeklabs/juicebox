@@ -360,3 +360,27 @@ html.lenis body {
 }
 
 /* ===== End LandingPage Slider ===== */
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+.vi__character {
+  border-radius: var(--42px);
+  width: var(--96px) !important;
+  background-color: #484848;
+  border: none;
+}
+:where(.vi__character--selected) {
+  outline: 2px solid var(--highlight-yellow) !important;
+  color: var(--highlight-yellow) !important;
+}
+.otp-verification .CustomCheckBoxText_customCheckBoxText__t7xAA div{
+  font-weight: 700;
+}
