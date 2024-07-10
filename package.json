@@ -27,6 +27,7 @@
     "next-transpile-modules": "^10.0.1",
     "react": "^18",
     "react-dom": "^18",
+    "react-verification-input": "^4.1.2",
     "swiper": "^11.1.4",
     "tailwind-merge": "^2.3.0",
     "yup": "^1.2.0"

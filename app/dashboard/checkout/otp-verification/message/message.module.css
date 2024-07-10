@@ -1,0 +1,18 @@
+.message span.indicator.completed {
+background-color: var(--highlight-yellow);
+color: black;
+}
+.message span.indicator::after {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: var(--sy-50px);
+    background-color: #272727;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+}
+.message span.indicator.completed::after {
+background-color: var(--highlight-yellow);
+}
+

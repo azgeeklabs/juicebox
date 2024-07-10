@@ -1,0 +1,10 @@
+.editing .swiper {
+    margin-left: auto;
+    margin-right: 2vw;
+}
+.editing .hovered {
+    width: 22vw !important;
+}
+.CustomCheckBoxText_customCheckBoxText__t7xAA:hover + div {
+    opacity: 1;
+}

@@ -1,0 +1,21 @@
+.profile svg.lock {
+width: clamp(8px ,calc(0.7vw + 0.1rem), 100px);
+height: clamp(8px ,calc(0.7vw + 0.1rem), 100px);
+}
+.profile svg {
+width: clamp(8px ,calc(0.7vw + 0.1rem), 100px);
+height: clamp(8px ,calc(0.7vw + 0.1rem), 100px);
+}
+.profile svg.info {
+width: clamp(10px ,calc(1vw + 0.1rem), 100px);
+height: clamp(10px ,calc(1vw + 0.1rem), 100px);
+}
+.profile ::placeholder{
+    font-size: clamp(10px ,calc(0.6vw + 0.1rem), 100px);;
+}
+.hover:hover {
+    background-color: #1d1d1d;
+}
+.hover:hover svg {
+    transform: rotate(-35deg);
+}
