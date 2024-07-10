@@ -9,31 +9,113 @@ if (typeof window !== "undefined") {
 }
 
 export default function InfinityServices() {
-  // ===== Start Screen(1) =====
+  // ===== Start Shape(1) =====
   const shape1 = useRef(null);
   const shape1Active = useRef(null);
-  
+
   useEffect(() => {
-    const shape1Wrapper = document.querySelector(".home_infinityServicesWrapper_shape1");
-  
+    const shape1Wrapper = document.querySelector(
+      ".home_infinityServicesWrapper_shape1"
+    );
+
+    const tl = gsap.timeline({ paused: true });
+
+    tl.to(shape1.current, { autoAlpha: 0, duration: 0 }).fromTo(
+      shape1Active.current,
+      { yPercent: 50.5, autoAlpha: 0 },
+      { yPercent: 13.5, autoAlpha: 1, duration: 1 }
+    );
+
     const handleMouseOver = () => {
-      const tl = gsap.timeline();
-      tl.to(shape1.current, { opacity: 0 })
-        .fromTo(
-          shape1Active.current,
-          { yPercent: 100 },
-          { yPercent: -100, duration: 2 }
-        );
+      tl.play();
     };
-  
+
+    const handleMouseLeave = () => {
+      tl.reverse();
+    };
+
     shape1Wrapper.addEventListener("mouseover", handleMouseOver);
-  
+    shape1Wrapper.addEventListener("mouseleave", handleMouseLeave);
+
     return () => {
       shape1Wrapper.removeEventListener("mouseover", handleMouseOver);
+      shape1Wrapper.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
-  
-  // ===== End Screen(1) =====
+
+  // ===== End Shape(1) =====
+
+  // ===== Start Shape(2) =====
+  const shape2 = useRef(null);
+  const shape2Active = useRef(null);
+
+  useEffect(() => {
+    const shape2Wrapper = document.querySelector(
+      ".home_infinityServicesWrapper_shape2"
+    );
+
+    const tl = gsap.timeline({ paused: true });
+
+    tl.to(shape2.current, { autoAlpha: 0, duration: 0 }).fromTo(
+      shape2Active.current,
+      { yPercent: 50.5, autoAlpha: 0 },
+      { yPercent: 13.5, autoAlpha: 1, duration: 1 }
+    );
+
+    const handleMouseOver = () => {
+      tl.play();
+    };
+
+    const handleMouseLeave = () => {
+      tl.reverse();
+    };
+
+    shape2Wrapper.addEventListener("mouseover", handleMouseOver);
+    shape2Wrapper.addEventListener("mouseleave", handleMouseLeave);
+
+    return () => {
+      shape2Wrapper.removeEventListener("mouseover", handleMouseOver);
+      shape2Wrapper.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, []);
+
+  // ===== End Shape(2) =====
+
+  // ===== Start Shape(3) =====
+  const shape3 = useRef(null);
+  const shape3Active = useRef(null);
+
+  useEffect(() => {
+    const shape3Wrapper = document.querySelector(
+      ".home_infinityServicesWrapper_shape3"
+    );
+
+    const tl = gsap.timeline({ paused: true });
+
+    tl.to(shape3.current, { autoAlpha: 0, duration: 0 }).fromTo(
+      shape3Active.current,
+      { yPercent: 50.5, autoAlpha: 0 },
+      { yPercent: 13.5, autoAlpha: 1, duration: 1 }
+    );
+
+    const handleMouseOver = () => {
+      tl.play();
+    };
+
+    const handleMouseLeave = () => {
+      tl.reverse();
+    };
+
+    shape3Wrapper.addEventListener("mouseover", handleMouseOver);
+    shape3Wrapper.addEventListener("mouseleave", handleMouseLeave);
+
+    return () => {
+      shape3Wrapper.removeEventListener("mouseover", handleMouseOver);
+      shape3Wrapper.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, []);
+
+  // ===== End Shape(3) =====
 
   return (
     <section className="home_infinityServices">
@@ -60,8 +142,20 @@ export default function InfinityServices() {
             ref={shape1Active}
           />
         </div>
-        <img src="/home/04infinity-services/shape-2.png" />
-        <img src="/home/04infinity-services/shape-3.png" />
+        <div className="home_infinityServicesWrapper_shape2">
+          <img src="/home/04infinity-services/shape-2.png" ref={shape2} />
+          <img
+            src="/home/04infinity-services/shape-2-active.png"
+            ref={shape2Active}
+          />
+        </div>
+        <div className="home_infinityServicesWrapper_shape3">
+          <img src="/home/04infinity-services/shape-3.png" ref={shape3} />
+          <img
+            src="/home/04infinity-services/shape-3-active.png"
+            ref={shape3Active}
+          />
+        </div>
       </div>
     </section>
   );
