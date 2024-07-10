@@ -13,6 +13,7 @@ import dynamic from "next/dynamic";
 const AboutUs = dynamic(() => import('./02about-us/AboutUs'), { ssr: false });
 const Services = dynamic(() => import('./03services/Services'), { ssr: false });
 const InfinityServices = dynamic(() => import('./04infinity-services/InfinityServices'), { ssr: false });
+const WhiteLabel = dynamic(() => import('./05white-label/WhiteLabel'), { ssr: false });
 
 export default function Home() { 
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       <AboutUs />
       <Services />
       <InfinityServices />
+      <WhiteLabel />
     </main>
   );
 }
