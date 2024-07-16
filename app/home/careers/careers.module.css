@@ -1,0 +1,3 @@
+.topJuiceBox {
+  transform: perspective(var(--274px)) rotateX(70deg);
+}
