@@ -160,6 +160,8 @@
   --sy-80px: clamp(10px, calc(8.55vh + 0.1rem), 1000px);
   --sy-90px: clamp(10px, calc(9.53vh + 0.1rem), 1000px);
   --sy-100px: clamp(10px, calc(10.753vh + 0.1rem), 1000px);
+  --sy-118px: clamp(10px, calc(12.38vh + 0.1rem), 1000px);
+  --sy-136px: clamp(10px, calc(14.2vh + 0.1rem), 1000px);
   --sy-160px: clamp(10px, calc(14.3vh + 0.1rem), 1000px);
   --sy-165px: clamp(10px, calc(16.6vh + 0.1rem), 1000px);
   --sy-170px: clamp(10px, calc(18.15vh + 0.1rem), 1000px);
@@ -168,6 +170,9 @@
 /* ===== End Variables ===== */
 
 /* ===== Start Global ===== */
+html {
+  scroll-behavior: smooth;
+}
 body {
   background-color: var(--primary-black);
   height: 100vh;
@@ -396,4 +401,8 @@ input[type="number"] {
 }
 .otp-verification .CustomCheckBoxText_customCheckBoxText__t7xAA div {
   font-weight: 700;
+}
+
+.subscriptions .serviceCard_serviceCard___Z8OC {
+  width: 250px !important;
 }

@@ -1,0 +1,118 @@
+.home_hero {
+  height: 100vh;
+}
+.mainHero:hover .mainHeroAdds {
+  background-color: #f8f24b;
+}
+.mainHero:hover .mainHeroAdds span.shadowed {
+  box-shadow: var(--10px) calc(-1 * var(--10px)) #f8f24b !important;
+}
+.mainHero:hover button {
+  background-color: black;
+  color: white;
+}
+.mainHero:hover .juiceBG1 {
+  fill: black;
+}
+.mainHero:hover span.client:nth-child(2) {
+  transform: translate(-50%, -70%);
+}
+.mainHero:hover span.client:nth-child(3) {
+  transform: translate(-50%, -140%);
+}
+.mainHero:hover span.client:nth-child(4) {
+  transform: translate(-50%, -210%);
+}
+.mainHero:hover span.clientText:last-child {
+  transform: translate(-50%, -500%) rotate(-90deg);
+  opacity: 1;
+}
+.mainHero span.clientText:last-child {
+  transform: translate(-50%, -300%) rotate(-90deg);
+  opacity: 0;
+}
+
+.mainHero span.client {
+  background-color: #1d1d1d;
+  bottom: 10%;
+  transform: translate(-50%, 0);
+}
+.wave {
+  transition: all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1.2);
+}
+.process:hover .wave {
+  top: 1%;
+  left: 20%;
+}
+.unlimitedBox:hover .wave {
+  top: -28%;
+  left: 20%;
+}
+.process:hover h2,
+.process:hover h4,
+.process:hover p {
+  color: black;
+}
+.process:hover button {
+  background-color: black;
+  color: white;
+}
+.process:hover button svg rect {
+  fill: #f8f24b;
+}
+.process:hover button svg g path {
+  fill: #1d1d1d;
+}
+.process button:hover {
+  font-size: var(--17px);
+}
+.process button:hover svg {
+  transform: rotate(-50deg);
+}
+.services .service:hover .layer {
+  border-radius: var(--20px);
+  width: 100%;
+}
+.services .service:hover span {
+  color: black;
+}
+.services .service:hover svg rect {
+  fill: #1d1d1d;
+}
+.services .service:hover svg g path {
+  fill: #f8f24b;
+}
+.services .service:hover svg {
+  transform: rotate(45deg);
+}
+
+.unlimited .unlimitedBox {
+  box-shadow: 0px 0px 4.49px 0px #131313ad;
+  border-radius: var(--12px);
+}
+.unlimited:hover {
+    box-shadow: 0px 0px 4.49px 0px #131313ad;
+
+}
+.unlimitedBox:hover svg.infinity path {
+    fill: black;
+}
+.unlimited:hover .newWord {
+    opacity: 1;
+}
+.deletedWord::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #f8f24b;
+    border-radius: 6px;
+    opacity: 0;
+    transition: all 0.2s;
+}
+.unlimited:hover .deletedWord::before {
+    opacity: 1;
+}

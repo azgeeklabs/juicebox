@@ -1,0 +1,21 @@
+.services::-webkit-scrollbar {
+  background-color: transparent !important;
+  height: 4px !important;
+
+}
+.services::-webkit-scrollbar-thumb {
+  background-color: gray !important;
+  scrollbar-width: thin;
+  border-radius: 4px;
+}
+.services::-webkit-scrollbar-track {
+  margin: 6px !important;
+}
+.tableBody {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+.tableBody::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
