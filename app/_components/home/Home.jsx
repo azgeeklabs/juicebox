@@ -14,6 +14,7 @@ const AboutUs = dynamic(() => import('./02about-us/AboutUs'), { ssr: false });
 const Services = dynamic(() => import('./03services/Services'), { ssr: false });
 const InfinityServices = dynamic(() => import('./04infinity-services/InfinityServices'), { ssr: false });
 const WhiteLabel = dynamic(() => import('./05white-label/WhiteLabel'), { ssr: false });
+const OurWork = dynamic(() => import('./06our-work/OurWork'), { ssr: false });
 
 export default function Home() { 
   return (
@@ -23,6 +24,8 @@ export default function Home() {
       <Services />
       <InfinityServices />
       <WhiteLabel />
+      <OurWork />
+      <div className="h-screen"></div>
     </main>
   );
 }

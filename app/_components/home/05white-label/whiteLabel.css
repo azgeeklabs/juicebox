@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   background-color: #f8f24b;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 .home_whiteLabel > h2 {
   font-family: "Alfa Slab One", serif;
