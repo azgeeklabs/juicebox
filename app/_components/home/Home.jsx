@@ -10,6 +10,7 @@ import dynamic from "next/dynamic";
 //   gsap.registerPlugin(ScrollTrigger, useGSAP);
 // }
 
+const Hero = dynamic(() => import('./01hero/Hero'), { ssr: false });
 const AboutUs = dynamic(() => import('./02about-us/AboutUs'), { ssr: false });
 const Services = dynamic(() => import('./03services/Services'), { ssr: false });
 const InfinityServices = dynamic(() => import('./04infinity-services/InfinityServices'), { ssr: false });
@@ -20,6 +21,7 @@ export default function Home() {
   return (
     <main className="home_main">
       {/* <section className="home_hero"></section> */}
+      <Hero />
       <AboutUs />
       <Services />
       <InfinityServices />
