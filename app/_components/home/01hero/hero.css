@@ -41,7 +41,7 @@
   transition: all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1.2);
 }
 .process:hover .wave {
-  top: 1%;
+  top: -4%;
   left: 20%;
 }
 .unlimitedBox:hover .wave {
@@ -115,4 +115,11 @@
 }
 .unlimited:hover .deletedWord::before {
     opacity: 1;
+}
+.product span {
+  transition: all 0.2s;
+
+}
+.product:hover span {
+  background-color: black;
 }
