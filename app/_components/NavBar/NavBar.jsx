@@ -85,7 +85,7 @@ const NavBar = () => {
               viewBox="0 0 170 56"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="absolute left-full top-full w-full h-full group-hover:left-0 group-hover:top-0 scale-x-150 scale-y-125 transition-all duration-500 -z-10"
+              className="absolute left-full top-full w-full h-full group-hover:left-0 group-hover:top-0 scale-x-150 scale-y-125 transition-all duration-700 -z-10 [transition-timing-function:cubic-bezier(0.175,_0.885,_0.32,_1.275)]"
               preserveAspectRatio="none"
             >
               <path
@@ -115,7 +115,7 @@ const NavBar = () => {
 
         <button>
           <Link
-            href="/login"
+            href="/sign-up"
             className="relative block overflow-hidden no-underline bg-[--highlight-yellow] rounded-[--38px] border px-[--36px] py-[--10px] border-[--highlight-yellow] transition-all duration-500 group"
           >
             <span className="relative text-[--20px] font-medium text-[--primary-black] group-hover:text-white transition-all duration-500 z-10">
@@ -125,7 +125,7 @@ const NavBar = () => {
               viewBox="0 0 170 56"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="absolute left-full top-full w-full h-full group-hover:left-0 group-hover:top-0 scale-x-150 scale-y-125 transition-all duration-500"
+              className="absolute left-full top-full w-full h-full group-hover:left-0 group-hover:top-0 scale-x-150 scale-y-125 transition-all duration-700 [transition-timing-function:cubic-bezier(0.175,_0.885,_0.32,_1.275)]"
               preserveAspectRatio="none"
             >
               <path
