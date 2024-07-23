@@ -1,3 +1,4 @@
+import Footer from "../_components/footer/Footer";
 import NavBar from "../_components/NavBar/NavBar";
 
 export default function RootLayout({
@@ -10,6 +11,7 @@ export default function RootLayout({
       <body className="pt-[--sy-100px]">
         <NavBar />
         {children}
+        <Footer />
       </body>
     </html>
   );

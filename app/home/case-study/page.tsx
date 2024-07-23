@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const page = () => {
   return (
-    <div className="w-full h-full pt-[--sy-100px] px-[--64px]">
+    <div className="w-full pt-[--sy-100px] px-[--64px]">
       <h1 className=" [font-family:Alfa_Slab_One] text-[--102px] w-fit mx-auto text-[#F8F24B] mb-[--sy-40px]">
         Machine Genius
       </h1>

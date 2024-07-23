@@ -10,9 +10,9 @@ import classNames from "classnames";
 import { AnimatedTooltip } from "../_components/animatedTooltip/AnimatedTooltip";
 import ClientApprovalTable from "../_components/dashboard/Client Approval/ClientApprovalTable";
 import dynamic from "next/dynamic";
+import { number } from "yup";
 
 const Calender = dynamic(() => import('../_components/dashboard/calender/Calender'), { ssr: false })
-
 
 const svg = (
   <svg
