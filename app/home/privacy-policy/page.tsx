@@ -6,7 +6,7 @@ const page = () => {
     <div className=" w-full pt-[135px]">
       <div className=" w-full px-[267px]">
         <h1 className=" text-center text-[--96px] text-[--highlight-yellow] [font-family:Alfa_Slab_One] mb-[--sy-80px]">
-        Privacy & Policy
+          Privacy & Policy
         </h1>
         <p className=" text-[--24px] text-center w-2/3 mx-auto mb-[--sy-100px]">
           Unlock new potential for your business with our comprehensive white
@@ -341,7 +341,7 @@ const page = () => {
           </div>
           <div className=" col-span-1 relative">
             <svg
-            className=" absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/4"
+              className=" absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/4"
               width="206"
               height="291"
               viewBox="0 0 206 291"
