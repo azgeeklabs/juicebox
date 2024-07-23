@@ -21,7 +21,7 @@ const NavBar = () => {
   ];
 
   return (
-    <div className="flex justify-between items-center py-[--19px] px-[--90px] z-50 [box-shadow:0px_4px_15.2px_0px_#00000040]">
+    <div className="fixed inset-x-0 top-0 bg-[--primary-black] flex justify-between items-center py-[--19px] px-[--90px] z-[99999] [box-shadow:0px_4px_15.2px_0px_#00000040]">
       <svg
         className="w-[--98px]"
         viewBox="0 0 98 61"

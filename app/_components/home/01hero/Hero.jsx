@@ -4,7 +4,7 @@ import "./hero.css";
 
 export default function Hero() {
   return (
-    <section className="home_hero grid grid-cols-7 pt-[--sy-100px] pb-[--sy-20px] gap-[--15px] px-[--64px]">
+    <section className="home_hero grid grid-cols-7 pt-[--sy-10px] pb-[--sy-20px] gap-[--15px] px-[--64px]">
       <div className=" col-span-1 w-full h-full relative">
         <svg
           className=" left-1/2 -translate-x-1/2 top-[30%] absolute"
@@ -1058,8 +1058,14 @@ export default function Hero() {
         </div>
         <div className=" h-[--sy-60px] w-[calc(var(--80px)+var(--14px))] rounded-b-full bg-[#1d1d1d] absolute left-[21%] -top-[--sy-3px] border-[3px] border-transparent transition-all duration-200 group-hover:border-[#f8f24b] border-t-0">
           <div className=" w-[80%] h-[80%] left-1/2 -translate-x-1/2  absolute rounded-b-full"></div>
-          <span className=" absolute top-0 right-full w-[40px] h-[20px] inline-block rounded-tr-[--30px] border-[3px] border-transparent group-hover:border-[#f8f24b] border-b-0 border-l-0 transition-all duration-200" style={{boxShadow:"10px -2px 0 2px #1d1d1d"}}></span>
-          <span className=" absolute top-0 left-full w-[40px] h-[20px] inline-block rounded-tl-[--30px] border-[3px] border-transparent group-hover:border-[#f8f24b]  border-b-0 border-r-0 transition-all duration-200" style={{boxShadow:"-10px -2px 0 2px #1d1d1d"}}></span>
+          <span
+            className=" absolute top-0 right-full w-[40px] h-[20px] inline-block rounded-tr-[--30px] border-[3px] border-transparent group-hover:border-[#f8f24b] border-b-0 border-l-0 transition-all duration-200"
+            style={{ boxShadow: "10px -2px 0 2px #1d1d1d" }}
+          ></span>
+          <span
+            className=" absolute top-0 left-full w-[40px] h-[20px] inline-block rounded-tl-[--30px] border-[3px] border-transparent group-hover:border-[#f8f24b]  border-b-0 border-r-0 transition-all duration-200"
+            style={{ boxShadow: "-10px -2px 0 2px #1d1d1d" }}
+          ></span>
         </div>
       </div>
     </section>

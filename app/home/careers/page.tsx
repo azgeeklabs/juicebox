@@ -3,7 +3,13 @@ import { useState } from "react";
 import NavBar from "../../_components/NavBar/NavBar";
 import styles from "./careers.module.css";
 
-const FilterBtn = ({ children, active, handClick }) => {
+interface FilterBtnProps {
+  children: React.ReactNode;
+  active: boolean;
+  handClick: () => void;
+}
+
+const FilterBtn = ({ children, active, handClick }: FilterBtnProps) => {
   return (
     <button
       className={`relative block overflow-hidden no-underline 
