@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { Suspense, useEffect, useRef } from "react";
 // import { useGSAP } from "@gsap/react";
 import "./home.css";
 import dynamic from "next/dynamic";
@@ -21,7 +21,10 @@ const InfinityServices = dynamic(
 const WhiteLabel = dynamic(() => import("./05white-label/WhiteLabel"), {
   ssr: false,
 });
-const OurWork = dynamic(() => import("./06our-work/OurWork"), { ssr: false });
+const OurWork = dynamic(() => import("./06our-work/OurWork"), {
+  ssr: false,
+  loading: () => <div>loading ....</div>,
+});
 
 export default function Home() {
   const horizontalScrollRef = useRef(null);
@@ -33,7 +36,7 @@ export default function Home() {
         translateX: 0,
       },
       {
-        translateX: "-100vw",
+        translateX: "-101vw",
         ease: "none",
         duration: 1,
         scrollTrigger: {
@@ -67,7 +70,9 @@ export default function Home() {
       <Services />
       <InfinityServices />
       <WhiteLabel />
-      <OurWork />
+      <Suspense fallback={<p>Loading...</p>}>
+        <OurWork />
+      </Suspense>
       {/* <div className="h-screen"></div> */}
     </main>
   );
