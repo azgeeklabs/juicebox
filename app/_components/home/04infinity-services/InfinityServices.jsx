@@ -121,8 +121,7 @@ export default function InfinityServices() {
     <section className="home_infinityServices">
       <div className="home_infinityServices_title">
         <svg
-          width="78"
-          height="39"
+          className="w-[--78px] h-[--39px]"
           viewBox="0 0 78 39"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

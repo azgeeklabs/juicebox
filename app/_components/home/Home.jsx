@@ -1,8 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-// import gsap from "gsap";
 // import { useGSAP } from "@gsap/react";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./home.css";
 import dynamic from "next/dynamic";
 import { gsap } from "gsap";
@@ -42,7 +40,7 @@ export default function Home() {
           trigger: horizontalScrollRef.current,
           start: "-10% top",
           end: "bottom top",
-          markers: true,
+          // markers: true,
           scrub: 0.6,
           pin: true,
         },
