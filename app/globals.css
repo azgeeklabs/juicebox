@@ -126,9 +126,11 @@
   --411px: clamp(10px, calc(20vw + 0.1rem), 1000px);
   --500px: clamp(10px, calc(27.778vw + 0.1rem), 1000px);
   --502px: clamp(10px, calc(27.889vw + 0.1rem), 1000px);
+  --511px: clamp(10px, calc(28.389vw + 0.1rem), 1000px);
   --542px: clamp(10px, calc(30.111vw + 0.1rem), 1000px);
   --635px: clamp(10px, calc(33vw + 0.1rem), 1000px);
   --667px: clamp(10px, calc(37.056vw + 0.1rem), 1000px);
+  --676px: clamp(10px, calc(37.556vw + 0.1rem), 1000px);
   --689px: clamp(10px, calc(38.278vw + 0.1rem), 1000px);
   --700px: clamp(10px, calc(38.889vw + 0.1rem), 1000px);
   --721px: clamp(10px, calc(40.056vw + 0.1rem), 1000px);
