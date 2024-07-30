@@ -24,6 +24,7 @@
 }
 .home_whiteLabel_cardsWrapper {
   display: flex;
+  justify-content: center;
   gap: var(--30px);
 }
 
@@ -60,7 +61,7 @@
   font-weight: 400;
   font-size: var(--31px);
   position: absolute;
-  top: 34vh;
+  top: 65%;
   left: 50%;
   width: var(--264px);
   text-align: start;
@@ -84,7 +85,7 @@
   margin-bottom: var(--sy-30px);
 }
 .home_whiteLabel_card.active {
-  width: var(--700px);
+  width: 45%;
   transition: all 0.4s ease-in-out;
   transform: rotate(6deg);
 }
