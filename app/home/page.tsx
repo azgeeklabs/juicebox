@@ -25,6 +25,20 @@ export default function page() {
     };
   }, []);
 
+  useEffect(() => {
+    // Key to use in localStorage
+    const reloadFlagKey = "pageReloaded";
+
+    // Get the value of the flag from localStorage
+    const hasReloaded = sessionStorage.getItem(reloadFlagKey);
+
+    if (!hasReloaded) {
+      // If the flag is not set, set it to true and reload the page
+      sessionStorage.setItem(reloadFlagKey, "true");
+      window.location.reload();
+    }
+  }, []); // Empty dependency array ensures this runs only on mount
+
   return (
     <>
       <Home />
