@@ -8,7 +8,7 @@ const page = () => {
   return (
     <NextPrevNav
       backLink="/dashboard/services/web-design/host-selection"
-      nextLink="/dashboard/services/web-design/"
+      nextLink="/dashboard/services"
       nextText="All Done"
     >
       {/* Main container div with relative positioning */}

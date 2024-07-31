@@ -8,15 +8,15 @@ const NavBar = () => {
     },
     {
       name: "About Us",
-      link: "/home/#about-us",
+      link: "#about-us",
     },
     {
       name: "Services",
-      link: "/home/#services",
+      link: "/#services",
     },
     {
       name: "Our Work",
-      link: "#our-work",
+      link: "/#our-work",
     },
   ];
 
