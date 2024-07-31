@@ -2,8 +2,12 @@
 import React, { useEffect, useRef } from "react";
 import "./ourWork.css";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger, useGSAP);
+}
 
 export default function OurWork() {
   const ourWorkRef = useRef(null);
@@ -39,50 +43,49 @@ export default function OurWork() {
     },
   ];
 
-  useEffect(() => {
-    const totalSections = data.length;
+  useGSAP(
+    () => {
+      const totalSections = data.length;
 
-    const scrollTrigger = ScrollTrigger.create({
-      trigger: ourWorkRef.current,
-      pin: true,
-      start: "top top",
-      end: `+=${100 * totalSections}%`,
-      scrub: true,
-      snap: {
-        snapTo: 1 / (totalSections - 1), // Snap to each section
-        duration: 0.5, // Snapping duration for smooth effect
-        ease: "power1.inOut", // Easing function
-      },
-      onUpdate: (self) => {
-        const progress = self.progress * (totalSections - 1);
-        const index = Math.floor(progress);
-        const sectionProgress = progress - index;
+      ScrollTrigger.create({
+        trigger: ourWorkRef.current,
+        pin: true,
+        start: "top top",
+        end: `+=${100 * totalSections}%`,
+        scrub: true,
+        snap: {
+          snapTo: 1 / (totalSections - 1), // Snap to each section
+          duration: 0.5, // Snapping duration for smooth effect
+          ease: "power1.inOut", // Easing function
+        },
+        onUpdate: (self) => {
+          const progress = self.progress * (totalSections - 1);
+          const index = Math.floor(progress);
+          const sectionProgress = progress - index;
 
-        gsap.to(leftImgWrapperRef.current, {
-          xPercent: -120 * sectionProgress,
-          duration: 0.2,
-        });
+          gsap.to(leftImgWrapperRef.current, {
+            xPercent: -120 * sectionProgress,
+            duration: 0.2,
+          });
 
-        gsap.to(rightImgWrapperRef.current, {
-          xPercent: 120 * sectionProgress,
-          duration: 0.2,
-        });
+          gsap.to(rightImgWrapperRef.current, {
+            xPercent: 120 * sectionProgress,
+            duration: 0.2,
+          });
 
-        // Update content based on scroll direction
-        if (sectionProgress === 0) {
-          leftImgRef.current.src = data[index].img1;
-          rightImgRef.current.src = data[index].img2;
-          caseStudyRef.current.textContent = data[index].caseStudy;
-          numberRef.current.textContent = data[index].number;
-          descriptionRef.current.textContent = data[index].description;
-        }
-      },
-    });
-
-    return () => {
-      scrollTrigger.kill(); // Cleanup on unmount
-    };
-  }, []);
+          // Update content based on scroll direction
+          if (sectionProgress === 0) {
+            leftImgRef.current.src = data[index].img1;
+            rightImgRef.current.src = data[index].img2;
+            caseStudyRef.current.textContent = data[index].caseStudy;
+            numberRef.current.textContent = data[index].number;
+            descriptionRef.current.textContent = data[index].description;
+          }
+        },
+      });
+    },
+    { scope: ourWorkRef }
+  );
 
   return (
     <section className="home_ourWork" ref={ourWorkRef}>
