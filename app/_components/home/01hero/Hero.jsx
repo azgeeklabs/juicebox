@@ -4,10 +4,10 @@ import "./hero.css";
 
 export default function Hero() {
   return (
-    <section className="home_hero grid grid-cols-7 pt-[--sy-10px] pb-[--sy-20px] gap-[--15px] px-[--64px]">
+    <section className="home_hero grid grid-cols-7 pt-[--sy-10px] pb-[--sy-20px] gap-[--15px] px-[--64px] overflow-hidden">
       <div className=" col-span-1 w-full h-full relative">
         <svg
-          className=" left-1/2 -translate-x-1/2 top-[30%] absolute"
+          className=" left-1/2 -translate-x-1/2 top-[15%] absolute"
           width="74"
           height="37"
           viewBox="0 0 74 37"
@@ -39,7 +39,7 @@ export default function Hero() {
           />
         </svg>
         <svg
-          className=" left-1/2 -translate-x-1/2 top-[40%] absolute"
+          className=" left-1/2 -translate-x-1/2 top-[25%] absolute"
           width="91"
           height="41"
           viewBox="0 0 91 41"
@@ -71,7 +71,7 @@ export default function Hero() {
           />
         </svg>
         <svg
-          className=" left-1/2 -translate-x-1/2 top-[50%] absolute"
+          className=" left-1/2 -translate-x-1/2 top-[35%] absolute"
           width="142"
           height="37"
           viewBox="0 0 142 37"
@@ -103,7 +103,7 @@ export default function Hero() {
           />
         </svg>
         <svg
-          className=" left-1/2 -translate-x-1/2 top-[60%] absolute"
+          className=" left-1/2 -translate-x-1/2 top-[45%] absolute"
           width="148"
           height="56"
           viewBox="0 0 148 56"
@@ -135,7 +135,7 @@ export default function Hero() {
           />
         </svg>
         <svg
-          className=" left-1/2 -translate-x-1/2 top-[60%] absolute"
+          className=" left-1/2 -translate-x-1/2 top-[46%] absolute"
           width="56"
           height="24"
           viewBox="0 0 56 24"
@@ -167,7 +167,7 @@ export default function Hero() {
           />
         </svg>
         <svg
-          className=" left-1/2 -translate-x-1/2 top-[72%] absolute"
+          className=" left-1/2 -translate-x-1/2 top-[60%] absolute"
           width="49"
           height="27"
           viewBox="0 0 49 27"
@@ -199,7 +199,7 @@ export default function Hero() {
           />
         </svg>
         <svg
-          className=" left-1/2 -translate-x-1/2 top-[85%] absolute"
+          className=" left-1/2 -translate-x-1/2 top-[70%] absolute"
           width="174"
           height="38"
           viewBox="0 0 174 38"
@@ -231,7 +231,7 @@ export default function Hero() {
           />
         </svg>
         <svg
-          className=" left-1/2 -translate-x-1/2 top-[80%] absolute"
+          className=" left-1/2 -translate-x-1/2 top-[65%] absolute"
           width="112"
           height="70"
           viewBox="0 0 112 70"
@@ -265,7 +265,7 @@ export default function Hero() {
       </div>
       <div className="mainHero col-span-4 w-full g px-[--58px] py-[--sy-50px] text-[#F8F24B] border-[3px] border-[#F8F24B] rounded-[--30px] flex items-center gap-[--51px] h-fit relative rounded-br-none hover:bg-[#F8F24B] transition-all duration-200 hover:text-black">
         <svg
-          className="w-[35%]"
+          className="w-[35%] h-[300px]"
           viewBox="0 0 169 269"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -506,7 +506,7 @@ export default function Hero() {
           style={{ width: `var(--60px)` }}
         ></div>
       </div>
-      <div className=" col-span-2 w-full relative process overflow-hidden h-fit rounded-[--30px] px-[--23px] pt-[--sy-16px] pb-[--sy-10px] flex gap-[--24px]">
+      <div className=" col-span-2 w-full relative process overflow-hidden h-fit rounded-[--30px] px-[--23px] pt-[--sy-20px] pb-[--sy-10px] flex gap-[--24px]">
         <svg
           className="absolute left-1/2 top-full -translate-x-1/2 w-[280%] wave -z-[1]"
           preserveAspectRatio="none"
@@ -625,7 +625,7 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <div className="py-[--sy-35px] px-[--23px] col-span-2 h-fit w-full services relative">
+      <div className="py-[--sy-35px] px-[--23px] col-span-2 h-fit w-full services relative -translate-y-6">
         <svg
           className=" absolute right-[10%] bottom-[10%]"
           width="155"
@@ -773,7 +773,7 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <div className="py-[--sy-35px] px-[--23px] col-span-2 h-fit w-full unlimited relative rounded-[--12px] transition-all duration-300">
+      <div className="py-[--sy-35px] px-[--23px] col-span-2 h-fit w-full unlimited relative rounded-[--12px] transition-all duration-300 -translate-y-6">
         <h2 className=" text-[--25px] [font-family:Alfa_Slab_One] mb-[--sy-17px]">
           Unlimited{" "}
           <span className="deletedWord text-[--25px] [font-family:Alfa_Slab_One] transition-all duration-200 relative">
@@ -1007,7 +1007,7 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <div className=" col-span-3 w-full border-[3px] group hover:border-[#f8f24b] relative border-[#1d1d1d] transition-all duration-200 py-[--sy-30px] h-fit px-[--46px] mt-[--sy-10px] rounded-[--35px]">
+      <div className=" col-span-3 w-full border-[3px] group hover:border-[#f8f24b] relative border-[#1d1d1d] transition-all duration-200 py-[--sy-30px] -translate-y-6 h-fit px-[--46px] mt-[--sy-10px] rounded-[--35px]">
         <p className=" w-[60%] ml-auto font-semibold text-[--14px] mb-[--sy-40px]">
           Discover our all-encompassing SaaS solution offering a wide range of
           digital services tailored for agencies. If you can imagine it, we’ve
@@ -1021,42 +1021,42 @@ export default function Hero() {
             <div className="hover:bg-[#f8f24b] hover:text-black transition-all duration-200 product col-span-1 rounded-[--28px] border-[1px] border-[#f8f24b] pl-[--8px]  py-[--sy-12px] flex gap-[--22px]">
               <span className="w-[--40px] aspect-square rounded-full bg-[#f8f24b] inline-block self-center"></span>
               <p className="text-[--12px] [font-family:Alfa_Slab_One]">
-                Customizable Products
+                Customizable <br /> Products
               </p>
             </div>
             <div className="hover:bg-[#f8f24b] hover:text-black transition-all duration-200 product col-span-1 rounded-[--28px] border-[1px] border-[#f8f24b] pl-[--8px]  py-[--sy-12px] flex gap-[--22px]">
               <span className="w-[--40px] aspect-square rounded-full bg-[#f8f24b] inline-block self-center"></span>
               <p className="text-[--12px] [font-family:Alfa_Slab_One]">
-                Customizable Products
+                Customizable <br /> Products
               </p>
             </div>
             <div className="hover:bg-[#f8f24b] hover:text-black transition-all duration-200 product col-span-1 rounded-[--28px] border-[1px] border-[#f8f24b] pl-[--8px]  py-[--sy-12px] flex gap-[--22px]">
               <span className="w-[--40px] aspect-square rounded-full bg-[#f8f24b] inline-block self-center"></span>
               <p className="text-[--12px] [font-family:Alfa_Slab_One]">
-                Customizable Products
+                Customizable <br /> Products
               </p>
             </div>
             <div className="hover:bg-[#f8f24b] hover:text-black transition-all duration-200 product col-span-1 rounded-[--28px] border-[1px] border-[#f8f24b] pl-[--8px]  py-[--sy-12px] flex gap-[--22px]">
               <span className="w-[--40px] aspect-square rounded-full bg-[#f8f24b] inline-block self-center"></span>
               <p className="text-[--12px] [font-family:Alfa_Slab_One]">
-                Customizable Products
+                Customizable <br /> Products
               </p>
             </div>
             <div className="hover:bg-[#f8f24b] hover:text-black transition-all duration-200 product col-span-1 rounded-[--28px] border-[1px] border-[#f8f24b] pl-[--8px]  py-[--sy-12px] flex gap-[--22px]">
               <span className="w-[--40px] aspect-square rounded-full bg-[#f8f24b] inline-block self-center"></span>
               <p className="text-[--12px] [font-family:Alfa_Slab_One]">
-                Customizable Products
+                Customizable <br /> Products
               </p>
             </div>
             <div className="hover:bg-[#f8f24b] hover:text-black transition-all duration-200 product col-span-1 rounded-[--28px] border-[1px] border-[#f8f24b] pl-[--8px]  py-[--sy-12px] flex gap-[--22px]">
               <span className="w-[--40px] aspect-square rounded-full bg-[#f8f24b] inline-block self-center"></span>
               <p className="text-[--12px] [font-family:Alfa_Slab_One]">
-                Customizable Products
+                Customizable <br /> Products
               </p>
             </div>
           </div>
         </div>
-        <div className=" h-[--sy-60px] w-[calc(var(--80px)+var(--14px))] rounded-b-full bg-[#1d1d1d] absolute left-[21%] -top-[--sy-3px] border-[3px] border-transparent transition-all duration-200 group-hover:border-[#f8f24b] border-t-0">
+        <div className=" h-[--sy-60px] w-[calc(var(--80px)+var(--14px))] rounded-b-full bg-[#1d1d1d] absolute left-[23.7%] -top-[--sy-3px] border-[3px] border-transparent transition-all duration-200 group-hover:border-[#f8f24b] border-t-0">
           <div className=" w-[80%] h-[80%] left-1/2 -translate-x-1/2  absolute rounded-b-full"></div>
           <span
             className=" absolute top-0 right-full w-[40px] h-[20px] inline-block rounded-tr-[--30px] border-[3px] border-transparent group-hover:border-[#f8f24b] border-b-0 border-l-0 transition-all duration-200"
