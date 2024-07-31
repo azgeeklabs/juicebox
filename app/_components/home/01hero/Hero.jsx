@@ -580,7 +580,7 @@ export default function Hero() {
             </linearGradient>
           </defs>
         </svg>
-        <div>
+        <div className=" w-[40%]">
           <h2 className="[font-family:Alfa_Slab_One] text-[#F8F24B] text-[--33px] mb-[--sy-30px]">
             Easiest <br /> Process
           </h2>
