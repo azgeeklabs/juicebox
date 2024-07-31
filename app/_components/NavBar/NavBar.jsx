@@ -1,22 +1,22 @@
-import { Link } from "@mui/material";
+import Link from "next/link";
 
 const NavBar = () => {
   const navItems = [
     {
       name: "Home",
-      link: "/",
+      link: "#",
     },
     {
       name: "About Us",
-      link: "/about-us",
+      link: "#about-us",
     },
     {
       name: "Services",
-      link: "/services",
+      link: "#services",
     },
     {
       name: "Our Work",
-      link: "/our-work",
+      link: "#our-work",
     },
   ];
 
@@ -116,7 +116,7 @@ const NavBar = () => {
         <button>
           <Link
             href="/sign-up"
-            className="relative block overflow-hidden [all: unset] !no-underline bg-[--highlight-yellow] rounded-[--38px] border px-[--36px] py-[--10px] border-[--highlight-yellow] transition-all duration-500 group"
+            className="relative block overflow-hidden no-underline bg-[--highlight-yellow] rounded-[--38px] border px-[--36px] py-[--10px] border-[--highlight-yellow] transition-all duration-500 group"
           >
             <span className="relative text-[--20px] font-medium text-[--primary-black] group-hover:text-white transition-all duration-500 z-10">
               Sign Up
