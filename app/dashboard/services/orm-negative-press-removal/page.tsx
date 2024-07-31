@@ -56,12 +56,10 @@ function ORMNegativePressRemoval() {
                   className="h-full  w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[--10px] pl-[--35px] px-[1.088vw] py-[1vh] placeholder:text-[#FFFFFF80]"
                 />
                 <svg
-                  width="25"
-                  height="25"
                   viewBox="0 0 25 25"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="absolute top-[50%] transform -translate-y-1/2 right-[1.088vw]"
+                  className="absolute top-[50%] transform -translate-y-1/2 right-[1.088vw] w-[--25px] h-[--25px]"
                 >
                   <path
                     d="M14.5835 8.33398H4.16683C3.01787 8.33398 2.0835 9.26836 2.0835 10.4173V20.834C2.0835 21.9829 3.01787 22.9173 4.16683 22.9173H14.5835C15.7325 22.9173 16.6668 21.9829 16.6668 20.834V10.4173C16.6668 9.26836 15.7325 8.33398 14.5835 8.33398Z"

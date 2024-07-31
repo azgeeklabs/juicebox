@@ -22,7 +22,7 @@ export default function AboutUs() {
   };
 
   return (
-    <section className="home_aboutAs">
+    <section className="home_aboutAs" id="about-us">
       <div className="home_aboutAs_sliderToken">
         <Slider {...settings}>
           <div>

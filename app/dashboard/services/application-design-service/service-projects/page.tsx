@@ -11,11 +11,10 @@ function page() {
       title: "Healthcare",
       image: (
         <svg
-          width="90"
-          height="89"
           viewBox="0 0 90 89"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          className="w-[--90px] h-[--89px]"
         >
           <mask
             id="mask0_1059_1232"
@@ -129,11 +128,10 @@ function page() {
       title: "E-commerce",
       image: (
         <svg
-          width="90"
-          height="89"
           viewBox="0 0 90 89"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          className="w-[--90px] h-[--89px]"
         >
           <path
             d="M67.6855 66.6597C66.244 66.6597 65.0713 67.829 65.0713 69.2672C65.0713 70.7087 66.244 71.8781 67.6855 71.8781C69.1304 71.8781 70.3031 70.7087 70.3031 69.2672C70.3031 67.829 69.1304 66.6597 67.6855 66.6597Z"
@@ -170,11 +168,10 @@ function page() {
       title: "Educational",
       image: (
         <svg
-          width="90"
-          height="89"
           viewBox="0 0 90 89"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          className="w-[--90px] h-[--89px]"
         >
           <path
             d="M19.2959 45.6706V63.8112C19.2959 69.169 29.9144 75.1362 45.143 75.1362C60.3716 75.1362 70.9863 69.169 70.9901 63.8065V42.7971L42.3576 58.1393L19.2959 45.6706Z"
@@ -204,11 +201,10 @@ function page() {
       title: "E-commerce",
       image: (
         <svg
-          width="90"
-          height="89"
           viewBox="0 0 90 89"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          className="w-[--90px] h-[--89px]"
         >
           <path
             d="M67.6855 66.6597C66.244 66.6597 65.0713 67.829 65.0713 69.2672C65.0713 70.7087 66.244 71.8781 67.6855 71.8781C69.1304 71.8781 70.3031 70.7087 70.3031 69.2672C70.3031 67.829 69.1304 66.6597 67.6855 66.6597Z"
@@ -245,11 +241,10 @@ function page() {
       title: "Other",
       image: (
         <svg
-          width="80"
-          height="81"
           viewBox="0 0 80 81"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          className="w-[--80px] h-[--81px]"
         >
           <mask
             id="mask0_1059_5414"
@@ -274,7 +269,6 @@ function page() {
   ];
 
   const { step, setStep } = useContext(globalContext);
-
 
   return (
     <NextPrevNav

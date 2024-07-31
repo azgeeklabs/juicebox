@@ -12,7 +12,7 @@
   color: #f8f24b;
 }
 .home_services_accordion {
-  max-width: 75%;
+  max-width: 100%;
   /* margin-top: var(--sy-50px); */
   margin-left: auto;
   overflow: hidden;
@@ -83,9 +83,9 @@
   height: 100%;
   overflow: hidden;
 }
-.home_services_accordion .slide-content > *{
-    width: 70%;
-    margin: auto;
+.home_services_accordion .slide-content > * {
+  width: 70%;
+  margin: auto;
 }
 .home_services_accordion .slide-content > div > h3 {
   font-family: "Barlow", sans-serif;
