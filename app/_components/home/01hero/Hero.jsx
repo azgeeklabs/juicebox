@@ -303,12 +303,16 @@ export default function Hero() {
           />
         </svg>
       </div>
-      <div className="mainHero col-span-4 w-full g px-[--58px] py-[--sy-50px] text-[#F8F24B] border-[3px] border-[#F8F24B] rounded-[--30px] flex items-center gap-[--51px] h-fit relative rounded-br-none hover:bg-[#F8F24B] transition-all duration-200 hover:text-black">
+      <div className="mainHero col-span-4 w-full px-[--58px] py-[--sy-50px] text-[#F8F24B] border-[3px] border-[#F8F24B] rounded-[--30px] flex items-center gap-[--60px] h-fit relative rounded-br-none hover:bg-[#F8F24B] transition-all duration-200 hover:text-black">
         <svg
           className="w-[35%] h-[300px]"
           viewBox="0 0 169 269"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          style={{
+            width: "clamp(200px, calc(11.278vw + 0.01rem), 1000px)",
+            height: "clamp(150px, calc(14.833vw + 0.01rem), 1000px)",
+          }}
         >
           <path
             className="juiceBG1 transition-all duration-200"

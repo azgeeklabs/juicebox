@@ -61,13 +61,12 @@ function ORMNegativePressRemoval() {
             >
               {/* Main heading with bottom margin */}
               <h2 className="mb-[2.5vh]">
-                Do you have specific sources you would like us to reference?
+              Do You Have a Preferred Number of Sections per Page?
               </h2>
 
               {/* Subheading with text centered */}
               <h4 className="text-center w-[65%] mx-auto text-[#FFFFFFCC]">
-                Please let us know if there are specific sources you'd like us
-                to reference in your content.
+              Let us know if you have a specific number of sections in mind for each page of your website.
               </h4>
             </div>
             <div className=" flex gap-[--8px] items-center justify-center border-b border-b-[#484848] pb-[--sy-33px] mb-[--sy-33px] w-fit mx-auto px-[5vw]">
@@ -77,7 +76,7 @@ function ORMNegativePressRemoval() {
                 name="sourcesAnswer"
                 onClick={() => setHaveSources(true)}
               >
-                Input sources
+                Yes
               </CustomCheckBoxText>
               <CustomCheckBoxText
                 btnSize="xl"
@@ -85,7 +84,7 @@ function ORMNegativePressRemoval() {
                 name="sourcesAnswer"
                 onClick={() => setHaveSources(false)}
               >
-                I have no sources
+                No
               </CustomCheckBoxText>
             </div>
           </div>

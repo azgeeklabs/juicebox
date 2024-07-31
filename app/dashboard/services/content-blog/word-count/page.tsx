@@ -17,6 +17,7 @@ const page = () => {
   return (
     <NextPrevNav
       nextLink="/dashboard/services/content-blog/reference-sources"
+      backLink="/dashboard/services/content-blog/create-website"
     >
       <div
       className={`${styles.wordCount} flex flex-col justify-between h-full w-full relative`}
@@ -64,7 +65,6 @@ const page = () => {
         </div>
 
       </div>    
-      <button style={{top:`calc(100% + 0.5rem)`}} className=" absolute left-0 bg-[#484848] text-white py-[0.5vw] px-[2vw] rounded-[41px] font-semibold" onClick={()=>router.back()}>Back</button>
       
     </div>
     </NextPrevNav>

@@ -5,7 +5,7 @@ import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 function ContentWebsite() {
   return (
     <>
-      <NextPrevNav nextLink="/dashboard/services/content-website/rewrite-website">
+      <NextPrevNav nextLink="/dashboard/services/content-website/content-style" backLink="/dashboard/services/content-website/live-website">
         <div className="flex flex-col gap-[var(--sy-40px)] justify-center items-center h-full">
           <div
             className={classNames(

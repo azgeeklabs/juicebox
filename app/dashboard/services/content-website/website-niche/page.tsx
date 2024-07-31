@@ -9,8 +9,8 @@ const WebsiteNiche = () => {
   const [haveWebsite, setHaveWebsite] = useState(false);
   return (
     <NextPrevNav
-      nextLink="/dashboard/services/content-website/select-pages"
-      backLink="/dashboard/services/content-website/rewrite-website"
+      nextLink="/dashboard/services/content-website/custom-ecommerce"
+      backLink="/dashboard/services/content-website/live-website"
     >
       {/* // Main container div with relative positioning */}
       <div className="h-full w-full md:w-[70%] lg:w-[60%] relative">
