@@ -165,7 +165,7 @@ function AccountRecovery() {
   const [route,setRoute] = useState("")
 
   return (
-    <NextPrevNav nextLink={`/dashboard/services/paid-ads-flow/${route}-type`}>
+    <NextPrevNav nextLink={`/dashboard/services/paid-ads-flow/${route && (route+'-type')}`}>
       <div
         className={classNames(
           "flex flex-col gap-[var(--45px)] justify-center mx-auto items-center h-full",

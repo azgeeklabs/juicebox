@@ -1089,7 +1089,7 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <div className=" col-span-3 w-full border-[3px] group hover:border-[#f8f24b] relative border-[#1d1d1d] transition-all duration-200 py-[--sy-30px] -translate-y-6 h-fit px-[--46px] mt-[--sy-10px] rounded-[--35px]">
+      <div className=" col-span-3 w-full border-[3px] group hover:border-[#f8f24b] relative border-[#1d1d1d] transition-all duration-200 py-[--sy-30px] -translate-y-12 h-fit px-[--46px] mt-[--sy-10px] rounded-[--35px]">
         <p className=" w-[60%] ml-auto font-semibold text-[--14px] mb-[--sy-40px]">
           Discover our all-encompassing SaaS solution offering a wide range of
           digital services tailored for agencies. If you can imagine it, we’ve

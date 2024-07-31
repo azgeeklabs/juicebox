@@ -10,7 +10,7 @@ const page = () => {
   const router = useRouter()
     const [haveAccount,setHaveAccount] = useState(false)
   return (
-    <NextPrevNav nextLink="/dashboard/services/paid-ads-flow/trying-paid-ads" >
+    <NextPrevNav nextLink="/dashboard/services/paid-ads-flow/trying-paid-ads" backLink="/dashboard/services/paid-ads-flow/" >
       {/* // Main container div with relative positioning */}
       <div className=" h-full relative w-full">
         {/* Inner container for the video end point section with custom styles */}
@@ -84,7 +84,6 @@ const page = () => {
             </div>
           </div>
         </div>
-        <button onClick={()=>router.back()} className=" bg-[#484848] rounded-[41px] px-[2vw] py-[0.5vw] text-white absolute" style={{top:`calc(100% + 0.5rem)`}}>Back</button>
       </div>
     </NextPrevNav>
   );

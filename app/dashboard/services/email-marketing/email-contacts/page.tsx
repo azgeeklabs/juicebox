@@ -15,7 +15,7 @@ function page() {
   const [contactList, setContactList] = useState<boolean>(true);
   return (
     <NextPrevNav
-      nextLink="/dashboard/services/email-marketing/unknown"
+      nextLink="/dashboard/services/email-marketing/campaign-followers"
       backLink="/dashboard/services/email-marketing/landing-page-link"
     >
       <div

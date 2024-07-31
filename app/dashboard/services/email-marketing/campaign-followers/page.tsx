@@ -14,7 +14,7 @@ const page = () => {
   return (
     <NextPrevNav
       nextLink="/dashboard/services/email-marketing/emailEndPoint"
-      backLink="/dashboard/services/video-service/videoScript"
+      backLink="/dashboard/services/email-marketing/email-contacts"
     >
       <div className=" flex justify-center items-center h-full w-full">
         <div className={`${styles.campaignFollowers} w-full`}>
