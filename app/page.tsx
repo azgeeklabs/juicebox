@@ -2,8 +2,8 @@
 import React, { Suspense, useEffect } from "react";
 // import Home from "../_components/home/Home";
 import dynamic from "next/dynamic";
-import NavBar from "./_components/NavBar/NavBar";
-import Footer from "./Footer";
+const NavBar = dynamic(() => import('./_components/NavBar/NavBar'), { ssr: false, loading: () => <p>Loading...</p> });
+const Footer = dynamic(() => import('./Footer'), { ssr: false, loading: () => <p>Loading...</p> });
 
 const Home = dynamic(() => import("./_components/home/Home"), { ssr: false });
 
