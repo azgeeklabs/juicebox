@@ -1,22 +1,22 @@
-import { Link } from "@mui/material";
+import Link from "next/link";
 
 const NavBar = () => {
   const navItems = [
     {
       name: "Home",
-      link: "/",
+      link: "#",
     },
     {
       name: "About Us",
-      link: "/about-us",
+      link: "#about-us",
     },
     {
       name: "Services",
-      link: "/services",
+      link: "#services",
     },
     {
       name: "Our Work",
-      link: "/our-work",
+      link: "#our-work",
     },
   ];
 
