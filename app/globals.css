@@ -189,6 +189,10 @@
 }
 
 /* ===== End Variables ===== */
+html,
+body {
+  scroll-behavior: smooth;
+}
 
 /* ===== Start Global ===== */
 body {

@@ -9,6 +9,15 @@ const NavBar = () => {
     {
       name: "About Us",
       link: "#about-us",
+      onClick: () => {
+        console.log("About Us");
+        if (window.location.pathname === "/" && window.scrollY < innerHeight) {
+          window.scrollBy({
+            top: window.innerHeight + (100 - window.scrollY),
+            behavior: "smooth",
+          });
+        }
+      },
     },
     {
       name: "Services",
@@ -65,12 +74,21 @@ const NavBar = () => {
       <ul className="flex gap-[--165px]">
         {navItems.map((item) => (
           <li key={item.name}>
-            <Link
-              href={item.link}
-              className="no-underline text-[--20px] font-medium text-white hover:underline hover:text-[--highlight-yellow] transition-all duration-500"
-            >
-              {item.name}
-            </Link>
+            {item.onClick ? (
+              <button
+                className="no-underline text-[--20px] font-medium text-white hover:underline hover:text-[--highlight-yellow] transition-all duration-500"
+                onClick={item.onClick ? item.onClick : null}
+              >
+                {item.name}
+              </button>
+            ) : (
+              <Link
+                href={item.link}
+                className="no-underline text-[--20px] font-medium text-white hover:underline hover:text-[--highlight-yellow] transition-all duration-500"
+              >
+                {item.name}
+              </Link>
+            )}
           </li>
         ))}
       </ul>
