@@ -12,7 +12,7 @@ const page = () => {
 
   return (
     <NextPrevNav
-      nextLink="/dashboard/services/application-design-service"
+      nextLink="/dashboard/services"
       nextText="All Done"
       backLink="/dashboard/services/application-design-service/additional-features"
       nextOnClick={() => setStep(0)}

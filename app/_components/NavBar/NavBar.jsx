@@ -8,11 +8,11 @@ const NavBar = () => {
     },
     {
       name: "About Us",
-      link: "#about-us",
+      link: "/home/#about-us",
     },
     {
       name: "Services",
-      link: "#services",
+      link: "/home/#services",
     },
     {
       name: "Our Work",
