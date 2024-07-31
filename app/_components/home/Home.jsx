@@ -1,32 +1,78 @@
 "use client";
-import React from "react";
-// import gsap from "gsap";
+import React, { Suspense, useEffect, useRef } from "react";
 // import { useGSAP } from "@gsap/react";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./home.css";
 import dynamic from "next/dynamic";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // if (typeof window !== "undefined") {
 //   gsap.registerPlugin(ScrollTrigger, useGSAP);
 // }
+// Register the ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
+const Hero = dynamic(() => import("./01hero/Hero"), { ssr: false });
+const AboutUs = dynamic(() => import("./02about-us/AboutUs"), { ssr: false });
+const Services = dynamic(() => import("./03services/Services"), { ssr: false });
+const InfinityServices = dynamic(
+  () => import("./04infinity-services/InfinityServices"),
+  { ssr: false }
+);
+const WhiteLabel = dynamic(() => import("./05white-label/WhiteLabel"), {
+  ssr: false,
+});
+const OurWork = dynamic(() => import("./06our-work/OurWork"), {
+  ssr: false,
+  loading: () => <div>loading ....</div>,
+});
 
-const Hero = dynamic(() => import('./01hero/Hero'), { ssr: false });
-const AboutUs = dynamic(() => import('./02about-us/AboutUs'), { ssr: false });
-const Services = dynamic(() => import('./03services/Services'), { ssr: false });
-const InfinityServices = dynamic(() => import('./04infinity-services/InfinityServices'), { ssr: false });
-const WhiteLabel = dynamic(() => import('./05white-label/WhiteLabel'), { ssr: false });
-const OurWork = dynamic(() => import('./06our-work/OurWork'), { ssr: false });
+export default function Home() {
+  const horizontalScrollRef = useRef(null);
 
-export default function Home() { 
+  useEffect(() => {
+    const pin = gsap.fromTo(
+      horizontalScrollRef.current,
+      {
+        translateX: 0,
+      },
+      {
+        translateX: "-101vw",
+        ease: "none",
+        duration: 1,
+        scrollTrigger: {
+          trigger: horizontalScrollRef.current,
+          start: "-10% top",
+          end: "bottom top",
+          // markers: true,
+          scrub: 0.6,
+          pin: true,
+        },
+      }
+    );
+    return () => {
+      {
+        /* A return function for killing the animation on component unmount */
+      }
+      pin.kill();
+    };
+  }, []);
+
   return (
     <main className="home_main">
       {/* <section className="home_hero"></section> */}
-      <Hero />
-      <AboutUs />
+      <div
+        className="home_horizontal_scroll relative"
+        ref={horizontalScrollRef}
+      >
+        <Hero />
+        <AboutUs />
+      </div>
       <Services />
       <InfinityServices />
       <WhiteLabel />
-      <OurWork />
+      <Suspense fallback={<p>Loading...</p>}>
+        <OurWork />
+      </Suspense>
       {/* <div className="h-screen"></div> */}
     </main>
   );

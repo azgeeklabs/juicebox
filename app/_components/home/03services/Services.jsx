@@ -42,8 +42,7 @@ export default function Services() {
                 <li>
                   <span>Web Design</span>
                   <svg
-                    width="34"
-                    height="33"
+                    className="w-[--34px] h-[--33px]"
                     viewBox="0 0 34 33"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -65,8 +64,7 @@ export default function Services() {
                 <li>
                   <span>Web Design</span>
                   <svg
-                    width="34"
-                    height="33"
+                    className="w-[--34px] h-[--33px]"
                     viewBox="0 0 34 33"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -88,8 +86,7 @@ export default function Services() {
                 <li>
                   <span>Web Design</span>
                   <svg
-                    width="34"
-                    height="33"
+                    className="w-[--34px] h-[--33px]"
                     viewBox="0 0 34 33"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -111,8 +108,7 @@ export default function Services() {
                 <li>
                   <span>Web Design</span>
                   <svg
-                    width="34"
-                    height="33"
+                    className="w-[--34px] h-[--33px]"
                     viewBox="0 0 34 33"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -153,8 +149,7 @@ export default function Services() {
                 <li>
                   <span>Web Design</span>
                   <svg
-                    width="34"
-                    height="33"
+                    className="w-[--34px] h-[--33px]"
                     viewBox="0 0 34 33"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -176,8 +171,7 @@ export default function Services() {
                 <li>
                   <span>Web Design</span>
                   <svg
-                    width="34"
-                    height="33"
+                    className="w-[--34px] h-[--33px]"
                     viewBox="0 0 34 33"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -199,8 +193,7 @@ export default function Services() {
                 <li>
                   <span>Web Design</span>
                   <svg
-                    width="34"
-                    height="33"
+                    className="w-[--34px] h-[--33px]"
                     viewBox="0 0 34 33"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -222,8 +215,7 @@ export default function Services() {
                 <li>
                   <span>Web Design</span>
                   <svg
-                    width="34"
-                    height="33"
+                    className="w-[--34px] h-[--33px]"
                     viewBox="0 0 34 33"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -264,8 +256,7 @@ export default function Services() {
                 <li>
                   <span>Web Design</span>
                   <svg
-                    width="34"
-                    height="33"
+                    className="w-[--34px] h-[--33px]"
                     viewBox="0 0 34 33"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -287,8 +278,7 @@ export default function Services() {
                 <li>
                   <span>Web Design</span>
                   <svg
-                    width="34"
-                    height="33"
+                    className="w-[--34px] h-[--33px]"
                     viewBox="0 0 34 33"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -310,8 +300,7 @@ export default function Services() {
                 <li>
                   <span>Web Design</span>
                   <svg
-                    width="34"
-                    height="33"
+                    className="w-[--34px] h-[--33px]"
                     viewBox="0 0 34 33"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -333,8 +322,7 @@ export default function Services() {
                 <li>
                   <span>Web Design</span>
                   <svg
-                    width="34"
-                    height="33"
+                    className="w-[--34px] h-[--33px]"
                     viewBox="0 0 34 33"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -375,8 +363,7 @@ export default function Services() {
                 <li>
                   <span>Web Design</span>
                   <svg
-                    width="34"
-                    height="33"
+                    className="w-[--34px] h-[--33px]"
                     viewBox="0 0 34 33"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -398,8 +385,7 @@ export default function Services() {
                 <li>
                   <span>Web Design</span>
                   <svg
-                    width="34"
-                    height="33"
+                    className="w-[--34px] h-[--33px]"
                     viewBox="0 0 34 33"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -421,8 +407,7 @@ export default function Services() {
                 <li>
                   <span>Web Design</span>
                   <svg
-                    width="34"
-                    height="33"
+                    className="w-[--34px] h-[--33px]"
                     viewBox="0 0 34 33"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -444,8 +429,7 @@ export default function Services() {
                 <li>
                   <span>Web Design</span>
                   <svg
-                    width="34"
-                    height="33"
+                    className="w-[--34px] h-[--33px]"
                     viewBox="0 0 34 33"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -486,8 +470,7 @@ export default function Services() {
                 <li>
                   <span>Web Design</span>
                   <svg
-                    width="34"
-                    height="33"
+                    className="w-[--34px] h-[--33px]"
                     viewBox="0 0 34 33"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -509,8 +492,7 @@ export default function Services() {
                 <li>
                   <span>Web Design</span>
                   <svg
-                    width="34"
-                    height="33"
+                    className="w-[--34px] h-[--33px]"
                     viewBox="0 0 34 33"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -532,8 +514,7 @@ export default function Services() {
                 <li>
                   <span>Web Design</span>
                   <svg
-                    width="34"
-                    height="33"
+                    className="w-[--34px] h-[--33px]"
                     viewBox="0 0 34 33"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -555,8 +536,7 @@ export default function Services() {
                 <li>
                   <span>Web Design</span>
                   <svg
-                    width="34"
-                    height="33"
+                    className="w-[--34px] h-[--33px]"
                     viewBox="0 0 34 33"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -597,8 +577,7 @@ export default function Services() {
                 <li>
                   <span>Web Design</span>
                   <svg
-                    width="34"
-                    height="33"
+                    className="w-[--34px] h-[--33px]"
                     viewBox="0 0 34 33"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -620,8 +599,7 @@ export default function Services() {
                 <li>
                   <span>Web Design</span>
                   <svg
-                    width="34"
-                    height="33"
+                    className="w-[--34px] h-[--33px]"
                     viewBox="0 0 34 33"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -643,8 +621,7 @@ export default function Services() {
                 <li>
                   <span>Web Design</span>
                   <svg
-                    width="34"
-                    height="33"
+                    className="w-[--34px] h-[--33px]"
                     viewBox="0 0 34 33"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -666,8 +643,7 @@ export default function Services() {
                 <li>
                   <span>Web Design</span>
                   <svg
-                    width="34"
-                    height="33"
+                    className="w-[--34px] h-[--33px]"
                     viewBox="0 0 34 33"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -708,8 +684,7 @@ export default function Services() {
                 <li>
                   <span>Web Design</span>
                   <svg
-                    width="34"
-                    height="33"
+                    className="w-[--34px] h-[--33px]"
                     viewBox="0 0 34 33"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -731,8 +706,7 @@ export default function Services() {
                 <li>
                   <span>Web Design</span>
                   <svg
-                    width="34"
-                    height="33"
+                    className="w-[--34px] h-[--33px]"
                     viewBox="0 0 34 33"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -754,8 +728,7 @@ export default function Services() {
                 <li>
                   <span>Web Design</span>
                   <svg
-                    width="34"
-                    height="33"
+                    className="w-[--34px] h-[--33px]"
                     viewBox="0 0 34 33"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -777,8 +750,7 @@ export default function Services() {
                 <li>
                   <span>Web Design</span>
                   <svg
-                    width="34"
-                    height="33"
+                    className="w-[--34px] h-[--33px]"
                     viewBox="0 0 34 33"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"

@@ -121,8 +121,7 @@ export default function InfinityServices() {
     <section className="home_infinityServices">
       <div className="home_infinityServices_title">
         <svg
-          width="78"
-          height="39"
+          className="w-[--78px] h-[--39px]"
           viewBox="0 0 78 39"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -136,24 +135,27 @@ export default function InfinityServices() {
       </div>
       <div className="home_infinityServicesWrapper">
         <div className="home_infinityServicesWrapper_shape1">
-          <img src="/home/04infinity-services/shape-1.png" ref={shape1} />
+          <img src="/home/04infinity-services/shape-1.png" ref={shape1} className="w-[--389px] h-[--340px]" />
           <img
             src="/home/04infinity-services/shape-1-active.png"
             ref={shape1Active}
+            className="w-[--389px] h-[--689px]"
           />
         </div>
         <div className="home_infinityServicesWrapper_shape2">
-          <img src="/home/04infinity-services/shape-2.png" ref={shape2} />
+          <img src="/home/04infinity-services/shape-2.png" ref={shape2} className="w-[--370px] h-[--409px]" />
           <img
             src="/home/04infinity-services/shape-2-active.png"
             ref={shape2Active}
+            className="w-[--370px] h-[--721px]"
           />
         </div>
         <div className="home_infinityServicesWrapper_shape3">
-          <img src="/home/04infinity-services/shape-3.png" ref={shape3} />
+          <img src="/home/04infinity-services/shape-3.png" ref={shape3} className="w-[--375px] h-[--340px]" />
           <img
             src="/home/04infinity-services/shape-3-active.png"
             ref={shape3Active}
+            className="w-[--375px] h-[--667px]"
           />
         </div>
       </div>

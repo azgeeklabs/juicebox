@@ -20,18 +20,19 @@
   color: #1d1d1d;
   width: 60%;
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: var(--sy-50px);
 }
 .home_whiteLabel_cardsWrapper {
   display: flex;
-  gap: 30px;
+  justify-content: center;
+  gap: var(--30px);
 }
 
 .home_whiteLabel_card {
   background-color: #1d1d1d;
-  border-radius: 103px;
-  height: 502px;
-  width: 198px;
+  border-radius: var(--102px);
+  height: var(--502px);
+  width: var(--198px);
   display: flex;
   /* align-items: center; */
   justify-content: space-between;
@@ -43,14 +44,14 @@
   /* justify-content: space-between; */
   /* flex-direction: column; */
   position: relative;
-  padding: 25px;
+  padding: var(--25px);
   cursor: pointer;
 }
 .home_whiteLabel_card_title > span {
   display: block;
   background-color: #f8f24b;
-  width: 148px;
-  height: 148px;
+  width: var(--148px);
+  height: var(--148px);
   border-radius: 50%;
 }
 .home_whiteLabel_card_title > h3 {
@@ -60,16 +61,16 @@
   font-weight: 400;
   font-size: var(--31px);
   position: absolute;
-  top: 34vh;
+  top: 65%;
   left: 50%;
-  width: 264px;
+  width: var(--264px);
   text-align: start;
 }
 .home_whiteLabel_card_content {
   display: none;
-  padding: 80px 40px;
-  padding-left: 5px;
-  padding-bottom: 30px;
+  padding: var(--80px) var(--40px);
+  padding-left: var(--5px);
+  padding-bottom: var(--30px);
 }
 .home_whiteLabel_card_content svg {
   align-self: flex-end;
@@ -81,10 +82,10 @@
   font-weight: 400;
 }
 .home_whiteLabel_card_content > div > p:first-child {
-  margin-bottom: 30px;
+  margin-bottom: var(--sy-30px);
 }
 .home_whiteLabel_card.active {
-  width: 700px;
+  width: 45%;
   transition: all 0.4s ease-in-out;
   transform: rotate(6deg);
 }

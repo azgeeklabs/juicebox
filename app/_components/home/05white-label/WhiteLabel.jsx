@@ -62,8 +62,7 @@ export default function WhiteLabel() {
               </p>
             </div>
             <svg
-              width="154"
-              height="155"
+              className="w-[--154px] h-[--155px]"
               viewBox="0 0 154 155"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -99,8 +98,7 @@ export default function WhiteLabel() {
               </p>
             </div>
             <svg
-              width="154"
-              height="155"
+              className="w-[--154px] h-[--155px]"
               viewBox="0 0 154 155"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -136,8 +134,7 @@ export default function WhiteLabel() {
               </p>
             </div>
             <svg
-              width="154"
-              height="155"
+              className="w-[--154px] h-[--155px]"
               viewBox="0 0 154 155"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -173,8 +170,7 @@ export default function WhiteLabel() {
               </p>
             </div>
             <svg
-              width="154"
-              height="155"
+              className="w-[--154px] h-[--155px]"
               viewBox="0 0 154 155"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"

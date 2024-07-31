@@ -7,6 +7,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function OurWork() {
   const ourWorkRef = useRef(null);
+  const leftImgWrapperRef = useRef(null);
+  const rightImgWrapperRef = useRef(null);
   const leftImgRef = useRef(null);
   const rightImgRef = useRef(null);
   const caseStudyRef = useRef(null);
@@ -46,21 +48,34 @@ export default function OurWork() {
       start: "top top",
       end: `+=${100 * totalSections}%`,
       scrub: true,
-      // markers: true,
       snap: {
         snapTo: 1 / (totalSections - 1), // Snap to each section
-        duration: 0, // Immediate snapping
-        ease: "none", // No easing for immediate effect
+        duration: 0.5, // Snapping duration for smooth effect
+        ease: "power1.inOut", // Easing function
       },
       onUpdate: (self) => {
-        const progress = self.progress * totalSections;
-        const index = Math.min(Math.floor(progress), totalSections - 1);
+        const progress = self.progress * (totalSections - 1);
+        const index = Math.floor(progress);
+        const sectionProgress = progress - index;
 
-        leftImgRef.current.src = data[index].img1;
-        rightImgRef.current.src = data[index].img2;
-        caseStudyRef.current.textContent = data[index].caseStudy;
-        numberRef.current.textContent = data[index].number;
-        descriptionRef.current.textContent = data[index].description;
+        gsap.to(leftImgWrapperRef.current, {
+          xPercent: -120 * sectionProgress,
+          duration: 0.2,
+        });
+
+        gsap.to(rightImgWrapperRef.current, {
+          xPercent: 120 * sectionProgress,
+          duration: 0.2,
+        });
+
+        // Update content based on scroll direction
+        if (sectionProgress === 0) {
+          leftImgRef.current.src = data[index].img1;
+          rightImgRef.current.src = data[index].img2;
+          caseStudyRef.current.textContent = data[index].caseStudy;
+          numberRef.current.textContent = data[index].number;
+          descriptionRef.current.textContent = data[index].description;
+        }
       },
     });
 
@@ -71,8 +86,8 @@ export default function OurWork() {
 
   return (
     <section className="home_ourWork" ref={ourWorkRef}>
-      <div className="home_ourWork_leftImg">
-        <img ref={leftImgRef} src="/home/06our-work/1-1.svg" />
+      <div className="home_ourWork_leftImg" ref={leftImgWrapperRef}>
+        <img ref={leftImgRef} src="/home/06our-work/1-1.svg" alt="Left Img" />
       </div>
 
       <div className="home_ourWork_content">
@@ -87,8 +102,8 @@ export default function OurWork() {
         </div>
       </div>
 
-      <div className="home_ourWork_rightImg">
-        <img ref={rightImgRef} src="/home/06our-work/1-2.svg" />
+      <div className="home_ourWork_rightImg" ref={rightImgWrapperRef}>
+        <img ref={rightImgRef} src="/home/06our-work/1-2.svg" alt="Right Img" />
       </div>
     </section>
   );

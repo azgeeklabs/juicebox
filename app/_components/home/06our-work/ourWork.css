@@ -44,6 +44,12 @@
   border: var(--5px) solid #f8f24b;
   border-radius: var(--35px);
   overflow: hidden;
+  width: var(--511px);
+}
+
+.home_ourWork_leftImg img,
+.home_ourWork_rightImg img {
+  width: 100%;
 }
 
 .home_ourWork_leftImg {

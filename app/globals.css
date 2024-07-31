@@ -97,11 +97,15 @@
   --128px: clamp(10px, calc(6.59vw + 0.1rem), 1000px);
   --130px: clamp(10px, calc(7.222vw + 0.1rem), 1000px);
   --146px: clamp(10px, calc(7.52vw + 0.1rem), 1000px);
+  --148px: clamp(10px, calc(8.222vw + 0.1rem), 1000px);
   --150px: clamp(10px, calc(8.333vw + 0.1rem), 1000px);
   --151px: clamp(10px, calc(8.389vw + 0.1rem), 1000px);
+  --154px: clamp(10px, calc(8.556vw + 0.1rem), 1000px);
+  --155px: clamp(10px, calc(8.611vw + 0.1rem), 1000px);
   --158px: clamp(10px, calc(8.667vw + 0.1rem), 1000px);
   --163px: clamp(10px, calc(9.056vw + 0.1rem), 1000px);
   --165px: clamp(10px, calc(9.167vw + 0.1rem), 1000px);
+  --198px: clamp(10px, calc(11vw + 0.1rem), 1000px);
   --200px: clamp(10px, calc(11.111vw + 0.1rem), 1000px);
   --202px: clamp(10px, calc(11.222vw + 0.1rem), 1000px);
   --220px: clamp(10px, calc(11.5vw + 0.1rem), 1000px);
@@ -112,13 +116,24 @@
   --319px: clamp(10px, calc(17.722vw + 0.1rem), 1000px);
   --328px: clamp(10px, calc(18.222vw + 0.1rem), 1000px);
   --339px: clamp(10px, calc(17.6vw + 0.1rem), 1000px);
+  --340px: clamp(10px, calc(18.889vw + 0.1rem), 1000px);
   --351px: clamp(10px, calc(18.2vw + 0.1rem), 1000px);
   --366px: clamp(10px, calc(19vw + 0.1rem), 1000px);
+  --370px: clamp(10px, calc(20.556vw + 0.1rem), 1000px);
+  --375px: clamp(10px, calc(20.833vw + 0.1rem), 1000px);
   --389px: clamp(10px, calc(21.611vw + 0.1rem), 1000px);
+  --409px: clamp(10px, calc(22.722vw + 0.1rem), 1000px);
   --411px: clamp(10px, calc(20vw + 0.1rem), 1000px);
   --500px: clamp(10px, calc(27.778vw + 0.1rem), 1000px);
+  --502px: clamp(10px, calc(27.889vw + 0.1rem), 1000px);
+  --511px: clamp(10px, calc(28.389vw + 0.1rem), 1000px);
   --542px: clamp(10px, calc(30.111vw + 0.1rem), 1000px);
   --635px: clamp(10px, calc(33vw + 0.1rem), 1000px);
+  --667px: clamp(10px, calc(37.056vw + 0.1rem), 1000px);
+  --676px: clamp(10px, calc(37.556vw + 0.1rem), 1000px);
+  --689px: clamp(10px, calc(38.278vw + 0.1rem), 1000px);
+  --700px: clamp(10px, calc(38.889vw + 0.1rem), 1000px);
+  --721px: clamp(10px, calc(40.056vw + 0.1rem), 1000px);
 
   /* Vertical Spacings */
   --sy-1px: clamp(1px, calc(0.028vh + 0.05rem), 1000px);

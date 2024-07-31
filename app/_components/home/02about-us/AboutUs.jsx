@@ -22,104 +22,127 @@ export default function AboutUs() {
   };
 
   return (
-      <section className="home_aboutAs">
+    <section className="home_aboutAs">
       <div className="home_aboutAs_sliderToken">
         <Slider {...settings}>
           <div>
-            <img style={{width: "var(--500px)"}} src="/home/02about-us/sliderToken-2.svg" />
+            <img
+              style={{ width: "var(--500px)" }}
+              src="/home/02about-us/sliderToken-2.svg"
+            />
           </div>
           <div>
-            <img style={{width: "var(--500px)"}} src="/home/02about-us/sliderToken-1.svg" />
+            <img
+              style={{ width: "var(--500px)" }}
+              src="/home/02about-us/sliderToken-1.svg"
+            />
           </div>
           <div>
-            <img style={{width: "var(--500px)"}} src="/home/02about-us/sliderToken-1.svg" />
+            <img
+              style={{ width: "var(--500px)" }}
+              src="/home/02about-us/sliderToken-1.svg"
+            />
           </div>
           <div>
-            <img style={{width: "var(--500px)"}} src="/home/02about-us/sliderToken-2.svg" />
+            <img
+              style={{ width: "var(--500px)" }}
+              src="/home/02about-us/sliderToken-2.svg"
+            />
           </div>
         </Slider>
       </div>
       <div className="home_aboutAs_sliderToken">
         <Slider {...settings}>
           <div>
-            <img style={{width: "var(--500px)"}} src="/home/02about-us/sliderToken-2.svg" />
+            <img
+              style={{ width: "var(--500px)" }}
+              src="/home/02about-us/sliderToken-2.svg"
+            />
           </div>
           <div>
-            <img style={{width: "var(--500px)"}} src="/home/02about-us/sliderToken-1.svg" />
+            <img
+              style={{ width: "var(--500px)" }}
+              src="/home/02about-us/sliderToken-1.svg"
+            />
           </div>
           <div>
-            <img style={{width: "var(--500px)"}} src="/home/02about-us/sliderToken-1.svg" />
+            <img
+              style={{ width: "var(--500px)" }}
+              src="/home/02about-us/sliderToken-1.svg"
+            />
           </div>
           <div>
-            <img style={{width: "var(--500px)"}} src="/home/02about-us/sliderToken-2.svg" />
+            <img
+              style={{ width: "var(--500px)" }}
+              src="/home/02about-us/sliderToken-2.svg"
+            />
           </div>
         </Slider>
       </div>
-        <h2>About Us</h2>
-        <p>
-          At Juice Box, we believe in empowering businesses to thrive in the
-          digital age. As a leading provider of SaaS solutions and a
-          full-service digital agency, we offer a unique blend of innovative
-          technology and creative expertise to help you achieve your business
-          goals.
-        </p>
-        <h3>Our Values</h3>
-        <div className="home_aboutAs_values">
-          {/* Start Card */}
-          <div className="home_aboutAs_values_cardWapper">
-            <div className="home_aboutAs_values_card">
-              <p>
-                Lorem ipsum dolor sit amet consectetur. Vivamusid pellentesque
-                molestie donec quis. Sed ut vulputate ante
-              </p>
-            </div>
-
-            <div className="home_aboutAs_values_card">
-              <span>1</span>
-              <p>
-                <span>Integrity and</span>
-                <span>Transparency</span>
-              </p>
-            </div>
+      <h2>About Us</h2>
+      <p>
+        At Juice Box, we believe in empowering businesses to thrive in the
+        digital age. As a leading provider of SaaS solutions and a full-service
+        digital agency, we offer a unique blend of innovative technology and
+        creative expertise to help you achieve your business goals.
+      </p>
+      <h3>Our Values</h3>
+      <div className="home_aboutAs_values">
+        {/* Start Card */}
+        <div className="home_aboutAs_values_cardWapper">
+          <div className="home_aboutAs_values_card">
+            <p>
+              Lorem ipsum dolor sit amet consectetur. Vivamusid pellentesque
+              molestie donec quis. Sed ut vulputate ante
+            </p>
           </div>
-          {/* End Card */}
-          {/* Start Card */}
-          <div className="home_aboutAs_values_cardWapper">
-            <div className="home_aboutAs_values_card">
-              <p>
-                Lorem ipsum dolor sit amet consectetur. Vivamusid pellentesque
-                molestie donec quis. Sed ut vulputate ante
-              </p>
-            </div>
 
-            <div className="home_aboutAs_values_card">
-              <span>1</span>
-              <p>
-                <span>User-Centric</span>
-                <span>Innovation</span>
-              </p>
-            </div>
+          <div className="home_aboutAs_values_card">
+            <span>1</span>
+            <p>
+              <span>Integrity and</span>
+              <span>Transparency</span>
+            </p>
           </div>
-          {/* End Card */}
-          {/* Start Card */}
-          <div className="home_aboutAs_values_cardWapper">
-            <div className="home_aboutAs_values_card">
-              <p>
-                Lorem ipsum dolor sit amet consectetur. Vivamusid pellentesque
-                molestie donec quis. Sed ut vulputate ante
-              </p>
-            </div>
-
-            <div className="home_aboutAs_values_card">
-              <span>1</span>
-              <p>
-                <span>Excellence in</span>
-                <span>Execution</span>
-              </p>
-            </div>
-          </div>
-          {/* End Card */}
         </div>
-      </section>
+        {/* End Card */}
+        {/* Start Card */}
+        <div className="home_aboutAs_values_cardWapper">
+          <div className="home_aboutAs_values_card">
+            <p>
+              Lorem ipsum dolor sit amet consectetur. Vivamusid pellentesque
+              molestie donec quis. Sed ut vulputate ante
+            </p>
+          </div>
+
+          <div className="home_aboutAs_values_card">
+            <span>1</span>
+            <p>
+              <span>User-Centric</span>
+              <span>Innovation</span>
+            </p>
+          </div>
+        </div>
+        {/* End Card */}
+        {/* Start Card */}
+        <div className="home_aboutAs_values_cardWapper">
+          <div className="home_aboutAs_values_card">
+            <p>
+              Lorem ipsum dolor sit amet consectetur. Vivamusid pellentesque
+              molestie donec quis. Sed ut vulputate ante
+            </p>
+          </div>
+
+          <div className="home_aboutAs_values_card">
+            <span>1</span>
+            <p>
+              <span>Excellence in</span>
+              <span>Execution</span>
+            </p>
+          </div>
+        </div>
+        {/* End Card */}
+      </div>
+    </section>
   );
 }
