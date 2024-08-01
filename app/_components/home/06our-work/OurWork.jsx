@@ -88,7 +88,7 @@ export default function OurWork() {
   );
 
   return (
-    <section className="home_ourWork" ref={ourWorkRef}>
+    <section className="home_ourWork" ref={ourWorkRef} id="our-work">
       <div className="home_ourWork_leftImg" ref={leftImgWrapperRef}>
         <img ref={leftImgRef} src="/home/06our-work/1-1.svg" alt="Left Img" />
       </div>

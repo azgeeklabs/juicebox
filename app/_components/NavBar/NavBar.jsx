@@ -8,15 +8,25 @@ const NavBar = () => {
     },
     {
       name: "About Us",
-      link: "/home/#about-us",
+      link: "#about-us",
+      onClick: () => {
+        console.log("About Us");
+        if (window.location.pathname === "/" && window.scrollY < innerHeight) {
+          window.scrollBy({
+            top: window.innerHeight + (100 - window.scrollY),
+            behavior: "smooth",
+          });
+        }
+        // document.getElementById('about-us').scrollIntoView();
+      },
     },
     {
       name: "Services",
-      link: "/home/#services",
+      link: "/#services",
     },
     {
       name: "Our Work",
-      link: "#our-work",
+      link: "/#our-work",
     },
   ];
 
@@ -65,12 +75,21 @@ const NavBar = () => {
       <ul className="flex gap-[--165px]">
         {navItems.map((item) => (
           <li key={item.name}>
-            <Link
-              href={item.link}
-              className="no-underline text-[--20px] font-medium text-white hover:underline hover:text-[--highlight-yellow] transition-all duration-500"
-            >
-              {item.name}
-            </Link>
+            {item.onClick ? (
+              <button
+                className="no-underline text-[--20px] font-medium text-white hover:underline hover:text-[--highlight-yellow] transition-all duration-500"
+                onClick={item.onClick ? item.onClick : null}
+              >
+                {item.name}
+              </button>
+            ) : (
+              <Link
+                href={item.link}
+                className="no-underline text-[--20px] font-medium text-white hover:underline hover:text-[--highlight-yellow] transition-all duration-500"
+              >
+                {item.name}
+              </Link>
+            )}
           </li>
         ))}
       </ul>

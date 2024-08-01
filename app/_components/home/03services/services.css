@@ -84,7 +84,7 @@
   overflow: hidden;
 }
 .home_services_accordion .slide-content > * {
-  width: 70%;
+  width: clamp(10px, calc(50vw + 0.1rem), 10000px);
   margin: auto;
 }
 .home_services_accordion .slide-content > div > h3 {

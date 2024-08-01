@@ -1,9 +1,13 @@
 "use client";
-import React, { Suspense, useEffect } from "react";
+import React, { useEffect } from "react";
 // import Home from "../_components/home/Home";
 import dynamic from "next/dynamic";
-import NavBar from "./_components/NavBar/NavBar";
-import Footer from "./Footer";
+const NavBar = dynamic(() => import("./_components/NavBar/NavBar"), {
+  ssr: false,
+});
+const Footer = dynamic(() => import("./Footer"), {
+  ssr: false,
+});
 
 const Home = dynamic(() => import("./_components/home/Home"), { ssr: false });
 
@@ -44,13 +48,9 @@ export default function page() {
   return (
     <>
       <div className="pt-[--sy-100px]">
-        <Suspense fallback={<p>Loading...</p>}>
-          <NavBar />
-        </Suspense>
+        <NavBar />
         <Home />
-        <Suspense fallback={<p>Loading...</p>}>
-          <Footer />
-        </Suspense>
+        <Footer />
       </div>
     </>
   );
