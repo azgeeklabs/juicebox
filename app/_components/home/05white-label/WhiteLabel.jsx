@@ -1,8 +1,13 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import "./whiteLabel.css";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function WhiteLabel() {
+  const whiteLabelRef = useRef(null);
+
   useEffect(() => {
     const cards = document.querySelectorAll(".home_whiteLabel_card");
     const cardTitle = document.querySelectorAll(".home_whiteLabel_card_title");
@@ -29,8 +34,28 @@ export default function WhiteLabel() {
     };
   }, []);
 
+  if (typeof window !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger, useGSAP);
+  }
+
+  useGSAP(
+    () => {
+      const whiteLabelElement = whiteLabelRef.current;
+      const ourWorkElement = document.querySelector(".home_ourWork");
+
+      ScrollTrigger.create({
+        trigger: whiteLabelElement,
+        start: "top bottom", // Adjust based on when you want the toggle to happen
+        onEnter: () => ourWorkElement.classList.remove("hidden"),
+        onLeaveBack: () => ourWorkElement.classList.add("hidden"),
+        markers: true,
+      });
+    },
+    { scope: whiteLabelRef }
+  );
+
   return (
-    <section className="home_whiteLabel">
+    <section className="home_whiteLabel" ref={whiteLabelRef}>
       <h2>White Label</h2>
       <p>
         Unlock new potential for your business with our comprehensive white
