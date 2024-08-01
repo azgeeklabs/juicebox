@@ -51,7 +51,7 @@ const Footer = () => {
             Contact Us
           </h3>
           <div className=" flex flex-col gap-[--sy-22px]">
-            <div className=" flex items-center gap-[--16px]">
+            <Link href={""} className="w-fit flex items-center gap-[--16px]">
               <svg
                 viewBox="0 0 17 17"
                 fill="none"
@@ -64,8 +64,8 @@ const Footer = () => {
                 />
               </svg>
               <span className="text-[--14px] font-semibold">@juicebox</span>
-            </div>
-            <div className=" flex items-center gap-[--16px]">
+            </Link>
+            <Link href={""} className="w-fit flex items-center gap-[--16px]">
               <svg
                 viewBox="0 0 21 17"
                 fill="none"
@@ -81,8 +81,8 @@ const Footer = () => {
               </svg>
 
               <span className="text-[--14px] font-semibold">@juicebox</span>
-            </div>
-            <div className=" flex items-center gap-[--16px]">
+            </Link>
+            <Link href={""} className="w-fit flex items-center gap-[--16px]">
               <svg
                 viewBox="0 0 19 17"
                 fill="none"
@@ -100,7 +100,7 @@ const Footer = () => {
               <span className="text-[--14px] font-semibold">
                 hello@creativejuicebox.com
               </span>
-            </div>
+            </Link>
             <div className=" flex items-center gap-[--16px]">
               <svg
                 viewBox="0 0 17 17"
@@ -171,7 +171,7 @@ const Footer = () => {
             Leave a Reviw!
           </h3>
           <div className=" flex flex-col gap-[--sy-16px]">
-            <div className=" flex items-center gap-[--16px]">
+            <Link href={""} className="w-fit flex items-center gap-[--16px]">
               <svg
                 viewBox="0 0 17 17"
                 fill="none"
@@ -184,8 +184,8 @@ const Footer = () => {
                 />
               </svg>
               <span className="text-[--14px] font-semibold">@Clutch</span>
-            </div>
-            <div className=" flex items-center gap-[--16px]">
+            </Link>
+            <Link href={""} className="w-fit flex items-center gap-[--16px]">
               <svg
                 viewBox="0 0 21 17"
                 fill="none"
@@ -201,7 +201,7 @@ const Footer = () => {
               </svg>
 
               <span className="text-[--14px] font-semibold">@Linkedin</span>
-            </div>
+            </Link>
           </div>
         </div>
         <div className=" col-span-1 relative">
