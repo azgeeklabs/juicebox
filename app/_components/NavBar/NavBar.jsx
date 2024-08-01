@@ -1,32 +1,44 @@
-import Link from "next/link";
+"use client";
+import { Link } from "react-scroll";
 
 const NavBar = () => {
   const navItems = [
     {
       name: "Home",
       link: "#",
+      onClick: () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      },
     },
     {
       name: "About Us",
-      link: "#about-us",
+      link: "about-us",
       onClick: () => {
         console.log("About Us");
-        if (window.location.pathname === "/" && window.scrollY < innerHeight) {
-          window.scrollBy({
-            top: window.innerHeight + (100 - window.scrollY),
-            behavior: "smooth",
-          });
-        }
-        // document.getElementById('about-us').scrollIntoView();
+        if (window.location.pathname === "/")
+          if (window.scrollY < innerHeight) {
+            window.scrollBy({
+              top: window.innerHeight + (100 - window.scrollY),
+              behavior: "smooth",
+            });
+          } else {
+            window.scrollBy({
+              top: -window.scrollY + (100 + window.innerHeight),
+              behavior: "smooth",
+            });
+          }
       },
     },
     {
       name: "Services",
-      link: "/#services",
+      link: "services",
     },
     {
       name: "Our Work",
-      link: "/#our-work",
+      link: "our-work",
     },
   ];
 
@@ -84,8 +96,12 @@ const NavBar = () => {
               </button>
             ) : (
               <Link
-                href={item.link}
-                className="no-underline text-[--20px] font-medium text-white hover:underline hover:text-[--highlight-yellow] transition-all duration-500"
+                to={item.link}
+                spy={true}
+                smooth={true}
+                offset={-50}
+                duration={500}
+                className="no-underline text-[--20px] font-medium text-white hover:underline hover:text-[--highlight-yellow] transition-all duration-500 cursor-pointer"
               >
                 {item.name}
               </Link>

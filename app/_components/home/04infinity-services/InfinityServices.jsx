@@ -118,7 +118,7 @@ export default function InfinityServices() {
   // ===== End Shape(3) =====
 
   return (
-    <section className="home_infinityServices" id="services">
+    <section className="home_infinityServices">
       <div className="home_infinityServices_title">
         <svg
           className="w-[--78px] h-[--39px]"

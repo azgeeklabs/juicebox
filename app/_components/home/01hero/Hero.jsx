@@ -4,7 +4,10 @@ import "./hero.css";
 
 export default function Hero() {
   return (
-    <section className="home_hero grid grid-cols-7 pt-[--sy-10px] pb-[--sy-20px] gap-[--15px] px-[--64px] overflow-hidden">
+    <section
+      className="home_hero grid grid-cols-7 pt-[--sy-10px] pb-[--sy-20px] gap-[--15px] px-[--64px] overflow-hidden"
+      id="hero"
+    >
       <div className=" col-span-1 w-full h-full relative">
         <svg
           className=" left-1/2 -translate-x-1/2 top-[15%] absolute"
