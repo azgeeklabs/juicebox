@@ -58,7 +58,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="home_main">
+    <main className="home_main min-h-screen">
       {/* <section className="home_hero"></section> */}
       <div
         className="home_horizontal_scroll relative"

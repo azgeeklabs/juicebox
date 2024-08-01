@@ -18,7 +18,7 @@ export default function Services() {
     });
   }, []);
   return (
-    <section className="home_services">
+    <section className="home_services" id="services">
       <h2>Services</h2>
 
       <div className="home_services_accordion">
