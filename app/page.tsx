@@ -4,11 +4,9 @@ import React, { useEffect } from "react";
 import dynamic from "next/dynamic";
 const NavBar = dynamic(() => import("./_components/NavBar/NavBar"), {
   ssr: false,
-  loading: () => <p>Loading...</p>,
 });
 const Footer = dynamic(() => import("./Footer"), {
   ssr: false,
-  loading: () => <p>Loading...</p>,
 });
 
 const Home = dynamic(() => import("./_components/home/Home"), { ssr: false });
