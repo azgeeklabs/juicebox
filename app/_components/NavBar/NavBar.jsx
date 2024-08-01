@@ -17,6 +17,7 @@ const NavBar = () => {
             behavior: "smooth",
           });
         }
+        // document.getElementById('about-us').scrollIntoView();
       },
     },
     {
