@@ -1,5 +1,6 @@
 "use client";
-import { Link } from "react-scroll";
+import { Link as GoTo } from "react-scroll";
+import Link from "next/link";
 
 const NavBar = () => {
   const navItems = [
@@ -95,7 +96,7 @@ const NavBar = () => {
                 {item.name}
               </button>
             ) : (
-              <Link
+              <GoTo
                 to={item.link}
                 spy={true}
                 smooth={true}
@@ -104,7 +105,7 @@ const NavBar = () => {
                 className="no-underline text-[--20px] font-medium text-white hover:underline hover:text-[--highlight-yellow] transition-all duration-500 cursor-pointer"
               >
                 {item.name}
-              </Link>
+              </GoTo>
             )}
           </li>
         ))}
