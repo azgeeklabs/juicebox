@@ -1,5 +1,5 @@
 .home_infinityServices {
-  height: 100vh;
+  height: 80vh;
   padding: var(--64px);
   padding-bottom: 0;
   display: flex;
@@ -51,7 +51,6 @@
 .home_infinityServicesWrapper_shape3 {
   position: relative;
   left: -4.5%;
-
 }
 .home_infinityServicesWrapper_shape3 > img:last-child {
   position: absolute;

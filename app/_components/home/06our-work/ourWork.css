@@ -5,7 +5,7 @@
   align-items: center;
 }
 
-.home_ourWork.hidden * {
+.home_ourWork.custom-hidden * {
   display: none;
 }
 

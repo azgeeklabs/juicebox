@@ -5,9 +5,6 @@ import dynamic from "next/dynamic";
 const NavBar = dynamic(() => import("./_components/NavBar/NavBar"), {
   ssr: false,
 });
-const Footer = dynamic(() => import("./Footer"), {
-  ssr: false,
-});
 
 const Home = dynamic(() => import("./_components/home/Home"), { ssr: false });
 
@@ -50,7 +47,6 @@ export default function page() {
       <div className="pt-[--sy-100px]">
         <NavBar />
         <Home />
-        <Footer />
       </div>
     </>
   );

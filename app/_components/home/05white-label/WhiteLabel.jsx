@@ -42,12 +42,19 @@ export default function WhiteLabel() {
     () => {
       const whiteLabelElement = whiteLabelRef.current;
       const ourWorkElement = document.querySelector(".home_ourWork");
+      const footerElement = document.querySelector("#footer");
 
       ScrollTrigger.create({
         trigger: whiteLabelElement,
         start: "top bottom", // Adjust based on when you want the toggle to happen
-        onEnter: () => ourWorkElement.classList.remove("hidden"),
-        onLeaveBack: () => ourWorkElement.classList.add("hidden"),
+        onEnter: () => {
+          ourWorkElement?.classList.remove("custom-hidden");
+          footerElement?.classList.remove("custom-hidden");
+        },
+        onLeaveBack: () => {
+          ourWorkElement?.classList.add("custom-hidden");
+          footerElement?.classList.add("custom-hidden");
+        },
         // markers: true,
       });
     },

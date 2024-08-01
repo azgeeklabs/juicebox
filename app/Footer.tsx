@@ -1,10 +1,13 @@
-'use client';
+"use client";
 import Link from "next/link";
 import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="relative w-full mt-[300px] bg-[#F8F24B] h-[calc(var(--sy-170px)_*_2)]">
+    <footer
+      className="relative w-full mt-[300px] bg-[#F8F24B] h-[calc(var(--sy-170px)_*_2)] custom-hidden"
+      id="footer"
+    >
       <svg
         preserveAspectRatio="none"
         className="absolute top-0 left-0 -translate-y-1/2 z-[6]"

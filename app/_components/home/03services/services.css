@@ -34,7 +34,7 @@
   height: 70vh;
   width: 7%;
   overflow: hidden;
-  transition: all 500ms linear;
+  transition: all 400ms linear;
   border-left: var(--2px) solid #1d1d1d;
   border-right: var(--2px) solid #1d1d1d;
   position: relative;
@@ -78,7 +78,7 @@
   gap: var(--sy-20px);
   width: 97%;
   padding: var(--35px);
-  background-color: #1d1d1d;
+  /* background-color: #1d1d1d; */
   color: #f8f24b;
   height: 100%;
   overflow: hidden;
@@ -100,7 +100,7 @@
 }
 .home_services_accordion .slide-content li {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   border-bottom: var(--1px) solid #f8f24b;
   padding-bottom: var(--7px);

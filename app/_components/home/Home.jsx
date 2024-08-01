@@ -5,6 +5,9 @@ import "./home.css";
 import dynamic from "next/dynamic";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+const Footer = dynamic(() => import("../../Footer"), {
+  ssr: false,
+});
 
 // if (typeof window !== "undefined") {
 //   gsap.registerPlugin(ScrollTrigger, useGSAP);
@@ -73,6 +76,7 @@ export default function Home() {
       <Suspense fallback={<p>Loading...</p>}>
         <OurWork />
       </Suspense>
+      <Footer />
       {/* <div className="h-screen"></div> */}
     </main>
   );

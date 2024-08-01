@@ -1,10 +1,9 @@
-/* .home_main {
-  overflow: hidden;
-} */
-
 .home_main .home_horizontal_scroll {
   height: 100vh;
   width: 200vw;
   display: flex;
   flex-direction: row;
+}
+.home_main #footer.custom-hidden {
+  display: none;
 }
