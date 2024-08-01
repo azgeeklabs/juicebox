@@ -48,7 +48,7 @@ export default function WhiteLabel() {
         start: "top bottom", // Adjust based on when you want the toggle to happen
         onEnter: () => ourWorkElement.classList.remove("hidden"),
         onLeaveBack: () => ourWorkElement.classList.add("hidden"),
-        markers: true,
+        // markers: true,
       });
     },
     { scope: whiteLabelRef }
