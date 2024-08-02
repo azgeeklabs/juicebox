@@ -1,13 +1,14 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import "./whiteLabel.css";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { globalContext } from "@/app/_context/GlobalContext";
 
 export default function WhiteLabel() {
   const whiteLabelRef = useRef(null);
-
+  const { setViewOurWork } = useContext(globalContext);
   useEffect(() => {
     const cards = document.querySelectorAll(".home_whiteLabel_card");
     const cardTitle = document.querySelectorAll(".home_whiteLabel_card_title");
@@ -50,10 +51,12 @@ export default function WhiteLabel() {
         onEnter: () => {
           ourWorkElement?.classList.remove("custom-hidden");
           footerElement?.classList.remove("custom-hidden");
+          setViewOurWork(true);
         },
         onLeaveBack: () => {
           ourWorkElement?.classList.add("custom-hidden");
           footerElement?.classList.add("custom-hidden");
+          setViewOurWork(false);
         },
         // markers: true,
       });

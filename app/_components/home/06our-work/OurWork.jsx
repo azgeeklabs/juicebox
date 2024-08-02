@@ -1,9 +1,10 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import "./ourWork.css";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { globalContext } from "@/app/_context/GlobalContext";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger, useGSAP);
@@ -18,6 +19,7 @@ export default function OurWork() {
   const caseStudyRef = useRef(null);
   const numberRef = useRef(null);
   const descriptionRef = useRef(null);
+  const { viewOurWork } = useContext(globalContext);
 
   const data = [
     {
@@ -93,25 +95,37 @@ export default function OurWork() {
       ref={ourWorkRef}
       id="our-work"
     >
-      <div className="home_ourWork_leftImg" ref={leftImgWrapperRef}>
-        <img ref={leftImgRef} src="/home/06our-work/1-1.svg" alt="Left Img" />
-      </div>
+      {viewOurWork && (
+        <>
+          <div className="home_ourWork_leftImg" ref={leftImgWrapperRef}>
+            <img
+              ref={leftImgRef}
+              src="/home/06our-work/1-1.svg"
+              alt="Left Img"
+            />
+          </div>
 
-      <div className="home_ourWork_content">
-        <h2>Our Work</h2>
-        <div className="home_ourWork_caseStudy">
-          <p>
-            <span ref={caseStudyRef}>CASE STUDY</span>
-            <br />
-            <span ref={numberRef}>NUMBER ONE</span>
-          </p>
-          <h3 ref={descriptionRef}>Web Development</h3>
-        </div>
-      </div>
+          <div className="home_ourWork_content">
+            <h2>Our Work</h2>
+            <div className="home_ourWork_caseStudy">
+              <p>
+                <span ref={caseStudyRef}>CASE STUDY</span>
+                <br />
+                <span ref={numberRef}>NUMBER ONE</span>
+              </p>
+              <h3 ref={descriptionRef}>Web Development</h3>
+            </div>
+          </div>
 
-      <div className="home_ourWork_rightImg" ref={rightImgWrapperRef}>
-        <img ref={rightImgRef} src="/home/06our-work/1-2.svg" alt="Right Img" />
-      </div>
+          <div className="home_ourWork_rightImg" ref={rightImgWrapperRef}>
+            <img
+              ref={rightImgRef}
+              src="/home/06our-work/1-2.svg"
+              alt="Right Img"
+            />
+          </div>
+        </>
+      )}
     </section>
   );
 }
