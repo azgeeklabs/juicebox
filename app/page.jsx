@@ -11,7 +11,7 @@ const Home = dynamic(() => import("./_components/home/Home"), { ssr: false });
 export default function Page() {
   useEffect(() => {
     // Reload the page when the window is resized
-    let resizeTimeout: NodeJS.Timeout; // Explicitly type the variable
+    let resizeTimeout; // Explicitly type the variable
 
     const handleResize = () => {
       clearTimeout(resizeTimeout);

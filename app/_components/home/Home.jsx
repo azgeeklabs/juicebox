@@ -5,9 +5,6 @@ import "./home.css";
 import dynamic from "next/dynamic";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-const Footer = dynamic(() => import("../../Footer"), {
-  ssr: false,
-});
 
 // if (typeof window !== "undefined") {
 //   gsap.registerPlugin(ScrollTrigger, useGSAP);
@@ -27,6 +24,9 @@ const WhiteLabel = dynamic(() => import("./05white-label/WhiteLabel"), {
 const OurWork = dynamic(() => import("./06our-work/OurWork"), {
   ssr: false,
   loading: () => <div>loading ....</div>,
+});
+const Footer = dynamic(() => import("../../Footer"), {
+  ssr: false,
 });
 
 export default function Home() {
@@ -62,7 +62,6 @@ export default function Home() {
 
   return (
     <main className="home_main">
-      {/* <section className="home_hero"></section> */}
       <div
         className="home_horizontal_scroll relative"
         ref={horizontalScrollRef}
