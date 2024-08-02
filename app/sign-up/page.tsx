@@ -104,8 +104,7 @@ const Page = () => {
         <div className=" flex items-center gap-[--16px]">
           <button className=" flex items-center justify-center gap-[--15px] bg-[#353535] rounded-[--7px] grow py-[--sy-12px]">
             <svg
-              width="19"
-              height="18"
+              className="w-[--19px] h-[--18px]"
               viewBox="0 0 19 18"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -121,8 +120,7 @@ const Page = () => {
           </button>
           <button className=" flex items-center justify-center gap-[--15px] bg-[#353535] rounded-[--7px] grow py-[--sy-12px]">
             <svg
-              width="16"
-              height="18"
+              className="w-[--16px] h-[--18px]"
               viewBox="0 0 16 18"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"

@@ -1,5 +1,3 @@
-import dynamic from "next/dynamic";
-import { Suspense } from "react";
 import "./globals.css";
 import type { Metadata } from "next";
 // import { Barlow } from "next/font/google";
@@ -10,17 +8,7 @@ import type { Metadata } from "next";
 // });
 // Import Context (provider only)
 import GlobalContextProvider from "./_context/GlobalContext";
-// import NavBar from "../_components/NavBar/NavBar";
-// import Footer from "../_components/footer/Footer";
 
-const NavBar = dynamic(() => import("./_components/NavBar/NavBar"), {
-  ssr: false,
-  loading: () => <p>Loading...</p>,
-});
-const Footer = dynamic(() => import("./Footer"), {
-  ssr: false,
-  loading: () => <p>Loading...</p>,
-});
 
 export const metadata: Metadata = {
   title: "Creative Juicebox",

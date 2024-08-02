@@ -43,11 +43,9 @@ export default function Page() {
   }, []); // Empty dependency array ensures this runs only on mount
 
   return (
-    <>
-      <div className="pt-[--sy-100px]">
-        <NavBar />
-        <Home />
-      </div>
-    </>
+    <div className="pt-[--sy-100px]">
+      <NavBar />
+      <Home />
+    </div>
   );
 }

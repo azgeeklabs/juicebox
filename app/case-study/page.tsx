@@ -141,9 +141,7 @@ const Page = () => {
             <span className=" absolute bottom-full -translate-y-3/4 left-[10%] rounded-3xl py-[--sy-7px] px-[--39px] bg-[#F8F24B] font-semibold text-black text-[--26px]">
               Brief
               <svg
-                className=" absolute left-1/2 top-full -translate-x-1/2 -translate-y-1/4"
-                width="27"
-                height="24"
+                className=" absolute left-1/2 top-full -translate-x-1/2 -translate-y-1/4 w-[--27px] h-[--24px]"
                 viewBox="0 0 27 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -157,9 +155,7 @@ const Page = () => {
             <span className=" absolute bottom-full -translate-y-3/4 left-[35%] rounded-3xl py-[--sy-7px] px-[--39px] bg-[#484848] font-semibold text-[--26px]">
               Brief
               <svg
-                className=" absolute left-1/2 top-full -translate-x-1/2 -translate-y-1/4"
-                width="27"
-                height="24"
+                className="w-[--27px] h-[--24px] absolute left-1/2 top-full -translate-x-1/2 -translate-y-1/4"
                 viewBox="0 0 27 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -173,9 +169,7 @@ const Page = () => {
             <span className=" absolute top-full translate-y-3/4 left-[25%] rounded-3xl py-[--sy-7px] px-[--39px] bg-[#484848] font-semibold text-[--26px]">
               Research
               <svg
-                className=" absolute left-1/2 bottom-full -translate-x-1/2 translate-y-1/4"
-                width="27"
-                height="24"
+                className="w-[--27px] h-[--24px] absolute left-1/2 bottom-full -translate-x-1/2 translate-y-1/4"
                 viewBox="0 0 27 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -189,9 +183,7 @@ const Page = () => {
             <span className=" absolute top-full translate-y-3/4 left-[55%] rounded-3xl py-[--sy-7px] px-[--39px] bg-[#484848] font-semibold text-[--26px]">
               Research
               <svg
-                className=" absolute left-1/2 bottom-full -translate-x-1/2 translate-y-1/4"
-                width="27"
-                height="24"
+                className="w-[--27px] h-[--24px] absolute left-1/2 bottom-full -translate-x-1/2 translate-y-1/4"
                 viewBox="0 0 27 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -205,9 +197,7 @@ const Page = () => {
             <span className=" absolute top-full translate-y-3/4 left-[80%] rounded-3xl py-[--sy-7px] px-[--39px] bg-[#484848] font-semibold text-[--26px]">
               Research
               <svg
-                className=" absolute left-1/2 bottom-full -translate-x-1/2 translate-y-1/4"
-                width="27"
-                height="24"
+                className="w-[--27px] h-[--24px] absolute left-1/2 bottom-full -translate-x-1/2 translate-y-1/4"
                 viewBox="0 0 27 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -287,8 +277,7 @@ const Page = () => {
           >
             <span className=" [font-family:Alfa_Slab_One] text-[--71px]">LIVE WEBSITE</span>
             <svg
-              width="76"
-              height="76"
+              className="w-[--75px] h-[--75px]"
               viewBox="0 0 76 76"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -323,8 +312,7 @@ const Page = () => {
                 Project overview
               </Link>
               <svg
-                width="8"
-                height="16"
+                className="w-[--8px] h-[--16px]"
                 viewBox="0 0 8 16"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -342,8 +330,7 @@ const Page = () => {
               Project Objectives
               </Link>
               <svg
-                width="8"
-                height="16"
+                className="w-[--8px] h-[--16px]"
                 viewBox="0 0 8 16"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -361,8 +348,7 @@ const Page = () => {
               Project Timeline
               </Link>
               <svg
-                width="8"
-                height="16"
+                className="w-[--8px] h-[--16px]"
                 viewBox="0 0 8 16"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -380,8 +366,7 @@ const Page = () => {
               Service Process
               </Link>
               <svg
-                width="8"
-                height="16"
+                className="w-[--8px] h-[--16px]"
                 viewBox="0 0 8 16"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -399,8 +384,7 @@ const Page = () => {
               Goals & Revenue
               </Link>
               <svg
-                width="8"
-                height="16"
+                className="w-[--8px] h-[--16px]"
                 viewBox="0 0 8 16"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -418,8 +402,7 @@ const Page = () => {
               Live Project
               </Link>
               <svg
-                width="8"
-                height="16"
+                className="w-[--8px] h-[--16px]"
                 viewBox="0 0 8 16"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
