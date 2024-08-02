@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./chooseNiche.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
-const page = () => {
+const Page = () => {
   return (
     // Custom component for navigation between pages, passing props for the next and back links
     <NextPrevNav
@@ -52,4 +52,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

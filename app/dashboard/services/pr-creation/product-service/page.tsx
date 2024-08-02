@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import React from 'react'
 import styles from "./productService.module.css"
 
-const page = () => {
+const Page = () => {
 
     const gameSVG = (
         <svg viewBox="0 0 150 118" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1499,4 +1499,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

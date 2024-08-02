@@ -2,7 +2,7 @@ import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import React from "react";
 import styles from "./prPlacement.module.css"
 
-const page = () => {
+const Page = () => {
   return (
     <>
       <NextPrevNav nextLink="/dashboard/services/pr-placement/create-article">
@@ -65,4 +65,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

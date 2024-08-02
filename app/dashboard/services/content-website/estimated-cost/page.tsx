@@ -5,7 +5,7 @@ import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxT
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import { useRouter } from "next/navigation";
 
-const page = () => {
+const Page = () => {
   return (
     // Main container div with relative positioning
     <NextPrevNav nextLink="/dashboard/services" nextText="All Done" backLink="/dashboard/services/content-website/sections-number">
@@ -59,4 +59,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

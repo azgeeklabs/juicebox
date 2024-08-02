@@ -4,7 +4,7 @@ import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxT
 import Link from "next/link";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
-const page = () => {
+const Page = () => {
   return (
     // Main outer container div
     <NextPrevNav nextLink="/dashboard/services/video-service/video-style" backLink="/dashboard/services/video-service/advertising"><div className="  h-full flex justify-center items-center">
@@ -56,4 +56,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

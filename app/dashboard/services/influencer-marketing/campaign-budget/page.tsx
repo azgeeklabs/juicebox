@@ -10,7 +10,7 @@ const CustomTypeRange = dynamic(
   { ssr: false }
 );
 
-const page = () => {
+const Page = () => {
   return (
     <NextPrevNav
       nextLink="/dashboard/services/influencer-marketing/promo-options"
@@ -43,4 +43,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

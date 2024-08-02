@@ -1388,7 +1388,7 @@ const appSVG = (
   </svg>
 );
 
-function page() {
+function Page() {
   const { step, setStep } = useContext(globalContext);
 
   return (
@@ -1510,4 +1510,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

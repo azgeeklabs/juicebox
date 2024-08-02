@@ -4,7 +4,7 @@ import styles from "./addLink.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-function page() {
+function Page() {
     const router = useRouter()
   return (
 <div className={`${styles.addLink} flex flex-col justify-between h-full`}>
@@ -79,4 +79,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

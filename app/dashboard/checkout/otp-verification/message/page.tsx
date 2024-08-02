@@ -2,7 +2,7 @@
 import React from "react";
 import styles from "./message.module.css";
 
-const page = () => {
+const Page = () => {
   return (
     <div
       className={`${styles.message} flex w-full h-full justify-center items-center`}
@@ -72,4 +72,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

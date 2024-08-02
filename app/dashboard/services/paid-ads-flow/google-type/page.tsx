@@ -11,7 +11,7 @@ import SwiperCore from "swiper";
 import { globalContext } from "@/app/_context/GlobalContext";
 import "./adType.css"
 
-export default function page() {
+export default function Page() {
 
   const { step, setStep } = useContext(globalContext);
   

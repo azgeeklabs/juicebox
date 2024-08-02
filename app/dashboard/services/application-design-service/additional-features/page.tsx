@@ -6,7 +6,7 @@ import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import { useContext } from "react";
 import { globalContext } from "@/app/_context/GlobalContext";
 
-function page() {
+function Page() {
   const { step, setStep } = useContext(globalContext);
 
   const data = [
@@ -558,4 +558,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

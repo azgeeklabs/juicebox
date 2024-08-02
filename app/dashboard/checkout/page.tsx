@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import styles from "./checkout.module.css";
 import CustomCheckBox from "@/app/_components/customCheckBox/CustomCheckBox";
 
-const page = () => {
+const Page = () => {
   useEffect(() => {
     (document.getElementById("cardNumber") as any).addEventListener(
       "input",
@@ -217,4 +217,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

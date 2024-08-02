@@ -3,7 +3,7 @@ import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxT
 import React from "react";
 import VerificationInput from "react-verification-input";
 
-const page = () => {
+const Page = () => {
   return (
     <div className="otp-verification flex w-full h-full justify-center items-center">
       <div className=" w-full">
@@ -30,4 +30,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import React, { useContext } from 'react'
 import styles from "./pressRelease.module.css"
 
-const page = () => {
+const Page = () => {
     const { step, setStep } = useContext(globalContext);
 
     const gameSVG = (
@@ -1460,4 +1460,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

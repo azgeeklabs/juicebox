@@ -3,7 +3,7 @@ import styles from "./website-type.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import Image from "next/image";
 
-function page() {
+function Page() {
 
   return (
     <NextPrevNav
@@ -154,4 +154,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

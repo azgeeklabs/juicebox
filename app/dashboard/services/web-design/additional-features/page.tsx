@@ -5,7 +5,7 @@ import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxT
 import { title } from "process";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
-function page() {
+function Page() {
   const data = [
     {
       title: "Notifications",
@@ -496,4 +496,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

@@ -1386,7 +1386,7 @@ const appSVG = (
   </svg>
 );
 
-function page() {
+function Page() {
   return (
 <div className={`${styles.monetization} flex flex-col justify-between h-full`}>
 
@@ -1477,4 +1477,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

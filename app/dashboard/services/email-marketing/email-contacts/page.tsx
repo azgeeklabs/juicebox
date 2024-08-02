@@ -8,7 +8,7 @@ import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxT
 import { useState } from "react";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
-function page() {
+function Page() {
   const router = useRouter();
   const [num1, setNum1] = useState<number>(0);
   const [num2, setNum2] = useState<number>(0);
@@ -193,4 +193,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

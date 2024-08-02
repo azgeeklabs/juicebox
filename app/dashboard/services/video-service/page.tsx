@@ -12,7 +12,7 @@ import "swiper/css/pagination";
 
 import SwiperCore from "swiper";
 
-export default function page() {
+export default function Page() {
   const options = [
     "Explainer",
     "Educational",

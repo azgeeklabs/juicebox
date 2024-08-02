@@ -3,7 +3,7 @@ import React from "react";
 import profile from "../../../public/assets/profile.png";
 import styles from "./profile.module.css";
 
-const page = () => {
+const Page = () => {
   return (
     <>
       <div className={`${styles.profile} pt-[--sy-14px] h-full`}>
@@ -328,4 +328,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

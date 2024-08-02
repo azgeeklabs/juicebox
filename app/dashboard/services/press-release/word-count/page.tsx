@@ -11,7 +11,7 @@ const CustomTypeRange = dynamic(
   { ssr: false }
 );
 
-const page = () => {
+const Page = () => {
   return (
     <NextPrevNav
       nextLink="/dashboard/services/press-release/estimated-cost"
@@ -67,4 +67,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./caseStudy.module.css";
 import Link from "next/link";
 
-const page = () => {
+const Page = () => {
   return (
     <div className="w-full pt-[--sy-100px] px-[--64px]">
       <h1 className=" [font-family:Alfa_Slab_One] text-[--102px] w-fit mx-auto text-[#F8F24B] mb-[--sy-40px]">
@@ -439,4 +439,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

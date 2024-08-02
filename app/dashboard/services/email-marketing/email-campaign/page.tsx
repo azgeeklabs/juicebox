@@ -1388,7 +1388,7 @@ const appSVG = (
   </svg>
 );
 
-function page() {
+function Page() {
   return (
     <NextPrevNav
       nextLink="/dashboard/services/email-marketing/landing-page-link"
@@ -1450,4 +1450,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

@@ -4,7 +4,7 @@ import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxT
 import React, { useState } from "react";
 import styles from "./wikipediaCopy.module.css"
 
-const page = () => {
+const Page = () => {
   const [file, setFile] = useState<any>(null);
 
   const handleFileChange = (e: any) => {
@@ -93,4 +93,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

@@ -38,7 +38,7 @@ const additionalPages = [
   "Careers",
 ];
 
-function page() {
+function Page() {
   const swiperRef = useRef<SwiperCore | null>(null);
 
   const slides = [
@@ -199,4 +199,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

@@ -2,7 +2,7 @@ import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import React from "react";
 import styles from "./wikipediaInfo.module.css"
 
-const page = () => {
+const Page = () => {
   return (
     <>
       <NextPrevNav
@@ -76,4 +76,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

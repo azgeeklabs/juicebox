@@ -5,7 +5,7 @@ import ServicesTable from "../../_components/Services/ServicesTable";
 import CustomCheckBoxText from "../../_components/customCheckBox/CustomCheckBoxText";
 import { globalContext } from "../../_context/GlobalContext";
 
-export default function page() {
+export default function Page() {
   const filters = [
     "Finance",
     "Design",

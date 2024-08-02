@@ -8,7 +8,7 @@ import dynamic from "next/dynamic";
 const CustomTypeRange = dynamic(() => import('@/app/_components/customTypeRange/CustomTypeRange'), { ssr: false })
 
 
-const page = () => {
+const Page = () => {
 
   return (
     <NextPrevNav
@@ -49,4 +49,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

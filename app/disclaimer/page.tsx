@@ -3,7 +3,7 @@ import styles from "./disclaimer.module.css";
 import Link from "next/link";
 import Footer from "../Footer";
 import NavBar from "../_components/NavBar/NavBar";
-const page = () => {
+const Page = () => {
   return (
     <div className="pt-[--sy-100px]">
       <NavBar />
@@ -140,4 +140,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

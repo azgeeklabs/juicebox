@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
-function page() {
+function Page() {
   const router = useRouter();
   return (
     <NextPrevNav
@@ -63,4 +63,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
