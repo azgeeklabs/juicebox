@@ -6,8 +6,6 @@ const initialContextState = {
   setOpen: (open: boolean) => {},
   step: 1,
   setStep: (step: number) => {},
-  viewOurWork: false,
-  setViewOurWork: (viewOurWork: boolean) => {},
 };
 
 // 1- create context, export it
@@ -25,17 +23,12 @@ export default function GlobalContextProvider({
   // StepProgress state
   const [step, setStep] = useState<number>(0);
 
-  // Conditional Rendering of ourWork section
-  const [viewOurWork, setViewOurWork] = useState<boolean>(false);
-
   // Create a context value object
   const contextValue = {
     open,
     setOpen,
     step,
     setStep,
-    viewOurWork,
-    setViewOurWork,
   };
 
   return (

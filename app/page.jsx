@@ -1,7 +1,10 @@
 "use client";
 import React, { useEffect } from "react";
-// import Home from "../_components/home/Home";
+// import NavBar from "./_components/NavBar/NavBar";
+// import Home from "./_components/home/Home";
+
 import dynamic from "next/dynamic";
+
 const NavBar = dynamic(() => import("./_components/NavBar/NavBar"), {
   ssr: false,
 });
@@ -28,24 +31,12 @@ export default function Page() {
     };
   }, []);
 
-  useEffect(() => {
-    // Key to use in localStorage
-    const reloadFlagKey = "pageReloaded";
-
-    // Get the value of the flag from localStorage
-    const hasReloaded = sessionStorage.getItem(reloadFlagKey);
-
-    if (!hasReloaded) {
-      // If the flag is not set, set it to true and reload the page
-      sessionStorage.setItem(reloadFlagKey, "true");
-      window.location.reload();
-    }
-  }, []); // Empty dependency array ensures this runs only on mount
-
   return (
-    <div className="pt-[--sy-100px]">
-      <NavBar />
-      <Home />
-    </div>
+    <>
+      <div className="pt-[--sy-100px]">
+        <NavBar />
+        <Home />
+      </div>
+    </>
   );
 }
