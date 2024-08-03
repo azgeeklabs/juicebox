@@ -3,7 +3,7 @@ import React from 'react'
 const Page = () => {
   return (
     <div>
-      WHITE LABEL
+      White Label - Coming Soon
     </div>
   )
 }

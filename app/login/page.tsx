@@ -102,7 +102,7 @@ const Page = () => {
           <div className=" flex flex-col gap-[--sy-16px] w-full">
             <button className=" flex items-center justify-center gap-[--15px] bg-[#353535] rounded-[--7px] grow py-[--sy-12px]">
               <svg
-              className="w-[--19px] h-[--18px]"
+                className="w-[--19px] h-[--18px]"
                 viewBox="0 0 19 18"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -118,7 +118,7 @@ const Page = () => {
             </button>
             <button className=" flex items-center justify-center gap-[--15px] bg-[#353535] rounded-[--7px] grow py-[--sy-12px]">
               <svg
-              className="w-[--16px] h-[--18px]"
+                className="w-[--16px] h-[--18px]"
                 viewBox="0 0 16 18"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -135,9 +135,9 @@ const Page = () => {
           </div>
         </div>
         <p className=" text-center text-[#F8F24B]">
-          Already have an account?{" "}
-          <Link href={"#"} className=" underline font-bold">
-            Sign In
+          Don't have an account?{" "}
+          <Link href={"/sign-up"} className="underline font-bold">
+            Sign up
           </Link>
         </p>
       </div>

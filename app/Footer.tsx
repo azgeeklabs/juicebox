@@ -150,19 +150,19 @@ const Footer = () => {
           <h3 className=" text-[--40px] font-bold mb-[--sy-40px]">Site Map</h3>
           <div className=" flex gap-[--27px]">
             <div className=" flex flex-col gap-[--sy-16px]">
-              <Link href={""} className=" font-semibold text-[--14px]">
+              <Link href={"/"} className=" font-semibold text-[--14px]">
                 Home
               </Link>
               <Link href={""} className=" font-semibold text-[--14px]">
                 About Us
               </Link>
-              <Link href={""} className=" font-semibold text-[--14px]">
+              <Link href={"/dashboard/services"} target="_blank" className=" font-semibold text-[--14px]">
                 Services
               </Link>
-              <Link href={""} className=" font-semibold text-[--14px]">
+              <Link href={"/dashboard/infinity"} target="_blank" className=" font-semibold text-[--14px]">
                 Infinity Services
               </Link>
-              <Link href={""} className=" font-semibold text-[--14px]">
+              <Link href={"/dashboard/white-label"} target="_blank" className=" font-semibold text-[--14px]">
                 White Label
               </Link>
             </div>

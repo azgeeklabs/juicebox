@@ -81,9 +81,9 @@ const Page = () => {
         </button>
         <p className=" mb-[--sy-40px]">
           By signing up you agree to our{" "}
-          <span className=" text-[--highlight-yellow]">Privacy Policy</span> and
+          <Link href={"/privacy-policy"} target="_blank" className=" text-[--highlight-yellow] underline">Privacy Policy</Link> and
           our{" "}
-          <span className=" text-[--highlight-yellow]">Terms & Agreements</span>
+          <Link href={"#"} target="_blank" className=" text-[--highlight-yellow] underline">Terms & Agreements</Link>
         </p>
         <Divider
           sx={{
@@ -136,7 +136,12 @@ const Page = () => {
           </button>
         </div>
       </div>
-      <p>Already have an account? <Link href={"#"} className=" underline">Sign In</Link></p>
+      <p>
+        Already have an account?{" "}
+        <Link href={"/login"} className="underline">
+          Sign In
+        </Link>
+      </p>
     </div>
   );
 };

@@ -23,7 +23,7 @@ const WhiteLabel = dynamic(() => import("./05white-label/WhiteLabel"), {
 });
 const OurWork = dynamic(() => import("./06our-work/OurWork"), {
   ssr: false,
-  loading: () => <div>loading ....</div>,
+  loading: () => <div className="min-h-screen"></div>,
 });
 const Footer = dynamic(() => import("../../Footer"), {
   ssr: false,
@@ -72,9 +72,9 @@ export default function Home() {
       <Services />
       <InfinityServices />
       <WhiteLabel />
-      <Suspense fallback={<p>Loading...</p>}>
+      {/* <Suspense fallback={<p>Loading...</p>}> */}
         <OurWork />
-      </Suspense>
+      {/* </Suspense> */}
       <Footer />
       {/* <div className="h-screen"></div> */}
     </main>
