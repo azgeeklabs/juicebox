@@ -1,19 +1,21 @@
-import Image from "next/image";
+"use client";
 import React from "react";
-import profile from "../../../public/assets/profile.png";
 import styles from "./profile.module.css";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
+  const router = useRouter();
+
   return (
     <>
       <div className={`${styles.profile} pt-[--sy-14px] h-full`}>
         <div className=" grid gap-[--24px] grid-cols-3 h-full">
           <div className=" col-span-1 rounded-[--15px] bg-[#353535] px-[--25px] pt-[--sy-18px] pb-[--sy-31px] relative h-full flex flex-col">
             <div className=" flex justify-between items-center mb-[--sy-30px]">
-              <Image
-                src={profile}
+              <img
+                src="/assets/profile.png"
                 alt="profile"
-                className=" absolute -top-[30px]"
+                className=" absolute -top-[30px] w-[--76px] h-[--77px]"
               />
               <div className=" ml-auto">
                 <p className="text-[#B1B1B1] text-[--10px]">
@@ -34,13 +36,11 @@ const Page = () => {
               <div className="grow bg-[#272727] rounded-[--37px] h-[--sy-5px]">
                 <div className=" bg-[--highlight-yellow] rounded-[--37px] h-full w-[40%] relative">
                   <div
-                    className={`${styles.tooltip} absolute right-0 translate-x-1/2 -top-[700%] bg-[#484848] rounded-[106px] text-[--10px] px-[--8px] py-[--sy-4px]`}
+                    className={`${styles.tooltip} absolute right-0 translate-x-1/2 -top-[700%] bg-[#484848] rounded-[106px] text-[--12px] px-[--12px] py-[--sy-6px]`}
                   >
                     $20,361{" "}
                     <svg
-                    className=" absolute left-1/2 -translate-x-1/2"
-                      width="11"
-                      height="10"
+                      className=" absolute left-1/2 -translate-x-1/2 w-[--13px] h-[--13px]"
                       viewBox="0 0 11 10"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -60,9 +60,7 @@ const Page = () => {
             <div className=" flex gap-[--12px] items-center mb-[--sy-23px]">
               <span className=" bg-[#484848] rounded-[--30px] px-[--11px] py-[--sy-6px] text-[#B1B1B1] font-semibold flex items-center gap-[--6px]">
                 <svg
-                  className={`${styles.lock}`}
-                  width="9"
-                  height="11"
+                  className={`${styles.lock} w-[9px] h-[11px]`}
                   viewBox="0 0 9 11"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -76,9 +74,7 @@ const Page = () => {
               </span>
               <span className=" bg-[#484848] text-[#B1B1B1] rounded-[--30px] px-[--11px] py-[--sy-6px] font-semibold flex items-center gap-[--6px]">
                 <svg
-                  className={`${styles.lock}`}
-                  width="9"
-                  height="11"
+                  className={`${styles.lock} w-[9px] h-[11px]`}
                   viewBox="0 0 9 11"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -97,14 +93,15 @@ const Page = () => {
                 Billings
               </h4>
               <div
-                className={`${styles.hover} duration-300 transition-all bg-[#484848] rounded-[--37px] px-[--16px] py-[--sy-14px] flex justify-between items-center mb-[--sy-14px]`}
+                className={`${styles.hover} duration-300 transition-all bg-[#484848] rounded-[--37px] px-[--16px] py-[--sy-14px] flex justify-between items-center mb-[--sy-14px] cursor-pointer`}
+                onClick={() => {
+                  router.push("/dashboard/profile/billing");
+                }}
               >
                 <h4 className="text-[--13px] font-semibold">Billings</h4>
                 <span className="bg-[#353535] rounded-full flex justify-center items-center p-[--6px] ">
                   <svg
-                    className="duration-500 transition-all"
-                    width="10"
-                    height="10"
+                    className="duration-500 transition-all w-[10px] h-[10px]"
                     viewBox="0 0 10 10"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -117,14 +114,15 @@ const Page = () => {
                 </span>
               </div>
               <div
-                className={`${styles.hover} duration-300 transition-all bg-[#484848] rounded-[--37px] px-[--16px] py-[--sy-14px] flex justify-between items-center mb-[--sy-14px]`}
+                className={`${styles.hover} duration-300 transition-all bg-[#484848] rounded-[--37px] px-[--16px] py-[--sy-14px] flex justify-between items-center mb-[--sy-14px] cursor-pointer`}
+                onClick={() => {
+                  router.push("/dashboard/profile/subscriptions");
+                }}
               >
                 <h4 className="text-[--13px] font-semibold">Subscriptions</h4>
                 <span className="bg-[#353535] rounded-full flex justify-center items-center p-[--6px] ">
                   <svg
-                    className="duration-500 transition-all"
-                    width="10"
-                    height="10"
+                    className="duration-500 transition-all w-[10px] h-[10px]"
                     viewBox="0 0 10 10"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -146,9 +144,7 @@ const Page = () => {
                   </p>
                 </div>
                 <svg
-                  className={`${styles.info}`}
-                  width="17"
-                  height="18"
+                  className={`${styles.info} w-[17px] h-[18px]`}
                   viewBox="0 0 17 18"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"

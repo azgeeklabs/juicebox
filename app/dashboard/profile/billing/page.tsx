@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import styles from "./billing.module.css";
 
-const billing = () => {
+const Billing = () => {
   return (
     <div className=" w-full h-full">
       <h1 className=" text-[--32px] font-semibold mb-[--sy-24px]">
@@ -13,8 +13,7 @@ const billing = () => {
         <div className=" flex gap-[--28px] items-center">
           <div className=" relative w-fit">
             <svg
-              width="313"
-              height="167"
+              className=" w-[--313px] h-[--167px]"
               viewBox="0 0 313 167"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -71,8 +70,7 @@ const billing = () => {
             <div className="text-black flex justify-between items-center w-full absolute top-[15%] px-[--23px]">
               <span className=" font-medium">Card Number</span>
               <svg
-                width="34"
-                height="11"
+                className=" w-[--34px] h-[--11px]"
                 viewBox="0 0 34 11"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -134,9 +132,7 @@ const billing = () => {
                   <h4 className=" font-semibold relative">
                     Overdue payment{" "}
                     <svg
-                      className="absolute left-full translate-x-full top-1/2 -translate-y-1/2"
-                      width="17"
-                      height="17"
+                      className="absolute left-full translate-x-full top-1/2 -translate-y-1/2 w-[--17px] h-[--17px]"
                       viewBox="0 0 17 17"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -184,4 +180,4 @@ const billing = () => {
   );
 };
 
-export default billing;
+export default Billing;
