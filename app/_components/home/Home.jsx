@@ -28,6 +28,7 @@ export default function Home() {
   const descriptionRef = useRef(null);
 
   useEffect(() => {
+    // console.log(`ScrollTrigger.getAll() on mount:`, ScrollTrigger.getAll());
     if (!horizontalScrollRef.current) return;
     const horizontalScrollTween = gsap.fromTo(
       horizontalScrollRef.current,
@@ -64,6 +65,7 @@ export default function Home() {
         horizontalScrollTween.kill();
         // console.log("02 killed");
       }
+      ScrollTrigger.killAll();
     };
   }, []);
 
@@ -155,6 +157,8 @@ export default function Home() {
         ourWorkScrollTrigger.kill();
         // console.log("04 killed");
       }
+      // console.log(`ScrollTrigger.getAll() on unmount:`, ScrollTrigger.getAll());
+      ScrollTrigger.killAll();
     };
   }, []);
 
