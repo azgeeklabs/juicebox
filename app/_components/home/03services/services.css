@@ -66,7 +66,8 @@
   font-weight: 400;
   font-size: var(--30px);
   position: absolute;
-  top: 54vh;
+  /* top: 54vh; */
+  bottom: clamp(8.5rem, calc(7vw), 1000vw);
   left: 50%;
   width: var(--264px);
   text-align: start;
