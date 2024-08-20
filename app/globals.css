@@ -179,6 +179,7 @@
   --sy-50px: clamp(10px, calc(5.376vh + 0.1rem), 1000px);
   --sy-60px: clamp(10px, calc(6.452vh + 0.1rem), 1000px);
   --sy-64px: clamp(10px, calc(6.882vh + 0.1rem), 1000px);
+  --sy-66px: clamp(10px, calc(7.097vh + 0.1rem), 1000px);
   --sy-80px: clamp(10px, calc(8.55vh + 0.1rem), 1000px);
   --sy-90px: clamp(10px, calc(9.53vh + 0.1rem), 1000px);
   --sy-95px: clamp(10px, calc(10.215vh + 0.1rem), 1000px);

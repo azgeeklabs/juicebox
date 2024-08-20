@@ -1,0 +1,23 @@
+.home_clientReviews {
+  height: 100vh;
+  width: 99vw;
+  overflow: hidden;
+  padding: var(--80px);
+  padding-top: var(--sy-66px);
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  outline: 1px solid red;
+}
+.home_clientReviews_title > h2 {
+  font-family: "Alfa Slab One", serif;
+  font-weight: 400;
+  font-size: var(--42px);
+  color: #f8f24b;
+}
+.home_clientReviewsWrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}

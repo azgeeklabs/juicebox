@@ -6,6 +6,7 @@ import AboutUs from "./02about-us/AboutUs";
 import Services from "./03services/Services";
 import InfinityServices from "./04infinity-services/InfinityServices";
 import WhiteLabel from "./05white-label/WhiteLabel";
+import ClientReviews from "./06client-reviews/ClientReviews";
 import Footer from "../../Footer";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -179,6 +180,7 @@ export default function Home() {
       <Services />
       <InfinityServices />
       <WhiteLabel />
+      <ClientReviews />
       {/* ===== Start Our Work ===== */}
       <div className="home_ourWork_container">
         <section className="home_ourWork" ref={ourWorkRef} id="our-work">
