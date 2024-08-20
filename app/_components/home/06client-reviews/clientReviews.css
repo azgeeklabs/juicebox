@@ -2,22 +2,91 @@
   height: 100vh;
   width: 99vw;
   overflow: hidden;
-  padding: var(--80px);
+  padding-right: 0;
+  padding-left: 0;
   padding-top: var(--sy-66px);
   padding-bottom: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  outline: 1px solid red;
+  /* outline: 1px solid red; */
 }
 .home_clientReviews_title > h2 {
+  padding-left: var(--80px);
+  padding-right: var(--80px);
   font-family: "Alfa Slab One", serif;
   font-weight: 400;
   font-size: var(--42px);
   color: #f8f24b;
+  margin-bottom: var(--sy-20px);
 }
 .home_clientReviewsWrapper {
+  background-color: red;
+  padding-left: var(--80px);
+  padding-right: var(--80px);
   display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  /* height: 65vh; */
+  overflow-y: hidden;
+}
+
+.home_clientReviews_logosSlider {
+  /* background-color: blue; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: var(--80px);
+  padding-right: var(--80px);
+  min-height: var(--90px);
+  max-height: var(--90px);
+  overflow-y: hidden;
+  margin-bottom: var(--sy-44px);
+  margin-top: var(--sy-44px);
+
+
+
+
+  padding: clamp(3rem, calc(3vw + 0.1rem), 400px) 0;
+  box-shadow: 0px 15px 50px -3px #00000088;
+  position: relative;
+}
+
+
+.home_clientReviews_logosSlider::before {
+  content: "";
+  width: 100%;
+  height: 1px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(32, 32, 32, 0.8183648459383753) 67%,
+    rgba(255, 255, 255, 0.5) 100%
+  );
+}
+
+.home_clientReviews_logosSlider::after {
+  content: "";
+  width: 100%;
+  height: 1px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(32, 32, 32, 0.8183648459383753) 37%,
+    rgba(255, 255, 255, 0.5) 100%
+  );
+}
+
+.home_clientReviews_logosSlider .slick-slide img {
+  background-color: red;
+  margin: auto;
+  width: 80%;
 }
