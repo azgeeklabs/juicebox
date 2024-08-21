@@ -701,7 +701,7 @@ export default function Hero() {
         <h2 className=" text-[--25px] [font-family:Alfa_Slab_One] mb-[--sy-17px]">
           20+ Services
         </h2>
-        <p className=" font-medium mb-[--sy-25px] text-[--17px] leading-[20.42px]">
+        <p className=" font-medium mb-[--sy-25px] text-[--17px] leading-[--sy-20px]">
           Discover our all-encompassing SaaS solution <br /> offering a wide range of
           digital services <br /> tailored for you.{" "}
         </p>
@@ -852,9 +852,7 @@ export default function Hero() {
           <span className="deletedWord text-[--25px] [font-family:Alfa_Slab_One] transition-all duration-200 relative">
             Juice
             <svg
-              className=" top-0 absolute right-0 translate-x-1/2 -translate-y-1/4 newWord opacity-0 transition-all duration-200"
-              width="54"
-              height="34"
+              className=" top-0 absolute right-0 translate-x-1/2 -translate-y-1/4 newWord opacity-0 transition-all duration-200 w-[--51px]"
               viewBox="0 0 54 34"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -913,7 +911,7 @@ export default function Hero() {
             </svg>
           </span>
         </h2>
-        <p className=" font-medium mb-[--sy-25px] text-[--17px] leading-[20.42px]">
+        <p className=" font-medium mb-[--sy-25px] text-[--17px] leading-[--sy-20px]">
           Discover our all-encompassing SaaS solution offering a <br /> wide range of
           digital services tailored for agencies. <br /> If you can imagine it, we’ve
           got it covered!
@@ -1095,7 +1093,7 @@ export default function Hero() {
         </div>
       </div>
       <div className=" col-span-3 w-full border-[3px] group hover:border-[#f8f24b] relative border-[#1d1d1d] transition-all duration-200 pt-[--sy-35px] pb-[--sy-40px] -translate-y-12 h-fit pl-[--42px] pr-[--45px] rounded-[--35px]">
-        <p className=" w-[60%] ml-auto font-semibold text-[--14px] mb-[--sy-40px] leading-[16.8px]">
+        <p className=" w-[60%] ml-auto font-semibold text-[--14px] mb-[--sy-40px] leading-[--sy-17px]">
           Discover our all-encompassing SaaS solution offering a wide range <br /> of
           digital services tailored for agencies. If you can imagine it, we’ve <br />
           got it covered!
