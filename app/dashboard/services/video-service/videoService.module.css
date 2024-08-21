@@ -60,10 +60,14 @@
 .btns input {
   cursor: pointer;
 }
+.btns input:not(:checked):hover + div {
+  background-color: #1c1c1c !important;
+}
 .btns input + div {
   font-size: var(--16px);
   width: var(--241px);
   padding: var(--sy-16px) var(--51px);
+  transition: background-color 0.3s;
 }
 
 .btns input:checked + div {

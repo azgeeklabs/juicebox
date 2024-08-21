@@ -59,7 +59,7 @@
 .btns input {
   cursor: pointer;
 }
-.btns input:hover + div {
+.btns input:not(:checked):hover + div {
   background-color: #1c1c1c !important;
 }
 .btns input + div {

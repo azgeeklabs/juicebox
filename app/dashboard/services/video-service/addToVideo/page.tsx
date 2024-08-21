@@ -39,9 +39,11 @@ export default function Page() {
     >
       <div className="flex items-center justify-center h-full w-full">
         {/* // Inner container with full width and custom styles for adding to the video section */}
-        <div className={`${styles.addToVideo} w-full `}>
+        <div
+          className={`${styles.addToVideo}  flex flex-col gap-[--98px] justify-around w-full`}
+        >
           {/* // Header section with padding top, left padding, and bottom margin */}
-          <div className=" pl-[4.264vw] mb-[2.667vh]">
+          <div className="pl-[4.264vw]">
             {/* // Main heading with bottom margin and embedded horizontal rules */}
             <h2 className="mb-[1.851vh]">
               Would you like to include some add epic
