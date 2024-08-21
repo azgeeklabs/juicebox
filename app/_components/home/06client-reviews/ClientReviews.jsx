@@ -1,12 +1,11 @@
 "use client";
 import React from "react";
-import Slider from "react-slick";
-// Import css files
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import "./clientReviews.css";
-import image from "@/public/assets/companyLogo1.png";
-import image1 from "@/public/assets/companyLogo2.png";
+import dynamic from "next/dynamic";
+
+const LogosSlider = dynamic(() => import("./LogosSlider"), {
+  ssr: false,
+});
 
 export default function ClientReviews() {
   const avatarImg = (
@@ -101,7 +100,7 @@ export default function ClientReviews() {
 
   const moreReviewsBtn = (
     <svg
-      className="w-[--173px] h-[--54px]"
+      className="w-[--173px] h-[--54px] cursor-pointer"
       viewBox="0 0 173 54"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -119,36 +118,7 @@ export default function ClientReviews() {
     </svg>
   );
 
-  // settings that handle features of carousel by slack carousel
-  const settings = {
-    dots: false,
-    arrows: false,
-    infinite: true,
-    slidesToShow: 5,
-    slidesToScroll: 5,
-    autoplay: true,
-    speed: 8000,
-    cssEase: "linear",
-    pauseOnHover: true,
-    swipeToSlide: true,
-    centerMode: true,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-        },
-      },
-    ],
-  };
+
   return (
     <section className="home_clientReviews">
       <div className="home_clientReviews_title">
@@ -158,7 +128,7 @@ export default function ClientReviews() {
       <div className="home_clientReviewsWrapper">
         <div className="flex flex-col justify-end">
           <svg
-            className="h-[--115px] w-[--364px]"
+            className="h-[--115px] w-[--364px] cursor-pointer"
             viewBox="0 0 364 115"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -287,7 +257,7 @@ export default function ClientReviews() {
 
         <div className="flex flex-col justify-between">
           <svg
-            className="h-[--136px] w-[--366px]"
+            className="h-[--136px] w-[--366px] cursor-pointer"
             viewBox="0 0 367 136"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -398,7 +368,7 @@ export default function ClientReviews() {
             />
           </svg>
           <svg
-            className="h-[--136px] w-[--366px]"
+            className="h-[--136px] w-[--366px] cursor-pointer"
             viewBox="0 0 366 137"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -511,39 +481,8 @@ export default function ClientReviews() {
         </div>
       </div>
 
-      <div className="home_clientReviews_logosSlider">
-        <Slider {...settings}>
-          <div>
-            <img src={image} alt="companyLogo" />
-          </div>
-          <div>
-            <img src={image.src} alt="companyLogo" />
-          </div>
-          <div>
-            <img src="/assets/companyLogo1.png" alt="companyLogo" />
-          </div>
-          <div>
-            <img src="@/public/assets/companyLogo2.png" alt="companyLogo" />
-          </div>
-          <div>
-            <img src="/assets/companyLogo1.png" alt="companyLogo" />
-          </div>
-          <div>
-            <img src="/assets/companyLogo2.png" alt="companyLogo" />
-          </div>
-          <div>
-            <img src="/assets/companyLogo1.png" alt="companyLogo" />
-          </div>
-          <div>
-            <img src="/assets/companyLogo2.png" alt="companyLogo" />
-          </div>
-          <div>
-            <img src="/assets/companyLogo1.png" alt="companyLogo" />
-          </div>
-          <div>
-            <img src="/assets/companyLogo2.png" alt="companyLogo" />
-          </div>
-        </Slider>
+      <div className="home_clientReviews_logosSlider w-full">
+        <LogosSlider />
       </div>
     </section>
   );

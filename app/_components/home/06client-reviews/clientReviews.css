@@ -29,7 +29,6 @@
   overflow-y: hidden;
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
 }
 
 .home_clientReviewsWrapper_reviewCard {
@@ -58,58 +57,20 @@
 }
 
 .home_clientReviews_logosSlider {
-  /* background-color: blue; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-left: var(--80px);
-  padding-right: var(--80px);
+  /* border: 1px solid blue; */
   min-height: var(--90px);
   max-height: var(--90px);
-  overflow-y: hidden;
   margin-bottom: var(--sy-44px);
   margin-top: var(--sy-44px);
-
-  padding: clamp(3rem, calc(3vw + 0.1rem), 400px) 0;
-  box-shadow: 0px 15px 50px -3px #00000088;
-  position: relative;
+  box-shadow: 0px 0px var(--10px) 0px #00000080;
   overflow: hidden;
 }
 
-.home_clientReviews_logosSlider::before {
-  content: "";
-  width: 100%;
-  height: 1px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: rgb(255, 255, 255);
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.5) 0%,
-    rgba(32, 32, 32, 0.8183648459383753) 67%,
-    rgba(255, 255, 255, 0.5) 100%
-  );
-}
-
-.home_clientReviews_logosSlider::after {
-  content: "";
-  width: 100%;
-  height: 1px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  background: rgb(255, 255, 255);
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.5) 0%,
-    rgba(32, 32, 32, 0.8183648459383753) 37%,
-    rgba(255, 255, 255, 0.5) 100%
-  );
+.home_clientReviews_logosSlider .slick-slide {
+  margin-top: var(--sy-17px);
 }
 
 .home_clientReviews_logosSlider .slick-slide img {
-  background-color: red;
   margin: auto;
-  width: 50% !important;
+  width: 80% !important;
 }
