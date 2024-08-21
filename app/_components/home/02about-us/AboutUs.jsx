@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 export default function AboutUs() {
   // settings that handle features of carousel by slack carousel
-  const settings = {
+  const settings1 = {
     dots: false,
     arrows: false,
     infinite: true,
@@ -15,16 +15,32 @@ export default function AboutUs() {
     slidesToScroll: 4,
     autoplay: true,
     speed: 4000,
+    autoplaySpeed: 0,
     cssEase: "linear",
     pauseOnHover: false,
     swipeToSlide: false,
     centerMode: true,
   };
+  const settings2 = {
+    dots: false,
+    arrows: false,
+    infinite: true,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    autoplay: true,
+    speed: 4000,
+    autoplaySpeed: 0,
+    cssEase: "linear",
+    pauseOnHover: false,
+    swipeToSlide: false,
+    centerMode: true,
+    rtl:true
+  };
 
   return (
     <section className="home_aboutAs" id="about-us">
       <div className="home_aboutAs_sliderToken">
-        <Slider {...settings}>
+        <Slider {...settings1}>
           <div>
             <img
               style={{ width: "var(--500px)" }}
@@ -52,7 +68,7 @@ export default function AboutUs() {
         </Slider>
       </div>
       <div className="home_aboutAs_sliderToken">
-        <Slider {...settings}>
+        <Slider {...settings2}>
           <div>
             <img
               style={{ width: "var(--500px)" }}

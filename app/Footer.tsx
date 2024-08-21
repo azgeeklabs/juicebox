@@ -153,7 +153,7 @@ const Footer = () => {
               <Link href={"/"} className=" font-semibold text-[--14px]">
                 Home
               </Link>
-              <Link href={""} className=" font-semibold text-[--14px]">
+              <Link href={"#about-us"} className=" font-semibold text-[--14px]">
                 About Us
               </Link>
               <Link href={"/dashboard/services"} target="_blank" className=" font-semibold text-[--14px]">

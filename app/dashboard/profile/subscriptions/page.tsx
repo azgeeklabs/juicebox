@@ -1,9 +1,37 @@
+"use client"
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./subscriptions.module.css";
 import ServiceCard from "@/app/_components/serviceCard/ServiceCard";
 
-const Subscriptions = () => {
+const Billing = () => {
+
+  const [isDown, setIsDown] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement> ) => {
+    setIsDown(true);
+    setStartX(e.pageX - e.currentTarget.offsetLeft);
+    setScrollLeft(e.currentTarget.scrollLeft);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDown(false);
+  };
+
+  const handleMouseUp = () => {
+    setIsDown(false);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - e.currentTarget.offsetLeft;
+    const walk = (x - startX) * 2; // Multiply by 2 for faster scrolling
+    e.currentTarget.scrollLeft = scrollLeft - walk;
+  };
+
   return (
     <div className={`${styles.subscriptions} w-full h-full subscriptions`}>
       <h1 className=" text-[--32px] font-semibold mb-[--sy-19px]">
@@ -16,7 +44,10 @@ const Subscriptions = () => {
             <span>(8)</span>
           </div>
           <div
-            className={`${styles.services} px-[--20px] py-[--sy-16px] rounded-[--7px] bg-[#353535] w-full overflow-x-scroll services`}
+            className={`${styles.services} px-[--20px] py-[--sy-16px] rounded-[--7px] bg-[#353535] w-full overflow-x-hidden services cursor-grab active:cursor-grabbing`} onMouseDown={handleMouseDown}
+            onMouseLeave={handleMouseLeave}
+            onMouseUp={handleMouseUp}
+            onMouseMove={handleMouseMove}
           >
             <div className=" flex gap-[--8px] w-full">
               <ServiceCard
@@ -24,7 +55,6 @@ const Subscriptions = () => {
                 phase="Ideation Phase"
                 timeleft="26 Days Left"
               />
-
               <ServiceCard
                 title="Web Design"
                 phase="Ideation Phase"
@@ -44,9 +74,30 @@ const Subscriptions = () => {
             <span>(8)</span>
           </div>
           <div
-            className={`${styles.services} px-[--20px] py-[--sy-16px] rounded-[--7px] bg-[#353535] w-full overflow-x-scroll services h-full`}
+            className={`${styles.services} px-[--20px] py-[--sy-16px] rounded-[--7px] bg-[#353535] w-full overflow-x-hidden cursor-grab active:cursor-grabbing services h-full`} onMouseDown={handleMouseDown}
+            onMouseLeave={handleMouseLeave}
+            onMouseUp={handleMouseUp}
+            onMouseMove={handleMouseMove}
           >
             <div className=" flex gap-[--8px] w-full">
+              <span className=" bg-[#484848] w-[180px] rounded-[--28px] flex justify-center items-center py-[--sy-14px] font-bold shrink-0">
+                Web Design
+              </span>
+              <span className=" bg-[#484848] w-[180px] rounded-[--28px] flex justify-center items-center py-[--sy-14px] font-bold shrink-0">
+                Web Design
+              </span>
+              <span className=" bg-[#484848] w-[180px] rounded-[--28px] flex justify-center items-center py-[--sy-14px] font-bold shrink-0">
+                Web Design
+              </span>
+              <span className=" bg-[#484848] w-[180px] rounded-[--28px] flex justify-center items-center py-[--sy-14px] font-bold shrink-0">
+                Web Design
+              </span>
+              <span className=" bg-[#484848] w-[180px] rounded-[--28px] flex justify-center items-center py-[--sy-14px] font-bold shrink-0">
+                Web Design
+              </span>
+              <span className=" bg-[#484848] w-[180px] rounded-[--28px] flex justify-center items-center py-[--sy-14px] font-bold shrink-0">
+                Web Design
+              </span>
               <span className=" bg-[#484848] w-[180px] rounded-[--28px] flex justify-center items-center py-[--sy-14px] font-bold shrink-0">
                 Web Design
               </span>
@@ -83,6 +134,20 @@ const Subscriptions = () => {
               <span className=" text-[--32px] font-semibold">-</span>
             </div>
           </div>
+          <div className=" flex items-center justify-between">
+            <div className=" flex flex-col gap-[--sy-24px]">
+              <h2 className=" font-semibold">Total Services</h2>
+              <span className=" text-[--32px] font-semibold">26</span>
+            </div>
+            <div className=" flex flex-col gap-[--sy-24px]">
+              <h2 className=" font-semibold">Infinity Services</h2>
+              <span className=" text-[--32px] font-semibold">-</span>
+            </div>
+            <div className=" flex flex-col gap-[--sy-24px]">
+              <h2 className=" font-semibold">WhiteLabel</h2>
+              <span className=" text-[--32px] font-semibold">-</span>
+            </div>
+          </div>
         </div>
       </div>
       <div className=" w-full  ">
@@ -96,14 +161,17 @@ const Subscriptions = () => {
         <div className={`${styles.tableBody} overflow-y-scroll h-[53vh]`}>
           {Array(10)
             .fill(0)
-            .map((e) => (
-              <ul className=" w-full flex justify-between items-center py-[--sy-16px] border-b-[1px] border-[#3f3f3f]">
+            .map((e, i) => (
+              <ul
+                key={i}
+                className=" w-full flex justify-between items-center py-[--sy-16px] border-b-[1px] border-[#3f3f3f] hover:bg-[#1d1d1d] group"
+              >
                 <li className=" w-[20%] text-center">SEO</li>
                 <li className=" w-[20%] text-center">07 January 2025</li>
                 <li className=" w-[20%] text-center">07 January 2025</li>
                 <li className=" w-[20%] text-center">$200</li>
                 <li className=" w-[20%] text-center">
-                  <button className=" px-[--24px] py-[--sy-8px] rounded-[--26px] text-[#b1b1b1] bg-[#1d1d1d] font-semibold">
+                  <button className=" px-[--24px] py-[--sy-8px] rounded-[--26px] text-[#b1b1b1] bg-[#1d1d1d] font-semibold group-hover:bg-[#353535]">
                     Cancel Plan
                   </button>
                 </li>
@@ -115,4 +183,4 @@ const Subscriptions = () => {
   );
 };
 
-export default Subscriptions;
+export default Billing;

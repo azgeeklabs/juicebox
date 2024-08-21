@@ -1,44 +1,124 @@
 "use client";
 import React from "react";
-// Import css files
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import "./clientReviews.css";
-import Slider from "react-slick";
-import image from "@/public/assets/companyLogo1.png";
-import image1 from "@/public/assets/companyLogo2.png";
+import dynamic from "next/dynamic";
+
+const LogosSlider = dynamic(() => import("./LogosSlider"), {
+  ssr: false,
+});
 
 export default function ClientReviews() {
-  // settings that handle features of carousel by slack carousel
-  const settings = {
-    dots: false,
-    arrows: false,
-    infinite: true,
-    slidesToShow: 5,
-    slidesToScroll: 5,
-    autoplay: true,
-    speed: 8000,
-    cssEase: "linear",
-    pauseOnHover: true,
-    swipeToSlide: true,
-    centerMode: true,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-        },
-      },
-    ],
-  };
+  const avatarImg = (
+    <svg
+      className="h-[--55px] w-[--55px]"
+      viewBox="0 0 56 56"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        cx="27.783"
+        cy="27.783"
+        r="27.273"
+        fill="#1C1C1C"
+        stroke="#F8F24B"
+        stroke-width="1.021"
+      />
+      <path
+        d="M29.827 37.685a53.5 53.5 0 0 1-7.578-1.564c-5.037-1.457-9.87-3.88-13.617-7.546 3.555-3.445 5.497-5.444 8.336-9.495 2.106-3.007 4.754-8.333 8.495-9.591 5.863-1.974 13.59.445 14.991 7.009.591 2.774.51 5.65.013 8.43-.226 1.254-1.96 13.509-2.69 13.469-2.655-.146-5.312-.354-7.95-.712"
+        fill="#F2D4CF"
+      />
+      <path
+        d="M45.273 41.813a25.38 25.38 0 0 1-31.118-1.299l6.804-2.885a7 7 0 0 0 .61-.299l.157-.09q.084-.05.166-.102a6.4 6.4 0 0 0 2.1-2.188c.589-1.017.813-2.156.865-3.324.03-.786.016-1.574.037-2.361q.016-.653.035-1.308l.27.148.7.396 4.138.865 4.25.888-.035 4.402-.017 2.183 1.552.697 1.218.546z"
+        fill="#F2A196"
+      />
+      <path
+        d="M34.256 33.952c-.382.216-.74.312-1.047.267-2.025-.294-5.93-2.035-8.315-5.076q.008-.217.008-.433.016-.654.034-1.307l.27.148.701.396 4.136.863 4.25.888z"
+        fill="#E88870"
+      />
+      <path
+        d="M21.571 25.766a2.338 2.338 0 1 0 .174-4.672 2.338 2.338 0 0 0-.174 4.672"
+        fill="#F2A196"
+      />
+      <path
+        d="M22.405 25.523a2.338 2.338 0 1 0 .175-4.672 2.338 2.338 0 0 0-.175 4.672"
+        fill="#E88870"
+      />
+      <path
+        d="M37.662 20.484c1.404 5.652-2.276 12.282-4.383 12.204-2.886-.108-9.809-2.674-11.213-8.326-1.405-5.652.947-11.1 5.253-12.171s8.942 2.643 10.343 8.293"
+        fill="#F2A196"
+      />
+      <path
+        d="M28.82 24.592a2.613 2.613 0 1 0 .195-5.222 2.613 2.613 0 0 0-.195 5.222Zm7.317-.14a2.613 2.613 0 1 0 .195-5.222 2.613 2.613 0 0 0-.195 5.222Z"
+        stroke="#fff"
+        stroke-width=".159"
+        stroke-miterlimit="10"
+      />
+      <path
+        d="M32.625 12.854c-.687 2.548-2.059 4.682-4.478 6.182-2.61 1.668-5.544 1.807-8.497 2.279.141-1.8.253-3.727 1.244-5.3a10.93 10.93 0 0 1 4.595-4.005c2.073-.977 5.26-1.89 7.52-1.075a16 16 0 0 1-.384 1.919"
+        fill="#F2D4CF"
+      />
+      <path
+        d="M32.577 20.556c-.013.047.922 4.486.922 4.486l-1.718-.064m2.423-5.766a4.3 4.3 0 0 1 3.153-.18m-10.746.406a5.06 5.06 0 0 1 4.297.022"
+        stroke="#00214E"
+        stroke-width=".159"
+        stroke-miterlimit="10"
+      />
+      <path
+        d="m31.529 22.078 2.087-.1"
+        stroke="#fff"
+        stroke-width=".159"
+        stroke-miterlimit="10"
+      />
+      <path
+        d="M45.271 41.814a25.38 25.38 0 0 1-31.118-1.3l6.804-2.884a6.4 6.4 0 0 0 1.2-.671 6.4 6.4 0 0 0 1.834-2.008c.348-.61.588-1.275.712-1.966q.14.146.295.278a13.1 13.1 0 0 0 4.084 2.21c1.455.483 2.985.703 4.517.648l.639-.028-.006.699-.002.045 1.638.738z"
+        fill="#00214E"
+      />
+      <path
+        d="M28.784 26.42a.255.255 0 0 1 .37-.057c.28.212.785.657 1.522.833 1.004.238 1.896-.133 2.096.136.113.151-.038.324-.323.545a2.72 2.72 0 0 1-2.06.43c-.967-.218-1.656-1.374-1.641-1.772a.23.23 0 0 1 .036-.116"
+        fill="#fff"
+      />
+      <path
+        d="M29.082 21.113c.838.038.79 1.32-.048 1.296l-.039-.001c-.838-.038-.79-1.32.049-1.296zm6.911.167c.778.029.733 1.224-.045 1.202l-.035-.001c-.778-.036-.734-1.225.044-1.202z"
+        fill="#00214E"
+      />
+    </svg>
+  );
+
+  const starsImg = (
+    <svg
+      className="h-[--17px] w-[--122px]"
+      viewBox="0 0 122 17"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8.256.918c.236-.523.354-.785.518-.865.142-.07.31-.07.452 0 .164.08.282.342.518.865l1.877 4.17c.07.155.104.232.158.292a.5.5 0 0 0 .171.123c.074.032.159.041.329.059l4.584.48c.576.06.864.09.992.219a.5.5 0 0 1 .14.426c-.027.18-.242.371-.672.755L13.898 10.5c-.127.113-.19.17-.23.239a.5.5 0 0 0-.066.199c-.008.08.01.162.045.328l.957 4.466c.12.56.18.841.095 1.002a.51.51 0 0 1-.366.263c-.18.03-.431-.113-.933-.4l-3.993-2.28c-.148-.085-.222-.127-.301-.144a.5.5 0 0 0-.212 0c-.079.017-.153.059-.3.144L4.6 16.596c-.501.287-.752.43-.933.4a.5.5 0 0 1-.366-.263c-.085-.161-.025-.441.096-1.002l.956-4.466c.036-.166.053-.249.045-.328a.5.5 0 0 0-.066-.2c-.04-.068-.103-.125-.23-.239L.677 7.443c-.43-.384-.645-.575-.672-.755a.5.5 0 0 1 .14-.426c.128-.13.416-.16.992-.22l4.584-.479c.17-.018.255-.027.329-.06a.5.5 0 0 0 .171-.122c.054-.06.089-.137.158-.292zm26 0c.236-.523.354-.785.518-.865.142-.07.31-.07.452 0 .164.08.282.342.518.865l1.877 4.17c.07.155.104.232.158.292a.5.5 0 0 0 .171.123c.074.032.159.041.329.059l4.584.48c.576.06.864.09.992.219a.5.5 0 0 1 .14.426c-.027.18-.242.371-.672.755L39.898 10.5c-.127.113-.19.17-.23.239a.5.5 0 0 0-.066.199c-.008.08.01.162.045.328l.956 4.466c.12.56.18.841.096 1.002a.51.51 0 0 1-.366.263c-.18.03-.431-.113-.933-.4l-3.993-2.28c-.148-.085-.222-.127-.301-.144a.5.5 0 0 0-.212 0c-.078.017-.153.059-.3.144l-3.994 2.28c-.502.287-.752.43-.933.4a.5.5 0 0 1-.366-.263c-.085-.161-.025-.441.096-1.002l.956-4.466c.035-.166.053-.249.045-.328a.5.5 0 0 0-.066-.2c-.04-.068-.103-.125-.23-.239l-3.425-3.056c-.43-.384-.645-.575-.672-.755a.5.5 0 0 1 .14-.426c.128-.13.416-.16.992-.22l4.584-.479c.17-.018.255-.027.329-.06a.5.5 0 0 0 .171-.122c.054-.06.089-.137.158-.292zm26 0c.236-.523.354-.785.518-.865.142-.07.31-.07.452 0 .164.08.282.342.518.865l1.877 4.17c.07.155.104.232.158.292a.5.5 0 0 0 .171.123c.074.032.159.041.329.059l4.584.48c.576.06.864.09.992.219a.5.5 0 0 1 .14.426c-.027.18-.242.371-.672.755L65.898 10.5c-.127.113-.19.17-.23.239a.5.5 0 0 0-.066.199c-.008.08.01.162.045.328l.956 4.466c.12.56.18.841.096 1.002a.51.51 0 0 1-.366.263c-.18.03-.431-.113-.933-.4l-3.993-2.28c-.148-.085-.222-.127-.301-.144a.5.5 0 0 0-.212 0c-.078.017-.153.059-.3.144l-3.994 2.28c-.502.287-.752.43-.933.4a.5.5 0 0 1-.366-.263c-.085-.161-.025-.441.096-1.002l.956-4.466c.035-.166.053-.249.045-.328a.5.5 0 0 0-.066-.2c-.04-.068-.103-.125-.23-.239l-3.425-3.056c-.43-.384-.645-.575-.672-.755a.5.5 0 0 1 .14-.426c.128-.13.416-.16.992-.22l4.584-.479c.17-.018.255-.027.329-.06a.5.5 0 0 0 .171-.122c.054-.06.089-.137.158-.292zm26 0c.236-.523.354-.785.518-.865.142-.07.31-.07.452 0 .164.08.282.342.518.865l1.877 4.17c.07.155.104.232.158.292a.5.5 0 0 0 .171.123c.074.032.159.041.329.059l4.584.48c.576.06.864.09.992.219a.5.5 0 0 1 .14.426c-.027.18-.242.371-.672.755L91.898 10.5c-.127.113-.19.17-.23.239a.5.5 0 0 0-.066.199c-.008.08.01.162.045.328l.956 4.466c.12.56.18.841.096 1.002a.51.51 0 0 1-.366.263c-.18.03-.431-.113-.933-.4l-3.993-2.28c-.148-.085-.222-.127-.301-.144a.5.5 0 0 0-.212 0c-.079.017-.153.059-.3.144l-3.994 2.28c-.501.287-.752.43-.933.4a.5.5 0 0 1-.366-.263c-.085-.161-.025-.441.096-1.002l.956-4.466c.035-.166.053-.249.045-.328a.5.5 0 0 0-.066-.2c-.04-.068-.103-.125-.23-.239l-3.425-3.056c-.43-.384-.645-.575-.672-.755a.5.5 0 0 1 .14-.426c.128-.13.416-.16.992-.22l4.584-.479c.17-.018.255-.027.329-.06a.5.5 0 0 0 .171-.122c.054-.06.089-.137.158-.292zm26 0c.236-.523.354-.785.518-.865.142-.07.31-.07.452 0 .164.08.282.342.518.865l1.877 4.17c.069.155.104.232.158.292a.5.5 0 0 0 .171.123c.074.032.159.041.329.059l4.584.48c.576.06.864.09.992.219.111.113.163.27.14.426-.027.18-.242.371-.672.755l-3.425 3.057c-.127.113-.19.17-.23.239a.5.5 0 0 0-.066.199c-.008.08.009.162.045.328l.957 4.466c.12.56.18.841.095 1.002a.51.51 0 0 1-.366.263c-.181.03-.431-.113-.933-.4l-3.993-2.28c-.148-.085-.222-.127-.301-.144a.5.5 0 0 0-.212 0c-.079.017-.153.059-.301.144l-3.993 2.28c-.501.287-.752.43-.933.4a.51.51 0 0 1-.366-.263c-.085-.161-.025-.441.096-1.002l.956-4.466c.036-.166.053-.249.045-.328a.5.5 0 0 0-.065-.2c-.041-.068-.104-.125-.231-.239l-3.425-3.056c-.43-.384-.645-.575-.672-.755a.5.5 0 0 1 .14-.426c.128-.13.416-.16.992-.22l4.584-.479c.17-.018.255-.027.329-.06a.5.5 0 0 0 .171-.122c.054-.06.089-.137.158-.292z"
+        fill="#F8F24B"
+      />
+    </svg>
+  );
+
+  const moreReviewsBtn = (
+    <svg
+      className="w-[--173px] h-[--54px] cursor-pointer"
+      viewBox="0 0 173 54"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect width="136" height="37" rx="18.5" fill="#F8F24B" />
+      <path
+        d="M24.725 12.684a.27.27 0 0 1 .24-.136h1.997q.085 0 .137.068.068.051.068.137v11.542a.2.2 0 0 1-.068.154.2.2 0 0 1-.137.051h-1.998a.25.25 0 0 1-.153-.051.25.25 0 0 1-.052-.154v-7.53q0-.068-.034-.068t-.068.051l-1.81 2.834a.27.27 0 0 1-.24.137h-1.006a.27.27 0 0 1-.24-.137l-1.81-2.834q-.033-.05-.068-.034-.034 0-.034.068v7.513a.2.2 0 0 1-.068.154.2.2 0 0 1-.137.051h-1.997a.25.25 0 0 1-.154-.051.25.25 0 0 1-.051-.154V12.753q0-.086.05-.137a.2.2 0 0 1 .155-.068h1.997q.154 0 .24.136l2.56 3.979q.052.102.103 0zm8.245 11.953q-1.435 0-2.46-.752-1.023-.75-1.4-2.049a6 6 0 0 1-.238-1.741q0-1.008.239-1.81.392-1.265 1.417-1.98 1.025-.718 2.459-.718 1.4 0 2.39.717.99.7 1.4 1.964.273.853.273 1.793 0 .922-.239 1.724-.375 1.332-1.4 2.1-1.007.752-2.441.752m0-2.066q.563 0 .956-.342.393-.341.563-.939.137-.547.137-1.195 0-.718-.137-1.213-.188-.58-.58-.905a1.45 1.45 0 0 0-.956-.324q-.582 0-.974.325-.375.324-.546.904-.137.41-.137 1.213 0 .768.12 1.195.17.597.563.94.41.34.99.34m10-6.967q.613 0 .973.24.136.067.102.255l-.359 1.947q-.016.204-.239.12a1.9 1.9 0 0 0-.597-.086q-.137 0-.376.034-.615.051-1.041.461-.427.393-.427 1.059v4.661a.2.2 0 0 1-.069.154.2.2 0 0 1-.136.051h-1.998a.25.25 0 0 1-.154-.051.25.25 0 0 1-.05-.154v-8.367q0-.084.05-.136a.2.2 0 0 1 .154-.068H40.8q.085 0 .136.068.069.052.069.136v.65q0 .05.034.068.034.016.051-.017.7-1.025 1.878-1.025m9.717 3.603q.102.648.068 1.451-.017.205-.222.205h-5.276q-.102 0-.068.085.05.342.188.683.443.957 1.81.957 1.092-.018 1.724-.888.068-.103.154-.103.051 0 .12.069l1.228 1.212q.087.085.086.154 0 .034-.068.136a3.8 3.8 0 0 1-1.452 1.093q-.888.376-1.946.376-1.47 0-2.493-.666-1.007-.666-1.451-1.861-.36-.855-.36-2.237 0-.939.257-1.657.393-1.211 1.366-1.929.99-.717 2.34-.717 1.707 0 2.731.99 1.042.99 1.264 2.647m-3.979-1.554q-1.076 0-1.417 1.008-.068.221-.12.546.001.085.086.085h2.954q.102 0 .068-.085-.085-.495-.085-.478a1.4 1.4 0 0 0-.547-.786q-.375-.29-.939-.29m15.66 6.847a.24.24 0 0 1-.24-.154l-2.134-4.73q-.035-.068-.102-.068h-1.588q-.086 0-.086.086v4.661a.2.2 0 0 1-.068.154.2.2 0 0 1-.137.051h-1.997a.25.25 0 0 1-.154-.051.25.25 0 0 1-.051-.154V12.753q0-.086.051-.137a.2.2 0 0 1 .154-.068h4.883q1.093 0 1.912.444.837.444 1.281 1.263.46.82.461 1.896 0 1.16-.58 1.997-.581.82-1.623 1.161-.085.035-.05.12l2.321 4.832q.035.069.035.102 0 .137-.188.137zm-4.064-9.886q-.086 0-.086.085v2.92q0 .085.086.085h2.236q.718 0 1.162-.427.46-.426.46-1.11 0-.682-.46-1.11-.444-.443-1.161-.443zm15.494 4.593q.102.648.068 1.451-.016.205-.222.205h-5.276q-.102 0-.068.085.05.342.187.683.445.957 1.81.957 1.094-.018 1.725-.888.068-.103.153-.103.053 0 .12.069l1.23 1.212q.084.085.085.154 0 .034-.069.136a3.8 3.8 0 0 1-1.45 1.093q-.89.376-1.947.376-1.47 0-2.493-.666-1.008-.666-1.452-1.861-.358-.855-.358-2.237 0-.939.256-1.657.393-1.211 1.366-1.929.99-.717 2.34-.717 1.707 0 2.731.99 1.042.99 1.264 2.647m-3.979-1.554q-1.076 0-1.417 1.008-.068.221-.12.546 0 .085.086.085h2.954q.102 0 .068-.085-.085-.495-.085-.478a1.42 1.42 0 0 0-.547-.786q-.375-.29-.939-.29m7.489 6.847q-.171 0-.222-.17l-2.732-8.384a.2.2 0 0 1-.017-.086q0-.153.188-.153h2.202q.188 0 .24.17l1.4 5.174q.016.051.05.051t.052-.051l1.4-5.174q.051-.17.24-.17l2.202.034q.103 0 .153.068.052.051.017.17l-2.714 8.35q-.052.171-.222.171zm7.727-9.767q-.58 0-.974-.375a1.35 1.35 0 0 1-.375-.974q0-.598.375-.973t.974-.375.973.375.376.973q0 .58-.393.974-.376.375-.956.375M86.01 24.5a.25.25 0 0 1-.154-.051.25.25 0 0 1-.05-.154v-8.384q0-.084.05-.136a.2.2 0 0 1 .154-.069h1.998q.085 0 .136.069.069.052.069.136v8.384a.2.2 0 0 1-.069.154.2.2 0 0 1-.136.051zm11.848-5.293q.102.648.068 1.451-.016.205-.222.205h-5.276q-.102 0-.068.085.051.342.188.683.444.957 1.81.957 1.092-.018 1.724-.888.069-.103.154-.103.051 0 .12.069l1.229 1.212q.085.085.085.154 0 .034-.068.136a3.8 3.8 0 0 1-1.452 1.093q-.887.376-1.946.376-1.469 0-2.493-.666-1.007-.666-1.451-1.861-.36-.855-.359-2.237 0-.939.256-1.657.393-1.211 1.366-1.929.99-.717 2.34-.717 1.708 0 2.731.99 1.042.99 1.264 2.647m-3.978-1.554q-1.076 0-1.418 1.008-.067.221-.12.546.001.085.086.085h2.954q.103 0 .069-.085-.086-.495-.086-.478a1.42 1.42 0 0 0-.546-.786q-.376-.29-.94-.29m7.232 6.847q-.188 0-.239-.17l-2.459-8.384-.017-.069q0-.17.188-.17h2.066q.188 0 .239.17l1.229 5.157q.018.051.052.051t.051-.051l1.281-5.157q.05-.17.239-.17h1.792q.188 0 .239.17l1.349 5.174q.018.051.052.051.033 0 .051-.051l1.332-5.174q.05-.17.239-.17l2.049.034q.102 0 .136.068.052.05.034.154l-2.492 8.366q-.052.171-.222.171h-2.067q-.187 0-.239-.17l-1.314-4.577q-.018-.051-.052-.051-.033 0-.051.051l-1.161 4.576q-.051.171-.239.171zm14.071.12q-1.145 0-1.998-.325-.854-.324-1.332-.905a2.06 2.06 0 0 1-.461-1.315v-.17q0-.086.051-.137a.2.2 0 0 1 .154-.068h1.895q.086 0 .137.068a.16.16 0 0 1 .068.137v.017q0 .375.41.649.428.256 1.059.256.58 0 .939-.222.358-.24.358-.58 0-.309-.307-.462-.308-.153-1.007-.324a10 10 0 0 1-1.264-.393q-1.093-.375-1.741-.922-.65-.547-.649-1.57 0-1.265.973-1.999.99-.75 2.612-.75 1.093 0 1.913.358.819.341 1.263.973.462.632.461 1.434a.2.2 0 0 1-.068.154.2.2 0 0 1-.137.051h-1.827a.25.25 0 0 1-.153-.051.25.25 0 0 1-.051-.154q0-.375-.393-.632-.376-.256-1.008-.256-.563 0-.922.205-.358.205-.358.564 0 .34.341.512.359.17 1.178.358l.427.12q.24.051.513.137 1.212.358 1.912.922.7.563.7 1.639 0 1.263-1.007 1.98-.991.7-2.681.7"
+        fill="#1D1D1D"
+      />
+      <path
+        d="m162.328 23.995 4.313 9.243c2.661 5.702.158 12.506-5.601 15.194-5.759 2.687-12.581.234-15.241-5.468l-4.314-9.243c-2.66-5.702-.158-12.506 5.601-15.193 5.759-2.688 12.581-.235 15.242 5.467Zm-11.679-2.054a1.78 1.78 0 0 0-2.369-.853 1.78 1.78 0 0 0-.867 2.363l2.156 4.622a1.78 1.78 0 0 0 2.369.853 1.78 1.78 0 0 0 .868-2.363z"
+        fill="#1D1D1D"
+        stroke="#F8F24B"
+      />
+    </svg>
+  );
+
+
   return (
     <section className="home_clientReviews">
       <div className="home_clientReviews_title">
@@ -46,492 +126,363 @@ export default function ClientReviews() {
       </div>
 
       <div className="home_clientReviewsWrapper">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          doloremque quisquam et ratione quod aspernatur saepe asperiores facere
-          rerum ex eaque dolore, laborum quis iure delectus eum tempore incidunt
-          itaque.
-        </p>
+        <div className="flex flex-col justify-end">
+          <svg
+            className="h-[--115px] w-[--364px] cursor-pointer"
+            viewBox="0 0 364 115"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="8.59386"
+              y="113.452"
+              width="79"
+              height="355"
+              rx="39.5"
+              transform="rotate(-95.4503 8.59386 113.452)"
+              fill="#1D1D1D"
+              stroke="#F8F24B"
+              stroke-width="2"
+            />
+            <circle
+              cx="49.4501"
+              cy="70.1586"
+              r="27.2728"
+              transform="rotate(-5.45026 49.4501 70.1586)"
+              fill="#1C1C1C"
+              stroke="#F8F24B"
+              stroke-width="1.02125"
+            />
+            <path
+              d="M52.4246 79.8208C49.8437 79.7279 47.2729 79.4481 44.7325 78.9836C39.5796 78.0119 34.5393 76.0597 30.46 72.7654C33.6719 68.998 35.4153 66.824 37.8564 62.5213C39.6675 59.3282 41.798 53.7748 45.402 52.1667C51.0512 49.6454 58.9735 51.3191 60.9915 57.7205C61.8437 60.4261 62.0361 63.2967 61.8051 66.1119C61.6995 67.3811 61.1369 79.7449 60.4058 79.7748C57.7493 79.8817 55.0851 79.9271 52.4246 79.8208Z"
+              fill="#F2D4CF"
+            />
+            <path
+              d="M68.193 82.4636C63.9306 86.1569 58.5594 88.3253 52.9276 88.6263C47.2957 88.9274 41.724 87.344 37.0921 84.1261L43.5913 80.6079C43.7902 80.4994 43.9833 80.3806 44.1699 80.2521L44.3181 80.1471C44.371 80.1096 44.4225 80.0708 44.4739 80.0306C45.283 79.4004 45.9289 78.5849 46.357 77.6529C46.8462 76.5846 46.9611 75.4291 46.9018 74.2617C46.8563 73.4764 46.7683 72.6936 46.7145 71.9074C46.6839 71.473 46.6541 71.0381 46.6252 70.6026L46.9078 70.724L47.643 71.052L51.8439 71.5196L56.1584 71.9999L56.5417 76.3856L56.7324 78.5607L58.3439 79.1065L59.6084 79.5347L68.193 82.4636Z"
+              fill="#F2A196"
+            />
+            <path
+              d="M56.4797 75.6837C56.1196 75.9359 55.773 76.0648 55.4622 76.0497C53.4191 75.949 49.3663 74.5871 46.7027 71.7866C46.6943 71.642 46.6832 71.498 46.6694 71.3546C46.6387 70.9193 46.6089 70.4843 46.5801 70.0498L46.8626 70.1712L47.5979 70.4992L51.7972 70.9655L56.1118 71.4458L56.4797 75.6837Z"
+              fill="#E88870"
+            />
+            <path
+              d="M43.0738 68.7407C44.3628 68.6661 45.3472 67.5607 45.2726 66.2717C45.198 64.9827 44.0926 63.9983 42.8036 64.0729C41.5146 64.1475 40.5302 65.2529 40.6048 66.5419C40.6794 67.8309 41.7848 68.8153 43.0738 68.7407Z"
+              fill="#F2A196"
+            />
+            <path
+              d="M43.8805 68.4184C45.1694 68.3438 46.1539 67.2384 46.0793 65.9494C46.0046 64.6605 44.8992 63.676 43.6103 63.7506C42.3213 63.8253 41.3369 64.9307 41.4115 66.2196C41.4861 67.5086 42.5915 68.493 43.8805 68.4184Z"
+              fill="#E88870"
+            />
+            <path
+              d="M58.5908 61.9538C60.5259 67.4468 57.4914 74.3969 55.3868 74.5187C52.5037 74.6856 45.3688 72.7886 43.4336 67.2956C41.4985 61.8027 43.3219 56.1555 47.5067 54.6805C51.6915 53.2054 56.6598 56.462 58.5908 61.9538Z"
+              fill="#F2A196"
+            />
+            <path
+              d="M50.179 66.8828C51.6196 66.7994 52.7199 65.564 52.6365 64.1234C52.5531 62.6828 51.3176 61.5825 49.877 61.6659C48.4364 61.7493 47.3362 62.9847 47.4195 64.4254C47.5029 65.866 48.7384 66.9662 50.179 66.8828Z"
+              stroke="white"
+              stroke-width="0.158771"
+              stroke-miterlimit="10"
+            />
+            <path
+              d="M57.4495 66.0489C58.8901 65.9655 59.9904 64.73 59.907 63.2894C59.8236 61.8488 58.5881 60.7485 57.1475 60.8319C55.7069 60.9153 54.6067 62.1508 54.6901 63.5914C54.7734 65.032 56.0089 66.1322 57.4495 66.0489Z"
+              stroke="white"
+              stroke-width="0.158771"
+              stroke-miterlimit="10"
+            />
+            <path
+              d="M52.8516 54.8365C52.4099 57.438 51.247 59.6927 48.9816 61.4162C46.541 63.3248 43.6338 63.741 40.7391 64.4913C40.709 62.6871 40.6373 60.7573 41.4737 59.0972C42.424 57.2547 43.8788 55.7205 45.6683 54.6738C47.6393 53.5046 50.7249 52.2928 53.0516 52.8896C53.0261 53.5421 52.9593 54.1924 52.8516 54.8365Z"
+              fill="#F2D4CF"
+            />
+            <path
+              d="M53.535 62.508C53.5268 62.5567 54.8794 66.8864 54.8794 66.8864L53.1633 66.9857"
+              stroke="#00214E"
+              stroke-width="0.158771"
+              stroke-miterlimit="10"
+            />
+            <path
+              d="M55.028 61.0152C55.9698 60.465 57.0858 60.294 58.1492 60.537"
+              stroke="#00214E"
+              stroke-width="0.158771"
+              stroke-miterlimit="10"
+            />
+            <path
+              d="M47.4908 61.9616C48.132 61.5869 48.8479 61.3581 49.5876 61.2915C50.3272 61.2249 51.0725 61.322 51.7703 61.5761"
+              stroke="#00214E"
+              stroke-width="0.158771"
+              stroke-miterlimit="10"
+            />
+            <path
+              d="M52.6362 64.1234L54.7045 63.826"
+              stroke="white"
+              stroke-width="0.158771"
+              stroke-miterlimit="10"
+            />
+            <path
+              d="M68.1913 82.4642C63.9289 86.1575 58.5577 88.3258 52.9258 88.6269C47.294 88.9279 41.7223 87.3445 37.0904 84.1267L43.5896 80.6085C43.899 80.4405 44.1942 80.2474 44.4722 80.0312C44.5565 79.9657 44.6407 79.8975 44.7207 79.8267C45.4155 79.2283 45.9731 78.487 46.3553 77.6535C46.6436 77.0133 46.8202 76.3285 46.8772 75.6287C46.9796 75.717 47.0865 75.8 47.1974 75.8774C48.0752 76.4511 49.0189 76.9173 50.0079 77.2657C50.4881 77.4342 50.9773 77.5755 51.4733 77.6892C52.9676 78.0326 54.5113 78.1061 56.0315 77.9061C56.242 77.8774 56.4536 77.8445 56.6642 77.8171L56.7251 78.5133L56.7277 78.5586L58.428 79.1379L68.1913 82.4642Z"
+              fill="#00214E"
+            />
+            <path
+              d="M50.3169 68.705C50.3337 68.674 50.3567 68.6468 50.3846 68.6252C50.4124 68.6035 50.4445 68.5879 50.4787 68.5793C50.5129 68.5707 50.5486 68.5694 50.5834 68.5753C50.6181 68.5812 50.6513 68.5943 50.6807 68.6137C50.978 68.799 51.5242 69.193 52.2742 69.2984C53.2962 69.4403 54.1487 68.986 54.3739 69.2347C54.5005 69.3748 54.3666 69.5616 54.104 69.8082C53.8273 70.0408 53.5068 70.2157 53.1615 70.3227C52.8162 70.4298 52.453 70.4667 52.0932 70.4315C51.1107 70.3065 50.3151 69.2217 50.292 68.8236C50.2895 68.7825 50.2981 68.7416 50.3169 68.705Z"
+              fill="white"
+            />
+            <path
+              d="M50.1089 63.395C50.9468 63.3534 51.0209 64.6343 50.1839 64.6896L50.1454 64.6919C49.3076 64.7335 49.2334 63.4526 50.0705 63.3972L50.1089 63.395Z"
+              fill="#00214E"
+            />
+            <path
+              d="M57.0042 62.9046C57.7813 62.8596 57.8504 64.0541 57.0738 64.1059L57.0381 64.108C56.2606 64.1461 56.1919 62.9585 56.9685 62.9067L57.0042 62.9046Z"
+              fill="#00214E"
+            />
+            <path
+              d="M115.644 70.3278C114.771 70.411 113.935 70.3936 113.135 70.2756C112.333 70.1462 111.655 69.9308 111.1 69.6292L110.815 66.6376L114.215 66.3133L114.231 66.4833C114.289 67.0952 114.613 67.373 115.202 67.3168C115.508 67.2876 115.727 67.1867 115.859 67.014C116.002 66.8288 116.056 66.5606 116.023 66.2094L115.39 59.5803L113.861 59.7263L113.595 56.9387L120.733 56.2576L120.999 59.0451L120.15 59.1262L120.695 64.8374C120.853 66.5032 120.485 67.7961 119.59 68.7163C118.693 69.6252 117.378 70.1623 115.644 70.3278ZM127.695 69.1779C126.086 69.3314 124.788 69.0322 123.802 68.2801C122.814 67.5167 122.243 66.3248 122.089 64.7044C121.934 63.084 122.27 61.8112 123.096 60.8862C123.922 59.9498 125.139 59.4049 126.748 59.2513C128.38 59.0956 129.685 59.4057 130.662 60.1815C131.638 60.946 132.203 62.1271 132.355 63.7248C132.51 65.3453 132.174 66.6237 131.349 67.56C130.522 68.4851 129.304 69.0244 127.695 69.1779ZM127.407 66.1523C127.735 66.121 127.971 66.0127 128.113 65.8276C128.266 65.6301 128.324 65.3444 128.289 64.9704L128.127 63.2707C128.091 62.8967 127.98 62.6329 127.794 62.4791C127.618 62.3129 127.366 62.2455 127.037 62.2769C126.708 62.3082 126.468 62.4227 126.315 62.6202C126.173 62.8053 126.119 63.0849 126.155 63.4588L126.317 65.1586C126.353 65.5325 126.459 65.8026 126.634 65.9687C126.821 66.1225 127.078 66.1837 127.407 66.1523ZM144.367 64.5341L144.633 67.3216L139.262 67.8341L138.996 65.0465L139.71 64.9784L139.444 62.1908C139.408 61.8169 139.303 61.5525 139.128 61.3977C138.952 61.2315 138.706 61.1635 138.388 61.1938C137.709 61.2587 137.403 61.6537 137.472 62.379L137.738 65.1666L138.452 65.0984L138.718 67.886L133.347 68.3985L133.081 65.6109L133.829 65.5396L133.099 57.8907L132.351 57.962L132.085 55.1744L136.743 54.7301L137.229 59.8293C137.599 59.2681 138.015 58.8339 138.477 58.5268C138.939 58.2196 139.494 58.0353 140.14 57.9736C141.08 57.8839 141.811 58.1115 142.332 58.6564C142.864 59.2002 143.179 59.9878 143.277 61.0189L143.62 64.6054L144.367 64.5341ZM156.203 63.4048L156.469 66.1924L151.097 66.7049L150.831 63.9173L151.545 63.8492L151.279 61.0616C151.244 60.6877 151.138 60.4233 150.964 60.2684C150.788 60.1023 150.541 60.0343 150.224 60.0646C149.544 60.1295 149.238 60.5245 149.308 61.2497L149.574 64.0373L150.287 63.9692L150.553 66.7568L145.182 67.2693L144.916 64.4817L145.664 64.4103L145.294 60.5349L144.547 60.6063L144.281 57.8187L148.938 57.3743L149.064 58.7001C149.781 57.5797 150.751 56.9612 151.975 56.8444C152.915 56.7547 153.646 56.9823 154.167 57.5272C154.699 58.071 155.014 58.8585 155.113 59.8897L155.455 63.4762L156.203 63.4048ZM161.881 62.863L162.731 62.7819L162.003 55.15L161.153 55.2311L160.886 52.4265L167.787 51.7681C169.679 51.5875 171.23 51.9655 172.44 52.9021C173.66 53.8262 174.382 55.4555 174.605 57.7898C174.827 60.1241 174.427 61.866 173.405 63.0156C172.393 64.1527 170.941 64.8116 169.048 64.9921L162.147 65.6506L161.881 62.863ZM168.476 62.2337C168.862 62.197 169.141 62.0674 169.314 61.8451C169.487 61.6227 169.553 61.2963 169.512 60.8656L169.022 55.7324C168.942 54.8939 168.517 54.5113 167.747 54.5849L166.761 54.6789L167.491 62.3278L168.476 62.2337ZM180.862 64.1051C179.253 64.2586 177.955 63.9593 176.969 63.2073C175.981 62.4439 175.41 61.252 175.256 59.6316C175.101 58.0111 175.437 56.7384 176.263 55.8134C177.089 54.877 178.306 54.332 179.915 54.1785C181.547 54.0228 182.852 54.3329 183.829 55.1087C184.805 55.8731 185.37 57.0542 185.522 58.652C185.677 60.2724 185.341 61.5508 184.516 62.4872C183.689 63.4123 182.472 63.9515 180.862 64.1051ZM180.574 61.0795C180.902 61.0482 181.138 60.9399 181.28 60.7548C181.433 60.5573 181.491 60.2715 181.456 59.8976L181.294 58.1979C181.258 57.8239 181.147 57.5601 180.961 57.4063C180.785 57.2401 180.533 57.1727 180.204 57.2041C179.875 57.2354 179.635 57.3499 179.482 57.5474C179.34 57.7325 179.286 58.012 179.322 58.386L179.484 60.0857C179.52 60.4597 179.626 60.7297 179.802 60.8959C179.988 61.0497 180.245 61.1109 180.574 61.0795ZM191.602 63.0804C189.993 63.2339 188.695 62.9346 187.709 62.1826C186.721 61.4192 186.15 60.2273 185.995 58.6069C185.841 56.9864 186.177 55.7137 187.003 54.7887C187.829 53.8523 189.046 53.3073 190.655 53.1538C192.253 53.0014 193.443 53.3109 194.225 54.0824C195.018 54.8415 195.474 55.8386 195.591 57.0738L195.708 58.2976L190.201 58.8231L190.211 58.925C190.251 59.3443 190.405 59.644 190.674 59.8242C190.942 59.9931 191.364 60.0499 191.942 59.9948C192.634 59.9288 193.286 59.8151 193.899 59.6537C194.513 59.4922 195.044 59.31 195.494 59.1071L195.753 61.8267C195.377 62.0798 194.813 62.3338 194.059 62.5886C193.316 62.831 192.497 62.995 191.602 63.0804ZM191.994 56.7652L191.975 56.5612C191.938 56.176 191.827 55.9064 191.64 55.7527C191.466 55.5979 191.214 55.5361 190.885 55.5675C190.557 55.5988 190.316 55.7133 190.163 55.9108C190.021 56.0959 189.967 56.3754 190.003 56.7494L190.023 56.9533L191.994 56.7652Z"
+              fill="#F8F24B"
+            />
+          </svg>
+        </div>
+
+        <div className="flex flex-col items-center max-w-[30%]">
+          <div className="flex flex-col items-center justify-center h-full">
+            <div className="home_clientReviewsWrapper_reviewCard mb-[--sy-66px]">
+              {avatarImg}
+              <h3>John Doe</h3>
+              <p>
+                “Lorem ipsum dolor sit amet consectetur. Fermentum felis
+                suscipit egestas velit non amet. Sit.”
+              </p>
+              {starsImg}
+            </div>
+            {moreReviewsBtn}
+          </div>
+        </div>
+
+        <div className="flex flex-col justify-between">
+          <svg
+            className="h-[--136px] w-[--366px] cursor-pointer"
+            viewBox="0 0 367 136"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="2.01731"
+              y="79.1832"
+              width="79"
+              height="355"
+              rx="39.5"
+              transform="rotate(-81.0578 2.01731 79.1832)"
+              fill="#1D1D1D"
+              stroke="#F8F24B"
+              stroke-width="2"
+            />
+            <circle
+              cx="52.3528"
+              cy="47.404"
+              r="27.2728"
+              transform="rotate(8.94217 52.3528 47.404)"
+              fill="#1C1C1C"
+              stroke="#F8F24B"
+              stroke-width="1.02125"
+            />
+            <path
+              d="M52.8325 57.5025C50.3557 56.771 47.9352 55.861 45.5899 54.7797C40.8402 52.5576 36.4434 49.4139 33.311 45.209C37.3584 42.3582 39.5875 40.6857 43.0215 37.1249C45.5695 34.4821 49.0134 29.6326 52.9041 28.9708C59.0026 27.9327 66.2603 31.5231 66.6238 38.2253C66.7768 41.0578 66.2496 43.8861 65.3261 46.5555C64.9083 47.7586 61.2902 59.5945 60.5746 59.4418C57.9749 58.8851 55.3831 58.2668 52.8325 57.5025Z"
+              fill="#F2D4CF"
+            />
+            <path
+              d="M67.4488 63.9816C62.4022 66.4995 56.6606 67.2648 51.1307 66.1565C45.6007 65.0483 40.5974 62.1296 36.9108 57.8615L44.0805 56.0691C44.3001 56.0134 44.5167 55.9464 44.7294 55.8683L44.899 55.8034C44.9596 55.7802 45.0191 55.7555 45.0789 55.7293C46.0193 55.32 46.8476 54.6907 47.4939 53.8943C48.2332 52.9811 48.6318 51.8905 48.8645 50.745C49.0157 49.973 49.125 49.1929 49.2683 48.418C49.3466 47.9896 49.4259 47.5609 49.5062 47.1319L49.7496 47.3198L50.3803 47.8202L54.3331 49.3173L58.3928 50.855L57.674 55.1984L57.318 57.3525L58.7433 58.2818L59.8617 59.0109L67.4488 63.9816Z"
+              fill="#F2A196"
+            />
+            <path
+              d="M57.7881 54.5032C57.3767 54.658 57.009 54.6967 56.7117 54.6049C54.7577 53.9994 51.1706 51.6729 49.2866 48.2982C49.3145 48.156 49.3395 48.0138 49.3618 47.8715C49.4402 47.4422 49.5195 47.0135 49.5996 46.5854L49.8431 46.7733L50.4738 47.2737L54.4254 48.7692L58.4852 50.3069L57.7881 54.5032Z"
+              fill="#E88870"
+            />
+            <path
+              d="M46.5295 44.4459C47.7966 44.694 49.0249 43.868 49.273 42.6009C49.5211 41.3339 48.6951 40.1056 47.428 39.8575C46.1609 39.6093 44.9326 40.4354 44.6845 41.7024C44.4364 42.9695 45.2624 44.1978 46.5295 44.4459Z"
+              fill="#F2A196"
+            />
+            <path
+              d="M47.3908 44.3346C48.6579 44.5827 49.8862 43.7567 50.1343 42.4896C50.3824 41.2226 49.5564 39.9943 48.2893 39.7461C47.0223 39.498 45.794 40.324 45.5459 41.5911C45.2977 42.8582 46.1238 44.0865 47.3908 44.3346Z"
+              fill="#E88870"
+            />
+            <path
+              d="M63.2463 41.7289C63.7554 47.5304 59.0886 53.5081 57.0197 53.103C54.1857 52.548 47.7462 48.9371 47.2371 43.1355C46.7281 37.334 49.8979 32.3173 54.318 31.9287C58.7381 31.5401 62.7411 35.9295 63.2463 41.7289Z"
+              fill="#F2A196"
+            />
+            <path
+              d="M53.8734 44.4126C55.2895 44.6899 56.6623 43.7667 56.9396 42.3506C57.2169 40.9345 56.2937 39.5616 54.8776 39.2843C53.4615 39.007 52.0887 39.9302 51.8114 41.3464C51.5341 42.7625 52.4573 44.1353 53.8734 44.4126Z"
+              stroke="white"
+              stroke-width="0.158771"
+              stroke-miterlimit="10"
+            />
+            <path
+              d="M61.1224 45.4116C62.5385 45.6889 63.9113 44.7657 64.1887 43.3496C64.466 41.9335 63.5428 40.5607 62.1266 40.2834C60.7105 40.0061 59.3377 40.9293 59.0604 42.3454C58.7831 43.7615 59.7063 45.1343 61.1224 45.4116Z"
+              stroke="white"
+              stroke-width="0.158771"
+              stroke-miterlimit="10"
+            />
+            <path
+              d="M59.4559 33.4084C58.3815 35.8184 56.6946 37.7133 54.0719 38.8197C51.2335 40.0617 48.3141 39.7423 45.3237 39.7494C45.7431 37.9945 46.1532 36.1074 47.3761 34.7073C48.7545 33.1588 50.545 32.0344 52.5385 31.4653C54.7383 30.8227 58.0283 30.4159 60.1336 31.5723C59.9467 32.198 59.7203 32.8113 59.4559 33.4084Z"
+              fill="#F2D4CF"
+            />
+            <path
+              d="M58.2118 41.0092C58.1918 41.0543 58.4258 45.5843 58.4258 45.5843L56.7388 45.254"
+              stroke="#00214E"
+              stroke-width="0.158771"
+              stroke-miterlimit="10"
+            />
+            <path
+              d="M60.0284 39.934C61.0774 39.6352 62.2009 39.747 63.1705 40.2467"
+              stroke="#00214E"
+              stroke-width="0.158771"
+              stroke-miterlimit="10"
+            />
+            <path
+              d="M52.4929 38.9771C53.2071 38.7736 53.9574 38.7299 54.6904 38.8493C55.4234 38.9686 56.1211 39.2479 56.7339 39.6675"
+              stroke="#00214E"
+              stroke-width="0.158771"
+              stroke-miterlimit="10"
+            />
+            <path
+              d="M56.9395 42.3504L59.0168 42.5764"
+              stroke="white"
+              stroke-width="0.158771"
+              stroke-miterlimit="10"
+            />
+            <path
+              d="M67.4471 63.9821C62.4004 66.5 56.6588 67.2653 51.1289 66.157C45.5989 65.0487 40.5957 62.1301 36.909 57.862L44.0787 56.0696C44.4202 55.9838 44.7541 55.8702 45.0771 55.7298C45.1751 55.6874 45.2736 55.6422 45.3686 55.5935C46.1904 55.1866 46.9147 54.6072 47.4921 53.8948C47.9305 53.3464 48.2718 52.7269 48.501 52.0633C48.5782 52.1743 48.6611 52.2813 48.7493 52.3838C49.4569 53.1577 50.2551 53.8437 51.1265 54.4271C51.5497 54.7096 51.9885 54.9682 52.4406 55.2015C53.8027 55.9056 55.2797 56.3605 56.8019 56.5446C57.0129 56.5691 57.226 56.5898 57.4368 56.6157L57.3228 57.3052L57.3141 57.3498L58.817 58.3335L67.4471 63.9821Z"
+              fill="#00214E"
+            />
+            <path
+              d="M53.5538 46.2119C53.5777 46.186 53.6068 46.1654 53.6392 46.1513C53.6716 46.1373 53.7065 46.1301 53.7418 46.1303C53.7771 46.1305 53.8119 46.138 53.8441 46.1524C53.8763 46.1668 53.9052 46.1877 53.9289 46.2139C54.1708 46.4672 54.6019 46.9847 55.3021 47.2731C56.2568 47.6646 57.1955 47.4365 57.3518 47.7333C57.4396 47.9005 57.2635 48.0482 56.9479 48.2218C56.622 48.3782 56.2681 48.468 55.907 48.4859C55.5459 48.5037 55.1849 48.4492 54.8452 48.3257C53.9246 47.9604 53.4236 46.7119 53.5003 46.3205C53.508 46.2801 53.5265 46.2426 53.5538 46.2119Z"
+              fill="white"
+            />
+            <path
+              d="M54.6728 41.017C55.4947 41.1849 55.2481 42.4441 54.4236 42.2896L54.3858 42.2822C53.5639 42.1142 53.8105 40.8551 54.635 41.0096L54.6728 41.017Z"
+              fill="#00214E"
+            />
+            <path
+              d="M61.4732 42.2558C62.237 42.4053 62.0071 43.5795 61.242 43.4366L61.2069 43.4298C60.4444 43.2734 60.673 42.1061 61.4381 42.2489L61.4732 42.2558Z"
+              fill="#00214E"
+            />
+            <path
+              d="M116.427 64.0214C115.561 63.8852 114.755 63.6605 114.009 63.3472C113.265 63.0227 112.662 62.6455 112.2 62.2155L112.667 59.2469L116.04 59.7777L116.014 59.9464C115.918 60.5536 116.163 60.9032 116.747 60.9952C117.051 61.043 117.288 60.9996 117.459 60.8652C117.643 60.7213 117.763 60.4751 117.817 60.1265L118.853 53.5483L117.334 53.3094L117.77 50.5432L124.854 51.6579L124.419 54.4241L123.575 54.2914L122.684 59.9588C122.423 61.6118 121.745 62.7726 120.649 63.4413C119.555 64.0988 118.147 64.2922 116.427 64.0214ZM128.386 65.9032C126.789 65.652 125.606 65.0395 124.838 64.0658C124.071 63.0809 123.814 61.7845 124.067 60.1765C124.32 58.5685 124.962 57.4192 125.992 56.7286C127.025 56.0268 128.339 55.8015 129.936 56.0528C131.555 56.3076 132.742 56.9321 133.496 57.9265C134.251 58.9097 134.504 60.194 134.255 61.7795C134.002 63.3875 133.359 64.5424 132.327 65.2442C131.296 65.9348 129.983 66.1545 128.386 65.9032ZM128.858 62.9008C129.184 62.9522 129.439 62.9059 129.623 62.762C129.82 62.6086 129.948 62.3464 130.006 61.9753L130.272 60.2886C130.33 59.9175 130.288 59.6343 130.146 59.4391C130.017 59.2344 129.79 59.1064 129.463 59.0551C129.137 59.0038 128.876 59.0548 128.679 59.2082C128.495 59.3521 128.374 59.6096 128.315 59.9807L128.05 61.6674C127.991 62.0385 128.027 62.3264 128.156 62.5311C128.298 62.7263 128.532 62.8495 128.858 62.9008ZM145.689 65.5491L145.254 68.3154L139.924 67.4767L140.359 64.7105L141.067 64.8219L141.503 62.0557C141.561 61.6846 141.525 61.4024 141.394 61.2089C141.265 61.0043 141.043 60.8771 140.728 60.8276C140.053 60.7214 139.659 61.0282 139.546 61.7479L139.111 64.5141L139.819 64.6255L139.384 67.3918L134.054 66.5531L134.489 63.7869L135.231 63.9036L136.426 56.3134L135.683 56.1966L136.119 53.4304L140.74 54.1576L139.944 59.2178C140.442 58.766 140.952 58.4488 141.477 58.2663C142.001 58.0837 142.583 58.0429 143.224 58.1437C144.158 58.2906 144.809 58.6926 145.178 59.3499C145.558 60.009 145.668 60.8501 145.507 61.8734L144.947 65.4324L145.689 65.5491ZM157.433 67.3971L156.998 70.1634L151.668 69.3247L152.103 66.5585L152.812 66.6699L153.247 63.9037C153.305 63.5326 153.269 63.2504 153.138 63.0569C153.009 62.8522 152.787 62.7251 152.472 62.6756C151.798 62.5694 151.404 62.8762 151.29 63.5958L150.855 66.3621L151.564 66.4735L151.128 69.2397L145.798 68.4011L146.234 65.6348L146.976 65.7516L147.581 61.9059L146.839 61.7891L147.274 59.0229L151.896 59.7501L151.689 61.0658C152.661 60.1586 153.754 59.8006 154.969 59.9917C155.902 60.1386 156.553 60.5406 156.922 61.1979C157.303 61.8569 157.412 62.6981 157.251 63.7214L156.691 67.2804L157.433 67.3971ZM163.069 68.2838L163.912 68.4165L165.104 60.8432L164.26 60.7105L164.698 57.9274L171.546 59.0049C173.424 59.3004 174.833 60.0521 175.772 61.26C176.724 62.4585 177.018 64.2159 176.654 66.5323C176.289 68.8488 175.469 70.4367 174.193 71.296C172.93 72.1459 171.359 72.4231 169.481 72.1276L162.633 71.0501L163.069 68.2838ZM169.613 69.3136C169.995 69.3738 170.298 69.3177 170.521 69.1454C170.744 68.973 170.889 68.6732 170.956 68.2459L171.758 63.152C171.889 62.3199 171.572 61.8437 170.807 61.7234L169.829 61.5694L168.635 69.1597L169.613 69.3136ZM181.145 74.2049C179.548 73.9536 178.366 73.3412 177.597 72.3675C176.83 71.3826 176.573 70.0861 176.826 68.4781C177.079 66.8701 177.721 65.7209 178.752 65.0303C179.784 64.3285 181.098 64.1032 182.695 64.3544C184.314 64.6092 185.501 65.2338 186.255 66.2282C187.01 67.2113 187.264 68.4957 187.014 70.0812C186.761 71.6892 186.118 72.8441 185.086 73.5459C184.056 74.2365 182.742 74.4561 181.145 74.2049ZM181.618 71.2025C181.944 71.2538 182.199 71.2075 182.383 71.0636C182.58 70.9103 182.707 70.648 182.766 70.277L183.031 68.5902C183.09 68.2192 183.048 67.936 182.906 67.7408C182.776 67.5361 182.549 67.4081 182.223 67.3568C181.897 67.3055 181.635 67.3565 181.438 67.5099C181.254 67.6538 181.133 67.9113 181.075 68.2824L180.809 69.9691C180.751 70.3402 180.786 70.628 180.915 70.8327C181.057 71.0279 181.292 71.1512 181.618 71.2025ZM191.802 75.8818C190.206 75.6306 189.023 75.0181 188.254 74.0444C187.488 73.0595 187.231 71.7631 187.484 70.1551C187.737 68.5471 188.378 67.3978 189.409 66.7072C190.441 66.0054 191.756 65.7801 193.352 66.0314C194.938 66.2808 196.014 66.8765 196.58 67.8183C197.159 68.7507 197.353 69.8297 197.16 71.0553L196.969 72.2698L191.504 71.4099L191.488 71.5111C191.422 71.9271 191.497 72.2558 191.713 72.4972C191.93 72.7272 192.326 72.8874 192.899 72.9776C193.585 73.0856 194.245 73.1376 194.879 73.1337C195.514 73.1298 196.074 73.0854 196.56 73.0006L196.135 75.6993C195.708 75.851 195.098 75.9567 194.305 76.0163C193.525 76.0664 192.691 76.0216 191.802 75.8818ZM193.752 69.8623L193.784 69.6599C193.844 69.2776 193.803 68.9889 193.661 68.7936C193.53 68.6002 193.302 68.4778 192.976 68.4265C192.649 68.3752 192.388 68.4262 192.191 68.5796C192.007 68.7235 191.886 68.981 191.827 69.3521L191.796 69.5545L193.752 69.8623Z"
+              fill="#F8F24B"
+            />
+          </svg>
+          <svg
+            className="h-[--136px] w-[--366px] cursor-pointer"
+            viewBox="0 0 366 137"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="14.1657"
+              y="134.887"
+              width="79"
+              height="355"
+              rx="39.5"
+              transform="rotate(-98.9757 14.1657 134.887)"
+              fill="#1D1D1D"
+              stroke="#F8F24B"
+              stroke-width="2"
+            />
+            <circle
+              cx="52.2818"
+              cy="89.1642"
+              r="27.2728"
+              transform="rotate(-8.97572 52.2818 89.1642)"
+              fill="#1C1C1C"
+              stroke="#F8F24B"
+              stroke-width="1.02125"
+            />
+            <path
+              d="M55.8447 98.6253C53.2629 98.6912 50.6798 98.5701 48.1157 98.2627C42.9127 97.6097 37.762 95.9711 33.4878 92.9339C36.4619 88.9761 38.0683 86.699 40.2403 82.2544C41.8516 78.9559 43.6366 73.2821 47.1349 71.4554C52.6183 68.5914 60.6285 69.7749 63.0364 76.0401C64.0534 78.6882 64.4219 81.5415 64.3644 84.3655C64.3371 85.6388 64.5358 98.0138 63.8079 98.0886C61.1631 98.3587 58.5067 98.5678 55.8447 98.6253Z"
+              fill="#F2D4CF"
+            />
+            <path
+              d="M71.7454 100.293C67.7182 104.242 62.4905 106.736 56.8878 107.383C51.2851 108.03 45.6266 106.792 40.8056 103.865L47.0761 99.954C47.268 99.8335 47.4534 99.703 47.6318 99.5633L47.7732 99.4494C47.8237 99.4087 47.8727 99.3668 47.9216 99.3235C48.6904 98.6447 49.2849 97.7911 49.6549 96.8345C50.0774 95.7382 50.1211 94.5778 49.9901 93.4162C49.8965 92.6352 49.7605 91.8593 49.6585 91.0779C49.6012 90.6462 49.5447 90.2139 49.4891 89.7811L49.7786 89.8849L50.5326 90.167L54.7542 90.3754L59.0901 90.5895L59.7424 94.9434L60.0665 97.1026L61.7085 97.5483L62.997 97.8979L71.7454 100.293Z"
+              fill="#F2A196"
+            />
+            <path
+              d="M59.6374 94.2469C59.2936 94.5208 58.9556 94.6708 58.6445 94.6748C56.599 94.6999 52.4701 93.5898 49.6393 90.9584C49.6221 90.8146 49.6021 90.6715 49.5795 90.5293C49.5221 90.0966 49.4656 89.6644 49.4102 89.2324L49.6996 89.3362L50.4537 89.6184L54.6738 89.8256L59.0096 90.0397L59.6374 94.2469Z"
+              fill="#E88870"
+            />
+            <path
+              d="M45.83 88.1408C47.112 87.9871 48.0266 86.8233 47.8728 85.5413C47.7191 84.2594 46.5553 83.3448 45.2733 83.4985C43.9914 83.6522 43.0768 84.8161 43.2305 86.098C43.3842 87.38 44.5481 88.2946 45.83 88.1408Z"
+              fill="#F2A196"
+            />
+            <path
+              d="M46.6162 87.7702C47.8981 87.6165 48.8127 86.4526 48.659 85.1707C48.5052 83.8888 47.3414 82.9742 46.0594 83.1279C44.7775 83.2816 43.8629 84.4455 44.0166 85.7274C44.1704 87.0094 45.3342 87.924 46.6162 87.7702Z"
+              fill="#E88870"
+            />
+            <path
+              d="M60.9004 80.4128C63.1697 85.7764 60.5683 92.8999 58.4752 93.1509C55.6078 93.4948 48.3697 92.0401 46.1005 86.6765C43.8313 81.313 45.3039 75.5644 49.3901 73.8348C53.4763 72.1052 58.6355 75.0501 60.9004 80.4128Z"
+              fill="#F2A196"
+            />
+            <path
+              d="M52.8083 85.85C54.241 85.6782 55.2632 84.3775 55.0914 82.9447C54.9196 81.5119 53.6188 80.4897 52.186 80.6615C50.7533 80.8334 49.7311 82.1341 49.9029 83.5669C50.0747 84.9997 51.3755 86.0219 52.8083 85.85Z"
+              stroke="white"
+              stroke-width="0.158771"
+              stroke-miterlimit="10"
+            />
+            <path
+              d="M60.0133 84.5703C61.4461 84.3984 62.4683 83.0977 62.2965 81.6649C62.1247 80.2321 60.8239 79.2099 59.3911 79.3818C57.9584 79.5536 56.9362 80.8544 57.108 82.2871C57.2798 83.7199 58.5806 84.7421 60.0133 84.5703Z"
+              stroke="white"
+              stroke-width="0.158771"
+              stroke-miterlimit="10"
+            />
+            <path
+              d="M54.7346 73.6618C54.4537 76.2855 53.4316 78.6075 51.2765 80.467C48.9578 82.522 46.0818 83.1163 43.2386 84.0431C43.0977 82.2442 42.9074 80.3224 43.6402 78.6141C44.4754 76.7166 45.8331 75.0958 47.5548 73.9411C49.4502 72.6528 52.4555 71.2537 54.8145 71.7062C54.8291 72.3591 54.8025 73.0123 54.7346 73.6618Z"
+              fill="#F2D4CF"
+            />
+            <path
+              d="M55.888 81.2771C55.8829 81.3262 57.4991 85.5644 57.4991 85.5644L55.7924 85.7691"
+              stroke="#00214E"
+              stroke-width="0.158771"
+              stroke-miterlimit="10"
+            />
+            <path
+              d="M57.2861 79.6953C58.1923 79.0882 59.2957 78.8489 60.372 79.0261"
+              stroke="#00214E"
+              stroke-width="0.158771"
+              stroke-miterlimit="10"
+            />
+            <path
+              d="M49.8224 81.1031C50.4393 80.6897 51.1398 80.4173 51.874 80.3054C52.6081 80.1934 53.358 80.2445 54.0701 80.4552"
+              stroke="#00214E"
+              stroke-width="0.158771"
+              stroke-miterlimit="10"
+            />
+            <path
+              d="M55.0905 82.9447L57.1365 82.5207"
+              stroke="white"
+              stroke-width="0.158771"
+              stroke-miterlimit="10"
+            />
+            <path
+              d="M71.7439 100.294C67.7167 104.243 62.489 106.737 56.8863 107.384C51.2836 108.031 45.6251 106.793 40.8041 103.866L47.0747 99.9551C47.3732 99.7684 47.656 99.5576 47.9201 99.3246C48.0003 99.2541 48.0801 99.1808 48.1556 99.1053C48.8123 98.4653 49.3232 97.6911 49.6534 96.8356C49.9019 96.1789 50.036 95.4845 50.0499 94.7826C50.1575 94.8644 50.2693 94.9407 50.3848 95.0111C51.2962 95.5298 52.2667 95.937 53.2754 96.224C53.765 96.3626 54.2619 96.4736 54.764 96.5566C56.2766 96.8075 57.8219 96.7858 59.3269 96.4927C59.5352 96.4511 59.7444 96.4053 59.9529 96.365L60.0565 97.0562L60.0619 97.1013L61.7946 97.5749L71.7439 100.294Z"
+              fill="#00214E"
+            />
+            <path
+              d="M53.0565 87.6605C53.0714 87.6284 53.0927 87.5999 53.1192 87.5766C53.1457 87.5532 53.1767 87.5357 53.2103 87.525C53.2439 87.5143 53.2794 87.5108 53.3145 87.5145C53.3496 87.5183 53.3835 87.5294 53.4141 87.5469C53.7222 87.7136 54.2916 88.0733 55.0466 88.1323C56.0754 88.2112 56.8984 87.7053 57.1384 87.9396C57.2734 88.0716 57.1513 88.2663 56.9044 88.5286C56.6424 88.7778 56.3333 88.9721 55.9952 89.1001C55.6572 89.2282 55.2969 89.2875 54.9356 89.2744C53.9473 89.2101 53.0865 88.1762 53.039 87.7803C53.034 87.7395 53.04 87.6981 53.0565 87.6605Z"
+              fill="white"
+            />
+            <path
+              d="M52.5242 82.3731C53.3579 82.2801 53.5107 83.554 52.6786 83.6607L52.6404 83.6653C51.8067 83.7583 51.6539 82.4844 52.486 82.3777L52.5242 82.3731Z"
+              fill="#00214E"
+            />
+            <path
+              d="M59.3759 81.4594C60.1487 81.3668 60.2911 82.5547 59.5191 82.6542L59.4836 82.6584C58.71 82.7443 58.5684 81.5632 59.3404 81.4637L59.3759 81.4594Z"
+              fill="#00214E"
+            />
+            <path
+              d="M118.36 85.2628C117.494 85.3995 116.659 85.4336 115.853 85.365C115.045 85.2851 114.355 85.1118 113.783 84.8449L113.314 81.8766L116.687 81.3438L116.713 81.5124C116.809 82.1196 117.15 82.377 117.734 82.2847C118.038 82.2367 118.25 82.1225 118.372 81.942C118.502 81.7485 118.54 81.4774 118.485 81.1289L117.446 74.5513L115.928 74.791L115.491 72.0251L122.575 70.9062L123.012 73.6722L122.169 73.8054L123.064 79.4722C123.325 81.1251 123.037 82.4382 122.199 83.4118C121.36 84.374 120.081 84.991 118.36 85.2628ZM130.318 83.374C128.722 83.6262 127.408 83.4073 126.377 82.7173C125.344 82.0161 124.701 80.8616 124.447 79.2537C124.193 77.6459 124.45 76.3549 125.218 75.3808C125.984 74.3954 127.166 73.7767 128.763 73.5245C130.382 73.2687 131.703 73.498 132.726 74.2122C133.747 74.9152 134.383 76.0594 134.634 77.6447C134.888 79.2526 134.632 80.5492 133.865 81.5345C133.097 82.5087 131.915 83.1218 130.318 83.374ZM129.844 80.3719C130.17 80.3204 130.399 80.1979 130.529 80.0044C130.67 79.7978 130.71 79.5091 130.652 79.138L130.385 77.4514C130.327 77.0804 130.2 76.8239 130.005 76.6819C129.819 76.5268 129.563 76.4751 129.237 76.5266C128.911 76.5781 128.677 76.7071 128.537 76.9136C128.406 77.1071 128.37 77.3894 128.429 77.7605L128.695 79.447C128.754 79.8181 128.876 80.0811 129.062 80.2361C129.257 80.3782 129.518 80.4234 129.844 80.3719ZM146.673 77.7138L147.11 80.4797L141.781 81.3215L141.344 78.5556L142.052 78.4437L141.615 75.6777C141.557 75.3067 141.435 75.0492 141.251 74.9055C141.065 74.7504 140.815 74.6978 140.5 74.7475C139.826 74.854 139.545 75.2671 139.659 75.9867L140.096 78.7527L140.804 78.6408L141.241 81.4068L135.911 82.2486L135.474 79.4826L136.216 79.3654L135.018 71.7759L134.276 71.8931L133.839 69.1271L138.46 68.3972L139.259 73.4569C139.593 72.874 139.982 72.415 140.425 72.08C140.867 71.7451 141.409 71.527 142.05 71.4257C142.983 71.2783 143.726 71.4606 144.28 71.9724C144.844 72.4825 145.207 73.2491 145.369 74.2723L145.931 77.831L146.673 77.7138ZM158.417 75.8589L158.853 78.6249L153.524 79.4667L153.087 76.7007L153.795 76.5888L153.358 73.8228C153.3 73.4518 153.179 73.1944 152.994 73.0506C152.809 72.8956 152.558 72.8429 152.243 72.8926C151.569 72.9992 151.288 73.4123 151.402 74.1319L151.839 76.8978L152.547 76.7859L152.984 79.5519L147.655 80.3937L147.218 77.6277L147.96 77.5105L147.352 73.6652L146.61 73.7824L146.173 71.0164L150.795 70.2865L151.002 71.602C151.649 70.4397 152.579 69.7627 153.793 69.5709C154.726 69.4235 155.47 69.6057 156.023 70.1176C156.588 70.6276 156.951 71.3943 157.112 72.4175L157.674 75.9761L158.417 75.8589ZM164.051 74.9689L164.895 74.8357L163.698 67.263L162.855 67.3962L162.416 64.6134L169.263 63.5318C171.141 63.2353 172.712 63.5172 173.977 64.3775C175.252 65.2249 176.073 66.8067 176.438 69.1229C176.804 71.4391 176.512 73.2023 175.563 74.4126C174.622 75.6098 173.213 76.3567 171.336 76.6533L164.488 77.7348L164.051 74.9689ZM170.595 73.9353C170.977 73.8749 171.248 73.7284 171.407 73.4958C171.566 73.2633 171.612 72.9333 171.545 72.5061L170.74 67.4127C170.609 66.5806 170.161 66.225 169.396 66.3458L168.418 66.5003L169.617 74.0898L170.595 73.9353ZM183.073 75.0414C181.476 75.2936 180.162 75.0747 179.131 74.3848C178.099 73.6836 177.455 72.529 177.201 70.9212C176.947 69.3133 177.205 68.0223 177.973 67.0482C178.739 66.0629 179.92 65.4441 181.517 65.1919C183.136 64.9362 184.457 65.1654 185.48 65.8796C186.502 66.5826 187.138 67.7268 187.388 69.3122C187.642 70.92 187.386 72.2166 186.62 73.202C185.852 74.1761 184.669 74.7892 183.073 75.0414ZM182.599 72.0393C182.925 71.9878 183.153 71.8653 183.284 71.6718C183.424 71.4653 183.465 71.1765 183.406 70.8054L183.14 69.1189C183.081 68.7478 182.954 68.4913 182.759 68.3493C182.573 68.1942 182.317 68.1425 181.991 68.194C181.665 68.2455 181.432 68.3745 181.292 68.581C181.161 68.7746 181.125 69.0568 181.183 69.4279L181.45 71.1144C181.508 71.4855 181.631 71.7485 181.816 71.9036C182.012 72.0456 182.272 72.0908 182.599 72.0393ZM193.729 73.3583C192.132 73.6104 190.819 73.3916 189.788 72.7016C188.755 72.0004 188.112 70.8459 187.858 69.238C187.604 67.6301 187.861 66.3392 188.629 65.365C189.395 64.3797 190.577 63.7609 192.173 63.5087C193.759 63.2583 194.966 63.4941 195.794 64.216C196.632 64.9249 197.148 65.8922 197.341 67.1177L197.533 68.3321L192.069 69.1952L192.085 69.2964C192.151 69.7124 192.323 70.002 192.602 70.1654C192.88 70.3174 193.305 70.3482 193.879 70.2576C194.565 70.1493 195.209 69.9957 195.811 69.7968C196.414 69.5979 196.933 69.3834 197.369 69.1532L197.795 71.8517C197.436 72.1274 196.888 72.4157 196.151 72.7163C195.425 73.004 194.617 73.218 193.729 73.3583ZM193.732 67.0309L193.7 66.8285C193.64 66.4463 193.512 66.1841 193.317 66.0421C193.133 65.8983 192.878 65.8521 192.552 65.9036C192.225 65.9552 191.992 66.0842 191.852 66.2907C191.721 66.4842 191.685 66.7665 191.744 67.1376L191.776 67.3399L193.732 67.0309Z"
+              fill="#F8F24B"
+            />
+          </svg>
+        </div>
       </div>
 
-      <div className="home_clientReviews_logosSlider">
-        <Slider {...settings}>
-          {/* company logo */}
-          <div>
-            <img src="/assets/companyLogo1.png" alt="companyLogo" />
-          </div>
-          <div>
-            <img src="/assets/companyLogo2.png" alt="companyLogo" />
-          </div>
-          <div>
-            <img src="/assets/companyLogo1.png" alt="companyLogo" />
-          </div>
-          <div>
-            <img src="/assets/companyLogo2.png" alt="companyLogo" />
-          </div>
-          <div>
-            <img src="/assets/companyLogo1.png" alt="companyLogo" />
-          </div>
-          <div>
-            <img src="/assets/companyLogo2.png" alt="companyLogo" />
-          </div>
-          <div>
-            <img src="/assets/companyLogo1.png" alt="companyLogo" />
-          </div>
-          <div>
-            <img src="/assets/companyLogo2.png" alt="companyLogo" />
-          </div>
-          <div>
-            <img src="/assets/companyLogo1.png" alt="companyLogo" />
-          </div>
-          <div>
-            <img src="/assets/companyLogo2.png" alt="companyLogo" />
-          </div>
-        </Slider>
+      <div className="home_clientReviews_logosSlider w-full">
+        <LogosSlider />
       </div>
     </section>
   );

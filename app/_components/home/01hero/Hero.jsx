@@ -534,16 +534,16 @@ export default function Hero() {
             Sign Up
           </button>
         </div>
-        <div className="z-50 bg-[#1d1d1d] mainHeroAdds absolute top-full translate-y-[3px] -right-[3px] w-[--60px] h-[--sy-118px] border-[3px] border-[#F8F24B] rounded-b-[--30px] border-t-0 transition-all duration-200">
+        <div className="z-50 bg-[#1d1d1d] mainHeroAdds absolute top-full translate-y-[3px] -right-[3px] w-[--60px] h-[--sy-124px] border-[3px] border-[#F8F24B] rounded-b-[--30px] border-t-0 transition-all duration-200">
           {/* <div className=" w-[calc(100%+6px)] bg-red-900 top-2/3 left-1/2 -translate-x-1/2 absolute h-[66%] rounded-b-full z-0"></div> */}
           <span
             className="absolute shadowed w-[--60px] h-[60px] rounded-tr-[--30px] top-0 left-0 -translate-y-[3px] -translate-x-full inline-block border-t-[3px] border-r-[3px] border-[#F8F24B] transition-all duration-200"
             style={{ boxShadow: "var(--10px) calc(-1 * var(--10px)) #1d1d1d" }}
           ></span>
-          <span className=" text-[#F8F24B] w-[60%] aspect-square absolute rounded-full client left-1/2 -translate-x-1/2 transition-all duration-300"></span>
-          <span className=" text-[#F8F24B] w-[60%] aspect-square absolute rounded-full client left-1/2 -translate-x-1/2 transition-all duration-300"></span>
-          <span className=" text-[#F8F24B] w-[60%] aspect-square absolute rounded-full client left-1/2 -translate-x-1/2 transition-all duration-300"></span>
-          <span className=" text-[#F8F24B] w-[60%] aspect-square absolute rounded-full client left-1/2 -translate-x-1/2 text-sm flex justify-center items-center transition-all duration-300">
+          <span className=" text-[#F8F24B] w-[--42px] aspect-square absolute rounded-full client left-1/2 -translate-x-1/2 transition-all duration-300"></span>
+          <span className=" text-[#F8F24B] w-[--42px] aspect-square absolute rounded-full client left-1/2 -translate-x-1/2 transition-all duration-300"></span>
+          <span className=" text-[#F8F24B] w-[--42px] aspect-square absolute rounded-full client left-1/2 -translate-x-1/2 transition-all duration-300"></span>
+          <span className=" text-[#F8F24B] w-[--42px] aspect-square absolute rounded-full client left-1/2 -translate-x-1/2 text-sm flex justify-center items-center transition-all duration-300">
             +200
           </span>
           <span className=" text-black -rotate-90 absolute bottom-full left-1/2 text-nowrap clientText font-medium transition-all duration-300">
@@ -589,7 +589,7 @@ export default function Hero() {
           <h2 className="[font-family:Alfa_Slab_One] text-[#F8F24B] text-[--33px] mb-[--sy-30px]">
             Easiest <br /> Process
           </h2>
-          <button className=" text-black bg-[#F8F24B] px-[--13px] py-[--sy-10px] flex gap-[--6px] items-center rounded-[--26px] transition-all duration-300">
+          <button className=" text-black bg-[#F8F24B] text-[--11px] font-medium px-[--13px] pt-[--sy-6px] pb-[--sy-6px] flex gap-[--6px] items-center rounded-[--26px] transition-all duration-300">
             Book a call
             <svg
               className="transition-all duration-300"
@@ -631,8 +631,8 @@ export default function Hero() {
             </svg>
           </button>
         </div>
-        <div className=" flex flex-col gap-[--sy-22px]">
-          <div className=" flex flex-col gap-[--sy-14px]">
+        <div className=" flex flex-col gap-[--sy-20px]">
+          <div className=" flex flex-col gap-[--sy-12px]">
             <h4 className=" text-[#F8F24B] text-[--17px] [font-family:Alfa_Slab_One]">
               Sign Up
             </h4>
@@ -641,7 +641,7 @@ export default function Hero() {
               call if you have any questions.
             </p>
           </div>
-          <div className=" flex flex-col gap-[--sy-14px]">
+          <div className=" flex flex-col gap-[--sy-12px]">
             <h4 className=" text-[#F8F24B] text-[--17px] [font-family:Alfa_Slab_One]">
               Pick a service
             </h4>
@@ -650,7 +650,7 @@ export default function Hero() {
               start the process.
             </p>
           </div>
-          <div className=" flex flex-col gap-[--sy-14px]">
+          <div className=" flex flex-col gap-[--sy-12px]">
             <h4 className=" text-[#F8F24B] text-[--17px] [font-family:Alfa_Slab_One]">
               1 min questionnaire
             </h4>
@@ -658,7 +658,7 @@ export default function Hero() {
               Easiest way to understand your project in under 60 secs!
             </p>
           </div>
-          <div className=" flex flex-col gap-[--sy-14px]">
+          <div className=" flex flex-col gap-[--sy-12px]">
             <h4 className=" text-[#F8F24B] text-[--17px] [font-family:Alfa_Slab_One]">
               Check it out
             </h4>
@@ -667,7 +667,7 @@ export default function Hero() {
               tasks to make sure you get the most out of your subscription
             </p>
           </div>
-          <div className=" flex flex-col gap-[--sy-14px]">
+          <div className=" flex flex-col gap-[--sy-12px]">
             <h4 className=" text-[#F8F24B] text-[--17px] [font-family:Alfa_Slab_One]">
               What’s next?
             </h4>
@@ -701,9 +701,9 @@ export default function Hero() {
         <h2 className=" text-[--25px] [font-family:Alfa_Slab_One] mb-[--sy-17px]">
           20+ Services
         </h2>
-        <p className=" font-medium mb-[--sy-25px]">
-          Discover our all-encompassing SaaS solution offering a wide range of
-          digital services tailored for you.{" "}
+        <p className=" font-medium mb-[--sy-25px] text-[--17px] leading-[--sy-20px]">
+          Discover our all-encompassing SaaS solution <br /> offering a wide range of
+          digital services <br /> tailored for you.{" "}
         </p>
         <div className=" flex flex-col gap-[--sy-22px]">
           <div className=" relative flex justify-between items-center px-[--14px] py-[--sy-6px] service transition-all duration-200 z-[1]">
@@ -852,9 +852,7 @@ export default function Hero() {
           <span className="deletedWord text-[--25px] [font-family:Alfa_Slab_One] transition-all duration-200 relative">
             Juice
             <svg
-              className=" top-0 absolute right-0 translate-x-1/2 -translate-y-1/4 newWord opacity-0 transition-all duration-200"
-              width="54"
-              height="34"
+              className=" top-0 absolute right-0 translate-x-1/2 -translate-y-1/4 newWord opacity-0 transition-all duration-200 w-[--51px]"
               viewBox="0 0 54 34"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -913,9 +911,9 @@ export default function Hero() {
             </svg>
           </span>
         </h2>
-        <p className=" font-medium mb-[--sy-25px]">
-          Discover our all-encompassing SaaS solution offering a wide range of
-          digital services tailored for agencies. If you can imagine it, we’ve
+        <p className=" font-medium mb-[--sy-25px] text-[--17px] leading-[--sy-20px]">
+          Discover our all-encompassing SaaS solution offering a <br /> wide range of
+          digital services tailored for agencies. <br /> If you can imagine it, we’ve
           got it covered!
         </p>
         <div className=" flex gap-[--sy-22px]">
@@ -1094,63 +1092,63 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <div className=" col-span-3 w-full border-[3px] group hover:border-[#f8f24b] relative border-[#1d1d1d] transition-all duration-200 py-[--sy-30px] -translate-y-12 h-fit px-[--46px] mt-[--sy-10px] rounded-[--35px]">
-        <p className=" w-[60%] ml-auto font-semibold text-[--14px] mb-[--sy-40px]">
-          Discover our all-encompassing SaaS solution offering a wide range of
-          digital services tailored for agencies. If you can imagine it, we’ve
+      <div className=" col-span-3 w-full border-[3px] group hover:border-[#f8f24b] relative border-[#1d1d1d] transition-all duration-200 pt-[--sy-35px] pb-[--sy-40px] -translate-y-12 h-fit pl-[--42px] pr-[--45px] rounded-[--35px]">
+        <p className=" w-[60%] ml-auto font-semibold text-[--14px] mb-[--sy-40px] leading-[--sy-17px]">
+          Discover our all-encompassing SaaS solution offering a wide range <br /> of
+          digital services tailored for agencies. If you can imagine it, we’ve <br />
           got it covered!
         </p>
-        <div className=" grid grid-cols-5 place-content-between">
-          <div className=" col-span-1 text-[--24px] [font-family:Alfa_Slab_One] text-nowrap -rotate-90">
+        <div className=" grid grid-cols-7 place-content-between ">
+          <div className=" col-span-1 text-[--24px] [font-family:Alfa_Slab_One] text-nowrap -rotate-90 -translate-y-[27%] translate-x-[--30px] float-start justify-center items-center">
             White Label
           </div>
-          <div className=" col-span-4 grid grid-cols-3 gap-x-[--16px] gap-y-[--sy-31px]">
-            <div className="hover:bg-[#f8f24b] hover:text-black transition-all duration-200 product col-span-1 rounded-[--28px] border-[1px] border-[#f8f24b] pl-[--8px]  py-[--sy-12px] flex gap-[--22px]">
+          <div className=" col-span-6 grid grid-cols-3 gap-x-[--16px] gap-y-[--sy-31px]">
+            <div className="hover:bg-[#f8f24b] hover:text-black transition-all duration-200 product col-span-1 rounded-[--28px] border-[1px] border-[#f8f24b] pl-[--8px]  py-[--sy-12px] flex gap-[--22px] items-center">
               <span className="w-[--40px] aspect-square rounded-full bg-[#f8f24b] inline-block self-center"></span>
-              <p className="text-[--12px] [font-family:Alfa_Slab_One]">
+              <p className="text-[--11px] [font-family:Alfa_Slab_One]">
                 Customizable <br /> Products
               </p>
             </div>
-            <div className="hover:bg-[#f8f24b] hover:text-black transition-all duration-200 product col-span-1 rounded-[--28px] border-[1px] border-[#f8f24b] pl-[--8px]  py-[--sy-12px] flex gap-[--22px]">
+            <div className="hover:bg-[#f8f24b] hover:text-black transition-all duration-200 product col-span-1 rounded-[--28px] border-[1px] border-[#f8f24b] pl-[--8px]  py-[--sy-12px] flex gap-[--22px] items-center">
               <span className="w-[--40px] aspect-square rounded-full bg-[#f8f24b] inline-block self-center"></span>
-              <p className="text-[--12px] [font-family:Alfa_Slab_One]">
+              <p className="text-[--11px] [font-family:Alfa_Slab_One]">
                 Customizable <br /> Products
               </p>
             </div>
-            <div className="hover:bg-[#f8f24b] hover:text-black transition-all duration-200 product col-span-1 rounded-[--28px] border-[1px] border-[#f8f24b] pl-[--8px]  py-[--sy-12px] flex gap-[--22px]">
+            <div className="hover:bg-[#f8f24b] hover:text-black transition-all duration-200 product col-span-1 rounded-[--28px] border-[1px] border-[#f8f24b] pl-[--8px]  py-[--sy-12px] flex gap-[--22px] items-center">
               <span className="w-[--40px] aspect-square rounded-full bg-[#f8f24b] inline-block self-center"></span>
-              <p className="text-[--12px] [font-family:Alfa_Slab_One]">
+              <p className="text-[--11px] [font-family:Alfa_Slab_One]">
                 Customizable <br /> Products
               </p>
             </div>
-            <div className="hover:bg-[#f8f24b] hover:text-black transition-all duration-200 product col-span-1 rounded-[--28px] border-[1px] border-[#f8f24b] pl-[--8px]  py-[--sy-12px] flex gap-[--22px]">
+            <div className="hover:bg-[#f8f24b] hover:text-black transition-all duration-200 product col-span-1 rounded-[--28px] border-[1px] border-[#f8f24b] pl-[--8px]  py-[--sy-12px] flex gap-[--22px] items-center">
               <span className="w-[--40px] aspect-square rounded-full bg-[#f8f24b] inline-block self-center"></span>
-              <p className="text-[--12px] [font-family:Alfa_Slab_One]">
+              <p className="text-[--11px] [font-family:Alfa_Slab_One]">
                 Customizable <br /> Products
               </p>
             </div>
-            <div className="hover:bg-[#f8f24b] hover:text-black transition-all duration-200 product col-span-1 rounded-[--28px] border-[1px] border-[#f8f24b] pl-[--8px]  py-[--sy-12px] flex gap-[--22px]">
+            <div className="hover:bg-[#f8f24b] hover:text-black transition-all duration-200 product col-span-1 rounded-[--28px] border-[1px] border-[#f8f24b] pl-[--8px]  py-[--sy-12px] flex gap-[--22px] items-center">
               <span className="w-[--40px] aspect-square rounded-full bg-[#f8f24b] inline-block self-center"></span>
-              <p className="text-[--12px] [font-family:Alfa_Slab_One]">
+              <p className="text-[--11px] [font-family:Alfa_Slab_One]">
                 Customizable <br /> Products
               </p>
             </div>
-            <div className="hover:bg-[#f8f24b] hover:text-black transition-all duration-200 product col-span-1 rounded-[--28px] border-[1px] border-[#f8f24b] pl-[--8px]  py-[--sy-12px] flex gap-[--22px]">
+            <div className="hover:bg-[#f8f24b] hover:text-black transition-all duration-200 product col-span-1 rounded-[--28px] border-[1px] border-[#f8f24b] pl-[--8px]  py-[--sy-12px] flex gap-[--22px] items-center">
               <span className="w-[--40px] aspect-square rounded-full bg-[#f8f24b] inline-block self-center"></span>
-              <p className="text-[--12px] [font-family:Alfa_Slab_One]">
+              <p className="text-[--11px] [font-family:Alfa_Slab_One]">
                 Customizable <br /> Products
               </p>
             </div>
           </div>
         </div>
-        <div className=" h-[--sy-60px] w-[calc(var(--80px)+var(--14px))] rounded-b-full bg-[#1d1d1d] absolute left-[23.7%] -top-[--sy-3px] border-[3px] border-transparent transition-all duration-200 group-hover:border-[#f8f24b] border-t-0">
+        <div className=" h-[--sy-71px] w-[--80px] rounded-b-full bg-[#1d1d1d] absolute left-[22%] -top-[--sy-3px] border-[3px] border-transparent transition-all duration-200 group-hover:border-[#f8f24b] border-t-0">
           <div className=" w-[80%] h-[80%] left-1/2 -translate-x-1/2  absolute rounded-b-full"></div>
           <span
-            className=" absolute top-0 right-full w-[40px] h-[20px] inline-block rounded-tr-[--30px] border-[3px] border-transparent group-hover:border-[#f8f24b] border-b-0 border-l-0 transition-all duration-200"
+            className=" absolute top-0 right-full w-[40px] h-[20px] inline-block rounded-tr-[--35px] border-[3px] border-transparent group-hover:border-[#f8f24b] border-b-0 border-l-0 transition-all duration-200"
             style={{ boxShadow: "10px -2px 0 2px #1d1d1d" }}
           ></span>
           <span
-            className=" absolute top-0 left-full w-[40px] h-[20px] inline-block rounded-tl-[--30px] border-[3px] border-transparent group-hover:border-[#f8f24b]  border-b-0 border-r-0 transition-all duration-200"
+            className=" absolute top-0 left-full w-[40px] h-[20px] inline-block rounded-tl-[--35px] border-[3px] border-transparent group-hover:border-[#f8f24b]  border-b-0 border-r-0 transition-all duration-200"
             style={{ boxShadow: "-10px -2px 0 2px #1d1d1d" }}
           ></span>
         </div>

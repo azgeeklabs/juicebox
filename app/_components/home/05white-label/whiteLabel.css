@@ -13,7 +13,13 @@
   font-size: var(--102px);
   color: #1d1d1d;
 }
-.home_whiteLabel > p {
+.home_whiteLabel .home_whiteLabe_desc {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  /* background-color: cyan; */
+}
+.home_whiteLabel .home_whiteLabe_desc > p {
   font-family: "Barlow", sans-serif;
   font-weight: 400;
   font-size: var(--24px);
@@ -22,6 +28,13 @@
   text-align: center;
   margin-bottom: var(--sy-50px);
 }
+.home_whiteLabel .home_whiteLabe_desc > div {
+  /* background-color: red; */
+  position: absolute;
+  left: 10%;
+  top: -50%;
+}
+
 .home_whiteLabel_cardsWrapper {
   display: flex;
   justify-content: center;
