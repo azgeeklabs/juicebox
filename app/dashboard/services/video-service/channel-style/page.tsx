@@ -13,11 +13,10 @@ import SwiperCore from "swiper";
 
 export default function Page() {
   const options = [
-    "Explainer",
-    "Educational",
-    "YouTube",
-    "Social Media Ad",
-    "Short Film",
+    "Maps Video",
+    "Motion Graphics",
+    "Video Style 1",
+    "Video Style 2",
   ];
 
   const swiperRef = useRef<SwiperCore | null>(null);
@@ -37,9 +36,11 @@ export default function Page() {
     >
       <div className="flex items-center justify-center h-full w-full">
         {/* Inner container with full width and custom styles for channel style selection */}
-        <div className={`${styles.channelStyle} w-full `}>
+        <div
+          className={`${styles.channelStyle} flex flex-col gap-[--98px] justify-around w-full`}
+        >
           {/* Header section with top padding, left padding, and bottom margin */}
-          <div className="pt-[2.667vh] pl-[4.264vw] mb-[2.667vh]">
+          <div className="pl-[4.264vw]">
             {/* Main heading with bottom margin and embedded horizontal rules */}
             <h2 className="mb-[1.851vh]">
               Gotcha! <hr className="border-0" />
