@@ -2,6 +2,8 @@
 import React from "react";
 import styles from "./profile.module.css";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import profile from "../../../public/assets/profile.png";
 
 const Page = () => {
   const router = useRouter();
