@@ -36,9 +36,11 @@ export default function Page() {
     <NextPrevNav nextLink="/dashboard/services/video-service/footage-selection">
       <div className="flex items-center justify-center h-full w-full">
         {/* Inner container with full width and custom editing styles */}
-        <div className={`${styles.editing} w-full`}>
+        <div
+          className={`${styles.editing} flex flex-col gap-[--98px] justify-around w-full`}
+        >
           {/* Header section with padding and bottom margin */}
-          <div className="pt-[2.667vh] pl-[4.264vw] mb-[6.222vh]">
+          <div className="pl-[4.264vw]">
             {/* Main heading with bottom margin */}
             <h2 className="mb-[1.851vh]">
               {" "}
