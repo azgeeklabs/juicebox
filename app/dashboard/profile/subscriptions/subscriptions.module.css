@@ -19,3 +19,16 @@
 .tableBody::-webkit-scrollbar {
   display: none; /* Chrome, Safari and Opera */
 }
+.services, .services * {
+  user-select: none; /* Prevent text selection */
+}
+
+.services:active, .services:active * {
+  cursor: grabbing; /* Change cursor when dragging */
+}
+.services a {
+  pointer-events: none;
+}
+.services span {
+  pointer-events: none;
+}

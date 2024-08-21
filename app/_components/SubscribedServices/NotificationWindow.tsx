@@ -35,48 +35,23 @@ const NotificationWindow = () => {
             : styles.notification_window + " notification_window "
         }
       >
-        <div className={styles.triangle}>
-          
+        <div className=" flex justify-between items-center py-[--sy-9px]">
+          <h3 className=" font-bold text-[--16px] text-[#F8F24B] leading-[19.36px]">Notifications</h3>
+          <Link href={"#"} className=" leading-[14.52px] text-[--12px] font-medium">
+          View All
+          </Link>
         </div>
-
         <div className={styles.tabs_content + " tabs-stage"}>
-          <div id="Alerts" className="tab space-y-4">
-            <Link href="#">
-              <div className={styles.notification_item}>
-                <p>Lorem ipsum dolor sit amet <span>consectetur</span> adipisicing.</p>
-                <span>26 mins ago</span>
+          <div id="Alerts" className="tab space-y-4 py-[--sy-8px]">
+            {Array(7).fill("").map((e,i)=>{
+              return <div key={i} className={styles.notification_item}>
+              <p className=" font-bold text-[--10px] mb-[--sy-12px] leading-[12.1px]">UX/UI Service update! Check it out now!</p>
+              <div className=" flex items-center gap-[--9px]">
+              <span className=" font-medium text-[--10px] leading-[12.1px] px-[--9px] py-[--sy-5px] rounded-[--55px] bg-[#F8F24B] text-[#1D1D1D]">Services</span>
+              <span className="text-[--10px] leading-[12.1px]">10 mins ago</span>
               </div>
-            </Link>
-            <Link href="#">
-              <div className={styles.notification_item}>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-                <span>26 mins ago</span>
-              </div>
-            </Link>
-            <Link href="#">
-              <div className={styles.notification_item}>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-                <span>26 mins ago</span>
-              </div>
-            </Link>
-            <Link href="#">
-              <div className={styles.notification_item}>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-                <span>26 mins ago</span>
-              </div>
-            </Link>
-            <Link href="#">
-              <div className={styles.notification_item}>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-                <span>26 mins ago</span>
-              </div>
-            </Link>
-            <Link href="#">
-              <div className={styles.notification_item}>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-                <span>26 mins ago</span>
-              </div>
-            </Link>
+            </div>
+            })}
           </div>
         </div>
       </div>

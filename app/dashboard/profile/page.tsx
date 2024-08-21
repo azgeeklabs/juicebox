@@ -9,32 +9,34 @@ const page = () => {
       <div className={`${styles.profile} pt-[--sy-14px] h-full`}>
         <div className=" grid gap-[--24px] grid-cols-3 h-full">
           <div className=" col-span-1 rounded-[--15px] bg-[#353535] px-[--25px] pt-[--sy-18px] pb-[--sy-31px] relative h-full flex flex-col">
-            <div className=" flex justify-between items-center mb-[--sy-30px]">
+            <div className=" flex justify-between items-center mb-[--sy-31px]">
+              <div className=" absolute -top-[30px] w-[--75px]">
               <Image
                 src={profile}
                 alt="profile"
-                className=" absolute -top-[30px]"
+                className="w-[--75px]"
               />
+              </div>
               <div className=" ml-auto">
-                <p className="text-[#B1B1B1] text-[--10px]">
+                <p className="text-[#B1B1B1] text-[--10px] mb-[--sy-8px] leading-[12px]">
                   Registered on January 2024
                 </p>
-                <p className="text-[#B1B1B1] text-[--10px]">
+                <p className="text-[#B1B1B1] text-[--10px] leading-[12px]">
                   Last login on January, 14th, 2024
                 </p>
               </div>
             </div>
             <div className=" flex justify-between items-center mb-[--sy-40px]">
-              <h1 className=" text-[--24px]">Cameron Williamson</h1>
-              <span className=" bg-[--highlight-yellow] rounded-[--30px] px-[--11px] py-[--sy-6px] text-black font-semibold">
+              <h1 className=" text-[--24px] font-semibold">Cameron Williamson</h1>
+              <span className=" bg-[--highlight-yellow] rounded-[--30px] px-[--11px] py-[--sy-6px] text-black text-[--10px] leading-[11.2px] font-semibold">
                 Entrepreneur
               </span>
             </div>
             <div className=" flex justify-between items-center gap-[--7px] mb-[--sy-23px]">
-              <div className="grow bg-[#272727] rounded-[--37px] h-[--sy-5px]">
+              <div className="grow bg-[#272727] rounded-[--37px] h-[--sy-8px]">
                 <div className=" bg-[--highlight-yellow] rounded-[--37px] h-full w-[40%] relative">
                   <div
-                    className={`${styles.tooltip} absolute right-0 translate-x-1/2 -top-[700%] bg-[#484848] rounded-[106px] text-[--10px] px-[--8px] py-[--sy-4px]`}
+                    className={`${styles.tooltip} absolute right-0 translate-x-1/2 -top-[450%] bg-[#484848] rounded-[106px] text-[--10px] px-[--8px] py-[--sy-4px]`}
                   >
                     $20,361{" "}
                     <svg
@@ -53,12 +55,12 @@ const page = () => {
                   </div>
                 </div>
               </div>
-              <span className=" bg-[--highlight-yellow] rounded-[--4px] px-[--11px] py-[--sy-6px] text-black font-semibold">
+              <span className=" bg-[--highlight-yellow] rounded-[--4px] px-[--12px] py-[--sy-4px] text-black text-[--10px] leading-[12px] font-semibold">
                 $50K
               </span>
             </div>
             <div className=" flex gap-[--12px] items-center mb-[--sy-23px]">
-              <span className=" bg-[#484848] rounded-[--30px] px-[--11px] py-[--sy-6px] text-[#B1B1B1] font-semibold flex items-center gap-[--6px]">
+              <span className=" bg-[#484848] rounded-[--30px] px-[--29px] py-[--sy-8px] text-[--12px] text-[#B1B1B1] font-semibold flex items-center gap-[--6px]">
                 <svg
                   className={`${styles.lock}`}
                   width="9"
@@ -74,7 +76,7 @@ const page = () => {
                 </svg>
                 White Label
               </span>
-              <span className=" bg-[#484848] text-[#B1B1B1] rounded-[--30px] px-[--11px] py-[--sy-6px] font-semibold flex items-center gap-[--6px]">
+              <span className=" bg-[#484848] text-[#B1B1B1] rounded-[--30px] px-[--29px] text-[--12px] py-[--sy-8px] font-semibold flex items-center gap-[--6px]">
                 <svg
                   className={`${styles.lock}`}
                   width="9"
@@ -88,7 +90,7 @@ const page = () => {
                     fill="#B1B1B1"
                   />
                 </svg>
-                Entrepreneur
+                Infinity Services
               </span>
             </div>
             <div className=" h-[1px] w-full bg-[#434343] mb-[--sy-25px]"></div>

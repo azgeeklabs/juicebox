@@ -1,5 +1,6 @@
 .home_hero {
   height: 100vh;
+  width: 100vw;
 }
 .mainHero:hover .mainHeroAdds {
   background-color: #f8f24b;
@@ -63,8 +64,11 @@
 .process:hover button svg g path {
   fill: #1d1d1d;
 }
+.process button {
+  transform-origin: top left;
+}
 .process button:hover {
-  font-size: var(--17px);
+  transform: scale(1.1);
 }
 .process button:hover svg {
   transform: rotate(-50deg);
