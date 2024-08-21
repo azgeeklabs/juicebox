@@ -38,9 +38,11 @@ export default function Page() {
     >
       <div className="flex items-center justify-center h-full w-full">
         {/* Inner container with full width and custom styles for choosing video kind */}
-        <div className={`${styles.chooseKind} w-full `}>
+        <div
+          className={`${styles.chooseKind} flex flex-col gap-[--98px] justify-around w-full`}
+        >
           {/* Header section with top padding, left padding, and bottom margin */}
-          <div className="pt-[1.5vw] pl-[4.264vw] mb-[1.5vw]">
+          <div className="pl-[4.264vw]">
             {/* Main heading with bottom margin and embedded horizontal rule */}
             <h2 className="mb-[1.041vw]">
               What kind of video do you want to be published
