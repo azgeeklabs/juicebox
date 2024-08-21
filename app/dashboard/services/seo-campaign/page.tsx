@@ -3,7 +3,7 @@ import styles from "./seo-campaign.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import Image from "next/image";
 
-function page() {
+function Page() {
   return (
     <NextPrevNav nextLink="/dashboard/services/seo-campaign/advertising-details">
       <div className="flex flex-col gap-[var(--sy-64px)] justify-center items-center h-full">
@@ -106,4 +106,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

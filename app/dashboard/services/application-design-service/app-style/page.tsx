@@ -10,7 +10,7 @@ import "swiper/css/pagination";
 import SwiperCore from "swiper";
 import { globalContext } from "@/app/_context/GlobalContext";
 
-export default function page() {
+export default function Page() {
 
   const { step, setStep } = useContext(globalContext);
   

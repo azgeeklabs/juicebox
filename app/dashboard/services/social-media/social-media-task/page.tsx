@@ -4,7 +4,7 @@ import styles from "./socialMediaTask.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
-const page = () => {
+const Page = () => {
     const [answer,setAnswer] = useState("")
   return (
     // Main container div
@@ -42,4 +42,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

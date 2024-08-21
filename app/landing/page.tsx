@@ -3,7 +3,7 @@ import React from "react";
 import Landing from "../_components/landing/Landing";
 import "./landingpage.css";
 
-export default function page() {
+export default function Page() {
   return (
     <>
       <div id="landing-overlay">

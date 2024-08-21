@@ -12,7 +12,7 @@ const CustomTypeRange = dynamic(
   { ssr: false }
 );
 
-const page = () => {
+const Page = () => {
     const router = useRouter()
   return (
     <NextPrevNav
@@ -71,4 +71,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

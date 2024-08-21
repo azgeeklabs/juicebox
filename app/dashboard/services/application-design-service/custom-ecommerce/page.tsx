@@ -39,7 +39,7 @@ const additionalPages = [
   "Careers",
 ];
 
-function page() {
+function Page() {
   const swiperRef = useRef<SwiperCore | null>(null);
 
   const slides = [
@@ -205,4 +205,4 @@ backOnClick={() => setStep(step - 1)}
   );
 }
 
-export default page;
+export default Page;

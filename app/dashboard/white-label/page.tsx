@@ -1,11 +1,11 @@
 import React from 'react'
 
-const page = () => {
+const Page = () => {
   return (
     <div>
-      WHITE LABEL
+      White Label - Coming Soon
     </div>
   )
 }
 
-export default page
+export default Page

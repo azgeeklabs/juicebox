@@ -1,11 +1,11 @@
 import React from 'react'
 
-const page = () => {
+const Page = () => {
   return (
     <div>
-      iNFIFNITY
+      Infinity - Coming Soon
     </div>
   )
 }
 
-export default page
+export default Page

@@ -5,7 +5,7 @@ import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import { useContext } from "react";
 import { globalContext } from "@/app/_context/GlobalContext";
 
-function page() {
+function Page() {
   const data = [
     {
       title: "Healthcare",
@@ -317,4 +317,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

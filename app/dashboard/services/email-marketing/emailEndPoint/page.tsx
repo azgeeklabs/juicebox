@@ -3,7 +3,7 @@ import React from 'react'
 import styles from "./emailEndPoint.module.css"
 import CustomCheckBoxText from '@/app/_components/customCheckBox/CustomCheckBoxText'
 
-const page = () => {
+const Page = () => {
   return (
     <NextPrevNav
       nextLink="/dashboard/services"
@@ -61,4 +61,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

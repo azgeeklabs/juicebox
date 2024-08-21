@@ -4,7 +4,7 @@ import { globalContext } from "@/app/_context/GlobalContext";
 import React, { useContext } from "react";
 import styles from "./releasePublishing.module.css";
 
-const page = () => {
+const Page = () => {
   const { step, setStep } = useContext(globalContext);
 
   const websites = [
@@ -361,4 +361,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

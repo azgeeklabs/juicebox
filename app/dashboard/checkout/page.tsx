@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import styles from "./checkout.module.css";
 import CustomCheckBox from "@/app/_components/customCheckBox/CustomCheckBox";
 
-const page = () => {
+const Page = () => {
   useEffect(() => {
     (document.getElementById("cardNumber") as any).addEventListener(
       "input",
@@ -207,14 +207,18 @@ const page = () => {
               className=" text-[--15px] font-medium z-[1] relative"
             >
               By clicking “Subscribe” you agree to the{" "}
-              <span className="text-[#F8F24B] z-[1] relative">Terms & Agreements</span>
+              <span className="text-[#F8F24B] z-[1] relative">
+                Terms & Agreements
+              </span>
             </label>
           </div>
-          <button className=" w-full text-black rounded-[--33px] relative z-[1] bg-[#F8F24B] py-[--sy-13px] font-bold">Subscribe</button>
+          <button className=" w-full text-black rounded-[--33px] relative z-[1] bg-[#F8F24B] py-[--sy-13px] font-bold">
+            Subscribe
+          </button>
         </div>
       </div>
     </div>
   );
 };
 
-export default page;
+export default Page;

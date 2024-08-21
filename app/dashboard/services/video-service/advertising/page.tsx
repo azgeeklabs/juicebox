@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./advertising.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
-const page = () => {
+const Page = () => {
   return (
     // Main outer container div
 <NextPrevNav nextLink="/dashboard/services/video-service/youtube-channel" backLink="/dashboard/services/video-service/footage-selection">
@@ -72,4 +72,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

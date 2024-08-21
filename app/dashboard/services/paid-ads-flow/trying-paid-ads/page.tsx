@@ -3,7 +3,7 @@ import styles from "./tryingPaidAds.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
-const page = () => {
+const Page = () => {
   return (
     // Main outer container div
     <NextPrevNav nextLink="/dashboard/services/paid-ads-flow/create-content" backLink="/dashboard/services/paid-ads-flow/create-account"><div className=" h-full flex items-center justify-center">
@@ -38,4 +38,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

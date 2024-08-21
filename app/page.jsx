@@ -1,20 +1,20 @@
 "use client";
 import React, { useEffect } from "react";
-// import Home from "../_components/home/Home";
+// import NavBar from "./_components/NavBar/NavBar";
+// import Home from "./_components/home/Home";
+
 import dynamic from "next/dynamic";
+
 const NavBar = dynamic(() => import("./_components/NavBar/NavBar"), {
-  ssr: false,
-});
-const Footer = dynamic(() => import("./Footer"), {
   ssr: false,
 });
 
 const Home = dynamic(() => import("./_components/home/Home"), { ssr: false });
 
-export default function page() {
+export default function Page() {
   useEffect(() => {
     // Reload the page when the window is resized
-    let resizeTimeout: NodeJS.Timeout; // Explicitly type the variable
+    let resizeTimeout; // Explicitly type the variable
 
     const handleResize = () => {
       clearTimeout(resizeTimeout);
@@ -31,26 +31,11 @@ export default function page() {
     };
   }, []);
 
-  useEffect(() => {
-    // Key to use in localStorage
-    const reloadFlagKey = "pageReloaded";
-
-    // Get the value of the flag from localStorage
-    const hasReloaded = sessionStorage.getItem(reloadFlagKey);
-
-    if (!hasReloaded) {
-      // If the flag is not set, set it to true and reload the page
-      sessionStorage.setItem(reloadFlagKey, "true");
-      window.location.reload();
-    }
-  }, []); // Empty dependency array ensures this runs only on mount
-
   return (
     <>
       <div className="pt-[--sy-100px]">
         <NavBar />
         <Home />
-        <Footer />
       </div>
     </>
   );

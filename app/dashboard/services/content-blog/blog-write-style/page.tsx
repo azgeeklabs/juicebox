@@ -3,7 +3,7 @@ import styles from "./blogWriteStyle.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
-const page = () => {
+const Page = () => {
   return (
     // Main outer container div
     <NextPrevNav nextLink="/dashboard/services/content-blog/word-count" backLink="/dashboard/services/content-blog/create-website"><div className=" h-full flex items-center justify-center">
@@ -39,4 +39,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

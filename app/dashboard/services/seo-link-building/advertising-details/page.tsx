@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./advertising-details.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
-const page = () => {
+const Page = () => {
   return (
     <NextPrevNav
       backLink="/dashboard/services/seo-link-building/article-selection"
@@ -79,4 +79,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

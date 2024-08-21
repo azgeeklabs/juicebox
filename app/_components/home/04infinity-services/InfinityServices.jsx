@@ -2,11 +2,11 @@
 import React, { useEffect, useRef } from "react";
 import "./infinityServices.css";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger, useGSAP);
-}
+// import { useGSAP } from "@gsap/react";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+// if (typeof window !== "undefined") {
+//   gsap.registerPlugin(ScrollTrigger, useGSAP);
+// }
 
 export default function InfinityServices() {
   // ===== Start Shape(1) =====
@@ -40,6 +40,9 @@ export default function InfinityServices() {
     return () => {
       shape1Wrapper.removeEventListener("mouseover", handleMouseOver);
       shape1Wrapper.removeEventListener("mouseleave", handleMouseLeave);
+      if (tl) {
+        tl.kill();
+      }
     };
   }, []);
 
@@ -76,6 +79,9 @@ export default function InfinityServices() {
     return () => {
       shape2Wrapper.removeEventListener("mouseover", handleMouseOver);
       shape2Wrapper.removeEventListener("mouseleave", handleMouseLeave);
+      if (tl) {
+        tl.kill();
+      }
     };
   }, []);
 
@@ -112,6 +118,9 @@ export default function InfinityServices() {
     return () => {
       shape3Wrapper.removeEventListener("mouseover", handleMouseOver);
       shape3Wrapper.removeEventListener("mouseleave", handleMouseLeave);
+      if (tl) {
+        tl.kill();
+      }
     };
   }, []);
 

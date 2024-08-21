@@ -1,12 +1,7 @@
+import React from "react";
 
-import React from 'react'
+const Loading = () => {
+  return <div className="min-h-screen"></div>;
+};
 
-const loading = () => {
-  return (
-    <div>
-      loading .....
-    </div>
-  )
-}
-
-export default loading
+export default Loading;

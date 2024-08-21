@@ -1,8 +1,10 @@
 "use client";
 import React from "react";
 import "./hero.css";
+import { useRouter } from "next/navigation";
 
 export default function Hero() {
+  const router = useRouter();
   return (
     <section
       className="home_hero grid grid-cols-7 pt-[--sy-10px] pb-[--sy-20px] gap-[--15px] px-[--64px] overflow-hidden"
@@ -528,7 +530,7 @@ export default function Hero() {
             digital services tailored for agencies. If you can imagine it, we’ve
             got it covered!
           </p>
-          <button className=" px-[--25px] py-[--sy-13px] bg-[#F8F24B] text-[--17px] text-black rounded-[--35px] font-bold transition-all duration-200">
+          <button onClick={()=>{router.push("/sign-up")}} className=" px-[--25px] py-[--sy-13px] bg-[#F8F24B] text-[--17px] text-black rounded-[--35px] font-bold transition-all duration-200">
             Sign Up
           </button>
         </div>

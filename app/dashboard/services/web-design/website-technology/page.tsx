@@ -3,7 +3,7 @@ import styles from "./website-technology.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import Image from "next/image";
 
-function page() {
+function Page() {
   const customCard = (
     <svg
       viewBox="0 0 68 60"
@@ -123,4 +123,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

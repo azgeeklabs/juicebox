@@ -98,10 +98,42 @@ const Billing = () => {
               <span className=" bg-[#484848] w-[180px] rounded-[--28px] flex justify-center items-center py-[--sy-14px] font-bold shrink-0">
                 Web Design
               </span>
+              <span className=" bg-[#484848] w-[180px] rounded-[--28px] flex justify-center items-center py-[--sy-14px] font-bold shrink-0">
+                Web Design
+              </span>
+              <span className=" bg-[#484848] w-[180px] rounded-[--28px] flex justify-center items-center py-[--sy-14px] font-bold shrink-0">
+                Web Design
+              </span>
+              <span className=" bg-[#484848] w-[180px] rounded-[--28px] flex justify-center items-center py-[--sy-14px] font-bold shrink-0">
+                Web Design
+              </span>
+              <span className=" bg-[#484848] w-[180px] rounded-[--28px] flex justify-center items-center py-[--sy-14px] font-bold shrink-0">
+                Web Design
+              </span>
+              <span className=" bg-[#484848] w-[180px] rounded-[--28px] flex justify-center items-center py-[--sy-14px] font-bold shrink-0">
+                Web Design
+              </span>
+              <span className=" bg-[#484848] w-[180px] rounded-[--28px] flex justify-center items-center py-[--sy-14px] font-bold shrink-0">
+                Web Design
+              </span>
             </div>
           </div>
         </div>
         <div className=" w-1/3 py-[--sy-18px] px-[--19px] bg-[--highlight-yellow] text-black rounded-[--7px]">
+          <div className=" flex items-center justify-between">
+            <div className=" flex flex-col gap-[--sy-24px]">
+              <h2 className=" font-semibold">Total Services</h2>
+              <span className=" text-[--32px] font-semibold">26</span>
+            </div>
+            <div className=" flex flex-col gap-[--sy-24px]">
+              <h2 className=" font-semibold">Infinity Services</h2>
+              <span className=" text-[--32px] font-semibold">-</span>
+            </div>
+            <div className=" flex flex-col gap-[--sy-24px]">
+              <h2 className=" font-semibold">WhiteLabel</h2>
+              <span className=" text-[--32px] font-semibold">-</span>
+            </div>
+          </div>
           <div className=" flex items-center justify-between">
             <div className=" flex flex-col gap-[--sy-24px]">
               <h2 className=" font-semibold">Total Services</h2>

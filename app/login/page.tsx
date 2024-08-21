@@ -2,7 +2,7 @@ import { Divider } from "@mui/material";
 import Link from "next/link";
 import React from "react";
 
-const page = () => {
+const Page = () => {
   return (
     <div className=" bg-[#181818] h-full w-full grid place-items-center grid-cols-2 items-center gap-x-[--102px] px-[240px]">
       <div className="  col-span-1">
@@ -16,8 +16,7 @@ const page = () => {
           <div className=" bg-[#F8F24B] rounded-[--48px] px-[--40px] py-[--sy-22px] font-bold flex justify-between items-center text-[--17px] text-black">
             <h4>John Website</h4>
             <svg
-              width="18"
-              height="18"
+              className="w-[--18px] h-[--18px]"
               viewBox="0 0 18 18"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -31,8 +30,7 @@ const page = () => {
           <div className=" bg-[#F8F24B] rounded-[--48px] px-[--40px] py-[--sy-22px] font-bold flex justify-between items-center text-[--17px] text-black">
             <h4>White Label</h4>
             <svg
-              width="18"
-              height="18"
+              className="w-[--18px] h-[--18px]"
               viewBox="0 0 18 18"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -46,8 +44,7 @@ const page = () => {
           <div className=" bg-[#F8F24B] rounded-[--48px] px-[--40px] py-[--sy-22px] font-bold flex justify-between items-center text-[--17px] text-black">
             <h4>John Website</h4>
             <svg
-              width="18"
-              height="18"
+              className="w-[--18px] h-[--18px]"
               viewBox="0 0 18 18"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -105,8 +102,7 @@ const page = () => {
           <div className=" flex flex-col gap-[--sy-16px] w-full">
             <button className=" flex items-center justify-center gap-[--15px] bg-[#353535] rounded-[--7px] grow py-[--sy-12px]">
               <svg
-                width="19"
-                height="18"
+                className="w-[--19px] h-[--18px]"
                 viewBox="0 0 19 18"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -122,8 +118,7 @@ const page = () => {
             </button>
             <button className=" flex items-center justify-center gap-[--15px] bg-[#353535] rounded-[--7px] grow py-[--sy-12px]">
               <svg
-                width="16"
-                height="18"
+                className="w-[--16px] h-[--18px]"
                 viewBox="0 0 16 18"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -140,9 +135,9 @@ const page = () => {
           </div>
         </div>
         <p className=" text-center text-[#F8F24B]">
-          Already have an account?{" "}
-          <Link href={"#"} className=" underline font-bold">
-            Sign In
+          Don't have an account?{" "}
+          <Link href={"/sign-up"} className="underline font-bold">
+            Sign up
           </Link>
         </p>
       </div>
@@ -150,4 +145,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

@@ -6,7 +6,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import dayjs from "dayjs";
 import styles from "./BookACall.module.css";
-const page = () => {
+const Page = () => {
   const [selectedDay, setSelectedDay] = useState<string>("");
   const [selectedMonth, setSelectedMonth] = useState<string>("");
   const [selectedYear, setSelectedYear] = useState<string>("");
@@ -284,4 +284,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

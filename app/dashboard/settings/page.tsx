@@ -1,11 +1,18 @@
-import React from 'react'
+"use client";
+import React, { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
-const page = () => {
+const Page = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push("/dashboard/profile");
+  }, []);
+
   return (
-    <div>
-      SETTINGS
-    </div>
-  )
-}
+    // <div>Settings - Coming Soon</div>
+    <></>
+  );
+};
 
-export default page
+export default Page;

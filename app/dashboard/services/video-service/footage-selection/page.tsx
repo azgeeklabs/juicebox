@@ -11,7 +11,7 @@ import img5 from "../../../../../public/assets/Frame4.svg";
 import img6 from "../../../../../public/assets/Frame5.svg";
 import Image from "next/image";
 
-const page = () => {
+const Page = () => {
   const [checked, setChecked] = useState(false);
   const platforms = [
     {
@@ -140,4 +140,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

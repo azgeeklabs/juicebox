@@ -5,7 +5,7 @@ import Image from "next/image";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 
-function page() {
+function Page() {
   return (
     <NextPrevNav
       nextLink="/dashboard/services/email-marketing/email-campaign"
@@ -59,4 +59,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

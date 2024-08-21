@@ -42,13 +42,16 @@ export default function NewsLetter({}: Props) {
     setIsSubmitting(true);
     try {
       // Send a POST request to the API endpoint
-      const response = await fetch("/api/newsletter", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email: values.email }),
-      });
+      const response = await fetch(
+        "https://test-api-brown-tau.vercel.app/api/newsletter",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email: values.email }),
+        }
+      );
 
       // Parse the response from the API
       const data: ApiResponse = await response.json();

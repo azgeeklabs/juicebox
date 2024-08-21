@@ -4,7 +4,7 @@ import React from "react";
 import styles from "./durationOfVideo.module.css";
 import CustomTypeRange from "@/app/_components/customTypeRange/CustomTypeRange";
 
-const page = () => {
+const Page = () => {
   return (
     // Custom component for navigation between pages, passing props for the next and back links
 <NextPrevNav nextLink="/dashboard/services/content-scripts/estimated-cost" backLink="/dashboard/services/content-scripts/choose-niche" >
@@ -37,4 +37,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

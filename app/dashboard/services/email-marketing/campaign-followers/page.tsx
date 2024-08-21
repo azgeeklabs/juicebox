@@ -10,7 +10,7 @@ const CustomTypeRange = dynamic(
   { ssr: false }
 );
 
-const page = () => {
+const Page = () => {
   return (
     <NextPrevNav
       nextLink="/dashboard/services/email-marketing/emailEndPoint"
@@ -44,4 +44,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

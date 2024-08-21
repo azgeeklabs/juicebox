@@ -5,7 +5,7 @@ import classNames from "classnames";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
-export default function page() {
+export default function Page() {
   return (
     <NextPrevNav
       backLink="/dashboard/services/seo-campaign/keyword-selection"

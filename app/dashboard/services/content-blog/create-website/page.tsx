@@ -5,7 +5,7 @@ import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxT
 import Link from "next/link";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
-const page = () => {
+const Page = () => {
   const [haveWebsite, setHaveWebsite] = useState(false);
   return (
     <NextPrevNav
@@ -104,4 +104,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

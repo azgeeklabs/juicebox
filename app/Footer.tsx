@@ -1,10 +1,13 @@
-'use client';
+"use client";
 import Link from "next/link";
 import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="relative w-full mt-[300px] bg-[#F8F24B] h-[calc(var(--sy-170px)_*_2)]">
+    <footer
+      className="relative w-full mt-[300px] bg-[#F8F24B] h-[calc(var(--sy-170px)_*_2)] custom-hidden"
+      id="footer"
+    >
       <svg
         preserveAspectRatio="none"
         className="absolute top-0 left-0 -translate-y-1/2 z-[6]"
@@ -52,7 +55,11 @@ const Footer = () => {
             Contact Us
           </h3>
           <div className=" flex flex-col gap-[--sy-22px]">
-            <Link href={""} className="w-fit flex items-center gap-[--16px]">
+            <Link
+              href={"https://www.instagram.com/creativejuiceboxagency/"}
+              target="_blank"
+              className="w-fit flex items-center gap-[--16px]"
+            >
               <svg
                 viewBox="0 0 17 17"
                 fill="none"
@@ -64,9 +71,11 @@ const Footer = () => {
                   fill="#1D1D1D"
                 />
               </svg>
-              <span className="text-[--14px] font-semibold">@juicebox</span>
+              <span className="text-[--14px] font-semibold">
+                @creativejuiceboxagency
+              </span>
             </Link>
-            <Link href={""} className="w-fit flex items-center gap-[--16px]">
+            <Link href={"https://x.com/Agency_JuiceBox"} target="_blank" className="w-fit flex items-center gap-[--16px]">
               <svg
                 viewBox="0 0 21 17"
                 fill="none"
@@ -81,9 +90,15 @@ const Footer = () => {
                 />
               </svg>
 
-              <span className="text-[--14px] font-semibold">@juicebox</span>
+              <span className="text-[--14px] font-semibold">
+                @Agency_JuiceBox
+              </span>
             </Link>
-            <Link href={""} className="w-fit flex items-center gap-[--16px]">
+            <Link
+              href={"mailto:hello@creativejuicebox.com"}
+              target="_blank"
+              className="w-fit flex items-center gap-[--16px]"
+            >
               <svg
                 viewBox="0 0 19 17"
                 fill="none"
@@ -135,33 +150,33 @@ const Footer = () => {
           <h3 className=" text-[--40px] font-bold mb-[--sy-40px]">Site Map</h3>
           <div className=" flex gap-[--27px]">
             <div className=" flex flex-col gap-[--sy-16px]">
-              <Link href={""} className=" font-semibold text-[--14px]">
+              <Link href={"/"} className=" font-semibold text-[--14px]">
                 Home
               </Link>
               <Link href={"#about-us"} className=" font-semibold text-[--14px]">
                 About Us
               </Link>
-              <Link href={"#services"} className=" font-semibold text-[--14px]">
+              <Link href={"/dashboard/services"} target="_blank" className=" font-semibold text-[--14px]">
                 Services
               </Link>
-              <Link href={""} className=" font-semibold text-[--14px]">
+              <Link href={"/dashboard/infinity"} target="_blank" className=" font-semibold text-[--14px]">
                 Infinity Services
               </Link>
-              <Link href={""} className=" font-semibold text-[--14px]">
+              <Link href={"/dashboard/white-label"} target="_blank" className=" font-semibold text-[--14px]">
                 White Label
               </Link>
             </div>
             <div className=" flex flex-col gap-[--sy-16px]">
-              <Link href={""} className=" font-semibold text-[--14px]">
+              <Link href={"/careers"} target="_blank" className=" font-semibold text-[--14px]">
                 Careers
               </Link>
-              <Link href={""} className=" font-semibold text-[--14px]">
+              <Link href={"/disclaimer"} target="_blank" className=" font-semibold text-[--14px]">
                 Disclaimer
               </Link>
-              <Link href={""} className=" font-semibold text-[--14px]">
-                Privacy & Police
+              <Link href={"/privacy-policy"} target="_blank" className=" font-semibold text-[--14px]">
+                Privacy & Policy
               </Link>
-              <Link href={""} className=" font-semibold text-[--14px]">
+              <Link href={""} target="_blank" className=" font-semibold text-[--14px]">
                 Support
               </Link>
             </div>
@@ -169,10 +184,14 @@ const Footer = () => {
         </div>
         <div className=" col-span-1 ">
           <h3 className=" text-[--40px] font-bold mb-[--sy-40px]">
-            Leave a Reviw!
+            Leave a Review!
           </h3>
           <div className=" flex flex-col gap-[--sy-16px]">
-            <Link href={""} className="w-fit flex items-center gap-[--16px]">
+            <Link
+              href={"https://www.instagram.com/creativejuiceboxagency/"}
+              target="_blank"
+              className="w-fit flex items-center gap-[--16px]"
+            >
               <svg
                 viewBox="0 0 17 17"
                 fill="none"
@@ -184,9 +203,15 @@ const Footer = () => {
                   fill="#1D1D1D"
                 />
               </svg>
-              <span className="text-[--14px] font-semibold">@Clutch</span>
+              <span className="text-[--14px] font-semibold">
+                @creativejuiceboxagency
+              </span>
             </Link>
-            <Link href={""} className="w-fit flex items-center gap-[--16px]">
+            <Link
+              href={"https://x.com/Agency_JuiceBox"}
+              target="_blank"
+              className="w-fit flex items-center gap-[--16px]"
+            >
               <svg
                 viewBox="0 0 21 17"
                 fill="none"
@@ -201,7 +226,9 @@ const Footer = () => {
                 />
               </svg>
 
-              <span className="text-[--14px] font-semibold">@Linkedin</span>
+              <span className="text-[--14px] font-semibold">
+                @Agency_JuiceBox
+              </span>
             </Link>
           </div>
         </div>

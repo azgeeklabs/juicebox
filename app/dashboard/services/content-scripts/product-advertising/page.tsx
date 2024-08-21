@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./productAdvertising.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
-const page = () => {
+const Page = () => {
   return (
     // Main outer container div
     <NextPrevNav
@@ -69,4 +69,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

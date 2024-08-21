@@ -5,7 +5,7 @@ import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxT
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import { useRouter } from "next/navigation";
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
   return (
     // Main container div with relative positioning
@@ -60,4 +60,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

@@ -2,7 +2,7 @@ import { Divider } from "@mui/material";
 import Link from "next/link";
 import React from "react";
 
-const page = () => {
+const Page = () => {
   return (
     <div className=" bg-[#181818] h-full w-full flex justify-center items-center flex-col">
       <div className=" px-[--38px] py-[--sy-33px] rounded-[--14px] bg-[#272727] mb-[--sy-30px]">
@@ -81,9 +81,9 @@ const page = () => {
         </button>
         <p className=" mb-[--sy-40px]">
           By signing up you agree to our{" "}
-          <span className=" text-[--highlight-yellow]">Privacy Policy</span> and
+          <Link href={"/privacy-policy"} target="_blank" className=" text-[--highlight-yellow] underline">Privacy Policy</Link> and
           our{" "}
-          <span className=" text-[--highlight-yellow]">Terms & Agreements</span>
+          <Link href={"#"} target="_blank" className=" text-[--highlight-yellow] underline">Terms & Agreements</Link>
         </p>
         <Divider
           sx={{
@@ -104,8 +104,7 @@ const page = () => {
         <div className=" flex items-center gap-[--16px]">
           <button className=" flex items-center justify-center gap-[--15px] bg-[#353535] rounded-[--7px] grow py-[--sy-12px]">
             <svg
-              width="19"
-              height="18"
+              className="w-[--19px] h-[--18px]"
               viewBox="0 0 19 18"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -121,8 +120,7 @@ const page = () => {
           </button>
           <button className=" flex items-center justify-center gap-[--15px] bg-[#353535] rounded-[--7px] grow py-[--sy-12px]">
             <svg
-              width="16"
-              height="18"
+              className="w-[--16px] h-[--18px]"
               viewBox="0 0 16 18"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -138,9 +136,14 @@ const page = () => {
           </button>
         </div>
       </div>
-      <p>Already have an account? <Link href={"#"} className=" underline">Sign In</Link></p>
+      <p>
+        Already have an account?{" "}
+        <Link href={"/login"} className="underline">
+          Sign In
+        </Link>
+      </p>
     </div>
   );
 };
 
-export default page;
+export default Page;

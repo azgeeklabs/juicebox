@@ -4,7 +4,7 @@ import styles from "./audienceFrequency.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
-const page = () => {
+const Page = () => {
   return (
     // Main container div
     <NextPrevNav nextLink="/dashboard/services/social-media/interactions-types" backLink="/dashboard/services/social-media/social-media-task">
@@ -44,4 +44,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

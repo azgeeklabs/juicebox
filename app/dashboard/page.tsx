@@ -131,7 +131,7 @@ const people = [
 
 
 
-export default function page() {
+export default function Page() {
   return (
     <div className="flex h-full gap-[1vw]">
       {/* ===== Start Left Side ===== */}

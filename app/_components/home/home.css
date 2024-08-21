@@ -1,10 +1,69 @@
-/* .home_main {
-  overflow: hidden;
-} */
-
 .home_main .home_horizontal_scroll {
   height: 100vh;
   width: 200vw;
   display: flex;
   flex-direction: row;
 }
+
+/* ===== Start Our Work ===== */
+.home_ourWork {
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home_ourWork .home_ourWork_content h2 {
+  font-family: "Alfa Slab One", serif;
+  font-weight: 400;
+  font-size: var(--96px);
+  color: #f8f24b;
+  margin-bottom: var(--60px);
+}
+
+.home_ourWork .home_ourWork_caseStudy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--20px);
+}
+
+.home_ourWork .home_ourWork_caseStudy > p {
+  text-align: center;
+}
+
+.home_ourWork .home_ourWork_caseStudy > p > span {
+  font-family: "Alfa Slab One", serif;
+  font-weight: 400;
+  font-size: var(--25px);
+  color: #f8f24b;
+}
+
+.home_ourWork .home_ourWork_caseStudy > h3 {
+  font-family: "Alfa Slab One", serif;
+  font-weight: 400;
+  font-size: var(--40px);
+  color: #f8f24b;
+}
+
+.home_ourWork_leftImg,
+.home_ourWork_rightImg {
+  border: var(--5px) solid #f8f24b;
+  border-radius: var(--35px);
+  overflow: hidden;
+  width: var(--511px);
+}
+
+.home_ourWork_leftImg img,
+.home_ourWork_rightImg img {
+  width: 100%;
+}
+
+.home_ourWork_leftImg {
+  transform: rotate(-12.75deg);
+}
+.home_ourWork_rightImg {
+  transform: rotate(12.75deg);
+}
+/* ===== End Our Work ===== */
