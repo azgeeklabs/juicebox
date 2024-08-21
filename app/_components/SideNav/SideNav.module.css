@@ -195,12 +195,12 @@
 .navbar footer svg {
   width: var(--16px);
   flex-shrink: 0;
-  transform: rotateX(0deg) rotateY(180deg);
+  transform: rotateX(0deg);
   transition: all 0.5s cubic-bezier(0.11, 0.59, 0.18, 1.63);
 }
 
 .sidebar:is(.open) .navbar footer svg {
-  transform: rotateX(360deg) rotateY(0deg);
+  transform: rotateX(360deg) rotateY(180deg);
 }
 
 .navbar footer .footer {
