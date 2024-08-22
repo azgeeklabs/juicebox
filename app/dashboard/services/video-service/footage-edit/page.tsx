@@ -38,11 +38,13 @@ const Page = () => {
             {/* Upload input and button container with flexbox layout, gap, and bottom margin */}
             <div className="flex gap-[1vw] items-start mb-[2.667vh]">
               {/* Input field for uploading footage with full height, bottom margin, specific width, background color, outline removal, rounded corners, padding, and placeholder styling */}
-              <input
-                type="text"
-                placeholder="Upload Footage"
-                className="h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFF80]"
-              />
+              <div className="relative h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.889vh] text-[#FFFFFF80] cursor-pointer">
+                Upload Footage
+                <input
+                  type="file"
+                  className="absolute opacity-0 inset-0 cursor-pointer"
+                />
+              </div>
 
               {/* Button for uploading footage with background color, padding, text color, and rounded corners */}
               <button className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.711vh] text-black rounded-[var(--33px)]">
