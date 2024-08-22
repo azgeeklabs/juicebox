@@ -1,27 +1,29 @@
 .footageEdit h2 {
-    font-size: clamp(14px, calc(1.3vw + 0.1rem), 100px);
-    font-weight: 600;
-  }
-  .footageEdit h4 {
-    font-size: clamp(12px, calc(0.75vw + 0.1rem), 100px);
-    font-weight: 400;
-    color: #ffffffcc;
-  }
-  .footageEdit h3 {
-    font-size: clamp(12px, calc(0.85vw + 0.1rem), 100px);
-    font-weight: 600;
-    color: white;
-  }
-  .footageEdit button {
-    font-size: clamp(12px, calc(0.85vw + 0.1rem), 100px);
-    font-weight: 600;
-    
-  }
-.footageEdit  ::placeholder {
-    font-size: clamp(12px, calc(0.8vw + 0.1rem), 100px);
-
+  font-size: clamp(14px, calc(1.3vw + 0.1rem), 100px);
+  font-weight: 600;
 }
-.footageEdit a {
+.footageEdit h4 {
   font-size: clamp(12px, calc(0.75vw + 0.1rem), 100px);
-    
+  font-weight: 400;
+  color: #ffffffcc;
+}
+.footageEdit h3 {
+  font-size: clamp(12px, calc(0.85vw + 0.1rem), 100px);
+  font-weight: 600;
+  color: white;
+}
+.footageEdit button {
+  font-size: clamp(12px, calc(0.85vw + 0.1rem), 100px);
+  font-weight: 600;
+}
+.footageEdit ::placeholder {
+  font-size: clamp(12px, calc(0.8vw + 0.1rem), 100px);
+}
+.footageEdit div:has(> input) {
+  font-size: clamp(12px, calc(0.75vw + 0.1rem), 100px);
+}
+
+.footageEdit div:has(> input:checked) {
+  background-color: var(--highlight-yellow);
+  color: var(--primary-black);
 }
