@@ -22,19 +22,8 @@ export default function AboutUs() {
     centerMode: true,
   };
   const settings2 = {
-    dots: false,
-    arrows: false,
-    infinite: true,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    autoplay: true,
-    speed: 4000,
-    autoplaySpeed: 0,
-    cssEase: "linear",
-    pauseOnHover: false,
-    swipeToSlide: false,
-    centerMode: true,
-    rtl:true
+    ...settings1,
+    rtl: true,
   };
 
   return (

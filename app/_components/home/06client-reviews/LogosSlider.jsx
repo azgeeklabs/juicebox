@@ -16,10 +16,11 @@ export default function LogosSlider() {
     slidesToShow: 5,
     slidesToScroll: 5,
     autoplay: true,
-    speed: 1000,
+    speed: 3000,
+    autoplaySpeed: 0,
     cssEase: "linear",
-    pauseOnHover: true,
-    swipeToSlide: true,
+    pauseOnHover: false,
+    swipeToSlide: false,
     centerMode: true,
   };
   return (
