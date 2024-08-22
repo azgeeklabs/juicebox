@@ -14,11 +14,10 @@ import SwiperCore from "swiper";
 
 export default function Page() {
   const options = [
-    "Explainer",
-    "Educational",
-    "YouTube",
-    "Social Media Ad",
-    "Short Film",
+    "2D Animations",
+    "3D Animations",
+    "Motion Graphics",
+    "B Roll",
   ];
 
   const swiperRef = useRef<SwiperCore | null>(null);
