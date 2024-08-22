@@ -51,7 +51,7 @@ backOnClick={() => setStep(step - 1)}
               depending on your needs!
             </h4>
           </div>
-          <div className=" flex items-center justify-between pl-[4.021vw] pr-[1vw] w-full gap-[20vw]">
+          <div className=" flex items-center justify-between pl-[4.021vw] pr-[1vw] w-full gap-[35vw]">
             <div className={`${styles.btns} flex flex-col gap-[1.041vw]`}>
               {/* Iterate over options array and create CustomCheckBoxText components */}
               {options.map((e, i) => (

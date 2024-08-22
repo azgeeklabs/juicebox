@@ -22,7 +22,7 @@ const Page = () => {
               {/* Main heading with bottom margin and underlined text */}
               <h2 className="mb-[2.667vh]">
                 Based on everything you told us, the estimated
-                <br /> cost will be <span> $XXX </span> to get monetized.
+                cost of this <br /> service is <span> $XXX </span> and would take around <span>40 Days</span> to finish.
               </h2>
             </div>
 
@@ -36,7 +36,7 @@ const Page = () => {
                 inputType="radio"
                 name="styleAnswer"
               >
-                Let's get started
+                Book a call
               </CustomCheckBoxText>
 
               {/* CustomCheckBoxText component for selecting "I want to talk to someone first" option */}
@@ -45,13 +45,14 @@ const Page = () => {
                 inputType="radio"
                 name="styleAnswer"
               >
-                I want to talk to someone first
+                Start now
               </CustomCheckBoxText>
             </div>
 
             {/* Button for saving progress with various styling */}
-            <button className="block w-fit mx-auto px-[0.52vw] py-[0.533vh] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200 underline">
+            <button className="block w-fit mx-auto px-[0.52vw] relative py-[0.533vh] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200 underline">
               Save my Progress
+              <input type="checkbox" className=" inset-0 absolute opacity-0" />
             </button>
           </div>
         </div>

@@ -28,7 +28,7 @@ const Page = () => {
             </div>
 
             {/* Informational paragraph with center alignment */}
-            <p className="text-center">Almost Done!</p>
+            <p className="text-center">Here is a detail you must know!</p>
           </div>
         </div>
       </div>

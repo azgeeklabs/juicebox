@@ -31,7 +31,7 @@ function Page() {
     <div className="mx-auto w-fit">
       
       {/* Subheading for input field */}
-      <h3 className="mb-[1.067vh]">
+      <h3 className="mb-[--sy-16px]">
         Product Link <span>(if exists)</span>
       </h3>
       
@@ -42,7 +42,7 @@ function Page() {
         <input
           type="text"
           placeholder="Product Name"
-          className="h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFF80]"
+          className="h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--10px)] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFF80]"
         />
 
         {/* Button with background color, padding, text color, and rounded corners */}

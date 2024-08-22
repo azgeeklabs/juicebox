@@ -13,7 +13,7 @@ const Page = () => {
         <div className=" text-center mx-auto mb-[2vw]">
           <h2 className=" mb-[1.5vw]">I'm trying to rank for</h2>
           <p>
-            Please select the desired position for your product to appear in
+            Please select the desired position for your product to appear in <br />
             search engine results. The price may vary based on the selected
             rank.
           </p>

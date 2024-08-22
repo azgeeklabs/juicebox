@@ -15,7 +15,7 @@ const Page = () => {
           </h2>
           <h4>
             Please provide the product link, name, and a brief description of
-            the product or service you are advertising.
+            the product or <br /> service you are advertising.
           </h4>
         </div>
         <div className="mx-auto w-fit">

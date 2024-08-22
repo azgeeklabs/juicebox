@@ -11,20 +11,20 @@ export default function Page() {
       backLink="/dashboard/services/seo-campaign/rank-selection"
       nextLink="/dashboard/services/seo-campaign/analysis-estimate"
     >
-      <section className={classNames(styles.keywordSelection)}>
-        <div className={classNames(styles.container)}>
-          <div className="text-center">
-            <h2 className="">
-              What keywords do you want the user to search by when finding your
+      <section className={classNames(styles.keywordSelection, "w-full")}>
+        <div className={classNames(styles.container , "w-full ")}>
+          <div className="text-center w-full">
+            <h2 className=" w-full">
+              What keywords do you want the user to search by when <br /> finding your
               product?
             </h2>
             <p>
-              Please add the desired keywords for your product to appear in the
+              Please add the desired keywords for your product to appear in the <br />
               search engine results.
             </p>
           </div>
           {/* Keywords */}
-          <div className={classNames(styles.keywords)}>
+          <div className={classNames(styles.keywords,"pl-16")}>
             <div>
               <label htmlFor="keyword" className="">
                 Keywords <span>(Max 5)</span>
@@ -41,7 +41,7 @@ export default function Page() {
             </div>
           </div>
           {/* Suggestions */}
-          <div className={styles.suggestions}>
+          <div className={`${styles.suggestions} pl-16`}>
             <span>Suggestions</span>
             <div>
               <CustomCheckBoxText btnSize="sm" inputType="checkbox">

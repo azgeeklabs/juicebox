@@ -16,8 +16,8 @@ function Page() {
           <h2 className="font-bold">
             What is the product you are trying to rank?
           </h2>
-          <p className="w-[60%]">
-            Please select the option that best describes your project type. This
+          <p className=" text-[#FFFFFFCC]">
+            Please select the option that best describes your project type. <br /> This
             helps us understand the specific requirements for your project.
           </p>
         </div>

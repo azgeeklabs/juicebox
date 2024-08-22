@@ -17,7 +17,7 @@ const Page = () => {
           <div className="text-center mx-auto mb-[2.271vw]">
             {/* Main heading with bottom margin */}
             <h2 className="mb-[1.5vw]">
-              What product/service are you advertising?
+            Share with us more details about your product!
             </h2>
 
             {/* Subheading with horizontal rule (line) */}
@@ -59,7 +59,7 @@ const Page = () => {
             <div className={styles.keywords + " mt-[1.2vw]"}>
               <div>
                 <label htmlFor="keyword" className="">
-                  Add Keyword <span>(option)</span>
+                  Add Keyword <span className=" ml-2">(option)</span>
                 </label>
                 <div>
                   <input
