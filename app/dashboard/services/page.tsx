@@ -41,9 +41,9 @@ export default function Page() {
   }
 
   return (
-    <section>
+    <section className="services-page">
       {/* ===== Start Filter Tabs ===== */}
-      <div className={styles.filterTabs + " flex"}>
+      <div className={styles.filterTabs + " flex mx-[1.5vw]"}>
         <div className="flex flex-shrink-0">
           {filters.map((e, idx) => (
             <CustomCheckBoxText key={idx} btnSize="sm" inputType="checkbox">
@@ -58,7 +58,7 @@ export default function Page() {
       <div
         className={
           styles.searchAndFilter +
-          " flex justify-between items-center gap-[0.85vw]"
+          " flex justify-between items-center gap-[0.85vw] px-[1.5vw]"
         }
       >
         <div className="relative w-[90%]">

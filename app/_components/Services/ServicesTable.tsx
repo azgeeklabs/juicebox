@@ -224,7 +224,7 @@ export default function ServicesTable({
           <li className="w-[16.66%]">
             <span>Service</span>
           </li>
-          <li className="w-[50%]">
+          <li className="w-[calc(50%_-_0.2vw)]">
             <span>Information</span>
           </li>
           <li className={styles.clientProjects + " w-[16.66%]"}>

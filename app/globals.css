@@ -440,3 +440,7 @@ input[type="number"] {
 .subscriptions .serviceCard_serviceCard___Z8OC {
   width: 250px !important;
 }
+
+div.pageContent:has(> section.services-page) {
+  padding-inline: 0;
+}
