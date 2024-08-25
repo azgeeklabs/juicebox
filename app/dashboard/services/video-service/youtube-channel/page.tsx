@@ -14,7 +14,7 @@ const Page = () => {
       nextLink="/dashboard/services/video-service/video-style"
       backLink="/dashboard/services/video-service/advertising"
     >
-      <div className="  h-full flex justify-center items-center">
+      <div className="  h-[55%] flex justify-center">
         {/* Inner container with full width and custom YouTube channel styles */}
         <div className={`${styles.youtubeChannel} w-full`}>
           {/* Header section with centered text, auto margins for centering, and vertical margins */}

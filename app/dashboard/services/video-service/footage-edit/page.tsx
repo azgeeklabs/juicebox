@@ -13,7 +13,7 @@ const Page = () => {
       nextLink="/dashboard/services/video-service/addToVideo"
       backLink="/dashboard/services/video-service/channel-style"
     >
-      <div className="h-full flex justify-center items-center">
+      <div className="h-[75%] flex justify-center">
         {/* Inner container with full width and custom styles for footage editing section */}
         <div className={`${styles.footageEdit} w-full `}>
           {/* Header section with text centered, auto margins for horizontal centering, and vertical margins */}

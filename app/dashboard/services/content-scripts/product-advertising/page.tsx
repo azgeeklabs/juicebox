@@ -45,7 +45,7 @@ const Page = () => {
               {/* Product Link input field */}
               <input
                 type="text"
-                placeholder="Product Name"
+                placeholder="Product Link"
                 className="h-full mb-[1.778vh] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[--10px] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFF80]"
               />
 

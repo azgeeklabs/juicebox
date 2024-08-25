@@ -7,6 +7,7 @@ import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
 const LiveWebsite = () => {
   const [haveWebsite, setHaveWebsite] = useState(false);
+  const [doLater, setDoLater] = useState(false);
   return (
     <NextPrevNav
       nextLink={
@@ -89,12 +90,15 @@ const LiveWebsite = () => {
               </div>
 
               {/* Link component for saving progress */}
-              <Link
-                href={""}
-                className="block w-fit mx-auto px-[0.52vw] py-[0.3vw] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200 underline"
-              >
+              <div className="relative block w-fit mx-auto px-[0.52vw] py-[0.3vw] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200 underline">
                 I’ll do this later
-              </Link>
+                <input
+                  type="checkbox"
+                  name="dontHaveChannel"
+                  className="absolute opacity-0 inset-0 cursor-pointer"
+                  onChange={() => setDoLater((prev) => !prev)}
+                />
+              </div>
             </div>
           </div>
         </div>
