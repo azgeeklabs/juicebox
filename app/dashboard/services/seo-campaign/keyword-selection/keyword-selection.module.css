@@ -18,7 +18,7 @@
 }
 
 .keywordSelection h2 {
-  font-size: clamp(32px, calc(1.58vw + 0.1rem), 100px);
+  font-size: clamp(32px, calc(1.78vw + 0.1rem), 100px);
   font-weight: 600;
   margin-bottom: clamp(16px, calc(0.75vw + 0.1rem), 100px);
 }

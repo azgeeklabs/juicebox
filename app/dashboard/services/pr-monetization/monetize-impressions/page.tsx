@@ -24,7 +24,7 @@ const Page = () => {
               </h2>
             </div>
 
-            <p className=" text-center">Almost Done!</p>
+            <p className=" text-center">Hang on there</p>
           </div>
         </div>
       </div>

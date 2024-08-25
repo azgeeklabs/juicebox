@@ -45,7 +45,7 @@ const Page = () => {
               inputType="radio"
               name="styleAnswer"
             >
-              Book a call with our experts
+              Book a call
             </CustomCheckBoxText>
             <CustomCheckBoxText
               btnSize="xl"

@@ -24,12 +24,12 @@ const Page = () => {
               {/* Main heading with margin bottom and underlined text */}
               <h2 className="mb-[1.5vw]">
                 The cost for this campaign will be around <span>$1000</span> and
-                will <span>15-20</span> Months to get you to the first page of
+                will <span>15-20</span> <br /> Months to get you to the first page of
                 Google.
               </h2>
-              <p>
+              <p className=" text-[#FFFFFFCC]">
                 The Keywords you picked are <span>Hard</span> keywords. Based on
-                our analysis of your Domain strength and the strength of the
+                our analysis of your Domain strength and the strength of <br /> the
                 page you submitted, along with the amount of content you have
                 and your competitor's analysis
               </p>

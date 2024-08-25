@@ -27,10 +27,6 @@
     font-size: 2rem;
   }
   
-  .cards {
-    gap: clamp(1rem, calc(5vw + 0.1rem), 50rem);
-  }
-  
   /* .card > div {
     width: clamp(15rem, calc(10.35vw + 0.1rem), 20rem);
     height: clamp(15rem, calc(10.35vw + 0.1rem), 20rem);
