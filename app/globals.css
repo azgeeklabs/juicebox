@@ -344,6 +344,10 @@ body {
   height: var(--50px);
 }
 
+.swiper .slide:not(.selected) {
+  border: var(--8px) solid transparent;
+}
+
 .selected {
   border: var(--8px) solid #f8f24b !important;
 }
