@@ -87,7 +87,8 @@ const MatterComponent = () => {
       ground1.position.x + (ground1.bounds.max.x - ground1.bounds.min.x) / 2;
     const yPosition =
       matterContainer1.clientHeight -
-      (ground1.bounds.max.y - ground1.bounds.min.y) / 2;
+      (ground1.bounds.max.y - ground1.bounds.min.y) / 2 -
+      100;
 
     // Update ground1 object with new position
     Matter.Body.setPosition(ground1, { x: xPosition, y: yPosition });
