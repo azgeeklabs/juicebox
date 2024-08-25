@@ -62,14 +62,14 @@
 
 .table .table_body ul li {
   font-size: var(--16px);
-  font-weight: 400;
+  font-weight: 500;
   display: flex;
   align-items: center;
 }
 
 .table .table_body ul li span {
   font-size: var(--16px);
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .table .table_body ul li:first-child {
@@ -123,12 +123,13 @@
   background-color: #f8f24b;
 }
 
-.table .table_body ul:hover li {
+.table .table_body ul:hover li span {
   color: #1c1c1c;
+  font-weight: 700;
 }
 
-.table .table_body ul:hover li:first-child {
-  font-weight: 600;
+.table .table_body ul:hover li:first-child span {
+  font-weight: 800;
 }
 
 .table .table_body ul:hover li.clientProjects span {
