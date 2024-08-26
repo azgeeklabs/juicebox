@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useState } from "react";
+import React, { use, useContext, useEffect, useRef, useState } from "react";
 import styles from "./services.module.css";
 import ServicesTable from "../../_components/Services/ServicesTable";
 import CustomCheckBoxText from "../../_components/customCheckBox/CustomCheckBoxText";
@@ -33,6 +33,11 @@ export default function Page() {
     useState<boolean>(false);
 
   const { setOpen } = useContext(globalContext);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [startScrollLeft, setStartScrollLeft] = useState(0);
+  const [searchValue, setSearchValue] = useState<string>("");
+  const carouselRef = useRef<HTMLDivElement>(null);
 
   function handleToggleAdvancedFilter() {
     setIsAdvancedFilterActive(!isAdvancedFilterActive);
@@ -40,10 +45,67 @@ export default function Page() {
     setOpen(false);
   }
 
+  const dragStart = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    setStartX(e.pageX);
+    if (carouselRef.current !== null) {
+      setStartScrollLeft(carouselRef.current.scrollLeft);
+    }
+  };
+
+  const dragging = (e: React.MouseEvent) => {
+    if (!isDragging || carouselRef.current === null) return;
+
+    e.preventDefault();
+    // Calculate the new scroll position
+    const newScrollLeft = startScrollLeft - (e.pageX - startX);
+
+    // // Check if the new scroll position exceeds
+    // // the carousel boundaries
+    // if (
+    //   newScrollLeft <= 0 ||
+    //   newScrollLeft >=
+    //     carouselRef.current.scrollWidth - carouselRef.current.offsetWidth
+    // ) {
+    //   // If so, prevent further dragging
+    //   setIsDragging(false);
+    //   return;
+    // }
+
+    // Otherwise, update the scroll position of the carousel
+    console.log("newScrollLeft", newScrollLeft);
+    carouselRef.current.scrollLeft = newScrollLeft;
+  };
+
+  const dragStop = () => {
+    setIsDragging(false);
+  };
+
+  useEffect(() => {
+    console.log("startX", startX);
+    console.log("startScrollLeft", startScrollLeft);
+  }, [startScrollLeft]);
+
+  useEffect(() => {
+    if (isDragging) {
+      console.log("start dragging", isDragging);
+    } else {
+      console.log("stop dragging", isDragging);
+    }
+  }, [isDragging]);
+
   return (
-    <section className="services-page">
+    <section
+      className="services-page"
+      onMouseMove={dragging}
+      onMouseUp={dragStop}
+    >
       {/* ===== Start Filter Tabs ===== */}
-      <div className={styles.filterTabs + " flex mx-[1.5vw]"}>
+      <div
+        className={styles.filterTabs + " flex mx-[1.5vw]"}
+        ref={carouselRef}
+        onMouseDown={dragStart}
+      >
         <div className="flex flex-shrink-0">
           {filters.map((e, idx) => (
             <CustomCheckBoxText key={idx} btnSize="sm" inputType="checkbox">
@@ -62,7 +124,13 @@ export default function Page() {
         }
       >
         <div className="relative w-[90%]">
-          <input type="search" placeholder="Search" className="w-full" />
+          <input
+            type="search"
+            placeholder="Search"
+            className="w-full"
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+          />
           <svg
             className="absolute top-1/2 transform -translate-y-1/2"
             viewBox="0 0 17 17"
@@ -87,7 +155,10 @@ export default function Page() {
       {/* ===== End Search & Advanced Filters ===== */}
 
       {/* ===== Start Services Table ===== */}
-      <ServicesTable isAdvancedFilterActive={isAdvancedFilterActive} />
+      <ServicesTable
+        isAdvancedFilterActive={isAdvancedFilterActive}
+        searchQuery={searchValue}
+      />
       {/* ===== End Services Table ===== */}
     </section>
   );

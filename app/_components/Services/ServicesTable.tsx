@@ -1,9 +1,10 @@
 "use client";
-import React from "react";
+import React, { use, useEffect, useState } from "react";
 import styles from "./ServicesTable.module.css";
 import CustomCheckBoxText from "../customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
 import path from "path";
+import Fuse from "fuse.js";
 
 /**
  * Renders a table component displaying services.
@@ -12,8 +13,10 @@ import path from "path";
  */
 export default function ServicesTable({
   isAdvancedFilterActive,
+  searchQuery,
 }: {
   isAdvancedFilterActive: boolean;
+  searchQuery: string;
 }) {
   // An array of objects representing the rows of the table body.
   const bodyRow = [
@@ -179,6 +182,7 @@ export default function ServicesTable({
     },
   ];
 
+  const [result, setResult] = useState(bodyRow);
   const filtersByIndustry = [
     "Marketing",
     "Tech",
@@ -211,6 +215,25 @@ export default function ServicesTable({
     "Back End Development",
   ];
 
+  useEffect(() => {
+    const handleSearch = (text: string) => {
+      const fuse = new Fuse(bodyRow, {
+        keys: ["service"],
+        threshold: 0.2, // Default is 0.6
+      });
+      const result = fuse.search(text);
+      console.log(result);
+      setResult(result.map((r) => r.item));
+    };
+
+    if (searchQuery === "") {
+      setResult(bodyRow);
+      return;
+    }
+
+    handleSearch(searchQuery);
+  }, [searchQuery]);
+
   return (
     <div className={`${styles.tableContainer} flex`}>
       {/* ===== Start Table ===== */}
@@ -237,7 +260,7 @@ export default function ServicesTable({
 
         {/* Table Body */}
         <div className={styles.table_body}>
-          {bodyRow.map((e, idx) => (
+          {result?.map((e, idx) => (
             <ul key={idx}>
               <li className="w-[16.66%] self-start">
                 <span>{e.service}</span>

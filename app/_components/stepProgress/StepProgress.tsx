@@ -25,7 +25,7 @@ const StepProgress = ({ title, currentStep, steps }: StepProgressProps) => {
         <div
           className="bg-[var(--highlight-yellow)] h-full rounded-[--35px] transition-all duration-500 ease-in-out"
           style={{
-            width: `${currentStep ? (currentStep / steps) * 100 : 3}%`,
+            width: `${currentStep ? ((currentStep + 1) / steps) * 100 : 3}%`,
           }}
         ></div>
       </div>
@@ -34,7 +34,9 @@ const StepProgress = ({ title, currentStep, steps }: StepProgressProps) => {
         className={classNames(
           "block w-fit font-bold text-[--14px] px-[--19px] py-[--sy-8px] rounded-[var(--26px)]",
           styles.horrayIndicator,
-          currentStep === steps ? styles.active : ""
+          currentStep !== undefined && currentStep + 1 === steps
+            ? styles.active
+            : ""
         )}
       >
         Horray!
