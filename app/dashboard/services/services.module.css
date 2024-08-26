@@ -53,7 +53,7 @@
   font-size: var(--16px);
   text-decoration: underline;
   cursor: pointer;
-  transition: all 0.20s;
+  transition: all 0.2s;
   width: 10%;
   display: flex;
   justify-content: center;
@@ -78,3 +78,7 @@
   text-decoration: none;
 }
 /* ===== End Search & Advanced Filters ===== */
+
+.filterTabs * {
+  user-select: none;
+}
