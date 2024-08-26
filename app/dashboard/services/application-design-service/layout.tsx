@@ -1,7 +1,6 @@
 "use client";
 import StepProgress from "@/app/_components/stepProgress/StepProgress";
-import { globalContext } from "@/app/_context/GlobalContext";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
   const path = [
@@ -12,51 +11,50 @@ const layout = ({ children }: { children: React.ReactNode }) => {
     "additional-features",
     "app-wrapup",
   ];
+  const [currentPath, setCurrentPath] = useState(0);
+  const [currentLocation, setCurrentLocation] = useState("");
 
-  const { step } = useContext(globalContext);
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      const pathname = window.location.pathname;
+      setCurrentLocation(pathname);
+    });
 
-  // const [currentPath, setCurrentPath] = useState(0);
-  // const [module, setModule] = useState("");
+    observer.observe(document, { subtree: true, childList: true });
 
-  // useEffect(() => {
-  //   setModule(window.location.pathname.split("/")[2]);
-  //   const moduleName = window.location.pathname.split("/").pop();
-  //   const getCurrentPath = () => {
-  //     if (moduleName === module) {
-  //       setCurrentPath(0);
-  //       return;
-  //     }
-  //     const Path = window.location.pathname.split("/").pop();
-  //     path.findIndex((p, i) => {
-  //       if (p === Path) {
-  //         setCurrentPath(i);
-  //       }
-  //     });
-  //   };
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
-  //   getCurrentPath();
-  // }, []);
+  useEffect(() => {
+    const pathname = window.location.pathname;
+    const moduleName = pathname.split("/")[3];
+    const Path = pathname.split("/")[4];
+    console.log(moduleName);
+    console.log(Path);
 
-  // const getPreviousPath = () => {
-  //   if (currentPath === 0) {
-  //     return path[currentPath];
-  //   } else {
-  //     return path[currentPath - 1];
-  //   }
-  // };
+    const getCurrentPath = () => {
+      if (moduleName && !path) {
+        setCurrentPath(0);
+        return;
+      }
+      const index = path.findIndex((p) => p === Path);
+      if (index !== -1) {
+        setCurrentPath(index);
+      }
+    };
 
-  // const getNextPath = () => {
-  //   if (currentPath === path.length - 1) {
-  //     return path[currentPath];
-  //   } else {
-  //     return path[currentPath + 1];
-  //   }
-  // };
+    getCurrentPath();
+  }, [currentLocation]);
 
   return (
     <div className="flex flex-col h-full">
-      <StepProgress title={"Application Design"} steps={5} currentStep={step} />
-
+      <StepProgress
+        title={"Application Design"}
+        steps={path.length}
+        currentStep={currentPath}
+      />
       <div className="flex flex-col grow">{children}</div>
     </div>
   );
