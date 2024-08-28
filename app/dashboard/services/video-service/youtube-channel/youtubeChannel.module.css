@@ -23,7 +23,7 @@
   font-size: clamp(12px, calc(0.75vw + 0.1rem), 100px);
 }
 
-.youtubeChannel div:has(> input:checked) {
+.youtubeChannel div:has(> input:checked:first-child:last-child) {
   background-color: var(--highlight-yellow);
   color: var(--primary-black);
 }

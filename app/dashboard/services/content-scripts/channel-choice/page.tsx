@@ -1,12 +1,18 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import styles from "./channelChoice.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
 const Page = () => {
+  const [haveWebsite, setHaveWebsite] = useState(false);
+  const [doLater, setDoLater] = useState(false);
   return (
-    <NextPrevNav nextLink="/dashboard/services/content-scripts/video-style" backLink="/dashboard/services/content-scripts">
+    <NextPrevNav
+      nextLink="/dashboard/services/content-scripts/video-style"
+      backLink="/dashboard/services/content-scripts"
+    >
       {/* // Main container div with relative positioning */}
       <div className="h-full relative">
         {/* Inner container for the video end point section with custom styles */}
@@ -23,7 +29,8 @@ const Page = () => {
                 create one for you?
               </h2>
               <p className=" w-[45%] mx-auto text-[#FFFFFFCC]">
-              Our expert developers can craft a website for you in no time, or you can provide your own design!
+                Our expert developers can craft a website for you in no time, or
+                you can provide your own design!
               </p>
             </div>
 
@@ -33,6 +40,7 @@ const Page = () => {
             >
               {/* CustomCheckBoxText component for selecting options */}
               <CustomCheckBoxText
+                onClick={() => setHaveWebsite(true)}
                 btnSize="xl"
                 inputType="radio"
                 name="channelRedesign"
@@ -40,6 +48,7 @@ const Page = () => {
                 I have a channel
               </CustomCheckBoxText>
               <CustomCheckBoxText
+                onClick={() => setHaveWebsite(false)}
                 btnSize="xl"
                 inputType="radio"
                 name="channelRedesign"
@@ -51,29 +60,49 @@ const Page = () => {
             {/* Divider */}
             <hr className={`${styles.divider}`} />
 
-            <div className="mx-auto w-full">
+            <div
+              className={`mx-auto w-full ${
+                haveWebsite ? "" : "grayscale-[50%] opacity-50"
+              }`}
+            >
               {/* Product Link field with optional span */}
-              <h3 className="mb-[0.6vw] font-semibold text-[--20px]">YouTube Channel:</h3>
+              <h3 className="mb-[0.6vw] font-semibold text-[--20px]">
+                YouTube Channel:
+              </h3>
               <div className="flex gap-[1vw] items-start mb-[1.2vw]">
                 {/* Product Link input field */}
                 <input
+                  disabled={haveWebsite ? false : true}
                   type="text"
                   placeholder="Channel URL"
                   className="flex-grow h-full mb-[1vw] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.5vw] placeholder:text-[#FFFFFF80]"
                 />
 
                 {/* Paste Link button */}
-                <button className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.4vw] text-black rounded-[var(--33px)] font-bold">
+                <button
+                  disabled={haveWebsite ? false : true}
+                  className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.4vw] text-black rounded-[var(--33px)] font-bold"
+                >
                   Paste Link
                 </button>
               </div>
               {/* Link component for saving progress */}
-              <Link
-                href={""}
-                className="block w-fit mx-auto px-[0.52vw] py-[0.3vw] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200 underline"
+              <div
+                className={`relative block w-fit mx-auto px-[0.52vw] py-[0.3vw] ${
+                  haveWebsite && "hover:bg-[#484848]"
+                } rounded-[var(--32px)] transition-all duration-200 underline`}
               >
                 I’ll do this later
-              </Link>
+                <input
+                  disabled={haveWebsite ? false : true}
+                  type="checkbox"
+                  name="dontHaveChannel"
+                  className={`absolute opacity-0 inset-0 ${
+                    haveWebsite ? "cursor-pointer" : ""
+                  }`}
+                  onChange={() => setDoLater((prev) => !prev)}
+                />
+              </div>
             </div>
           </div>
         </div>

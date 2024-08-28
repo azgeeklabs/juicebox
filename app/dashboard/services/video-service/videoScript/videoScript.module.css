@@ -51,7 +51,7 @@
   padding: 0;
 }
 
-.videoScript__container div:has(> input:checked) {
+.videoScript__container div:has(> input:checked:first-child:last-child) {
   background-color: var(--highlight-yellow);
   color: var(--primary-black);
 }

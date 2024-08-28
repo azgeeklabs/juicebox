@@ -27,7 +27,7 @@
   padding: 0;
 }
 
-.createWebsite div:has(> input:checked) {
+.createWebsite div:has(> input:checked:first-child:last-child) {
   background-color: var(--highlight-yellow);
   color: var(--primary-black);
 }

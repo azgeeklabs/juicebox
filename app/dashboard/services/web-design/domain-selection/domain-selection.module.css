@@ -39,3 +39,8 @@
   margin-bottom: clamp(42px, calc(2.1vw + 0.1rem), 60px);
   padding: 0;
 }
+
+.domainSelection div:has(> input:checked:first-child:last-child) {
+  background-color: var(--highlight-yellow);
+  color: var(--primary-black);
+}
