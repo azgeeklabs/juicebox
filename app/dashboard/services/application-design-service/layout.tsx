@@ -17,6 +17,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const observer = new MutationObserver(() => {
       const pathname = window.location.pathname;
+      if (pathname === currentLocation) return;
       setCurrentLocation(pathname);
     });
 
