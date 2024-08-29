@@ -77,6 +77,16 @@ export default function Page() {
     carouselRef.current.scrollLeft = newScrollLeft;
   };
 
+  const scroll = (e: React.WheelEvent) => {
+    if (carouselRef.current === null) return;
+    if (e.deltaY == 0) return;
+    e.preventDefault();
+    carouselRef.current.scrollTo({
+      left: carouselRef.current.scrollLeft + e.deltaY * 3,
+      behavior: "smooth",
+    });
+  };
+
   const dragStop = () => {
     setIsDragging(false);
   };
@@ -105,6 +115,7 @@ export default function Page() {
         className={styles.filterTabs + " flex mx-[1.5vw]"}
         ref={carouselRef}
         onMouseDown={dragStart}
+        onWheel={scroll}
       >
         <div className="flex flex-shrink-0">
           {filters.map((e, idx) => (

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import styles from "./createAccount.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
@@ -7,10 +7,15 @@ import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import { useRouter } from "next/navigation";
 
 const Page = () => {
-  const router = useRouter()
-    const [haveAccount,setHaveAccount] = useState(false)
+  const router = useRouter();
+  const [haveAccount, setHaveAccount] = useState(false);
+  const [doLater, setDoLater] = useState(false);
+
   return (
-    <NextPrevNav nextLink="/dashboard/services/paid-ads-flow/trying-paid-ads" backLink="/dashboard/services/paid-ads-flow/" >
+    <NextPrevNav
+      nextLink="/dashboard/services/paid-ads-flow/trying-paid-ads"
+      backLink="/dashboard/services/paid-ads-flow/"
+    >
       {/* // Main container div with relative positioning */}
       <div className=" h-full relative w-full">
         {/* Inner container for the video end point section with custom styles */}
@@ -23,11 +28,12 @@ const Page = () => {
             <div className="text-center mx-auto mb-[2.271vw]">
               {/* Main heading with margin bottom and underlined text */}
               <h2 className="mb-[1.5vw] w-[60%] mx-auto">
-                Do you already have an website, or would you like us to
-                create one for you?
+                Do you already have an website, or would you like us to create
+                one for you?
               </h2>
               <p className=" w-[65%] mx-auto text-[#FFFFFFCC]">
-              Our expert developers can craft a website for you in no time, or you can provide your own design!
+                Our expert developers can craft a website for you in no time, or
+                you can provide your own design!
               </p>
             </div>
 
@@ -37,7 +43,7 @@ const Page = () => {
             >
               {/* CustomCheckBoxText component for selecting options */}
               <CustomCheckBoxText
-              onClick={()=>setHaveAccount(true)}
+                onClick={() => setHaveAccount(true)}
                 btnSize="xl"
                 inputType="radio"
                 name="creationAnswer"
@@ -45,7 +51,7 @@ const Page = () => {
                 I have a website
               </CustomCheckBoxText>
               <CustomCheckBoxText
-              onClick={()=>setHaveAccount(false)}
+                onClick={() => setHaveAccount(false)}
                 btnSize="xl"
                 inputType="radio"
                 name="creationAnswer"
@@ -57,30 +63,49 @@ const Page = () => {
             {/* Divider */}
             <hr className={`${styles.divider}`} />
 
-            <div className={`mx-auto w-full ${haveAccount ? "" : "grayscale-[50%] opacity-50"}`}>
+            <div
+              className={`mx-auto w-full ${
+                haveAccount ? "" : "grayscale-[50%] opacity-50"
+              }`}
+            >
               {/* Product Link field with optional span */}
-              <h3 className="mb-[0.6vw] font-semibold text-[--20px]">Account URL</h3>
+              <h3 className="mb-[0.6vw] font-semibold text-[--20px]">
+                Account URL
+              </h3>
               <div className="flex gap-[1vw] items-start mb-[1.2vw]">
                 {/* Product Link input field */}
                 <input
-                disabled={haveAccount ? false : true}
+                  disabled={haveAccount ? false : true}
                   type="text"
                   placeholder="URL"
                   className="flex-grow h-full mb-[1vw] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.5vw] placeholder:text-[#FFFFFF80]"
                 />
 
                 {/* Paste Link button */}
-                <button disabled={haveAccount ? false : true} className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.4vw] text-black rounded-[var(--33px)] font-bold">
+                <button
+                  disabled={haveAccount ? false : true}
+                  className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.4vw] text-black rounded-[var(--33px)] font-bold"
+                >
                   Paste Link
                 </button>
               </div>
               {/* Link component for saving progress */}
-              <Link
-                href={""}
-                className="block w-fit mx-auto px-[0.52vw] py-[0.3vw] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200 underline"
+              <div
+                className={`relative block w-fit mx-auto px-[0.52vw] py-[0.3vw] ${
+                  haveAccount && "hover:bg-[#484848]"
+                } rounded-[var(--32px)] transition-all duration-200 underline`}
               >
                 I’ll do this later
-              </Link>
+                <input
+                  disabled={haveAccount ? false : true}
+                  type="checkbox"
+                  name="dontHaveChannel"
+                  className={`absolute opacity-0 inset-0 ${
+                    haveAccount ? "cursor-pointer" : ""
+                  }`}
+                  onChange={() => setDoLater((prev) => !prev)}
+                />
+              </div>
             </div>
           </div>
         </div>

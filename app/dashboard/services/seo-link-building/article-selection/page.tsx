@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import styles from "./article-selection.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
@@ -6,9 +6,8 @@ import Link from "next/link";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
 const Page = () => {
-
   const [haveArticle, setHaveArticle] = useState(false);
-
+  const [doLater, setDoLater] = useState(false);
 
   return (
     <NextPrevNav
@@ -27,11 +26,11 @@ const Page = () => {
             <div className="text-center mx-auto mb-[2.271vw]">
               {/* Main heading with margin bottom and underlined text */}
               <h2 className="mb-[1.5vw]">
-                Do you already have an article, or would you like us to <br /> create
-                one for you?
+                Do you already have an article, or would you like us to <br />{" "}
+                create one for you?
               </h2>
               <p className=" text-[#FFFFFFCC]">
-              Our talented writers can create an article for you in no time, 
+                Our talented writers can create an article for you in no time,
               </p>
             </div>
 
@@ -41,7 +40,7 @@ const Page = () => {
             >
               {/* CustomCheckBoxText component for selecting options */}
               <CustomCheckBoxText
-              onClick={()=>setHaveArticle(true)}
+                onClick={() => setHaveArticle(true)}
                 btnSize="xl"
                 inputType="radio"
                 name="articleSelectionAnswer"
@@ -49,8 +48,7 @@ const Page = () => {
                 I’ve got my own article
               </CustomCheckBoxText>
               <CustomCheckBoxText
-              onClick={()=>setHaveArticle(false)}
-
+                onClick={() => setHaveArticle(false)}
                 btnSize="xl"
                 inputType="radio"
                 name="articleSelectionAnswer"
@@ -65,7 +63,7 @@ const Page = () => {
             >
               {/* Product Link field with optional span */}
               <h3 className="mb-[0.6vw] font-semibold text-[--20px]">
-              Upload Your Copy
+                Upload Your Copy
               </h3>
               <div className="flex gap-[1vw] items-start mb-[1.2vw]">
                 {/* Product Link input field */}
@@ -85,12 +83,22 @@ const Page = () => {
                 </button>
               </div>
               {/* Link component for saving progress */}
-              <Link
-                href={""}
-                className="block w-fit mx-auto px-[0.52vw] py-[0.3vw] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200 underline"
+              <div
+                className={`relative block w-fit mx-auto px-[0.52vw] py-[0.3vw] ${
+                  haveArticle && "hover:bg-[#484848]"
+                } rounded-[var(--32px)] transition-all duration-200 underline`}
               >
                 I’ll do this later
-              </Link>
+                <input
+                  disabled={haveArticle ? false : true}
+                  type="checkbox"
+                  name="dontHaveChannel"
+                  className={`absolute opacity-0 inset-0 ${
+                    haveArticle ? "cursor-pointer" : ""
+                  }`}
+                  onChange={() => setDoLater((prev) => !prev)}
+                />
+              </div>
             </div>
           </div>
         </div>

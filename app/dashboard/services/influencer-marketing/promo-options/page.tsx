@@ -10,6 +10,9 @@ import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
 function Page() {
   const router = useRouter();
+  const [haveWebsite, setHaveWebsite] = useState(false);
+
+  const [doLater, setDoLater] = useState(false);
 
   return (
     <NextPrevNav
@@ -44,6 +47,7 @@ function Page() {
             >
               {/* CustomCheckBoxText component for selecting "Let's get started" option */}
               <CustomCheckBoxText
+                onClick={() => setHaveWebsite(true)}
                 btnSize="xl"
                 inputType="radio"
                 name="contactsAnswer"
@@ -53,6 +57,7 @@ function Page() {
 
               {/* CustomCheckBoxText component for selecting "I want to talk to someone first" option */}
               <CustomCheckBoxText
+                onClick={() => setHaveWebsite(false)}
                 btnSize="xl"
                 inputType="radio"
                 name="contactsAnswer"
@@ -61,30 +66,48 @@ function Page() {
               </CustomCheckBoxText>
             </div>
             {/* Form container with auto margins for centering */}
-            <div className="mx-auto w-fit">
+            <div
+              className={`mx-auto w-fit ${
+                haveWebsite ? "" : "grayscale-[50%] opacity-50"
+              }`}
+            >
               {/* Channel URL field */}
               <h3 className="mb-[1.067vh]">Add your video :</h3>
               <div className="flex gap-[1vw] items-start mb-[2.667vh]">
                 {/* Channel URL input field */}
                 <input
+                  disabled={haveWebsite ? false : true}
                   type="text"
                   placeholder="Add website"
                   className="h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFF80]"
                 />
 
                 {/* Paste Link button */}
-                <button className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.711vh] text-black rounded-[var(--33px)]">
+                <button
+                  disabled={haveWebsite ? false : true}
+                  className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.711vh] text-black rounded-[var(--33px)]"
+                >
                   Upload
                 </button>
               </div>
 
               {/* Link for users without a YouTube channel */}
-              <Link
-                href={""}
-                className="underline block w-fit mx-auto px-[0.52vw] py-[0.533vh] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200"
+              <div
+                className={`relative block w-fit mx-auto px-[0.52vw] py-[0.3vw] ${
+                  haveWebsite && "hover:bg-[#484848]"
+                } rounded-[var(--32px)] transition-all duration-200 underline`}
               >
                 I’ll do this later
-              </Link>
+                <input
+                  disabled={haveWebsite ? false : true}
+                  type="checkbox"
+                  name="dontHaveChannel"
+                  className={`absolute opacity-0 inset-0 ${
+                    haveWebsite ? "cursor-pointer" : ""
+                  }`}
+                  onChange={() => setDoLater((prev) => !prev)}
+                />
+              </div>
             </div>
           </div>
         </div>
