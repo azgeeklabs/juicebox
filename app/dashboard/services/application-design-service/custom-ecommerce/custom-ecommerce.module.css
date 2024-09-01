@@ -43,3 +43,22 @@
   opacity: 0.5;
   transform: translateX(calc(-50% + 150px)) scale(0.8);
 } */
+.btns input,
+.btns2 input {
+  cursor: pointer;
+}
+.btns2 input:not(:checked):hover + div {
+  background-color: #1c1c1c !important;
+}
+.btns input + div,
+.btns2 input + div {
+  font-size: var(--14px);
+  font-weight: 400;
+  padding: var(--sy-9px) var(--20px);
+  transition: background-color 0.3s;
+}
+
+.btns input:checked + div,
+.btns2 input:checked + div {
+  font-weight: 700;
+}

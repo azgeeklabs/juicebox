@@ -503,7 +503,7 @@ function Page() {
         )}
       >
         <div className="flex flex-col items-center gap-[var(--16px)] text-center w-[60%]">
-          <h1 className="text-[--30px] font-bold">
+          <h1 className="text-[--32px] font-bold">
             Do you have any additional features in mind?
           </h1>
           <p className="text-[--18px]">
@@ -521,8 +521,10 @@ function Page() {
               "flex flex-col justify-center gap-[var(--28px)]"
             )}
           >
-            <h2 className="font-bold">Additional Features:</h2>
-            <div className="flex flex-wrap gap-y-[var(--12px)] gap-x-[var(--8px)]">
+            <h2 className="font-semibold">Additional Features:</h2>
+            <div
+              className={`flex flex-wrap gap-y-[var(--12px)] gap-x-[var(--8px)] ${styles.btns}`}
+            >
               {data.map((item, i) => (
                 <>
                   <CustomCheckBoxText btnSize="sm" inputType="checkbox">
@@ -545,7 +547,7 @@ function Page() {
               "flex flex-col justify-center gap-[var(--28px)]"
             )}
           >
-            <h2 className="font-bold">Have more features in mind?</h2>
+            <h2 className="font-semibold">Have more features in mind?</h2>
             <textarea
               className="w-full p-[var(--16px)] bg-[--dark-gray-3] rounded-[var(--8px)] resize-none"
               placeholder="Type here..."
