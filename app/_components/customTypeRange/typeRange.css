@@ -45,8 +45,8 @@
   .customInputRange .MuiSlider-mark {
     display: none;
   }
-  /* .customInputRange .MuiBox-root {
-    width: 90%;
+  .customInputRange .MuiBox-root, .css-y9l3cp {
+    width: 100%;
     margin: 0 auto;
-  } */
+  }
   /* ===== End Range Slider ===== */

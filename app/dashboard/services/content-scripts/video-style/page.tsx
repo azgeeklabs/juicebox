@@ -12,7 +12,7 @@ const Page = () => {
     >
       <div className=" h-full flex items-center justify-center">
         {/* Inner container with full width, custom video style styles, and top padding */}
-        <div className={`${styles.videoStyle} w-full`}>
+        <div className={`${styles.videoStyle} w-full mb-[--sy-50px]`}>
           {/* Header section with centered text, auto margins for centering, and bottom margin */}
           <div className="text-center mx-auto mb-[4.037vh]">
             {/* Main heading with bottom margin */}

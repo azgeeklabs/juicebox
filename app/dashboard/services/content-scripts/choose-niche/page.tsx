@@ -15,9 +15,9 @@ const Page = () => {
       >
         <div>
           {/* Container for the heading and description */}
-          <div className="mb-[--sy-64px]">
+          <div className="mb-[--sy-32px]">
             {/* Heading for the section, centered text */}
-            <h2 className="mb-[--sy-10px] text-[--32px] font-semibold text-center">
+            <h2 className="mb-[--sy-18px] text-[--32px] font-semibold text-center">
               Do you have a specific niche for your video?
             </h2>
             {/* Description paragraph, centered text */}
@@ -31,7 +31,7 @@ const Page = () => {
             {/* Label for the video niche dropdown */}
 
             <form className=" mx-auto">
-              <label htmlFor="countries" className="block mb-2 font-semibold">
+              <label htmlFor="countries" className="block mb-[--sy-16px] font-semibold">
                 Video Niche
               </label>
               <select

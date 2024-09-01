@@ -37,7 +37,7 @@ const Page = () => {
             <p className=" text-[--18px] text-[#FFFFFFCC]">Let us know if you have a specific word count in mind for your content.</p>
           </div>
           <div
-            className={`${styles.btns} flex w-[51%] justify-center mx-auto gap-[1.041vw] mb-[4.826862539349423vh] pb-[4.826862539349423vh] border-b-[1px] border-b-[#484848]`}
+            className={`${styles.btns} flex w-[51%] justify-center mx-auto gap-[--8px] mb-[4.826862539349423vh] pb-[4.826862539349423vh] border-b-[1px] border-b-[#484848]`}
           >
             {/* CustomCheckBoxText component for selecting "Specific Word Count*/}
             <CustomCheckBoxText

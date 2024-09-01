@@ -12,9 +12,9 @@ const Page = () => {
     >
       <div className=" flex items-center justify-center h-full">
         {/* Inner container for the video script section with custom styles */}
-        <div className={`${styles.contentScripts} w-full`}>
+        <div className={`${styles.contentScripts} w-full mb-[--sy-50px]`}>
           {/* Text center alignment and margin bottom */}
-          <div className=" text-center mx-auto mb-[4.037vh]">
+          <div className=" text-center mx-auto mb-[--sy-50px]">
             {/* Main heading with margin bottom and embedded horizontal rule */}
             <h2 className=" mb-[2.667vh]">
               What type of script would you like?

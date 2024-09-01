@@ -11,7 +11,7 @@ const Page = () => {
     <NextPrevNav nextLink="/dashboard/services/content-press-release/word-count" backLink="/dashboard/services/content-press-release">
       <div className=" flex items-center justify-center h-full">
         {/* Inner container for the video script section with custom styles */}
-        <div className={`${styles.releaseContent} w-full`}>
+        <div className={`${styles.releaseContent} w-full mb-[--sy-40px]`}>
           {/* Text center alignment and margin bottom */}
           <div className=" text-center mx-auto mb-[4.037vh]">
             {/* Main heading with margin bottom and embedded horizontal rule */}

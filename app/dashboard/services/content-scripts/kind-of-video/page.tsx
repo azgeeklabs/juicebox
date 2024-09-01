@@ -33,7 +33,7 @@ export default function Page() {
           {/* Header section with padding and bottom margin */}
           <div className="pt-[2.667vh] pl-[4.264vw] mb-[6.222vh]">
             {/* Main heading with bottom margin */}
-            <h2 className="mb-[1.851vh] w-[25%]">
+            <h2 className="mb-[1.851vh] w-[33%]">
               What kind of video do you want to be published on your channel? 
             </h2>
 

@@ -12,7 +12,7 @@ const Page = () => {
     <div className={`${styles.durationVideo} w-full h-full flex justify-center items-center`}>
         <div className='w-full'>
             {/* Container for the heading and description */}
-            <div className="mb-[--sy-64px]">
+            <div className="mb-[--sy-48px]">
                 {/* Heading for the section, centered text */}
                 <h2 className="mb-[--sy-10px] text-[--32px] font-semibold text-center">
                 How long would you like the video to be?
@@ -23,7 +23,7 @@ const Page = () => {
                 </p>
             </div>
             {/* Container for the custom input component, centered with margin */}
-            <div className='w-[70%] mx-auto mb-[--sy-18px]'>
+            <div className='w-[60%] mx-auto mb-[--sy-22px]'>
                 {/* Custom range input component, passing props for word and max value */}
                 <CustomTypeRange word='min' max={60}/>
             </div>

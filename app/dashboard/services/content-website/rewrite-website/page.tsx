@@ -13,7 +13,7 @@ const RewriteWebsite = () => {
     >
       <div
         className={classNames(
-          "flex flex-col gap-[--sy-60px] justify-center mx-auto items-center h-full pb-[--sy-60px]",
+          "flex flex-col gap-[--sy-50px] justify-center mx-auto items-center h-full pb-[--sy-60px]",
           styles.container
         )}
       >

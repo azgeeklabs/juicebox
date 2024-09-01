@@ -55,17 +55,7 @@ function AccountRecovery() {
         </svg>
       ),
     },
-    {
-      title: "Facebook Ads",
-      image: (
-        <svg viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M20.4199 10C20.4199 4.48 15.9399 0 10.4199 0C4.89992 0 0.419922 4.48 0.419922 10C0.419922 14.84 3.85992 18.87 8.41992 19.8V13H6.41992V10H8.41992V7.5C8.41992 5.57 9.98992 4 11.9199 4H14.4199V7H12.4199C11.8699 7 11.4199 7.45 11.4199 8V10H14.4199V13H11.4199V19.95C16.4699 19.45 20.4199 15.19 20.4199 10Z"
-            fill="#1877F2"
-          />
-        </svg>
-      ),
-    },
+    
     {
       title: "Twitter",
       image: (
@@ -262,7 +252,7 @@ function AccountRecovery() {
               {/* Individual card container, styled with custom gap and font properties */}
               <div
                 className={classNames(
-                  "flex items-center font-bold gap-[var(--12px)]",
+                  "flex items-center font-medium gap-[var(--12px)]",
                   styles.card
                 )}
               >
