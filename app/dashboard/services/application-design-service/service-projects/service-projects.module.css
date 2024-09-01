@@ -1,39 +1,53 @@
 .card {
+  width: var(--178px);
   background-color: var(--dark-gray-3);
-  border-radius: var(--12px);
-  aspect-ratio: 1 / 1;
-  width: clamp(6rem, calc(10.35vw + 0.1rem), 20rem);
-  height: clamp(6rem, calc(10.35vw + 0.1rem), 20rem);
-  padding: var(--24px);
+  border-radius: var(--50px);
+  position: relative;
+  padding-block: var(--20px);
   cursor: pointer;
   transition: background-color 0.2s ease-in, transform 0.2s ease-in;
+  font-weight: 500;
 }
 
-.card div:nth-child(1) {
-  width: calc(4.35vw + 0.1rem);
-  height: calc(4.35vw + 0.1rem);
-  aspect-ratio: 1 / 1;
-}
-
-.card div:nth-child(2) {
+.card div {
+  width: 100%;
   text-align: center;
-  font-size: var(--27px);
+  font-size: var(--16px);
 }
 
 .cards {
-  gap: clamp(1rem, calc(2vw + 0.1rem), 50rem);
+  gap: var(--32px);
 }
+
+/* .card > div {
+  width: clamp(15rem, calc(10.35vw + 0.1rem), 20rem);
+  height: clamp(15rem, calc(10.35vw + 0.1rem), 20rem);
+} */
+/* .card > div * {
+  position: absolute;
+  width: 100%;
+}
+
+.card img {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.card svg {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  visibility: visible;
+  opacity: 1;
+} */
 
 .card:not(:has(input:checked)):hover {
   background-color: #1f1f1f;
-  transform: scale(1.1);
+  /* transform: scale(1.1); */
 }
 
 .card:has(input:checked) {
   background-color: #f8f24b;
   color: var(--primary-black);
-}
-
-.card:has(input:checked) div path {
-  fill: var(--primary-black);
+  font-weight: 700;
 }

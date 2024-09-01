@@ -1389,15 +1389,15 @@ const appSVG = (
 );
 
 function Page() {
-
-
   const { step, setStep } = useContext(globalContext);
-
 
   return (
     <>
-      <NextPrevNav nextLink="/dashboard/services/application-design-service/service-projects" nextOnClick={() => setStep(step + 1)}>
-        <div className="flex flex-col gap-[var(--64px)] justify-center items-center h-full">
+      <NextPrevNav
+        nextLink="/dashboard/services/application-design-service/service-projects"
+        nextOnClick={() => setStep(step + 1)}
+      >
+        <div className="flex flex-col gap-[var(--64px)] items-center h-[50%]">
           <div
             className={classNames(
               "flex flex-col items-center gap-[var(--16px)] text-center",
@@ -1420,14 +1420,14 @@ function Page() {
                 styles.card
               )}
             >
-              <div className="flex items-center justify-center relative">
+              {/* <div className="flex items-center justify-center relative">
                 <img
                   src="/assets/application-design-service-gamecard.gif"
                   alt="/assets/application-design-service-gamecard.gif"
                   className="w-full"
                 />
                 {gameSVG}
-              </div>
+              </div> */}
               <div>Game</div>
               <input
                 type="radio"
@@ -1442,15 +1442,15 @@ function Page() {
                 styles.card
               )}
             >
-              <div className="flex items-center justify-center relative">
+              {/* <div className="flex items-center justify-center relative">
                 <img
                   src="/assets/application-design-service-applicationcard.gif"
                   alt="/assets/application-design-service-applicationcard.gif"
                   className="w-full"
                 />
                 {appSVG}
-              </div>
-              <div>Application</div>
+              </div> */}
+              <div className="">Application</div>
               <input
                 type="radio"
                 name="type"
