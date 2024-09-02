@@ -11,16 +11,9 @@ import SwiperCore from "swiper";
 import { globalContext } from "@/app/_context/GlobalContext";
 
 export default function Page() {
-
   const { step, setStep } = useContext(globalContext);
-  
-  const options = [
-    "Light Mode",
-    "Dark Mode",
-    "Playful",
-    "Playful",
-    "Dark Mode",
-  ];
+
+  const options = ["Light Mode", "Dark Mode", "Playful", "Dark Mode"];
 
   const swiperRef = useRef<SwiperCore | null>(null);
 
@@ -29,7 +22,6 @@ export default function Page() {
     "/assets/mobile-slide-2.png",
     "/assets/mobile-slide-3.png",
     "/assets/mobile-slide-4.png",
-    "/assets/mobile-slide-1.png",
   ];
 
   return (
@@ -37,21 +29,21 @@ export default function Page() {
       nextLink="/dashboard/services/application-design-service/custom-ecommerce"
       backLink="/dashboard/services/application-design-service/service-projects"
       nextOnClick={() => setStep(step + 1)}
-backOnClick={() => setStep(step - 1)}
+      backOnClick={() => setStep(step - 1)}
     >
       <div className=" flex flex-col items-center justify-center h-full">
-        <div className={`${styles.editing} w-full `}>
+        <div className={`${styles.editing} w-full pt-[--sy-30px]`}>
           <div className="flex flex-col justify-center items-center text-center mb-[2vw]">
             <h2 className=" mb-[1.041vw]">
-              What type of video would you like to create?
+              What style do you want for your app?
             </h2>
             <h4>
-              Our talented video editors possess a wide range of skills that can
-              create <hr className="border-0" /> different genres of videos
-              depending on your needs!
+              Choose your preferred style options below. You can also upload or
+              <hr className="border-0" />
+              add references for specific design elements.
             </h4>
           </div>
-          <div className=" flex items-center justify-between pl-[4.021vw] pr-[1vw] w-full gap-[35vw]">
+          <div className=" flex items-center justify-around pl-[4.021vw] pr-[1vw] w-full gap-[25vw]">
             <div className={`${styles.btns} flex flex-col gap-[1.041vw]`}>
               {/* Iterate over options array and create CustomCheckBoxText components */}
               {options.map((e, i) => (

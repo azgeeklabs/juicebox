@@ -57,12 +57,9 @@ const Page = () => {
           </div>
 
           {/* Link component for saving progress */}
-          <Link
-            href={""}
-            className="block text-[0.813rem] underline w-fit mx-auto px-[0.52vw] py-[0.3vw] rounded-[var(--32px)] transition-all duration-200"
-          >
+          <div className="block text-[--14px] cursor-pointer w-fit mx-auto px-[0.52vw] py-[0.3vw] rounded-[var(--32px)] transition-all duration-200">
             Save my Progress
-          </Link>
+          </div>
         </div>
       </div>
     </NextPrevNav>

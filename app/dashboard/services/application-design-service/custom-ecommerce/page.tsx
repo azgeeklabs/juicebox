@@ -55,15 +55,14 @@ function Page() {
 
   const { step, setStep } = useContext(globalContext);
 
-
   return (
     <NextPrevNav
       nextLink="/dashboard/services/application-design-service/additional-features"
       backLink="/dashboard/services/application-design-service/app-style"
       nextOnClick={() => setStep(step + 1)}
-backOnClick={() => setStep(step - 1)}
+      backOnClick={() => setStep(step - 1)}
     >
-      <div className="flex flex-col justify-center">
+      <div className="flex flex-col justify-center pl-[--32px]">
         <div
           className={classNames(
             "flex flex-col gap-[var(--16px)]",
@@ -80,7 +79,7 @@ backOnClick={() => setStep(step - 1)}
           </p>
         </div>
         <div className="flex grow">
-          <div className="flex gap-[var(--16px)] w-1/2">
+          <div className="flex gap-[var(--16px)] w-[40%]">
             <div className="flex flex-col justify-evenly">
               <div className="flex flex-col gap-[var(--32px)]">
                 <div className="flex items-center gap-[var(--16px)]">
@@ -106,7 +105,9 @@ backOnClick={() => setStep(step - 1)}
                     </span>
                   </span>
                 </div>
-                <div className="flex flex-wrap text-[--14px] gap-[var(--8px)]">
+                <div
+                  className={`flex flex-wrap text-[--14px] gap-[var(--8px)] ${styles.btns}`}
+                >
                   {defaultPages.map((page) => (
                     <CustomCheckBoxText
                       btnSize="sm"
@@ -143,7 +144,9 @@ backOnClick={() => setStep(step - 1)}
                     </span>
                   </span>
                 </div>
-                <div className="flex flex-wrap text-[--14px] gap-[var(--8px)]">
+                <div
+                  className={`flex flex-wrap text-[--14px] gap-[var(--8px)] ${styles.btns2}`}
+                >
                   {additionalPages.map((page, i) => (
                     <CustomCheckBoxText
                       btnSize="sm"
