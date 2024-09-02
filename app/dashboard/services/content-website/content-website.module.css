@@ -67,6 +67,3 @@
 .btns input[type='radio']:checked ~ div {
   font-weight: 700;
 }
-.btns input[type='radio'] ~ div {
-  width: var(--241px);
-}

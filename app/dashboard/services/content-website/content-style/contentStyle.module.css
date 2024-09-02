@@ -9,6 +9,9 @@
   .cards div:has(> input:checked) {
     font-weight: 700;
   }
+  .cards div:has(> input) {
+    font-weight: 500;
+  }
   
   .card svg {
     width: var(--24px);

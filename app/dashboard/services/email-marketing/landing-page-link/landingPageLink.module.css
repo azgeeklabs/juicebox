@@ -1,5 +1,5 @@
 .landingPageLinkEdit h2 {
-    font-size: clamp(14px, calc(1.4vw + 0.1rem), 100px);
+    font-size: clamp(14px, calc(var(--32px) + 0.1rem), 100px);
     font-weight: 600;
   }
   .landingPageLinkEdit h4 {

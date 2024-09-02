@@ -64,7 +64,7 @@
   cursor: pointer;
 }
 .btns input + div {
-  font-size: clamp(14px, calc(0.8vw + 0.1rem), 100px);
+  font-size: clamp(14px, calc(var(--16px) + 0.1rem), 100px);
   font-weight: 700;
   padding-top: 0.7vw;
   padding-bottom: 0.7vw;

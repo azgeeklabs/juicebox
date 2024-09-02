@@ -19,21 +19,7 @@ const LiveWebsite = () => {
       console.error("Failed to read clipboard contents: ", error);
     }
   };
-  useEffect(() => {
-    if (checked) {
-      // Select radio inputs
-      const radios = document.querySelectorAll<HTMLInputElement>('input[type="radio"]');
-      radios.forEach((radio) => {
-        radio.checked = false;
-        radio.disabled = true;
-      });
-    } else {
-      const radios = document.querySelectorAll<HTMLInputElement>('input[type="radio"]');
-      radios.forEach((radio) => {
-        radio.disabled = false;
-      });
-    }
-  }, [checked]);
+ 
   return (
     <NextPrevNav
       nextLink={
@@ -64,7 +50,7 @@ const LiveWebsite = () => {
 
             {/* Container for buttons with flexbox layout, width fit, margin auto, and gap between buttons */}
             <div
-              className={`${styles.btns} flex w-fit mx-auto gap-[1.041vw] mb-[--st-38px]`}
+              className={`${styles.btns} flex w-fit mx-auto gap-[1.041vw] mb-[--sy-38px]`}
             >
               {/* CustomCheckBoxText component for selecting options */}
               <CustomCheckBoxText
@@ -94,10 +80,10 @@ const LiveWebsite = () => {
               }`}
             >
               {/* Product Link field with optional span */}
-              <h3 className="mb-[0.6vw] font-semibold text-[--20px]">
+              <h3 className="mb-[--sy-14px] font-semibold text-[--20px]">
                 Website URL
               </h3>
-              <div className="flex gap-[1vw] items-start mb-[1.2vw]">
+              <div className="flex gap-[1vw] items-start mb-[--sy-24px]">
                 {/* Product Link input field */}
                 <input
                   disabled={haveWebsite ? false : true}
@@ -133,7 +119,6 @@ const LiveWebsite = () => {
                     haveWebsite ? "cursor-pointer" : ""
                   }`}
                   onChange={() => setDoLater((prev) => !prev)}
-                  onClick={()=>setChecked(!checked)}
                 />
               </div>
             </div>

@@ -14,14 +14,14 @@ const Page = () => {
   return (
     <NextPrevNav
       nextLink="/dashboard/services/email-marketing/emailEndPoint"
-      backLink="/dashboard/services/email-marketing/email-contacts"
+      backLink="/dashboard/services/email-marketing/campaign-implementation"
     >
-      <div className=" flex justify-center items-center h-full w-full">
+      <div className=" flex justify-center items-center h-full w-full mb-[--sy-60px]">
         <div className={`${styles.campaignFollowers} w-full`}>
           {/* Text center alignment and margin bottom */}
-          <div className="text-center mx-auto mb-[5.333vh]">
+          <div className="text-center mx-auto mb-[--55px]">
             {/* Main heading with margin bottom */}
-            <h2 className="mb-[2.667vh]">
+            <h2 className="mb-[--sy-24px]">
             How many follow ups would you like in your campaign?
             </h2>
 

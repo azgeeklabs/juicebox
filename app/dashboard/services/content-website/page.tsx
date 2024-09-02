@@ -12,7 +12,7 @@ function ContentWebsite() {
         <div className="flex flex-col gap-[var(--55px)] justify-center items-center h-full mb-[--sy-50px]">
           <div
             className={classNames(
-              "flex flex-col items-center gap-[var(--16px)] text-center",
+              "flex flex-col items-center gap-[var(--sy-24px)] text-center",
               styles.container
             )}
           >

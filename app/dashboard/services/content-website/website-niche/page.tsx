@@ -7,6 +7,8 @@ import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
 const WebsiteNiche = () => {
   const [haveWebsite, setHaveWebsite] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [shownValue, setShownValue] = useState("e-commerce");
   return (
     <NextPrevNav
       nextLink="/dashboard/services/content-website/custom-ecommerce"
@@ -21,19 +23,19 @@ const WebsiteNiche = () => {
           {/* Nested div for content */}
           <div className="w-full">
             {/* Text center alignment and margin bottom */}
-            <div className="text-center mx-auto mb-[2.271vw]">
+            <div className="text-center mx-auto mb-[--55px]">
               {/* Main heading with margin bottom and underlined text */}
-              <h2 className="mb-[.6vw] w-[60%] mx-auto">
+              <h2 className="mb-[--sy-8px] mx-auto">
                 What Is the Focus and Niche of Your Website?
               </h2>
-              <p className=" w-[65%] mx-auto text-[#FFFFFFCC]">
+              <p className=" mx-auto text-[#FFFFFFCC]">
                 Please select the type of your website.
               </p>
             </div>
 
             {/* Container for buttons with flexbox layout, width fit, margin auto, and gap between buttons */}
             <div
-              className={`${styles.btns} flex w-fit mx-auto gap-[1.041vw] mb-[1.5vw]`}
+              className={`${styles.btns} flex w-fit mx-auto gap-[1.041vw] mb-[--47px]`}
             >
               {/* CustomCheckBoxText component for selecting options */}
               <CustomCheckBoxText
@@ -69,18 +71,69 @@ const WebsiteNiche = () => {
                   >
                     Niche
                   </label>
-                  <select
-                    id="countries"
-                    className=" outline-none rounded-lg block w-full p-2.5 bg-[#484848]"
+                  <div
+                    className={`${styles.customSelect} relative w-full`}
                   >
-                    <option selected className=" text-[#A3A3A3]">
-                      e-commerce
-                    </option>
-                    <option value="US">United States</option>
-                    <option value="CA">Canada</option>
-                    <option value="FR">France</option>
-                    <option value="DE">Germany</option>
-                  </select>
+                    <button onClick={(e)=>{
+                      e.preventDefault()
+                      setShowDropdown(!showDropdown)
+                    }} className=" flex items-center relative w-full rounded-[--7px] py-[--sy-10px] px-[--12px] bg-[#484848] text-[#FFFFFF80]">
+                      {shownValue}
+                      <svg
+                        className=" right-[--19px] top-1/2 -translate-y-1/2 absolute w-[--16px]"
+                        viewBox="0 0 16 11"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M14.0707 0.550781H1.93204C0.460743 0.550781 -0.364044 2.04371 0.544985 3.06143L6.61432 9.8568C7.3196 10.6468 8.68119 10.6468 9.38843 9.8568L15.4578 3.05945C16.3668 2.04371 15.542 0.550781 14.0707 0.550781Z"
+                          fill="white"
+                        />
+                      </svg>
+                    </button>
+                    <ul className={`${showDropdown ? "block" : "hidden"} w-full absolute top-full translate-y-2 bg-[#484848] rounded-[--10px] overflow-x-hidden overflow-y-auto max-h-[--sy-165px] text-[#FFFFFF]`}>
+                      <li
+                        className="py-[--sy-8px] px-[--12px] hover:cursor-pointer hover:bg-[#353535]"
+                        onClick={(e) => {
+                          const target = e.target as HTMLInputElement;
+                          setShownValue(target.innerText);
+                          setShowDropdown(false);
+                        }}
+                      >
+                        aaaa
+                      </li>
+                      <li
+                        className="py-[--sy-8px] px-[--12px] hover:cursor-pointer hover:bg-[#353535]"
+                        onClick={(e) => {
+                          const target = e.target as HTMLInputElement;
+                          setShownValue(target.innerText);
+                          setShowDropdown(false);
+                        }}
+                      >
+                        dddd
+                      </li>
+                      <li
+                        className="py-[--sy-8px] px-[--12px] hover:cursor-pointer hover:bg-[#353535]"
+                        onClick={(e) => {
+                          const target = e.target as HTMLInputElement;
+                          setShownValue(target.innerText);
+                          setShowDropdown(false);
+                        }}
+                      >
+                        cccc
+                      </li>
+                      <li
+                        className="py-[--sy-8px] px-[--12px] hover:cursor-pointer hover:bg-[#353535]"
+                        onClick={(e) => {
+                          const target = e.target as HTMLInputElement;
+                          setShownValue(target.innerText);
+                          setShowDropdown(false);
+                        }}
+                      >
+                        aaaa
+                      </li>
+                    </ul>
+                  </div>
                 </form>
               </div>
             </div>

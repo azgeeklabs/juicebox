@@ -50,17 +50,17 @@ function ORMNegativePressRemoval() {
       {/* Inner container with full height and center alignment */}
       <div className="sectionsNumber h-full flex justify-center items-center w-full">
         {/* Inner container with full width and custom styles for the footage editing section */}
-        <div className={`${styles.sectionsNumber} w-full `}>
+        <div className={`${styles.sectionsNumber} w-full pt-[--sy-40px]`}>
           {/* Header section with text centered, auto margins for horizontal centering, and vertical margins */}
           <div>
             <div
               className={classNames(
-                "text-center mx-auto mb-[3.556vh]",
+                "text-center mx-auto mb-[--sy-38px]",
                 styles.container
               )}
             >
               {/* Main heading with bottom margin */}
-              <h2 className="mb-[2.5vh]">
+              <h2 className="mb-[--sy-8px]">
               Do You Have a Preferred Number of Sections per Page?
               </h2>
 
@@ -69,7 +69,7 @@ function ORMNegativePressRemoval() {
               Let us know if you have a specific number of sections in mind for each page of your website.
               </h4>
             </div>
-            <div className=" flex gap-[--8px] items-center justify-center border-b border-b-[#484848] pb-[--sy-33px] mb-[--sy-33px] w-fit mx-auto px-[5vw]">
+            <div className=" flex gap-[--8px] items-center justify-center border-b border-b-[#484848] pb-[--sy-38px] mb-[--sy-38px] w-[60%] mx-auto px-[5vw]">
               <CustomCheckBoxText
                 btnSize="xl"
                 inputType="radio"
@@ -89,7 +89,7 @@ function ORMNegativePressRemoval() {
             </div>
           </div>
           <div>
-            <div className=" flex justify-between items-center mx-auto mb-[3vh] w-[85%]">
+            <div className=" flex justify-between items-center mx-auto mb-[--sy-15px] w-[85%]">
               <h5 className="text-[--20px] font-medium">
                 Please specify number of sections per page
               </h5>

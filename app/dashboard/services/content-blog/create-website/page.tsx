@@ -9,7 +9,6 @@ const Page = () => {
   const [haveWebsite, setHaveWebsite] = useState(false);
   const [doLater, setDoLater] = useState(false);
   const [pastedText, setPastedText] = useState<string>("");
-  const [checked,setChecked] = useState(false)
 
   const handlePaste = async () => {
     try {
@@ -20,21 +19,7 @@ const Page = () => {
     }
   };
 
-  useEffect(() => {
-    if (checked) {
-      // Select radio inputs
-      const radios = document.querySelectorAll<HTMLInputElement>('input[type="radio"]');
-      radios.forEach((radio) => {
-        radio.checked = false;
-        radio.disabled = true;
-      });
-    } else {
-      const radios = document.querySelectorAll<HTMLInputElement>('input[type="radio"]');
-      radios.forEach((radio) => {
-        radio.disabled = false;
-      });
-    }
-  }, [checked]);
+
 
   return (
     <NextPrevNav
@@ -136,7 +121,6 @@ const Page = () => {
                     haveWebsite ? "cursor-pointer" : ""
                   }`}
                   onChange={() => setDoLater((prev) => !prev)}
-                  onClick={()=>setChecked(!checked)}
                   
                 />
               </div>

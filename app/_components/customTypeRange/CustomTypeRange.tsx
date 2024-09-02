@@ -21,12 +21,14 @@ const CustomTypeRange = ({
   max,
   width,
   minWidth,
-  word
+  word,
+  isDisabled
 }: {
   max?: number;
   width?: string;
   minWidth?: string;
-  word?:string
+  word?:string;
+  isDisabled?:boolean
 }) => {
   const [minut, setMinut] = useState("0"); // State for displaying time in minutes and seconds.
   const [val, setVal] = React.useState(MIN); // State for the current slider value.
@@ -67,6 +69,7 @@ const CustomTypeRange = ({
       {" "}
       {/* Container for the slider with width and margin styling. */}
       <Slider
+      disabled={isDisabled}
         className="customInputRange" // Custom CSS class for additional styling.
         marks={marks} // Marks for the slider (min and max values).
         step={1} // Step value for the slider.

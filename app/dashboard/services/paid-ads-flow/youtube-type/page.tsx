@@ -16,11 +16,11 @@ export default function Page() {
   const { step, setStep } = useContext(globalContext);
   
   const options = [
-    "Light Mode",
-    "Dark Mode",
-    "Playful",
-    "Playful",
-    "Dark Mode",
+    "Skippable Ads",
+    "Non-Skippable Ads",
+    "Bumper Ads",
+    "Discovery Ads",
+    "Overlay Ads",
   ];
 
   const swiperRef = useRef<SwiperCore | null>(null);
