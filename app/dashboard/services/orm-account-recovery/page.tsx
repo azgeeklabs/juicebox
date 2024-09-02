@@ -120,7 +120,7 @@ function AccountRecovery() {
     <NextPrevNav nextLink="/dashboard/services/orm-account-recovery/suspension-reason">
       <div
         className={classNames(
-          "flex flex-col gap-[var(--45px)] justify-center mx-auto items-center h-full",
+          "flex flex-col gap-[var(--45px)] mx-auto items-center h-[50%]",
           styles.container
         )}
       >

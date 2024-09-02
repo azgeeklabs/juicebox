@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../../../../_components/dashboard/calender/Calender.css";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -8,6 +8,7 @@ import dayjs from "dayjs";
 import styles from "./suspended-date.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import classNames from "classnames";
+
 const suspendedDate = () => {
   const [selectedDay, setSelectedDay] = useState<string>("");
   const [selectedMonth, setSelectedMonth] = useState<string>("");
@@ -147,7 +148,7 @@ const suspendedDate = () => {
     }
   }, [selectedDay, selectedMonth, selectedYear]);
 
-  const [disabled, setDisabled] = useState(false);
+  const [disabled, setDisabled] = useState(true);
 
   return (
     <NextPrevNav
@@ -169,13 +170,10 @@ const suspendedDate = () => {
           </div>
           <div className="grid grid-cols-2 gap-[--40px]">
             <div className=" col-span-1">
-              <h3 className=" font-bold text-[--20px] mb-[--sy-24px]">
-                Pick a date for your call
+              <h3 className=" font-bold text-[--20px] mb-[--sy-20px]">
+                Account Suspension Date
               </h3>
               <div className=" mb-[2vh]">
-                <label className="font-medium text-[--20px] mb-[--sy-16px] block">
-                  Date
-                </label>
                 <div className=" flex items-center gap-[--16px]">
                   <select
                     onChange={(e) => setSelectedDay(e.target.value)}
@@ -219,7 +217,7 @@ const suspendedDate = () => {
                     height="29"
                     viewBox="0 0 29 29"
                     fill="none"
-                    onClick={() => setDisabled(!disabled)}
+                    onClick={() => setDisabled((prev) => !prev)}
                     xmlns="http://www.w3.org/2000/svg"
                     className="cursor-pointer"
                   >
@@ -253,7 +251,7 @@ const suspendedDate = () => {
             <div
               className={classNames(
                 " col-span-1",
-                disabled && "opacity-50 filter grayscale"
+                disabled && "opacity-50 filter grayscale-[40%]"
               )}
             >
               <div className="rounded-[17px] bg-[--dark-gray-2] mb-[--sy-16px] flex justify-center items-center">

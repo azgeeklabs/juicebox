@@ -10,6 +10,13 @@
   stroke: var(--primary-black);
 }
 
+.cards div:has(> input) div {
+  font-weight: 400;
+}
+.cards div:has(> input:checked) div {
+  font-weight: 700;
+}
+
 .card svg {
   width: var(--24px);
   height: var(--20px);
