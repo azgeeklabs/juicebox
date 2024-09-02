@@ -100,7 +100,11 @@ function InfluencerList() {
                         </p>
 
                         <button className="relative px-[--30px] py-[--sy-7px] bg-[--highlight-yellow] text-[var(--primary-black)] font-bold rounded-[--41px] w-fit cursor-pointer">
-                          Select Influencer
+                          {selectedInfluencers.includes(
+                            `Ronald Richards ${i + "" + index}`
+                          )
+                            ? "Deselect Influencer"
+                            : "Select Influencer"}
                           <input
                             type="checkbox"
                             className="absolute inset-0 opacity-0 cursor-pointer"

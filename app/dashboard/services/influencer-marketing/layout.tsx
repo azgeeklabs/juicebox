@@ -1,63 +1,62 @@
 "use client";
 import StepProgress from "@/app/_components/stepProgress/StepProgress";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
   const path = [
-    "",
-    "service-projects",
-    "app-style",
-    "custom-ecommerce",
-    "additional-features",
-    "app-wrapup",
+    "", // Root folder
+    "niche-selection",
+    "follower-range",
+    "influencer-list",
+    "campaign-budget",
+    "promo-options",
+    "influencerEndPoint",
   ];
-  // const [currentPath, setCurrentPath] = useState(0);
-  // const [module, setModule] = useState("");
+  const [currentPath, setCurrentPath] = useState(0);
+  const [currentLocation, setCurrentLocation] = useState("");
 
-  // useEffect(() => {
-  //   setModule(window.location.pathname.split("/")[2]);
-  //   const moduleName = window.location.pathname.split("/").pop();
-  //   const getCurrentPath = () => {
-  //     if (moduleName === module) {
-  //       setCurrentPath(0);
-  //       return;
-  //     }
-  //     const Path = window.location.pathname.split("/").pop();
-  //     path.findIndex((p, i) => {
-  //       if (p === Path) {
-  //         setCurrentPath(i);
-  //       }
-  //     });
-  //   };
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      const pathname = window.location.pathname;
+      if (pathname === currentLocation) return;
+      setCurrentLocation(pathname);
+    });
 
-  //   getCurrentPath();
-  // }, []);
+    observer.observe(document, { subtree: true, childList: true });
 
-  // const getPreviousPath = () => {
-  //   if (currentPath === 0) {
-  //     return path[currentPath];
-  //   } else {
-  //     return path[currentPath - 1];
-  //   }
-  // };
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
-  // const getNextPath = () => {
-  //   if (currentPath === path.length - 1) {
-  //     return path[currentPath];
-  //   } else {
-  //     return path[currentPath + 1];
-  //   }
-  // };
+  useEffect(() => {
+    const pathname = window.location.pathname;
+    const moduleName = pathname.split("/")[3];
+    const Path = pathname.split("/")[4];
+    console.log(moduleName);
+    console.log(Path);
+
+    const getCurrentPath = () => {
+      if (moduleName && !path) {
+        setCurrentPath(0);
+        return;
+      }
+      const index = path.findIndex((p) => p === Path);
+      if (index !== -1) {
+        setCurrentPath(index);
+      }
+    };
+
+    getCurrentPath();
+  }, [currentLocation]);
 
   return (
     <div className="flex flex-col h-full">
       <StepProgress
-        title={"Influencer Marketing"}
-        // currentStep={step}
-        steps={6}
+        title={"Application Design"}
+        steps={path.length}
+        currentStep={currentPath}
       />
-
       <div className="flex flex-col grow">{children}</div>
     </div>
   );

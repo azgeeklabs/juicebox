@@ -1391,7 +1391,7 @@ function NicheSelection() {
         nextLink="/dashboard/services/influencer-marketing/follower-range"
         backLink="/dashboard/services/influencer-marketing"
       >
-        <div className="flex flex-col gap-[var(--64px)] justify-center items-center h-full">
+        <div className="flex flex-col gap-[var(--64px)] items-center h-[50%]">
           <div
             className={classNames(
               "flex flex-col items-center gap-[var(--16px)] text-center",
@@ -1401,41 +1401,79 @@ function NicheSelection() {
             <h2 className="text-[--30px] font-bold">
               Identifying the Niche for Your Campaign
             </h2>
-            <p className="text-[--18px] w-[60%]">
+            <p className="text-[--18px] w-[60%] text-[#FFFFFFCC]">
               Please select the option that best describes your campaign niche.
               This helps us understand the specific requirements for your
               campaign.
             </p>
           </div>
           <div className={classNames("flex ", styles.cards)}>
-            {Array(3)
-              .fill(0)
-              .map((_, i) => (
-                <>
-                  <div
-                    className={classNames(
-                      "flex flex-col gap-[var(--8px)] group",
-                      styles.card
-                    )}
-                  >
-                    <div className="flex items-center justify-center relative">
-                      <img
-                        src="/assets/application-design-service-gamecard.gif"
-                        alt="/assets/application-design-service-gamecard.gif"
-                        className="w-full"
-                      />
-                      {gameSVG}
-                    </div>
-                    <div>Game</div>
-                    <input
-                      type="radio"
-                      name="type"
-                      value="game"
-                      className="absolute opacity-0 inset-0 cursor-pointer"
-                    />
-                  </div>
-                </>
-              ))}
+            <div
+              className={classNames(
+                "flex flex-col gap-[var(--8px)] group",
+                styles.card
+              )}
+            >
+              {/* <div className="flex items-center justify-center relative">
+                <img
+                  src="/assets/application-design-service-gamecard.gif"
+                  alt="/assets/application-design-service-gamecard.gif"
+                  className="w-full"
+                />
+                {gameSVG}
+              </div> */}
+              <div>Music</div>
+              <input
+                type="radio"
+                name="type"
+                value="game"
+                className="absolute opacity-0 inset-0 cursor-pointer"
+              />
+            </div>
+            <div
+              className={classNames(
+                "flex flex-col gap-[var(--sy-8px)]",
+                styles.card
+              )}
+            >
+              {/* <div className="flex items-center justify-center relative">
+                <img
+                  src="/assets/application-design-service-applicationcard.gif"
+                  alt="/assets/application-design-service-applicationcard.gif"
+                  className="w-full"
+                />
+                {appSVG}
+              </div> */}
+              <div className="">Fashion</div>
+              <input
+                type="radio"
+                name="type"
+                value="app"
+                className="absolute opacity-0 inset-0 cursor-pointer"
+              />
+            </div>
+            <div
+              className={classNames(
+                "flex flex-col gap-[var(--sy-8px)]",
+                styles.card
+              )}
+            >
+              {/* <div className="flex items-center justify-center relative">
+                <img
+                  src="/assets/application-design-service-applicationcard.gif"
+                  alt="/assets/application-design-service-applicationcard.gif"
+                  className="w-full"
+                />
+                {appSVG}
+              </div> */}
+              <div className="">Finance</div>
+              <input
+                type="radio"
+                name="type"
+                value="app"
+                className="absolute opacity-0 inset-0 cursor-pointer"
+              />
+            </div>
           </div>
         </div>
       </NextPrevNav>
