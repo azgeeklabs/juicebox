@@ -8,6 +8,16 @@ import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 const CreateArtical = () => {
   const [haveWebsite, setHaveWebsite] = useState(false);
   const [doLater, setDoLater] = useState(false);
+  const [pastedText, setPastedText] = useState<string>("");
+
+  const handlePaste = async () => {
+    try {
+      const text = await navigator.clipboard.readText();
+      setPastedText(text);
+    } catch (error) {
+      console.error("Failed to read clipboard contents: ", error);
+    }
+  };
 
   return (
     <NextPrevNav
@@ -23,9 +33,9 @@ const CreateArtical = () => {
           {/* Nested div for content */}
           <div>
             {/* Text center alignment and margin bottom */}
-            <div className="text-center mx-auto mb-[2.271vw]">
+            <div className="text-center mx-auto mb-[--sy-38px]">
               {/* Main heading with margin bottom and underlined text */}
-              <h2 className="mb-[1.5vw] w-[60%] mx-auto">
+              <h2 className="mb-[--sy-24px] w-[60%] mx-auto">
                 Do you already have an article, or would you like us to create
                 one for you?
               </h2>
@@ -37,7 +47,7 @@ const CreateArtical = () => {
 
             {/* Container for buttons with flexbox layout, width fit, margin auto, and gap between buttons */}
             <div
-              className={`${styles.btns} flex w-fit mx-auto gap-[1.041vw] mb-[1.5vw]`}
+              className={`${styles.btns} flex w-fit mx-auto gap-[1.041vw] mb-[--sy-38px]`}
             >
               {/* CustomCheckBoxText component for selecting options */}
               <CustomCheckBoxText
@@ -67,22 +77,25 @@ const CreateArtical = () => {
               }`}
             >
               {/* Product Link field with optional span */}
-              <h3 className="mb-[0.6vw] font-semibold text-[--20px]">
+              <h3 className="mb-[--sy-14px] font-semibold text-[--20px]">
                 Upload Your Article
               </h3>
               <div className="flex gap-[1vw] items-start mb-[1.2vw]">
                 {/* Product Link input field */}
                 <input
                   disabled={haveWebsite ? false : true}
+                  value={pastedText}
+                  onChange={(e) => setPastedText(e.target.value)}
                   type="text"
                   placeholder="URL"
-                  className="flex-grow h-full mb-[1vw] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.5vw] placeholder:text-[#FFFFFF80]"
+                  className="flex-grow h-full mb-[1vw] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[--sy-10px] placeholder:text-[#FFFFFF80]"
                 />
 
                 {/* Paste Link button */}
                 <button
+                onClick={handlePaste}
                   disabled={haveWebsite ? false : true}
-                  className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.4vw] text-black rounded-[var(--33px)] font-bold"
+                  className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[--sy-10px] text-black rounded-[var(--33px)] font-bold"
                 >
                   Paste Link
                 </button>

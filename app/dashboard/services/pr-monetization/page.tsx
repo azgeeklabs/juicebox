@@ -10,21 +10,19 @@ function Page() {
       className={`${styles.monetization} flex flex-col justify-between h-full`}
     >
       {/* Inner container with flexbox layout for column direction, gap between elements, center alignment, and full height */}
-      <div className="flex flex-col gap-[var(--64px)] items-center h-full justify-center">
+      <div className="flex flex-col gap-[var(--sy-48px)] items-center h-full justify-center mb-[--sy-50px]">
         {/* Content container with additional class names for styling */}
         <div
           className={classNames(
-            "flex flex-col items-center gap-[var(--16px)] text-center",
+            "flex flex-col items-center gap-[var(--24px)] text-center",
             styles.container
           )}
         >
           {/* Heading with bold font */}
-          <h2 className="font-bold">
-            What kind of application do you want to monetize?
-          </h2>
+          <h2 className="font-bold">What do you want to monetize?</h2>
 
           {/* Paragraph with specified width for better readability */}
-          <p className="w-[60%]">
+          <p className="w-[60%] text-[#ffffff80]">
             Please choose whether you want to monetize a regular app or a
             gamified app. This helps us tailor our recommendations to your
             project.
@@ -34,29 +32,17 @@ function Page() {
         {/* Cards container with flexbox layout and gap between cards */}
         <div className={classNames("flex gap-[--16px]", styles.cards)}>
           {/* Game card with flexbox layout for column direction, gap between elements, and group styling */}
-          <CustomCheckBoxText
-                btnSize="xl"
-                inputType="radio"
-                name="styleAnswer"
-              >
-                Facebook Page
-              </CustomCheckBoxText>
+          <CustomCheckBoxText btnSize="xl" inputType="radio" name="styleAnswer">
+            Facebook Page
+          </CustomCheckBoxText>
 
-              {/* CustomCheckBoxText component for selecting "I want to talk to someone first" option */}
-              <CustomCheckBoxText
-                btnSize="xl"
-                inputType="radio"
-                name="styleAnswer"
-              >
-                YouTube Channel
-              </CustomCheckBoxText>
-              <CustomCheckBoxText
-                btnSize="xl"
-                inputType="radio"
-                name="styleAnswer"
-              >
-                Twitter Account
-              </CustomCheckBoxText>
+          {/* CustomCheckBoxText component for selecting "I want to talk to someone first" option */}
+          <CustomCheckBoxText btnSize="xl" inputType="radio" name="styleAnswer">
+            YouTube Channel
+          </CustomCheckBoxText>
+          <CustomCheckBoxText btnSize="xl" inputType="radio" name="styleAnswer">
+            Twitter Account
+          </CustomCheckBoxText>
         </div>
       </div>
 

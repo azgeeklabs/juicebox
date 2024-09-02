@@ -9,9 +9,9 @@ const Page = () => {
         backLink="/dashboard/services/pr-creation/product-service"
         nextLink="/dashboard/services/pr-creation/estimated-cost"
       >
-        <div className=" w-[90%] mx-auto h-full flex items-center">
+        <div className=" w-[75%] pt-[--sy-30px] mx-auto h-full flex items-center">
           <div className=" w-full">
-            <h2 className=" text-[--32px] font-semibold w-[50%] mb-[--sy-16px]">
+            <h2 className=" text-[--32px] font-semibold w-[60%] mb-[--sy-16px]">
               Every piece of information on your Wikipedia page needs to be
               cited by a reliable and authoritative source.
             </h2>
@@ -44,7 +44,7 @@ const Page = () => {
                 </ul>
               </div>
               <div className="w-[1px] h-[30vh] bg-[#484848]"></div>
-              <div className={`${styles.needs} needs py-[--sy-27px] px-[--21px] rounded-[--15px] bg-[#484848] grow max-h-[50vh] overflow-y-auto`}>
+              <div className={`${styles.needs} needs py-[--sy-27px] px-[--21px] rounded-[--15px] bg-[#353535] grow max-h-[50vh] overflow-y-auto`}>
                 <h3 className=" text-[--24px] font-semibold mb-[--sy-16px]">
                   Accepted Sources
                 </h3>

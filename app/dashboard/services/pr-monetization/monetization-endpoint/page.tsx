@@ -10,7 +10,7 @@ const Page = () => {
   return (
     <div className={`${styles.monetizationEndPoint} flex flex-col justify-between h-full w-full`}>
       {/* Inner container with relative positioning and full height */}
-      <div className="h-full relative">
+      <div className="h-full relative mb-[--sy-50px]">
         {/* Container for the video end point section with custom styles and flexbox centering */}
         <div
           className={`${styles.monetizationEndPoint} w-full h-full flex justify-center items-center`}
@@ -18,9 +18,9 @@ const Page = () => {
           {/* Nested div for content */}
           <div>
             {/* Text center alignment with auto horizontal margins and bottom margin */}
-            <div className="text-center mx-auto mb-[4.037vh]">
+            <div className="text-center mx-auto">
               {/* Main heading with bottom margin and underlined text */}
-              <h2 className="mb-[2.667vh]">
+              <h2 className="mb-[--sy-48px]">
                 Based on everything you told us, the estimated
                 cost of this <br /> service is <span> $XXX </span> and would take around <span>40 Days</span> to finish.
               </h2>
@@ -28,7 +28,7 @@ const Page = () => {
 
             {/* Container for buttons with flexbox layout, width fit, auto horizontal margins, and gap between buttons */}
             <div
-              className={`${styles.btns} flex w-fit mx-auto gap-[1.041vw] mb-[2.667vh]`}
+              className={`${styles.btns} flex w-fit mx-auto gap-[1.041vw] mb-[--sy-25px]`}
             >
               {/* CustomCheckBoxText component for selecting "Let's get started" option */}
               <CustomCheckBoxText
@@ -50,9 +50,9 @@ const Page = () => {
             </div>
 
             {/* Button for saving progress with various styling */}
-            <button className="block w-fit mx-auto px-[0.52vw] relative py-[0.533vh] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200 underline">
+            <button className="cursor-pointer block w-fit mx-auto px-[0.52vw] relative py-[0.533vh] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200 underline">
               Save my Progress
-              <input type="checkbox" className=" inset-0 absolute opacity-0" />
+              <input type="checkbox" className=" inset-0 absolute opacity-0 cursor-pointer" />
             </button>
           </div>
         </div>

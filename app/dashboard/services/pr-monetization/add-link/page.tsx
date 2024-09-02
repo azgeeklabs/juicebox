@@ -3,23 +3,34 @@ import classNames from "classnames";
 import styles from "./addLink.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 function Page() {
     const router = useRouter()
+    const [pastedText, setPastedText] = useState<string>("");
+
+  const handlePaste = async () => {
+    try {
+      const text = await navigator.clipboard.readText();
+      setPastedText(text);
+    } catch (error) {
+      console.error("Failed to read clipboard contents: ", error);
+    }
+  };
   return (
 <div className={`${styles.addLink} flex flex-col justify-between h-full`}>
 
 {/* Inner container with full height and center alignment */}
-<div className="h-full flex justify-center items-center">
+<div className="h-full flex justify-center items-center mb-[--sy-50px]">
   
   {/* Inner container with full width and custom styles for the footage editing section */}
   <div className={`${styles.addLinkEdit} w-full`}>
     
     {/* Header section with text centered, auto margins for horizontal centering, and vertical margins */}
-    <div className="text-center mx-auto mb-[3.556vh]">
+    <div className="text-center mx-auto mb-[--sy-32px]">
       
       {/* Main heading with bottom margin */}
-      <h2 className="mb-[2.5vh]">Add a link to account</h2>
+      <h2 className="mb-[--sy-24px]">Add a link to account</h2>
 
       {/* Subheading with text centered */}
       <h4 className="text-center">
@@ -36,17 +47,19 @@ function Page() {
       </h3>
       
       {/* Container for input field and button with flexbox layout, gap, and bottom margin */}
-      <div className="flex gap-[1vw] items-start mb-[2.667vh]">
+      <div className="flex gap-[1vw] items-center mb-[2.667vh]">
         
         {/* Input field with full height, bottom margin, specific width, background color, outline removal, rounded corners, padding, and placeholder styling */}
         <input
+        value={pastedText}
+        onChange={(e) => setPastedText(e.target.value)}
           type="text"
           placeholder="Product Name"
-          className="h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--10px)] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFF80]"
+          className="h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--10px)] px-[1.088vw] py-[--sy-10px] placeholder:text-[#FFFFFF80]"
         />
 
         {/* Button with background color, padding, text color, and rounded corners */}
-        <button className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.711vh] text-black rounded-[var(--33px)]">
+        <button onClick={handlePaste} className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[--sy-10px] text-black rounded-[var(--33px)] self-start">
           Paste Link
         </button>
       </div>

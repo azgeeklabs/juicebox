@@ -11,7 +11,7 @@ const Page = () => {
 <div className={`${styles.monetizeFollowers} h-full w-full flex flex-col justify-between`}>
 
 {/* Inner container with relative positioning and full height */}
-<div className="h-full relative">
+<div className="h-full relative mb-[--sy-50px]">
 
   {/* Centered content container with full width and height */}
   <div className={`w-full h-full flex justify-center items-center`}>
@@ -23,7 +23,7 @@ const Page = () => {
       <div className="text-center mx-auto mb-[1.778vh]">
         
         {/* Main heading with margin bottom and underlined text */}
-        <h2 className="mb-[2.667vh]">
+        <h2 className="mb-[--sy-36px]">
           To be monetized, You need <span>X</span> followers and{" "}
           <span>Y</span> views, <br />
           and we will help you with that.

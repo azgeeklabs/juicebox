@@ -12,7 +12,7 @@ const Page = () => {
       className={`${styles.monetizeNeeds} h-full w-full flex flex-col justify-between`}
     >
       {/* Inner container with full height and relative positioning */}
-      <div className="h-full relative">
+      <div className="h-full relative mb-[--sy-50px]">
         {/* Inner container with full width and height, center alignment for content */}
         <div className="w-full h-full flex justify-center items-center">
           {/* Nested div for content */}
@@ -20,7 +20,7 @@ const Page = () => {
             {/* Text center alignment and bottom margin */}
             <div className="text-center mx-auto mb-[1.778vh]">
               {/* Main heading with bottom margin and underlined text */}
-              <h2 className="mb-[2.667vh]">
+              <h2 className="mb-[--sy-36px]">
                 To be monetized, You need <span>X</span> views and{" "}
                 <span>Y</span> subs, <br />
                 and we will help you with that.

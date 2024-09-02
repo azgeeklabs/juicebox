@@ -6,6 +6,7 @@ import styles from "./wikipediaCopy.module.css"
 
 const Page = () => {
   const [file, setFile] = useState<any>(null);
+  const [haveCopy,setHaveCopy] = useState(false)
 
   const handleFileChange = (e: any) => {
     setFile(e.target.files[0]);
@@ -19,12 +20,13 @@ const Page = () => {
               Do you have a Wikipedia page copy available or you want it to be
               written for you?
             </h2>
-            <p className=" text-[--18px] w-[28%] mx-auto text-center text-[#FFFFFFCC] mb-[5vh]">
+            <p className=" text-[--18px] w-[28%] mx-auto text-center text-[#FFFFFFCC] mb-[--sy-32px]">
               Our writers can incorporate specific sources as content references
               for your blog.
             </p>
-            <div className=" flex justify-center items-center mb-[4.4vh] gap-[--22px]">
+            <div className=" flex justify-center items-center mb-[--sy-32px] gap-[--22px]">
               <CustomCheckBoxText
+              onClick={()=>setHaveCopy(true)}
                 btnSize="xl"
                 inputType="radio"
                 name="copyAnswer"
@@ -32,6 +34,7 @@ const Page = () => {
                 I have a copy
               </CustomCheckBoxText>
               <CustomCheckBoxText
+              onClick={()=>setHaveCopy(false)}
                 btnSize="xl"
                 inputType="radio"
                 name="copyAnswer"
@@ -39,8 +42,8 @@ const Page = () => {
                 Write one for me
               </CustomCheckBoxText>
             </div>
-            <div className=" pt-[3.3vh] border-t border-t-[#484848] w-[60%] mx-auto">
-              <div className="bg-[#353535] px-[--26px] py-[--sy-25px] rounded-[--12px]">
+            <div className={`${haveCopy ? "" :"opacity-20 grayscale-[60%]"} pt-[--sy-32px] border-t border-t-[#484848] w-[60%] mx-auto`}>
+              <div className="bg-[#353535] px-[--25px] py-[--sy-25px] rounded-[--12px]">
                 <label className="font-semibold block text-[--19px] mb-[--sy-20px]">
                   {" "}
                   Upload File
@@ -74,6 +77,7 @@ const Page = () => {
                         className="hidden"
                         onChange={handleFileChange}
                         accept=".pdf,.xlsx,image/*,application/vnd.ms-excel"
+                        disabled={!haveCopy}
                       />
                     </label>
                   </div>
