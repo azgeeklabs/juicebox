@@ -1,8 +1,58 @@
+"use client";
 import { Divider } from "@mui/material";
 import Link from "next/link";
 import React from "react";
+import { useAuth } from "../_context/AuthContext";
+import { useFormik, FormikHelpers } from "formik";
+import * as Yup from "yup";
+
+interface FormValues {
+  email: string;
+  password: string;
+}
 
 const Page = () => {
+  const { login } = useAuth();
+
+  const initialValues: FormValues = {
+    email: "",
+    password: "",
+  };
+
+  const onSubmit = async (
+    values: FormValues,
+    { setSubmitting }: FormikHelpers<FormValues>
+  ) => {
+    console.log(values);
+    try {
+      await login(values);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const validationSchema = Yup.object().shape({
+    email: Yup.string().email("Invalid email").required("Email is required"),
+    password: Yup.string()
+      .min(6, "Password must be at least 6 characters")
+      .required("Password is required"),
+  });
+
+  const handleGoogleLogin = async () => {
+    // await window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/google`;
+    // const response = await fetch(
+    //   `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/success`
+    // );
+    // const data = await response.json();
+  };
+
+  const { values, handleChange, handleBlur, handleSubmit } = useFormik({
+    initialValues,
+    onSubmit: (values, helpers) => onSubmit(values, helpers),
+  });
+
   return (
     <div className=" bg-[#181818] h-full w-full grid place-items-center grid-cols-2 items-center gap-x-[--102px] px-[240px]">
       <div className="  col-span-1">
@@ -59,30 +109,43 @@ const Page = () => {
       </div>
       <div className="col-span-1 w-full">
         <div className="bg-[#272727] px-[--40px] py-[--sy-60px] rounded-[--15px] w-full mb-[--sy-16px]">
-          <h2 className=" text-center mb-[--sy-40px] text-[--32px]">Login</h2>
-          <div className=" flex flex-col gap-[--sy-16px] mb-[--sy-50px]">
-            <label htmlFor="Email" className=" font-medium">
-              Email
-            </label>
-            <input
-              type="email"
-              id="Email"
-              placeholder="John"
-              className=" outline-none px-[--14px] py-[--sy-10px] bg-[#484848] rounded-[--3px]"
-            />
-            <label htmlFor="Password" className=" font-medium">
-              Password
-            </label>
-            <input
-              type="password"
-              id="Password"
-              placeholder="***********"
-              className=" outline-none px-[--14px] py-[--sy-10px] bg-[#484848] rounded-[--3px]"
-            />
-          </div>
-          <button className=" block rounded-[--39px] text-black bg-[--highlight-yellow] w-full py-[--sy-19px] font-bold mb-[--sy-40px]">
-            Log in
-          </button>
+          <form onSubmit={handleSubmit}>
+            <h2 className=" text-center mb-[--sy-40px] text-[--32px]">Login</h2>
+            <div className=" flex flex-col gap-[--sy-16px] mb-[--sy-50px]">
+              <label htmlFor="Email" className=" font-medium">
+                Email
+              </label>
+              <input
+                type="email"
+                id="Email"
+                name="email"
+                placeholder="John"
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className=" outline-none px-[--14px] py-[--sy-10px] bg-[#484848] rounded-[--3px]"
+              />
+              <label htmlFor="Password" className=" font-medium">
+                Password
+              </label>
+              <input
+                type="password"
+                id="Password"
+                name="password"
+                placeholder="***********"
+                value={values.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className=" outline-none px-[--14px] py-[--sy-10px] bg-[#484848] rounded-[--3px]"
+              />
+            </div>
+            <button
+              className=" block rounded-[--39px] text-black bg-[--highlight-yellow] w-full py-[--sy-19px] font-bold mb-[--sy-40px]"
+              type="submit"
+            >
+              Log in
+            </button>
+          </form>
           <Divider
             sx={{
               "&.MuiDivider-root::before": {
@@ -100,7 +163,10 @@ const Page = () => {
             Log in with:
           </h2>{" "}
           <div className=" flex flex-col gap-[--sy-16px] w-full">
-            <button className=" flex items-center justify-center gap-[--15px] bg-[#353535] rounded-[--7px] grow py-[--sy-12px]">
+            <button
+              className=" flex items-center justify-center gap-[--15px] bg-[#353535] rounded-[--7px] grow py-[--sy-12px]"
+              onClick={handleGoogleLogin}
+            >
               <svg
                 className="w-[--19px] h-[--18px]"
                 viewBox="0 0 19 18"
