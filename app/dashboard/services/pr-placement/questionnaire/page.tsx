@@ -14,7 +14,7 @@ const Questionnaire = () => {
               Here’s a quick questionnaire to help us know more about your PR
               topic:
             </h1>
-            <p className="text-[--18px] w-[95%] text-[#FFFFFF80]">
+            <p className="text-[--18px] w-[95%] text-[#FFFFFFCC]">
               Please fill out this short questionnaire so we can better
               understand your PR needs and tailor our services to your topic.
             </p>

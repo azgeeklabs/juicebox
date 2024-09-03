@@ -12,18 +12,18 @@
   font-weight: 400;
 }
 .domainSelection .btns > div {
-  width: 13.5vw;
+  width: 13vw;
   padding: 0;
 }
 .domainSelection .btns > div > div {
   padding: 0.8vw 1vw;
-  font-size: var(--18px);
-  font-weight: 600;
+  font-size: var(--16px);
+  font-weight: 500;
   transition: all 0.2s;
 }
 .domainSelection .btns input:checked + div {
-  font-size: var(--18px);
-  font-weight: 600;
+  font-size: var(--16px);
+  font-weight: 700;
 }
 .domainSelection a {
   font-size: var(--18px);
@@ -43,4 +43,5 @@
 .domainSelection div:has(> input:checked:first-child:last-child) {
   background-color: var(--highlight-yellow);
   color: var(--primary-black);
+  font-weight: 700;
 }

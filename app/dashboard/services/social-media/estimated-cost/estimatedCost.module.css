@@ -5,7 +5,7 @@
   .estimatedCost h4 {
     font-size: var(--18px);
     font-weight: 400;
-    color: #ffffffcc;
+    color: #FFFFFFCC;
   }
   .estimatedCost h3 {
     font-size: clamp(12px, calc(0.85vw + 0.1rem), 100px);
@@ -19,18 +19,18 @@
     
   }
 .estimatedCost .btns > div {
-    width: 13.5vw;
+    width: 13vw;
     padding: 0;
 }
 .estimatedCost .btns > div > div {
     padding: 1.422vh 1vw;
-    font-size: var(--18px);
-    font-weight: 600;
+    font-size: var(--16px);
+    font-weight: 500;
     transition: all 0.2s;
 }
 .estimatedCost .btns input:checked + div {
-    font-size: var(--18px);
-    font-weight: 600;
+    font-size: var(--16px);
+    font-weight: 700;
 }
 .estimatedCost h2 span {
   color: #F8F24B;
@@ -42,4 +42,10 @@
 }
 .estimatedCost button {
   font-size: clamp(12px, calc(0.7vw + 0.1rem), 100px);  
+}
+.estimatedCost div:has(> input:checked:first-child:last-child) {
+  background-color: var(--highlight-yellow);
+  color: var(--primary-black);
+  font-weight: 700;
+  text-decoration: underline;
 }

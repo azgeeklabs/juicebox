@@ -88,7 +88,7 @@ const CreateArtical = () => {
                   onChange={(e) => setPastedText(e.target.value)}
                   type="text"
                   placeholder="URL"
-                  className="flex-grow h-full mb-[1vw] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[--sy-10px] placeholder:text-[#FFFFFF80]"
+                  className="flex-grow h-full mb-[1vw] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[--sy-10px] placeholder:text-[#FFFFFFCC]"
                 />
 
                 {/* Paste Link button */}

@@ -2,6 +2,7 @@
 import React from "react";
 import styles from "./SEOLinkBuildingTable.module.css";
 import classNames from "classnames";
+import Link from "next/link";
 
 export default function SEOLinkBuildingTable() {
   // An array of objects representing the rows of the table body.
@@ -225,7 +226,8 @@ export default function SEOLinkBuildingTable() {
                   "w-[14.28%]"
                 )}
               >
-                <span>{e.getStarted}</span>
+                <Link href={"/dashboard/services/seo-link-building/article-selection"}>
+                <span>{e.getStarted}</span></Link>
               </li>
             </ul>
           ))}

@@ -38,7 +38,7 @@ const Page = () => {
                 id="countries"
                 className=" outline-none rounded-lg block w-full p-2.5 bg-[#484848]"
               >
-                <option selected className=" text-[#FFFFFF80]"> Niche</option>
+                <option selected className=" text-[#FFFFFFCC]"> Niche</option>
                 <option value="US">United States</option>
                 <option value="CA">Canada</option>
                 <option value="FR">France</option>

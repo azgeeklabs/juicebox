@@ -165,16 +165,16 @@ function AccountRecovery() {
     <NextPrevNav nextLink="/dashboard/services/social-media/social-media-task">
       <div
         className={classNames(
-          "flex flex-col gap-[var(--45px)] justify-center mx-auto items-center h-full",
+          "flex flex-col gap-[var(--55px)] justify-center mx-auto items-center h-full mb-[--sy-40px]",
           styles.container
         )}
       >
         <div className="flex flex-col items-center gap-[var(--16px)] text-center w-[80%]">
-          <h1 className="text-[--30px] font-bold">
+          <h1 className="text-[--32px] font-bold">
             Which social media account would you like to recover?
           </h1>
-          <p className="text-[--18px] font-light">
-            Select the social media platform that has your banned account
+          <p className="text-[--18px] font-light text-[#FFFFFFCC] text-center">
+          Select the social media platforms you want us to manage for you. <br /> Choose as many as you need.
           </p>
         </div>
 
@@ -194,7 +194,7 @@ function AccountRecovery() {
                   )}
                 >
                   {item.image}
-                  <span className="text-[--20px]">{item.title}</span>
+                  <span className="text-[--20px] font-medium group-checked:font-bold">{item.title}</span>
                 </div>
               </CustomCheckBoxText>
             </>

@@ -1,10 +1,11 @@
 .wordCount .btns > div > div {
-    padding: var(--sy-18px) 2.5vw;
+    padding: var(--sy-18px) 0;
     font-size: var(--18px);
-    font-weight: 600;
+    font-weight: 500;
     transition: all 0.2s;
+    width: var(--241px);
 }
 .wordCount .btns input:checked + div {
     font-size: var(--18px);
-    font-weight: 600;
+    font-weight: 700;
 }

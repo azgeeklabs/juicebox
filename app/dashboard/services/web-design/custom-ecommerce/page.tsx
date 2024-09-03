@@ -57,19 +57,19 @@ function Page() {
       backLink="/dashboard/services/web-design/website-style"
       nextLink="/dashboard/services/web-design/additional-features"
     >
-      <div className="flex flex-col justify-center">
+      <div className={`${styles.ecommerce} flex flex-col justify-center ml-[--32px]`}>
         <div
           className={classNames(
             "flex flex-col gap-[var(--16px)]",
             styles.container
           )}
         >
-          <h1 className="text-[--30px] font-bold">
-            Customize Your E-commerce App Pages
+          <h1 className="text-[--32px] font-semibold">
+            Customize Your E-commerce Web Pages
           </h1>
-          <p className="text-[--18px] w-[50%] text-[#B1B1B1]">
+          <p className="text-[--18px] text-[#B1B1B1]">
             Below is a list of typical pages in an e-commerce app. You can add
-            or remove pages by clicking on them. If you need additional
+            or remove pages by <br /> clicking on them. If you need additional
             features, you can type them in the box provided.
           </p>
         </div>

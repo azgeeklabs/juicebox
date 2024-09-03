@@ -79,7 +79,7 @@ function Page() {
                   disabled={haveWebsite ? false : true}
                   type="text"
                   placeholder="Add website"
-                  className="h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFF80]"
+                  className="h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFFCC]"
                 />
 
                 {/* Paste Link button */}

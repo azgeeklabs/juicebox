@@ -5,7 +5,7 @@
   .adType h4 {
     font-size: var(--18px);
     font-weight: 400;
-    color: #ffffffcc;
+    color: #FFFFFFCC;
   }
 
 
@@ -16,17 +16,17 @@
   }
 
 .adType .btns > div {
-    width: 12vw;
+    width: 13vw;
     padding: 0;
 }
 .adType .btns > div > div {
     padding: 1.422vh 1vw;
-    font-size: var(--18px);
-    font-weight: 600;
+    font-size: var(--16px);
+    font-weight: 500;
     transition: all 0.2s;
 }
 .adType .btns input:checked + div {
-    font-size: var(--18px);
-    font-weight: 600;
+    font-size: var(--16px);
+    font-weight: 700;
 
 }

@@ -23,9 +23,9 @@ const Page = () => {
           {/* Nested div for content */}
           <div>
             {/* Text center alignment and margin bottom */}
-            <div className="text-center mx-auto mb-[2.271vw]">
+            <div className="text-center mx-auto mb-[--sy-32px]">
               {/* Main heading with margin bottom and underlined text */}
-              <h2 className="mb-[1.5vw]">
+              <h2 className="mb-[--sy-16px]">
                 Do you already have an article, or would you like us to <br />{" "}
                 create one for you?
               </h2>
@@ -36,7 +36,7 @@ const Page = () => {
 
             {/* Container for buttons with flexbox layout, width fit, margin auto, and gap between buttons */}
             <div
-              className={`${styles.btns} flex w-fit mx-auto gap-[1.041vw] mb-[1.5vw]`}
+              className={`${styles.btns} flex w-fit mx-auto gap-[--22px] mb-[--sy-48px]`}
             >
               {/* CustomCheckBoxText component for selecting options */}
               <CustomCheckBoxText
@@ -57,12 +57,12 @@ const Page = () => {
               </CustomCheckBoxText>
             </div>
             <div
-              className={`mx-auto w-full border-t-[1px] border-t-[FFFFFF80] pt-[--sy-48px] ${
+              className={`mx-auto w-full border-t-[1px] border-t-[#484848] pt-[--sy-48px] ${
                 haveArticle ? "" : "grayscale-[50%] opacity-50"
               }`}
             >
               {/* Product Link field with optional span */}
-              <h3 className="mb-[0.6vw] font-semibold text-[--20px]">
+              <h3 className="mb-[--sy-14px] font-semibold text-[--20px]">
                 Upload Your Copy
               </h3>
               <div className="flex gap-[1vw] items-start mb-[1.2vw]">
@@ -71,7 +71,7 @@ const Page = () => {
                   disabled={haveArticle ? false : true}
                   type="text"
                   placeholder="Upload Article"
-                  className="flex-grow h-full mb-[1vw] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.5vw] placeholder:text-[#FFFFFF80]"
+                  className="flex-grow h-full mb-[1vw] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.5vw] placeholder:text-[#FFFFFFCC]"
                 />
 
                 {/* Paste Link button */}

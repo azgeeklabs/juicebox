@@ -9,6 +9,7 @@ const CustomTypeRange = dynamic(() => import('@/app/_components/customTypeRange/
 
 
 const Page = () => {
+  const [saveProgress, setSaveProgress] = useState(false);
 
   return (
     <NextPrevNav
@@ -18,9 +19,9 @@ const Page = () => {
       <div className=" flex justify-center items-center h-full w-full">
         <div className={`${styles.videoDuration} w-full`}>
           {/* Text center alignment and margin bottom */}
-          <div className="text-center mx-auto mb-[5.333vh]">
+          <div className="text-center mx-auto mb-[--54px]">
             {/* Main heading with margin bottom */}
-            <h2 className="mb-[2.667vh]">
+            <h2 className="mb-[--sy-16px]">
               How long would you like the video to be?
             </h2>
 
@@ -34,15 +35,22 @@ const Page = () => {
 
           {/* Container for the duration indicator with custom background, width, height, and margin */}
           
+          <div className=" w-[85%] mx-auto mb-[--35px]">
           <CustomTypeRange />
+          </div>
 
           {/* Link component for users who are not sure about the duration */}
-          <Link
-            href={""}
-            className="underline block w-fit mx-auto px-[0.52vw] py-[0.533vh] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200 mt-[0.5vw]"
-          >
-            I’m not sure
-          </Link>
+          <div
+              className={`relative block w-fit mx-auto px-[0.52vw] py-[0.3vw] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200 `}
+            >
+              I’m not sure
+              <input
+                type="checkbox"
+                name="saveProgress"
+                className={`absolute opacity-0 inset-0 cursor-pointer`}
+                onChange={() => setSaveProgress((prev) => !prev)}
+              />
+            </div>
         </div>
       </div>
     </NextPrevNav>

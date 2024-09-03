@@ -49,7 +49,7 @@ function SuspensionApprovel() {
             {/* Container for input field and button with flexbox layout, gap, and bottom margin */}
             <div className="flex gap-[1vw] items-start mb-[2.667vh]">
               {/* Input field with full height, bottom margin, specific width, background color, outline removal, rounded corners, padding, and placeholder styling */}
-              <div className="relative h-full mb-[1.778vh] bg-[var(--dark-gray-3)] outline-none rounded-[--10px] pl-[--35px] px-[1.088vw] py-[1vh] placeholder:text-[#FFFFFF80]">
+              <div className="relative h-full mb-[1.778vh] bg-[var(--dark-gray-3)] outline-none rounded-[--10px] pl-[--35px] px-[1.088vw] py-[1vh] placeholder:text-[#FFFFFFCC]">
                 <input
                   type="file"
                   className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"

@@ -15,7 +15,7 @@ const page = () => {
           <h2 className=" text-[--32px] font-semibold mb-[--sy-16px] text-center">
             What type of campaign would you like to implement?
           </h2>
-          <p className=" text-[#FFFFFF80] text-[--18px] text-center mb-[--sy-50px]">
+          <p className=" text-[#FFFFFFCC] text-[--18px] text-center mb-[--sy-50px]">
             Pick the type of campaign that best suits your current needs
           </p>
           <div className=" flex gap-[--31px] items-center">

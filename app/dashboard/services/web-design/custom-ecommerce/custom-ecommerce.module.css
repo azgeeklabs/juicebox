@@ -1,0 +1,7 @@
+.ecommerce > div > div {
+    font-weight: 500;
+  }
+   .ecommerce input:checked + div {
+    font-weight: 700;
+  
+  }

@@ -12,18 +12,18 @@
   font-weight: 400;
 }
 .webDesign .btns > div {
-  width: 13.5vw;
+  width: 13vw;
   padding: 0;
 }
 .webDesign .btns > div > div {
   padding: 0.8vw 1vw;
-  font-size: var(--18px);
-  font-weight: 600;
+  font-size: var(--16px);
+  font-weight: 500;
   transition: all 0.2s;
 }
 .webDesign .btns input:checked + div {
-  font-size: var(--18px);
-  font-weight: 600;
+  font-size: var(--16px);
+  font-weight: 700;
 }
 .webDesign a {
   font-size: var(--18px);
@@ -35,12 +35,13 @@
   width: 100%;
   border: 0;
   border-top: var(--1px) solid #484848;
-  margin-top: clamp(42px, calc(2.1vw + 0.1rem), 60px);
-  margin-bottom: clamp(42px, calc(2.1vw + 0.1rem), 60px);
+  margin-top: var(--45px);
+  margin-bottom: var(--42px);
   padding: 0;
 }
 
 .webDesign div:has(> input:checked:first-child:last-child) {
   background-color: var(--highlight-yellow);
   color: var(--primary-black);
+  font-weight: 700;
 }

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./footageEdit.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
@@ -7,6 +7,8 @@ import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
 const Page = () => {
   const [doLater, setDoLater] = useState(false);
+  const uploadRef = useRef(null)
+
   return (
     // Main container div with full height, flexbox layout, centered content horizontally and vertically
     <NextPrevNav
@@ -17,9 +19,9 @@ const Page = () => {
         {/* Inner container with full width and custom styles for footage editing section */}
         <div className={`${styles.footageEdit} w-full `}>
           {/* Header section with text centered, auto margins for horizontal centering, and vertical margins */}
-          <div className="text-center mx-auto mb-[5.333vh] mt-14">
+          <div className="text-center mx-auto mb-[--sy-48px] mt-14">
             {/* Main heading with bottom margin */}
-            <h2 className="mb-[2.667vh]">
+            <h2 className="mb-[--sy-24px]">
               Do you have footage that you want us to edit?
             </h2>
 
@@ -36,20 +38,24 @@ const Page = () => {
           {/* Container for upload input and button with auto margins for horizontal centering and fit width */}
           <div className="mx-auto w-fit">
             {/* Upload input and button container with flexbox layout, gap, and bottom margin */}
-            <div className="flex gap-[1vw] items-start mb-[2.667vh]">
+            <div className="flex gap-[1vw] items-start mb-[--sy-24px]">
               {/* Input field for uploading footage with full height, bottom margin, specific width, background color, outline removal, rounded corners, padding, and placeholder styling */}
-              <div className="relative h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.889vh] text-[#FFFFFF80] cursor-pointer">
+              <div className="relative h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.889vh] text-[#FFFFFFCC] cursor-pointer">
                 Upload Footage
                 <input
+                ref={uploadRef}
                   type="file"
-                  className="absolute opacity-0 inset-0 cursor-pointer"
+                  id="upload"
+                  className="pointer-events-none absolute opacity-0 inset-0 cursor-pointer"
+                  
                 />
               </div>
 
               {/* Button for uploading footage with background color, padding, text color, and rounded corners */}
-              <button className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.711vh] text-black rounded-[var(--33px)]">
+              <label onClick={()=>console.log(uploadRef.current)
+              } htmlFor="upload" className="cursor-pointer font-bold bg-[var(--highlight-yellow)] px-[1.892vw] py-[--sy-10px] text-black rounded-[var(--33px)]">
                 Upload Footage
-              </button>
+              </label>
             </div>
 
             {/* Link for deferring the upload with underline, block display, fit width, auto margins for horizontal centering, padding, hover background color, rounded corners, and transition effect */}

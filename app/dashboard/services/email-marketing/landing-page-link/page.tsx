@@ -58,7 +58,7 @@ function Page() {
                 onChange={(e) => setPastedText(e.target.value)}
                   type="text"
                   placeholder="landing page"
-                  className="h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[10px] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFF80]"
+                  className="h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[10px] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFFCC]"
                 />
 
                 {/* Button with background color, padding, text color, and rounded corners */}

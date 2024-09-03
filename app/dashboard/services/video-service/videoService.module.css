@@ -51,7 +51,7 @@
 .editing h4 {
   font-size: var(--18px);
   font-weight: 400;
-  color: #ffffffcc;
+  color: #FFFFFFCC;
 }
 .btns input + span {
   width: 100%;
@@ -68,9 +68,11 @@
   width: var(--241px);
   padding: var(--sy-16px) var(--51px);
   transition: background-color 0.3s;
+  font-weight: 500;
 }
 
 .btns input:checked + div {
+  font-size: var(--16px);
   font-weight: 700;
 }
 /* .btns {

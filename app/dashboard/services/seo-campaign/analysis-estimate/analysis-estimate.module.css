@@ -25,7 +25,7 @@
 
 .analysisEstimate p {
   font-size: clamp(18px, calc(0.85vw + 0.1rem), 100px);
-  color: #ffffffcc;
+  color: #FFFFFFCC;
 }
 
 .loading {

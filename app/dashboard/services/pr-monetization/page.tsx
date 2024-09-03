@@ -22,7 +22,7 @@ function Page() {
           <h2 className="font-bold">What do you want to monetize?</h2>
 
           {/* Paragraph with specified width for better readability */}
-          <p className="w-[60%] text-[#ffffff80]">
+          <p className="w-[60%] text-[#FFFFFFCC]">
             Please choose whether you want to monetize a regular app or a
             gamified app. This helps us tailor our recommendations to your
             project.

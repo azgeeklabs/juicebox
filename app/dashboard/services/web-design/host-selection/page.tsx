@@ -10,7 +10,7 @@ const Page = () => {
       nextLink="/dashboard/services/web-design/web-design-endpoint"
     >
       {/* // Main container div with relative positioning */}
-      <div className="h-full relative">
+      <div className="h-full relative mb-[--sy-50px]">
         {/* Inner container for the video end point section with custom styles */}
         <div
           className={`${styles.hostSelection} w-full h-full flex justify-center items-center`}
@@ -18,18 +18,18 @@ const Page = () => {
           {/* Nested div for content */}
           <div>
             {/* Text center alignment and margin bottom */}
-            <div className="text-center mx-auto mb-[2.271vw]">
+            <div className="text-center mx-auto mb-[--sy-40px]">
               {/* Main heading with margin bottom and underlined text */}
-              <h2 className="mb-[1.5vw]">
-                Do you want this website to run on your own server host or you
+              <h2 className="mb-[--sy-8px]">
+                Do you want this website to run on your own server <br /> host or you
                 want us to host it for you?
               </h2>
-              <p>Please provide us with a domain for your website</p>
+              <p className=" text-[#FFFFFFCC]">Please provide us with a domain for your website</p>
             </div>
 
             {/* Container for buttons with flexbox layout, width fit, margin auto, and gap between buttons */}
             <div
-              className={`${styles.btns} flex w-fit mx-auto gap-[1.041vw] mb-[1.5vw]`}
+              className={`${styles.btns} flex w-fit mx-auto gap-[--22px]`}
             >
               {/* CustomCheckBoxText component for selecting options */}
               <CustomCheckBoxText

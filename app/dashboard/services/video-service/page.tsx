@@ -37,7 +37,7 @@ export default function Page() {
       <div className="flex items-center justify-center h-full w-full">
         {/* Inner container with full width and custom editing styles */}
         <div
-          className={`${styles.editing} flex flex-col gap-[--98px] justify-around w-full`}
+          className={`${styles.editing} flex flex-col gap-[--sy-80px] justify-around w-full pt-[--sy-20px]`}
         >
           {/* Header section with padding and bottom margin */}
           <div className="pl-[4.264vw]">

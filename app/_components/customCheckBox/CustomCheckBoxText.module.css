@@ -29,7 +29,7 @@
 
 /* Hover */
 .customCheckBoxText:hover > div {
-  background-color: #616161;
+  background-color: #1c1c1c;
 }
 .customCheckBoxText:hover input + div {
   color: var(--white);

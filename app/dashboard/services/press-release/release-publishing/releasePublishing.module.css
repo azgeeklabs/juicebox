@@ -3,6 +3,6 @@
     height: clamp(12px,calc(var(--37px) + 00.1rem) , 500px);
 }
 .releasePublishing ul li span {
-    color: #FFFFFF80;
+    color: #FFFFFFCC;
     ;
 }

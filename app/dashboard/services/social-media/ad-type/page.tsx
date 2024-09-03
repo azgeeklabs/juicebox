@@ -8,13 +8,13 @@ const Page = () => {
   return (
     // Main container div
     <NextPrevNav nextLink="/dashboard/services/social-media/ad-style" backLink="/dashboard/services/social-media/creation-frequency">
-      <div className=" flex items-center justify-center h-full">
+      <div className=" flex items-center justify-center h-full mb-[--sy-50px]">
       {/* Inner container for the video script section with custom styles */}
       <div className={`${styles.adType} w-full`}>
         {/* Text center alignment and margin bottom */}
-        <div className=" text-center mx-auto mb-[4.037vh]">
+        <div className=" text-center mx-auto mb-[--55px]">
           {/* Main heading with margin bottom and embedded horizontal rule */}
-          <h2 className=" mb-[2.667vh]">
+          <h2 className=" mb-[--sy-8px]">
           What type of Ad you would like?
           </h2>
           {/* Subheading with embedded horizontal rule  */}
@@ -23,7 +23,7 @@ const Page = () => {
           </h4>
         </div>
         {/* Container for buttons with flexbox layout, width fit, margin auto, and gap between buttons */}
-        <div className={`${styles.btns} flex w-fit mx-auto gap-[1.041vw]`}>
+        <div className={`${styles.btns} flex w-fit mx-auto gap-[--32px]`}>
           {/* CustomCheckBoxText component for selecting options */}
           <CustomCheckBoxText btnSize="xl" inputType="radio" name="adType" >
           Images

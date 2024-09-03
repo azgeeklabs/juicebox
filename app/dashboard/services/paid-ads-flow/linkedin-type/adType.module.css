@@ -51,7 +51,7 @@
 .editing h4 {
   font-size: var(--18px);
   font-weight: 400;
-  color: #ffffffcc;
+  color: #FFFFFFCC;
 }
 .btns div {
   width: clamp(1rem, calc(15.35vw + 0.1rem), 100%) !important;

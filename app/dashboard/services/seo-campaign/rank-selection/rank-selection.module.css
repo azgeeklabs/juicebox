@@ -11,11 +11,14 @@
 .rankSelection p {
   font-size: var(--18px);
   font-weight: 400;
-  color: #ffffffcc;
+  color: #FFFFFFCC;
 }
-.rankSelection > div > div > div {
-  font-size: clamp(32px, calc(1.75vw + 0.1rem), 100px);
+.rankSelection input + div {
+  font-size: var(--32px);
   font-weight: 500;
   border-radius: 57px;
   padding: var(--sy-4px) var(--32px);
+}
+.rankSelection input:checked + div {
+  font-weight: 700;
 }

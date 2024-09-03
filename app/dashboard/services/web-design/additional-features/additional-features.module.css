@@ -9,3 +9,6 @@
 .cards div:has(> input:checked) path {
   stroke: var(--primary-black);
 }
+.container input:checked + div div span {
+  font-weight: 700 !important;
+}

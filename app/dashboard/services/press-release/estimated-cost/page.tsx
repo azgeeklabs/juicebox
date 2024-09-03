@@ -1,13 +1,16 @@
-import React from "react";
+"use client"
+import React, { useState } from "react";
 import styles from "./estimatedCost.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
 const Page = () => {
+  const [saveProgress, setSaveProgress] = useState(false);
+
   return (
     // Main container div with relative positioning
     <NextPrevNav nextLink="/dashboard/services" backLink="/dashboard/services/press-release/word-count" nextText="All Done">
-      <div className="h-full relative">
+      <div className="h-full relative mb-[--sy-40px]">
       {/* Inner container for the video end point section with custom styles */}
       <div
         className={`${styles.estimatedCost} w-full h-full flex justify-center items-center`}
@@ -15,7 +18,7 @@ const Page = () => {
         {/* Nested div for content */}
         <div>
           {/* Text center alignment and margin bottom */}
-          <div className="text-center mx-auto mb-[2.271vw]">
+          <div className="text-center mx-auto mb-[--sy-32px]">
             {/* Main heading with margin bottom and underlined text */}
             <h2 className="mb-[1.5vw]">
               Based on everything you told us, <u>the estimated cost</u> of this{" "}
@@ -26,7 +29,7 @@ const Page = () => {
 
           {/* Container for buttons with flexbox layout, width fit, margin auto, and gap between buttons */}
           <div
-            className={`${styles.btns} flex w-fit mx-auto gap-[1.041vw] mb-[1.5vw]`}
+            className={`${styles.btns} flex w-fit mx-auto gap-[1.041vw] mb-[--sy-16px]`}
           >
             {/* CustomCheckBoxText component for selecting options */}
             <CustomCheckBoxText
@@ -46,11 +49,17 @@ const Page = () => {
           </div>
 
           {/* Link component for saving progress */}
-          <button
-            className="block w-fit mx-auto px-[0.52vw] py-[0.3vw] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200"
-          >
-            Save my Progress
-          </button>
+          <div
+              className={`relative block w-fit mx-auto px-[0.52vw] py-[0.3vw] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200 `}
+            >
+              Save my Progress
+              <input
+                type="checkbox"
+                name="saveProgress"
+                className={`absolute opacity-0 inset-0 cursor-pointer`}
+                onChange={() => setSaveProgress((prev) => !prev)}
+              />
+            </div>
         </div>
       </div>
     </div>

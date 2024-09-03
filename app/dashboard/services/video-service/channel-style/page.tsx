@@ -37,7 +37,7 @@ export default function Page() {
       <div className="flex items-center justify-center h-full w-full">
         {/* Inner container with full width and custom styles for channel style selection */}
         <div
-          className={`${styles.channelStyle} flex flex-col gap-[--98px] justify-around w-full`}
+          className={`${styles.channelStyle} flex flex-col gap-[--sy-35px] justify-around w-full`}
         >
           {/* Header section with top padding, left padding, and bottom margin */}
           <div className="pl-[4.264vw]">

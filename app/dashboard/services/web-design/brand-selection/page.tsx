@@ -22,21 +22,21 @@ const Page = () => {
           {/* Nested div for content */}
           <div>
             {/* Text center alignment and margin bottom */}
-            <div className="text-center mx-auto mb-[2.271vw]">
+            <div className="text-center mx-auto mb-[--sy-48px]">
               {/* Main heading with margin bottom and underlined text */}
-              <h2 className="mb-[1.5vw]">
-                Do you already have a brand identity, or would you like us to
+              <h2 className="mb-[--sy-8px]">
+                Do you already have a brand identity, or would you like <br /> us to
                 create one for you?
               </h2>
               <p>
-                Our talented designers can create a brand identity for you in no
+                Our talented designers can create a brand identity for you in <br /> no
                 time, or you can provide your own!
               </p>
             </div>
 
             {/* Container for buttons with flexbox layout, width fit, margin auto, and gap between buttons */}
             <div
-              className={`${styles.btns} flex w-fit mx-auto gap-[1.041vw] mb-[1.5vw]`}
+              className={`${styles.btns} flex w-fit mx-auto gap-[--22px] mb-[--sy-55px]`}
             >
               {/* CustomCheckBoxText component for selecting options */}
               <CustomCheckBoxText
@@ -66,14 +66,14 @@ const Page = () => {
               }`}
             >
               {/* Product Link field with optional span */}
-              <h3 className="mb-[0.6vw]">Upload Your Brand Identity</h3>
+              <h3 className="mb-[--sy-14px] font-semibold text-[--20px]">Upload Your Brand Identity</h3>
               <div className="flex gap-[1vw] items-start mb-[1.2vw]">
                 {/* Product Link input field */}
                 <input
                   disabled={haveWebsite ? false : true}
                   type="text"
                   placeholder="Upload Brand Identity"
-                  className="flex-grow h-full mb-[1vw] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.5vw] placeholder:text-[#FFFFFF80]"
+                  className="flex-grow h-full mb-[1vw] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.5vw] placeholder:text-[#FFFFFFCC]"
                 />
 
                 {/* Paste Link button */}

@@ -43,7 +43,7 @@ function SuspendedAccount() {
               <input
                 type="text"
                 placeholder="email"
-                className="h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[--10px] pl-[--35px] px-[1.088vw] py-[1vh] placeholder:text-[#FFFFFF80]"
+                className="h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[--10px] pl-[--35px] px-[1.088vw] py-[1vh] placeholder:text-[#FFFFFFCC]"
               />
 
               {/* Button with background color, padding, text color, and rounded corners */}

@@ -16,14 +16,14 @@ const Page = () => {
           {/* Header section with centered text, auto margins for centering, and bottom margin */}
           <div className="text-center mx-auto mb-[4.037vh]">
             {/* Main heading with bottom margin */}
-            <h2 className="mb-[2.667vh]">
+            <h2 className="mb-[--sy-24px]">
               Would you like this video to match the style of the videos
               <hr className="border-0" /> you've already published on your
               channel?
             </h2>
 
             {/* Subheading with horizontal rule (line) */}
-            <h4>
+            <h4 className=" mb-[--sy-48px]">
               This helps ensure consistency with your existing content, or we
               can let our <hr className="border-0" /> creative juices flow to
               create an exceptional video for your channel!
@@ -31,7 +31,7 @@ const Page = () => {
           </div>
 
           {/* Buttons container with custom styles, flexbox layout, width fit to content, auto margins for centering, and gap */}
-          <div className={`${styles.btns} flex w-fit mx-auto gap-[1.041vw]`}>
+          <div className={`${styles.btns} flex w-fit mx-auto gap-[--22px]`}>
             {/* Yes option with large button size and radio input type */}
             <CustomCheckBoxText
               btnSize="xl"

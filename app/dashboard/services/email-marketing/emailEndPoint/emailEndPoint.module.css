@@ -5,7 +5,7 @@
   .emailEndPoint h4 {
     font-size: var(--18px);
     font-weight: 400;
-    color: #ffffffcc;
+    color: #FFFFFFCC;
   }
   .emailEndPoint h3 {
     font-size: clamp(12px, calc(0.85vw + 0.1rem), 100px);
