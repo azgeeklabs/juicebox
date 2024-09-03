@@ -31,9 +31,9 @@ const Page = () => {
         {/* Inner container for the video script section with custom styles */}
         <div className={`${styles.videoScript} w-full`}>
           {/* Text center alignment and margin bottom */}
-          <div className=" text-center mx-auto mb-[4.037vh]">
+          <div className=" text-center mx-auto mb-[--sy-48px]">
             {/* Main heading with margin bottom and embedded horizontal rule */}
-            <h2 className=" mb-[2.667vh]">
+            <h2 className=" mb-[--16px]">
               Do you already have a script for this video, or would
               <hr className=" border-0" />
               you like us to create one for you?
@@ -45,7 +45,7 @@ const Page = () => {
             </h4>
           </div>
           {/* Container for buttons with flexbox layout, width fit, margin auto, and gap between buttons */}
-          <div className={`${styles.btns} flex w-fit mx-auto gap-[1.041vw]`}>
+          <div className={`${styles.btns} flex w-fit mx-auto gap-[--22px]`}>
             {/* CustomCheckBoxText component for selecting options */}
             <CustomCheckBoxText
               onClick={() => setHaveWebsite(true)}
@@ -74,10 +74,10 @@ const Page = () => {
           }`}
         >
           {/* Product Link field with optional span */}
-          <h3 className="mb-[0.6vw] font-semibold text-[--20px]">
+          <h3 className="mb-[--sy-14px] font-semibold text-[--20px]">
             Website URL
           </h3>
-          <div className="flex gap-[1vw] items-start mb-[1.2vw]">
+          <div className="flex gap-[1vw] items-start mb-[--sy-24px]">
             {/* Product Link input field */}
             <input
               value={pastedText}
@@ -85,7 +85,7 @@ const Page = () => {
               disabled={haveWebsite ? false : true}
               type="text"
               placeholder="URL"
-              className="flex-grow h-full mb-[1vw] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.5vw] placeholder:text-[#FFFFFF80]"
+              className="flex-grow h-full mb-[1vw] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.5vw] placeholder:text-[#FFFFFFCC]"
             />
 
             {/* Paste Link button */}

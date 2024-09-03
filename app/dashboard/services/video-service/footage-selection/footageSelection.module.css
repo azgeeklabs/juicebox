@@ -5,7 +5,7 @@
 .footage h4 {
   font-size: var(--18px);
   font-weight: 400;
-  color: #ffffffcc;
+  color: #FFFFFFCC;
 }
 
 .footage input + span {
@@ -35,7 +35,12 @@
 .footage input:checked ~ button {
   background-color: #F8F24B !important;
   color: #1c1c1c;
+  font-weight: 700;
 
+}
+.footage input:checked + div span {
+  color: #1c1c1c;
+  font-weight: 700;
 }
 .footage img {
   width: 7vw;

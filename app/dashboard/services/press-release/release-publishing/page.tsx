@@ -42,6 +42,39 @@ const Page = () => {
       ),
     },
     {
+      name: "Facebook",
+      icon: (
+        <svg
+          width="39"
+          height="38"
+          viewBox="0 0 39 38"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g clip-path="url(#clip0_1169_72866)">
+            <path
+              d="M38.2014 18.7013C38.2014 8.37292 29.8285 0 19.5001 0C9.17175 0 0.798828 8.37292 0.798828 18.7013C0.798828 28.0356 7.63766 35.7725 16.578 37.1754V24.1071H11.8297V18.7013H16.578V14.5812C16.578 9.89416 19.3701 7.3052 23.6419 7.3052C25.6879 7.3052 27.828 7.67046 27.828 7.67046V12.2727H25.4699C23.1467 12.2727 22.4222 13.7143 22.4222 15.1933V18.7013H27.6089L26.7798 24.1071H22.4222V37.1754C31.3626 35.7725 38.2014 28.0357 38.2014 18.7013Z"
+              fill="#1877F2"
+            />
+            <path
+              d="M26.7802 24.1066L27.6093 18.7008H22.4226V15.1928C22.4226 13.7137 23.1471 12.2722 25.4703 12.2722H27.8285V7.66995C27.8285 7.66995 25.6883 7.30469 23.6421 7.30469C19.3705 7.30469 16.5785 9.89365 16.5785 14.5807V18.7008H11.8301V24.1066H16.5785V37.1749C17.5451 37.3264 18.5221 37.4023 19.5005 37.4021C20.479 37.4024 21.456 37.3264 22.4226 37.1749V24.1066H26.7802Z"
+              fill="white"
+            />
+          </g>
+          <defs>
+            <clipPath id="clip0_1169_72866">
+              <rect
+                width="37.4026"
+                height="37.4026"
+                fill="white"
+                transform="translate(0.798828)"
+              />
+            </clipPath>
+          </defs>
+        </svg>
+      ),
+    },
+    {
       name: "Instagram",
       icon: (
         <svg
@@ -290,19 +323,19 @@ const Page = () => {
         nextLink="/dashboard/services/press-release/pr-ready"
       >
         <div
-          className={`${styles.releasePublishing} h-full w-full flex flex-col justify-between items-center py-[--sy-15px]`}
+          className={`${styles.releasePublishing} h-full w-full flex flex-col justify-center items-center py-[--sy-15px]`}
         >
-          <div>
-            <h2 className="mb-[1.5vh] text-[--30px] font-bold text-center">
+          <div className=" pt-[--sy-20px]">
+            <h2 className="mb-[1.5vh] text-[--32px] font-bold text-center">
               Your press release will be published on the following websites:
             </h2>
-            <p className="text-[--18px] text-center">
+            <p className="text-[--18px] text-center text-[#FFFFFFCC] mb-[--sy-27px]">
               Here are some of the 400+ websites where your press release will
               be published.
             </p>
           </div>
-          <div className=" rounded-[12px] bg-[--dark-gray-2] h-[55vh] overflow-y-scroll" style={{scrollbarWidth:"none"}}>
-            <ul className="px-[--55px] py-[--sy-24px] border-b border-b-[#494949] flex gap-[--55px]">
+          <div className=" rounded-[12px] bg-[--dark-gray-2] h-[50vh] overflow-y-scroll w-[98%]" style={{scrollbarWidth:"none"}}>
+            <ul className="px-[--55px] py-[--sy-24px] border-b border-b-[#494949] flex gap-[--55px] justify-between">
             
               {websites.map((e, i) => (
                 <li className=" flex flex-col gap-[--sy-10px] items-center">
@@ -311,7 +344,7 @@ const Page = () => {
                 </li>
               ))}
             </ul>
-            <ul className="px-[--55px] py-[--sy-24px] border-b border-b-[#494949] flex gap-[--55px]">
+            <ul className="px-[--55px] py-[--sy-24px] border-b border-b-[#494949] flex gap-[--55px] justify-between">
               
               {websites.map((e, i) => (
                 <li className=" flex flex-col gap-[--sy-10px] items-center">
@@ -320,7 +353,7 @@ const Page = () => {
                 </li>
               ))}
             </ul>
-            <ul className="px-[--55px] py-[--sy-24px] border-b border-b-[#494949] flex gap-[--55px]">
+            <ul className="px-[--55px] py-[--sy-24px] border-b border-b-[#494949] flex gap-[--55px] justify-between">
               
               {websites.map((e, i) => (
                 <li className=" flex flex-col gap-[--sy-10px] items-center">
@@ -329,7 +362,7 @@ const Page = () => {
                 </li>
               ))}
             </ul>
-            <ul className="px-[--55px] py-[--sy-24px] border-b border-b-[#494949] flex gap-[--55px]">
+            <ul className="px-[--55px] py-[--sy-24px] border-b border-b-[#494949] flex gap-[--55px] justify-between">
               
               {websites.map((e, i) => (
                 <li className=" flex flex-col gap-[--sy-10px] items-center">
@@ -338,7 +371,7 @@ const Page = () => {
                 </li>
               ))}
             </ul>
-            <ul className="px-[--55px] py-[--sy-24px] border-b border-b-[#494949] flex gap-[--55px]">
+            <ul className="px-[--55px] py-[--sy-24px] border-b border-b-[#494949] flex gap-[--55px] justify-between">
               {websites.map((e, i) => (
                 <li className=" flex flex-col gap-[--sy-10px] items-center">
                   {e.icon}
@@ -346,7 +379,7 @@ const Page = () => {
                 </li>
               ))}
             </ul>
-            <ul className="px-[--55px] py-[--sy-24px] border-b border-b-[#494949] flex gap-[--55px]">
+            <ul className="px-[--55px] py-[--sy-24px] border-b border-b-[#494949] flex gap-[--55px] justify-between">
               {websites.map((e, i) => (
                 <li className=" flex flex-col gap-[--sy-10px] items-center">
                   {e.icon}

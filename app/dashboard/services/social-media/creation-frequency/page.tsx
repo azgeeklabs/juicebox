@@ -8,13 +8,13 @@ const Page = () => {
   return (
     // Main container div
     <NextPrevNav nextLink="/dashboard/services/social-media/ad-type" backLink="/dashboard/services/social-media/social-media-task">
-      <div className=" flex items-center justify-center h-full">
+      <div className=" flex items-center justify-center h-full mb-[--sy-50px]">
       {/* Inner container for the video script section with custom styles */}
       <div className={`${styles.creationFrequency} w-full`}>
         {/* Text center alignment and margin bottom */}
-        <div className=" text-center mx-auto mb-[4.037vh]">
+        <div className=" text-center mx-auto mb-[--58px]">
           {/* Main heading with margin bottom and embedded horizontal rule */}
-          <h2 className=" mb-[2.667vh]">
+          <h2 className=" mb-[--sy-8px]">
           How often do you want us to create posts for you?
           </h2>
           {/* Subheading with embedded horizontal rule  */}
@@ -23,7 +23,7 @@ const Page = () => {
           </h4>
         </div>
         {/* Container for buttons with flexbox layout, width fit, margin auto, and gap between buttons */}
-        <div className={`${styles.btns} flex w-fit mx-auto gap-[1.041vw]`}>
+        <div className={`${styles.btns} flex w-fit mx-auto gap-[--8px]`}>
           {/* CustomCheckBoxText component for selecting options */}
           <CustomCheckBoxText btnSize="xl" inputType="radio" name="frequency" >
           Many times daily

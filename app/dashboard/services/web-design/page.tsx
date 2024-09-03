@@ -32,22 +32,22 @@ const Page = () => {
           {/* Nested div for content */}
           <div>
             {/* Text center alignment and margin bottom */}
-            <div className="text-center mx-auto mb-[2.271vw]">
+            <div className="text-center mx-auto mb-[--43px]">
               {/* Main heading with margin bottom and underlined text */}
-              <h2 className="mb-[1.5vw]">
-                Do you want to redesign an existing website or build your
+              <h2 className="mb-[--sy-16px]">
+                Do you want to redesign an existing website or build your <br />
                 website from scratch?
               </h2>
-              <p>
+              <p className=" text-center">
                 Our design team can create a new epic website for you, or you
-                can revamp your current website with us for a new look and user
+                can revamp your <br /> current website with us for a new look and user
                 experience!
               </p>
             </div>
 
             {/* Container for buttons with flexbox layout, width fit, margin auto, and gap between buttons */}
             <div
-              className={`${styles.btns} flex w-fit mx-auto gap-[1.041vw] mb-[1.5vw]`}
+              className={`${styles.btns} flex w-fit mx-auto gap-[--22px] mb-[1.5vw]`}
             >
               {/* CustomCheckBoxText component for selecting options */}
               <CustomCheckBoxText
@@ -77,8 +77,8 @@ const Page = () => {
               }`}
             >
               {/* Product Link field with optional span */}
-              <h3 className="mb-[0.6vw]">Website URL</h3>
-              <div className="flex gap-[1vw] items-start mb-[1.2vw]">
+              <h3 className="mb-[0.6vw] font-semibold text-[--20px]">Website URL</h3>
+              <div className="flex gap-[1vw] items-start mb-[--sy-24px]">
                 {/* Product Link input field */}
                 <input
                   disabled={haveWebsite ? false : true}
@@ -86,14 +86,14 @@ const Page = () => {
                   onChange={(e) => setPastedText(e.target.value)}
                   type="text"
                   placeholder="Product Link"
-                  className="flex-grow h-full mb-[1vw] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.5vw] placeholder:text-[#FFFFFF80]"
+                  className="flex-grow h-full mb-[1vw] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[--sy-10px] placeholder:text-[#FFFFFFCC]"
                 />
 
                 {/* Paste Link button */}
                 <button
                   onClick={handlePaste}
                   disabled={haveWebsite ? false : true}
-                  className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.4vw] text-black rounded-[var(--33px)]"
+                  className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[--sy-10px] text-black rounded-[var(--33px)]"
                 >
                   Paste Link
                 </button>

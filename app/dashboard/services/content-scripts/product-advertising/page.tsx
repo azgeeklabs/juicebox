@@ -45,7 +45,7 @@ const Page = () => {
             <input
               type="text"
               placeholder="Product Name"
-              className="mb-[--sy-32px] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[--10px] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFF80]"
+              className="mb-[--sy-32px] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[--10px] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFFCC]"
             />
 
             {/* Product Link field with optional span */}
@@ -59,7 +59,7 @@ const Page = () => {
                 value={pastedText}
                   onChange={(e) => setPastedText(e.target.value)}
                 placeholder="Product Link"
-                className="h-full mb-[1.778vh] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[--10px] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFF80]"
+                className="h-full mb-[1.778vh] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[--10px] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFFCC]"
               />
 
               {/* Paste Link button */}

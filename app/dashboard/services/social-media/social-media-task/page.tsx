@@ -9,13 +9,13 @@ const Page = () => {
   return (
     // Main container div
     <NextPrevNav nextLink={answer == "Create" ? "/dashboard/services/social-media/creation-frequency" : answer == "Audience" ? "/dashboard/services/social-media/audience-frequency" : answer == "Post" ? "/dashboard/services/social-media/post-frequency" : "#"} backLink="/dashboard/services/social-media">
-      <div className=" flex items-center justify-center h-full">
+      <div className=" flex items-center justify-center h-full mb-[--sy-50px]">
       {/* Inner container for the video script section with custom styles */}
       <div className={`${styles.socialMediaTask} w-full`}>
         {/* Text center alignment and margin bottom */}
-        <div className=" text-center mx-auto mb-[4.037vh]">
+        <div className=" text-center mx-auto mb-[--sy-50px]">
           {/* Main heading with margin bottom and embedded horizontal rule */}
-          <h2 className=" mb-[2.667vh]">
+          <h2 className=" mb-[--sy-8px]">
           What do you want us to do for your social media page?
           </h2>
           {/* Subheading with embedded horizontal rule  */}
@@ -24,7 +24,7 @@ const Page = () => {
           </h4>
         </div>
         {/* Container for buttons with flexbox layout, width fit, margin auto, and gap between buttons */}
-        <div className={`${styles.btns} flex w-fit mx-auto gap-[1.041vw]`}>
+        <div className={`${styles.btns} flex w-fit mx-auto gap-[--26px]`}>
           {/* CustomCheckBoxText component for selecting options */}
           <CustomCheckBoxText btnSize="xl" inputType="radio" name="socialMediaTask" onClick={()=>setAnswer("Create")}>
           Create posts for me

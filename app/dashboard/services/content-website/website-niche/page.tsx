@@ -77,7 +77,7 @@ const WebsiteNiche = () => {
                     <button onClick={(e)=>{
                       e.preventDefault()
                       setShowDropdown(!showDropdown)
-                    }} className=" flex items-center relative w-full rounded-[--7px] py-[--sy-10px] px-[--12px] bg-[#484848] text-[#FFFFFF80]">
+                    }} className=" flex items-center relative w-full rounded-[--7px] py-[--sy-10px] px-[--12px] bg-[#484848] text-[#FFFFFFCC]">
                       {shownValue}
                       <svg
                         className=" right-[--19px] top-1/2 -translate-y-1/2 absolute w-[--16px]"

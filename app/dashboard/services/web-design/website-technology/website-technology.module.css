@@ -10,113 +10,19 @@
   font-size: var(--18px);
 }
 
-.card {
-  background-color: var(--dark-gray-3);
-  border-radius: var(--12px);
-  aspect-ratio: 1 / 1;
-  width: clamp(6rem, calc(10.35vw + 0.1rem), 20rem);
-  height: clamp(6rem, calc(10.35vw + 0.1rem), 20rem);
-  padding: var(--24px);
-  cursor: pointer;
-  transition: background-color 0.2s ease-in, transform 0.2s ease-in
-}
 
-.card div:nth-child(1) {
-  /* width: calc(4.35vw + 0.1rem);
-  height: calc(4.35vw + 0.1rem); */
-  aspect-ratio: 1 / 1;
+.btns > div {
+  width: 13vw;
+  padding: 0;
 }
+.btns > div > div {
+  padding: 1.422vh 1vw;
+  font-size: var(--16px);
+  font-weight: 500;
+  transition: all 0.2s;
+}
+ .btns input:checked + div {
+  font-size: var(--16px);
+  font-weight: 700;
 
-.card div:nth-child(2) {
-  text-align: center;
-  font-size: var(--27px);
-}
-
-.cards {
-  gap: clamp(1rem, calc(2vw + 0.1rem), 50rem);
-}
-
-/* .card > div {
-    width: clamp(15rem, calc(10.35vw + 0.1rem), 20rem);
-    height: clamp(15rem, calc(10.35vw + 0.1rem), 20rem);
-  } */
-.card > div * {
-  position: absolute;
-  width: 100%;
-
-  /* transition: visibility 1s ease-in, opacity 1s ease-in; */
-}
-
-.card img.gifImg {
-  visibility: hidden;
-  opacity: 0;
-}
-
-.card img.svgImg {
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  visibility: visible;
-  opacity: 1;
-  /* width: 50px; */
-}
-
-/* Images */
-.customCard .svgImg svg {
-  width: var(--68px);
-  height: var(--60px);
-}
-.shopifyCard .svgImg svg {
-  width: var(--37px);
-  height: var(--43px);
-}
-.wordpressCard .svgImg svg {
-  width: var(--66px);
-  height: var(--65px);
-}
-.webflowCard .svgImg svg {
-  width: var(--77px);
-  height: var(--49px);
-}
-
-.card:not(:has(input:checked)):hover {
-  background-color: #1f1f1f;
-  transform: scale(1.1);
-}
-
-.card:has(input:checked) {
-  background-color: #f8f24b;
-  color: var(--primary-black);
-}
-
-.card:hover img.gifImg {
-  visibility: visible;
-  opacity: 1;
-}
-
-.card input:checked svg,
-.card input:checked path {
-  fill: black;
-  stroke: black;
-}
-
-.card:has(input:checked) img,
-.card:has(input:checked) svg,
-.card:has(input:checked) path,
-.card:has(input:checked) rect {
-  fill: black;
-  stroke: black;
-}
-
-.card input:checked img,
-.card input:checked svg,
-.card input:checked path,
-.card input:checked rect {
-  fill: black;
-  stroke: black;
-}
-
-.card input[type="radio"]:checked + div svg {
-  fill: black;
-  stroke: black;
 }

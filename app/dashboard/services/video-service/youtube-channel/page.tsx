@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./youtubeChannel.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
@@ -7,7 +7,16 @@ import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
 const Page = () => {
   const [dontHaveChannel, setDontHaveChannel] = React.useState(false);
+  const [pastedText, setPastedText] = useState<string>("");
 
+  const handlePaste = async () => {
+    try {
+      const text = await navigator.clipboard.readText();
+      setPastedText(text);
+    } catch (error) {
+      console.error("Failed to read clipboard contents: ", error);
+    }
+  };
   return (
     // Main outer container div
     <NextPrevNav
@@ -18,9 +27,9 @@ const Page = () => {
         {/* Inner container with full width and custom YouTube channel styles */}
         <div className={`${styles.youtubeChannel} w-full`}>
           {/* Header section with centered text, auto margins for centering, and vertical margins */}
-          <div className="text-center mx-auto mb-[5.333vh]">
+          <div className="text-center mx-auto mb-[--sy-48px]">
             {/* Main heading with bottom margin */}
-            <h2 className="mb-[2.667vh]">
+            <h2 className="mb-[--sy-16px]">
               Do you have an existing YouTube channel?
             </h2>
 
@@ -41,12 +50,14 @@ const Page = () => {
               {/* Channel URL input field */}
               <input
                 type="text"
+                value={pastedText}
+                onChange={(e) => setPastedText(e.target.value)}
                 placeholder="Channel"
-                className="h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFF80]"
+                className="h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFFCC]"
               />
 
               {/* Paste Link button */}
-              <button className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.711vh] text-black rounded-[var(--33px)]">
+              <button onClick={handlePaste} className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.711vh] text-black rounded-[var(--33px)]">
                 Paste Link
               </button>
             </div>

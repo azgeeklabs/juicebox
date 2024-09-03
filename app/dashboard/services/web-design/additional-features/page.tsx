@@ -444,15 +444,15 @@ function Page() {
     >
       <div
         className={classNames(
-          "flex flex-col gap-[var(--64px)] justify-center mx-auto items-center h-full",
+          "flex flex-col gap-[var(--48px)] justify-center mx-auto items-center h-full",
           styles.container
         )}
       >
-        <div className="flex flex-col items-center gap-[var(--16px)] text-center w-[60%]">
-          <h1 className="text-[--30px] font-bold">
+        <div className="flex flex-col items-center gap-[var(--8px)] text-center w-[60%]">
+          <h1 className="text-[--32px] font-semibold">
             Do you have any additional features in mind?
           </h1>
-          <p className="text-[--18px]">
+          <p className="text-[--18px] text-[#FFFFFFCC]">
             Here are some common features that would go well with your project!
           </p>
         </div>
@@ -462,15 +462,15 @@ function Page() {
             styles.cards
           )}
         >
-          <div className={classNames("flex flex-col justify-center gap-[var(--28px)]")}>
-            <h2 className="font-bold">Additional Features:</h2>
+          <div className={classNames("flex flex-col justify-center gap-[var(--sy-27px)]")}>
+            <h2 className="font-semibold">Additional Features:</h2>
             <div className="flex flex-wrap gap-y-[var(--12px)] gap-x-[var(--8px)]">
               {data.map((item, i) => (
                 <>
                   <CustomCheckBoxText btnSize="sm" inputType="checkbox">
                     <div
                       className={classNames(
-                        "flex items-center text-[--14px] font-bold gap-[var(--12px)]",
+                        "flex items-center text-[--14px] font-normal gap-[var(--12px)]",
                         styles.card
                       )}
                     >
@@ -482,10 +482,10 @@ function Page() {
               ))}
             </div>
           </div>
-          <div className={classNames("flex flex-col justify-center gap-[var(--28px)]")}>
-            <h2 className="font-bold">Have more features in mind?</h2>
+          <div className={classNames("flex flex-col justify-center gap-[var(--sy-16px)]")}>
+            <h2 className="font-semibold">Have more features in mind?</h2>
             <textarea
-              className="w-full p-[var(--16px)] bg-[--dark-gray-3] rounded-[var(--8px)] resize-none"
+              className="w-full p-[var(--16px)] bg-[--dark-gray-3] rounded-[var(--12px)] resize-none"
               placeholder="Features..."
               rows={4}
             />

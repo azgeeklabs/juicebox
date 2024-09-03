@@ -17,7 +17,6 @@ export default function Page() {
     "Light Mode",
     "Dark Mode",
     "Playful",
-    "Playful",
     "Dark Mode",
   ];
 
@@ -27,7 +26,6 @@ export default function Page() {
     "/assets/desktop-slide-1.png",
     "/assets/desktop-slide-2.png",
     "/assets/desktop-slide-3.png",
-    "/assets/desktop-slide-4.png",
     "/assets/desktop-slide-1.png",
   ];
 
@@ -48,8 +46,8 @@ export default function Page() {
             </h2>
 
             {/* // Subheading with embedded horizontal rules */}
-            <h4>
-              Choose your preferred style options below. You can also upload or
+            <h4 className=" text-[#FFFFFFCC]">
+              Choose your preferred style options below. You can also upload or <br />
               add references for specific design elements.
             </h4>
           </div>

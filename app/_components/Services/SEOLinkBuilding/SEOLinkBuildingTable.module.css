@@ -1,7 +1,7 @@
 /* ===== Start Table Container ===== */
 .tableContainer {
   overflow: hidden;
-  height: 65vh;
+  height: 73vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -116,8 +116,11 @@
 
 .table .table_body ul:hover li {
   color: #1c1c1c;
+  font-weight: bold;
 }
-
+.table .table_body ul:hover li span {
+  font-weight: 700 !important ;
+}
 .table .table_body ul:hover li:first-child {
   font-weight: 600;
 }

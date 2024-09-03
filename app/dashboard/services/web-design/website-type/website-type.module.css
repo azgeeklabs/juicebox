@@ -1,5 +1,5 @@
 .container {
-  gap: var(--sy-16px);
+  gap: var(--sy-8px);
 }
 
 .container > h2 {
@@ -9,98 +9,18 @@
 .container > p {
   font-size: var(--18px);
 }
+.btns > div {
+  width: 13vw;
+  padding: 0;
+}
+.btns > div > div {
+  padding: 1.422vh 1vw;
+  font-size: var(--16px);
+  font-weight: 500;
+  transition: all 0.2s;
+}
+ .btns input:checked + div {
+  font-size: var(--16px);
+  font-weight: 700;
 
-.card {
-  background-color: var(--dark-gray-3);
-  border-radius: var(--12px);
-  position: relative;
-  /* width: clamp(15rem, calc(10.35vw + 0.1rem), 20rem);
-    height: clamp(15rem, calc(10.35vw + 0.1rem), 20rem); */
-  aspect-ratio: 1 / 1;
-  width: clamp(6rem, calc(10.35vw + 0.1rem), 20rem);
-  height: clamp(6rem, calc(10.35vw + 0.1rem), 20rem);
-  padding: var(--24px);
-  cursor: pointer;
-  transition: background-color 0.2s ease-in, transform 0.2s ease-in;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.card div:nth-child(1) {
-  width: clamp(6rem, calc(7.35vw + 0.1rem), 20rem);
-  height: clamp(6rem, calc(7.35vw + 0.1rem), 20rem);
-  aspect-ratio: 1 / 1;
-}
-
-.card div:nth-child(2) {
-  text-align: center;
-  font-size: var(--19px);
-}
-
-.cards {
-  gap: clamp(1rem, calc(5vw + 0.1rem), 50rem);
-}
-
-/* .card > div {
-    width: clamp(15rem, calc(10.35vw + 0.1rem), 20rem);
-    height: clamp(15rem, calc(10.35vw + 0.1rem), 20rem);
-  } */
-.card > div * {
-  position: absolute;
-  width: 100%;
-
-  /* transition: visibility 1s ease-in, opacity 1s ease-in; */
-}
-
-.card img.gifImg {
-  visibility: hidden;
-  opacity: 0;
-}
-
-.card img.svgImg {
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  visibility: visible;
-  opacity: 1;
-  /* width: 50px; */
-}
-
-/* TODO */
-.healthcareCard .svgImg svg {
-  width: var(--78px);
-  height: var(--78px);
-}
-.shippingCard .svgImg svg {
-  width: var(--81px);
-  height: var(--78px);
-}
-.companyCard .svgImg svg {
-  width: var(--77px);
-  height: var(--78px);
-}
-.otherCard .svgImg svg {
-  width: var(--93px);
-  height: var(--94px);
-}
-
-.card:not(:has(input:checked)):hover {
-  background-color: #1f1f1f;
-  transform: scale(1.1);
-}
-
-.card:has(input:checked) {
-  background-color: #f8f24b;
-  color: var(--primary-black);
-}
-
-.card:hover img.gifImg {
-  visibility: visible;
-  opacity: 1;
-}
-
-.card:hover img.svgImg {
-  visibility: hidden;
-  opacity: 0;
 }

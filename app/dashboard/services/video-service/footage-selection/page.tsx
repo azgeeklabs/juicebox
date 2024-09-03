@@ -89,6 +89,7 @@ const Page = () => {
                 }}
               >
                 <Image src={e.img} alt="" width={100} height={100} />
+                <span className=" block w-fit mx-auto -translate-y-[--sy-8px]">1920x1080</span>
               </div>
               
               {/* Platform title button with styles */}

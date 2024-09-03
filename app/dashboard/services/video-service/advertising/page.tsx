@@ -1,8 +1,19 @@
-import React from "react";
+"use client"
+import React, { useState } from "react";
 import styles from "./advertising.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 
 const Page = () => {
+  const [pastedText, setPastedText] = useState<string>("");
+
+  const handlePaste = async () => {
+    try {
+      const text = await navigator.clipboard.readText();
+      setPastedText(text);
+    } catch (error) {
+      console.error("Failed to read clipboard contents: ", error);
+    }
+  };
   return (
     // Main outer container div
     <NextPrevNav
@@ -15,8 +26,8 @@ const Page = () => {
           {/* Header section with centered text, auto margins for centering, and bottom margin */}
           <div className="text-center mx-auto mb-[--48px]">
             {/* Main heading with bottom margin */}
-            <h2 className="mb-[2.667vh]">
-              What product/service are you advertising?
+            <h2 className="mb-[--sy-16px]">
+            What are you advertising?
             </h2>
 
             {/* Subheading with horizontal rule (line) */}
@@ -34,7 +45,7 @@ const Page = () => {
             <input
               type="text"
               placeholder="Product Name"
-              className="mb-[--32px] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFF80]"
+              className="mb-[--32px] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFFCC]"
             />
 
             {/* Product Link field with optional span */}
@@ -45,12 +56,14 @@ const Page = () => {
               {/* Product Link input field */}
               <input
                 type="text"
+                value={pastedText}
+                onChange={(e) => setPastedText(e.target.value)}
                 placeholder="Product Link"
-                className="h-full w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFF80]"
+                className="h-full w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFFCC]"
               />
 
               {/* Paste Link button */}
-              <button className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.711vh] text-black rounded-[var(--33px)]">
+              <button onClick={handlePaste} className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.711vh] text-black rounded-[var(--33px)]">
                 Paste Link
               </button>
             </div>

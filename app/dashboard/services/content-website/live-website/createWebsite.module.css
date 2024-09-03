@@ -30,4 +30,5 @@
 .createWebsite div:has(> input:checked:first-child:last-child) {
   background-color: var(--highlight-yellow);
   color: var(--primary-black);
+  font-weight: 700;
 }

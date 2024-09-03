@@ -18,24 +18,24 @@ const Page = () => {
       backLink="/dashboard/services/press-release/about"
     >
       <div
-      className={`${styles.wordCount} flex flex-col justify-between h-full`}
+      className={`${styles.wordCount} flex flex-col justify-between h-full w-[50%]`}
     >
       {/* Inner container with full height and center alignment */}
       <div className="h-full flex justify-center items-center">
         {/* Inner container with full width and custom styles for the footage editing section */}
         <div className={` w-full`}>
           {/* Header section with text centered, auto margins for horizontal centering, and vertical margins */}
-          <div className="text-center mx-auto mb-[4.197271773347325vh]">
+          <div className="text-center mx-auto">
             {/* Main heading with bottom margin */}
-            <h2 className="mb-[2.5vh] text-[--32px] font-semibold">
+            <h2 className="mb-[--sy-8px] text-[--32px] font-semibold">
             Do you have a specific word count you would like?
             </h2>
 
             {/* Subheading with text centered */}
-            <p className=" text-[--18px]">Let us know if you have a specific word count in mind for your content.</p>
+            <p className=" text-[--18px] mb-[--sy-38px] text-[#FFFFFFCC]">Let us know if you have a specific word count in mind for your content.</p>
           </div>
           <div
-            className={`${styles.btns} flex w-[100%] justify-center mx-auto gap-[1.041vw] mb-[4.826862539349423vh] pb-[4.826862539349423vh] border-b-[1px] border-b-[#484848]`}
+            className={`${styles.btns} flex w-[100%] justify-center mx-auto gap-[1.041vw] mb-[--sy-38px] pb-[--sy-38px] border-b-[1px] border-b-[#484848]`}
           >
             {/* CustomCheckBoxText component for selecting "Specific Word Count*/}
             <CustomCheckBoxText

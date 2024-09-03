@@ -5,7 +5,7 @@
   .videoDuration h4 {
     font-size: var(--18px);
     font-weight: 400;
-    color: #ffffffcc;
+    color: #FFFFFFCC;
   }
   .durationIndicator {
     font-size: var(--18px);
@@ -14,3 +14,10 @@ color: #F8F24B;
 .videoDuration a {
     font-size: var(--18px);  
   }
+  .videoDuration div:has(> input:checked:first-child:last-child) {
+    background-color: var(--highlight-yellow);
+    color: var(--primary-black);
+    font-weight: 700;
+    text-decoration: underline;
+  }
+  

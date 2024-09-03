@@ -5,7 +5,7 @@
 .advertising h4 {
   font-size: var(--18px);
   font-weight: 400;
-  color: #ffffffcc;
+  color: #FFFFFFCC;
 }
 .advertising h3,
 .keywords label {
@@ -34,7 +34,7 @@
 }
 
 .keywords label {
-  margin-bottom: clamp(14px, calc(0.63vw + 0.1rem), 100px);
+  margin-bottom: var(--sy-16px);
   display: block;
 }
 
@@ -46,16 +46,15 @@
 .keywords input {
   background-color: #484848;
   border-radius: clamp(11px, calc(0.5vw + 0.1rem), 100px);
-  padding: clamp(10px, calc(0.5vw + 0.1rem), 100px);
+  padding: var(--sy-11px) var(--16px);
   color: #ffffff;
   font-size: clamp(16px, calc(0.75vw + 0.1rem), 100px);
   outline: none;
-  margin-right: clamp(16px, calc(0.75vw + 0.1rem), 100px);
   width: 8.4vw;
 }
 
 .keywords input::placeholder {
-  color: #ffffff80;
+  color: #FFFFFFCC;
   font-size: clamp(16px, calc(0.75vw + 0.1rem), 100px);
 }
 

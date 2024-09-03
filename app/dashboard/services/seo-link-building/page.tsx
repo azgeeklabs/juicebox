@@ -5,8 +5,6 @@ import React from "react";
 
 export default function Page() {
   return (
-    <NextPrevNav nextLink="/dashboard/services/seo-link-building/article-selection">
       <SEOLinkBuildingTable />
-    </NextPrevNav>
   );
 }

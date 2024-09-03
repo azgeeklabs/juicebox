@@ -5,7 +5,7 @@
 .seoCampaignEndPoint h4 {
   font-size: clamp(12px, calc(0.75vw + 0.1rem), 1000px);
   font-weight: 400;
-  color: #ffffffcc;
+  color: #FFFFFFCC;
 }
 .seoCampaignEndPoint h3 {
   font-size: clamp(12px, calc(0.85vw + 0.1rem), 1000px);
@@ -27,13 +27,14 @@
 }
 .seoCampaignEndPoint .btns > div > div {
   padding: 0.8vw 1vw;
-  font-size: clamp(12px, calc(0.8vw + 0.1rem), 1000px);
-  font-weight: 600;
+  font-size: var(--16px);
+
+  font-weight: 500;
   transition: all 0.2s;
 }
 .seoCampaignEndPoint .btns input:checked + div {
-  font-size: clamp(12px, calc(0.8vw + 0.1rem), 1000px);
-  font-weight: 600;
+  font-size: var(--16px);
+  font-weight: 700;
 }
 .seoCampaignEndPoint h2 span {
   color: #f8f24b;
@@ -47,4 +48,10 @@
 }
 .seoCampaignEndPoint a {
   font-size: clamp(12px, calc(0.75vw + 0.1rem), 1000px);
+}
+.seoCampaignEndPoint div:has(> input:checked:first-child:last-child) {
+  background-color: var(--highlight-yellow);
+  color: var(--primary-black);
+  font-weight: 700;
+  text-decoration: underline;
 }

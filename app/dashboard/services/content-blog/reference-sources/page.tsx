@@ -76,7 +76,7 @@ function ORMNegativePressRemoval() {
                   type="text"
                   placeholder="URL"
                   ref={inputRef}
-                  className="h-full  w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[--10px] pl-[--35px] px-[1.088vw] py-[1vh] placeholder:text-[#FFFFFF80]"
+                  className="h-full  w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[--10px] pl-[--35px] px-[1.088vw] py-[1vh] placeholder:text-[#FFFFFFCC]"
                 />
                 <svg
                   onClick={handlePaste}
@@ -115,7 +115,7 @@ function ORMNegativePressRemoval() {
                   {links.map((link, index) => (
                     <li
                       key={index}
-                      className="flex items-center justify-between px-[1.088vw] py-[1vh] border-b border-[#FFFFFF80] group hover:bg-[#353535] hover:border-transparent transition-colors"
+                      className="flex items-center justify-between px-[1.088vw] py-[1vh] border-b border-[#FFFFFFCC] group hover:bg-[#353535] hover:border-transparent transition-colors"
                     >
                       <span className="ml-[--24px] text-[#B1B1B1] group-hover:text-white transition-color">
                         {link}
@@ -147,7 +147,7 @@ function ORMNegativePressRemoval() {
 
                 {links.length === 0 && (
                   <div className="flex items-center justify-center h-full">
-                    <span className="text-[#FFFFFF80] text-[--20px] p-[--15px]">
+                    <span className="text-[#FFFFFFCC] text-[--20px] p-[--15px]">
                       No links added
                     </span>
                   </div>

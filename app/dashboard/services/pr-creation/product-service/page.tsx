@@ -19,7 +19,7 @@ const Page = () => {
             <h2 className="text-[--32px] font-bold">
             Can you tell us more about your product/service?
             </h2>
-            <p className="text-[--18px] w-[60%] text-[#FFFFFF80]">
+            <p className="text-[--18px] w-[60%] text-[#FFFFFFCC]">
             Providing additional details will enable us to better understand how it aligns with our needs and how we can best utilize it to achieve our goals.
             </p>
           </div>

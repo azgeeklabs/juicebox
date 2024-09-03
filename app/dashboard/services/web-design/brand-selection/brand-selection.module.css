@@ -17,13 +17,13 @@
 }
 .brandSelection .btns > div > div {
   padding: 0.8vw 1vw;
-  font-size: var(--18px);
-  font-weight: 600;
+  font-size: var(--16px);
+  font-weight: 500;
   transition: all 0.2s;
 }
 .brandSelection .btns input:checked + div {
-  font-size: var(--18px);
-  font-weight: 600;
+  font-size: var(--16px);
+  font-weight: 700;
 }
 .brandSelection a {
   font-size: var(--18px);
@@ -43,4 +43,5 @@
 .brandSelection div:has(> input:checked:first-child:last-child) {
   background-color: var(--highlight-yellow);
   color: var(--primary-black);
+  font-weight: 700;
 }

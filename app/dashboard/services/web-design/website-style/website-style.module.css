@@ -5,7 +5,7 @@
 .websiteStyle h4 {
   font-size: var(--18px);
   font-weight: 400;
-  color: #ffffffcc;
+  color: #FFFFFFCC;
 }
 .btns input + span {
   width: 100%;
@@ -15,10 +15,13 @@
   cursor: pointer;
 }
 .btns input + div {
-  font-size: clamp(14px, calc(0.8vw + 0.1rem), 100px);
-  font-weight: 700;
+  font-size: var(--16px);
+  font-weight: 500;
   padding-top: 0.7vw;
   padding-bottom: 0.7vw;
+}
+.btns input:checked + div {
+  font-weight: 700;
 }
 .btns{
   margin-top: calc(-1 * var(--50px));
