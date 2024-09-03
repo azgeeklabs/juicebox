@@ -27,7 +27,7 @@ function Page() {
           {/* Inner container with full width and custom styles for the footage editing section */}
           <div className={` w-full`}>
             {/* Header section with text centered, auto margins for horizontal centering, and vertical margins */}
-            <div className="text-center mx-auto mb-[4.197271773347325vh]">
+            <div className="text-center mx-auto mb-[--sy-32px]">
               {/* Main heading with bottom margin */}
               <h2 className="mb-[2.5vh] w-[70%] mx-auto">
                 Do you already have a video promo, or would you like us to
@@ -43,7 +43,8 @@ function Page() {
               </h4>
             </div>
             <div
-              className={`${styles.btns} flex w-fit mx-auto gap-[1.041vw] mb-[4.826862539349423vh] pb-[4.826862539349423vh] border-b-[1px] border-b-[#484848] px-[4.825vw]`}
+              className={`${styles.btns} flex w-fit mx-auto gap-[1.041vw] mb-[--sy-32px] pb-[--sy-32px]
+               border-b-[1px] border-b-[#484848] px-[4.825vw]`}
             >
               {/* CustomCheckBoxText component for selecting "Let's get started" option */}
               <CustomCheckBoxText
@@ -75,12 +76,14 @@ function Page() {
               <h3 className="mb-[1.067vh]">Add your video :</h3>
               <div className="flex gap-[1vw] items-start mb-[2.667vh]">
                 {/* Channel URL input field */}
-                <input
-                  disabled={haveWebsite ? false : true}
-                  type="text"
-                  placeholder="Add website"
-                  className="h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFFCC]"
-                />
+                <div className="relative h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.889vh] text-[#FFFFFF80] cursor-pointer">
+                  Add website
+                  <input
+                    disabled={haveWebsite ? false : true}
+                    type="file"
+                    className="absolute opacity-0 inset-0 cursor-pointer"
+                  />
+                </div>
 
                 {/* Paste Link button */}
                 <button

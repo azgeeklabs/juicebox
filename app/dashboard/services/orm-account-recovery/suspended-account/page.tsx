@@ -2,15 +2,18 @@
 import classNames from "classnames";
 import styles from "./suspended-account.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useState } from "react";
 
 function SuspendedAccount() {
+  const [email, setEmail] = useState("");
+
   return (
     <NextPrevNav
       backLink="/dashboard/services/orm-account-recovery/suspended-date"
       nextLink="/dashboard/services/orm-account-recovery/suspension-approvel"
     >
       {/* Inner container with full height and center alignment */}
-      <div className="h-full flex justify-center items-center">
+      <div className="h-[50%] flex justify-center">
         {/* Inner container with full width and custom styles for the footage editing section */}
         <div className={`${styles.addLinkEdit} w-full`}>
           {/* Header section with text centered, auto margins for horizontal centering, and vertical margins */}
@@ -38,16 +41,21 @@ function SuspendedAccount() {
             <h3 className="mb-[1.067vh]">Email</h3>
 
             {/* Container for input field and button with flexbox layout, gap, and bottom margin */}
-            <div className="flex gap-[1vw] items-start mb-[2.667vh]">
+            <div className="flex gap-[1vw] items-start">
               {/* Input field with full height, bottom margin, specific width, background color, outline removal, rounded corners, padding, and placeholder styling */}
               <input
-                type="text"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="email"
-                className="h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[--10px] pl-[--35px] px-[1.088vw] py-[1vh] placeholder:text-[#FFFFFFCC]"
+                className="h-full w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[--10px] pl-[--35px] px-[1.088vw] py-[--13px] placeholder:text-[#FFFFFF80]"
               />
 
               {/* Button with background color, padding, text color, and rounded corners */}
-              <button className="bg-[var(--highlight-yellow)] font-bold px-[1.892vw] py-[0.711vh] text-black rounded-[var(--33px)]">
+              <button
+                className="bg-[var(--highlight-yellow)] font-bold px-[--30px] py-[--13px] text-black rounded-[var(--33px)]"
+                onClick={() => navigator.clipboard.readText().then(setEmail)}
+              >
                 Paste Email
               </button>
             </div>

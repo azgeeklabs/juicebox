@@ -26,14 +26,14 @@ const ReasonProof = () => {
           <h1 className="text-[--30px] font-bold">
             Please upload documentation supporting the reason for removal.
           </h1>
-          <p className="text-[--18px] font-light w-[90%]">
+          <p className="text-[--18px] font-light w-[90%] text-[#FFFFFFCC]">
             Upload any relevant documentation, screenshots, or additional
             information to support your query.
           </p>
         </div>
 
         <div className=" w-full md:w-[60%] mx-auto">
-          <div className="bg-[#353535] px-[--26px] py-[--sy-25px] rounded-[--12px]">
+          <div className="bg-[#353535] px-[--26px] py-[--sy-18px] rounded-[--12px]">
             <label className="font-semibold block text-[--19px] mb-[--sy-20px]">
               {" "}
               Upload File

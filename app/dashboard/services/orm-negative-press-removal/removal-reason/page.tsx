@@ -1,7 +1,6 @@
 "use client";
 import classNames from "classnames";
 import styles from "./suspension-reason.module.css";
-import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 const RemovalReason = () => {
   const data = ["Fake", "Defamation"];
@@ -13,7 +12,7 @@ const RemovalReason = () => {
     >
       <div
         className={classNames(
-          "flex flex-col gap-[var(--45px)] justify-center mx-auto items-center h-full",
+          "flex flex-col gap-[var(--45px)] mx-auto items-center h-[50%]",
           styles.container
         )}
       >
@@ -21,7 +20,7 @@ const RemovalReason = () => {
           <h1 className="text-[--30px] font-bold">
             Why would you want those links removed?
           </h1>
-          <p className="text-[--18px] font-light">
+          <p className="text-[--18px] font-light text-[#FFFFFFCC]">
             Understanding your reasons helps us address your needs effectively.
           </p>
         </div>

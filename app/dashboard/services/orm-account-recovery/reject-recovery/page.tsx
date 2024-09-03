@@ -7,7 +7,9 @@ const RejectRecovery = () => {
       nextLink="/dashboard/services"
       nextText="All done"
     >
-      <div className={`${styles.addLinkEdit} flex justify-center  w-full`}>
+      <div
+        className={`${styles.addLinkEdit} flex justify-center h-[40%]  w-full`}
+      >
         <h2 className="text-center w-full">
           We are sorry, but we are unable to assist you with accounts banned for
           this reason

@@ -23,7 +23,7 @@
 }
 
 .addLinkEdit div:has(> input) {
-  width: clamp(10px, calc(21.056vw + 0.1rem), 1000px);
+  width: clamp(10px, calc(25.056vw + 0.1rem), 1000px);
 }
 .addLinkEdit ::placeholder {
   font-size: var(--18px);

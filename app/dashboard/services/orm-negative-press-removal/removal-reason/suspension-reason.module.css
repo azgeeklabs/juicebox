@@ -3,7 +3,7 @@
 }
 
 .cards {
-  width: clamp(20rem, calc(40vw + 0.1rem), 100%);
+  /* width: clamp(20rem, calc(40vw + 0.1rem), 100%); */
 }
 
 .cards div:has(> input:checked) {
@@ -18,8 +18,8 @@
 .customCheckBoxText {
   /* width: 40px; */
   /* height: 25px; */
-  /* width: clamp(20px, calc(2.2vw + 0.1rem), 100px);
-  height: clamp(20px, calc(1.2vw + 0.1rem), 100px); */
+  width: var(--240px);
+  /* height: clamp(20px, calc(1.2vw + 0.1rem), 100px); */
   border-radius: var(--50px);
   overflow: hidden;
 }

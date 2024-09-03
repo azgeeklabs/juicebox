@@ -16,7 +16,7 @@ const Page = () => {
       nextLink="/dashboard/services/influencer-marketing/promo-options"
       backLink="/dashboard/services/influencer-marketing/influencer-list"
     >
-      <div className=" flex justify-center items-center h-full w-full">
+      <div className=" flex justify-center h-[50%] w-full">
         <div className={`${styles.campaignBudget} w-full`}>
           {/* Text center alignment and margin bottom */}
           <div className="text-center mx-auto mb-[5.333vh]">

@@ -5,32 +5,67 @@ import AccountRecoveryContextProvider from "./_accountRecoveryContext/_accountRe
 
 const layout = ({ children }: { children: React.ReactNode }) => {
   const path = [
-    "",
-    "website-type",
-    "domain-selection",
-    "website-technology",
-    "brand-selection",
-    "website-style",
-    "custom-ecommerce",
-    "additional-features",
-    "host-selection",
-    "web-design-endpoint",
+    "", // Root folder
+    "suspension-reason",
+    "suspended-date",
+    "suspended-account",
+    "suspension-approvel",
+    ["estimated-cost", "reject-recovery"],
   ];
+  const [currentPath, setCurrentPath] = useState(0);
+  const [currentLocation, setCurrentLocation] = useState("");
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      const pathname = window.location.pathname;
+      if (pathname === currentLocation) return;
+      setCurrentLocation(pathname);
+    });
+
+    observer.observe(document, { subtree: true, childList: true });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    const pathname = window.location.pathname;
+    const moduleName = pathname.split("/")[3];
+    const Path = pathname.split("/")[4];
+    console.log(moduleName);
+    console.log(Path);
+
+    const getCurrentPath = () => {
+      if (moduleName && !path) {
+        setCurrentPath(0);
+        return;
+      }
+      const index = path.findIndex((p) => {
+        if (Array.isArray(p)) {
+          return p.includes(Path);
+        }
+        return p === Path;
+      });
+      if (index !== -1) {
+        setCurrentPath(index);
+      }
+    };
+
+    getCurrentPath();
+  }, [currentLocation]);
 
   return (
-    <AccountRecoveryContextProvider>
-      <>
-        <div className="flex flex-col h-full">
-          <StepProgress
-            title={"Web Design"}
-            // currentStep={step}
-            steps={9}
-          />
-
-          <div className="flex flex-col grow">{children}</div>
-        </div>
-      </>
-    </AccountRecoveryContextProvider>
+    <div className="flex flex-col h-full">
+      <StepProgress
+        title={"Application Design"}
+        steps={path.length}
+        currentStep={currentPath}
+      />
+      <AccountRecoveryContextProvider>
+        <div className="flex flex-col grow">{children}</div>
+      </AccountRecoveryContextProvider>
+    </div>
   );
 };
 
