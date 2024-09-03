@@ -1,5 +1,5 @@
-
 import MainWrapper from "../_components/layout/MainWrapper";
+import ProtectedRoute from "../_components/ProtectedRoute";
 
 export default function RootLayout({
   children,
@@ -7,6 +7,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-          <MainWrapper>{children}</MainWrapper>
+    <ProtectedRoute>
+      <MainWrapper>{children}</MainWrapper>
+    </ProtectedRoute>
   );
 }
