@@ -12,13 +12,13 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     setIsClient(true); // This ensures that the component renders only after the client has mounted
 
-    if (
-      typeof window !== "undefined" &&
-      !user.token &&
-      !localStorage.getItem("token")
-    ) {
-      router.push("/login");
-    }
+    // if (
+    //   typeof window !== "undefined" &&
+    //   !user.token &&
+    //   !localStorage.getItem("token")
+    // ) {
+    //   router.push("/login");
+    // }
   }, [user, router]);
 
   if (!isClient) {
