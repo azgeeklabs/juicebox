@@ -1,9 +1,14 @@
 .container {
     width: clamp(20rem, calc(60vw + 0.1rem), 100%);
   }
-  
+  .container input:checked + div div {
+    font-weight: 700;
+  }
   .cards {
     width: clamp(20rem, calc(50vw + 0.1rem), 100%);
+  }
+  .cards > div {
+    min-width: var(--200px);
   }
   
   .cards div:has(> input:checked) path {

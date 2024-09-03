@@ -64,3 +64,6 @@
   visibility: hidden;
   opacity: 0;
 }
+.btns input[type='radio']:checked ~ div {
+  font-weight: 700;
+}

@@ -1,0 +1,3 @@
+.implementation .wrapper:has(input:not(:checked)):hover div.textBox {
+    background: black !important;
+}

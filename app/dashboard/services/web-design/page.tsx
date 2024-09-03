@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./web-design.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
@@ -9,6 +9,18 @@ const Page = () => {
   const [haveWebsite, setHaveWebsite] = useState(false);
 
   const [doLater, setDoLater] = useState(false);
+
+  const [pastedText, setPastedText] = useState<string>("");
+
+  const handlePaste = async () => {
+    try {
+      const text = await navigator.clipboard.readText();
+      setPastedText(text);
+    } catch (error) {
+      console.error("Failed to read clipboard contents: ", error);
+    }
+  };
+
   return (
     <NextPrevNav nextLink="/dashboard/services/web-design/website-type">
       {/* // Main container div with relative positioning */}
@@ -70,6 +82,8 @@ const Page = () => {
                 {/* Product Link input field */}
                 <input
                   disabled={haveWebsite ? false : true}
+                  value={pastedText}
+                  onChange={(e) => setPastedText(e.target.value)}
                   type="text"
                   placeholder="Product Link"
                   className="flex-grow h-full mb-[1vw] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.5vw] placeholder:text-[#FFFFFF80]"
@@ -77,6 +91,7 @@ const Page = () => {
 
                 {/* Paste Link button */}
                 <button
+                  onClick={handlePaste}
                   disabled={haveWebsite ? false : true}
                   className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.4vw] text-black rounded-[var(--33px)]"
                 >

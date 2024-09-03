@@ -15,7 +15,7 @@ function Page() {
         className={`${styles.monetization} flex flex-col justify-between h-full`}
       >
         {/* Inner container with flexbox layout for column direction, gap between elements, center alignment, and full height */}
-        <div className="flex flex-col gap-[var(--64px)] items-center h-full justify-center">
+        <div className="flex flex-col gap-[var(--sy-32px)] items-center h-full justify-center mb-[--sy-40px]">
           {/* Content container with additional class names for styling */}
           <div
             className={classNames(
@@ -24,10 +24,10 @@ function Page() {
             )}
           >
             {/* Heading with bold font */}
-            <h2 className="font-bold">What type of campaign you would like?</h2>
+            <h2 className="font-bold text-[--32px]">What type of campaign you would like?</h2>
 
             {/* Paragraph with specified width for better readability */}
-            <p className="w-[60%]">
+            <p className="w-[60%] text-[#FFFFFFCC]">
               Please choose whether you want to develop a regular app or a
               gamified app. This helps us tailor our recommendations to your
               project.

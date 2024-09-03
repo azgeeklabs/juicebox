@@ -13,12 +13,12 @@ const RewriteWebsite = () => {
     >
       <div
         className={classNames(
-          "flex flex-col gap-[--sy-60px] justify-center mx-auto items-center h-full pb-[--sy-60px]",
+          "flex flex-col gap-[--55px] justify-center mx-auto items-center h-full pb-[--sy-60px]",
           styles.container
         )}
       >
-        <div className="flex flex-col items-center gap-[var(--16px)] text-center w-full md:w-[65%]">
-          <h1 className="text-[--30px] font-bold">
+        <div className="flex flex-col items-center gap-[var(--sy-24px)] text-center w-full md:w-[70%]">
+          <h1 className="text-[--32px] font-bold">
             Would you like us to rewrite your existing website copy?
           </h1>
           <p className="text-[--18px] w-[90%] md:w-[80%] font-light">

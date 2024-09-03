@@ -14,6 +14,7 @@ const CustomTypeRange = dynamic(
 
 const Page = () => {
     const router = useRouter()
+    const [specifyWords,setSpecifyWords] = useState(false)
   return (
     <NextPrevNav
       nextLink="/dashboard/services/content-website/sections-number"
@@ -27,9 +28,9 @@ const Page = () => {
         {/* Inner container with full width and custom styles for the footage editing section */}
         <div className={` w-full`}>
           {/* Header section with text centered, auto margins for horizontal centering, and vertical margins */}
-          <div className="text-center mx-auto mb-[4.197271773347325vh]">
+          <div className="text-center mx-auto mb-[--sy-38px]">
             {/* Main heading with bottom margin */}
-            <h2 className="mb-[2.5vh] text-[--32px] font-semibold">
+            <h2 className="mb-[--sy-8px] text-[--32px] font-semibold">
             Do you have a specific word count you would like?
             </h2>
 
@@ -37,10 +38,11 @@ const Page = () => {
             <p className=" text-[--18px] text-[#FFFFFFCC]">Let us know if you have a specific word count in mind for your content.</p>
           </div>
           <div
-            className={`${styles.btns} flex w-[51%] justify-center mx-auto gap-[1.041vw] mb-[4.826862539349423vh] pb-[4.826862539349423vh] border-b-[1px] border-b-[#484848]`}
+            className={`${styles.btns} flex w-[51%] justify-center mx-auto gap-[--8px] mb-[--sy-38px] pb-[4.826862539349423vh] border-b-[1px] border-b-[#484848]`}
           >
             {/* CustomCheckBoxText component for selecting "Specific Word Count*/}
             <CustomCheckBoxText
+            onClick={()=>setSpecifyWords(true)}
               btnSize="xl"
               inputType="radio"
               name="countAnswer"
@@ -50,6 +52,7 @@ const Page = () => {
 
             {/* CustomCheckBoxText component for selecting "It doesn't matter" option */}
             <CustomCheckBoxText
+            onClick={()=>setSpecifyWords(false)}
               btnSize="xl"
               inputType="radio"
               name="countAnswer"
@@ -57,9 +60,9 @@ const Page = () => {
               It doesn't matter
             </CustomCheckBoxText>
           </div>
-          <div className=" w-[50%] mx-auto">
-            <h3 className=" mb-[--sy-18px] text-[--20px] font-semibold">Word per Page</h3>
-            <CustomTypeRange word="Words/Page" max={100}/>
+          <div className={` w-[50%] mx-auto ${specifyWords ? "" : "opacity-20 grayscale-[60%]"}`}>
+            <h3 className=" mb-[--sy-16px] text-[--20px] font-semibold">Word per Page</h3>
+            <CustomTypeRange word="Words/Page" max={100} isDisabled={!specifyWords}/>
           </div>
           
         </div>

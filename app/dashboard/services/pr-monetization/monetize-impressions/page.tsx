@@ -9,7 +9,7 @@ const Page = () => {
     const router = useRouter()
   return (
     <div className={`${styles.monetizeImpressions} h-full w-full flex flex-col justify-between`}>
-      <div className="h-full relative">
+      <div className="h-full relative mb-[--sy-50px]">
         <div
           className={` w-full h-full flex justify-center items-center`}
         >

@@ -2,3 +2,12 @@
     width: var(--20px);
     height: var(--sy-20px);
 }
+.wikipediaCopy input[type='radio']:checked ~ div {
+    font-weight: 700;
+  }
+  .wikipediaCopy input[type='radio'] ~ div {
+    width: var(--241px);
+    padding-left:0 ;
+    padding-right:0 ;
+    text-align: center;
+  }

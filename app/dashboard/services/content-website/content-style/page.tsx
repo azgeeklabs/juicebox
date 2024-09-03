@@ -8,17 +8,17 @@ const RewriteWebsite = () => {
 
   return (
     <NextPrevNav
-      backLink="#"
+      backLink="/dashboard/services/content-website/live-website"
       nextLink="/dashboard/services/content-website/reference-sources"
     >
       <div
         className={classNames(
-          "flex flex-col gap-[--sy-60px] justify-center mx-auto items-center h-full pb-[--sy-60px]",
+          "flex flex-col gap-[--sy-64px] justify-center mx-auto items-center h-full pb-[--sy-60px]",
           styles.container
         )}
       >
-        <div className="flex flex-col items-center gap-[var(--16px)] text-center w-full md:w-[65%]">
-          <h1 className="text-[--30px] font-bold">
+        <div className="flex flex-col items-center gap-[var(--sy-8px)] text-center w-full md:w-[65%]">
+          <h1 className="text-[--32px] font-bold">
           How do you want the written content tone to be?
           </h1>
           <p className="text-[--18px] font-light">

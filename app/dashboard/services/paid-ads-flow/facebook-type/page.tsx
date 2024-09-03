@@ -16,11 +16,11 @@ export default function Page() {
   const { step, setStep } = useContext(globalContext);
   
   const options = [
-    "Light Mode",
-    "Dark Mode",
-    "Playful",
-    "Playful",
-    "Dark Mode",
+    "Image Ads",
+    "Video Ads",
+    "Carousel Ads",
+    "Story Ads",
+    "Instant Experience Ads",
   ];
 
   const swiperRef = useRef<SwiperCore | null>(null);
@@ -44,7 +44,7 @@ backOnClick={() => setStep(step - 1)}
         <div className={`${styles.editing} w-full editing`}>
           <div className="flex flex-col justify-center items-center text-center mb-[2vw]">
             <h2 className=" mb-[1.041vw]">
-            What type of Youtube ads would you like to run?
+            What type of Facebook ads would you like to run?
             </h2>
             <h4>
             Select the social media platforms where you would like to run your ads. Choose as many as you like.

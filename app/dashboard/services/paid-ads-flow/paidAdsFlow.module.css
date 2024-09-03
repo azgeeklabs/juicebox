@@ -14,4 +14,6 @@
     width: var(--24px);
     height: var(--20px);
   }
-  
+  .cards div:has(> input:checked) span {
+    font-weight: 700;
+  }

@@ -168,7 +168,7 @@ function AccountRecovery() {
     <NextPrevNav nextLink={`/dashboard/services/paid-ads-flow/${route && (route+'-type')}`}>
       <div
         className={classNames(
-          "flex flex-col gap-[var(--45px)] justify-center mx-auto items-center h-full",
+          "flex flex-col gap-[var(--45px)] justify-center mx-auto items-center h-full mb-[--sy-40px]",
           styles.container
         )}
       >
@@ -201,7 +201,7 @@ function AccountRecovery() {
                   )}
                 >
                   {item.image}
-                  <span className="text-[--20px]">{item.title}</span>
+                  <span className="text-[--20px] font-medium">{item.title}</span>
                 </div>
               </CustomCheckBoxText>
             </>

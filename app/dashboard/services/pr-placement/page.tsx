@@ -1,11 +1,11 @@
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import React from "react";
 import styles from "./prPlacement.module.css"
+import Link from "next/link";
 
 const Page = () => {
   return (
     <>
-      <NextPrevNav nextLink="/dashboard/services/pr-placement/create-article">
         <div className={`${styles.scroller} w-full `}>
           <ul className=" flex w-full py-[--sy-22px] font-semibold">
             <li className=" w-[14.285%] flex justify-center items-center">
@@ -30,7 +30,7 @@ const Page = () => {
             Get Started
             </li>
           </ul>
-          <div className={`${styles.scroller} w-full relative max-h-[60vh] overflow-y-scroll`}>
+          <div className={`${styles.scroller} w-full relative max-h-[68vh] overflow-y-scroll`}>
             {Array(30)
               .fill(0)
               .map((_, i) => (
@@ -54,13 +54,12 @@ const Page = () => {
                     230$
                   </li>
                   <li className=" w-[14.285%] flex justify-center items-center">
-                    <button className=" bg-[--highlight-yellow] rounded-[--36px] px-[--16px] py-[--sy-8px] font-semibold text-black">Get PR</button>
+                    <Link href={"/dashboard/services/pr-placement/create-article"} className=" bg-[--highlight-yellow] rounded-[--36px] px-[--16px] py-[--sy-8px] font-semibold text-black">Get PR</Link>
                   </li>
                 </ul>
               ))}
           </div>
         </div>
-      </NextPrevNav>
     </>
   );
 };

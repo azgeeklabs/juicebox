@@ -8,11 +8,11 @@ const Page = () => {
     // Main outer container div
     <NextPrevNav nextLink="/dashboard/services/paid-ads-flow/estimated-cost" backLink="/dashboard/services/paid-ads-flow/trying-paid-ads"><div className=" h-full flex items-center justify-center">
     {/* Inner container with full width, custom video style styles, and top padding */}
-    <div className={`${styles.createContent} w-full`}>
+    <div className={`${styles.createContent} w-full mb-[--sy-50px]`}>
       {/* Header section with centered text, auto margins for centering, and bottom margin */}
-      <div className="text-center mx-auto mb-[4.037vh]">
+      <div className="text-center mx-auto mb-[--sy-32px]">
         {/* Main heading with bottom margin */}
-        <h2 className="mb-[2.667vh] text-center">
+        <h2 className="mb-[--sy-8px] text-center">
         Do you have contents ready for your ads?
         </h2>
 
@@ -22,7 +22,7 @@ const Page = () => {
       </div>
 
       {/* Buttons container with custom styles, flexbox layout, width fit to content, auto margins for centering, and gap */}
-      <div className={`${styles.btns} flex w-fit mx-auto gap-[1.041vw]`}>
+      <div className={`${styles.btns} flex w-fit mx-auto gap-[--8px]`}>
         {/* Yes option with large button size and radio input type */}
         <CustomCheckBoxText btnSize="xl" inputType="radio" name="padiAdsAnswer">
         I have content

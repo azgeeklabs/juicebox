@@ -20,21 +20,32 @@ function ORMNegativePressRemoval() {
     }
   };
 
+  const [pastedText, setPastedText] = useState<string>("");
+
+  const handlePaste = async () => {
+    try {
+      const text = await navigator.clipboard.readText();
+      setPastedText(text);
+    } catch (error) {
+      console.error("Failed to read clipboard contents: ", error);
+    }
+  };
+
   return (
     <NextPrevNav nextLink="/dashboard/services/content-website/word-count" backLink="/dashboard/services/content-website/content-style">
       {/* Inner container with full height and center alignment */}
-      <div className="h-full flex justify-center items-center">
+      <div className="h-full flex justify-center items-center pt-[--40px]">
         {/* Inner container with full width and custom styles for the footage editing section */}
         <div className={`${styles.addLinkEdit} w-full `}>
           {/* Header section with text centered, auto margins for horizontal centering, and vertical margins */}
           <div
             className={classNames(
-              "text-center mx-auto mb-[3.556vh]",
+              "text-center mx-auto mb-[--sy-35px]",
               styles.container
             )}
           >
             {/* Main heading with bottom margin */}
-            <h2 className="mb-[2.5vh]">Do you have specific sources you would like us to reference?</h2>
+            <h2 className="mb-[--sy-8px]">Do you have specific sources you would like us to reference?</h2>
 
             {/* Subheading with text centered */}
             <h4 className="text-center w-[65%] mx-auto text-[#FFFFFFCC]">
@@ -61,18 +72,19 @@ function ORMNegativePressRemoval() {
               <div className="relative mb-[1.778vh]">
                 <input
                 disabled={!haveSources}
+                value={pastedText}
+                  onChange={(e) => setPastedText(e.target.value)}
                   type="text"
                   placeholder="URL"
                   ref={inputRef}
                   className="h-full  w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[--10px] pl-[--35px] px-[1.088vw] py-[1vh] placeholder:text-[#FFFFFF80]"
                 />
                 <svg
-                  width="25"
-                  height="25"
+                onClick={handlePaste}
                   viewBox="0 0 25 25"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="absolute top-[50%] transform -translate-y-1/2 right-[1.088vw]"
+                  className="absolute top-[50%] transform -translate-y-1/2 right-[1.088vw] w-[--25px] cursor-pointer"
                 >
                   <path
                     d="M14.5835 8.33398H4.16683C3.01787 8.33398 2.0835 9.26836 2.0835 10.4173V20.834C2.0835 21.9829 3.01787 22.9173 4.16683 22.9173H14.5835C15.7325 22.9173 16.6668 21.9829 16.6668 20.834V10.4173C16.6668 9.26836 15.7325 8.33398 14.5835 8.33398Z"
@@ -88,7 +100,7 @@ function ORMNegativePressRemoval() {
               {/* Button with background color, padding, text color, and rounded corners */}
               <button
               disabled={!haveSources}
-                className="bg-[var(--highlight-yellow)] font-extrabold px-[1.892vw] py-[0.711vh] text-black rounded-[var(--33px)]"
+                className="bg-[var(--highlight-yellow)] font-extrabold px-[--30px] py-[0.711vh] text-black rounded-[var(--33px)]"
                 onClick={handleAddLink}
               >
                 Add

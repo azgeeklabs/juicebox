@@ -459,3 +459,6 @@ input[type="number"] {
 div.pageContent:has(> section.services-page) {
   padding-inline: 0;
 }
+.css-y9l3cp {
+  width: 100% !important;
+}

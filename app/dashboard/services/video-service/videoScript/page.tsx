@@ -8,6 +8,17 @@ const Page = () => {
   const [haveWebsite, setHaveWebsite] = useState(false);
   const [doLater, setDoLater] = useState(false);
 
+  const [pastedText, setPastedText] = useState<string>("");
+
+  const handlePaste = async () => {
+    try {
+      const text = await navigator.clipboard.readText();
+      setPastedText(text);
+    } catch (error) {
+      console.error("Failed to read clipboard contents: ", error);
+    }
+  };
+
   return (
     // Main container div
     <NextPrevNav
@@ -69,6 +80,8 @@ const Page = () => {
           <div className="flex gap-[1vw] items-start mb-[1.2vw]">
             {/* Product Link input field */}
             <input
+              value={pastedText}
+              onChange={(e) => setPastedText(e.target.value)}
               disabled={haveWebsite ? false : true}
               type="text"
               placeholder="URL"
@@ -77,6 +90,7 @@ const Page = () => {
 
             {/* Paste Link button */}
             <button
+              onClick={handlePaste}
               disabled={haveWebsite ? false : true}
               className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.4vw] text-black rounded-[var(--33px)] font-bold"
             >

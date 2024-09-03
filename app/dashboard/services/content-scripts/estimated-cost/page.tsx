@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./estimatedCost.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
@@ -7,6 +7,8 @@ import { useRouter } from "next/navigation";
 
 const Page = () => {
   const router = useRouter();
+  const [saveProgress, setSaveProgress] = useState(false);
+
   return (
     // Main container div with relative positioning
     <NextPrevNav nextLink="/dashboard/services" nextText="All Done" backLink="/dashboard/services/content-scripts/duration-of-video">
@@ -49,9 +51,17 @@ const Page = () => {
             </div>
 
             {/* Link component for saving progress */}
-            <button className="block w-fit mx-auto px-[0.52vw] py-[0.3vw] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200">
+            <div
+              className={`relative block w-fit mx-auto px-[0.52vw] py-[0.3vw] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200 `}
+            >
               Save my Progress
-            </button>
+              <input
+                type="checkbox"
+                name="saveProgress"
+                className={`absolute opacity-0 inset-0 cursor-pointer`}
+                onChange={() => setSaveProgress((prev) => !prev)}
+              />
+            </div>
           </div>
         </div>
         

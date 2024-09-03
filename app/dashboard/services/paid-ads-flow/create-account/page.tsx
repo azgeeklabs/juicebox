@@ -10,6 +10,16 @@ const Page = () => {
   const router = useRouter();
   const [haveAccount, setHaveAccount] = useState(false);
   const [doLater, setDoLater] = useState(false);
+  const [pastedText, setPastedText] = useState<string>("");
+
+  const handlePaste = async () => {
+    try {
+      const text = await navigator.clipboard.readText();
+      setPastedText(text);
+    } catch (error) {
+      console.error("Failed to read clipboard contents: ", error);
+    }
+  };
 
   return (
     <NextPrevNav
@@ -28,10 +38,9 @@ const Page = () => {
             <div className="text-center mx-auto mb-[2.271vw]">
               {/* Main heading with margin bottom and underlined text */}
               <h2 className="mb-[1.5vw] w-[60%] mx-auto">
-                Do you already have an website, or would you like us to create
-                one for you?
+              Do you currently have a account to run ads on?
               </h2>
-              <p className=" w-[65%] mx-auto text-[#FFFFFFCC]">
+              <p className=" w-[65%] mx-auto text-[#FFFFFFCC] text-[--18px]">
                 Our expert developers can craft a website for you in no time, or
                 you can provide your own design!
               </p>
@@ -48,7 +57,7 @@ const Page = () => {
                 inputType="radio"
                 name="creationAnswer"
               >
-                I have a website
+                I have an account
               </CustomCheckBoxText>
               <CustomCheckBoxText
                 onClick={() => setHaveAccount(false)}
@@ -76,6 +85,8 @@ const Page = () => {
                 {/* Product Link input field */}
                 <input
                   disabled={haveAccount ? false : true}
+                  value={pastedText}
+                  onChange={(e) => setPastedText(e.target.value)}
                   type="text"
                   placeholder="URL"
                   className="flex-grow h-full mb-[1vw] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.5vw] placeholder:text-[#FFFFFF80]"
@@ -83,6 +94,7 @@ const Page = () => {
 
                 {/* Paste Link button */}
                 <button
+                onClick={handlePaste}
                   disabled={haveAccount ? false : true}
                   className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.4vw] text-black rounded-[var(--33px)] font-bold"
                 >

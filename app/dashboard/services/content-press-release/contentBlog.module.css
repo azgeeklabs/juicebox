@@ -1,67 +1,7 @@
-.card {
-    background-color: var(--dark-gray-3);
-    border-radius: var(--12px);
-    position: relative;
-    aspect-ratio: 1 / 1;
-    padding: var(--30px) var(--50px);
-    cursor: pointer;
-    transition: background-color 0.2s ease-in, transform 0.2s ease-in;
-  }
-  
-  .card div:nth-child(1) {
-    width: clamp(1rem, calc(7.35vw + 0.1rem), 1000rem);
-    height: clamp(1rem, calc(7.35vw + 0.1rem), 1000rem);
-    aspect-ratio: 1 / 1;
-  }
-  
-  .card div:nth-child(2) {
-    text-align: center;
-    font-size: var(--32px);
-  }
-  
-  .cards {
-    gap: clamp(2px, calc(5vw + 0.1rem), 50rem);
-  }
-  
-  /* .card > div {
-    width: clamp(15rem, calc(10.35vw + 0.1rem), 20rem);
-    height: clamp(15rem, calc(10.35vw + 0.1rem), 20rem);
-  } */
-  .card > div * {
-    position: absolute;
-    width: 100%;
-  }
-  
-  .card img {
-    visibility: hidden;
-    opacity: 0;
-  }
-  
-  .card svg {
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    visibility: visible;
-    opacity: 1;
-  }
-  
-  .card:not(:has(input:checked)):hover {
-    background-color: #1f1f1f;
-    transform: scale(1.1);
-  }
-  
-  .card:has(input:checked) {
-    background-color: #f8f24b;
-    color: var(--primary-black);
-  }
-  
-  .card:hover img {
-    visibility: visible;
-    opacity: 1;
-  }
-  
-  .card:hover svg {
-    visibility: hidden;
-    opacity: 0;
-  }
-  
+
+.pressRelease input[type='radio']:checked ~ div {
+  font-weight: 700;
+}
+.pressRelease input[type='radio'] ~ div {
+  width: var(--241px);
+}
