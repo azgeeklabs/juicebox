@@ -1,6 +1,12 @@
-// src/context/AuthContext.js
+"use client";
 import { useRouter } from "next/navigation";
-import React, { createContext, useState, useContext, useEffect } from "react";
+import React, {
+  createContext,
+  useState,
+  useContext,
+  useEffect,
+  useLayoutEffect,
+} from "react";
 import axios from "axios";
 
 const initialState: { token: string | null } = {
@@ -24,11 +30,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     // Check if the user is logged in on component mount
     const token = localStorage.getItem("token");
     if (token) {
-      setUser({ token }); // You can decode token to get user details if needed
+      setUser({ token });
     }
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     // Add a request interceptor
     axios.interceptors.request.use((config) => {
       // Do something before request is sent
@@ -37,7 +43,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     });
   }, [user.token]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     // Add a response interceptor
     axios.interceptors.response.use(
       (response) => response,
@@ -52,14 +58,16 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const login = async (credentials: { email: string; password: string }) => {
     // Replace with your actual login API request
-    const response: { token: string } = await axios.post(
-      "/api/login",
+    const response: any = await axios.post(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/login`,
       credentials
     );
-    if (response.token) {
-      localStorage.setItem("token", response.token);
-      setUser({ token: response.token });
-      router.push("/dashboard"); // Redirect to a protected route
+    console.log(response);
+    if (response.status === 200) {
+      console.log("Registration successful please login");
+      localStorage.setItem("token", response.data.token);
+      setUser({ token: response.data.token }); // Redirect to a protected route
+      router.push("/dashboard");
     }
   };
 

@@ -20,7 +20,7 @@
     "classnames": "^2.5.1",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.11",
-    "formik": "^2.4.0",
+    "formik": "^2.4.6",
     "framer-motion": "^11.2.10",
     "fuse.js": "^7.0.0",
     "gsap": "^3.12.5",
@@ -37,7 +37,7 @@
     "swiper": "^11.1.4",
     "tailwind-merge": "^2.3.0",
     "yarn": "^1.22.22",
-    "yup": "^1.2.0"
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@types/node": "^20",
