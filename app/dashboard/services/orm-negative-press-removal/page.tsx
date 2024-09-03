@@ -25,12 +25,14 @@ function ORMNegativePressRemoval() {
           {/* Header section with text centered, auto margins for horizontal centering, and vertical margins */}
           <div
             className={classNames(
-              "text-center mx-auto mb-[3.556vh]",
+              "text-center mx-auto mb-[--40px]",
               styles.container
             )}
           >
             {/* Main heading with bottom margin */}
-            <h2 className="mb-[2.5vh]">What links would you like to remove?</h2>
+            <h2 className="mb-[--18px]">
+              What links would you like to remove?
+            </h2>
 
             {/* Subheading with text centered */}
             <h4 className="text-center">
@@ -46,9 +48,9 @@ function ORMNegativePressRemoval() {
             <h3 className="mb-[1.067vh]">Links</h3>
 
             {/* Container for input field and button with flexbox layout, gap, and bottom margin */}
-            <div className="flex gap-[1vw] items-start mb-[2.667vh]">
+            <div className="flex gap-[1vw] items-start mb-[--28px]">
               {/* Input field with full height, bottom margin, specific width, background color, outline removal, rounded corners, padding, and placeholder styling */}
-              <div className="relative mb-[1.778vh]">
+              <div className="relative">
                 <input
                   type="text"
                   placeholder="URL"
@@ -59,7 +61,12 @@ function ORMNegativePressRemoval() {
                   viewBox="0 0 25 25"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="absolute top-[50%] transform -translate-y-1/2 right-[1.088vw] w-[--25px] h-[--25px]"
+                  className="absolute cursor-pointer top-[50%] transform -translate-y-1/2 right-[1.088vw] w-[--25px] h-[--25px]"
+                  onClick={() => {
+                    navigator.clipboard.readText().then((text) => {
+                      inputRef.current!.value = text;
+                    });
+                  }}
                 >
                   <path
                     d="M14.5835 8.33398H4.16683C3.01787 8.33398 2.0835 9.26836 2.0835 10.4173V20.834C2.0835 21.9829 3.01787 22.9173 4.16683 22.9173H14.5835C15.7325 22.9173 16.6668 21.9829 16.6668 20.834V10.4173C16.6668 9.26836 15.7325 8.33398 14.5835 8.33398Z"

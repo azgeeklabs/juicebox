@@ -1,33 +1,29 @@
 .card {
+  width: var(--241px);
   background-color: var(--dark-gray-3);
-  border-radius: var(--12px);
+  border-radius: var(--50px);
   position: relative;
-  aspect-ratio: 1 / 1;
-  padding: var(--30px) var(--50px);
+  padding-block: var(--20px);
   cursor: pointer;
-  transition: background-color 0.2s ease-in, transform 0.2s ease-in;
+  transition: background-color 0.15s ease-in;
+  font-weight: 500;
 }
 
-.card div:nth-child(1) {
-  width: clamp(1rem, calc(7.35vw + 0.1rem), 1000rem);
-  height: clamp(1rem, calc(7.35vw + 0.1rem), 1000rem);
-  aspect-ratio: 1 / 1;
-}
-
-.card div:nth-child(2) {
+.card div {
+  width: 100%;
   text-align: center;
-  font-size: var(--32px);
+  font-size: var(--16px);
 }
 
 .cards {
-  gap: clamp(2px, calc(3vw + 0.1rem), 50rem);
+  gap: var(--22px);
 }
 
 /* .card > div {
   width: clamp(15rem, calc(10.35vw + 0.1rem), 20rem);
   height: clamp(15rem, calc(10.35vw + 0.1rem), 20rem);
 } */
-.card > div * {
+/* .card > div * {
   position: absolute;
   width: 100%;
 }
@@ -43,18 +39,20 @@
   transform: translate(-50%, -50%);
   visibility: visible;
   opacity: 1;
-}
+} */
 
 .card:not(:has(input:checked)):hover {
   background-color: #1f1f1f;
-  transform: scale(1.1);
+  /* transform: scale(1.1); */
 }
 
 .card:has(input:checked) {
   background-color: #f8f24b;
   color: var(--primary-black);
+  font-weight: 700;
 }
 
+/* 
 .card:hover img {
   visibility: visible;
   opacity: 1;
@@ -63,4 +61,4 @@
 .card:hover svg {
   visibility: hidden;
   opacity: 0;
-}
+} */

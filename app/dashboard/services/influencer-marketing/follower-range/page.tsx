@@ -13,7 +13,7 @@ function FollowerRange() {
       nextLink="/dashboard/services/influencer-marketing/influencer-list"
       backLink="/dashboard/services/influencer-marketing/niche-selection"
     >
-      <div className=" flex justify-center items-center h-full w-full">
+      <div className=" flex justify-center h-[50%] w-full">
         <div
           className={`${styles.videoDuration} flex flex-col items-center justify-center  w-full`}
         >

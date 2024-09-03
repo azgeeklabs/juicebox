@@ -49,7 +49,7 @@ const Page = () => {
             </div>
 
             {/* Link component for saving progress */}
-            <button className="block w-fit mx-auto px-[0.52vw] py-[0.3vw] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200">
+            <button className="block w-fit mx-auto !font-normal px-[0.52vw] py-[0.3vw] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200">
               Save my Progress
             </button>
           </div>
