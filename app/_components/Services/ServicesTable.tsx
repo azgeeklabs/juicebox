@@ -93,7 +93,7 @@ export default function ServicesTable({
       path: "/dashboard/services/orm-account-recovery",
     },
     {
-      service: "ORM Negative Press Removal/Reviewed",
+      service: "ORM Negative Press Removal",
       information:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       clientProjects: "656 Projects",

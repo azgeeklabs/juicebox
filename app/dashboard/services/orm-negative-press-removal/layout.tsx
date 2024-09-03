@@ -1,32 +1,62 @@
 "use client";
 import StepProgress from "@/app/_components/stepProgress/StepProgress";
-import { globalContext } from "@/app/_context/GlobalContext";
-import { useContext } from "react";
+import React, { useEffect, useState } from "react";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
   const path = [
-    "",
-    "website-type",
-    "domain-selection",
-    "website-technology",
-    "brand-selection",
-    "website-style",
-    "custom-ecommerce",
-    "additional-features",
-    "host-selection",
-    "web-design-endpoint",
+    "", // Root folder
+    "removal-reason",
+    "reason-proof",
+    "estimated-cost",
   ];
 
-  const { step } = useContext(globalContext);
+  const [currentPath, setCurrentPath] = useState(0);
+  const [currentLocation, setCurrentLocation] = useState("");
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      const pathname = window.location.pathname;
+      if (pathname === currentLocation) return;
+      setCurrentLocation(pathname);
+    });
+
+    observer.observe(document, { subtree: true, childList: true });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    const pathname = window.location.pathname;
+    const moduleName = pathname.split("/")[3];
+    const Path = pathname.split("/")[4];
+    console.log(moduleName);
+    console.log(Path);
+
+    const getCurrentPath = () => {
+      if (moduleName && !path) {
+        setCurrentPath(0);
+        return;
+      }
+      const index = path.findIndex((p) => p === Path);
+      if (index !== -1) {
+        setCurrentPath(index);
+      }
+    };
+
+    getCurrentPath();
+  }, [currentLocation]);
 
   return (
-    <>
-      <div className="flex flex-col h-full">
-        <StepProgress title={"Web Design"} steps={5} currentStep={step} />
-
-        <div className="flex flex-col grow">{children}</div>
-      </div>
-    </>
+    <div className="flex flex-col h-full">
+      <StepProgress
+        title={"Application Design"}
+        steps={path.length}
+        currentStep={currentPath}
+      />
+      <div className="flex flex-col grow">{children}</div>
+    </div>
   );
 };
 
