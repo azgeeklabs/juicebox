@@ -8,7 +8,7 @@ import type { Metadata } from "next";
 // });
 // Import Context (provider only)
 import GlobalContextProvider from "./_context/GlobalContext";
-
+import { AuthProvider } from "./_context/AuthContext";
 
 export const metadata: Metadata = {
   title: "Creative Juicebox",
@@ -22,7 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <GlobalContextProvider>
-        <body>{children}</body>
+        <AuthProvider>
+          <body>{children}</body>
+        </AuthProvider>
       </GlobalContextProvider>
     </html>
   );
