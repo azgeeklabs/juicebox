@@ -462,3 +462,8 @@ div.pageContent:has(> section.services-page) {
 .css-y9l3cp {
   width: 100% !important;
 }
+.signup input.react-international-phone-input {
+  background-color: #484848 !important;
+  color: white;
+  border: none;
+}

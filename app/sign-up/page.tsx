@@ -1,10 +1,108 @@
+"use client";
 import { Divider } from "@mui/material";
 import Link from "next/link";
 import React from "react";
+import { useAuth } from "../_context/AuthContext";
+import { useFormik, FormikHelpers } from "formik";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
+import * as Yup from "yup";
+import { PhoneInput } from "react-international-phone";
+import { parsePhoneNumberFromString } from "libphonenumber-js";
+import "react-international-phone/style.css";
+import styles from "./signUp.module.css";
+
+type FormValues = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  passwordConfirm: string;
+  ISD: string;
+  phoneNumber: string;
+  DOB: string;
+};
 
 const Page = () => {
+  const { register } = useAuth();
+
+  const initialValues: FormValues = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    passwordConfirm: "",
+    ISD: "",
+    phoneNumber: "",
+    DOB: "",
+  };
+
+  const onSubmit = async (
+    values: FormValues,
+    { setSubmitting }: FormikHelpers<FormValues>
+  ) => {
+    console.log(values);
+    try {
+      await register({
+        ...values,
+        phoneNumber: values.phoneNumber.replace("+", ""),
+      });
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const validatePhoneNumber = (value: string) => {
+    const phoneNumber = parsePhoneNumberFromString(value);
+    return phoneNumber && phoneNumber.isValid();
+  };
+
+  const validationSchema = Yup.object().shape({
+    firstName: Yup.string().required("First name is required"),
+    lastName: Yup.string().required("Last name is required"),
+    email: Yup.string().email("Invalid email").required("Email is required"),
+    password: Yup.string()
+      .min(8, "Password must be at least 8 characters long")
+      .matches(/[a-z]/, "Password must contain at least one lowercase letter")
+      .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
+      .matches(/\d/, "Password must contain at least one number")
+      .matches(
+        /[@$!%*?&]/,
+        "Password must contain at least one special character"
+      )
+      .required("Password is required"),
+    passwordConfirm: Yup.string()
+      .oneOf([Yup.ref("password")], "password and rePassword should match")
+      .required("RePassword is required"),
+    ISD: Yup.string()
+      .matches(/^\+\d+$/, "ISD code must start with a + followed by digits")
+      .required("ISD code is required"),
+    DOB: Yup.string()
+      .matches(/^\d{4}\/\d{2}\/\d{2}$/, "DOB must be in the format YYYY/MM/DD")
+      .required("DOB is required"),
+  });
+
+  const {
+    values,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    errors,
+    touched,
+    isValid,
+    dirty,
+    setFieldValue,
+  } = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit: (values, helpers) => onSubmit(values, helpers),
+  });
+
   return (
-    <div className=" bg-[#181818] h-full w-full flex justify-center items-center flex-col">
+    <div
+      className={`${styles.signup} signup bg-[#181818] h-full w-full flex items-center flex-col py-[--sy-30px] overflow-y-auto`}
+    >
       <div className=" px-[--38px] py-[--sy-33px] rounded-[--14px] bg-[#272727] mb-[--sy-30px]">
         <h1 className=" font-semibold text-[--30px] mb-[--sy-20px]">
           Get Started Now
@@ -14,76 +112,256 @@ const Page = () => {
           consectetur <br /> maecenas amet elit. Vitae orci fringilla commodo
           dignissim vulputate ac. Egestas.
         </p>
-        <div className=" flex flex-col gap-[--sy-21px] mb-[--sy-40px]">
-          <div className=" flex gap-[--30px] items-center">
-            <div className=" flex flex-col gap-[--sy-16px] grow">
-              <label htmlFor="First Name">First Name</label>
-              <input
-                type="text"
-                id="First Name"
-                placeholder="John"
-                className=" bg-[#484848] outline-none px-[--11px] py-[--sy-8px] rounded-[--3px]"
-              />
+        <form onSubmit={handleSubmit}>
+          <div className=" flex flex-col gap-[--sy-21px] mb-[--sy-40px]">
+            <div className=" flex gap-[--30px] items-start">
+              <div className=" flex flex-col gap-[--sy-16px] flex-1">
+                <label htmlFor="First Name">First Name</label>
+                <div className=" relative">
+                  <input
+                    type="text"
+                    name="firstName"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.firstName}
+                    id="firstName"
+                    placeholder="John"
+                    className={`${
+                      errors.firstName && touched.firstName
+                        ? "border-red-900 border-[2px]"
+                        : ""
+                    } bg-[#484848] outline-none w-full px-[--11px] py-[--sy-8px] rounded-[--3px]`}
+                  />
+                  {errors.firstName && touched.firstName ? (
+                    <div className="absolute top-1/2 -translate-y-1/2 right-[--8px]">
+                      <ErrorOutlineIcon
+                        sx={{
+                          color: "#991b1b",
+                        }}
+                      />
+                    </div>
+                  ) : null}
+                </div>
+                {errors.firstName && touched.firstName ? (
+                  <p className=" text-red-800 font-semibold text-[--14px] -translate-y-[--sy-10px] pl-[--6px]">
+                    {errors.firstName}
+                  </p>
+                ) : null}
+              </div>
+              <div className=" flex flex-col gap-[--sy-16px] flex-1">
+                <label htmlFor="Last Name">Last Name</label>
+                <div className=" relative">
+                  <input
+                    type="text"
+                    name="lastName"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.lastName}
+                    id="lastName"
+                    placeholder="John"
+                    className={`${
+                      errors.lastName && touched.lastName
+                        ? "border-red-900 border-[2px]"
+                        : ""
+                    } bg-[#484848] outline-none w-full px-[--11px] py-[--sy-8px] rounded-[--3px]`}
+                  />
+                  {errors.lastName && touched.lastName ? (
+                    <div className="absolute top-1/2 -translate-y-1/2 right-[--8px]">
+                      <ErrorOutlineIcon
+                        sx={{
+                          color: "#991b1b",
+                        }}
+                      />
+                    </div>
+                  ) : null}
+                </div>
+                {errors.lastName && touched.lastName ? (
+                  <p className=" text-red-800 font-semibold text-[--14px] -translate-y-[--sy-10px] pl-[--6px]">
+                    {errors.lastName}
+                  </p>
+                ) : null}
+              </div>
             </div>
-            <div className=" flex flex-col gap-[--sy-16px] grow">
-              <label htmlFor="Last Name">First Name</label>
-              <input
-                type="text"
-                id="Last Name"
-                placeholder="Doe"
-                className=" bg-[#484848] outline-none px-[--11px] py-[--sy-8px] rounded-[--3px]"
+            <div className=" flex gap-[--30px] items-start">
+              <div className=" flex flex-col gap-[--sy-16px] flex-1">
+                <label htmlFor="Email">Email</label>
+                <div className=" relative">
+                  <input
+                    type="text"
+                    name="email"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.email}
+                    id="email"
+                    placeholder="John"
+                    className={`${
+                      errors.email && touched.email
+                        ? "border-red-900 border-[2px]"
+                        : ""
+                    } bg-[#484848] outline-none w-full px-[--11px] py-[--sy-8px] rounded-[--3px]`}
+                  />
+                  {errors.email && touched.email ? (
+                    <div className="absolute top-1/2 -translate-y-1/2 right-[--8px]">
+                      <ErrorOutlineIcon
+                        sx={{
+                          color: "#991b1b",
+                        }}
+                      />
+                    </div>
+                  ) : null}
+                </div>
+                {errors.email && touched.email ? (
+                  <p className=" text-red-800 font-semibold text-[--14px] -translate-y-[--sy-10px] pl-[--6px]">
+                    {errors.email}
+                  </p>
+                ) : null}
+              </div>
+              <div className=" flex flex-col gap-[--sy-16px] flex-1">
+                <label htmlFor="Date of birth">Date of birth</label>
+                <div className=" relative">
+                  <input
+                    type="text"
+                    name="DOB"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.DOB}
+                    id="DOB"
+                    placeholder="15/2/1996"
+                    className={`${
+                      errors.DOB && touched.DOB
+                        ? "border-red-900 border-[2px]"
+                        : ""
+                    } bg-[#484848] outline-none w-full px-[--11px] py-[--sy-8px] rounded-[--3px]`}
+                  />
+                  {errors.DOB && touched.DOB ? (
+                    <div className="absolute top-1/2 -translate-y-1/2 right-[--8px]">
+                      <ErrorOutlineIcon
+                        sx={{
+                          color: "#991b1b",
+                        }}
+                      />
+                    </div>
+                  ) : null}
+                </div>
+                {errors.DOB && touched.DOB ? (
+                  <p className=" text-red-800 font-semibold text-[--14px] -translate-y-[--sy-10px] pl-[--6px]">
+                    {errors.DOB}
+                  </p>
+                ) : null}
+              </div>
+            </div>
+            <div className=" flex gap-[--30px] items-start">
+              <div className=" flex flex-col gap-[--sy-16px] flex-1">
+                <label htmlFor="password">Password</label>
+                <div className=" relative">
+                  <input
+                    type="text"
+                    name="password"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.password}
+                    id="password"
+                    placeholder="***********"
+                    className={`${
+                      errors.password && touched.password
+                        ? "border-red-900 border-[2px]"
+                        : ""
+                    } bg-[#484848] outline-none w-full px-[--11px] py-[--sy-8px] rounded-[--3px]`}
+                  />
+                  {errors.password && touched.password ? (
+                    <div className="absolute top-1/2 -translate-y-1/2 right-[--8px]">
+                      <ErrorOutlineIcon
+                        sx={{
+                          color: "#991b1b",
+                        }}
+                      />
+                    </div>
+                  ) : null}
+                </div>
+                {errors.password && touched.password ? (
+                  <p className=" text-red-800 font-semibold text-[--14px] -translate-y-[--sy-10px] pl-[--6px]">
+                    {errors.password}
+                  </p>
+                ) : null}
+              </div>
+              <div className=" flex flex-col gap-[--sy-16px] flex-1">
+                <label htmlFor="repassword">Re-enter Password</label>
+                <div className=" relative">
+                <input
+                  name="passwordConfirm"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.passwordConfirm}
+                  type="password"
+                  id="passwordConfirm"
+                  placeholder="*******"
+                  className={`${
+                    errors.passwordConfirm && touched.passwordConfirm
+                      ? "border-red-900 border-[2px]"
+                      : ""
+                  } bg-[#484848] outline-none w-full px-[--11px] py-[--sy-8px] rounded-[--3px]`}
+                />
+                {errors.passwordConfirm && touched.passwordConfirm ? (
+                    <div className="absolute top-1/2 -translate-y-1/2 right-[--8px]">
+                      <ErrorOutlineIcon
+                        sx={{
+                          color: "#991b1b",
+                        }}
+                      />
+                    </div>
+                  ) : null}
+                </div>
+                {errors.passwordConfirm && touched.passwordConfirm ? (
+                  <p className=" text-red-800 font-semibold text-[--14px] -translate-y-[--sy-10px] pl-[--6px]">
+                    {errors.passwordConfirm}
+                  </p>
+                ) : null}
+              </div>
+            </div>
+            <div>
+              <PhoneInput
+                // defaultCountry="eg"
+                className="registerPhone mb-[0.3vh] w-full"
+                name="phoneNumber"
+                value={values.phoneNumber}
+                onChange={(value, countryData) => {
+                  console.log(countryData);
+                  setFieldValue(
+                    "phoneNumber",
+                    value.replace(`+${countryData.country.dialCode}`, "")
+                  );
+                  setFieldValue("ISD", `+${countryData.country.dialCode}`);
+                }}
+                onBlur={handleBlur}
               />
             </div>
           </div>
-          <div className=" flex gap-[--30px] items-center">
-            <div className=" flex flex-col gap-[--sy-16px] grow">
-              <label htmlFor="Email">Email</label>
-              <input
-                type="email"
-                id="Email"
-                placeholder="John"
-                className=" bg-[#484848] outline-none px-[--11px] py-[--sy-8px] rounded-[--3px]"
-              />
-            </div>
-            <div className=" flex flex-col gap-[--sy-16px] grow">
-              <label htmlFor="Date of birth">Date of birth</label>
-              <input
-                type="text"
-                id="Date of birth"
-                placeholder="15/2/1996"
-                className=" bg-[#484848] outline-none px-[--11px] py-[--sy-8px] rounded-[--3px]"
-              />
-            </div>
-          </div>
-          <div className=" flex gap-[--30px] items-center">
-            <div className=" flex flex-col gap-[--sy-16px] grow">
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                id="password"
-                placeholder="*******"
-                className=" bg-[#484848] outline-none px-[--11px] py-[--sy-8px] rounded-[--3px]"
-              />
-            </div>
-            <div className=" flex flex-col gap-[--sy-16px] grow">
-              <label htmlFor="repassword">Re-enter Password</label>
-              <input
-                type="password"
-                id="repassword"
-                placeholder="*******"
-                className=" bg-[#484848] outline-none px-[--11px] py-[--sy-8px] rounded-[--3px]"
-              />
-            </div>
-          </div>
-        </div>
-        <button className=" block rounded-[--39px] text-black bg-[--highlight-yellow] w-full py-[--sy-19px] font-bold mb-[--sy-23px]">
-          Sign Up
-        </button>
+          <button
+            disabled={!(isValid && dirty)}
+            type="submit"
+            className=" block rounded-[--39px] text-black bg-[--highlight-yellow] w-full py-[--sy-19px] font-bold mb-[--sy-23px]"
+          >
+            Sign Up
+          </button>
+        </form>
+
         <p className=" mb-[--sy-40px]">
           By signing up you agree to our{" "}
-          <Link href={"/privacy-policy"} target="_blank" className=" text-[--highlight-yellow] underline">Privacy Policy</Link> and
-          our{" "}
-          <Link href={"#"} target="_blank" className=" text-[--highlight-yellow] underline">Terms & Agreements</Link>
+          <Link
+            href={"/privacy-policy"}
+            target="_blank"
+            className=" text-[--highlight-yellow] underline"
+          >
+            Privacy Policy
+          </Link>{" "}
+          and our{" "}
+          <Link
+            href={"#"}
+            target="_blank"
+            className=" text-[--highlight-yellow] underline"
+          >
+            Terms & Agreements
+          </Link>
         </p>
         <Divider
           sx={{

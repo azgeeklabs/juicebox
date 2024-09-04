@@ -18,7 +18,14 @@ const AuthContext = createContext({
   login: (credentials: { email: string; password: string }) =>
     Promise.resolve(),
   logout: () => {},
-  register: (userDetails: { email: string; password: string }) =>
+  register: (userDetails: {   firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    passwordConfirm: string;
+    ISD: string;
+    phoneNumber: string;
+    DOB: string; }) =>
     Promise.resolve(),
 });
 
@@ -71,13 +78,24 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
-  const register = async (userDetails: { email: string; password: string }) => {
+  const register = async (userDetails: {  firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    passwordConfirm: string;
+    ISD: string;
+    phoneNumber: string;
+    DOB: string; }) => {
     // Replace with your actual registration API request
+    console.log(userDetails);
+    
     const response: { success: boolean } = await axios.post(
-      "/api/register",
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/signup`,
       userDetails
     );
-    if (response.success) {
+    console.log(response);
+    
+    if (response) {
       router.push("/login"); // Redirect to the login page
     }
   };
