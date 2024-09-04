@@ -21,7 +21,7 @@ const RewriteWebsite = () => {
           <h1 className="text-[--32px] font-bold">
           How do you want the written content tone to be?
           </h1>
-          <p className="text-[--18px] font-light">
+          <p className="text-[--18px] font-light text-[#FFFFFFCC]">
           Please select the type of the tone you want.
           </p>
         </div>

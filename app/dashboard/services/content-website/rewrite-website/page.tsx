@@ -21,8 +21,8 @@ const RewriteWebsite = () => {
           <h1 className="text-[--32px] font-bold">
             Would you like us to rewrite your existing website copy?
           </h1>
-          <p className="text-[--18px] w-[90%] md:w-[80%] font-light">
-            Our content team can write new content for your website in no time,
+          <p className="text-[--18px] md:w-[80%] font-light text-[#FFFFFFCC]">
+            Our content team can write new content for your website in no time, <br />
             or you can rewrite your old content
           </p>
         </div>

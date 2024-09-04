@@ -35,7 +35,7 @@ const WebsiteNiche = () => {
 
             {/* Container for buttons with flexbox layout, width fit, margin auto, and gap between buttons */}
             <div
-              className={`${styles.btns} flex w-fit mx-auto gap-[1.041vw] mb-[--47px]`}
+              className={`${styles.btns} flex w-fit mx-auto gap-[--16px] mb-[--47px]`}
             >
               {/* CustomCheckBoxText component for selecting options */}
               <CustomCheckBoxText

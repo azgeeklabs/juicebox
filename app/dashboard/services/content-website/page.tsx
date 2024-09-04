@@ -19,8 +19,8 @@ function ContentWebsite() {
             <h2 className="text-[--32px] font-bold">
               Please select you website niche:
             </h2>
-            <p className="text-[--18px] w-[60%] text-[#FFFFFFCC]">
-              Select the option that best describes your project type. This
+            <p className="text-[--18px] text-center text-[#FFFFFFCC]">
+              Select the option that best describes your project type. <br /> This
               helps us understand the specific requirements for your project.
             </p>
           </div>
