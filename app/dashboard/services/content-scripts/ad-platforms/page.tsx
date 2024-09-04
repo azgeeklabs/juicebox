@@ -223,7 +223,7 @@ function AccountRecovery() {
       {/* Main container for the content, styled using Tailwind CSS and custom styles */}
       <div
         className={classNames(
-          "flex flex-col gap-[var(--45px)] justify-center mx-auto items-center h-full",
+          "flex flex-col gap-[var(--45px)] justify-center mx-auto items-center h-full mb-[--sy-40px]",
           styles.container
         )}
       >

@@ -31,16 +31,16 @@ function Page() {
         >
           {/* CustomCheckBoxText component for selecting options */}
           <CustomCheckBoxText btnSize="xl" inputType="radio" name="typeAnswer">
-            Health Care
+          Custom
           </CustomCheckBoxText>
           <CustomCheckBoxText btnSize="xl" inputType="radio" name="typeAnswer">
-            Shipping
+          Shopify
           </CustomCheckBoxText>
           <CustomCheckBoxText btnSize="xl" inputType="radio" name="typeAnswer">
-            Company
+          WordPress
           </CustomCheckBoxText>
           <CustomCheckBoxText btnSize="xl" inputType="radio" name="typeAnswer">
-            Other
+          Webflow
           </CustomCheckBoxText>
         </div>
       </div>
