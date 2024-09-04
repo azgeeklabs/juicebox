@@ -32,13 +32,13 @@
   }
   .emailContacts .btns > div > div {
     padding: var(--sy-18px) 2.5vw;
-    font-size: var(--18px);
+    font-size: var(--16px);
     font-weight: 500;
     transition: all 0.2s;
     min-width: 15vw;
 }
 .emailContacts .btns input:checked + div {
-    font-size: var(--18px);
+    font-size: var(--16px);
     font-weight: 700;
 }
 .emailContacts input[type=number]::-webkit-inner-spin-button {

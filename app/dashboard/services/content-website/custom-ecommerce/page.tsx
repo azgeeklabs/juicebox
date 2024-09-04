@@ -57,7 +57,7 @@ function Page() {
       backLink="/dashboard/services/content-website/website-niche"
       nextLink="/dashboard/services/content-website/content-style"
     >
-      <div className="flex flex-col justify-center">
+      <div className={`${styles.ecommerce} flex flex-col justify-center`}>
         <div
           className={classNames(
             "flex flex-col gap-[var(--16px)]",

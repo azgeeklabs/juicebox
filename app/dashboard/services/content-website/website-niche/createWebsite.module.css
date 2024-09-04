@@ -8,13 +8,13 @@
   }
   .createWebsite .btns > div > div {
     padding: 0.8vw 1vw;
-    font-size: var(--18px);
-    font-weight: 600;
+    font-size: var(--16px);
+    font-weight: 500;
     transition: all 0.2s;
   }
   .createWebsite .btns input:checked + div {
-    font-size: var(--18px);
-    font-weight: 600;
+    font-size: var(--16px);
+    font-weight: 700;
   }
   .divider {
     display: block;

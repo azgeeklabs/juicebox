@@ -50,7 +50,7 @@ const LiveWebsite = () => {
 
             {/* Container for buttons with flexbox layout, width fit, margin auto, and gap between buttons */}
             <div
-              className={`${styles.btns} flex w-fit mx-auto gap-[1.041vw] mb-[--sy-38px]`}
+              className={`${styles.btns} flex w-fit mx-auto gap-[--8px] mb-[--sy-38px]`}
             >
               {/* CustomCheckBoxText component for selecting options */}
               <CustomCheckBoxText
