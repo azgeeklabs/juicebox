@@ -42,28 +42,28 @@ function Page() {
                 inputType="radio"
                 name="styleAnswer"
               >
-                Healthcare
+                Same Tone
               </CustomCheckBoxText>
               <CustomCheckBoxText
                 btnSize="xl"
                 inputType="radio"
                 name="styleAnswer"
               >
-                E-commerce
+               Improve Style
               </CustomCheckBoxText>
               <CustomCheckBoxText
                 btnSize="xl"
                 inputType="radio"
                 name="styleAnswer"
               >
-                Educational
+                Improve Style
               </CustomCheckBoxText>
               <CustomCheckBoxText
                 btnSize="xl"
                 inputType="radio"
                 name="styleAnswer"
               >
-                Other
+                Improve Style
               </CustomCheckBoxText>
             </div>
         </div>

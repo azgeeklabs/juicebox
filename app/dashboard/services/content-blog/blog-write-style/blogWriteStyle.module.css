@@ -33,12 +33,12 @@
 }
 .blogWriteStyle .btns > div > div {
     padding: 1.422vh 1vw;
-    font-size: var(--18px);
-    font-weight: 600;
+    font-size: var(--16px);
+    font-weight: 500;
     transition: all 0.2s;
 }
 .blogWriteStyle .btns input:checked + div {
-    font-size: var(--18px);
-    font-weight: 600;
+    font-size: var(--16px);
+    font-weight: 700;
 
 }

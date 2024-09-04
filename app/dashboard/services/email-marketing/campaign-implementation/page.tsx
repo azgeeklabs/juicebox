@@ -26,7 +26,7 @@ const page = () => {
                 className=" absolute inset-0 rounded-[--15px] opacity-0 z-[3] cursor-pointer peer"
               />
               <div
-                className={`${styles.textBox} peer-checked:bg-[--highlight-yellow] peer-checked:!text-black h-[--241px] w-[--220px] flex justify-center items-center rounded-[--15px] bg-[#484848] relative z-[2] origin-bottom-left transition-all duration-500 group-hover:rotate-[9deg]`}
+                className={`${styles.textBox} peer-checked:bg-[--highlight-yellow] peer-checked:!text-black h-[--241px] w-[--220px] flex justify-center items-center rounded-[--15px] bg-[#484848] relative z-[2] origin-bottom-left transition-all duration-500 group-hover:rotate-[6deg]`}
               >
                 <div>
                   <h3 className=" text-[--16px] font-semibold mb-[--sy-24px] text-center">
@@ -47,7 +47,7 @@ const page = () => {
                 className=" absolute inset-0 rounded-[--15px] opacity-0 z-[3] cursor-pointer peer"
               />
               <div
-                className={`${styles.textBox} peer-checked:bg-[--highlight-yellow] peer-checked:!text-black h-[--241px] w-[--220px] flex justify-center items-center rounded-[--15px] bg-[#484848] relative z-[2] origin-bottom-left transition-all duration-500 group-hover:rotate-[9deg]`}
+                className={`${styles.textBox} peer-checked:bg-[--highlight-yellow] peer-checked:!text-black h-[--241px] w-[--220px] flex justify-center items-center rounded-[--15px] bg-[#484848] relative z-[2] origin-bottom-left transition-all duration-500 group-hover:rotate-[6deg]`}
               >
                 <div>
                   <h3 className=" text-[--16px] font-semibold mb-[--sy-24px] text-center">
@@ -68,7 +68,7 @@ const page = () => {
                 className=" absolute inset-0 rounded-[--15px] opacity-0 z-[3] cursor-pointer peer"
               />
               <div
-                className={`${styles.textBox} peer-checked:bg-[--highlight-yellow] peer-checked:!text-black h-[--241px] w-[--220px] flex justify-center items-center rounded-[--15px] bg-[#484848] relative z-[2] origin-bottom-left transition-all duration-500 group-hover:rotate-[9deg]`}
+                className={`${styles.textBox} peer-checked:bg-[--highlight-yellow] peer-checked:!text-black h-[--241px] w-[--220px] flex justify-center items-center rounded-[--15px] bg-[#484848] relative z-[2] origin-bottom-left transition-all duration-500 group-hover:rotate-[6deg]`}
               >
                 <div>
                   <h3 className=" text-[--16px] font-semibold mb-[--sy-24px] text-center">
@@ -89,7 +89,7 @@ const page = () => {
                 className=" absolute inset-0 rounded-[--15px] opacity-0 z-[3] cursor-pointer peer"
               />
               <div
-                className={`${styles.textBox} peer-checked:bg-[--highlight-yellow] peer-checked:!text-black h-[--241px] w-[--220px] flex justify-center items-center rounded-[--15px] bg-[#484848] relative z-[2] origin-bottom-left transition-all duration-500 group-hover:rotate-[9deg]`}
+                className={`${styles.textBox} peer-checked:bg-[--highlight-yellow] peer-checked:!text-black h-[--241px] w-[--220px] flex justify-center items-center rounded-[--15px] bg-[#484848] relative z-[2] origin-bottom-left transition-all duration-500 group-hover:rotate-[6deg]`}
               >
                 <div>
                   <h3 className=" text-[--16px] font-semibold mb-[--sy-24px] text-center">

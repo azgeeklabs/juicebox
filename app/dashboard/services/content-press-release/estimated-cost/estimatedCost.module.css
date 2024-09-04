@@ -24,12 +24,12 @@
 }
 .estimatedCost .btns > div > div {
     padding: 1.422vh 1vw;
-    font-size: var(--18px);
+    font-size: var(--16px);
     font-weight: 500;
     transition: all 0.2s;
 }
 .estimatedCost .btns input:checked + div {
-    font-size: var(--18px);
+    font-size: var(--16px);
     font-weight: 700;
 }
 .estimatedCost h2 span {

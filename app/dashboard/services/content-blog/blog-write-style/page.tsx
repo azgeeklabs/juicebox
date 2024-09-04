@@ -8,11 +8,11 @@ const Page = () => {
     // Main outer container div
     <NextPrevNav nextLink="/dashboard/services/content-blog/word-count" backLink="/dashboard/services/content-blog/create-website"><div className=" h-full flex items-center justify-center">
     {/* Inner container with full width, custom video style styles, and top padding */}
-    <div className={`${styles.blogWriteStyle} w-full`}>
+    <div className={`${styles.blogWriteStyle} w-full mb-[--sy-40px]`}>
       {/* Header section with centered text, auto margins for centering, and bottom margin */}
-      <div className="text-center mx-auto mb-[4.037vh]">
+      <div className="text-center mx-auto mb-[--sy-48px]">
         {/* Main heading with bottom margin */}
-        <h2 className="mb-[2.667vh] w-[60%] mx-auto">
+        <h2 className="mb-[--sy-32px] w-[60%] mx-auto">
         Would you like you blog to match your existing tone or should we enhance the current writing style
         </h2>
 

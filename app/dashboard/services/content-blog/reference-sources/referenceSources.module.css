@@ -21,7 +21,7 @@
     font-weight: 600;
   }
   .addLinkEdit input[type='radio']:checked + div {
-    font-weight: 600;
+    font-weight: 700;
   }
   .addLinkEdit ::placeholder {
     font-size: var(--18px);
