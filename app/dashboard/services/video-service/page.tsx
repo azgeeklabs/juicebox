@@ -1,6 +1,14 @@
 "use client";
 import CustomCheckBox from "@/app/_components/customCheckBox/CustomCheckBox";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addOption,
+  incrementTotalSteps,
+  initializeService,
+  selectType,
+} from "../../../reducers/serviceSlice";
+import { RootState } from "../../../Store/store";
 import styles from "./videoService.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
@@ -11,8 +19,12 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 
 import SwiperCore from "swiper";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
+  const route = useRouter()
+  const dispatch = useDispatch();
+  const optionss = useSelector((state: RootState) => state.service.options);
   const options = [
     "Explainer",
     "Educational",
@@ -20,6 +32,7 @@ export default function Page() {
     "Social Media Ad",
     "Short Film",
   ];
+  const [wait,setWait] = useState(true)
 
   const swiperRef = useRef<SwiperCore | null>(null);
 
@@ -30,10 +43,57 @@ export default function Page() {
     "/assets/desktop-slide-4.png",
     "/assets/desktop-slide-1.png",
   ];
+  console.log(document.querySelectorAll("input[type='radio']:checked"));
+  const nextFunc = () => {
+    console.log("//////////////////////");
+    
+    dispatch(incrementTotalSteps());
+    const storedOptionString = localStorage.getItem("selectedOption");
+    console.log(storedOptionString);
+    
+    if (storedOptionString) {
+      const storedOption = JSON.parse(storedOptionString);
+      dispatch(addOption(storedOption));
+    }
+    
+    route.push("/dashboard/services/video-service/footage-selection")
+  };
+  useEffect(() => {
+    const handleRadioChange = (event: Event) => {
+      const target = event.target as HTMLInputElement;
+      console.log("Radio changed:", target.value);
 
+      dispatch(selectType("video"));
+      localStorage.setItem(
+        "selectedOption",
+        JSON.stringify([
+          {
+            name: "video",
+            choice: target.value,
+          },
+        ])
+      );
+    };
+
+    // Query all radio buttons and add event listeners
+    const radios = document.querySelectorAll('input[type="radio"]');
+    radios.forEach((radio) => {
+      radio.addEventListener("change", handleRadioChange);
+    });
+
+    // Cleanup event listeners
+    return () => {
+      radios.forEach((radio) => {
+        radio.removeEventListener("change", handleRadioChange);
+      });
+    };
+  }, [dispatch]);
   return (
     // Main container div with full height, column flex direction, and space-between alignment
-    <NextPrevNav nextLink="/dashboard/services/video-service/footage-selection">
+    <NextPrevNav
+      nextLink="/dashboard/services/video-service/footage-selection"
+      nextFunc={() => nextFunc()}
+    >
       <div className="flex items-center justify-center h-full w-full">
         {/* Inner container with full width and custom editing styles */}
         <div
@@ -64,6 +124,7 @@ export default function Page() {
                   btnSize="lg"
                   inputType="radio"
                   name="type"
+                  value={e}
                   // Mouse move event to highlight the hovered item
                   onMouseOver={() => {
                     if (swiperRef.current) {

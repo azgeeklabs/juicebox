@@ -4,6 +4,8 @@ import React, { useEffect } from "react";
 // import Home from "./_components/home/Home";
 
 import dynamic from "next/dynamic";
+import { Provider } from "react-redux";
+import { store } from "./Store/store";
 
 const NavBar = dynamic(() => import("./_components/NavBar/NavBar"), {
   ssr: false,

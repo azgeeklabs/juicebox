@@ -1,13 +1,16 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./youtubeChannel.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
 
 const Page = () => {
   const [dontHaveChannel, setDontHaveChannel] = React.useState(false);
   const [pastedText, setPastedText] = useState<string>("");
+  const optionss = useSelector((state: RootState) => state.service.options);
 
   const handlePaste = async () => {
     try {
@@ -17,6 +20,10 @@ const Page = () => {
       console.error("Failed to read clipboard contents: ", error);
     }
   };
+  useEffect(() => {
+    console.log(optionss);
+  }, [optionss]);
+  console.log(localStorage.getItem("selectedOption"));
   return (
     // Main outer container div
     <NextPrevNav

@@ -1,23 +1,68 @@
 "use client"
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./advertising.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { addOption, incrementTotalSteps, selectType } from "@/app/reducers/serviceSlice";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
   const [pastedText, setPastedText] = useState<string>("");
-
+  const dispatch = useDispatch();
+  const optionss = useSelector((state: RootState) => state.service.options);
+  const [name,setName] = useState("")
+  const [link,setLink] = useState("")
+  const [text,setText] = useState("")
+  const route = useRouter()
   const handlePaste = async () => {
     try {
       const text = await navigator.clipboard.readText();
       setPastedText(text);
+      setText(text)
     } catch (error) {
       console.error("Failed to read clipboard contents: ", error);
     }
   };
+
+  useEffect(() => {
+    console.log(optionss);
+  }, [optionss]);
+  console.log(localStorage.getItem("selectedOption"));
+  const nextFunc = () => {
+    console.log("//////////////////////");
+
+    dispatch(incrementTotalSteps());
+    dispatch(selectType("video"));
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    itemsArray.push({
+      name:"advertising",
+      data:{
+        fieldOne:name,
+        fieldTwo:link,
+        fieldThree:text,
+      }
+    })
+    localStorage.setItem(
+      "selectedOption",
+      JSON.stringify(itemsArray)
+    );
+    const storedOptionString = localStorage.getItem("selectedOption");
+    console.log(storedOptionString);
+
+    if (storedOptionString) {
+      const storedOption = JSON.parse(storedOptionString);
+      dispatch(addOption(storedOption));
+    }
+    route.push("/dashboard/services/video-service/youtube-channel")
+  };
+  
+
   return (
     // Main outer container div
     <NextPrevNav
-      nextLink="/dashboard/services/video-service/youtube-channel"
+      nextLink="/dashboard/services/video-service/youtube-channel" nextFunc={()=>nextFunc()}
       backLink="/dashboard/services/video-service/footage-selection"
     >
       <div className=" w-full h-full flex justify-center items-center">
@@ -45,7 +90,8 @@ const Page = () => {
             <input
               type="text"
               placeholder="Product Name"
-              className="mb-[--32px] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFFCC]"
+              className="Name mb-[--32px] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFFCC]"
+              onChange={(e)=>setName(e.target.value)}
             />
 
             {/* Product Link field with optional span */}
@@ -57,9 +103,11 @@ const Page = () => {
               <input
                 type="text"
                 value={pastedText}
-                onChange={(e) => setPastedText(e.target.value)}
+                onChange={(e) => {setPastedText(e.target.value)
+                  setLink(e.target.value)
+                }}
                 placeholder="Product Link"
-                className="h-full w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFFCC]"
+                className="Link h-full w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFFCC]"
               />
 
               {/* Paste Link button */}
@@ -74,6 +122,7 @@ const Page = () => {
               rows={5}
               className="outline-none w-full rounded-[var(--12px)] bg-[var(--dark-gray-3)] px-[1.088vw] py-[0.889vh] resize-none"
               placeholder="Describe the product you need..."
+              onChange={(e)=>setText(e.target.value)}
             ></textarea>
           </div>
         </div>

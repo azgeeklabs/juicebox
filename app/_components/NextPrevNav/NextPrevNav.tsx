@@ -2,6 +2,10 @@
 import Link from "next/link";
 import { useContext } from "react";
 import { globalContext } from "@/app/_context/GlobalContext";
+import { useDispatch, useSelector } from "react-redux";
+import { addOption, decrementTotalSteps, incrementTotalSteps } from "@/app/reducers/serviceSlice";
+import { RootState } from "@/app/Store/store";
+import { useRouter } from "next/navigation";
 
 // Define the props for the NextPrevNav component
 interface nextPrevNavProps {
@@ -11,6 +15,7 @@ interface nextPrevNavProps {
   nextText?: string; // The text to display on the "Next" button
   backOnClick?: () => void; // The callback function for the "Back" button click event
   nextOnClick?: () => void; // The callback function for the "Next" button click event
+  nextFunc?: () => void; // The callback function for the "Next" button click event
   children: React.ReactNode; // The content to be rendered inside the component
 }
 
@@ -35,8 +40,13 @@ function NextPrevNav({
   backOnClick,
   nextOnClick,
   children,
+  nextFunc
 }: nextPrevNavProps) {
   const { step, setStep } = useContext(globalContext);
+console.log(nextFunc);
+
+  const dispatch = useDispatch()
+  const totalSteps = useSelector((state:RootState)=>state.service.totalSteps)
   return (
     <>
       {/* Render the content */}
@@ -50,6 +60,9 @@ function NextPrevNav({
             onClick={() => {
               backOnClick && backOnClick();
               setStep(step - 1);
+              dispatch(decrementTotalSteps())
+              console.log(totalSteps);
+              
             }}
           >
             {/* Default text for the "Back" button */}
@@ -61,9 +74,12 @@ function NextPrevNav({
           <Link
             href={nextLink || ""}
             className="bg-[var(--highlight-yellow)] px-[2vw] py-[0.5vw] font-semibold rounded-[var(--41px)] text-[var(--primary-black)] cursor-pointer float-end"
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault()
               nextOnClick && nextOnClick();
               setStep(step + 1);
+              nextFunc && nextFunc()
+              
             }}
           >
             {/* Default text for the "Next" button */}
