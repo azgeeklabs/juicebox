@@ -4,15 +4,74 @@ import styles from "./footageEdit.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { useRouter } from "next/navigation";
+import { addOption, incrementTotalSteps, selectType } from "@/app/reducers/serviceSlice";
 
 const Page = () => {
+  const [inputVal, setInputVal] = useState("");
   const [doLater, setDoLater] = useState(false);
   const uploadRef = useRef(null)
+  const optionss = useSelector((state: RootState) => state.service.options);
+  const route = useRouter();
+  const dispatch = useDispatch();
 
+  const [fileSrc, setFileSrc] = useState<any>(null);
+
+  const handleFileChange = (event:any) => {
+    const file = event.target.files[0];
+    console.log(event.target.files[0].name);
+    setInputVal(file.name)
+    
+    if (file) {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        console.log(fileReader.result);
+        
+        setFileSrc(fileReader.result);
+      };
+    }
+  };
+
+  const nextFunc = () => {
+    console.log("//////////////////////");
+    dispatch(incrementTotalSteps());
+    dispatch(selectType("video"));
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (doLater) {
+      itemsArray.push({
+        name: "footage edit",
+        choice: (
+          document.querySelector(
+            'input[type="checkbox"]:checked'
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+    } else if (inputVal) {
+      itemsArray.push({
+        name: "footage edit",
+        file: `${inputVal}`,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+    }
+    localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+    const storedOptionString = localStorage.getItem("selectedOption");
+    console.log(storedOptionString);
+
+    if (storedOptionString) {
+      const storedOption = JSON.parse(storedOptionString);
+      dispatch(addOption(storedOption));
+    }
+    route.push("/dashboard/services/video-service/addToVideo");
+  };
   return (
     // Main container div with full height, flexbox layout, centered content horizontally and vertically
     <NextPrevNav
-      nextLink="/dashboard/services/video-service/addToVideo"
+      nextLink="/dashboard/services/video-service/addToVideo" nextFunc={()=>nextFunc()}
       backLink="/dashboard/services/video-service/channel-style"
     >
       <div className="h-[75%] flex justify-center">
@@ -47,6 +106,7 @@ const Page = () => {
                   type="file"
                   id="upload"
                   className="pointer-events-none absolute opacity-0 inset-0 cursor-pointer"
+                  onChange={(e)=>{handleFileChange(e)}}
                   
                 />
               </div>
@@ -63,8 +123,9 @@ const Page = () => {
               I’ll do this later
               <input
                 type="checkbox"
-                name="dontHaveChannel"
+                name="I’ll do this later"
                 className="absolute opacity-0 inset-0 cursor-pointer"
+                value={"I’ll do this later"}
                 onChange={() => setDoLater((prev) => !prev)}
               />
             </div>

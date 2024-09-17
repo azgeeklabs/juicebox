@@ -4,13 +4,92 @@ import styles from "./videoEndPoint.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
+import { addOption, incrementTotalSteps } from "@/app/reducers/serviceSlice";
+import axios from "axios";
 
 const Page = () => {
   const [saveProgress, setSaveProgress] = useState(false);
+  const dispatch = useDispatch();
+  const route = useRouter();
+  async function makeService() {
+    const optionsItems = localStorage.getItem("selectedOption");
+    const optionsArray = optionsItems ? JSON.parse(optionsItems) : [];
+    console.log(optionsArray,"//////////optionsArray/////////////");
+    console.log({
+      type:"video",
+      totalSteps:13,
+      options:optionsArray
+    })
+    console.log("adel");
+    
+    
+    try {
+      const data = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/initialize-service`,{
+        type:"video",
+        totalSteps:13,
+        options:optionsArray
+      })
+      console.log(data);
+      route.push("/dashboard/services");
+      
+    } catch (error) {
+      console.log(error,"////////////error////////////");
+      
+    }
+  }
+  const nextFunc = () => {
+    console.log("//////////////////////");
+    const selected = document.querySelector(
+      "input[type='radio']:checked"
+    ) as HTMLInputElement;
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (document.querySelector("input[type='radio']:checked")) {
+      itemsArray.push({
+        name: "estimated cost",
+        choice: (
+          document.querySelector(
+            "input[type='radio']:checked"
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      dispatch(incrementTotalSteps());
+      const storedOptionString = localStorage.getItem("selectedOption");
+      console.log(storedOptionString);
 
+      if (storedOptionString) {
+        const storedOption = JSON.parse(storedOptionString);
+        dispatch(addOption(storedOption));
+      }
+      
+      makeService()
+    } else if (document.querySelector("input[type='checkbox']:checked")) {
+      itemsArray.push({
+        name: "estimated cost",
+        choice: (
+          document.querySelector(
+            "input[type='checkbox']:checked"
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      dispatch(incrementTotalSteps());
+      const storedOptionString = localStorage.getItem("selectedOption");
+      console.log(storedOptionString);
+
+      if (storedOptionString) {
+        const storedOption = JSON.parse(storedOptionString);
+        dispatch(addOption(storedOption));
+      }
+      makeService()
+    }
+  };
   return (
     // Main container div with relative positioning
-    <NextPrevNav nextLink="/dashboard/services" backLink="/dashboard/services/video-service/video-duration" nextText="All Done">
+    <NextPrevNav nextLink="/dashboard/services" backLink="/dashboard/services/video-service/video-duration" nextText="All Done" nextFunc={()=>nextFunc()}>
       <div className="h-full relative">
       {/* Inner container for the video end point section with custom styles */}
       <div
@@ -37,6 +116,7 @@ const Page = () => {
               btnSize="xl"
               inputType="radio"
               name="styleAnswer"
+              value={"Book a call with our experts"}
             >
               Book a call with our experts
             </CustomCheckBoxText>
@@ -44,6 +124,7 @@ const Page = () => {
               btnSize="xl"
               inputType="radio"
               name="styleAnswer"
+              value={"Let's make this video!"}
             >
               Let's make this video!
             </CustomCheckBoxText>
@@ -57,6 +138,7 @@ const Page = () => {
               <input
                 type="checkbox"
                 name="saveProgress"
+                value={"Save my Progress"}
                 className={`absolute opacity-0 inset-0 cursor-pointer`}
                 onChange={() => setSaveProgress((prev) => !prev)}
               />

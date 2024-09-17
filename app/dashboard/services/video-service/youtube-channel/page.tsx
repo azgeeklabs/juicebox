@@ -4,18 +4,28 @@ import styles from "./youtubeChannel.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/Store/store";
+import {
+  addOption,
+  incrementTotalSteps,
+  selectType,
+} from "@/app/reducers/serviceSlice";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
   const [dontHaveChannel, setDontHaveChannel] = React.useState(false);
+  const [inputVal, setInputVal] = useState("");
   const [pastedText, setPastedText] = useState<string>("");
   const optionss = useSelector((state: RootState) => state.service.options);
+  const route = useRouter();
+  const dispatch = useDispatch();
 
   const handlePaste = async () => {
     try {
       const text = await navigator.clipboard.readText();
       setPastedText(text);
+      setInputVal(text);
     } catch (error) {
       console.error("Failed to read clipboard contents: ", error);
     }
@@ -23,11 +33,52 @@ const Page = () => {
   useEffect(() => {
     console.log(optionss);
   }, [optionss]);
+
   console.log(localStorage.getItem("selectedOption"));
+
+  useEffect(() => {
+    console.log(optionss);
+  }, [optionss]);
+  console.log(localStorage.getItem("selectedOption"));
+  console.log(document.querySelector('input[type="checkbox"]:checked'));
+
+  const nextFunc = () => {
+    console.log("//////////////////////");
+    dispatch(incrementTotalSteps());
+    dispatch(selectType("video"));
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (dontHaveChannel) {
+      itemsArray.push({
+        name: "youtube channel",
+        choice: (
+          document.querySelector(
+            'input[type="checkbox"]:checked'
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+    } else {
+      itemsArray.push({
+        name: "youtube channel",
+        ans: `${inputVal}`,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+    }
+    localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+    const storedOptionString = localStorage.getItem("selectedOption");
+    console.log(storedOptionString);
+
+    if (storedOptionString) {
+      const storedOption = JSON.parse(storedOptionString);
+      dispatch(addOption(storedOption));
+    }
+    route.push("/dashboard/services/video-service/video-style");
+  };
   return (
     // Main outer container div
     <NextPrevNav
-      nextLink="/dashboard/services/video-service/video-style"
+      nextLink="/dashboard/services/video-service/video-style" nextFunc={()=>nextFunc()}
       backLink="/dashboard/services/video-service/advertising"
     >
       <div className="  h-[55%] flex justify-center">
@@ -58,13 +109,19 @@ const Page = () => {
               <input
                 type="text"
                 value={pastedText}
-                onChange={(e) => setPastedText(e.target.value)}
+                onChange={(e) => {
+                  setPastedText(e.target.value);
+                  setInputVal(e.target.value);
+                }}
                 placeholder="Channel"
                 className="h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFFCC]"
               />
 
               {/* Paste Link button */}
-              <button onClick={handlePaste} className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.711vh] text-black rounded-[var(--33px)]">
+              <button
+                onClick={handlePaste}
+                className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.711vh] text-black rounded-[var(--33px)]"
+              >
                 Paste Link
               </button>
             </div>
@@ -75,6 +132,7 @@ const Page = () => {
               <input
                 type="checkbox"
                 name="dontHaveChannel"
+                value={"I don't have a channel"}
                 className="absolute opacity-0 inset-0 cursor-pointer"
                 onChange={() => setDontHaveChannel((prev) => !prev)}
               />

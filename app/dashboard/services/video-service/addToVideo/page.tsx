@@ -11,6 +11,9 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import SwiperCore from "swiper";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
+import { addOption, incrementTotalSteps } from "@/app/reducers/serviceSlice";
 
 export default function Page() {
   const options = [
@@ -29,11 +32,41 @@ export default function Page() {
     "/assets/desktop-slide-4.png",
     "/assets/desktop-slide-1.png",
   ];
+  const dispatch = useDispatch();
+  const route = useRouter();
+  const nextFunc = () => {
+    console.log("//////////////////////");
+    const selected = document.querySelector(
+      "input[type='radio']:checked"
+    ) as HTMLInputElement;
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (document.querySelector("input[type='radio']:checked")) {
+      itemsArray.push({
+        name: "add to video",
+        choice: (
+          document.querySelector(
+            "input[type='radio']:checked"
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      dispatch(incrementTotalSteps());
+      const storedOptionString = localStorage.getItem("selectedOption");
+      console.log(storedOptionString);
 
+      if (storedOptionString) {
+        const storedOption = JSON.parse(storedOptionString);
+        dispatch(addOption(storedOption));
+      }
+
+      route.push("/dashboard/services/video-service/videoScript");
+    }
+  };
   return (
     // Main container div with full height, flexbox layout, and content vertically and horizontally centered
     <NextPrevNav
-      nextLink="/dashboard/services/video-service/videoScript"
+      nextLink="/dashboard/services/video-service/videoScript" nextFunc={()=>nextFunc()}
       backLink="/dashboard/services/video-service/footage-edit"
     >
       <div className="flex items-center justify-center h-full w-full">
@@ -66,6 +99,7 @@ export default function Page() {
                   btnSize="xl"
                   inputType="radio"
                   name="type"
+                  value={e}
                   // Mouse move event to highlight the hovered item
                   onMouseOver={() => {
                     if (swiperRef.current) {

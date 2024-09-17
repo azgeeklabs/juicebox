@@ -5,15 +5,70 @@ import Link from "next/link";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 // import CustomTypeRange from "@/app/_components/customTypeRange/CustomTypeRange";
 import dynamic from "next/dynamic";
-const CustomTypeRange = dynamic(() => import('@/app/_components/customTypeRange/CustomTypeRange'), { ssr: false })
-
+import {
+  addOption,
+  incrementTotalSteps,
+  selectType,
+} from "@/app/reducers/serviceSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { useRouter } from "next/navigation";
+const CustomTypeRange = dynamic(
+  () => import("@/app/_components/customTypeRange/CustomTypeRange"),
+  { ssr: false }
+);
 
 const Page = () => {
   const [saveProgress, setSaveProgress] = useState(false);
+  const optionss = useSelector((state: RootState) => state.service.options);
+  const route = useRouter();
+  const dispatch = useDispatch();
+  const [duration, setDuration] = useState("");
 
+  const nextFunc = () => {
+    console.log("//////////////////////");
+    dispatch(incrementTotalSteps());
+    dispatch(selectType("video"));
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (saveProgress) {
+      itemsArray.push({
+        name: "video duration",
+        choice: (
+          document.querySelector(
+            'input[type="checkbox"]:checked'
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      const storedOptionString = localStorage.getItem("selectedOption");
+      console.log(storedOptionString);
+
+      if (storedOptionString) {
+        const storedOption = JSON.parse(storedOptionString);
+        dispatch(addOption(storedOption));
+      }
+      route.push("/dashboard/services/video-service/video-endpoint");
+    } else if (duration) {
+      itemsArray.push({
+        name: "video duration",
+        ans: `${duration}`,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      const storedOptionString = localStorage.getItem("selectedOption");
+      console.log(storedOptionString);
+
+      if (storedOptionString) {
+        const storedOption = JSON.parse(storedOptionString);
+        dispatch(addOption(storedOption));
+      }
+      route.push("/dashboard/services/video-service/video-endpoint");
+    }
+  };
   return (
     <NextPrevNav
       nextLink="/dashboard/services/video-service/video-endpoint"
+      nextFunc={() => nextFunc()}
       backLink="/dashboard/services/video-service/videoScript"
     >
       <div className=" flex justify-center items-center h-full w-full">
@@ -34,23 +89,24 @@ const Page = () => {
           </div>
 
           {/* Container for the duration indicator with custom background, width, height, and margin */}
-          
+
           <div className=" w-[85%] mx-auto mb-[--35px]">
-          <CustomTypeRange />
+            <CustomTypeRange setTime={setDuration} />
           </div>
 
           {/* Link component for users who are not sure about the duration */}
           <div
-              className={`relative block w-fit mx-auto px-[0.52vw] py-[0.3vw] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200 `}
-            >
-              I’m not sure
-              <input
-                type="checkbox"
-                name="saveProgress"
-                className={`absolute opacity-0 inset-0 cursor-pointer`}
-                onChange={() => setSaveProgress((prev) => !prev)}
-              />
-            </div>
+            className={`relative block w-fit mx-auto px-[0.52vw] py-[0.3vw] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200 `}
+          >
+            I’m not sure
+            <input
+              type="checkbox"
+              name="I’m not sure"
+              value={"I’m not sure"}
+              className={`absolute opacity-0 inset-0 cursor-pointer`}
+              onChange={() => setSaveProgress((prev) => !prev)}
+            />
+          </div>
         </div>
       </div>
     </NextPrevNav>

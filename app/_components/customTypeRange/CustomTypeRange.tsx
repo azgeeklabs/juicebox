@@ -23,7 +23,8 @@ const CustomTypeRange = ({
   minWidth,
   word,
   isDisabled,
-  setWordVal
+  setWordVal,
+  setTime
 }: {
   max?: number;
   width?: string;
@@ -31,6 +32,7 @@ const CustomTypeRange = ({
   word?:string;
   isDisabled?:boolean;
   setWordVal?:(value: number) => void
+  setTime?:(value: string) => void
 }) => {
   const [minut, setMinut] = useState("0"); // State for displaying time in minutes and seconds.
   const [val, setVal] = React.useState(MIN); // State for the current slider value.
@@ -41,6 +43,9 @@ const CustomTypeRange = ({
     const seconds = val % 60; // Calculate remaining seconds.
     console.log(`${minutes} min ${seconds} sec`); // Log the result for debugging.
     setMinut(`${minutes} min ${seconds} sec`); // Update the state with the formatted time.
+    if (minut && setTime) {
+      setTime(minut);
+    }
   }
 
   // Handler for slider value change.

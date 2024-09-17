@@ -1,13 +1,49 @@
+"use client";
 import React from "react";
 import styles from "./videoStyle.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useDispatch } from "react-redux";
+import { addOption, incrementTotalSteps } from "@/app/reducers/serviceSlice";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
+  const dispatch = useDispatch();
+  const route = useRouter();
+  const nextFunc = () => {
+    console.log("//////////////////////");
+    const selected = document.querySelector(
+      "input[type='radio']:checked"
+    ) as HTMLInputElement;
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (document.querySelector("input[type='radio']:checked")) {
+      itemsArray.push({
+        name: "video style",
+        choice: (
+          document.querySelector(
+            "input[type='radio']:checked"
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      dispatch(incrementTotalSteps());
+      const storedOptionString = localStorage.getItem("selectedOption");
+      console.log(storedOptionString);
+
+      if (storedOptionString) {
+        const storedOption = JSON.parse(storedOptionString);
+        dispatch(addOption(storedOption));
+      }
+
+      route.push("/dashboard/services/video-service/choose-kind");
+    }
+  };
   return (
     // Main outer container div
     <NextPrevNav
       nextLink="/dashboard/services/video-service/choose-kind"
+      nextFunc={() => nextFunc()}
       backLink="/dashboard/services/video-service/youtube-channel"
     >
       <div className=" h-full flex items-center justify-center">
@@ -37,6 +73,7 @@ const Page = () => {
               btnSize="xl"
               inputType="radio"
               name="styleAnswer"
+              value={"yes"}
             >
               Yes!
             </CustomCheckBoxText>
@@ -46,6 +83,7 @@ const Page = () => {
               btnSize="xl"
               inputType="radio"
               name="styleAnswer"
+              value={"no"}
             >
               Nah, impress me!
             </CustomCheckBoxText>

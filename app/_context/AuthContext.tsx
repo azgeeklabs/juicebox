@@ -33,9 +33,18 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState(initialState);
   const router = useRouter();
 
+  function getToken() {
+    if (typeof window !== "undefined") {
+      const token = localStorage.getItem("token");
+      return token ? `Bearer ${token}` : null;
+    } else {
+      return `Bearer ${user?.token}` || null;
+    }
+  }
+
   useEffect(() => {
     // Check if the user is logged in on component mount
-    const token = localStorage.getItem("token");
+    const token = getToken()
     if (token) {
       setUser({ token });
     }

@@ -1,21 +1,114 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./videoScript.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { useRouter } from "next/navigation";
+import {
+  addOption,
+  incrementTotalSteps,
+  selectType,
+} from "@/app/reducers/serviceSlice";
 
 const Page = () => {
-  const [haveWebsite, setHaveWebsite] = useState(false);
+  const [haveScript, setHaveScript] = useState(false);
+  const [inputVal, setInputVal] = useState("");
   const [doLater, setDoLater] = useState(false);
 
   const [pastedText, setPastedText] = useState<string>("");
+
+  const optionss = useSelector((state: RootState) => state.service.options);
+  const route = useRouter();
+  const dispatch = useDispatch();
 
   const handlePaste = async () => {
     try {
       const text = await navigator.clipboard.readText();
       setPastedText(text);
+      setInputVal(text);
     } catch (error) {
       console.error("Failed to read clipboard contents: ", error);
+    }
+  };
+  useEffect(() => {
+    console.log(optionss);
+  }, [optionss]);
+
+  console.log(localStorage.getItem("selectedOption"));
+
+  useEffect(() => {
+    console.log(optionss);
+  }, [optionss]);
+  console.log(localStorage.getItem("selectedOption"));
+  console.log(document.querySelector('input[type="checkbox"]:checked'));
+
+  const nextFunc = () => {
+    console.log("//////////////////////");
+    dispatch(incrementTotalSteps());
+    dispatch(selectType("video"));
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (haveScript && !doLater && inputVal) {
+      itemsArray.push({
+        name: "video script",
+        choice: (
+          document.querySelector(
+            'input[type="radio"]:checked'
+          ) as HTMLInputElement
+        ).value,
+        ans: `${inputVal}`,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      const storedOptionString = localStorage.getItem("selectedOption");
+      console.log(storedOptionString);
+
+      if (storedOptionString) {
+        const storedOption = JSON.parse(storedOptionString);
+        dispatch(addOption(storedOption));
+      }
+      route.push("/dashboard/services/video-service/video-duration");
+    } else if (
+      !haveScript &&
+      !doLater &&
+      document.querySelector('input[type="radio"]:checked')
+    ) {
+      itemsArray.push({
+        name: "video script",
+        choice: (
+          document.querySelector(
+            'input[type="radio"]:checked'
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      const storedOptionString = localStorage.getItem("selectedOption");
+      console.log(storedOptionString);
+
+      if (storedOptionString) {
+        const storedOption = JSON.parse(storedOptionString);
+        dispatch(addOption(storedOption));
+      }
+      route.push("/dashboard/services/video-service/video-duration");
+    } else if (doLater) {
+      itemsArray.push({
+        name: "video script",
+        choice: (
+          document.querySelector(
+            'input[type="checkbox"]:checked'
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      const storedOptionString = localStorage.getItem("selectedOption");
+      console.log(storedOptionString);
+
+      if (storedOptionString) {
+        const storedOption = JSON.parse(storedOptionString);
+        dispatch(addOption(storedOption));
+      }
+      route.push("/dashboard/services/video-service/video-duration");
     }
   };
 
@@ -23,6 +116,7 @@ const Page = () => {
     // Main container div
     <NextPrevNav
       nextLink="/dashboard/services/video-service/video-duration"
+      nextFunc={() => nextFunc()}
       backLink="/dashboard/services/video-service/addToVideo"
     >
       <div
@@ -48,18 +142,20 @@ const Page = () => {
           <div className={`${styles.btns} flex w-fit mx-auto gap-[--22px]`}>
             {/* CustomCheckBoxText component for selecting options */}
             <CustomCheckBoxText
-              onClick={() => setHaveWebsite(true)}
+              onClick={() => setHaveScript(true)}
               btnSize="xl"
               inputType="radio"
               name="styleAnswer"
+              value={"I Have a script"}
             >
-              I’ve got my own script
+              I Have a script
             </CustomCheckBoxText>
             <CustomCheckBoxText
-              onClick={() => setHaveWebsite(false)}
+              onClick={() => setHaveScript(false)}
               btnSize="xl"
               inputType="radio"
               name="styleAnswer"
+              value={"Make one for me!"}
             >
               Make one for me!
             </CustomCheckBoxText>
@@ -70,19 +166,22 @@ const Page = () => {
 
         <div
           className={`mx-auto w-full ${
-            haveWebsite ? "" : "grayscale-[50%] opacity-50"
+            haveScript ? "" : "grayscale-[50%] opacity-50"
           }`}
         >
           {/* Product Link field with optional span */}
           <h3 className="mb-[--sy-14px] font-semibold text-[--20px]">
-            Website URL
+            Script URL
           </h3>
           <div className="flex gap-[1vw] items-start mb-[--sy-24px]">
             {/* Product Link input field */}
             <input
               value={pastedText}
-              onChange={(e) => setPastedText(e.target.value)}
-              disabled={haveWebsite ? false : true}
+              onChange={(e) => {
+                setPastedText(e.target.value);
+                setInputVal(e.target.value);
+              }}
+              disabled={haveScript ? false : true}
               type="text"
               placeholder="URL"
               className="flex-grow h-full mb-[1vw] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.5vw] placeholder:text-[#FFFFFFCC]"
@@ -91,7 +190,7 @@ const Page = () => {
             {/* Paste Link button */}
             <button
               onClick={handlePaste}
-              disabled={haveWebsite ? false : true}
+              disabled={haveScript ? false : true}
               className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.4vw] text-black rounded-[var(--33px)] font-bold"
             >
               Paste Link
@@ -101,16 +200,17 @@ const Page = () => {
           {/* Link component for saving progress */}
           <div
             className={`relative block w-fit mx-auto px-[0.52vw] py-[0.3vw] ${
-              haveWebsite && "hover:bg-[#484848]"
+              haveScript && "hover:bg-[#484848]"
             } rounded-[var(--32px)] transition-all duration-200 underline`}
           >
             I’ll do this later
             <input
-              disabled={haveWebsite ? false : true}
+              disabled={haveScript ? false : true}
               type="checkbox"
-              name="dontHaveChannel"
+              name="I’ll do this later"
+              value={"I’ll do this later"}
               className={`absolute opacity-0 inset-0 ${
-                haveWebsite ? "cursor-pointer" : ""
+                haveScript ? "cursor-pointer" : ""
               }`}
               onChange={() => setDoLater((prev) => !prev)}
             />
