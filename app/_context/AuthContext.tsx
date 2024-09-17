@@ -8,6 +8,7 @@ import React, {
   useLayoutEffect,
 } from "react";
 import axios from "axios";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const initialState: { token: string | null } = {
   token: null,
@@ -27,6 +28,7 @@ const AuthContext = createContext({
     phoneNumber: string;
     DOB: string; }) =>
     Promise.resolve(),
+  googleLogin: (response: any) => Promise.resolve(),
 });
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
@@ -54,7 +56,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     // Add a request interceptor
     axios.interceptors.request.use((config) => {
       // Do something before request is sent
-      config.headers.Authorization = `Bearer ${user.token}`;
+      config.headers.Authorization = `Bearer ${localStorage.getItem("token")}`;
       return config;
     });
   }, [user.token]);
@@ -115,9 +117,21 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     router.push("/login"); // Redirect to login page
   };
 
+  const googleLogin = async (response: any) => {
+    if (response.token) {
+      localStorage.setItem("token", response.token);
+      await setUser({ token: response.token });
+      router.push("/dashboard");
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ user, login, register, logout }}>
-      {children}
+    <AuthContext.Provider
+      value={{ user, login, register, logout, googleLogin }}
+    >
+      <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!}>
+        {children}
+      </GoogleOAuthProvider>
     </AuthContext.Provider>
   );
 };

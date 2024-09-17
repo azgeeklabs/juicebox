@@ -10,9 +10,10 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import SwiperCore from "swiper";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { addOption, incrementTotalSteps } from "@/app/reducers/serviceSlice";
+import { RootState } from "@/app/Store/store";
 
 export default function Page() {
   const options = [
@@ -31,6 +32,7 @@ export default function Page() {
     "/assets/desktop-slide-4.png",
     "/assets/desktop-slide-1.png",
   ];
+  const all = useSelector((state:RootState)=>state.service)
   const dispatch = useDispatch();
   const route = useRouter();
   const nextFunc = () => {
@@ -50,18 +52,22 @@ export default function Page() {
         ).value,
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-      dispatch(incrementTotalSteps());
-      const storedOptionString = localStorage.getItem("selectedOption");
-      console.log(storedOptionString);
-
-      if (storedOptionString) {
-        const storedOption = JSON.parse(storedOptionString);
-        dispatch(addOption(storedOption));
-      }
-
+     
+        dispatch(addOption({
+          name: "channel style",
+          choice: (
+            document.querySelector(
+              "input[type='radio']:checked"
+            ) as HTMLInputElement
+          ).value,
+        }));
       route.push("/dashboard/services/video-service/footage-edit");
     }
   };
+  useEffect(()=>{
+    console.log(all);
+    
+    },[all])
   return (
     // Main container div with flexbox layout, column direction, and full height
     <NextPrevNav

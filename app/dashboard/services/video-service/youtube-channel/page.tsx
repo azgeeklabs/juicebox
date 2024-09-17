@@ -58,22 +58,28 @@ const Page = () => {
         ).value,
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-    } else {
+    dispatch(addOption({
+      name: "youtube channel",
+      choice: (
+        document.querySelector(
+          'input[type="checkbox"]:checked'
+        ) as HTMLInputElement
+      ).value,
+    }));
+
+      route.push("/dashboard/services/video-service/video-style");
+    } else if (inputVal) {
       itemsArray.push({
         name: "youtube channel",
         ans: `${inputVal}`,
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      dispatch(addOption({
+        name: "youtube channel",
+        ans: `${inputVal}`,
+      }));
+      route.push("/dashboard/services/video-service/video-style");
     }
-    localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-    const storedOptionString = localStorage.getItem("selectedOption");
-    console.log(storedOptionString);
-
-    if (storedOptionString) {
-      const storedOption = JSON.parse(storedOptionString);
-      dispatch(addOption(storedOption));
-    }
-    route.push("/dashboard/services/video-service/video-style");
   };
   return (
     // Main outer container div

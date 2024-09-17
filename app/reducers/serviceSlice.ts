@@ -4,11 +4,11 @@ import axios from "axios";
 
 // Define the structure for the option data
 interface OptionData {
-  fieldOne: string;
-  fieldTwo: string;
-  fieldThree: string;
-  fieldFour: string;
-  fieldFive: string;
+  fieldOne?: string;
+  fieldTwo?: string;
+  fieldThree?: string;
+  fieldFour?: string;
+  fieldFive?: string;
 }
 
 interface Option {
@@ -18,6 +18,7 @@ interface Option {
   data?: OptionData;
   price?: number;
   duration?: number;
+  file?:any;
 }
 
 interface ServiceState {

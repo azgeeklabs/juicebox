@@ -1,13 +1,15 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./videoStyle.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addOption, incrementTotalSteps } from "@/app/reducers/serviceSlice";
 import { useRouter } from "next/navigation";
+import { RootState } from "@/app/Store/store";
 
 const Page = () => {
+  const all = useSelector((state:RootState)=>state.service)
   const dispatch = useDispatch();
   const route = useRouter();
   const nextFunc = () => {
@@ -27,18 +29,21 @@ const Page = () => {
         ).value,
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-      dispatch(incrementTotalSteps());
-      const storedOptionString = localStorage.getItem("selectedOption");
-      console.log(storedOptionString);
-
-      if (storedOptionString) {
-        const storedOption = JSON.parse(storedOptionString);
-        dispatch(addOption(storedOption));
-      }
-
+        dispatch(addOption({
+          name: "video style",
+          choice: (
+            document.querySelector(
+              "input[type='radio']:checked"
+            ) as HTMLInputElement
+          ).value,
+        }))
       route.push("/dashboard/services/video-service/choose-kind");
     }
   };
+  useEffect(()=>{
+console.log(all);
+
+  },[all])
   return (
     // Main outer container div
     <NextPrevNav

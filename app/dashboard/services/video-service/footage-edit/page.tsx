@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./footageEdit.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
@@ -13,7 +13,7 @@ const Page = () => {
   const [inputVal, setInputVal] = useState("");
   const [doLater, setDoLater] = useState(false);
   const uploadRef = useRef(null)
-  const optionss = useSelector((state: RootState) => state.service.options);
+  const all = useSelector((state: RootState) => state.service.options);
   const route = useRouter();
   const dispatch = useDispatch();
 
@@ -21,14 +21,13 @@ const Page = () => {
 
   const handleFileChange = (event:any) => {
     const file = event.target.files[0];
-    console.log(event.target.files[0].name);
     setInputVal(file.name)
     
     if (file) {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(file);
       fileReader.onload = () => {
-        console.log(fileReader.result);
+        
         
         setFileSrc(fileReader.result);
       };
@@ -36,7 +35,6 @@ const Page = () => {
   };
 
   const nextFunc = () => {
-    console.log("//////////////////////");
     dispatch(incrementTotalSteps());
     dispatch(selectType("video"));
     const storedItems = localStorage.getItem("selectedOption");
@@ -51,23 +49,33 @@ const Page = () => {
         ).value,
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      dispatch(addOption({
+        name: "footage edit",
+        choice: (
+          document.querySelector(
+            'input[type="checkbox"]:checked'
+          ) as HTMLInputElement
+        ).value,
+      }))
+    route.push("/dashboard/services/video-service/addToVideo");
     } else if (inputVal) {
       itemsArray.push({
         name: "footage edit",
         file: `${inputVal}`,
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-    }
-    localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-    const storedOptionString = localStorage.getItem("selectedOption");
-    console.log(storedOptionString);
-
-    if (storedOptionString) {
-      const storedOption = JSON.parse(storedOptionString);
-      dispatch(addOption(storedOption));
-    }
+      dispatch(addOption({
+        name: "footage edit",
+        file: `${inputVal}`,
+      }))
     route.push("/dashboard/services/video-service/addToVideo");
+    }
+    
   };
+  useEffect(()=>{
+    console.log(all);
+    
+    },[all])
   return (
     // Main container div with full height, flexbox layout, centered content horizontally and vertically
     <NextPrevNav

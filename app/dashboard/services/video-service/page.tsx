@@ -24,7 +24,7 @@ import { useRouter } from "next/navigation";
 export default function Page() {
   const route = useRouter()
   const dispatch = useDispatch();
-  const optionss = useSelector((state: RootState) => state.service.options);
+  const all = useSelector((state: RootState) => state.service.options);
   const options = [
     "Explainer",
     "Educational",
@@ -45,49 +45,26 @@ export default function Page() {
   ];
   console.log(document.querySelectorAll("input[type='radio']:checked"));
   const nextFunc = () => {
-    console.log("//////////////////////");
-    
-    dispatch(incrementTotalSteps());
-    const storedOptionString = localStorage.getItem("selectedOption");
-    console.log(storedOptionString);
-    
-    if (storedOptionString) {
-      const storedOption = JSON.parse(storedOptionString);
-      dispatch(addOption(storedOption));
-    }
-    
-    route.push("/dashboard/services/video-service/footage-selection")
-  };
-  useEffect(() => {
-    const handleRadioChange = (event: Event) => {
-      const target = event.target as HTMLInputElement;
-      console.log("Radio changed:", target.value);
-
-      dispatch(selectType("video"));
+    if (document.querySelector("input[type='radio']:checked")) {
+      console.log("//////////////////////");
       localStorage.setItem(
         "selectedOption",
         JSON.stringify([
           {
             name: "video",
-            choice: target.value,
+            choice: (document.querySelector("input[type='radio']:checked") as HTMLInputElement).value,
           },
         ])
       );
-    };
-
-    // Query all radio buttons and add event listeners
-    const radios = document.querySelectorAll('input[type="radio"]');
-    radios.forEach((radio) => {
-      radio.addEventListener("change", handleRadioChange);
-    });
-
-    // Cleanup event listeners
-    return () => {
-      radios.forEach((radio) => {
-        radio.removeEventListener("change", handleRadioChange);
-      });
-    };
-  }, [dispatch]);
+        dispatch(addOption({
+          name: "video",
+          choice: (document.querySelector("input[type='radio']:checked") as HTMLInputElement).value,
+        },))
+      console.log(all);
+      
+      route.push("/dashboard/services/video-service/footage-selection")
+    }
+  };
   return (
     // Main container div with full height, column flex direction, and space-between alignment
     <NextPrevNav

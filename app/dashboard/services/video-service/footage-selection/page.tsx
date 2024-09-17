@@ -51,43 +51,52 @@ const Page = () => {
       title: "Twitter Post",
     },
   ];
-  const optionss = useSelector((state: RootState) => state.service.options);
+  const all = useSelector((state: RootState) => state.service.options);
   const nextFunc = () => {
     console.log("//////////////////////");
     const selected = document.querySelector(
       "input[type='radio']:checked"
     ) as HTMLInputElement;
+    const dimension = document.querySelector("input[type='radio']:checked")
+  ?.nextElementSibling
+  ?.children[1] as HTMLElement;
+
+console.log(dimension?.innerText);
+    
     const storedItems = localStorage.getItem("selectedOption");
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
-    if (!firstVal && !secondVal && !checked) {
+    if (!firstVal && !secondVal && !checked && document.querySelector("input[type='radio']:checked")) {
       itemsArray.push({
         name: "platform",
-        choice: selected.value,
+        ans: `${selected.value} (${dimension?.innerText})`,
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-    } else {
+      dispatch(addOption({
+        name: "platform",
+        ans: `${selected.value} (${dimension?.innerText})`,
+      }));
+    route.push("/dashboard/services/video-service/advertising");
+    } else if (checked && firstVal && secondVal) {
+      console.log(checked,firstVal,secondVal);
+      
       itemsArray.push({
         name: "platform",
         ans: `${firstVal} X ${secondVal}`,
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-    }
-    dispatch(incrementTotalSteps());
-    const storedOptionString = localStorage.getItem("selectedOption");
-    console.log(storedOptionString);
+      dispatch(addOption({
+        name: "platform",
+        ans: `${firstVal} X ${secondVal}`,
+      }));
 
-    if (storedOptionString) {
-      const storedOption = JSON.parse(storedOptionString);
-      dispatch(addOption(storedOption));
-    }
     route.push("/dashboard/services/video-service/advertising");
+    }
+    
   };
-  useEffect(() => {
-    console.log(optionss);
-  }, [optionss]);
-  console.log(localStorage.getItem("selectedOption"));
+useEffect(()=>{
+console.log(all);
 
-
+},[all])
   return (
     <NextPrevNav
       nextLink="/dashboard/services/video-service/advertising"
@@ -182,7 +191,6 @@ const Page = () => {
               onChange={(e) => setSecondVal(e.target.value)}
             />
           </div>
-          {secondVal}
         </div>
       </div>
     </NextPrevNav>

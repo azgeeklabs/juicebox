@@ -20,18 +20,20 @@ const CustomTypeRange = dynamic(
 
 const Page = () => {
   const [saveProgress, setSaveProgress] = useState(false);
-  const optionss = useSelector((state: RootState) => state.service.options);
+  const all = useSelector((state: RootState) => state.service);
   const route = useRouter();
   const dispatch = useDispatch();
   const [duration, setDuration] = useState("");
+  const [num, setNum] = useState(0);
 
   const nextFunc = () => {
-    console.log("//////////////////////");
+    
     dispatch(incrementTotalSteps());
     dispatch(selectType("video"));
     const storedItems = localStorage.getItem("selectedOption");
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (saveProgress) {
+     
       itemsArray.push({
         name: "video duration",
         choice: (
@@ -41,30 +43,36 @@ const Page = () => {
         ).value,
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-      const storedOptionString = localStorage.getItem("selectedOption");
-      console.log(storedOptionString);
-
-      if (storedOptionString) {
-        const storedOption = JSON.parse(storedOptionString);
-        dispatch(addOption(storedOption));
-      }
+      
+        dispatch(addOption({
+          name: "video duration",
+          choice: (
+            document.querySelector(
+              'input[type="checkbox"]:checked'
+            ) as HTMLInputElement
+          ).value,
+        }))
       route.push("/dashboard/services/video-service/video-endpoint");
-    } else if (duration) {
+    } else if (duration && num > 0) {
+      
       itemsArray.push({
         name: "video duration",
         ans: `${duration}`,
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-      const storedOptionString = localStorage.getItem("selectedOption");
-      console.log(storedOptionString);
-
-      if (storedOptionString) {
-        const storedOption = JSON.parse(storedOptionString);
-        dispatch(addOption(storedOption));
-      }
+      
+        dispatch(addOption({
+          name: "video duration",
+          ans: `${duration}`,
+        }))
+     
       route.push("/dashboard/services/video-service/video-endpoint");
     }
   };
+  useEffect(()=>{
+    console.log(all);
+    
+  },[all])
   return (
     <NextPrevNav
       nextLink="/dashboard/services/video-service/video-endpoint"
@@ -91,7 +99,7 @@ const Page = () => {
           {/* Container for the duration indicator with custom background, width, height, and margin */}
 
           <div className=" w-[85%] mx-auto mb-[--35px]">
-            <CustomTypeRange setTime={setDuration} />
+            <CustomTypeRange setTime={setDuration} setNum={setNum} />
           </div>
 
           {/* Link component for users who are not sure about the duration */}

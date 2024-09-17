@@ -19,7 +19,7 @@ const Page = () => {
 
   const [pastedText, setPastedText] = useState<string>("");
 
-  const optionss = useSelector((state: RootState) => state.service.options);
+  const all = useSelector((state: RootState) => state.service);
   const route = useRouter();
   const dispatch = useDispatch();
 
@@ -32,16 +32,8 @@ const Page = () => {
       console.error("Failed to read clipboard contents: ", error);
     }
   };
-  useEffect(() => {
-    console.log(optionss);
-  }, [optionss]);
+ 
 
-  console.log(localStorage.getItem("selectedOption"));
-
-  useEffect(() => {
-    console.log(optionss);
-  }, [optionss]);
-  console.log(localStorage.getItem("selectedOption"));
   console.log(document.querySelector('input[type="checkbox"]:checked'));
 
   const nextFunc = () => {
@@ -61,13 +53,15 @@ const Page = () => {
         ans: `${inputVal}`,
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-      const storedOptionString = localStorage.getItem("selectedOption");
-      console.log(storedOptionString);
-
-      if (storedOptionString) {
-        const storedOption = JSON.parse(storedOptionString);
-        dispatch(addOption(storedOption));
-      }
+        dispatch(addOption({
+          name: "video script",
+          choice: (
+            document.querySelector(
+              'input[type="radio"]:checked'
+            ) as HTMLInputElement
+          ).value,
+          ans: `${inputVal}`,
+        }))
       route.push("/dashboard/services/video-service/video-duration");
     } else if (
       !haveScript &&
@@ -83,13 +77,15 @@ const Page = () => {
         ).value,
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-      const storedOptionString = localStorage.getItem("selectedOption");
-      console.log(storedOptionString);
-
-      if (storedOptionString) {
-        const storedOption = JSON.parse(storedOptionString);
-        dispatch(addOption(storedOption));
-      }
+      
+        dispatch(addOption({
+          name: "video script",
+          choice: (
+            document.querySelector(
+              'input[type="radio"]:checked'
+            ) as HTMLInputElement
+          ).value,
+        }))
       route.push("/dashboard/services/video-service/video-duration");
     } else if (doLater) {
       itemsArray.push({
@@ -101,17 +97,22 @@ const Page = () => {
         ).value,
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-      const storedOptionString = localStorage.getItem("selectedOption");
-      console.log(storedOptionString);
-
-      if (storedOptionString) {
-        const storedOption = JSON.parse(storedOptionString);
-        dispatch(addOption(storedOption));
-      }
+     
+        dispatch(addOption({
+          name: "video script",
+          choice: (
+            document.querySelector(
+              'input[type="checkbox"]:checked'
+            ) as HTMLInputElement
+          ).value,
+        }))
       route.push("/dashboard/services/video-service/video-duration");
     }
   };
-
+  useEffect(()=>{
+    console.log(all);
+    
+    },[all])
   return (
     // Main container div
     <NextPrevNav

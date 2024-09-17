@@ -4,7 +4,10 @@ import Link from "next/link";
 import React from "react";
 import { useAuth } from "../_context/AuthContext";
 import { useFormik, FormikHelpers } from "formik";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import * as Yup from "yup";
+import  {useGoogleLogin}  from "@react-oauth/google";
+import { useRouter } from "next/navigation";
 
 interface FormValues {
   email: string;
@@ -12,7 +15,8 @@ interface FormValues {
 }
 
 const Page = () => {
-  const { login } = useAuth();
+  const { login, googleLogin } = useAuth();
+  const router = useRouter();
 
   const initialValues: FormValues = {
     email: "",
@@ -35,21 +39,136 @@ const Page = () => {
 
   const validationSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email").required("Email is required"),
-    password: Yup.string()
-      .min(6, "Password must be at least 6 characters")
-      .required("Password is required"),
+    password: Yup.string().required("Password is required"),
   });
 
-  const handleGoogleLogin = async () => {
-    // await window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/google`;
-    // const response = await fetch(
-    //   `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/success`
-    // );
-    // const data = await response.json();
-  };
+  const handleGoogleLogin = useGoogleLogin({
+    onSuccess: async (response: any) => {
+      try {
+        if (response?.access_token) {
+          const userInfoResponse = await fetch(
+            "https://www.googleapis.com/oauth2/v3/userinfo",
+            {
+              headers: {
+                Authorization: `Bearer ${response.access_token}`,
+              },
+            }
+          )
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              const res = fetch(
+                `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/with-google`,
+                {
+                  method: "POST",
+                  body: JSON.stringify({
+                    sub: data.sub,
+                    email: data.email,
+                    family_name: data.family_name,
+                    given_name: data.given_name,
+                    email_verified: data.email_verified,
+                    // name: data.name,
+                    picture: data.picture,
+                  }),
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                }
+              )
+                .then((response) => response.json())
+                .then((response) => {
+                  console.log(response, "post google");
+                  console.log(response?.message);
+                  if (response?.token) {
+                    googleLogin(response);
+                  } else {
+                    console.log("error");
+                  }
+                })
+                .catch((error) => console.error(error));
+              // try {
+              //   // Fetch the picture as a blob
+              //   const pictureResponse = fetch(data?.picture, {
+              //     mode: "no-cors",
+              //   })
+              //     .then((pictureBlob) => {
+              //       console.log(pictureBlob);
+              //       const picBlob = pictureBlob.blob();
+              //       console.log(picBlob);
 
-  const { values, handleChange, handleBlur, handleSubmit } = useFormik({
+              //       // Convert the blob to a File
+              //       const pictureFile = new File(
+              //         [picBlob as any],
+              //         "profile_picture.jpg",
+              //         {
+              //           type: pictureBlob.type,
+              //         }
+              //       );
+              //       console.log(pictureFile);
+
+              //       // Create a FormData object to include the file
+              //       const formData = new FormData();
+              //       formData.append("sub", data.sub);
+              //       formData.append("email", data.email);
+              //       formData.append("family_name", data.family_name);
+              //       formData.append("given_name", data.given_name);
+              //       // formData.append("email_verified", data.email_verified);
+              //       // formData.append("name", data.name);
+              //       formData.append("picture", pictureFile);
+
+              //       const res = fetch(
+              //         `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/with-google`,
+              //         {
+              //           method: "POST",
+
+              //           body: formData,
+              //           headers: {
+              //             "Content-Type": "multipart/form-data",
+              //           },
+              //         }
+              //       )
+              //         .then((res) => res.json())
+              //         .then((res) => {
+              //           console.log(res, "post google");
+              //           console.log(res?.data?.message);
+              //           if (res?.data?.message == "loged in successfully!") {
+              //           }
+              //         })
+              //         .catch((error) => console.error(error));
+              //     })
+              //     .catch((error) => console.error(error));
+              // } catch (error) {
+              //   console.log(error);
+              // }
+            })
+            .catch((error) => console.error(error));
+          // const userInfoResponseJson = await userInfoResponse.json();
+          // // if (userInfoResponse?.name) {
+          // console.log(userInfoResponseJson);
+          // }
+        } else {
+          console.error("Access token is null or undefined");
+          console.error(response);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  });
+
+  const {
+    values,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    errors,
+    touched,
+    isValid,
+    dirty,
+    setFieldValue,
+  } = useFormik({
     initialValues,
+    validationSchema,
     onSubmit: (values, helpers) => onSubmit(values, helpers),
   });
 
@@ -115,31 +234,72 @@ const Page = () => {
               <label htmlFor="Email" className=" font-medium">
                 Email
               </label>
-              <input
-                type="email"
-                id="Email"
-                name="email"
-                placeholder="John"
-                value={values.email}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                className=" outline-none px-[--14px] py-[--sy-10px] bg-[#484848] rounded-[--3px]"
-              />
+              <div className="relative">
+                <input
+                  type="email"
+                  id="Email"
+                  name="email"
+                  placeholder="John"
+                  value={values.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={`${
+                    errors.email && touched.email
+                      ? "border-red-900 border-[2px]"
+                      : ""
+                  } w-full outline-none px-[--14px] py-[--sy-10px] bg-[#484848] rounded-[--3px]`}
+                />
+                {errors.email && touched.email ? (
+                  <div className="absolute top-1/2 -translate-y-1/2 right-[--8px]">
+                    <ErrorOutlineIcon
+                      sx={{
+                        color: "#991b1b",
+                      }}
+                    />
+                  </div>
+                ) : null}
+              </div>
+              {errors.email && touched.email ? (
+                <p className=" text-red-800 font-semibold text-[--14px] -translate-y-[--sy-10px] pl-[--6px]">
+                  {errors.email}
+                </p>
+              ) : null}
               <label htmlFor="Password" className=" font-medium">
                 Password
               </label>
-              <input
-                type="password"
-                id="Password"
-                name="password"
-                placeholder="***********"
-                value={values.password}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                className=" outline-none px-[--14px] py-[--sy-10px] bg-[#484848] rounded-[--3px]"
-              />
+              <div className="relative">
+                <input
+                  type="password"
+                  id="Password"
+                  name="password"
+                  placeholder="***********"
+                  value={values.password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={`${
+                    errors.password && touched.password
+                      ? "border-red-900 border-[2px]"
+                      : ""
+                  } w-full outline-none px-[--14px] py-[--sy-10px] bg-[#484848] rounded-[--3px]`}
+                />
+                {errors.password && touched.password ? (
+                  <div className="absolute top-1/2 -translate-y-1/2 right-[--8px]">
+                    <ErrorOutlineIcon
+                      sx={{
+                        color: "#991b1b",
+                      }}
+                    />
+                  </div>
+                ) : null}
+              </div>
+              {errors.password && touched.password ? (
+                <p className=" text-red-800 font-semibold text-[--14px] -translate-y-[--sy-10px] pl-[--6px]">
+                  {errors.password}
+                </p>
+              ) : null}
             </div>
             <button
+              disabled={!(isValid && dirty)}
               className=" block rounded-[--39px] text-black bg-[--highlight-yellow] w-full py-[--sy-19px] font-bold mb-[--sy-40px]"
               type="submit"
             >
@@ -165,7 +325,7 @@ const Page = () => {
           <div className=" flex flex-col gap-[--sy-16px] w-full">
             <button
               className=" flex items-center justify-center gap-[--15px] bg-[#353535] rounded-[--7px] grow py-[--sy-12px]"
-              onClick={handleGoogleLogin}
+              onClick={() => handleGoogleLogin()}
             >
               <svg
                 className="w-[--19px] h-[--18px]"

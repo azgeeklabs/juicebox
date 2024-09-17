@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 const Page = () => {
   const [pastedText, setPastedText] = useState<string>("");
   const dispatch = useDispatch();
-  const optionss = useSelector((state: RootState) => state.service.options);
+  const all = useSelector((state: RootState) => state.service.options);
   const [name,setName] = useState("")
   const [link,setLink] = useState("")
   const [text,setText] = useState("")
@@ -25,11 +25,9 @@ const Page = () => {
     }
   };
 
-  useEffect(() => {
-    console.log(optionss);
-  }, [optionss]);
   console.log(localStorage.getItem("selectedOption"));
   const nextFunc = () => {
+   if (name && link && text) {
     console.log("//////////////////////");
 
     dispatch(incrementTotalSteps());
@@ -44,21 +42,23 @@ const Page = () => {
         fieldThree:text,
       }
     })
-    localStorage.setItem(
-      "selectedOption",
-      JSON.stringify(itemsArray)
-    );
-    const storedOptionString = localStorage.getItem("selectedOption");
-    console.log(storedOptionString);
-
-    if (storedOptionString) {
-      const storedOption = JSON.parse(storedOptionString);
-      dispatch(addOption(storedOption));
-    }
+    localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      dispatch(addOption({
+        name:"advertising",
+        data:{
+          fieldOne:name,
+          fieldTwo:link,
+          fieldThree:text,
+        }
+      }))
     route.push("/dashboard/services/video-service/youtube-channel")
+   }
   };
   
-
+  useEffect(()=>{
+    console.log(all);
+    
+    },[all])
   return (
     // Main outer container div
     <NextPrevNav
