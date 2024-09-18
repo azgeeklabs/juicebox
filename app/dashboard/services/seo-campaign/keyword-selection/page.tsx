@@ -4,14 +4,46 @@ import styles from "./keyword-selection.module.css";
 import classNames from "classnames";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 export default function Page() {
   const [addedKeywords, setAddedKeywords] = useState<any[]>([]);
   const [keyword, setKeyword] = useState("");
+
+  const route = useRouter()
+  const dispatch = useDispatch();
+  const all = useSelector((state: RootState) => state.service.options);
+
+  const nextFunc = () => {
+    console.log("//////////////////////");
+    const selected = document.querySelector(
+      "input[type='radio']:checked"
+    ) as HTMLInputElement;
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (document.querySelector("input[type='checkbox']:checked") || addedKeywords.length > 0) {
+      const checkedValues = Array.from(document.querySelectorAll("input[type='checkbox']:checked"))
+  .map((checkbox) => (checkbox as HTMLInputElement).value);
+      itemsArray.push({
+        name: "keywords search engine",
+        choice: checkedValues && !addedKeywords ? checkedValues.join(",") : addedKeywords && !checkedValues ? addedKeywords.join(",") : [...checkedValues,...addedKeywords].join(",")
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "keywords search engine",
+          choice: checkedValues && !addedKeywords ? checkedValues.join(",") : addedKeywords && !checkedValues ? addedKeywords.join(",") : [...checkedValues,...addedKeywords].join(","),
+        }))
+      route.push("/dashboard/services/seo-campaign/analysis-estimate");
+    }
+  };
+
   return (
     <NextPrevNav
       backLink="/dashboard/services/seo-campaign/rank-selection"
-      nextLink="/dashboard/services/seo-campaign/analysis-estimate"
+      nextLink="/dashboard/services/seo-campaign/analysis-estimate" nextFunc={()=>nextFunc()}
     >
       <section className={classNames(styles.keywordSelection, "w-full")}>
         <div className={classNames(styles.container, "w-full ")}>
@@ -84,22 +116,22 @@ export default function Page() {
           <div className={`${styles.suggestions} pl-16`}>
             <span className="font-semibold text-[--20px]">Suggestions</span>
             <div>
-              <CustomCheckBoxText btnSize="sm" inputType="checkbox">
+              <CustomCheckBoxText btnSize="sm" inputType="checkbox" value={"Automotive"}>
                 Automotive
               </CustomCheckBoxText>
-              <CustomCheckBoxText btnSize="sm" inputType="checkbox">
+              <CustomCheckBoxText btnSize="sm" inputType="checkbox" value={"Engineering"}>
                 Engineering
               </CustomCheckBoxText>
-              <CustomCheckBoxText btnSize="sm" inputType="checkbox">
+              <CustomCheckBoxText btnSize="sm" inputType="checkbox" value={"Vehicle"}>
                 Vehicle
               </CustomCheckBoxText>
-              <CustomCheckBoxText btnSize="sm" inputType="checkbox">
+              <CustomCheckBoxText btnSize="sm" inputType="checkbox" value={"Auto"}>
                 Auto
               </CustomCheckBoxText>
-              <CustomCheckBoxText btnSize="sm" inputType="checkbox">
+              <CustomCheckBoxText btnSize="sm" inputType="checkbox" value={"Automotive"}>
                 Automotive
               </CustomCheckBoxText>
-              <CustomCheckBoxText btnSize="sm" inputType="checkbox">
+              <CustomCheckBoxText btnSize="sm" inputType="checkbox" value={"Automotive"}>
                 Automotive
               </CustomCheckBoxText>
             </div>

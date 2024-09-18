@@ -19,6 +19,8 @@ const Page = () => {
 
   const [fileSrc, setFileSrc] = useState<any>(null);
 
+  
+
   const handleFileChange = (event:any) => {
     const file = event.target.files[0];
     setInputVal(file.name)
@@ -58,7 +60,7 @@ const Page = () => {
         ).value,
       }))
     route.push("/dashboard/services/video-service/addToVideo");
-    } else if (inputVal) {
+    } else if (inputVal && !doLater) {
       itemsArray.push({
         name: "footage edit",
         file: `${inputVal}`,

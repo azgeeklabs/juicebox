@@ -138,6 +138,7 @@ const Page = () => {
               inputType="radio"
               name="styleAnswer"
               value={"Book a call with our experts"}
+              onClick={()=> document.querySelectorAll("input[type='checkbox']:checked").forEach((e,i)=>(e as HTMLInputElement).checked = false)}
             >
               Book a call with our experts
             </CustomCheckBoxText>
@@ -146,6 +147,7 @@ const Page = () => {
               inputType="radio"
               name="styleAnswer"
               value={"Let's make this video!"}
+              onClick={()=> document.querySelectorAll("input[type='checkbox']:checked").forEach((e,i)=>(e as HTMLInputElement).checked = false)}
             >
               Let's make this video!
             </CustomCheckBoxText>
@@ -161,7 +163,9 @@ const Page = () => {
                 name="saveProgress"
                 value={"Save my Progress"}
                 className={`absolute opacity-0 inset-0 cursor-pointer`}
-                onChange={() => setSaveProgress((prev) => !prev)}
+                onChange={() => {setSaveProgress((prev) => !prev)
+                }}
+                onClick={()=>document.querySelectorAll("input[type='radio']:checked").forEach((e,i)=>(e as HTMLInputElement).checked = false)}
               />
             </div>
         </div>

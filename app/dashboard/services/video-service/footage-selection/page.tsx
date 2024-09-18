@@ -137,6 +137,11 @@ console.log(all);
                   className="opacity-0 w-full h-full absolute"
                   name="platform"
                   value={e.title}
+                  onClick={()=> {document.querySelectorAll("input[type='checkbox']:checked").forEach((e,i)=>(e as HTMLInputElement).checked = false)
+                    setChecked(false)
+                  setFirstVal("")
+                setSecondVal("")}
+                  }
                 />
 
                 {/* Platform image container with styles */}
@@ -172,7 +177,9 @@ console.log(all);
             } transition-all duration-300`}
           >
             {/* Custom checkbox component */}
-            <CustomCheckBox onClick={() => setChecked(!checked)} />
+            <CustomCheckBox onClick={() => {setChecked(!checked)
+              document.querySelectorAll("input[type='radio']:checked").forEach((e,i)=>(e as HTMLInputElement).checked = false)
+            }} />
             {/* Label for custom dimensions */}
             <p>I want specific dimensions:</p>
             {/* Width input field, disabled based on checked state */}
@@ -180,7 +187,16 @@ console.log(all);
               type="number"
               className="firstInp w-[4vw] bg-[#353535] outline-none border-none rounded-[var(--22px)] caret-[var(--highlight-yellow)]"
               disabled={checked ? false : true}
-              onChange={(e) => setFirstVal(e.target.value)}
+              value={firstVal}
+              onKeyDown={(e) => {
+                if (e.key === 'e' || e.key === 'E' || e.key === '-' || e.key === '+') {
+                  e.preventDefault(); // Prevent the user from typing 'e', 'E', '-' or '+'
+                }
+              }}
+              onChange={(e) => {
+                const newValue = e.target.value.replace(/e/gi, ""); // Remove any "e" or "E"
+                setFirstVal(newValue);
+              }}
             />
             {/* Text separator */}X
             {/* Height input field, disabled based on checked state */}
@@ -188,7 +204,16 @@ console.log(all);
               type="number"
               className="secondInp w-[4vw] bg-[#353535] outline-none border-none rounded-[var(--22px)] caret-[var(--highlight-yellow)]"
               disabled={checked ? false : true}
-              onChange={(e) => setSecondVal(e.target.value)}
+              value={secondVal}
+              onKeyDown={(e) => {
+                if (e.key === 'e' || e.key === 'E' || e.key === '-' || e.key === '+') {
+                  e.preventDefault(); // Prevent the user from typing 'e', 'E', '-' or '+'
+                }
+              }}
+              onChange={(e) => {
+                const newValue = e.target.value.replace(/e/gi, ""); // Remove any "e" or "E"
+                setSecondVal(newValue);
+              }}
             />
           </div>
         </div>

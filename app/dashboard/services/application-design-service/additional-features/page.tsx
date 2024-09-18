@@ -3,8 +3,12 @@ import classNames from "classnames";
 import styles from "./additional-features.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { globalContext } from "@/app/_context/GlobalContext";
+import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 function Page() {
   const { step, setStep } = useContext(globalContext);
@@ -489,9 +493,51 @@ function Page() {
       ),
     },
   ];
+
+  const [inputVal, setInputVal] = useState("");
+
+  const route = useRouter();
+  const dispatch = useDispatch();
+  const all = useSelector((state: RootState) => state.service.options);
+
+  const nextFunc = () => {
+    console.log("//////////////////////");
+    const selected = document.querySelector(
+      "input[type='radio']:checked"
+    ) as HTMLInputElement;
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (document.querySelector("input[type='checkbox']:checked") || inputVal) {
+      const checkedValues = Array.from(
+        document.querySelectorAll("input[type='checkbox']:checked")
+      ).map((checkbox) => (checkbox as HTMLInputElement).value);
+      const newItem: any = {
+        name: "additional features",
+      };
+
+      // Add `choice` key if any checkbox is checked
+      if (document.querySelector("input[type='checkbox']:checked")) {
+        newItem.choice = checkedValues.join(",");
+      }
+
+      // Add `ans` key if `inputVal` is truthy
+      if (inputVal) {
+        newItem.ans = inputVal;
+      }
+
+      // Push the object into the array
+      itemsArray.push(newItem);
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      dispatch(
+        addOption(newItem)
+      );
+      route.push("/dashboard/services/application-design-service/app-wrapup");
+    }
+  };
+
   return (
     <NextPrevNav
-      nextLink="/dashboard/services/application-design-service/app-wrapup"
+      nextLink="/dashboard/services/application-design-service/app-wrapup" nextFunc={()=>nextFunc()}
       backLink="/dashboard/services/application-design-service/custom-ecommerce"
       nextOnClick={() => setStep(step + 1)}
       backOnClick={() => setStep(step - 1)}
@@ -527,7 +573,7 @@ function Page() {
             >
               {data.map((item, i) => (
                 <>
-                  <CustomCheckBoxText btnSize="sm" inputType="checkbox">
+                  <CustomCheckBoxText btnSize="sm" inputType="checkbox" value={item.title}>
                     <div
                       className={classNames(
                         "flex items-center text-[--14px] font-bold gap-[var(--12px)]",
@@ -549,6 +595,7 @@ function Page() {
           >
             <h2 className="font-semibold">Have more features in mind?</h2>
             <textarea
+              onChange={(e) => setInputVal(e.target.value)}
               className="w-full p-[var(--16px)] bg-[--dark-gray-3] rounded-[var(--8px)] resize-none"
               placeholder="Type here..."
               rows={4}

@@ -26,6 +26,15 @@ const Page = () => {
       const text = await navigator.clipboard.readText();
       setPastedText(text);
       setInputVal(text);
+      const selectedCheckbox = document.querySelector(
+        'input[type="checkbox"]:checked'
+      ) as HTMLInputElement | null;
+    
+      // Ensure inputVal is truthy and a checkbox is selected
+      if (selectedCheckbox) {
+        selectedCheckbox.checked = false; // Uncheck the checkbox
+        setDontHaveChannel(false)
+      }
     } catch (error) {
       console.error("Failed to read clipboard contents: ", error);
     }
@@ -118,6 +127,15 @@ const Page = () => {
                 onChange={(e) => {
                   setPastedText(e.target.value);
                   setInputVal(e.target.value);
+                  const selectedCheckbox = document.querySelector(
+                    'input[type="checkbox"]:checked'
+                  ) as HTMLInputElement | null;
+                
+                  // Ensure inputVal is truthy and a checkbox is selected
+                  if (inputVal && selectedCheckbox) {
+                    selectedCheckbox.checked = false; // Uncheck the checkbox
+                    setDontHaveChannel(false)
+                  }
                 }}
                 placeholder="Channel"
                 className="h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.889vh] placeholder:text-[#FFFFFFCC]"
@@ -140,7 +158,10 @@ const Page = () => {
                 name="dontHaveChannel"
                 value={"I don't have a channel"}
                 className="absolute opacity-0 inset-0 cursor-pointer"
-                onChange={() => setDontHaveChannel((prev) => !prev)}
+                onChange={() => {setDontHaveChannel((prev) => !prev)
+                  setInputVal("");
+                setPastedText("");
+                }}
               />
             </div>
           </div>

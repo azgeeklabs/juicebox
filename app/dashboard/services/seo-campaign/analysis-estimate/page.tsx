@@ -1,15 +1,41 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./analysis-estimate.module.css";
 import classNames from "classnames";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 export default function Page() {
+  const all = useSelector((state: RootState) => state.service);
+  const dispatch = useDispatch();
+  const route = useRouter();
+  const nextFunc = () => {
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+
+    itemsArray.push({
+      name: "analyzing",
+    });
+    localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+    dispatch(
+      addOption({
+        name: "analyzing",
+      })
+    );
+    route.push("/dashboard/services/seo-campaign/seo-campaign-endpoint");
+  };
+  useEffect(() => {
+    console.log(all);
+  }, [all]);
   return (
     <NextPrevNav
       backLink="/dashboard/services/seo-campaign/keyword-selection"
       nextLink="/dashboard/services/seo-campaign/seo-campaign-endpoint"
+      nextFunc={() => nextFunc()}
     >
       <section className={classNames(styles.analysisEstimate)}>
         <div className={classNames(styles.container)}>
@@ -23,7 +49,6 @@ export default function Page() {
           {/* Keywords */}
           <div className={classNames(styles.loading)}>
             <svg
-
               viewBox="0 0 158 252"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"

@@ -61,6 +61,9 @@ const serviceSlice = createSlice({
     addOption(state, action: PayloadAction<Option>) {
       state.options.push(action.payload);
     },
+    changeOption(state, action: PayloadAction<Option[]>) {
+      state.options = action.payload;
+    },
     selectType(state, action: PayloadAction<string>) {
       state.type == action.payload;
     },
@@ -74,6 +77,6 @@ const serviceSlice = createSlice({
   },
 });
 
-export const { addOption, resetState, selectType,incrementTotalSteps,decrementTotalSteps } = serviceSlice.actions;
+export const { addOption, changeOption, resetState, selectType,incrementTotalSteps,decrementTotalSteps } = serviceSlice.actions;
 
 export default serviceSlice.reducer;

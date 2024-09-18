@@ -2,8 +2,12 @@
 import classNames from "classnames";
 import styles from "./service-projects.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { globalContext } from "@/app/_context/GlobalContext";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { addOption } from "@/app/reducers/serviceSlice";
+import { useRouter } from "next/navigation";
 
 function Page() {
   const data = [
@@ -231,9 +235,45 @@ function Page() {
 
   const { step, setStep } = useContext(globalContext);
 
+  const all = useSelector((state:RootState)=>state.service)
+  const dispatch = useDispatch();
+  const route = useRouter();
+  const nextFunc = () => {
+    console.log("//////////////////////");
+    const selected = document.querySelector(
+      "input[type='radio']:checked"
+    ) as HTMLInputElement;
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (document.querySelector("input[type='radio']:checked")) {
+      itemsArray.push({
+        name: "project type",
+        choice: (
+          document.querySelector(
+            "input[type='radio']:checked"
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "project type",
+          choice: (
+            document.querySelector(
+              "input[type='radio']:checked"
+            ) as HTMLInputElement
+          ).value,
+        }))
+      route.push("/dashboard/services/application-design-service/app-style");
+    }
+  };
+  useEffect(()=>{
+console.log(all);
+
+  },[all])
+
   return (
     <NextPrevNav
-      nextLink="/dashboard/services/application-design-service/app-style"
+      nextLink="/dashboard/services/application-design-service/app-style" nextFunc={()=>nextFunc()}
       backLink="/dashboard/services/application-design-service/"
     >
       <div className="flex flex-col gap-[var(--64px)] items-center h-[50%]">
@@ -270,6 +310,7 @@ function Page() {
                 type="radio"
                 name="project"
                 className="absolute opacity-0 inset-0 cursor-pointer"
+                value={item.title}
               />
             </div>
           ))}

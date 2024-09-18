@@ -1,12 +1,53 @@
+"use client"
 import classNames from "classnames";
 import styles from "./seo-campaign.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import Image from "next/image";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
+import { useEffect } from "react";
+import { addOption } from "@/app/reducers/serviceSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { useRouter } from "next/navigation";
 
 function Page() {
+  const all = useSelector((state:RootState)=>state.service)
+  const dispatch = useDispatch();
+  const route = useRouter();
+  const nextFunc = () => {
+    console.log("//////////////////////");
+    const selected = document.querySelector(
+      "input[type='radio']:checked"
+    ) as HTMLInputElement;
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (document.querySelector("input[type='radio']:checked")) {
+      itemsArray.push({
+        name: "product to rank",
+        choice: (
+          document.querySelector(
+            "input[type='radio']:checked"
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "product to rank",
+          choice: (
+            document.querySelector(
+              "input[type='radio']:checked"
+            ) as HTMLInputElement
+          ).value,
+        }))
+      route.push("/dashboard/services/seo-campaign/advertising-details");
+    }
+  };
+  useEffect(()=>{
+console.log(all);
+
+  },[all])
   return (
-    <NextPrevNav nextLink="/dashboard/services/seo-campaign/advertising-details">
+    <NextPrevNav nextLink="/dashboard/services/seo-campaign/advertising-details" nextFunc={()=>nextFunc()}>
       <div className="flex flex-col gap-[var(--sy-48px)] justify-center items-center h-full mb-[--sy-40px]">
         <div
           className={classNames(
@@ -30,6 +71,7 @@ function Page() {
                 btnSize="xl"
                 inputType="radio"
                 name="pressAnswer"
+                value={"Product"}
               >
                 Product
               </CustomCheckBoxText>
@@ -37,6 +79,7 @@ function Page() {
                 btnSize="xl"
                 inputType="radio"
                 name="pressAnswer"
+                value={"Service"}
               >
                 Service
               </CustomCheckBoxText>
@@ -44,6 +87,7 @@ function Page() {
                 btnSize="xl"
                 inputType="radio"
                 name="pressAnswer"
+                value={"Content"}
               >
                 Content
               </CustomCheckBoxText>

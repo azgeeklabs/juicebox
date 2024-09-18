@@ -9,6 +9,10 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import SwiperCore from "swiper";
 import { globalContext } from "@/app/_context/GlobalContext";
+import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 export default function Page() {
   const { step, setStep } = useContext(globalContext);
@@ -17,6 +21,10 @@ export default function Page() {
 
   const swiperRef = useRef<SwiperCore | null>(null);
 
+  const route = useRouter()
+  const dispatch = useDispatch();
+  const all = useSelector((state: RootState) => state.service.options);
+
   const slides = [
     "/assets/mobile-slide-1.png",
     "/assets/mobile-slide-2.png",
@@ -24,9 +32,39 @@ export default function Page() {
     "/assets/mobile-slide-4.png",
   ];
 
+  console.log(document.querySelectorAll("input[type='radio']:checked"));
+  const nextFunc = () => {
+    console.log("//////////////////////");
+    const selected = document.querySelector(
+      "input[type='radio']:checked"
+    ) as HTMLInputElement;
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (document.querySelector("input[type='radio']:checked")) {
+      itemsArray.push({
+        name: "app style",
+        choice: (
+          document.querySelector(
+            "input[type='radio']:checked"
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "app style",
+          choice: (
+            document.querySelector(
+              "input[type='radio']:checked"
+            ) as HTMLInputElement
+          ).value,
+        }))
+      route.push("/dashboard/services/application-design-service/custom-ecommerce");
+    }
+  };
+
   return (
     <NextPrevNav
-      nextLink="/dashboard/services/application-design-service/custom-ecommerce"
+      nextLink="/dashboard/services/application-design-service/custom-ecommerce" nextFunc={()=>nextFunc()}
       backLink="/dashboard/services/application-design-service/service-projects"
       nextOnClick={() => setStep(step + 1)}
       backOnClick={() => setStep(step - 1)}
@@ -51,6 +89,7 @@ export default function Page() {
                   btnSize="xl"
                   inputType="radio"
                   name="type"
+                  value={e}
                   // Mouse move event to highlight the hovered item
                   onMouseOver={() => {
                     if (swiperRef.current) {
