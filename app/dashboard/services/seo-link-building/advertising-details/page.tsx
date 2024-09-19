@@ -1,12 +1,22 @@
 "use client"
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./advertising-details.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
+import axios from "axios";
 
 const Page = () => {
   const [pastedText, setPastedText] = useState<string>("");
   const [addedKeywords, setAddedKeywords] = useState<any[]>([]);
   const [keyword, setKeyword] = useState("");
+  const dispatch = useDispatch();
+  const all = useSelector((state: RootState) => state.service.options);
+  const [link,setLink] = useState("")
+  const [text,setText] = useState("")
+  const route = useRouter()
   const handlePaste = async () => {
     try {
       const text = await navigator.clipboard.readText();
@@ -15,10 +25,83 @@ const Page = () => {
       console.error("Failed to read clipboard contents: ", error);
     }
   };
+
+   async function makeService() {
+    const optionsItems = localStorage.getItem("selectedOption");
+    const optionsArray = optionsItems ? JSON.parse(optionsItems) : [];
+    console.log(optionsArray,"//////////optionsArray/////////////");
+    if (link && text) {
+      optionsArray.push({
+        name:"product details",
+        data:{
+          fieldOne:link,
+          fieldTwo:text,
+          fieldThree:addedKeywords.join(","),
+        }
+      });
+    }
+    console.log({
+      type:"SEO link building",
+      totalSteps:3,
+      options:optionsArray
+    })
+    
+    
+    try {
+      const data = await axios.post(`http://juicebox-env.eba-sfhwtshs.us-east-1.elasticbeanstalk.com/api/v1/services/initialize-service`,{
+        type:"SEO link building",
+        totalSteps:3,
+        options:optionsArray
+      },{
+        headers:{
+          "Content-Type": "multipart/form-data",
+            Authorization: `Token ${localStorage.getItem("token")}`,
+        }
+      })
+      console.log(data);
+      const storedItems = localStorage.getItem("selectedOption");
+      const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+      if (link && text) {
+        const storedItems = localStorage.getItem("selectedOption");
+        const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+        itemsArray.push({
+          name:"product details",
+          data:{
+            fieldOne:link,
+            fieldTwo:text,
+            fieldThree:addedKeywords.join(","),
+          }
+        })
+        localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+          dispatch(addOption({
+            name:"product details",
+            data:{
+              fieldOne:link,
+              fieldTwo:text,
+              fieldThree:addedKeywords.join(","),
+            }
+          }))
+        route.push("/dashboard/services")
+       }
+      
+    } catch (error) {
+      console.log(error,"////////////error////////////");
+      
+    }
+  }
+  const nextFunc = () => {
+      makeService()
+  };
+   
+   useEffect(()=>{
+     console.log(all);
+     
+     },[all])
+
   return (
     <NextPrevNav
       backLink="/dashboard/services/seo-link-building/article-selection"
-      nextLink="/dashboard/services"
+      nextLink="/dashboard/services" nextFunc={()=>nextFunc()}
       nextText="All Done"
     >
       {/* // Main outer container div */}
@@ -49,7 +132,9 @@ const Page = () => {
               <input
                 type="text"
                 value={pastedText}
-                  onChange={(e) => setPastedText(e.target.value)}
+                  onChange={(e) => {setPastedText(e.target.value);
+                    setLink(e.target.value)
+                  }}
                 placeholder="Product Link"
                 className="h-full mb-[1vw] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--10px)] px-[1.088vw] py-[0.5vw] placeholder:text-[#FFFFFFCC]"
               />
@@ -63,6 +148,8 @@ const Page = () => {
             {/* Product Description field */}
             <h3 className="mb-[--sy-16px]">Anchor Text</h3>
             <textarea
+            value={text}
+            onChange={(e)=>setText(e.target.value)}
               rows={4}
               className="outline-none w-full rounded-[var(--12px)] bg-[var(--dark-gray-3)] px-[1.088vw] py-[0.5vw] resize-none"
               placeholder="Anchor Text"

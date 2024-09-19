@@ -4,11 +4,15 @@ import styles from "./addLink.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { addOption } from "@/app/reducers/serviceSlice";
+import { RootState } from "@/app/Store/store";
+import { useDispatch, useSelector } from "react-redux";
 
 function Page() {
     const router = useRouter()
     const [pastedText, setPastedText] = useState<string>("");
-
+    const all = useSelector((state:RootState)=>state.service)
+    const dispatch = useDispatch();
   const handlePaste = async () => {
     try {
       const text = await navigator.clipboard.readText();
@@ -17,6 +21,23 @@ function Page() {
       console.error("Failed to read clipboard contents: ", error);
     }
   };
+  const nextFunc = () => {
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+   if (pastedText) {
+      itemsArray.push({
+        name: "add account link",
+        ans: `${pastedText}`,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      dispatch(addOption({
+        name: "add account link",
+        ans: `${pastedText}`,
+      }));
+      router.push("/dashboard/services/pr-monetization/monetize-needs");
+    }
+  };
+
   return (
 <div className={`${styles.addLink} flex flex-col justify-between h-full`}>
 
@@ -82,6 +103,9 @@ function Page() {
   {/* Next link with background color, text color, padding, fit width, rounded corners, and font styling */}
   <Link
     href={"/dashboard/services/pr-monetization/monetize-needs"}
+    onClick={(e)=>{e.preventDefault();
+      nextFunc()
+    }}
     className="bg-[var(--highlight-yellow)] text-black px-[2vw] py-[0.889vh] w-fit rounded-[var(--41px)] font-semibold"
   >
     Next

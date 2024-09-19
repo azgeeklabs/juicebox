@@ -11,14 +11,17 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import SwiperCore from "swiper";
+import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 export default function Page() {
-  const options = [
-    "Light Mode",
-    "Dark Mode",
-    "Playful",
-    "Dark Mode",
-  ];
+  const route = useRouter();
+  const dispatch = useDispatch();
+  const all = useSelector((state: RootState) => state.service.options);
+
+  const options = ["Light Mode", "Dark Mode", "Playful", "Dark Mode"];
 
   const swiperRef = useRef<SwiperCore | null>(null);
 
@@ -29,10 +32,40 @@ export default function Page() {
     "/assets/desktop-slide-1.png",
   ];
 
+  const nextFunc = () => {
+    console.log("//////////////////////");
+    const selected = document.querySelector(
+      "input[type='radio']:checked"
+    ) as HTMLInputElement;
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (document.querySelector("input[type='radio']:checked")) {
+      itemsArray.push({
+        name: "website style",
+        choice: (
+          document.querySelector(
+            "input[type='radio']:checked"
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray))
+        dispatch(addOption({
+          name: "website style",
+          choice: (
+            document.querySelector(
+              "input[type='radio']:checked"
+            ) as HTMLInputElement
+          ).value,
+        }))
+      route.push("/dashboard/services/web-design/custom-ecommerce");
+    }
+  };
+
   return (
     <NextPrevNav
       backLink="/dashboard/services/web-design/brand-selection"
       nextLink="/dashboard/services/web-design/custom-ecommerce"
+      nextFunc={() => nextFunc()}
     >
       {/* // Main container div with full height, flexbox layout, and content vertically and horizontally centered */}
       <div className="flex flex-col justify-center h-full">
@@ -47,7 +80,8 @@ export default function Page() {
 
             {/* // Subheading with embedded horizontal rules */}
             <h4 className=" text-[#FFFFFFCC]">
-              Choose your preferred style options below. You can also upload or <br />
+              Choose your preferred style options below. You can also upload or{" "}
+              <br />
               add references for specific design elements.
             </h4>
           </div>
@@ -62,6 +96,7 @@ export default function Page() {
                   btnSize="xl"
                   inputType="radio"
                   name="type"
+                  value={e}
                   // Mouse move event to highlight the hovered item
                   onMouseOver={() => {
                     if (swiperRef.current) {

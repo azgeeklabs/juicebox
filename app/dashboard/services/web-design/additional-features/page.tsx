@@ -1,11 +1,57 @@
+"use client"
 import classNames from "classnames";
 import styles from "./additional-features.module.css";
 import CustomCheckBox from "@/app/_components/customCheckBox/CustomCheckBox";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import { title } from "process";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { addOption } from "@/app/reducers/serviceSlice";
+import { useState } from "react";
 
 function Page() {
+  const [inputVal, setInputVal] = useState("");
+
+  const route = useRouter();
+  const dispatch = useDispatch();
+  const all = useSelector((state: RootState) => state.service.options);
+
+  const nextFunc = () => {
+    console.log("//////////////////////");
+    const selected = document.querySelector(
+      "input[type='radio']:checked"
+    ) as HTMLInputElement;
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (document.querySelector("input[type='checkbox']:checked") || inputVal) {
+      const checkedValues = Array.from(
+        document.querySelectorAll("input[type='checkbox']:checked")
+      ).map((checkbox) => (checkbox as HTMLInputElement).value);
+      const newItem: any = {
+        name: "additional features",
+      };
+
+      // Add `choice` key if any checkbox is checked
+      if (document.querySelector("input[type='checkbox']:checked")) {
+        newItem.choice = checkedValues.join(",");
+      }
+
+      // Add `ans` key if `inputVal` is truthy
+      if (inputVal) {
+        newItem.ans = inputVal;
+      }
+
+      // Push the object into the array
+      itemsArray.push(newItem);
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      dispatch(
+        addOption(newItem)
+      );
+      route.push("/dashboard/services/web-design/host-selection");
+    }
+  };
   const data = [
     {
       title: "Notifications",
@@ -439,7 +485,7 @@ function Page() {
 
   return (
     <NextPrevNav
-      nextLink="/dashboard/services/web-design/host-selection"
+      nextLink="/dashboard/services/web-design/host-selection" nextFunc={()=>nextFunc()}
       backLink="/dashboard/services/web-design/custom-ecommerce"
     >
       <div
@@ -467,7 +513,7 @@ function Page() {
             <div className="flex flex-wrap gap-y-[var(--12px)] gap-x-[var(--8px)]">
               {data.map((item, i) => (
                 <>
-                  <CustomCheckBoxText btnSize="sm" inputType="checkbox">
+                  <CustomCheckBoxText btnSize="sm" inputType="checkbox" value={item.title}>
                     <div
                       className={classNames(
                         "flex items-center text-[--14px] font-normal gap-[var(--12px)]",
@@ -485,6 +531,7 @@ function Page() {
           <div className={classNames("flex flex-col justify-center gap-[var(--sy-16px)]")}>
             <h2 className="font-semibold">Have more features in mind?</h2>
             <textarea
+            onChange={(e)=>setInputVal(e.target.value)}
               className="w-full p-[var(--16px)] bg-[--dark-gray-3] rounded-[var(--12px)] resize-none"
               placeholder="Features..."
               rows={4}

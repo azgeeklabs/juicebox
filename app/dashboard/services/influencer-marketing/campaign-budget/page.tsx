@@ -5,15 +5,48 @@ import Link from "next/link";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 // import CustomTypeRange from "@/app/_components/customTypeRange/CustomTypeRange";
 import dynamic from "next/dynamic";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
 const CustomTypeRange = dynamic(
   () => import("@/app/_components/customTypeRange/CustomTypeRange"),
   { ssr: false }
 );
 
 const Page = () => {
+
+  const [num,setNum] = useState(0)
+  const all = useSelector((state:RootState)=>state.service)
+  const dispatch = useDispatch();
+  const route = useRouter();
+  const nextFunc = () => {
+    const selected = document.querySelector(
+      "input[type='radio']:checked"
+    ) as HTMLInputElement;
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (num) {
+      itemsArray.push({
+        name: "budget",
+        ans: `${String(num)} USD`,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "budget",
+          ans: `${String(num)} USD`,
+        }))
+      route.push("/dashboard/services/influencer-marketing/promo-options");
+    }
+  };
+  useEffect(()=>{
+console.log(all);
+
+  },[all])
+
   return (
     <NextPrevNav
-      nextLink="/dashboard/services/influencer-marketing/promo-options"
+      nextLink="/dashboard/services/influencer-marketing/promo-options" nextFunc={nextFunc}
       backLink="/dashboard/services/influencer-marketing/influencer-list"
     >
       <div className=" flex justify-center h-[50%] w-full">
@@ -35,7 +68,7 @@ const Page = () => {
             <div className=" w-fit pl-[1vw]">
               <h5 className=" text-[--20px] mb-[3vh]">Budget Range</h5>
             </div>
-            <CustomTypeRange word="USD" />
+            <CustomTypeRange word="USD" setNum={setNum}/>
           </div>
         </div>
       </div>

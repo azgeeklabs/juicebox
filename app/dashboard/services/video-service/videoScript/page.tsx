@@ -152,7 +152,13 @@ const Page = () => {
               I Have a script
             </CustomCheckBoxText>
             <CustomCheckBoxText
-              onClick={() => setHaveScript(false)}
+              onClick={() => {setHaveScript(false);
+                if (document.querySelector('input[type="checkbox"]:checked')) {
+                  (document.querySelector('input[type="checkbox"]:checked') as HTMLInputElement).checked = false;
+                }
+                setInputVal("")
+                setPastedText("")
+              }}
               btnSize="xl"
               inputType="radio"
               name="styleAnswer"

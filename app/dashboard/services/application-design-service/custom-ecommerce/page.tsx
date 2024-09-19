@@ -80,11 +80,7 @@ function Page() {
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
         dispatch(addOption({
           name: "customize pages",
-          choice: (
-            document.querySelector(
-              "input[type='checkbox']:checked"
-            ) as HTMLInputElement
-          ).value,
+          choice: checkedValues.join(","),
         }))
       route.push("/dashboard/services/application-design-service/additional-features");
     }

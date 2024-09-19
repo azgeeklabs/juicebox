@@ -1,12 +1,114 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./monetizationEndPoint.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
+import { useDispatch } from "react-redux";
+import axios from "axios";
 
 const Page = () => {
   const router = useRouter();
+  const [saveProgress, setSaveProgress] = useState(false);
+
+  const dispatch = useDispatch();
+  const route = useRouter();
+
+  async function makeService() {
+    const optionsItems = localStorage.getItem("selectedOption");
+    const optionsArray = optionsItems ? JSON.parse(optionsItems) : [];
+    console.log(optionsArray,"//////////optionsArray/////////////");
+    if (document.querySelector("input[type='radio']:checked")) {
+      optionsArray.push({
+        name: "estimated cost",
+        choice: (
+          document.querySelector(
+            "input[type='radio']:checked"
+          ) as HTMLInputElement
+        ).value,
+      });
+    } else if (document.querySelector("input[type='checkbox']:checked")) {
+      optionsArray.push({
+        name: "estimated cost",
+        choice: (
+          document.querySelector(
+            "input[type='checkbox']:checked"
+          ) as HTMLInputElement
+        ).value,
+      });
+    }
+    console.log({
+      type:"PR Monetization",
+      totalSteps:6,
+      options:optionsArray
+    })
+    
+    
+    try {
+      const data = await axios.post(`http://juicebox-env.eba-sfhwtshs.us-east-1.elasticbeanstalk.com/api/v1/services/initialize-service`,{
+        type:"PR Monetization",
+        totalSteps:6,
+        options:optionsArray
+      },{
+        headers:{
+          "Content-Type": "multipart/form-data",
+            Authorization: `Token ${localStorage.getItem("token")}`,
+        }
+      })
+      console.log(data);
+      const storedItems = localStorage.getItem("selectedOption");
+      const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+      if (document.querySelector("input[type='radio']:checked")) {
+        itemsArray.push({
+          name: "estimated cost",
+          choice: (
+            document.querySelector(
+              "input[type='radio']:checked"
+            ) as HTMLInputElement
+          ).value,
+        });
+        localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+       
+          dispatch(addOption({
+            name: "estimated cost",
+            choice: (
+              document.querySelector(
+                "input[type='radio']:checked"
+              ) as HTMLInputElement
+            ).value,
+          }))
+      route.push("/dashboard/services");
+
+      } else if (document.querySelector("input[type='checkbox']:checked")) {
+        itemsArray.push({
+          name: "estimated cost",
+          choice: (
+            document.querySelector(
+              "input[type='checkbox']:checked"
+            ) as HTMLInputElement
+          ).value,
+        });
+        localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "estimated cost",
+          choice: (
+            document.querySelector(
+              "input[type='checkbox']:checked"
+            ) as HTMLInputElement
+          ).value,
+        }))
+      route.push("/dashboard/services");
+      }
+      
+    } catch (error) {
+      console.log(error,"////////////error////////////");
+      
+    }
+  }
+  const nextFunc = () => {
+      makeService()
+  };
   return (
     <div className={`${styles.monetizationEndPoint} flex flex-col justify-between h-full w-full`}>
       {/* Inner container with relative positioning and full height */}
@@ -35,6 +137,8 @@ const Page = () => {
                 btnSize="xl"
                 inputType="radio"
                 name="styleAnswer"
+                value={"Book a call"}
+                onClick={()=> document.querySelectorAll("input[type='checkbox']:checked").forEach((e,i)=>(e as HTMLInputElement).checked = false)}
               >
                 Book a call
               </CustomCheckBoxText>
@@ -44,6 +148,8 @@ const Page = () => {
                 btnSize="xl"
                 inputType="radio"
                 name="styleAnswer"
+                value={"Start now"}
+              onClick={()=> document.querySelectorAll("input[type='checkbox']:checked").forEach((e,i)=>(e as HTMLInputElement).checked = false)}
               >
                 Start now
               </CustomCheckBoxText>
@@ -52,7 +158,9 @@ const Page = () => {
             {/* Button for saving progress with various styling */}
             <button className="cursor-pointer block w-fit mx-auto px-[0.52vw] relative py-[0.533vh] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200 underline">
               Save my Progress
-              <input type="checkbox" className=" inset-0 absolute opacity-0 cursor-pointer" />
+              <input type="checkbox" className=" inset-0 absolute opacity-0 cursor-pointer" value={"Save my Progress"} onChange={() => {setSaveProgress((prev) => !prev)
+                }}
+                onClick={()=>document.querySelectorAll("input[type='radio']:checked").forEach((e,i)=>(e as HTMLInputElement).checked = false)}/>
             </button>
           </div>
         </div>
@@ -71,6 +179,10 @@ const Page = () => {
         {/* Link for completing the process, styled with background color, text color, padding, rounded corners, and font weight */}
         <Link
           href={"/dashboard/services"}
+          onClick={(e)=>{
+            e.preventDefault();
+            nextFunc()
+          }}
           className="bg-[var(--highlight-yellow)] text-black px-[2vw] py-[0.889vh] w-fit rounded-[var(--41px)] font-bold"
         >
           All Done

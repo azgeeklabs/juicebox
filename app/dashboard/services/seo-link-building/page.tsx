@@ -4,6 +4,7 @@ import SEOLinkBuildingTable from "@/app/_components/Services/SEOLinkBuilding/SEO
 import React from "react";
 
 export default function Page() {
+  
   return (
       <SEOLinkBuildingTable />
   );

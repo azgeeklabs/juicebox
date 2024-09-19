@@ -1,8 +1,12 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./SEOLinkBuildingTable.module.css";
 import classNames from "classnames";
 import Link from "next/link";
+import { addOption } from "@/app/reducers/serviceSlice";
+import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
 
 export default function SEOLinkBuildingTable() {
   // An array of objects representing the rows of the table body.
@@ -143,7 +147,33 @@ export default function SEOLinkBuildingTable() {
       getStarted: "Get Back Link",
     },
   ];
+  const all = useSelector((state:RootState)=>state.service)
+  const dispatch = useDispatch();
+  const route = useRouter();
+  const nextFunc = () => {
+    console.log("//////////////////////");
+    const selected = document.querySelector(
+      "input[type='radio']:checked"
+    ) as HTMLInputElement;
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    
+      itemsArray.push({
+        name: "PST Canada",
+       
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "PST Canada",
+          
+        }))
+      route.push("/dashboard/services/seo-link-building/article-selection");
+    
+  };
+  useEffect(()=>{
+console.log(all);
 
+  },[all])
   return (
     <div className={`${styles.tableContainer} w-full `}>
       {/* ===== Start Table ===== */}
@@ -226,7 +256,10 @@ export default function SEOLinkBuildingTable() {
                   "w-[14.28%]"
                 )}
               >
-                <Link href={"/dashboard/services/seo-link-building/article-selection"}>
+                <Link href={"/dashboard/services/seo-link-building/article-selection"} onClick={(e)=>{
+                  e.preventDefault()
+                  nextFunc()
+                }}>
                 <span>{e.getStarted}</span></Link>
               </li>
             </ul>

@@ -9,6 +9,10 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import SwiperCore from "swiper";
 import { useRef } from "react";
+import { addOption } from "@/app/reducers/serviceSlice";
+import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
 
 const defaultPages = [
   "Sign Up",
@@ -52,9 +56,35 @@ function Page() {
     "/assets/mobile-slide-4.png",
   ];
 
+  const route = useRouter()
+  const dispatch = useDispatch();
+  const all = useSelector((state: RootState) => state.service.options);
+
+  const nextFunc = () => {
+    console.log("//////////////////////");
+    const selected = document.querySelector(
+      "input[type='radio']:checked"
+    ) as HTMLInputElement;
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (document.querySelector("input[type='checkbox']:checked")) {
+      const checkedValues = Array.from(document.querySelectorAll("input[type='checkbox']:checked"))
+  .map((checkbox) => (checkbox as HTMLInputElement).value);
+      itemsArray.push({
+        name: "customize pages",
+        choice: checkedValues.join(",")
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "customize pages",
+          choice:checkedValues.join(","),
+        }))
+      route.push("/dashboard/services/web-design/additional-features");
+    }
+  };
   return (
     <NextPrevNav
-      backLink="/dashboard/services/web-design/website-style"
+      backLink="/dashboard/services/web-design/website-style" nextFunc={()=>nextFunc()}
       nextLink="/dashboard/services/web-design/additional-features"
     >
       <div className={`${styles.ecommerce} flex flex-col justify-center ml-[--32px]`}>
@@ -142,6 +172,7 @@ function Page() {
                     <CustomCheckBoxText
                       btnSize="sm"
                       inputType="checkbox"
+                      value={page}
                       onMouseOver={() => {
                         if (swiperRef.current) {
                           swiperRef.current.slideTo(i); // Slide index is 0-based

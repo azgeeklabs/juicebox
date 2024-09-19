@@ -1,10 +1,51 @@
+"use client"
 import classNames from "classnames";
 import styles from "./pr.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 function Page() {
+  const all = useSelector((state:RootState)=>state.service)
+  const dispatch = useDispatch();
+  const route = useRouter();
+  const nextFunc = () => {
+    console.log("//////////////////////");
+    const selected = document.querySelector(
+      "input[type='radio']:checked"
+    ) as HTMLInputElement;
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (document.querySelector("input[type='radio']:checked")) {
+      itemsArray.push({
+        name: "what to monetize",
+        choice: (
+          document.querySelector(
+            "input[type='radio']:checked"
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "what to monetize",
+          choice: (
+            document.querySelector(
+              "input[type='radio']:checked"
+            ) as HTMLInputElement
+          ).value,
+        }))
+      route.push("/dashboard/services/pr-monetization/add-link");
+    }
+  };
+  useEffect(()=>{
+console.log(all);
+
+  },[all])
   return (
     <div
       className={`${styles.monetization} flex flex-col justify-between h-full`}
@@ -32,15 +73,15 @@ function Page() {
         {/* Cards container with flexbox layout and gap between cards */}
         <div className={classNames("flex gap-[--16px]", styles.cards)}>
           {/* Game card with flexbox layout for column direction, gap between elements, and group styling */}
-          <CustomCheckBoxText btnSize="xl" inputType="radio" name="styleAnswer">
+          <CustomCheckBoxText btnSize="xl" inputType="radio" name="styleAnswer" value={"Facebook Page"}>
             Facebook Page
           </CustomCheckBoxText>
 
           {/* CustomCheckBoxText component for selecting "I want to talk to someone first" option */}
-          <CustomCheckBoxText btnSize="xl" inputType="radio" name="styleAnswer">
+          <CustomCheckBoxText btnSize="xl" inputType="radio" name="styleAnswer" value={"YouTube Channel"}>
             YouTube Channel
           </CustomCheckBoxText>
-          <CustomCheckBoxText btnSize="xl" inputType="radio" name="styleAnswer">
+          <CustomCheckBoxText btnSize="xl" inputType="radio" name="styleAnswer" value={"Twitter Account"}>
             Twitter Account
           </CustomCheckBoxText>
         </div>
@@ -49,6 +90,9 @@ function Page() {
       {/* Navigation link for proceeding to the next step, styled with background color, text color, padding, rounded corners, and margin-left auto for right alignment */}
       <Link
         href={"/dashboard/services/pr-monetization/add-link"}
+        onClick={(e)=>{e.preventDefault();
+          nextFunc()
+        }}
         className="bg-[var(--highlight-yellow)] text-black px-[2vw] py-[0.5vw] w-fit rounded-[var(--41px)] font-semibold ml-auto"
       >
         Next

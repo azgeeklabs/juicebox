@@ -1,13 +1,53 @@
+"use client"
 import classNames from "classnames";
 import styles from "./website-type.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import Image from "next/image";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 function Page() {
+  const all = useSelector((state:RootState)=>state.service)
+  const dispatch = useDispatch();
+  const route = useRouter();
+  const nextFunc = () => {
+    const selected = document.querySelector(
+      "input[type='radio']:checked"
+    ) as HTMLInputElement;
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (document.querySelector("input[type='radio']:checked")) {
+      itemsArray.push({
+        name: "website type",
+        choice: (
+          document.querySelector(
+            "input[type='radio']:checked"
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "website type",
+          choice: (
+            document.querySelector(
+              "input[type='radio']:checked"
+            ) as HTMLInputElement
+          ).value,
+        }))
+      route.push("/dashboard/services/web-design/domain-selection");
+    }
+  };
+  useEffect(()=>{
+console.log(all);
+
+  },[all])
   return (
     <NextPrevNav
-      nextLink="/dashboard/services/web-design/domain-selection"
+      nextLink="/dashboard/services/web-design/domain-selection" nextFunc={()=>nextFunc()}
       backLink="/dashboard/services/web-design"
     >
       <div className="flex flex-col gap-[var(--sy-50px)] justify-center items-center h-full mb-[--sy-40px]">
@@ -28,16 +68,16 @@ function Page() {
           className={`${styles.btns} flex w-fit mx-auto gap-[--8px] mb-[1.5vw]`}
         >
           {/* CustomCheckBoxText component for selecting options */}
-          <CustomCheckBoxText btnSize="xl" inputType="radio" name="typeAnswer">
+          <CustomCheckBoxText btnSize="xl" inputType="radio" name="typeAnswer" value={"Health Care"}>
             Health Care
           </CustomCheckBoxText>
-          <CustomCheckBoxText btnSize="xl" inputType="radio" name="typeAnswer">
+          <CustomCheckBoxText btnSize="xl" inputType="radio" name="typeAnswer" value={"Shipping"}>
             Shipping
           </CustomCheckBoxText>
-          <CustomCheckBoxText btnSize="xl" inputType="radio" name="typeAnswer">
+          <CustomCheckBoxText btnSize="xl" inputType="radio" name="typeAnswer" value={"Company"}>
             Company
           </CustomCheckBoxText>
-          <CustomCheckBoxText btnSize="xl" inputType="radio" name="typeAnswer">
+          <CustomCheckBoxText btnSize="xl" inputType="radio" name="typeAnswer" value={"Other"}>
             Other
           </CustomCheckBoxText>
         </div>

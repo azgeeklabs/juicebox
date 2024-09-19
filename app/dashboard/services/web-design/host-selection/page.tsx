@@ -1,13 +1,54 @@
-import React from "react";
+"use client"
+import React, { useEffect } from "react";
 import styles from "./seo-campaign-endpoint.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 const Page = () => {
+
+  const all = useSelector((state:RootState)=>state.service)
+  const dispatch = useDispatch();
+  const route = useRouter();
+  const nextFunc = () => {
+    const selected = document.querySelector(
+      "input[type='radio']:checked"
+    ) as HTMLInputElement;
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (document.querySelector("input[type='radio']:checked")) {
+      itemsArray.push({
+        name: "host selection",
+        choice: (
+          document.querySelector(
+            "input[type='radio']:checked"
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "host selection",
+          choice: (
+            document.querySelector(
+              "input[type='radio']:checked"
+            ) as HTMLInputElement
+          ).value,
+        }))
+      route.push("/dashboard/services/web-design/web-design-endpoint");
+    }
+  };
+  useEffect(()=>{
+console.log(all);
+
+  },[all])
+
   return (
     <NextPrevNav
       backLink="/dashboard/services/web-design/additional-features"
-      nextLink="/dashboard/services/web-design/web-design-endpoint"
+      nextLink="/dashboard/services/web-design/web-design-endpoint" nextFunc={nextFunc}
     >
       {/* // Main container div with relative positioning */}
       <div className="h-full relative mb-[--sy-50px]">
@@ -36,6 +77,7 @@ const Page = () => {
                 btnSize="xl"
                 inputType="radio"
                 name="styleAnswer"
+                value={"Host on my Server"}
               >
                 Host on my Server
               </CustomCheckBoxText>
@@ -43,6 +85,7 @@ const Page = () => {
                 btnSize="xl"
                 inputType="radio"
                 name="styleAnswer"
+                value={"Host it for me"}
               >
                 Host it for me
               </CustomCheckBoxText>

@@ -88,7 +88,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
 
       const pushedRoute = path.filter((p, i) => i <= parsed.length);
       route.push(
-        `http://localhost:3000/dashboard/services/video-service/${
+        `/dashboard/services/video-service/${
           pushedRoute[pushedRoute.length - 1]
         }`
       );
@@ -101,7 +101,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
       console.log(path.filter((p, i) => i >= parsed.length));
       const pushedRoute = path.filter((p, i) => i >= parsed.length);
       route.push(
-        `http://localhost:3000/dashboard/services/video-service/${pushedRoute[0]}`
+        `/dashboard/services/video-service/${pushedRoute[0]}`
       );
     }
   }, [currentLocation]);

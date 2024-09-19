@@ -1,16 +1,48 @@
 "use client";
+import { RootState } from "@/app/Store/store";
 import styles from "./follower-range.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
 const CustomTypeRange = dynamic(
   () => import("@/app/_components/customTypeRange/CustomTypeRange"),
   { ssr: false }
 );
 
 function FollowerRange() {
+  const [num,setNum] = useState(0)
+  const all = useSelector((state:RootState)=>state.service)
+  const dispatch = useDispatch();
+  const route = useRouter();
+  const nextFunc = () => {
+    const selected = document.querySelector(
+      "input[type='radio']:checked"
+    ) as HTMLInputElement;
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (num) {
+      itemsArray.push({
+        name: "follower range",
+        ans: String(num),
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "follower range",
+          ans: String(num),
+        }))
+      route.push("/dashboard/services/influencer-marketing/influencer-list");
+    }
+  };
+  useEffect(()=>{
+console.log(all);
+
+  },[all])
   return (
     <NextPrevNav
-      nextLink="/dashboard/services/influencer-marketing/influencer-list"
+      nextLink="/dashboard/services/influencer-marketing/influencer-list" nextFunc={nextFunc}
       backLink="/dashboard/services/influencer-marketing/niche-selection"
     >
       <div className=" flex justify-center h-[50%] w-full">
@@ -33,7 +65,7 @@ function FollowerRange() {
             <h3 className="text-[--20px] ml-[var(--16px)] font-bold">
               Follower Range
             </h3>
-            <CustomTypeRange word="Follower" />
+            <CustomTypeRange word="Follower" setNum={setNum}/>
           </div>
         </div>
       </div>

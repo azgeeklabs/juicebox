@@ -1,18 +1,117 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./article-selection.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 const Page = () => {
   const [haveArticle, setHaveArticle] = useState(false);
+  const [inputVal, setInputVal] = useState("");
   const [doLater, setDoLater] = useState(false);
+  const all = useSelector((state: RootState) => state.service);
+  const route = useRouter();
+  const [fileSrc, setFileSrc] = useState<any>(null);
+  const dispatch = useDispatch();
+
+  const handleFileChange = (event:any) => {
+    const file = event.target.files[0];
+    setInputVal(file.name)
+    
+    if (file) {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        
+        
+        setFileSrc(fileReader.result);
+      };
+    }
+  };
+
+  const nextFunc = () => {
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (haveArticle && !doLater && inputVal) {
+      itemsArray.push({
+        name: "article",
+        choice: (
+          document.querySelector(
+            'input[type="radio"]:checked'
+          ) as HTMLInputElement
+        ).value,
+        file: `${inputVal}`,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "article",
+          choice: (
+            document.querySelector(
+              'input[type="radio"]:checked'
+            ) as HTMLInputElement
+          ).value,
+          file: `${inputVal}`,
+        }))
+      route.push("/dashboard/services/seo-link-building/advertising-details");
+    } else if (
+      !haveArticle &&
+      !doLater &&
+      document.querySelector('input[type="radio"]:checked')
+    ) {
+      itemsArray.push({
+        name: "article",
+        choice: (
+          document.querySelector(
+            'input[type="radio"]:checked'
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      
+        dispatch(addOption({
+          name: "article",
+          choice: (
+            document.querySelector(
+              'input[type="radio"]:checked'
+            ) as HTMLInputElement
+          ).value,
+        }))
+      route.push("/dashboard/services/seo-link-building/advertising-details");
+    } else if (doLater) {
+      itemsArray.push({
+        name: "article",
+        choice: (
+          document.querySelector(
+            'input[type="checkbox"]:checked'
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+     
+        dispatch(addOption({
+          name: "article",
+          choice: (
+            document.querySelector(
+              'input[type="checkbox"]:checked'
+            ) as HTMLInputElement
+          ).value,
+        }))
+      route.push("/dashboard/services/seo-link-building/advertising-details");
+    }
+  };
+  useEffect(()=>{
+    console.log(all);
+    
+    },[all])
 
   return (
     <NextPrevNav
       backLink="/dashboard/services/seo-link-building"
-      nextLink="/dashboard/services/seo-link-building/advertising-details"
+      nextLink="/dashboard/services/seo-link-building/advertising-details" nextFunc={()=>nextFunc()}
     >
       {/* // Main container div with relative positioning */}
       <div className="h-full relative">
@@ -44,14 +143,22 @@ const Page = () => {
                 btnSize="xl"
                 inputType="radio"
                 name="articleSelectionAnswer"
+                value={"I’ve got my own article"}
               >
                 I’ve got my own article
               </CustomCheckBoxText>
               <CustomCheckBoxText
-                onClick={() => setHaveArticle(false)}
+                onClick={() => {setHaveArticle(false);
+                  if (document.querySelector('input[type="checkbox"]:checked')) {
+                    (document.querySelector('input[type="checkbox"]:checked') as HTMLInputElement).checked = false;
+                    setDoLater(false)
+                  }
+                  setInputVal("")
+                }}
                 btnSize="xl"
                 inputType="radio"
                 name="articleSelectionAnswer"
+                value={"Make one for me!"}
               >
                 Make one for me!
               </CustomCheckBoxText>
@@ -65,23 +172,25 @@ const Page = () => {
               <h3 className="mb-[--sy-14px] font-semibold text-[--20px]">
                 Upload Your Copy
               </h3>
-              <div className="flex gap-[1vw] items-start mb-[1.2vw]">
-                {/* Product Link input field */}
+              <div className="flex gap-[1vw] items-start mb-[--sy-24px]">
+              {/* Input field for uploading footage with full height, bottom margin, specific width, background color, outline removal, rounded corners, padding, and placeholder styling */}
+              <div className="relative h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.889vh] text-[#FFFFFFCC] cursor-pointer">
+                {inputVal ? inputVal : "Upload Article"}
                 <input
+                  type="file"
+                  id="upload"
+                  className="pointer-events-none absolute opacity-0 inset-0 cursor-pointer"
+                  onChange={(e)=>{handleFileChange(e)}}
                   disabled={haveArticle ? false : true}
-                  type="text"
-                  placeholder="Upload Article"
-                  className="flex-grow h-full mb-[1vw] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.5vw] placeholder:text-[#FFFFFFCC]"
+                  
                 />
-
-                {/* Paste Link button */}
-                <button
-                  disabled={haveArticle ? false : true}
-                  className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.4vw] text-black rounded-[var(--33px)] font-bold"
-                >
-                  Upload
-                </button>
               </div>
+
+              {/* Button for uploading footage with background color, padding, text color, and rounded corners */}
+              <label htmlFor="upload" className="cursor-pointer font-bold bg-[var(--highlight-yellow)] px-[1.892vw] py-[--sy-10px] text-black rounded-[var(--33px)]">
+                Upload
+              </label>
+            </div>
               {/* Link component for saving progress */}
               <div
                 className={`relative block w-fit mx-auto px-[0.52vw] py-[0.3vw] ${
@@ -92,7 +201,8 @@ const Page = () => {
                 <input
                   disabled={haveArticle ? false : true}
                   type="checkbox"
-                  name="dontHaveChannel"
+                  name="I’ll do this later"
+                  value={"I’ll do this later"}
                   className={`absolute opacity-0 inset-0 ${
                     haveArticle ? "cursor-pointer" : ""
                   }`}

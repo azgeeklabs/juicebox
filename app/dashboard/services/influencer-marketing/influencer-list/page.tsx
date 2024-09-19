@@ -1,7 +1,11 @@
 "use client";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import styles from "./influencer-list.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 function InfluencerList() {
   // State to keep track of selected influencers
@@ -22,9 +26,47 @@ function InfluencerList() {
     }
   };
 
+  const all = useSelector((state: RootState) => state.service);
+  const dispatch = useDispatch();
+  const route = useRouter();
+  const nextFunc = () => {
+    console.log("//////////////////////");
+    const selected = document.querySelector(
+      "input[type='radio']:checked"
+    ) as HTMLInputElement;
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (document.querySelector("input[type='checkbox']:checked")) {
+      console.log(Array.from(
+        document.querySelectorAll("input[type='checkbox']:checked")
+      ).map((e, i) => (e as HTMLInputElement).value).join(","));
+      
+      itemsArray.push({
+        name: "influencer list",
+        choice: Array.from(
+          document.querySelectorAll("input[type='checkbox']:checked")
+        ).map((e, i) => (e as HTMLInputElement).value).join(",")
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      dispatch(
+        addOption({
+          name: "influencer list",
+          choice: Array.from(
+            document.querySelectorAll("input[type='checkbox']:checked")
+          ).map((e, i) => (e as HTMLInputElement).value).join(",")
+        })
+      );
+      route.push("/dashboard/services/influencer-marketing/campaign-budget");
+    }
+  };
+  useEffect(() => {
+    console.log(all);
+  }, [all]);
+
   return (
     <NextPrevNav
       backLink="/dashboard/services/influencer-marketing/follower-range"
+      nextFunc={nextFunc}
       nextLink="/dashboard/services/influencer-marketing/campaign-budget"
     >
       {/* Main container for the influencer list */}

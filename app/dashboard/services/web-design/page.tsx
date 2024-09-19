@@ -4,6 +4,10 @@ import styles from "./web-design.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 const Page = () => {
   const [haveWebsite, setHaveWebsite] = useState(false);
@@ -11,18 +15,103 @@ const Page = () => {
   const [doLater, setDoLater] = useState(false);
 
   const [pastedText, setPastedText] = useState<string>("");
+  const [inputVal, setInputVal] = useState("");
+
+  
+  const all = useSelector((state: RootState) => state.service);
+  const route = useRouter();
+  const dispatch = useDispatch();
 
   const handlePaste = async () => {
     try {
       const text = await navigator.clipboard.readText();
       setPastedText(text);
+      setInputVal(text);
     } catch (error) {
       console.error("Failed to read clipboard contents: ", error);
     }
   };
+ 
+
+  console.log(document.querySelector('input[type="checkbox"]:checked'));
+
+  const nextFunc = () => {
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (haveWebsite && !doLater && pastedText) {
+      itemsArray.push({
+        name: "redesign or build website",
+        choice: (
+          document.querySelector(
+            'input[type="radio"]:checked'
+          ) as HTMLInputElement
+        ).value,
+        ans: `${pastedText}`,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "redesign or build website",
+          choice: (
+            document.querySelector(
+              'input[type="radio"]:checked'
+            ) as HTMLInputElement
+          ).value,
+          ans: `${pastedText}`,
+        }))
+      route.push("/dashboard/services/web-design/website-type");
+    } else if (
+      !haveWebsite &&
+      !doLater &&
+      document.querySelector('input[type="radio"]:checked')
+    ) {
+      itemsArray.push({
+        name: "redesign or build website",
+        choice: (
+          document.querySelector(
+            'input[type="radio"]:checked'
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      
+        dispatch(addOption({
+          name: "redesign or build website",
+          choice: (
+            document.querySelector(
+              'input[type="radio"]:checked'
+            ) as HTMLInputElement
+          ).value,
+        }))
+      route.push("/dashboard/services/web-design/website-type");
+    } else if (doLater) {
+      itemsArray.push({
+        name: "redesign or build website",
+        choice: (
+          document.querySelector(
+            'input[type="checkbox"]:checked'
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+     
+        dispatch(addOption({
+          name: "redesign or build website",
+          choice: (
+            document.querySelector(
+              'input[type="checkbox"]:checked'
+            ) as HTMLInputElement
+          ).value,
+        }))
+      route.push("/dashboard/services/web-design/website-type");
+    }
+  };
+  useEffect(()=>{
+    console.log(all);
+    
+    },[all])
 
   return (
-    <NextPrevNav nextLink="/dashboard/services/web-design/website-type">
+    <NextPrevNav nextLink="/dashboard/services/web-design/website-type" nextFunc={()=>nextFunc()}>
       {/* // Main container div with relative positioning */}
       <div className="h-full relative">
         {/* Inner container for the video end point section with custom styles */}
@@ -55,14 +144,23 @@ const Page = () => {
                 btnSize="xl"
                 inputType="radio"
                 name="styleAnswer"
+                value={"Redesign my Website"}
               >
                 Redesign my Website
               </CustomCheckBoxText>
               <CustomCheckBoxText
-                onClick={() => setHaveWebsite(false)}
+                onClick={() => {setHaveWebsite(false);
+                  if (document.querySelector('input[type="checkbox"]:checked')) {
+                    (document.querySelector('input[type="checkbox"]:checked') as HTMLInputElement).checked = false;
+                    setDoLater(false)
+                  }
+                  setInputVal("")
+                  setPastedText("")
+                }}
                 btnSize="xl"
                 inputType="radio"
                 name="styleAnswer"
+                value={"Build my website"}
               >
                 Build my website
               </CustomCheckBoxText>
@@ -108,7 +206,8 @@ const Page = () => {
                 <input
                   disabled={haveWebsite ? false : true}
                   type="checkbox"
-                  name="dontHaveChannel"
+                  name="I’ll do this later"
+                  value={"I’ll do this later"}
                   className={`absolute opacity-0 inset-0 ${
                     haveWebsite ? "cursor-pointer" : ""
                   }`}

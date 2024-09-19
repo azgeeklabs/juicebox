@@ -4,9 +4,28 @@ import styles from "./monetizeImpressions.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 const Page = () => {
-    const router = useRouter()
+  const router = useRouter();
+  const all = useSelector((state:RootState)=>state.service)
+    const dispatch = useDispatch();
+  const nextFunc = () => {
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+  
+      itemsArray.push({
+        name: "monetize impressions",
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      dispatch(addOption({
+        name: "monetize impressions",
+      }));
+      router.push("/dashboard/services/pr-monetization/monetize-followers");
+    
+  };
   return (
     <div className={`${styles.monetizeImpressions} h-full w-full flex flex-col justify-between`}>
       <div className="h-full relative mb-[--sy-50px]">
@@ -38,6 +57,10 @@ const Page = () => {
         </Link>
         <Link
           href={"/dashboard/services/pr-monetization/monetize-followers"}
+          onClick={(e)=>{
+            e.preventDefault();
+            nextFunc()
+          }}
           className=" bg-[var(--highlight-yellow)] text-black px-[2vw] py-[0.889vh] w-fit rounded-[var(--41px)] font-semibold"
         >
           Next

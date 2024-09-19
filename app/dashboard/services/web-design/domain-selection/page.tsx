@@ -1,14 +1,23 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./domain-selection.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 const Page = () => {
   const [haveWebsite, setHaveWebsite] = useState(false);
   const [doLater, setDoLater] = useState(false);
   const [pastedText, setPastedText] = useState<string>("");
+  const [mesg,setMesg] = useState("")
+  const all = useSelector((state: RootState) => state.service);
+  const route = useRouter();
+  const dispatch = useDispatch();
 
   const handlePaste = async () => {
     try {
@@ -19,9 +28,106 @@ const Page = () => {
     }
   };
 
+  const nextFunc = () => {
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (haveWebsite && !doLater && pastedText) {
+      itemsArray.push({
+        name: "website domain",
+        choice: (
+          document.querySelector(
+            'input[type="radio"]:checked'
+          ) as HTMLInputElement
+        ).value,
+        ans: `${pastedText}`,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "website domain",
+          choice: (
+            document.querySelector(
+              'input[type="radio"]:checked'
+            ) as HTMLInputElement
+          ).value,
+          ans: `${pastedText}`,
+        }))
+      route.push("/dashboard/services/web-design/website-technology");
+    } else if (
+      !haveWebsite &&
+      !doLater &&
+      document.querySelector('input[type="radio"]:checked') &&
+      pastedText &&
+      mesg == "Domain available"
+    ) {
+      itemsArray.push({
+        name: "website domain",
+        choice: (
+          document.querySelector(
+            'input[type="radio"]:checked'
+          ) as HTMLInputElement
+        ).value,
+        ans: `${pastedText}`,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      
+        dispatch(addOption({
+          name: "website domain",
+          choice: (
+            document.querySelector(
+              'input[type="radio"]:checked'
+            ) as HTMLInputElement
+          ).value,
+          ans: `${pastedText}`,
+        }))
+      route.push("/dashboard/services/web-design/website-technology");
+    } else if (doLater) {
+      itemsArray.push({
+        name: "website domain",
+        choice: (
+          document.querySelector(
+            'input[type="checkbox"]:checked'
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+     
+        dispatch(addOption({
+          name: "website domain",
+          choice: (
+            document.querySelector(
+              'input[type="checkbox"]:checked'
+            ) as HTMLInputElement
+          ).value,
+        }))
+      route.push("/dashboard/services/web-design/website-technology");
+    }
+  };
+  useEffect(()=>{
+    console.log(all);
+    
+    },[all])
+
+  async function checkDomain() {
+    try {
+      const data:any = await axios.post('http://juicebox-env.eba-sfhwtshs.us-east-1.elasticbeanstalk.com/api/v1/services/validate-domain',{
+        domain:pastedText
+      },{
+        headers:{
+          Authorization:`Bearer ${localStorage.getItem("token")}`
+        }
+      })
+      console.log(data);
+      setMesg(data?.data?.message)
+      
+    } catch (error:any) {
+      console.log(error,"//////error//////");
+      setMesg(error?.response?.data?.message)
+    }
+  }
+
   return (
     <NextPrevNav
-      backLink="/dashboard/services/web-design/website-type"
+      backLink="/dashboard/services/web-design/website-type" nextFunc={()=>nextFunc()}
       nextLink="/dashboard/services/web-design/website-technology"
     >
       {/* // Main container div with relative positioning */}
@@ -51,6 +157,7 @@ const Page = () => {
                 btnSize="xl"
                 inputType="radio"
                 name="styleAnswer"
+                value={"I have a domain"}
               >
                 I have a domain
               </CustomCheckBoxText>
@@ -59,6 +166,7 @@ const Page = () => {
                 btnSize="xl"
                 inputType="radio"
                 name="styleAnswer"
+                value={"Make one for me"}
               >
                 Make one for me
               </CustomCheckBoxText>
@@ -68,18 +176,18 @@ const Page = () => {
             <hr className={styles.divider} />
 
             <div
-              className={`mx-auto w-full ${
-                haveWebsite ? "" : "grayscale-[50%] opacity-50"
-              }`}
+              className={`mx-auto w-full`}
             >
               {/* Product Link field with optional span */}
-              <h3 className="mb-[--sy-14px] text-[--20px] font-semibold">Website URL</h3>
+              <h3 className="mb-[--sy-14px] text-[--20px] font-semibold">{haveWebsite ? "Website URL" : "Enter your domain"}</h3>
               <div className="flex gap-[1vw] items-start mb-[1.2vw]">
                 {/* Product Link input field */}
                 <input
-                  disabled={haveWebsite ? false : true}
                   value={pastedText}
                   onChange={(e) => setPastedText(e.target.value)}
+                  onKeyDown={()=>{if (!haveWebsite) {
+                    checkDomain()
+                  }}}
                   type="text"
                   placeholder="URL"
                   className="flex-grow h-full mb-[1vw] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.5vw] placeholder:text-[#FFFFFFCC]"
@@ -91,23 +199,20 @@ const Page = () => {
                   disabled={haveWebsite ? false : true}
                   className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.4vw] text-black rounded-[var(--33px)]"
                 >
-                  Paste Link
+                  {haveWebsite ? "Paste Link" : "checking domain"}
                 </button>
               </div>
+              <p className=" text-[--10px] text-[#F8F24B] -translate-y-[--sy-30px] ml-[--8px]">{mesg}</p>
               {/* Link component for saving progress */}
               <div
-                className={`relative block w-fit mx-auto px-[0.52vw] py-[0.3vw] ${
-                  haveWebsite && "hover:bg-[#484848]"
-                } rounded-[var(--32px)] transition-all duration-200 underline`}
+                className={`relative block w-fit mx-auto px-[0.52vw] py-[0.3vw] rounded-[var(--32px)] transition-all duration-200 underline`}
               >
                 I’ll do this later
                 <input
-                  disabled={haveWebsite ? false : true}
                   type="checkbox"
-                  name="dontHaveChannel"
-                  className={`absolute opacity-0 inset-0 ${
-                    haveWebsite ? "cursor-pointer" : ""
-                  }`}
+                  name="I’ll do this later"
+                  value={"I’ll do this later"}
+                  className={`absolute opacity-0 inset-0 cursor-pointer`}
                   onChange={() => setDoLater((prev) => !prev)}
                 />
               </div>

@@ -30,15 +30,16 @@
 .promoOptions .btns > div > div {
   padding: var(--sy-18px) 2.5vw;
   font-size: var(--18px);
-  font-weight: 600;
+  font-weight: 500;
   transition: all 0.2s;
 }
 .promoOptions .btns input:checked + div {
   font-size: var(--18px);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .promoOptions div:has(> input:checked:first-child:last-child) {
   background-color: var(--highlight-yellow);
   color: var(--primary-black);
+  font-weight: 700;
 }
