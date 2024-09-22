@@ -2,15 +2,47 @@
 import classNames from "classnames";
 import styles from "./suspended-account.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { addOption } from "@/app/reducers/serviceSlice";
+import { useRouter } from "next/navigation";
 
 function SuspendedAccount() {
   const [email, setEmail] = useState("");
+  const router = useRouter()
+
+  const all = useSelector((state:RootState)=>state.service)
+  const dispatch = useDispatch();
+  const nextFunc = () => {
+    console.log("//////////////////////");
+    const selected = document.querySelector(
+      "input[type='radio']:checked"
+    ) as HTMLInputElement;
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (email) {
+      itemsArray.push({
+        name: "associated email",
+        ans: email
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "associated email",
+          ans: email
+        }))
+      router.push("/dashboard/services/orm-account-recovery/suspension-approvel");
+    }
+  };
+  useEffect(()=>{
+console.log(all);
+
+  },[all])
 
   return (
     <NextPrevNav
       backLink="/dashboard/services/orm-account-recovery/suspended-date"
-      nextLink="/dashboard/services/orm-account-recovery/suspension-approvel"
+      nextLink="/dashboard/services/orm-account-recovery/suspension-approvel" nextFunc={nextFunc}
     >
       {/* Inner container with full height and center alignment */}
       <div className="h-[50%] flex justify-center">

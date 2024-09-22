@@ -4,7 +4,10 @@ import styles from "./landingPageLink.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 function Page() {
   const router = useRouter();
@@ -18,9 +21,37 @@ function Page() {
       console.error("Failed to read clipboard contents: ", error);
     }
   };
+
+  const all = useSelector((state:RootState)=>state.service)
+  const dispatch = useDispatch();
+  const nextFunc = () => {
+    console.log("//////////////////////");
+    const selected = document.querySelector(
+      "input[type='radio']:checked"
+    ) as HTMLInputElement;
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (pastedText) {
+      itemsArray.push({
+        name: "landing page link",
+        ans: pastedText
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "landing page link",
+          ans: pastedText
+        }))
+      router.push("/dashboard/services/email-marketing/email-contacts");
+    }
+  };
+  useEffect(()=>{
+console.log(all);
+
+  },[all])
+
   return (
     <NextPrevNav
-      nextLink="/dashboard/services/email-marketing/email-contacts"
+      nextLink="/dashboard/services/email-marketing/email-contacts" nextFunc={nextFunc}
       backLink="/dashboard/services/email-marketing/email-campaign"
     >
       <div

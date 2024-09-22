@@ -1,15 +1,125 @@
 "use client";
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./estimatedCost.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import { useRouter } from "next/navigation";
+import { accountRecoveryContext } from "../_accountRecoveryContext/_accountRecoveryContext";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 const Page = () => {
+  const [saveProgress, setSaveProgress] = useState(false);
+  const { isSexual } = useContext(accountRecoveryContext);
   const router = useRouter();
+//   useEffect(()=>{
+// if (isSexual) {
+//   router.push("/dashboard/services/orm-account-recovery/reject-recovery")
+// }
+//   },[])
+
+  const dispatch = useDispatch();
+  const route = useRouter();
+
+  async function makeService() {
+    const optionsItems = localStorage.getItem("selectedOption");
+    const optionsArray = optionsItems ? JSON.parse(optionsItems) : [];
+    console.log(optionsArray,"//////////optionsArray/////////////");
+    if (document.querySelector("input[type='radio']:checked")) {
+      optionsArray.push({
+        name: "estimated cost",
+        choice: (
+          document.querySelector(
+            "input[type='radio']:checked"
+          ) as HTMLInputElement
+        ).value,
+      });
+    } else if (document.querySelector("input[type='checkbox']:checked")) {
+      optionsArray.push({
+        name: "estimated cost",
+        choice: (
+          document.querySelector(
+            "input[type='checkbox']:checked"
+          ) as HTMLInputElement
+        ).value,
+      });
+    }
+    console.log({
+      type:"orm-account-recovery",
+      totalSteps:6,
+      options:optionsArray
+    })
+    
+    
+    try {
+      const data = await axios.post(`http://juicebox-env.eba-sfhwtshs.us-east-1.elasticbeanstalk.com/api/v1/services/initialize-service`,{
+        type:"orm-account-recovery",
+        totalSteps:6,
+        options:optionsArray
+      },{
+        headers:{
+          "Content-Type": "multipart/form-data",
+            Authorization: `Token ${localStorage.getItem("token")}`,
+        }
+      })
+      console.log(data);
+      const storedItems = localStorage.getItem("selectedOption");
+      const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+      if (document.querySelector("input[type='radio']:checked")) {
+        itemsArray.push({
+          name: "estimated cost",
+          choice: (
+            document.querySelector(
+              "input[type='radio']:checked"
+            ) as HTMLInputElement
+          ).value,
+        });
+        localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+       
+          dispatch(addOption({
+            name: "estimated cost",
+            choice: (
+              document.querySelector(
+                "input[type='radio']:checked"
+              ) as HTMLInputElement
+            ).value,
+          }))
+      route.push("/dashboard/services");
+
+      } else if (document.querySelector("input[type='checkbox']:checked")) {
+        itemsArray.push({
+          name: "estimated cost",
+          choice: (
+            document.querySelector(
+              "input[type='checkbox']:checked"
+            ) as HTMLInputElement
+          ).value,
+        });
+        localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "estimated cost",
+          choice: (
+            document.querySelector(
+              "input[type='checkbox']:checked"
+            ) as HTMLInputElement
+          ).value,
+        }))
+      route.push("/dashboard/services");
+      }
+      
+    } catch (error) {
+      console.log(error,"////////////error////////////");
+      
+    }
+  }
+  const nextFunc = () => {
+      makeService()
+  };
+
   return (
     // Main container div with relative positioning
-    <NextPrevNav nextLink="/dashboard/services" nextText="All Done">
+    <NextPrevNav nextLink="/dashboard/services" nextText="All Done" nextFunc={nextFunc}>
       <div className="h-full relative w-full">
         {/* Inner container for the video end point section with custom styles */}
         <div
@@ -36,6 +146,8 @@ const Page = () => {
                 btnSize="xl"
                 inputType="radio"
                 name="estimatedCost"
+                value={"Book a call"}
+                onClick={()=> document.querySelectorAll("input[type='checkbox']:checked").forEach((e,i)=>(e as HTMLInputElement).checked = false)}
               >
                 Book a call
               </CustomCheckBoxText>
@@ -43,14 +155,19 @@ const Page = () => {
                 btnSize="xl"
                 inputType="radio"
                 name="estimatedCost"
+                value={"Start Now!"}
+                onClick={()=> document.querySelectorAll("input[type='checkbox']:checked").forEach((e,i)=>(e as HTMLInputElement).checked = false)}
               >
                 Start Now!
               </CustomCheckBoxText>
             </div>
 
             {/* Link component for saving progress */}
-            <button className="block w-fit mx-auto !font-normal px-[0.52vw] py-[0.3vw] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200">
+            <button className="cursor-pointer block w-fit mx-auto px-[0.52vw] relative py-[0.533vh] hover:bg-[#484848] !font-medium rounded-[var(--32px)] transition-all duration-200 underline">
               Save my Progress
+              <input type="checkbox" className=" inset-0 absolute opacity-0 cursor-pointer" value={"Save my Progress"} onChange={() => {setSaveProgress((prev) => !prev)
+                }}
+                onClick={()=>document.querySelectorAll("input[type='radio']:checked").forEach((e,i)=>(e as HTMLInputElement).checked = false)}/>
             </button>
           </div>
         </div>

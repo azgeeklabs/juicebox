@@ -4,13 +4,60 @@ import styles from "./suspension-approvel.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import { useContext, useEffect, useState } from "react";
 import { accountRecoveryContext } from "../_accountRecoveryContext/_accountRecoveryContext";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 function SuspensionApprovel() {
   const { isSexual } = useContext(accountRecoveryContext);
+  const [inputVal, setInputVal] = useState("");
+  const all = useSelector((state: RootState) => state.service);
+  const route = useRouter();
+  const [fileSrc, setFileSrc] = useState<any>(null);
+  const dispatch = useDispatch();
+
+  const handleFileChange = (event:any) => {
+    const file = event.target.files[0];
+    setInputVal(file.name)
+    
+    if (file) {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        setFileSrc(fileReader.result);
+      };
+    }
+  };
+
+  const nextFunc = () => {
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (inputVal) {
+      itemsArray.push({
+        name: "suspended email",
+        file: `${inputVal}`,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "suspended email",
+          file: `${inputVal}`,
+        }))
+      route.push(`${
+        isSexual
+          ? "/dashboard/services/orm-account-recovery/reject-recovery"
+          : "/dashboard/services/orm-account-recovery/estimated-cost"
+      }`);
+    }
+  };
+  useEffect(()=>{
+    console.log(all);
+    
+    },[all])
 
   return (
     <NextPrevNav
-      backLink="/dashboard/services/orm-account-recovery/suspended-account/"
+      backLink="/dashboard/services/orm-account-recovery/suspended-account/" nextFunc={nextFunc}
       nextLink={
         isSexual
           ? "/dashboard/services/orm-account-recovery/reject-recovery"
@@ -44,21 +91,23 @@ function SuspensionApprovel() {
             <h3 className="mb-[--24px]">Upload Screenshot</h3>
 
             {/* Container for input field and button with flexbox layout, gap, and bottom margin */}
-            <div className="flex gap-[1vw] items-start">
-              {/* Input field with full height, bottom margin, specific width, background color, outline removal, rounded corners, padding, and placeholder styling */}
-              <div className="relative grow  h-full bg-[var(--dark-gray-3)] outline-none rounded-[--10px] pl-[--35px] px-[1.088vw] py-[1vh] placeholder:text-[#FFFFFF80]">
-                <input
-                  type="file"
-                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                />
-                <p>email</p>
-              </div>
+            <div className="flex gap-[1vw] items-start mb-[2.667vh]">
+                {/* Channel URL input field */}
+                <div className="relative h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.889vh] text-[#FFFFFF80] cursor-pointer">
+                  {inputVal ? inputVal : "email"}
+                  <input
+                    onChange={handleFileChange}
+                    id="upload"
+                    type="file"
+                    className="absolute opacity-0 inset-0 cursor-pointer"
+                  />
+                </div>
 
-              {/* Button with background color, padding, text color, and rounded corners */}
-              <button className="bg-[var(--highlight-yellow)] font-bold px-[1.3vw] py-[0.911vh] text-black rounded-[var(--33px)]">
+                {/* Paste Link button */}
+                <label htmlFor="upload" className="cursor-pointer font-bold bg-[var(--highlight-yellow)] px-[1.892vw] py-[--sy-10px] text-black rounded-[var(--33px)]">
                 Upload
-              </button>
-            </div>
+              </label>
+              </div>
           </div>
           <div className="w-full">
             <span className="flex items-center gap-[--16px] bg-[#373737] py-[var(--sy-10px)] pl-[var(--20px)] pr-[var(--11px)] rounded-[--15px] text-[#E4E4E4]  w-full border-l-[--3px] border-[var(--highlight-yellow)]">

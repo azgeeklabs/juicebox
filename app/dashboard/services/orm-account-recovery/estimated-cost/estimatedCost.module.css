@@ -25,12 +25,12 @@
 .estimatedCost .btns > div > div {
     padding: 1.422vh 1vw;
     font-size: var(--18px);
-    font-weight: 600;
+    font-weight: 500;
     transition: all 0.2s;
 }
 .estimatedCost .btns input:checked + div {
     font-size: var(--18px);
-    font-weight: 600;
+    font-weight: 700;
 
 }
 .estimatedCost h2 span {
@@ -44,3 +44,8 @@
 .estimatedCost button {
   font-size: clamp(12px, calc(0.7vw + 0.1rem), 100px);  
 }
+.estimatedCost button:has(input[type="checkbox"]:checked) {
+  background: #F8F24B;
+  color: #1c1c1c;
+  font-weight: 700 !important;
+ }

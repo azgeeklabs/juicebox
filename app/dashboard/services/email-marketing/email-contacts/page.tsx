@@ -5,8 +5,11 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import CustomCheckBox from "@/app/_components/customCheckBox/CustomCheckBox";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 function Page() {
   const router = useRouter();
@@ -15,9 +18,64 @@ function Page() {
   const [contactList, setContactList] = useState<boolean>(true);
   const [showDropdown, setShowDropdown] = useState(false);
   const [shownValue, setShownValue] = useState(0);
+
+  const all = useSelector((state:RootState)=>state.service)
+  const dispatch = useDispatch();
+  const nextFunc = () => {
+    const selected = document.querySelector(
+      "input[type='radio']:checked"
+    ) as HTMLInputElement;
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    
+    if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement)?.value == "I have a list") {
+      itemsArray.push({
+        name: "email contacts",
+        choice:(document.querySelector("input[type='radio']:checked") as HTMLInputElement).value,
+        ans: String(shownValue),
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "email contacts",
+          choice: (
+            document.querySelector(
+              "input[type='radio']:checked"
+            ) as HTMLInputElement
+          ).value,
+          ans:String(shownValue)
+        }))
+      router.push("/dashboard/services/email-marketing/campaign-implementation");
+    } else if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement)?.value == "Provide email leads") {
+      itemsArray.push({
+        name: "email contacts",
+        choice: (
+          document.querySelector(
+            "input[type='radio']:checked"
+          ) as HTMLInputElement
+        ).value,
+        ans:String(shownValue)
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "email contacts",
+          choice: (
+            document.querySelector(
+              "input[type='radio']:checked"
+            ) as HTMLInputElement
+          ).value,
+        ans:String(shownValue)
+        }))
+      router.push("/dashboard/services/email-marketing/campaign-implementation");
+    }
+  };
+  useEffect(()=>{
+console.log(all);
+
+  },[all])
+
   return (
     <NextPrevNav
-      nextLink="/dashboard/services/email-marketing/campaign-implementation"
+      nextLink="/dashboard/services/email-marketing/campaign-implementation" nextFunc={nextFunc}
       backLink="/dashboard/services/email-marketing/landing-page-link"
     >
       <div
@@ -52,6 +110,7 @@ function Page() {
                   inputType="radio"
                   name="contactsAnswer"
                   checked = {contactList}
+                  value={"I have a list"}
                 >
                   I have a list
                 </CustomCheckBoxText>
@@ -63,6 +122,7 @@ function Page() {
                   inputType="radio"
                   name="contactsAnswer"
                   checked = {!contactList}
+                  value={"Provide email leads"}
 
                 >
                   Provide email leads

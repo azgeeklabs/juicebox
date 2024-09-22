@@ -1,7 +1,13 @@
+"use client"
 import classNames from "classnames";
 import styles from "./ORM-account-recovery.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
+import { useEffect } from "react";
 
 function AccountRecovery() {
   const data = [
@@ -116,8 +122,43 @@ function AccountRecovery() {
     },
   ];
 
+  const all = useSelector((state:RootState)=>state.service)
+  const dispatch = useDispatch();
+  const route = useRouter();
+  const nextFunc = () => {
+    console.log("//////////////////////");
+    const selected = document.querySelector(
+      "input[type='radio']:checked"
+    ) as HTMLInputElement;
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (document.querySelector("input[type='radio']:checked")) {
+      itemsArray.push({
+        name: "account to recover",
+        choice: (
+          document.querySelector(
+            "input[type='radio']:checked"
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "account to recover",
+          choice: (
+            document.querySelector(
+              "input[type='radio']:checked"
+            ) as HTMLInputElement
+          ).value,
+        }))
+      route.push("/dashboard/services/orm-account-recovery/suspension-reason");
+    }
+  };
+  useEffect(()=>{
+console.log(all);
+
+  },[all])
   return (
-    <NextPrevNav nextLink="/dashboard/services/orm-account-recovery/suspension-reason">
+    <NextPrevNav nextLink="/dashboard/services/orm-account-recovery/suspension-reason" nextFunc={nextFunc}>
       <div
         className={classNames(
           "flex flex-col gap-[var(--45px)] mx-auto items-center h-[50%]",
@@ -141,7 +182,7 @@ function AccountRecovery() {
         >
           {data.map((item, i) => (
             <>
-              <CustomCheckBoxText btnSize="md" inputType="checkbox">
+              <CustomCheckBoxText btnSize="md" name="accountName" inputType="radio" value={item.title}>
                 <div
                   className={classNames(
                     "flex items-center font-bold gap-[var(--12px)]",

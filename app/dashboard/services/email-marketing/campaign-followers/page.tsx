@@ -5,15 +5,44 @@ import Link from "next/link";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 // import CustomTypeRange from "@/app/_components/customTypeRange/CustomTypeRange";
 import dynamic from "next/dynamic";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
 const CustomTypeRange = dynamic(
   () => import("@/app/_components/customTypeRange/CustomTypeRange"),
   { ssr: false }
 );
 
 const Page = () => {
+  const [num,setNum] = useState(0)
+  const all = useSelector((state:RootState)=>state.service)
+  const dispatch = useDispatch();
+  const route = useRouter();
+  const nextFunc = () => {
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (num) {
+      itemsArray.push({
+        name: "follow ups number",
+        ans: `${String(num)} Follow Up`,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "follow ups number",
+          ans: `${String(num)} Follow Up`,
+        }))
+      route.push("/dashboard/services/email-marketing/emailEndPoint");
+    }
+  };
+  useEffect(()=>{
+console.log(all);
+
+  },[all])
+
   return (
     <NextPrevNav
-      nextLink="/dashboard/services/email-marketing/emailEndPoint"
+      nextLink="/dashboard/services/email-marketing/emailEndPoint" nextFunc={nextFunc}
       backLink="/dashboard/services/email-marketing/campaign-implementation"
     >
       <div className=" flex justify-center items-center h-full w-full mb-[--sy-60px]">
@@ -36,7 +65,7 @@ const Page = () => {
           {/* Container for the duration indicator with custom background, width, height, and margin */}
 
           <div className=" w-full md:w-1/2 mx-auto">
-            <CustomTypeRange word="Follow Up" max={100}/>
+            <CustomTypeRange word="Follow Up" max={100} setNum={setNum}/>
           </div>
         </div>
       </div>

@@ -8,12 +8,19 @@ import dayjs from "dayjs";
 import styles from "./suspended-date.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import classNames from "classnames";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 const suspendedDate = () => {
-  const [selectedDay, setSelectedDay] = useState<string>("");
-  const [selectedMonth, setSelectedMonth] = useState<string>("");
-  const [selectedYear, setSelectedYear] = useState<string>("");
+  console.log(new Date().getMonth().toString());
+  
+  const [selectedDay, setSelectedDay] = useState<string>(`${new Date().getDate().toString()}${getOrdinal(new Date().getDate())}`);
+  const [selectedMonth, setSelectedMonth] = useState<string>(`${(new Date().getMonth() + 1).toString()}`);
+  const [selectedYear, setSelectedYear] = useState<string>(`${new Date().getFullYear().toString()}`);
   const [changedDate, setChangedDate] = useState<string>("");
+  const [isChanged,setIsChanged] = useState<boolean>(false)
 
   const monthsDays = [
     {
@@ -109,6 +116,7 @@ const suspendedDate = () => {
   }
   const handleMonthChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedMonth(e.target.value);
+    setIsChanged(true)
   };
 
   const currentYear = new Date().getFullYear();
@@ -148,11 +156,35 @@ const suspendedDate = () => {
     }
   }, [selectedDay, selectedMonth, selectedYear]);
 
+  const all = useSelector((state:RootState)=>state.service)
+  const dispatch = useDispatch();
+  const route = useRouter();
+  const nextFunc = () => {
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (isChanged) {
+      itemsArray.push({
+        name: "suspension date",
+        ans: `${Number(selectedDay.replace(/(st|nd|rd|th)$/i, "")) < 10 ? "0"+Number(selectedDay.replace(/(st|nd|rd|th)$/i, "")) : Number(selectedDay.replace(/(st|nd|rd|th)$/i, ""))}-${Number(selectedMonth) < 10 ? "0"+selectedMonth : selectedMonth}-${selectedYear}`,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "suspension date",
+          ans: `${Number(selectedDay.replace(/(st|nd|rd|th)$/i, "")) < 10 ? "0"+Number(selectedDay.replace(/(st|nd|rd|th)$/i, "")) : Number(selectedDay.replace(/(st|nd|rd|th)$/i, ""))}-${Number(selectedMonth) < 10 ? "0"+selectedMonth : selectedMonth}-${selectedYear}`,
+        }))
+      route.push("/dashboard/services/orm-account-recovery/suspended-account");
+    }
+  };
+  useEffect(()=>{
+console.log(all);
+
+  },[all])
+
   const [disabled, setDisabled] = useState(true);
 
   return (
     <NextPrevNav
-      nextLink="/dashboard/services/orm-account-recovery/suspended-account"
+      nextLink="/dashboard/services/orm-account-recovery/suspended-account" nextFunc={nextFunc}
       backLink="/dashboard/services/orm-account-recovery/suspension-reason"
     >
       <div
@@ -176,7 +208,9 @@ const suspendedDate = () => {
               <div className=" mb-[2vh]">
                 <div className=" flex items-center gap-[--16px]">
                   <select
-                    onChange={(e) => setSelectedDay(e.target.value)}
+                    onChange={(e) => {setSelectedDay(e.target.value)
+                      setIsChanged(true)
+                    }}
                     value={selectedDay}
                   >
                     {selectedMonth
@@ -203,7 +237,9 @@ const suspendedDate = () => {
                   </select>
 
                   <select
-                    onChange={(e) => setSelectedYear(e.target.value)}
+                    onChange={(e) => {setSelectedYear(e.target.value)
+                      setIsChanged(true)
+                    }}
                     value={selectedYear}
                   >
                     {years.map((year) => (
@@ -258,11 +294,15 @@ const suspendedDate = () => {
                 <section className="overflow-x-hidden overflow-y-auto py-[--sy-5px] w-[90%]">
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DateCalendar
-                      value={dayjs(changedDate)}
                       disabled={disabled}
                       onChange={(e) => {
                         console.log(e);
                         setChangedDate(`${e.$y}-${e.$M + 1}-${e.$D}`);
+                        setSelectedDay(String(`${e.$D}${getOrdinal(e.$D)}`))
+                        console.log(e.$M);
+                        console.log(monthsDays[parseInt(e.$M+1) - 1].days);
+                        setSelectedMonth(e.$M+1)
+                        setSelectedYear(String(e.$y))
                       }}
                       slots={{
                         rightArrowIcon: RightArrow,

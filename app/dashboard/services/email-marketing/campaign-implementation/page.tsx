@@ -1,11 +1,47 @@
+"use client"
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./implementation.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 const page = () => {
+
+  const all = useSelector((state:RootState)=>state.service)
+  const dispatch = useDispatch();
+  const route = useRouter();
+  const nextFunc = () => {
+    console.log("//////////////////////");
+    const selected = document.querySelector(
+      "input[type='radio']:checked"
+    ) as HTMLInputElement;
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (document.querySelector("input[type='checkbox']:checked")) {
+      const checkedValues = Array.from(document.querySelectorAll("input[type='checkbox']:checked"))
+  .map((checkbox) => (checkbox as HTMLInputElement).value);
+      itemsArray.push({
+        name: "campaign type to implement",
+        choice: checkedValues.join(","),
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "campaign type to implement",
+          choice: checkedValues.join(","),
+        }))
+      route.push("/dashboard/services/email-marketing/campaign-followers");
+    }
+  };
+  useEffect(()=>{
+console.log(all);
+
+  },[all])
+
   return (
     <NextPrevNav
-      nextLink="/dashboard/services/email-marketing/campaign-followers"
+      nextLink="/dashboard/services/email-marketing/campaign-followers" nextFunc={nextFunc}
       backLink="/dashboard/services/email-marketing/email-contacts"
     >
       <div
@@ -24,6 +60,7 @@ const page = () => {
               <input
                 type="checkbox"
                 className=" absolute inset-0 rounded-[--15px] opacity-0 z-[3] cursor-pointer peer"
+                value={"Warm-Up Campaign"}
               />
               <div
                 className={`${styles.textBox} peer-checked:bg-[--highlight-yellow] peer-checked:!text-black h-[--241px] w-[--220px] flex justify-center items-center rounded-[--15px] bg-[#484848] relative z-[2] origin-bottom-left transition-all duration-500 group-hover:rotate-[6deg]`}
@@ -45,13 +82,14 @@ const page = () => {
               <input
                 type="checkbox"
                 className=" absolute inset-0 rounded-[--15px] opacity-0 z-[3] cursor-pointer peer"
+                value={"Follow-Up Campaign"}
               />
               <div
                 className={`${styles.textBox} peer-checked:bg-[--highlight-yellow] peer-checked:!text-black h-[--241px] w-[--220px] flex justify-center items-center rounded-[--15px] bg-[#484848] relative z-[2] origin-bottom-left transition-all duration-500 group-hover:rotate-[6deg]`}
               >
                 <div>
                   <h3 className=" text-[--16px] font-semibold mb-[--sy-24px] text-center">
-                    Warm-Up Campaign
+                    Follow-Up Campaign
                   </h3>
                   <p className=" text-[--14px] text-center">
                     {" "}
@@ -66,13 +104,14 @@ const page = () => {
               <input
                 type="checkbox"
                 className=" absolute inset-0 rounded-[--15px] opacity-0 z-[3] cursor-pointer peer"
+                value={"Closing Campaign"}
               />
               <div
                 className={`${styles.textBox} peer-checked:bg-[--highlight-yellow] peer-checked:!text-black h-[--241px] w-[--220px] flex justify-center items-center rounded-[--15px] bg-[#484848] relative z-[2] origin-bottom-left transition-all duration-500 group-hover:rotate-[6deg]`}
               >
                 <div>
                   <h3 className=" text-[--16px] font-semibold mb-[--sy-24px] text-center">
-                    Warm-Up Campaign
+                    Closing Campaign
                   </h3>
                   <p className=" text-[--14px] text-center">
                     {" "}
@@ -87,13 +126,14 @@ const page = () => {
               <input
                 type="checkbox"
                 className=" absolute inset-0 rounded-[--15px] opacity-0 z-[3] cursor-pointer peer"
+                value={"Full Campaign"}
               />
               <div
                 className={`${styles.textBox} peer-checked:bg-[--highlight-yellow] peer-checked:!text-black h-[--241px] w-[--220px] flex justify-center items-center rounded-[--15px] bg-[#484848] relative z-[2] origin-bottom-left transition-all duration-500 group-hover:rotate-[6deg]`}
               >
                 <div>
                   <h3 className=" text-[--16px] font-semibold mb-[--sy-24px] text-center">
-                    Warm-Up Campaign
+                    Full Campaign
                   </h3>
                   <p className=" text-[--14px] text-center">
                     {" "}

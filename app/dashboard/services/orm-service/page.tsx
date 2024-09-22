@@ -1,8 +1,13 @@
-import React from "react";
+"use client"
+import React, { useEffect, useState } from "react";
 import styles from "./orm-service.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import classNames from "classnames";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 const ORMService = () => {
   const data = [
@@ -112,8 +117,52 @@ const ORMService = () => {
     },
   ];
 
+  const [pastedText, setPastedText] = useState<string>("");
+
+  const handlePaste = async () => {
+    try {
+      const text = await navigator.clipboard.readText();
+      setPastedText(text);
+    } catch (error) {
+      console.error("Failed to read clipboard contents: ", error);
+    }
+  };
+
+  const all = useSelector((state:RootState)=>state.service)
+  const dispatch = useDispatch();
+  const route = useRouter();
+  const nextFunc = () => {
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (document.querySelector("input[type='radio']:checked")) {
+      const addedObj:{
+        name:string,
+        choice?:string,
+        ans?:string
+      } = {name:"platform"
+        ,choice: (
+          document.querySelector(
+            "input[type='radio']:checked"
+          ) as HTMLInputElement
+        ).value,
+      }
+      if (pastedText) {
+        addedObj.ans = pastedText
+      }
+      itemsArray.push(addedObj)
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption(addedObj))
+      route.push("/dashboard/services/orm-service/remove-reviews");
+    }
+  };
+  useEffect(()=>{
+console.log(all);
+
+  },[all])
+
+
   return (
-    <NextPrevNav nextLink="/dashboard/services/orm-service/remove-reviews">
+    <NextPrevNav nextLink="/dashboard/services/orm-service/remove-reviews" nextFunc={nextFunc}>
       {/* // Main container div with relative positioning */}
       <div className="h-full relative">
         {/* Inner container for the video end point section with custom styles */}
@@ -155,6 +204,7 @@ const ORMService = () => {
                       type="radio"
                       name="project"
                       className="absolute opacity-0 inset-0 cursor-pointer"
+                      value={item.title}
                     />
                   </div>
                 ))}
@@ -174,11 +224,13 @@ const ORMService = () => {
                 <input
                   type="text"
                   placeholder="URL"
+                  value={pastedText}
                   className="flex-grow h-full mb-[1vw] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--10px)] px-[1.088vw] py-[0.5vw] placeholder:text-[#FFFFFFCC]"
+                  onChange={(e)=>setPastedText(e.target.value)}
                 />
 
                 {/* Paste Link button */}
-                <button className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.4vw] text-black rounded-[var(--33px)] font-bold">
+                <button onClick={handlePaste} className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.4vw] text-black rounded-[var(--33px)] font-bold">
                   Paste Link
                 </button>
               </div>

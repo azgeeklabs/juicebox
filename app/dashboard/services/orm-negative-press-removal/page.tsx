@@ -3,6 +3,10 @@ import classNames from "classnames";
 import styles from "./orm-negative-press-removal.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import { useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 function ORMNegativePressRemoval() {
   const [links, setLinks] = useState<string[]>([]);
@@ -15,9 +19,36 @@ function ORMNegativePressRemoval() {
       inputRef.current!.value = "";
     }
   };
+  const route = useRouter();
+  const dispatch = useDispatch();
+  const all = useSelector((state: RootState) => state.service.options);
+
+  const nextFunc = () => {
+    const storedItems = localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (links.length > 0) {
+      itemsArray.push({
+        name: "link to remove",
+        choice: links.join(","),
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      dispatch(
+        addOption({
+          name: "link to remove",
+          choice: links.join(","),
+        })
+      );
+      route.push(
+        "/dashboard/services/orm-negative-press-removal/removal-reason"
+      );
+    }
+  };
 
   return (
-    <NextPrevNav nextLink="/dashboard/services/orm-negative-press-removal/removal-reason">
+    <NextPrevNav
+      nextLink="/dashboard/services/orm-negative-press-removal/removal-reason"
+      nextFunc={nextFunc}
+    >
       {/* Inner container with full height and center alignment */}
       <div className="h-full flex justify-center items-center">
         {/* Inner container with full width and custom styles for the footage editing section */}
