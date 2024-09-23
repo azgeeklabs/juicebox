@@ -132,16 +132,10 @@ const Page = () => {
   );
   useEffect(() => {
     if (selectedDay && selectedMonth && selectedYear) {
-      console.log(
-        `Selected Date: ${selectedDay.replace(
-          "th" || "st" || "rd" || "nd",
-          ""
-        )}-${selectedMonth}-${selectedYear}`
-      );
       setChangedDate(
         `${selectedYear}-${selectedMonth}-${parseInt(selectedDay)}`
       );
-      console.log(`${selectedYear}-${selectedMonth}-${parseInt(selectedDay)}`);
+      
     }
   }, [selectedDay, selectedMonth, selectedYear]);
   return (
