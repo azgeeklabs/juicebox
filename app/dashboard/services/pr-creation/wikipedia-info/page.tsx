@@ -1,13 +1,34 @@
+"use client"
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import React from "react";
 import styles from "./wikipediaInfo.module.css"
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 const Page = () => {
+
+  const dispatch = useDispatch();
+  const route = useRouter();
+  const nextFunc = () => {
+    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+      itemsArray.push({
+        name: "wikipedia page information",
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "wikipedia page information",
+        }))
+      route.push("/dashboard/services/pr-creation/estimated-cost");
+  };
+
   return (
     <>
       <NextPrevNav
         backLink="/dashboard/services/pr-creation/product-service"
         nextLink="/dashboard/services/pr-creation/estimated-cost"
+        nextFunc={nextFunc}
       >
         <div className=" w-[75%] pt-[--sy-30px] mx-auto h-full flex items-center">
           <div className=" w-full">

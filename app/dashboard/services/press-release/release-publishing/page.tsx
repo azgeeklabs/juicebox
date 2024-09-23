@@ -3,6 +3,10 @@ import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import { globalContext } from "@/app/_context/GlobalContext";
 import React, { useContext } from "react";
 import styles from "./releasePublishing.module.css";
+import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 const Page = () => {
   const { step, setStep } = useContext(globalContext);
@@ -315,10 +319,28 @@ const Page = () => {
     },
   ];
 
+  const router = useRouter();
+  const all = useSelector((state:RootState)=>state.service)
+    const dispatch = useDispatch();
+  const nextFunc = () => {
+    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+  
+      itemsArray.push({
+        name: "websites to publish on",
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      dispatch(addOption({
+        name: "websites to publish on",
+      }));
+      router.push("/dashboard/services/press-release/pr-ready");
+    
+  };
+
   return (
     <>
       <NextPrevNav
-        backLink="/dashboard/services/press-release/"
+        backLink="/dashboard/services/press-release/" nextFunc={nextFunc}
         nextOnClick={() => setStep(step + 1)}
         nextLink="/dashboard/services/press-release/pr-ready"
       >

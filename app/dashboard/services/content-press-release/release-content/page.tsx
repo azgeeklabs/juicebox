@@ -3,12 +3,41 @@ import React, { use, useState } from "react";
 import styles from "./releaseContent.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 const Page = () => {
   const [answer, setAnswer] = useState("");
+  const dispatch = useDispatch();
+  const route = useRouter();
+  const nextFunc = () => {
+    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (document.querySelector("input[type='radio']:checked")) {
+      itemsArray.push({
+        name: "press releases content",
+        choice: (
+          document.querySelector(
+            "input[type='radio']:checked"
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "press releases content",
+          choice: (
+            document.querySelector(
+              "input[type='radio']:checked"
+            ) as HTMLInputElement
+          ).value,
+        }))
+      route.push("/dashboard/services/content-press-release/word-count");
+    }
+  };
   return (
     // Main container div
-    <NextPrevNav nextLink="/dashboard/services/content-press-release/word-count" backLink="/dashboard/services/content-press-release">
+    <NextPrevNav nextLink="/dashboard/services/content-press-release/word-count" nextFunc={nextFunc} backLink="/dashboard/services/content-press-release">
       <div className=" flex items-center justify-center h-full">
         {/* Inner container for the video script section with custom styles */}
         <div className={`${styles.releaseContent} w-full mb-[--sy-40px]`}>
@@ -33,6 +62,7 @@ const Page = () => {
               btnSize="xl"
               inputType="radio"
               name="releaseContent"
+              value={"Update"}
             >
               Update
             </CustomCheckBoxText>
@@ -40,6 +70,7 @@ const Page = () => {
               btnSize="xl"
               inputType="radio"
               name="releaseContent"
+              value={"Event"}
             >
               Event
             </CustomCheckBoxText>
@@ -47,6 +78,7 @@ const Page = () => {
               btnSize="xl"
               inputType="radio"
               name="releaseContent"
+              value={"Release"}
             >
               Release
             </CustomCheckBoxText>

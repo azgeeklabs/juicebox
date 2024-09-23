@@ -4,11 +4,20 @@ import styles from "./createWebsite.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
+import { setContentBlogRoute } from "@/app/reducers/contentBlogSlice";
 
 const Page = () => {
   const [haveWebsite, setHaveWebsite] = useState(false);
   const [doLater, setDoLater] = useState(false);
   const [pastedText, setPastedText] = useState<string>("");
+  const all = useSelector((state: RootState) => state.service);
+  const contentBlog = useSelector((state: RootState) => state.contentBlog.contentBlogRoute);
+  const route = useRouter();
+  const dispatch = useDispatch();
 
   const handlePaste = async () => {
     try {
@@ -19,6 +28,93 @@ const Page = () => {
     }
   };
 
+  const nextFunc = () => {
+    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (haveWebsite && !doLater && pastedText) {
+      itemsArray.push({
+        name: "have website or not",
+        choice: (
+          document.querySelector(
+            'input[type="radio"]:checked'
+          ) as HTMLInputElement
+        ).value,
+        ans: `${pastedText}`,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "have website or not",
+          choice: (
+            document.querySelector(
+              'input[type="radio"]:checked'
+            ) as HTMLInputElement
+          ).value,
+          ans: `${pastedText}`,
+        }))
+        route.push(`${
+          haveWebsite
+            ? "/dashboard/services/content-blog/blog-write-style"
+            : "/dashboard/services/content-blog/word-count"
+        }`);
+    } else if (
+      !haveWebsite &&
+      !doLater &&
+      document.querySelector('input[type="radio"]:checked')
+    ) {
+      itemsArray.push({
+        name: "have website or not",
+        choice: (
+          document.querySelector(
+            'input[type="radio"]:checked'
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      
+        dispatch(addOption({
+          name: "have website or not",
+          choice: (
+            document.querySelector(
+              'input[type="radio"]:checked'
+            ) as HTMLInputElement
+          ).value,
+        }))
+        route.push(`${
+          haveWebsite
+            ? "/dashboard/services/content-blog/blog-write-style"
+            : "/dashboard/services/content-blog/word-count"
+        }`);
+    } else if (doLater) {
+      itemsArray.push({
+        name: "have website or not",
+        choice: (
+          document.querySelector(
+            'input[type="checkbox"]:checked'
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+     
+        dispatch(addOption({
+          name: "have website or not",
+          choice: (
+            document.querySelector(
+              'input[type="checkbox"]:checked'
+            ) as HTMLInputElement
+          ).value,
+        }))
+      route.push(`${
+        haveWebsite
+          ? "/dashboard/services/content-blog/blog-write-style"
+          : "/dashboard/services/content-blog/word-count"
+      }`);
+    }
+  };
+  useEffect(()=>{
+    console.log(all);
+    
+    },[all])
+
 
 
   return (
@@ -28,6 +124,7 @@ const Page = () => {
           ? "/dashboard/services/content-blog/blog-write-style"
           : "/dashboard/services/content-blog/word-count"
       }
+      nextFunc={nextFunc}
       backLink="/dashboard/services/content-blog"
     >
       {/* // Main container div with relative positioning */}
@@ -57,18 +154,28 @@ const Page = () => {
             >
               {/* CustomCheckBoxText component for selecting options */}
               <CustomCheckBoxText
-                onClick={() => setHaveWebsite(true)}
+                onClick={() => {setHaveWebsite(true)
+                  dispatch(setContentBlogRoute("haveWebsite"))
+                }}
                 btnSize="xl"
                 inputType="radio"
                 name="creationAnswer"
+                value={"I have a website"}
               >
                 I have a website
               </CustomCheckBoxText>
               <CustomCheckBoxText
-                onClick={() => setHaveWebsite(false)}
                 btnSize="xl"
                 inputType="radio"
                 name="creationAnswer"
+                value={"Make one for me"}
+                onClick={() => {setHaveWebsite(false);
+                  dispatch(setContentBlogRoute("don'tHaveWebsite"))
+                  if (document.querySelector('input[type="checkbox"]:checked')) {
+                    (document.querySelector('input[type="checkbox"]:checked') as HTMLInputElement).checked = false;
+                  }
+                  setPastedText("")
+                }}
               >
                 Make one for me
               </CustomCheckBoxText>
@@ -116,7 +223,8 @@ const Page = () => {
                 <input
                   disabled={haveWebsite ? false : true}
                   type="checkbox"
-                  name="dontHaveChannel"
+                  name="I’ll do this later"
+                  value={"I’ll do this later"}
                   className={`absolute opacity-0 inset-0 ${
                     haveWebsite ? "cursor-pointer" : ""
                   }`}

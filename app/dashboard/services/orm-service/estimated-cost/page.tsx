@@ -38,7 +38,7 @@ const Page = () => {
       });
     }
     console.log({
-      type:"orm-service",
+      type:"orm service",
       totalSteps:3,
       options:optionsArray
     })
@@ -46,7 +46,7 @@ const Page = () => {
     
     try {
       const data = await axios.post(`http://juicebox-env.eba-sfhwtshs.us-east-1.elasticbeanstalk.com/api/v1/services/initialize-service`,{
-        type:"orm-service",
+        type:"orm service",
         totalSteps:3,
         options:optionsArray
       },{

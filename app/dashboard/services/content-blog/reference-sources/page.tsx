@@ -4,10 +4,15 @@ import styles from "./referenceSources.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import { useRef, useState } from "react";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
+import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 function ORMNegativePressRemoval() {
 
     const [haveSources,setHaveSources] = useState<boolean>(false)
+    const route = useRouter();
+  const dispatch = useDispatch();
 
   const [links, setLinks] = useState<string[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -30,10 +35,55 @@ function ORMNegativePressRemoval() {
     }
   };
 
+  const nextFunc = () => {
+    
+    const storedItems =
+      typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (haveSources && links.length > 0) {
+      itemsArray.push({
+        name: "sources to reference",
+        ans: links.join(","),
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      dispatch(
+        addOption({
+          name: "sources to reference",
+          ans: links.join(","),
+        })
+      );
+      route.push("/dashboard/services/content-blog/estimated-cost");
+    } else if (
+      !haveSources && document.querySelector('input[type="radio"]:checked') ) {
+        
+      itemsArray.push({
+        name: "sources to reference",
+        choice: (
+          document.querySelector(
+            'input[type="radio"]:checked'
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+
+      dispatch(
+        addOption({
+          name: "sources to reference",
+          choice: (
+            document.querySelector(
+              'input[type="radio"]:checked'
+            ) as HTMLInputElement
+          ).value,
+        })
+      );
+      route.push("/dashboard/services/content-blog/estimated-cost");
+    }
+  };
+
   return (
-    <NextPrevNav nextLink="/dashboard/services/content-blog/estimated-cost" backLink="/dashboard/services/content-blog/word-count">
+    <NextPrevNav nextLink="/dashboard/services/content-blog/estimated-cost" nextFunc={nextFunc} backLink="/dashboard/services/content-blog/word-count">
       {/* Inner container with full height and center alignment */}
-      <div className="h-full flex justify-center items-center">
+      <div className="h-full flex justify-center items-center pt-[--sy-50px]">
         {/* Inner container with full width and custom styles for the footage editing section */}
         <div className={`${styles.addLinkEdit} w-full `}>
           {/* Header section with text centered, auto margins for horizontal centering, and vertical margins */}
@@ -52,10 +102,10 @@ function ORMNegativePressRemoval() {
             </h4>
           </div>
           <div className=" flex gap-[--8px] items-center justify-center border-b border-b-[#484848] pb-[--sy-33px] mb-[--sy-33px]">
-            <CustomCheckBoxText btnSize="xl" inputType="radio" name="sourcesAnswer" onClick={()=>setHaveSources(true)}>
+            <CustomCheckBoxText btnSize="xl" inputType="radio" name="sourcesAnswer" value={"Input sources"} onClick={()=>setHaveSources(true)}>
             Input sources
             </CustomCheckBoxText>
-            <CustomCheckBoxText btnSize="xl" inputType="radio" name="sourcesAnswer" onClick={()=>setHaveSources(false)}>
+            <CustomCheckBoxText btnSize="xl" inputType="radio" name="sourcesAnswer" value={"I have no sources"} onClick={()=>setHaveSources(false)}>
             I have no sources
             </CustomCheckBoxText>
           </div>
@@ -109,7 +159,7 @@ function ORMNegativePressRemoval() {
             </div>
 
             <h3 className="mb-[1.067vh]">Added Sources</h3>
-            <div className={` h-[clamp(10px,calc(20.03vh+0.1rem),1000px)] overflow-y-auto w-[calc(100%-var(--111px))] rounded-[--10px]`}>
+            <div className={` h-[clamp(10px,calc(17.03vh+0.1rem),1000px)] overflow-y-auto w-[calc(100%-var(--111px))] rounded-[--10px]`}>
               <div className="rounded-[--10px] bg-[--dark-gray-3]">
                 <ul className="flex-col overflow-hidden">
                   {links.map((link, index) => (

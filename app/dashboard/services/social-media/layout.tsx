@@ -1,20 +1,42 @@
 "use client";
 import StepProgress from "@/app/_components/stepProgress/StepProgress";
-import React, { useEffect, useState } from "react";
+import { changeOption } from "@/app/reducers/serviceSlice";
+import { RootState } from "@/app/Store/store";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState,ReactElement, ReactNode } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
-  const path = [
+
+  const chosenRoute = useSelector((state: RootState) => state.route.chosenRoute);
+
+  const route1 = [
     "",
-    "additional-features",
-    "brand-selection",
-    "custom-ecommerce",
-    "domain-selection",
-    "host-selection",
-    "web-design-endpoint",
-    "website-style",
-    "website-technology",
-    "website-type",
+    "social-media-task",
+    "creation-frequency",
+    "ad-type",
+    "ad-style",
+    "estimated-cost",
   ];
+  const route2 = [
+    "",
+    "social-media-task",
+    "audience-frequency",
+    "interactions-types",
+    "estimated-cost",
+  ];
+  const route3 = [
+    "",
+    "social-media-task",
+    "post-frequency",
+    "estimated-cost",
+  ];
+
+  const path = chosenRoute == "create" ? route1 : chosenRoute == "audience" ? route2 : route3;
+
+  const all = useSelector((state: RootState) => state.service.options);
+  const dispatch = useDispatch();
+  const route = useRouter();
   const [currentPath, setCurrentPath] = useState(0);
   const [currentLocation, setCurrentLocation] = useState("");
 
@@ -57,8 +79,58 @@ const layout = ({ children }: { children: React.ReactNode }) => {
 
     getCurrentPath();
   }, [currentLocation]);
+  useEffect(() => {
+    const pathname = window.location.pathname;
+    const page = pathname.split("/")[4];
+    const index = path.findIndex((p) => p === page);
+    console.log(index);
+    
+    const selectedOption = typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const parsed = selectedOption ? JSON.parse(selectedOption) : [];
+    console.log(parsed);
+    console.log(parsed.length);
+    console.log(Boolean(parsed.length == index));
+    console.log(parsed.length);
+
+    if (Boolean(parsed.length > index)) {
+      
+      let selectedOption = localStorage.getItem("selectedOption");
+      let parsed = selectedOption ? JSON.parse(selectedOption) : [];
+      parsed = parsed.filter((r: string, idx: number) => idx < index);
+      localStorage.setItem("selectedOption", JSON.stringify(parsed));
+      dispatch(changeOption(parsed))
+      console.log(path.filter((p, i) => i < parsed.length));
+
+      const pushedRoute = path.filter((p, i) => i <= parsed.length);
+      route.push(
+        `/dashboard/services/social-media/${
+          pushedRoute[pushedRoute.length - 1]
+        }`
+      );
+    } else if (Boolean(parsed.length < index)) {
+
+      let selectedOption = localStorage.getItem("selectedOption");
+      let parsed = selectedOption ? JSON.parse(selectedOption) : [];
+      console.log(parsed,index);
+      
+      parsed = parsed.filter((r: string, idx: number) => idx < index);
+      localStorage.setItem("selectedOption", JSON.stringify(parsed));
+      dispatch(changeOption(parsed))
+      console.log(path.filter((p, i) => i >= parsed.length));
+      const pushedRoute = path.filter((p, i) => i >= parsed.length);
+      route.push(
+        `/dashboard/services/social-media/${pushedRoute[0]}`
+      );
+    }
+  }, [currentLocation]);
+
+  useEffect(()=>{
+console.log(all);
+
+  },[currentLocation,all])
 
   return (
+    
     <div className="flex flex-col h-full">
       <StepProgress
         title={"Application Design"}

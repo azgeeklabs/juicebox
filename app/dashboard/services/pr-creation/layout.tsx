@@ -1,8 +1,16 @@
 "use client";
 import StepProgress from "@/app/_components/stepProgress/StepProgress";
+import { changeOption } from "@/app/reducers/serviceSlice";
+import { RootState } from "@/app/Store/store";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
+  const all = useSelector((state: RootState) => state.service.options);
+  const dispatch = useDispatch();
+
+  const route = useRouter();
   const path = [
     "", // Root folder
     "wikipedia-copy",
@@ -53,10 +61,58 @@ const layout = ({ children }: { children: React.ReactNode }) => {
     getCurrentPath();
   }, [currentLocation]);
 
+  useEffect(() => {
+    const pathname = window.location.pathname;
+    const page = pathname.split("/")[4];
+    const index = path.findIndex((p) => p === page);
+    console.log(route);
+    console.log(index);
+    
+    const selectedOption = typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const parsed = selectedOption ? JSON.parse(selectedOption) : [];
+    console.log(parsed);
+    console.log(parsed.length);
+    console.log(Boolean(parsed.length == index));
+    console.log("//////////////////ad////////////////ad/////////////");
+    console.log(parsed.length);
+
+    if (Boolean(parsed.length > index)) {
+      let selectedOption = localStorage.getItem("selectedOption");
+      let parsed = selectedOption ? JSON.parse(selectedOption) : [];
+      parsed = parsed.filter((r: string, idx: number) => idx < index);
+      localStorage.setItem("selectedOption", JSON.stringify(parsed));
+      dispatch(changeOption(parsed))
+      console.log(path.filter((p, i) => i < parsed.length));
+
+      const pushedRoute = path.filter((p, i) => i <= parsed.length);
+      route.push(
+        `/dashboard/services/pr-creation/${
+          pushedRoute[pushedRoute.length - 1]
+        }`
+      );
+    } else if (Boolean(parsed.length < index)) {
+      let selectedOption = localStorage.getItem("selectedOption");
+      let parsed = selectedOption ? JSON.parse(selectedOption) : [];
+      parsed = parsed.filter((r: string, idx: number) => idx < index);
+      localStorage.setItem("selectedOption", JSON.stringify(parsed));
+      dispatch(changeOption(parsed))
+      console.log(path.filter((p, i) => i >= parsed.length));
+      const pushedRoute = path.filter((p, i) => i >= parsed.length);
+      route.push(
+        `/dashboard/services/pr-creation/${pushedRoute[0]}`
+      );
+    }
+  }, [currentLocation]);
+
+  useEffect(()=>{
+console.log(all);
+
+  },[currentLocation,all])
+
   return (
     <div className="flex flex-col h-full">
       <StepProgress
-        title={"Application Design"}
+        title={"PR Creation Wikipedia"}
         steps={path.length}
         currentStep={currentPath}
       />

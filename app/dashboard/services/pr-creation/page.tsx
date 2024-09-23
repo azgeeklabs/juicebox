@@ -2,18 +2,53 @@
 import classNames from "classnames";
 import styles from "./prCreation.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { globalContext } from "@/app/_context/GlobalContext";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 
 function Page() {
 
   const { step, setStep } = useContext(globalContext);
+  const all = useSelector((state:RootState)=>state.service)
+  const dispatch = useDispatch();
+  const route = useRouter();
+  const nextFunc = () => {
+    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (document.querySelector("input[type='radio']:checked")) {
+      itemsArray.push({
+        name: "wikipedia type",
+        choice: (
+          document.querySelector(
+            "input[type='radio']:checked"
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "wikipedia type",
+          choice: (
+            document.querySelector(
+              "input[type='radio']:checked"
+            ) as HTMLInputElement
+          ).value,
+        }))
+      route.push("/dashboard/services/pr-creation/wikipedia-copy");
+    }
+  };
+  useEffect(()=>{
+console.log(all);
+
+  },[all])
 
   return (
     <>
-      <NextPrevNav nextLink="/dashboard/services/pr-creation/wikipedia-copy" nextOnClick={() => setStep(step + 1)}>
+      <NextPrevNav nextLink="/dashboard/services/pr-creation/wikipedia-copy" nextFunc={nextFunc} nextOnClick={() => setStep(step + 1)}>
         <div className="flex flex-col gap-[var(--sy-50px)] justify-center items-center h-full">
           <div
             className={classNames(
@@ -36,6 +71,7 @@ function Page() {
                 btnSize="xl"
                 inputType="radio"
                 name="styleAnswer"
+                value={"Healthcare"}
               >
                 Healthcare
               </CustomCheckBoxText>
@@ -43,6 +79,7 @@ function Page() {
                 btnSize="xl"
                 inputType="radio"
                 name="styleAnswer"
+                value={"commerce"}
               >
                 E-commerce
               </CustomCheckBoxText>
@@ -50,6 +87,7 @@ function Page() {
                 btnSize="xl"
                 inputType="radio"
                 name="styleAnswer"
+                value={"Educational"}
               >
                 Educational
               </CustomCheckBoxText>
@@ -57,6 +95,7 @@ function Page() {
                 btnSize="xl"
                 inputType="radio"
                 name="styleAnswer"
+                value={"Other"}
               >
                 Other
               </CustomCheckBoxText>

@@ -37,7 +37,7 @@ const Page = () => {
       });
     }
     console.log({
-      type:"orm-negative-press-removal",
+      type:"orm negative press removal",
       totalSteps:4,
       options:optionsArray
     })
@@ -45,7 +45,7 @@ const Page = () => {
     
     try {
       const data = await axios.post(`http://juicebox-env.eba-sfhwtshs.us-east-1.elasticbeanstalk.com/api/v1/services/initialize-service`,{
-        type:"orm-negative-press-removal",
+        type:"orm negative press removal",
         totalSteps:4,
         options:optionsArray
       },{

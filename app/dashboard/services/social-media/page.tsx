@@ -1,7 +1,13 @@
+"use client"
 import classNames from "classnames";
 import styles from "./socialMedia.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/Store/store";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
+import { useEffect } from "react";
 
 function AccountRecovery() {
   const data = [
@@ -161,8 +167,33 @@ function AccountRecovery() {
     },
   ];
 
+  const all = useSelector((state:RootState)=>state.service)
+  const dispatch = useDispatch();
+  const route = useRouter();
+  const nextFunc = () => {
+    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    const checkedValues = Array.from(document.querySelectorAll("input[type='checkbox']:checked")).map((e)=>(e as HTMLInputElement).value)
+    if (document.querySelector("input[type='checkbox']:checked")) {
+      itemsArray.push({
+        name: "digital product",
+        choice: checkedValues.join(","),
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "digital product",
+          choice: checkedValues.join(","),
+        }))
+      route.push("/dashboard/services/social-media/social-media-task");
+    }
+  };
+  useEffect(()=>{
+console.log(all);
+
+  },[all])
+
   return (
-    <NextPrevNav nextLink="/dashboard/services/social-media/social-media-task">
+    <NextPrevNav nextLink="/dashboard/services/social-media/social-media-task" nextFunc={nextFunc}>
       <div
         className={classNames(
           "flex flex-col gap-[var(--55px)] justify-center mx-auto items-center h-full mb-[--sy-40px]",
@@ -186,7 +217,7 @@ function AccountRecovery() {
         >
           {data.map((item, i) => (
             <>
-              <CustomCheckBoxText btnSize="md" inputType="checkbox">
+              <CustomCheckBoxText btnSize="md" inputType="checkbox" value={item.title}>
                 <div
                   className={classNames(
                     "flex items-center font-bold gap-[var(--12px)]",

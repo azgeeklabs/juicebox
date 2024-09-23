@@ -34,8 +34,6 @@ const Page = () => {
   };
  
 
-  console.log(document.querySelector('input[type="checkbox"]:checked'));
-
   const nextFunc = () => {
     console.log("//////////////////////");
     dispatch(incrementTotalSteps());
