@@ -31,7 +31,7 @@ function SuspensionApprovel() {
   };
 
   const nextFunc = () => {
-    const storedItems = localStorage.getItem("selectedOption");
+    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (inputVal) {
       itemsArray.push({

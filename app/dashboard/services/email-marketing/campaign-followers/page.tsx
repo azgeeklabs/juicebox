@@ -20,7 +20,7 @@ const Page = () => {
   const dispatch = useDispatch();
   const route = useRouter();
   const nextFunc = () => {
-    const storedItems = localStorage.getItem("selectedOption");
+    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (num) {
       itemsArray.push({

@@ -43,19 +43,19 @@ const Page = () => {
     console.log(optionss);
   }, [optionss]);
 
-  console.log(localStorage.getItem("selectedOption"));
+  
 
   useEffect(() => {
     console.log(optionss);
   }, [optionss]);
-  console.log(localStorage.getItem("selectedOption"));
+  
   console.log(document.querySelector('input[type="checkbox"]:checked'));
 
   const nextFunc = () => {
     console.log("//////////////////////");
     dispatch(incrementTotalSteps());
     dispatch(selectType("video"));
-    const storedItems = localStorage.getItem("selectedOption");
+    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (dontHaveChannel) {
       itemsArray.push({

@@ -31,8 +31,11 @@ const initialState: ServiceState = {
   type: "Web",
   totalSteps: 7,
   options: (() => {
-    const storedOptions = localStorage.getItem("selectedOption");
-    return storedOptions ? JSON.parse(storedOptions) : [];
+    if (typeof window !== "undefined") {
+      const storedOptions = localStorage.getItem("selectedOption");
+      return storedOptions ? JSON.parse(storedOptions) : [];
+    }
+    return [];
   })(),
 };
 

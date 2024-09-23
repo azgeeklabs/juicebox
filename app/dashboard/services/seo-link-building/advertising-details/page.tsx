@@ -55,14 +55,14 @@ const Page = () => {
       },{
         headers:{
           "Content-Type": "multipart/form-data",
-            Authorization: `Token ${localStorage.getItem("token")}`,
+            Authorization: `Token ${typeof window !== "undefined" && localStorage.getItem("token")}`,
         }
       })
       console.log(data);
-      const storedItems = localStorage.getItem("selectedOption");
+      const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
       const itemsArray = storedItems ? JSON.parse(storedItems) : [];
       if (link && text) {
-        const storedItems = localStorage.getItem("selectedOption");
+        const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
         const itemsArray = storedItems ? JSON.parse(storedItems) : [];
         itemsArray.push({
           name:"product details",

@@ -1,8 +1,12 @@
 "use client";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import styles from "@/app/dashboard/services/orm-service/remove-reviews/remove-reviews.module.css";
+import { addOption } from "@/app/reducers/serviceSlice";
+import { RootState } from "@/app/Store/store";
 import classNames from "classnames";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const RemoveReviews = () => {
   // State to keep track of selected reviews
@@ -76,10 +80,40 @@ const RemoveReviews = () => {
     return <div className="flex gap-[--6px] ">{stars}</div>;
   };
 
+  
+  const all = useSelector((state:RootState)=>state.service)
+  const dispatch = useDispatch();
+  const route = useRouter();
+  const nextFunc = () => {
+    console.log("//////////////////////");
+    const selected = document.querySelector(
+      "input[type='radio']:checked"
+    ) as HTMLInputElement;
+    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (document.querySelector("input[type='checkbox']:checked")) {
+      const checkedValues = Array.from(document.querySelectorAll("input[type='checkbox']:checked")).map((c)=>(c as HTMLInputElement).value)
+      itemsArray.push({
+        name: "delete reviews",
+        choice: checkedValues.join(","),
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "delete reviews",
+          choice: checkedValues.join(","),
+        }))
+      route.push("/dashboard/services/orm-service/estimated-cost");
+    }
+  };
+  useEffect(()=>{
+console.log(all);
+
+  },[all])
+
   return (
     <NextPrevNav
       backLink="/dashboard/services/orm-service"
-      nextLink="/dashboard/services/orm-service/estimated-cost"
+      nextLink="/dashboard/services/orm-service/estimated-cost" nextFunc={nextFunc}
     >
       {/* // Main container div with relative positioning */}
       {/* Inner container for the video end point section with custom styles */}

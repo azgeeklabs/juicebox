@@ -24,7 +24,7 @@ const Page = () => {
     const selected = document.querySelector(
       "input[type='radio']:checked"
     ) as HTMLInputElement;
-    const storedItems = localStorage.getItem("selectedOption");
+    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (num) {
       itemsArray.push({

@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   function getToken() {
     if (typeof window !== "undefined") {
-      const token = localStorage.getItem("token");
+      const token = typeof window !== "undefined" && localStorage.getItem("token");
       return token ? `Bearer ${token}` : null;
     } else {
       return `Bearer ${user?.token}` || null;
@@ -56,7 +56,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     // Add a request interceptor
     axios.interceptors.request.use((config) => {
       // Do something before request is sent
-      config.headers.Authorization = `Bearer ${localStorage.getItem("token")}`;
+      config.headers.Authorization = `Bearer ${typeof window !== "undefined" && localStorage.getItem("token")}`;
       return config;
     });
   }, [user.token]);

@@ -29,7 +29,7 @@ const Page = () => {
   };
 
   const nextFunc = () => {
-    const storedItems = localStorage.getItem("selectedOption");
+    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (haveWebsite && !doLater && pastedText) {
       itemsArray.push({
@@ -113,7 +113,7 @@ const Page = () => {
         domain:pastedText
       },{
         headers:{
-          Authorization:`Bearer ${localStorage.getItem("token")}`
+          Authorization:`Bearer ${typeof window !== "undefined" && localStorage.getItem("token")}`
         }
       })
       console.log(data);

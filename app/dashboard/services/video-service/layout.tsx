@@ -69,8 +69,8 @@ const layout = ({ children }: { children: React.ReactNode }) => {
     const index = path.findIndex((p) => p === page);
     console.log(route);
     console.log(index);
-    console.log(localStorage.getItem("selectedOption"));
-    const selectedOption = localStorage.getItem("selectedOption");
+    
+    const selectedOption = typeof window !== "undefined" && localStorage.getItem("selectedOption");
     const parsed = selectedOption ? JSON.parse(selectedOption) : [];
     console.log(parsed);
     console.log(parsed.length);

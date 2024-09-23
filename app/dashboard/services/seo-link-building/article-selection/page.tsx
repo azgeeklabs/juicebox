@@ -34,7 +34,7 @@ const Page = () => {
   };
 
   const nextFunc = () => {
-    const storedItems = localStorage.getItem("selectedOption");
+    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (haveArticle && !doLater && inputVal) {
       itemsArray.push({

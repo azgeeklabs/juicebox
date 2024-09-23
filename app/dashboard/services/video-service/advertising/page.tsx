@@ -25,14 +25,14 @@ const Page = () => {
     }
   };
 
-  console.log(localStorage.getItem("selectedOption"));
+  
   const nextFunc = () => {
    if (name && link && text) {
     console.log("//////////////////////");
 
     dispatch(incrementTotalSteps());
     dispatch(selectType("video"));
-    const storedItems = localStorage.getItem("selectedOption");
+    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     itemsArray.push({
       name:"advertising",

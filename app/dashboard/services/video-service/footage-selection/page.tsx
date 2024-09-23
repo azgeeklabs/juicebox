@@ -63,7 +63,7 @@ const Page = () => {
 
 console.log(dimension?.innerText);
     
-    const storedItems = localStorage.getItem("selectedOption");
+    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (!firstVal && !secondVal && !checked && document.querySelector("input[type='radio']:checked")) {
       itemsArray.push({
