@@ -15,7 +15,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
     // if (
     //   typeof window !== "undefined" &&
     //   !user.token &&
-    //   !typeof window !== "undefined" && localStorage.getItem("token")
+    //   !localStorage.getItem("token")
     // ) {
     //   router.push("/login");
     // }
