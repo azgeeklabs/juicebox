@@ -11,9 +11,12 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 
 import SwiperCore from "swiper";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 export default function Page() {
-  const options = ["Explainer", "Educational", "YouTube", "Social Media Ad"];
+  const options = ["Option 1", "Option 1", "Option 1", "Option 1"];
 
   const swiperRef = useRef<SwiperCore | null>(null);
 
@@ -23,10 +26,36 @@ export default function Page() {
     "/assets/desktop-slide-3.png",
     "/assets/desktop-slide-4.png",
   ];
+  const dispatch = useDispatch();
+  const route = useRouter();
+  const nextFunc = () => {
+    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (document.querySelector("input[type='radio']:checked")) {
+      itemsArray.push({
+        name: "choose kind",
+        choice: (
+          document.querySelector(
+            "input[type='radio']:checked"
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray))
+        dispatch(addOption({
+          name: "choose kind",
+          choice: (
+            document.querySelector(
+              "input[type='radio']:checked"
+            ) as HTMLInputElement
+          ).value,
+        }))
+      route.push("/dashboard/services/content-scripts/ad-platforms");
+    }
+  };
 
   return (
     // Main container div with full height, column flex direction, and space-between alignment
-    <NextPrevNav nextLink="/dashboard/services/content-scripts/ad-platforms" backLink="/dashboard/services/content-scripts/video-style">
+    <NextPrevNav nextLink="/dashboard/services/content-scripts/ad-platforms" nextFunc={nextFunc} backLink="/dashboard/services/content-scripts/video-style">
       <div className="flex items-center justify-center h-full w-full">
         {/* Inner container with full width and custom editing styles */}
         <div className={`${styles.kindOfVideo} w-full`}>
@@ -52,6 +81,7 @@ export default function Page() {
                   btnSize="lg"
                   inputType="radio"
                   name="type"
+                  value={e}
                   // Mouse move event to highlight the hovered item
                   onMouseOver={() => {
                     if (swiperRef.current) {

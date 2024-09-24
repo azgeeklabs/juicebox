@@ -6,11 +6,22 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import dayjs from "dayjs";
 import styles from "./BookACall.module.css";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
+import axios from "axios";
 const Page = () => {
-  const [selectedDay, setSelectedDay] = useState<string>("");
-  const [selectedMonth, setSelectedMonth] = useState<string>("");
-  const [selectedYear, setSelectedYear] = useState<string>("");
+  const [selectedDay, setSelectedDay] = useState<string>(
+    `${new Date().getDate().toString()}${getOrdinal(new Date().getDate())}`
+  );
+  const [selectedMonth, setSelectedMonth] = useState<string>(
+    `${(new Date().getMonth() + 1).toString()}`
+  );
+  const [selectedYear, setSelectedYear] = useState<string>(
+    `${new Date().getFullYear().toString()}`
+  );
   const [changedDate, setChangedDate] = useState<string>("");
+  const [isChanged, setIsChanged] = useState<boolean>(false);
 
   const monthsDays = [
     {
@@ -106,6 +117,7 @@ const Page = () => {
   }
   const handleMonthChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedMonth(e.target.value);
+    setIsChanged(true);
   };
 
   const currentYear = new Date().getFullYear();
@@ -135,9 +147,49 @@ const Page = () => {
       setChangedDate(
         `${selectedYear}-${selectedMonth}-${parseInt(selectedDay)}`
       );
-      
     }
   }, [selectedDay, selectedMonth, selectedYear]);
+  const route = useRouter();
+  const nextFunc = async () => {
+    const itemsArray = [];
+    if (isChanged) {
+      itemsArray.push({
+        name: "book a call",
+        ans: `${
+          Number(selectedDay.replace(/(st|nd|rd|th)$/i, "")) < 10
+            ? "0" + Number(selectedDay.replace(/(st|nd|rd|th)$/i, ""))
+            : Number(selectedDay.replace(/(st|nd|rd|th)$/i, ""))
+        }-${
+          Number(selectedMonth) < 10 ? "0" + selectedMonth : selectedMonth
+        }-${selectedYear}`,
+      });
+      console.log(itemsArray);
+      
+      try {
+        const data = await axios.post(
+          `https://api.creativejuicebox.com/api/v1/services/initialize-service`,
+          {
+            type: "book a call",
+            totalSteps: 1,
+            options: itemsArray,
+          },
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Authorization: `Token ${
+                typeof window !== "undefined" && localStorage.getItem("token")
+              }`,
+            },
+          }
+        );
+        console.log(data);
+        route.push("/dashboard/services");
+      } catch (error) {
+        console.log(error, "////////////error////////////");
+      }
+      
+    }
+  };
   return (
     <div
       className={`${styles.BookACall} flex w-full h-full justify-center items-center `}
@@ -234,7 +286,10 @@ const Page = () => {
               </div>
             </div>
             {/* Button to book the call */}
-            <button className="bg-[--highlight-yellow] font-bold py-[--sy-15px] px-[--38px] rounded-[33px] text-black">
+            <button
+              className="bg-[--highlight-yellow] font-bold py-[--sy-15px] px-[--38px] rounded-[33px] text-black"
+              onClick={() => nextFunc()}
+            >
               Book Call
             </button>
           </div>
@@ -249,6 +304,9 @@ const Page = () => {
                     onChange={(e) => {
                       console.log(e);
                       setChangedDate(`${e.$y}-${e.$M + 1}-${e.$D}`);
+                      setSelectedDay(`${e.$D}${getOrdinal(e.$D)}`);
+                      setSelectedMonth(`${e.$M+1}`)
+                      setSelectedYear(`${e.$y}`)
                     }}
                     slots={{
                       rightArrowIcon: RightArrow,

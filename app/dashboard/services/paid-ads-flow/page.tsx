@@ -4,8 +4,14 @@ import styles from "./paidAdsFlow.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { addOption } from "@/app/reducers/serviceSlice";
+import { RootState } from "@/app/Store/store";
+import { setPaidAdsRoute } from "@/app/reducers/paidAdsSlice";
 
 function AccountRecovery() {
+  const paidAdsRoute = useSelector((state:RootState)=>state.paidAds.paidAdsRoute)
   const data = [
     {
       title: "Google Ads",
@@ -163,9 +169,27 @@ function AccountRecovery() {
     },
   ];
   const [route,setRoute] = useState("")
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const nextFunc = () => {
+    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (document.querySelector("input[type='radio']:checked")) {
+      itemsArray.push({
+        name: "Which platforms do you want to run ads on?",
+        choice: (document.querySelector("input[type='radio']:checked") as HTMLInputElement).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "Which platforms do you want to run ads on?",
+          choice: (document.querySelector("input[type='radio']:checked") as HTMLInputElement).value,
+        }))
+      router.push(`/dashboard/services/paid-ads-flow/${paidAdsRoute && (paidAdsRoute+'-type')}`);
+    }
+  };
 
   return (
-    <NextPrevNav nextLink={`/dashboard/services/paid-ads-flow/${route && (route+'-type')}`}>
+    <NextPrevNav nextLink={`/dashboard/services/paid-ads-flow/${route && (route+'-type')}`} nextFunc={nextFunc}>
       <div
         className={classNames(
           "flex flex-col gap-[var(--45px)] justify-center mx-auto items-center h-full mb-[--sy-40px]",
@@ -177,7 +201,7 @@ function AccountRecovery() {
           Which platforms do you want to run ads on?
           </h1>
           <p className="text-[--18px] font-light w-[65%]">
-          Select the social media platforms where you would like to run your ads. Choose as many as you like.
+          Select the social media platform where you would like to run your ads.
           </p>
         </div>
 
@@ -189,9 +213,10 @@ function AccountRecovery() {
         >
           {data.map((item, i) => (
             <>
-              <CustomCheckBoxText onClick={()=>{
+              <CustomCheckBoxText value={item.title} onClick={()=>{
                 console.log(item.title.split(" ")?.[0].toLowerCase());
                 setRoute(item.title.split(" ")?.[0].toLowerCase())
+                dispatch(setPaidAdsRoute(item.title.split(" ")?.[0].toLowerCase()))
                 
               }} btnSize="md" inputType="radio" name="platform">
                 <div

@@ -11,7 +11,7 @@ const initialState: RouteState = {
 };
 
 const contentBlogSlice = createSlice({
-  name: 'route',
+  name: 'contentBlog',
   initialState,
   reducers: {
     setContentBlogRoute(state, action: PayloadAction<string>) {

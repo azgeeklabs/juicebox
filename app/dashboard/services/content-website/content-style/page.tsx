@@ -3,12 +3,41 @@ import classNames from "classnames";
 import styles from "./contentStyle.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
 const RewriteWebsite = () => {
   const data = ["Causal Tone", "Serious Tone"];
+  const dispatch = useDispatch();
+  const route = useRouter();
+  const nextFunc = () => {
+    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (document.querySelector("input[type='radio']:checked")) {
+      itemsArray.push({
+        name: "written content tone",
+        choice: (
+          document.querySelector(
+            "input[type='radio']:checked"
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "written content tone",
+          choice: (
+            document.querySelector(
+              "input[type='radio']:checked"
+            ) as HTMLInputElement
+          ).value,
+        }))
+      route.push("/dashboard/services/content-website/reference-sources");
+    }
+  };
 
   return (
     <NextPrevNav
-      backLink="/dashboard/services/content-website/live-website"
+      backLink="/dashboard/services/content-website/live-website" nextFunc={nextFunc}
       nextLink="/dashboard/services/content-website/reference-sources"
     >
       <div
@@ -39,6 +68,7 @@ const RewriteWebsite = () => {
                 name="removalReason"
                 id={`removalReason-${i}`}
                 className="opacity-0 w-full h-full absolute"
+                value={item}
               />
               <div>{item}</div>
             </div>

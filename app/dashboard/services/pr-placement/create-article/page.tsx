@@ -4,11 +4,16 @@ import styles from "./createWebsite.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 const CreateArtical = () => {
-  const [haveWebsite, setHaveWebsite] = useState(false);
+  const [haveArticle, setHaveArticle] = useState(false);
   const [doLater, setDoLater] = useState(false);
   const [pastedText, setPastedText] = useState<string>("");
+  const route = useRouter();
+  const dispatch = useDispatch();
 
   const handlePaste = async () => {
     try {
@@ -19,9 +24,80 @@ const CreateArtical = () => {
     }
   };
 
+  const nextFunc = () => {
+    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (haveArticle && !doLater && pastedText) {
+      itemsArray.push({
+        name: "have article or not",
+        choice: (
+          document.querySelector(
+            'input[type="radio"]:checked'
+          ) as HTMLInputElement
+        ).value,
+        ans: `${pastedText}`,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "have article or not",
+          choice: (
+            document.querySelector(
+              'input[type="radio"]:checked'
+            ) as HTMLInputElement
+          ).value,
+          ans: `${pastedText}`,
+        }))
+        route.push(`/dashboard/services/pr-placement/questionnaire`);
+    } else if (
+      !haveArticle &&
+      !doLater &&
+      document.querySelector('input[type="radio"]:checked')
+    ) {
+      itemsArray.push({
+        name: "have article or not",
+        choice: (
+          document.querySelector(
+            'input[type="radio"]:checked'
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      
+        dispatch(addOption({
+          name: "have article or not",
+          choice: (
+            document.querySelector(
+              'input[type="radio"]:checked'
+            ) as HTMLInputElement
+          ).value,
+        }))
+        route.push(`/dashboard/services/pr-placement/questionnaire`);
+    } else if (doLater) {
+      itemsArray.push({
+        name: "have article or not",
+        choice: (
+          document.querySelector(
+            'input[type="checkbox"]:checked'
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+     
+        dispatch(addOption({
+          name: "have article or not",
+          choice: (
+            document.querySelector(
+              'input[type="checkbox"]:checked'
+            ) as HTMLInputElement
+          ).value,
+        }))
+      route.push(`/dashboard/services/pr-placement/questionnaire`);
+    }
+  };
+
   return (
     <NextPrevNav
-      nextLink="/dashboard/services/pr-placement/questionnaire"
+      nextLink="/dashboard/services/pr-placement/questionnaire" nextFunc={nextFunc}
       backLink="/dashboard/services/pr-placement"
     >
       {/* // Main container div with relative positioning */}
@@ -51,18 +127,26 @@ const CreateArtical = () => {
             >
               {/* CustomCheckBoxText component for selecting options */}
               <CustomCheckBoxText
-                onClick={() => setHaveWebsite(true)}
+                onClick={() => setHaveArticle(true)}
                 btnSize="xl"
                 inputType="radio"
                 name="creationAnswer"
+                value={"I have an article"}
               >
                 I have an article
               </CustomCheckBoxText>
               <CustomCheckBoxText
-                onClick={() => setHaveWebsite(false)}
+                onClick={() => {setHaveArticle(false)
+                  if (document.querySelector('input[type="checkbox"]:checked')) {
+                    (document.querySelector('input[type="checkbox"]:checked') as HTMLInputElement).checked = false;
+                    setDoLater(false)
+                  }
+                  setPastedText("")
+                }}
                 btnSize="xl"
                 inputType="radio"
                 name="creationAnswer"
+                value={"Write one for me"}
               >
                 Write one for me
               </CustomCheckBoxText>
@@ -73,7 +157,7 @@ const CreateArtical = () => {
 
             <div
               className={`mx-auto w-full ${
-                haveWebsite ? "" : "grayscale-[50%] opacity-50"
+                haveArticle ? "" : "grayscale-[50%] opacity-50"
               }`}
             >
               {/* Product Link field with optional span */}
@@ -83,7 +167,7 @@ const CreateArtical = () => {
               <div className="flex gap-[1vw] items-start mb-[1.2vw]">
                 {/* Product Link input field */}
                 <input
-                  disabled={haveWebsite ? false : true}
+                  disabled={haveArticle ? false : true}
                   value={pastedText}
                   onChange={(e) => setPastedText(e.target.value)}
                   type="text"
@@ -94,7 +178,7 @@ const CreateArtical = () => {
                 {/* Paste Link button */}
                 <button
                 onClick={handlePaste}
-                  disabled={haveWebsite ? false : true}
+                  disabled={haveArticle ? false : true}
                   className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[--sy-10px] text-black rounded-[var(--33px)] font-bold"
                 >
                   Paste Link
@@ -103,16 +187,17 @@ const CreateArtical = () => {
               {/* Link component for saving progress */}
               <div
                 className={`relative block w-fit mx-auto px-[0.52vw] py-[0.3vw] ${
-                  haveWebsite && "hover:bg-[#484848]"
+                  haveArticle && "hover:bg-[#484848]"
                 } rounded-[var(--32px)] transition-all duration-200 underline`}
               >
                 I’ll do this later
                 <input
-                  disabled={haveWebsite ? false : true}
+                  disabled={haveArticle ? false : true}
                   type="checkbox"
-                  name="dontHaveChannel"
+                  name="I’ll do this later"
+                  value={"I’ll do this later"}
                   className={`absolute opacity-0 inset-0 ${
-                    haveWebsite ? "cursor-pointer" : ""
+                    haveArticle ? "cursor-pointer" : ""
                   }`}
                   onChange={() => setDoLater((prev) => !prev)}
                 />

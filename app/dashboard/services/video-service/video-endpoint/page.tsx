@@ -17,7 +17,6 @@ const Page = () => {
   async function makeService() {
     const optionsItems = localStorage.getItem("selectedOption");
     const optionsArray = optionsItems ? JSON.parse(optionsItems) : [];
-    console.log(optionsArray,"//////////optionsArray/////////////");
     if (document.querySelector("input[type='radio']:checked")) {
       optionsArray.push({
         name: "estimated cost",
@@ -45,7 +44,7 @@ const Page = () => {
     
     
     try {
-      const data = await axios.post(`http://juicebox-env.eba-sfhwtshs.us-east-1.elasticbeanstalk.com/api/v1/services/initialize-service`,{
+      const data = await axios.post(`https://api.creativejuicebox.com/api/v1/services/initialize-service`,{
         type:"video",
         totalSteps:12,
         options:optionsArray

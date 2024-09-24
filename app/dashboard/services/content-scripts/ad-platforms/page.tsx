@@ -1,7 +1,11 @@
+"use client"
 import classNames from "classnames";
 import styles from "./adPlatforms.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 function AccountRecovery() {
   const data = [
@@ -214,10 +218,37 @@ function AccountRecovery() {
     },
   ];
 
+  const dispatch = useDispatch();
+  const route = useRouter();
+  const nextFunc = () => {
+    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (document.querySelector("input[type='radio']:checked")) {
+      itemsArray.push({
+        name: "choose platform",
+        choice: (
+          document.querySelector(
+            "input[type='radio']:checked"
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray))
+        dispatch(addOption({
+          name: "choose platform",
+          choice: (
+            document.querySelector(
+              "input[type='radio']:checked"
+            ) as HTMLInputElement
+          ).value,
+        }))
+      route.push("/dashboard/services/content-scripts/product-advertising");
+    }
+  };
+
   return (
     // Custom component for navigation between pages, passing props for the next and back links
     <NextPrevNav
-      nextLink="/dashboard/services/content-scripts/product-advertising"
+      nextLink="/dashboard/services/content-scripts/product-advertising" nextFunc={nextFunc}
       backLink="/dashboard/services/content-scripts/kind-of-video"
     >
       {/* Main container for the content, styled using Tailwind CSS and custom styles */}
@@ -248,7 +279,7 @@ function AccountRecovery() {
         >
           {/* Mapping through the data array to generate the selection cards */}
           {data.map((item, i) => (
-            <CustomCheckBoxText btnSize="md" inputType="checkbox" key={i}>
+            <CustomCheckBoxText btnSize="md" inputType="radio" name="platform" key={i} value={item.title}>
               {/* Individual card container, styled with custom gap and font properties */}
               <div
                 className={classNames(

@@ -3,12 +3,42 @@ import classNames from "classnames";
 import styles from "./suspension-reason.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
+import { it } from "node:test";
 const RewriteWebsite = () => {
   const data = ["Re-write copy", "Write a new copy"];
+  const dispatch = useDispatch();
+  const route = useRouter();
+  const nextFunc = () => {
+    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (document.querySelector("input[type='radio']:checked")) {
+      itemsArray.push({
+        name: "rewrite your existing website copy ?",
+        choice: (
+          document.querySelector(
+            "input[type='radio']:checked"
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "rewrite your existing website copy ?",
+          choice: (
+            document.querySelector(
+              "input[type='radio']:checked"
+            ) as HTMLInputElement
+          ).value,
+        }))
+      route.push("/dashboard/services/content-website/live-website");
+    }
+  };
 
   return (
     <NextPrevNav
-      backLink="/dashboard/services/content-website/"
+      backLink="/dashboard/services/content-website/" nextFunc={nextFunc}
       nextLink="/dashboard/services/content-website/live-website"
     >
       <div
@@ -40,6 +70,7 @@ const RewriteWebsite = () => {
                 name="removalReason"
                 id={`removalReason-${i}`}
                 className="opacity-0 w-full h-full absolute"
+                value={item}
               />
               <div>{item}</div>
             </div>

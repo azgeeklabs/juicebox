@@ -2,15 +2,36 @@
 import React, { useState } from "react";
 import styles from "./chooseNiche.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 const Page = () => {
   const [haveWebsite, setHaveWebsite] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [shownValue, setShownValue] = useState("e-commerce");
+  const dispatch = useDispatch();
+  const route = useRouter()
+  const nextFunc = () => {
+    if (shownValue) {
+     const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
+     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+     itemsArray.push({
+       name:"video's niche",
+       choice:shownValue
+     })
+     localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+       dispatch(addOption({
+         name:"video's niche",
+         choice:shownValue
+       }))
+     route.push("/dashboard/services/content-scripts/duration-of-video")
+    }
+   };
   return (
     // Custom component for navigation between pages, passing props for the next and back links
     <NextPrevNav
-      nextLink="/dashboard/services/content-scripts/duration-of-video"
+      nextLink="/dashboard/services/content-scripts/duration-of-video" nextFunc={nextFunc}
       backLink="/dashboard/services/content-scripts/product-advertising"
     >
       {/* Main container for the content, styled using Tailwind CSS and custom styles */}

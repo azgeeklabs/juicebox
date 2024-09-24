@@ -11,10 +11,14 @@ import "swiper/css/pagination";
 import { Navigation } from "swiper/modules";
 
 import "./styles.css";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 function ORMNegativePressRemoval() {
   const [num, setNum] = useState(0);
-  const [haveSources, setHaveSources] = useState<boolean>(false);
+  const [haveSpecificNum, setHaveSpecificNum] = useState<boolean>(false);
+  const itemsRef = useRef<any[]>([])
 
   const [links, setLinks] = useState<string[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -42,9 +46,56 @@ function ORMNegativePressRemoval() {
     }
   };
 
+  const dispatch = useDispatch()
+  const route = useRouter()
+  function nextFunc() {
+    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : []; 
+    const sentArr: { page: string; numberOfSections: string }[] = [];
+    if (haveSpecificNum) {
+      console.log(Array.from(document.querySelectorAll(".pageTitle")));
+      console.log(Array.from(document.querySelectorAll(".sectionNumber")));
+      const pageTitles = Array.from(document.querySelectorAll(".pageTitle"))
+      const sectionNumbers = Array.from(document.querySelectorAll(".sectionNumber"))
+      console.log(pageTitles.length);
+      
+      Array.from({ length: pageTitles.length }, (_, idx) => {
+        sentArr.push({
+          page: (pageTitles[idx] as HTMLSpanElement).innerText,
+          numberOfSections: (sectionNumbers[idx] as HTMLInputElement).value,
+        });
+      });
+      console.log(sentArr);
+      
+      itemsArray.push({
+        name:"Preferred Number of Sections per Page",
+        choice:((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value),
+        ans:JSON.stringify(sentArr)
+      })
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      dispatch(addOption({
+        name:"Preferred Number of Sections per Page",
+        choice:((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value),
+        ans:JSON.stringify(sentArr)
+      }))
+      route.push("/dashboard/services/content-website/estimated-cost")
+    } else if (!haveSpecificNum && document.querySelector("input[type='radio']:checked")) {
+      itemsArray.push({
+        name:"Preferred Number of Sections per Page",
+        choice:((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value),
+      })
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      dispatch(addOption({
+        name:"Preferred Number of Sections per Page",
+        choice:((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value),
+      }))
+      route.push("/dashboard/services/content-website/estimated-cost")
+    }
+  }
+
   return (
     <NextPrevNav
-      nextLink="/dashboard/services/content-website/estimated-cost"
+      nextLink="/dashboard/services/content-website/estimated-cost" nextFunc={nextFunc}
       backLink="/dashboard/services/content-website/word-count"
     >
       {/* Inner container with full height and center alignment */}
@@ -74,7 +125,8 @@ function ORMNegativePressRemoval() {
                 btnSize="xl"
                 inputType="radio"
                 name="sourcesAnswer"
-                onClick={() => setHaveSources(true)}
+                onClick={() => setHaveSpecificNum(true)}
+                value={"Yes"}
               >
                 Yes
               </CustomCheckBoxText>
@@ -82,7 +134,8 @@ function ORMNegativePressRemoval() {
                 btnSize="xl"
                 inputType="radio"
                 name="sourcesAnswer"
-                onClick={() => setHaveSources(false)}
+                onClick={() => setHaveSpecificNum(false)}
+                value={"No"}
               >
                 No
               </CustomCheckBoxText>
@@ -110,32 +163,38 @@ function ORMNegativePressRemoval() {
                 {Array(6)
                   .fill(0)
                   .map((e, i) => (
-                    <SwiperSlide>
-                      <div className=" flex flex-col gap-[--sy-10px]">
+                    <SwiperSlide >
+                      <div  ref={(el: any) => {
+                        if (el) {
+                          itemsRef.current[i] = itemsRef?.current[i] || 0
+                          console.log(itemsRef.current[i]);
+                        }
+                      }}  className={`flex flex-col gap-[--sy-10px] ${haveSpecificNum ? "" : "grayscale"}`}>
                         <div className=" w-full bg-[#484848] p-[--16px] rounded-[10px]">
                           <img
                             src="/assets/website-page.png"
                             alt=""
                             className="w-full mb-[--sy-16px]"
                           />
-                          <span className=" text-[--20px]">About us</span>
+                          <span className={` text-[--20px] pageTitle`}>About us</span>
                         </div>
                         <div className="text-[--20px] flex gap-[--24px] items-center bg-[#484848] rounded-[8px] px-[--10px]">
                           Sections{" "}
                           <div className=" w-fit relative inline-block ">
                             <input
                               type="number"
-                              value={num}
+                              value={itemsRef.current[i] || 0}
                               onChange={(
                                 e: React.ChangeEvent<HTMLInputElement>
                               ) => {
                                 setNum(Number(e?.target?.value));
                               }}
-                              className="h-full rounded-[8px] py-[--sy-10px] text-center outline-none w-[5vw] bg-transparent caret-transparent"
+                              className={`sectionNumber h-full rounded-[8px] py-[--sy-10px] text-center outline-none w-[5vw] bg-transparent caret-transparent`}
                             />
                             <svg
                               onClick={() => {
-                                if (num > 0) {
+                                if (itemsRef.current[i] > 0 && haveSpecificNum) {
+                                  --itemsRef.current[i]
                                   setNum((prev) => prev - 1);
                                 }
                               }}
@@ -153,7 +212,10 @@ function ORMNegativePressRemoval() {
                             </svg>
                             <svg
                               onClick={() => {
+                               if (haveSpecificNum) {
+                                ++itemsRef.current[i]
                                 setNum((prev) => Number(prev) + 1);
+                               }
                               }}
                               className="absolute right-[0.3vw] top-1/2 -translate-y-1/2 "
                               width="18"

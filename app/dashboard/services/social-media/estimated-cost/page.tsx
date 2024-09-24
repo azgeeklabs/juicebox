@@ -46,7 +46,7 @@ const Page = () => {
     
     
     try {
-      const data = await axios.post(`http://juicebox-env.eba-sfhwtshs.us-east-1.elasticbeanstalk.com/api/v1/services/initialize-service`,{
+      const data = await axios.post(`https://api.creativejuicebox.com/api/v1/services/initialize-service`,{
         type:"social media",
         totalSteps:chosenRoute == "create" ? 6 : chosenRoute == "audience" ? 5 : chosenRoute == "post" ? 4 : 0,
         options:optionsArray

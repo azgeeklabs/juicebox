@@ -9,6 +9,9 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import SwiperCore from "swiper";
 import { useRef } from "react";
+import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 const defaultPages = [
   "Sign Up",
@@ -51,10 +54,31 @@ function Page() {
     "/assets/mobile-slide-3.png",
     "/assets/mobile-slide-4.png",
   ];
+  const route = useRouter()
+  const dispatch = useDispatch();
+
+  const nextFunc = () => {
+    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (document.querySelector("input[type='checkbox']:checked")) {
+      const checkedValues = Array.from(document.querySelectorAll("input[type='checkbox']:checked"))
+  .map((checkbox) => (checkbox as HTMLInputElement).value);
+      itemsArray.push({
+        name: "customize pages",
+        choice: checkedValues.join(",")
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "customize pages",
+          choice: checkedValues.join(","),
+        }))
+      route.push("/dashboard/services/content-website/content-style");
+    }
+  };
 
   return (
     <NextPrevNav
-      backLink="/dashboard/services/content-website/website-niche"
+      backLink="/dashboard/services/content-website/website-niche" nextFunc={nextFunc}
       nextLink="/dashboard/services/content-website/content-style"
     >
       <div className={`${styles.ecommerce} flex flex-col justify-center`}>
@@ -142,6 +166,7 @@ function Page() {
                     <CustomCheckBoxText
                       btnSize="sm"
                       inputType="checkbox"
+                      value={page}
                       onMouseOver={() => {
                         if (swiperRef.current) {
                           swiperRef.current.slideTo(i); // Slide index is 0-based

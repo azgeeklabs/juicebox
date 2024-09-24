@@ -46,7 +46,7 @@ const CustomTypeRange = ({
     console.log(`${minutes} min ${seconds} sec`); // Log the result for debugging.
     setMinut(`${minutes} min ${seconds} sec`); // Update the state with the formatted time.
     if (minut && setTime) {
-      setTime(minut);
+      setTime(`${minutes} min ${seconds} sec`);
     }
   }
 
@@ -54,7 +54,6 @@ const CustomTypeRange = ({
   const handleChange = (_: any, newValue: any) => {
     console.log(newValue); // Log the new value for debugging.
     setVal(newValue); // Update the slider value state.
-    console.log(newValue);
     if (setWordVal) {
       setWordVal(newValue);
     }

@@ -5,12 +5,17 @@ import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxT
 import Link from "next/link";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 const Page = () => {
   const router = useRouter();
   const [haveAccount, setHaveAccount] = useState(false);
   const [doLater, setDoLater] = useState(false);
   const [pastedText, setPastedText] = useState<string>("");
+
+  const route = useRouter();
+  const dispatch = useDispatch();
 
   const handlePaste = async () => {
     try {
@@ -20,10 +25,80 @@ const Page = () => {
       console.error("Failed to read clipboard contents: ", error);
     }
   };
+  const nextFunc = () => {
+    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (haveAccount && !doLater && pastedText) {
+      itemsArray.push({
+        name: "Do you currently have a account to run ads on?",
+        choice: (
+          document.querySelector(
+            'input[type="radio"]:checked'
+          ) as HTMLInputElement
+        ).value,
+        ans: `${pastedText}`,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "Do you currently have a account to run ads on?",
+          choice: (
+            document.querySelector(
+              'input[type="radio"]:checked'
+            ) as HTMLInputElement
+          ).value,
+          ans: `${pastedText}`,
+        }))
+        route.push("/dashboard/services/paid-ads-flow/trying-paid-ads");
+    } else if (
+      !haveAccount &&
+      !doLater &&
+      document.querySelector('input[type="radio"]:checked')
+    ) {
+      itemsArray.push({
+        name: "Do you currently have a account to run ads on?",
+        choice: (
+          document.querySelector(
+            'input[type="radio"]:checked'
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      
+        dispatch(addOption({
+          name: "Do you currently have a account to run ads on?",
+          choice: (
+            document.querySelector(
+              'input[type="radio"]:checked'
+            ) as HTMLInputElement
+          ).value,
+        }))
+        route.push("/dashboard/services/paid-ads-flow/trying-paid-ads");
+    } else if (doLater) {
+      itemsArray.push({
+        name: "Do you currently have a account to run ads on?",
+        choice: (
+          document.querySelector(
+            'input[type="checkbox"]:checked'
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+     
+        dispatch(addOption({
+          name: "Do you currently have a account to run ads on?",
+          choice: (
+            document.querySelector(
+              'input[type="checkbox"]:checked'
+            ) as HTMLInputElement
+          ).value,
+        }))
+      route.push("/dashboard/services/paid-ads-flow/trying-paid-ads");
+    }
+  };
 
   return (
     <NextPrevNav
-      nextLink="/dashboard/services/paid-ads-flow/trying-paid-ads"
+      nextLink="/dashboard/services/paid-ads-flow/trying-paid-ads" nextFunc={nextFunc}
       backLink="/dashboard/services/paid-ads-flow/"
     >
       {/* // Main container div with relative positioning */}
@@ -56,14 +131,22 @@ const Page = () => {
                 btnSize="xl"
                 inputType="radio"
                 name="creationAnswer"
+                value={"I have an account"}
               >
                 I have an account
               </CustomCheckBoxText>
               <CustomCheckBoxText
-                onClick={() => setHaveAccount(false)}
+                onClick={() => {setHaveAccount(false)
+                  if (document.querySelector('input[type="checkbox"]:checked')) {
+                    (document.querySelector('input[type="checkbox"]:checked') as HTMLInputElement).checked = false;
+                    setDoLater(false)
+                  }
+                  setPastedText("")
+                }}
                 btnSize="xl"
                 inputType="radio"
                 name="creationAnswer"
+                value={"Make one for me"}
               >
                 Make one for me
               </CustomCheckBoxText>
@@ -111,7 +194,8 @@ const Page = () => {
                 <input
                   disabled={haveAccount ? false : true}
                   type="checkbox"
-                  name="dontHaveChannel"
+                  name="I’ll do this later"
+                  value={"I’ll do this later"}
                   className={`absolute opacity-0 inset-0 ${
                     haveAccount ? "cursor-pointer" : ""
                   }`}

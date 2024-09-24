@@ -4,14 +4,37 @@ import styles from "./createWebsite.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 const WebsiteNiche = () => {
-  const [haveWebsite, setHaveWebsite] = useState(false);
+  const [niche, setNiche] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
   const [shownValue, setShownValue] = useState("e-commerce");
+  const dispatch = useDispatch();
+  const route = useRouter()
+  const nextFunc = () => {
+    if (shownValue && niche) {
+     const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
+     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+     itemsArray.push({
+       name:"website's niche",
+       choice:niche,
+       ans:shownValue
+     })
+     localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+       dispatch(addOption({
+         name:"website's niche",
+         choice:niche,
+         ans:shownValue
+       }))
+     route.push("/dashboard/services/content-website/custom-ecommerce")
+    }
+   };
   return (
     <NextPrevNav
-      nextLink="/dashboard/services/content-website/custom-ecommerce"
+      nextLink="/dashboard/services/content-website/custom-ecommerce" nextFunc={nextFunc}
       backLink="/dashboard/services/content-website/live-website"
     >
       {/* // Main container div with relative positioning */}
@@ -39,18 +62,20 @@ const WebsiteNiche = () => {
             >
               {/* CustomCheckBoxText component for selecting options */}
               <CustomCheckBoxText
-                onClick={() => setHaveWebsite(true)}
+                onClick={() => setNiche("Service")}
                 btnSize="xl"
                 inputType="radio"
                 name="creationAnswer"
+                value={"Service"}
               >
                 Service
               </CustomCheckBoxText>
               <CustomCheckBoxText
-                onClick={() => setHaveWebsite(false)}
+                onClick={() => setNiche("Product")}
                 btnSize="xl"
                 inputType="radio"
                 name="creationAnswer"
+                value={"Product"}
               >
                 Product
               </CustomCheckBoxText>

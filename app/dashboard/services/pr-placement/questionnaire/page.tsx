@@ -1,9 +1,31 @@
+"use client"
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { addOption } from "@/app/reducers/serviceSlice";
+import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
 
 const Questionnaire = () => {
+  const dispatch = useDispatch();
+  const route = useRouter();
+  const nextFunc = () => {
+    const storedItems =
+      typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+
+    itemsArray.push({
+      name: "questionnair",
+    });
+    localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+    dispatch(
+      addOption({
+        name: "questionnair",
+      })
+    );
+    route.push(`/dashboard/services/pr-placement/artical-brand`);
+  };
   return (
     <NextPrevNav
-      backLink="/dashboard/services/pr-placement/create-article"
+      backLink="/dashboard/services/pr-placement/create-article" nextFunc={nextFunc}
       nextLink="/dashboard/services/pr-placement/artical-brand"
     >
       <div className="w-full h-full flex flex-col ">

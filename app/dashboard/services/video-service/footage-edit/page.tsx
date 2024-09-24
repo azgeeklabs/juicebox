@@ -110,7 +110,7 @@ const Page = () => {
             <div className="flex gap-[1vw] items-start mb-[--sy-24px]">
               {/* Input field for uploading footage with full height, bottom margin, specific width, background color, outline removal, rounded corners, padding, and placeholder styling */}
               <div className="relative h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.889vh] text-[#FFFFFFCC] cursor-pointer">
-                Upload Footage
+                {inputVal ? inputVal : "Upload Footage"}
                 <input
                 ref={uploadRef}
                   type="file"

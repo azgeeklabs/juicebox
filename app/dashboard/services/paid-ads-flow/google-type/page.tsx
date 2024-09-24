@@ -10,15 +10,18 @@ import "swiper/css/pagination";
 import SwiperCore from "swiper";
 import { globalContext } from "@/app/_context/GlobalContext";
 import "./adType.css"
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 export default function Page() {
 
   const { step, setStep } = useContext(globalContext);
   
   const options = [
-    "Light Mode",
-    "Dark Mode",
-    "Playful",
+    "Search Ads",
+    "Display Ads",
+    "Video Ads",
     "Playful",
     "Dark Mode",
   ];
@@ -32,10 +35,36 @@ export default function Page() {
     "/assets/mobile-slide-4.png",
     "/assets/mobile-slide-1.png",
   ];
+  const dispatch = useDispatch();
+  const route = useRouter();
+  const nextFunc = () => {
+    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (document.querySelector("input[type='radio']:checked")) {
+      itemsArray.push({
+        name: "What type of Google ads would you like to run?",
+        choice: (
+          document.querySelector(
+            "input[type='radio']:checked"
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray))
+        dispatch(addOption({
+          name: "What type of Google ads would you like to run?",
+          choice: (
+            document.querySelector(
+              "input[type='radio']:checked"
+            ) as HTMLInputElement
+          ).value,
+        }))
+      route.push("/dashboard/services/paid-ads-flow/create-account");
+    }
+  };
 
   return (
     <NextPrevNav
-      nextLink="/dashboard/services/paid-ads-flow/create-account"
+      nextLink="/dashboard/services/paid-ads-flow/create-account" nextFunc={nextFunc}
       backLink="/dashboard/services/paid-ads-flow/"
       nextOnClick={() => setStep(step + 1)}
 backOnClick={() => setStep(step - 1)}
@@ -60,6 +89,7 @@ backOnClick={() => setStep(step - 1)}
                   btnSize="xl"
                   inputType="radio"
                   name="type"
+                  value={e}
                   // Mouse move event to highlight the hovered item
                   onMouseOver={() => {
                     if (swiperRef.current) {

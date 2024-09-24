@@ -4,11 +4,16 @@ import styles from "./channelChoice.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 const Page = () => {
-  const [haveWebsite, setHaveWebsite] = useState(false);
+  const [haveChannel, setHaveChannel] = useState(false);
   const [doLater, setDoLater] = useState(false);
   const [pastedText, setPastedText] = useState<string>("");
+  const route = useRouter();
+  const dispatch = useDispatch();
 
   const handlePaste = async () => {
     try {
@@ -18,10 +23,81 @@ const Page = () => {
       console.error("Failed to read clipboard contents: ", error);
     }
   };
+
+  const nextFunc = () => {
+    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (haveChannel && !doLater && pastedText) {
+      itemsArray.push({
+        name: "have channel or not",
+        choice: (
+          document.querySelector(
+            'input[type="radio"]:checked'
+          ) as HTMLInputElement
+        ).value,
+        ans: `${pastedText}`,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "have channel or not",
+          choice: (
+            document.querySelector(
+              'input[type="radio"]:checked'
+            ) as HTMLInputElement
+          ).value,
+          ans: `${pastedText}`,
+        }))
+        route.push(`/dashboard/services/content-scripts/video-style`);
+    } else if (
+      !haveChannel &&
+      !doLater &&
+      document.querySelector('input[type="radio"]:checked')
+    ) {
+      itemsArray.push({
+        name: "have channel or not",
+        choice: (
+          document.querySelector(
+            'input[type="radio"]:checked'
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      
+        dispatch(addOption({
+          name: "have channel or not",
+          choice: (
+            document.querySelector(
+              'input[type="radio"]:checked'
+            ) as HTMLInputElement
+          ).value,
+        }))
+        route.push(`/dashboard/services/content-scripts/video-style`);
+    } else if (doLater) {
+      itemsArray.push({
+        name: "have channel or not",
+        choice: (
+          document.querySelector(
+            'input[type="checkbox"]:checked'
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+     
+        dispatch(addOption({
+          name: "have channel or not",
+          choice: (
+            document.querySelector(
+              'input[type="checkbox"]:checked'
+            ) as HTMLInputElement
+          ).value,
+        }))
+      route.push(`/dashboard/services/content-scripts/video-style`);
+    }
+  };
   
   return (
     <NextPrevNav
-      nextLink="/dashboard/services/content-scripts/video-style"
+      nextLink="/dashboard/services/content-scripts/video-style" nextFunc={nextFunc}
       backLink="/dashboard/services/content-scripts"
     >
       {/* // Main container div with relative positioning */}
@@ -51,18 +127,26 @@ const Page = () => {
             >
               {/* CustomCheckBoxText component for selecting options */}
               <CustomCheckBoxText
-                onClick={() => setHaveWebsite(true)}
+                onClick={() => setHaveChannel(true)}
                 btnSize="xl"
                 inputType="radio"
                 name="channelRedesign"
+                value={"I have a channel"}
               >
                 I have a channel
               </CustomCheckBoxText>
               <CustomCheckBoxText
-                onClick={() => setHaveWebsite(false)}
+                onClick={() => {setHaveChannel(false);
+                  if (document.querySelector('input[type="checkbox"]:checked')) {
+                    (document.querySelector('input[type="checkbox"]:checked') as HTMLInputElement).checked = false;
+                    setDoLater(false)
+                  }
+                  setPastedText("")
+                }}
                 btnSize="xl"
                 inputType="radio"
                 name="channelRedesign"
+                value={"Create one for me!"}
               >
                 Create one for me!
               </CustomCheckBoxText>
@@ -73,7 +157,7 @@ const Page = () => {
 
             <div
               className={`mx-auto w-full ${
-                haveWebsite ? "" : "grayscale-[50%] opacity-50"
+                haveChannel ? "" : "grayscale-[50%] opacity-50"
               }`}
             >
               {/* Product Link field with optional span */}
@@ -83,7 +167,7 @@ const Page = () => {
               <div className="flex gap-[1vw] items-start mb-[1.2vw]">
                 {/* Product Link input field */}
                 <input
-                  disabled={haveWebsite ? false : true}
+                  disabled={haveChannel ? false : true}
                   value={pastedText}
                   onChange={(e) => setPastedText(e.target.value)}
                   type="text"
@@ -94,7 +178,7 @@ const Page = () => {
                 {/* Paste Link button */}
                 <button
                   onClick={handlePaste}
-                  disabled={haveWebsite ? false : true}
+                  disabled={haveChannel ? false : true}
                   className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.4vw] text-black rounded-[var(--33px)] font-bold"
                 >
                   Paste Link
@@ -103,16 +187,17 @@ const Page = () => {
               {/* Link component for saving progress */}
               <div
                 className={`relative block w-fit mx-auto px-[0.52vw] py-[0.3vw] ${
-                  haveWebsite && "hover:bg-[#484848]"
+                  haveChannel && "hover:bg-[#484848]"
                 } rounded-[var(--32px)] transition-all duration-200 underline`}
               >
                 I’ll do this later
                 <input
-                  disabled={haveWebsite ? false : true}
+                  disabled={haveChannel ? false : true}
                   type="checkbox"
-                  name="dontHaveChannel"
+                  name="I’ll do this later"
+                  value={"I’ll do this later"}
                   className={`absolute opacity-0 inset-0 ${
-                    haveWebsite ? "cursor-pointer" : ""
+                    haveChannel ? "cursor-pointer" : ""
                   }`}
                   onChange={() => setDoLater((prev) => !prev)}
                 />

@@ -173,6 +173,7 @@ const Page = () => {
                   dispatch(setContentBlogRoute("don'tHaveWebsite"))
                   if (document.querySelector('input[type="checkbox"]:checked')) {
                     (document.querySelector('input[type="checkbox"]:checked') as HTMLInputElement).checked = false;
+                    setDoLater(false)
                   }
                   setPastedText("")
                 }}

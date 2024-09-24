@@ -4,10 +4,15 @@ import styles from "./referenceSources.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import { useRef, useState } from "react";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
+import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 function ORMNegativePressRemoval() {
 
     const [haveSources,setHaveSources] = useState<boolean>(false)
+    const route = useRouter();
+  const dispatch = useDispatch();
 
   const [links, setLinks] = useState<string[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -30,9 +35,53 @@ function ORMNegativePressRemoval() {
       console.error("Failed to read clipboard contents: ", error);
     }
   };
+  const nextFunc = () => {
+    
+    const storedItems =
+      typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (haveSources && links.length > 0) {
+      itemsArray.push({
+        name: "sources to reference",
+        ans: links.join(","),
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      dispatch(
+        addOption({
+          name: "sources to reference",
+          ans: links.join(","),
+        })
+      );
+      route.push("/dashboard/services/content-website/word-count");
+    } else if (
+      !haveSources && document.querySelector('input[type="radio"]:checked') ) {
+        
+      itemsArray.push({
+        name: "sources to reference",
+        choice: (
+          document.querySelector(
+            'input[type="radio"]:checked'
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+
+      dispatch(
+        addOption({
+          name: "sources to reference",
+          choice: (
+            document.querySelector(
+              'input[type="radio"]:checked'
+            ) as HTMLInputElement
+          ).value,
+        })
+      );
+      route.push("/dashboard/services/content-website/word-count");
+    }
+  };
 
   return (
-    <NextPrevNav nextLink="/dashboard/services/content-website/word-count" backLink="/dashboard/services/content-website/content-style">
+    <NextPrevNav nextLink="/dashboard/services/content-website/word-count" nextFunc={nextFunc} backLink="/dashboard/services/content-website/content-style">
       {/* Inner container with full height and center alignment */}
       <div className="h-full flex justify-center items-center pt-[--40px]">
         {/* Inner container with full width and custom styles for the footage editing section */}
@@ -53,10 +102,10 @@ function ORMNegativePressRemoval() {
             </h4>
           </div>
           <div className=" flex gap-[--8px] items-center justify-center border-b border-b-[#484848] pb-[--sy-33px] mb-[--sy-33px]">
-            <CustomCheckBoxText btnSize="xl" inputType="radio" name="sourcesAnswer" onClick={()=>setHaveSources(true)}>
+            <CustomCheckBoxText btnSize="xl" inputType="radio" name="sourcesAnswer" onClick={()=>setHaveSources(true)} value={"Input sources"}>
             Input sources
             </CustomCheckBoxText>
-            <CustomCheckBoxText btnSize="xl" inputType="radio" name="sourcesAnswer" onClick={()=>setHaveSources(false)}>
+            <CustomCheckBoxText btnSize="xl" inputType="radio" name="sourcesAnswer" onClick={()=>setHaveSources(false)} value={"I have no sources"}>
             I have no sources
             </CustomCheckBoxText>
           </div>

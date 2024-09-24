@@ -7,6 +7,8 @@ import dynamic from "next/dynamic";
 import classNames from "classnames";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { addOption } from "@/app/reducers/serviceSlice";
 const CustomTypeRange = dynamic(
   () => import("@/app/_components/customTypeRange/CustomTypeRange"),
   { ssr: false }
@@ -15,9 +17,56 @@ const CustomTypeRange = dynamic(
 const Page = () => {
     const router = useRouter()
     const [specifyWords,setSpecifyWords] = useState(false)
+  const [num, setNum] = useState(0);
+    const route = useRouter();
+  const dispatch = useDispatch();
+    const nextFunc = () => {
+      const storedItems =
+        typeof window !== "undefined" && localStorage.getItem("selectedOption");
+      const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+      if (specifyWords && num > 0) {
+        itemsArray.push({
+          name: "word count",
+          ans: `${num}`,
+        });
+        localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(
+          addOption({
+            name: "word count",
+            ans: `${num}`,
+          })
+        );
+        route.push("/dashboard/services/content-website/sections-number");
+      } else if (
+        !specifyWords &&
+        document.querySelector('input[type="radio"]:checked')
+      ) {
+        itemsArray.push({
+          name: "word count",
+          choice: (
+            document.querySelector(
+              'input[type="radio"]:checked'
+            ) as HTMLInputElement
+          ).value,
+        });
+        localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+  
+        dispatch(
+          addOption({
+            name: "word count",
+            choice: (
+              document.querySelector(
+                'input[type="radio"]:checked'
+              ) as HTMLInputElement
+            ).value,
+          })
+        );
+        route.push("/dashboard/services/content-website/sections-number");
+      }
+    };
   return (
     <NextPrevNav
-      nextLink="/dashboard/services/content-website/sections-number"
+      nextLink="/dashboard/services/content-website/sections-number" nextFunc={nextFunc}
       backLink="/dashboard/services/content-website/reference-sources"
     >
       <div
@@ -46,6 +95,7 @@ const Page = () => {
               btnSize="xl"
               inputType="radio"
               name="countAnswer"
+              value={"Specific Word Count"}
             >
               Specific Word Count
             </CustomCheckBoxText>
@@ -56,13 +106,14 @@ const Page = () => {
               btnSize="xl"
               inputType="radio"
               name="countAnswer"
+              value={"It doesn't matter"}
             >
               It doesn't matter
             </CustomCheckBoxText>
           </div>
           <div className={` w-[50%] mx-auto ${specifyWords ? "" : "opacity-20 grayscale-[60%]"}`}>
             <h3 className=" mb-[--sy-16px] text-[--20px] font-semibold">Word per Page</h3>
-            <CustomTypeRange word="Words/Page" max={100} isDisabled={!specifyWords}/>
+            <CustomTypeRange word="Words/Page" max={100} isDisabled={!specifyWords} setNum={setNum}/>
           </div>
           
         </div>

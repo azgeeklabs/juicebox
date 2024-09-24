@@ -1,11 +1,34 @@
+"use client"
 import classNames from "classnames";
 import styles from "./content-website.module.css";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 function ContentWebsite() {
+  const dispatch = useDispatch();
+  const route = useRouter();
+  const nextFunc = () => {
+    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    const checkedValues = Array.from(document.querySelectorAll("input[type='checkbox']:checked")).map((e)=>(e as HTMLInputElement).value)
+    if (checkedValues.length > 0) {
+      itemsArray.push({
+        name: "select pages",
+        choice: checkedValues.join(","),
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "select pages",
+          choice: checkedValues.join(","),
+        }))
+      route.push("/dashboard/services/content-website/content-style");
+    }
+  };
   return (
     <>
-      <NextPrevNav nextLink="/dashboard/services/content-website/content-style" backLink="/dashboard/services/content-website/live-website">
+      <NextPrevNav nextLink="/dashboard/services/content-website/content-style" nextFunc={nextFunc} backLink="/dashboard/services/content-website/live-website">
         <div className="flex flex-col gap-[var(--sy-40px)] justify-center items-center h-full">
           <div
             className={classNames(
@@ -45,7 +68,7 @@ function ContentWebsite() {
                     <input
                       type="checkbox"
                       name="type"
-                      value="game"
+                      value={`Home Page${i}`}
                       className="absolute opacity-0 inset-0 cursor-pointer"
                     />
                   </div>

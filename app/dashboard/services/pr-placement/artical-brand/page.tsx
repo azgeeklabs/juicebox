@@ -4,10 +4,15 @@ import styles from "./createWebsite.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
+import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { addOption } from "@/app/reducers/serviceSlice";
 
 const CreateArtical = () => {
-  const [haveWebsite, setHaveWebsite] = useState(false);
+  const [choice, setChoice] = useState("");
   const [pastedText, setPastedText] = useState<string>("");
+  const route = useRouter();
+  const dispatch = useDispatch();
 
   const handlePaste = async () => {
     try {
@@ -17,10 +22,58 @@ const CreateArtical = () => {
       console.error("Failed to read clipboard contents: ", error);
     }
   };
+  const nextFunc = () => {
+    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+    if (choice == "brand" && pastedText) {
+      itemsArray.push({
+        name: "article centered about",
+        choice: (
+          document.querySelector(
+            'input[type="radio"]:checked'
+          ) as HTMLInputElement
+        ).value,
+        ans: `${pastedText}`,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+        dispatch(addOption({
+          name: "article centered about",
+          choice: (
+            document.querySelector(
+              'input[type="radio"]:checked'
+            ) as HTMLInputElement
+          ).value,
+          ans: `${pastedText}`,
+        }))
+        route.push(`/dashboard/services/pr-placement/estimated-cost`);
+    } else if (
+      choice == "person"
+    ) {
+      itemsArray.push({
+        name: "article centered about",
+        choice: (
+          document.querySelector(
+            'input[type="radio"]:checked'
+          ) as HTMLInputElement
+        ).value,
+      });
+      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
+      
+        dispatch(addOption({
+          name: "article centered about",
+          choice: (
+            document.querySelector(
+              'input[type="radio"]:checked'
+            ) as HTMLInputElement
+          ).value,
+        }))
+        route.push(`/dashboard/services/pr-placement/estimated-cost`);
+    } 
+  };
 
   return (
     <NextPrevNav
-      nextLink="/dashboard/services/pr-placement/estimated-cost"
+      nextLink="/dashboard/services/pr-placement/estimated-cost" nextFunc={nextFunc}
       backLink="/dashboard/services/pr-placement/questionnaire"
     >
       {/* // Main container div with relative positioning */}
@@ -51,18 +104,20 @@ const CreateArtical = () => {
             >
               {/* CustomCheckBoxText component for selecting options */}
               <CustomCheckBoxText
-                onClick={() => setHaveWebsite(true)}
+                onClick={() => setChoice("brand")}
                 btnSize="xl"
                 inputType="radio"
                 name="creationAnswer"
+                value={"brand"}
               >
                 Brand
               </CustomCheckBoxText>
               <CustomCheckBoxText
-                onClick={() => setHaveWebsite(false)}
+                onClick={() => setChoice("person")}
                 btnSize="xl"
                 inputType="radio"
                 name="creationAnswer"
+                value={"person"}
               >
                 Preson
               </CustomCheckBoxText>
@@ -73,7 +128,7 @@ const CreateArtical = () => {
 
             <div
               className={`mx-auto w-full ${
-                haveWebsite ? "" : "grayscale-[50%] opacity-50"
+                choice == "brand" ? "" : "grayscale-[50%] opacity-50"
               }`}
             >
               {/* Product Link field with optional span */}
@@ -83,7 +138,7 @@ const CreateArtical = () => {
               <div className="flex gap-[1vw] items-start mb-[1.2vw]">
                 {/* Product Link input field */}
                 <input
-                  disabled={haveWebsite ? false : true}
+                  disabled={choice == "brand" ? false : true}
                   value={pastedText}
                   onChange={(e) => setPastedText(e.target.value)}
                   type="text"
@@ -94,7 +149,7 @@ const CreateArtical = () => {
                 {/* Paste Link button */}
                 <button
                 onClick={handlePaste}
-                  disabled={haveWebsite ? false : true}
+                  disabled={choice == "brand" ? false : true}
                   className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[--sy-10px] text-black rounded-[var(--33px)] font-bold"
                 >
                   Paste Link
