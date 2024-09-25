@@ -42,7 +42,7 @@ const Page = () => {
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (haveScript && !doLater && inputVal) {
       itemsArray.push({
-        name: "video script",
+        name: "Do you already have a script for this video",
         choice: (
           document.querySelector(
             'input[type="radio"]:checked'
@@ -52,7 +52,7 @@ const Page = () => {
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
         dispatch(addOption({
-          name: "video script",
+          name: "Do you already have a script for this video",
           choice: (
             document.querySelector(
               'input[type="radio"]:checked'
@@ -67,7 +67,7 @@ const Page = () => {
       document.querySelector('input[type="radio"]:checked')
     ) {
       itemsArray.push({
-        name: "video script",
+        name: "Do you already have a script for this video",
         choice: (
           document.querySelector(
             'input[type="radio"]:checked'
@@ -77,7 +77,7 @@ const Page = () => {
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
       
         dispatch(addOption({
-          name: "video script",
+          name: "Do you already have a script for this video",
           choice: (
             document.querySelector(
               'input[type="radio"]:checked'
@@ -87,7 +87,7 @@ const Page = () => {
       route.push("/dashboard/services/video-service/video-duration");
     } else if (doLater) {
       itemsArray.push({
-        name: "video script",
+        name: "Do you already have a script for this video",
         choice: (
           document.querySelector(
             'input[type="checkbox"]:checked'
@@ -97,7 +97,7 @@ const Page = () => {
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
      
         dispatch(addOption({
-          name: "video script",
+          name: "Do you already have a script for this video",
           choice: (
             document.querySelector(
               'input[type="checkbox"]:checked'

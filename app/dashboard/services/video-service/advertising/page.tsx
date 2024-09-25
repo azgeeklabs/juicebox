@@ -35,7 +35,7 @@ const Page = () => {
     const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     itemsArray.push({
-      name:"advertising",
+      name:"What are you advertising?",
       data:{
         fieldOne:name,
         fieldTwo:link,
@@ -44,7 +44,7 @@ const Page = () => {
     })
     localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
       dispatch(addOption({
-        name:"advertising",
+        name:"What are you advertising?",
         data:{
           fieldOne:name,
           fieldTwo:link,

@@ -7,7 +7,7 @@ import { accountRecoveryContext } from "../_accountRecoveryContext/_accountRecov
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/Store/store";
 import { useRouter } from "next/navigation";
-import { addOption } from "@/app/reducers/serviceSlice";
+import { addFile, addOption } from "@/app/reducers/serviceSlice";
 
 function SuspensionApprovel() {
   const { isSexual } = useContext(accountRecoveryContext);
@@ -16,17 +16,36 @@ function SuspensionApprovel() {
   const route = useRouter();
   const [fileSrc, setFileSrc] = useState<any>(null);
   const dispatch = useDispatch();
+  const convertFileToBase64 = (file:any) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  };
 
-  const handleFileChange = (event:any) => {
+  const handleFileChange = async (event:any) => {
     const file = event.target.files[0];
-    setInputVal(file.name)
+    setInputVal(file?.name)
+    console.log(file);
     
+
     if (file) {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => {
-        setFileSrc(fileReader.result);
+      // Convert file to Base64 for storing in localStorage
+      const base64File = await convertFileToBase64(file);
+
+      // Store file metadata and Base64 string in localStorage
+      const fileData = {
+        name: file.name,
+        type: file.type,
+        size: file.size,
+        base64: base64File,
       };
+      localStorage.setItem('uploadedFile', JSON.stringify(fileData));
+
+      // Store the file in Redux
+      dispatch(addFile(file));
     }
   };
 
@@ -35,14 +54,13 @@ function SuspensionApprovel() {
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (inputVal) {
       itemsArray.push({
-        name: "suspended email",
-        file: `${inputVal}`,
+        name: "suspended email screenshot",
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
         dispatch(addOption({
-          name: "suspended email",
-          file: `${inputVal}`,
+          name: "suspended email screenshot",
         }))
+        
       route.push(`${
         isSexual
           ? "/dashboard/services/orm-account-recovery/reject-recovery"
@@ -99,6 +117,7 @@ function SuspensionApprovel() {
                     onChange={handleFileChange}
                     id="upload"
                     type="file"
+                    accept="image/*"
                     className="absolute opacity-0 inset-0 cursor-pointer"
                   />
                 </div>

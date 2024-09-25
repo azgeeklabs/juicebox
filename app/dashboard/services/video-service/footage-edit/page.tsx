@@ -7,43 +7,60 @@ import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/Store/store";
 import { useRouter } from "next/navigation";
-import { addOption, incrementTotalSteps, selectType } from "@/app/reducers/serviceSlice";
+import {
+  addFile,
+  addOption,
+  incrementTotalSteps,
+  selectType,
+} from "@/app/reducers/serviceSlice";
 
 const Page = () => {
+  const file = useSelector((state:RootState)=>state.service.file)
   const [inputVal, setInputVal] = useState("");
   const [doLater, setDoLater] = useState(false);
-  const uploadRef = useRef(null)
+  const uploadRef = useRef(null);
   const all = useSelector((state: RootState) => state.service.options);
   const route = useRouter();
   const dispatch = useDispatch();
-
-  const [fileSrc, setFileSrc] = useState<any>(null);
-
-  
-
-  const handleFileChange = (event:any) => {
-    const file = event.target.files[0];
-    setInputVal(file.name)
-    
-    if (file) {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => {
-        
-        
-        setFileSrc(fileReader.result);
-      };
-    }
+  const convertFileToBase64 = (file:any) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
   };
 
+  const handleFileChange = async (event:any) => {
+    const file = event.target.files[0];
+    setInputVal(file?.name)
+    console.log(file);
+    
+
+    if (file) {
+      // Convert file to Base64 for storing in localStorage
+      const base64File = await convertFileToBase64(file);
+
+      // Store file metadata and Base64 string in localStorage
+      const fileData = {
+        name: file.name,
+        type: file.type,
+        size: file.size,
+        base64: base64File,
+      };
+      localStorage.setItem('uploadedFile', JSON.stringify(fileData));
+
+      // Store the file in Redux
+      dispatch(addFile(file));
+    }
+  };
   const nextFunc = () => {
-    dispatch(incrementTotalSteps());
-    dispatch(selectType("video"));
-    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const storedItems =
+      typeof window !== "undefined" && localStorage.getItem("selectedOption");
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (doLater) {
       itemsArray.push({
-        name: "footage edit",
+        name: "Do you have footage that you want us to edit?",
         choice: (
           document.querySelector(
             'input[type="checkbox"]:checked'
@@ -51,37 +68,38 @@ const Page = () => {
         ).value,
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-      dispatch(addOption({
-        name: "footage edit",
-        choice: (
-          document.querySelector(
-            'input[type="checkbox"]:checked'
-          ) as HTMLInputElement
-        ).value,
-      }))
-    route.push("/dashboard/services/video-service/addToVideo");
+      dispatch(
+        addOption({
+          name: "Do you have footage that you want us to edit?",
+          choice: (
+            document.querySelector(
+              'input[type="checkbox"]:checked'
+            ) as HTMLInputElement
+          ).value,
+        })
+      );
+      route.push("/dashboard/services/video-service/addToVideo");
     } else if (inputVal && !doLater) {
       itemsArray.push({
-        name: "footage edit",
-        file: `${inputVal}`,
+        name: "Do you have footage that you want us to edit?",
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-      dispatch(addOption({
-        name: "footage edit",
-        file: `${inputVal}`,
-      }))
-    route.push("/dashboard/services/video-service/addToVideo");
+      dispatch(
+        addOption({
+          name: "Do you have footage that you want us to edit?",
+        })
+      );
+      route.push("/dashboard/services/video-service/addToVideo");
     }
-    
   };
-  useEffect(()=>{
+  useEffect(() => {
     console.log(all);
-    
-    },[all])
+  }, [all]);
   return (
     // Main container div with full height, flexbox layout, centered content horizontally and vertically
     <NextPrevNav
-      nextLink="/dashboard/services/video-service/addToVideo" nextFunc={()=>nextFunc()}
+      nextLink="/dashboard/services/video-service/addToVideo"
+      nextFunc={() => nextFunc()}
       backLink="/dashboard/services/video-service/channel-style"
     >
       <div className="h-[75%] flex justify-center">
@@ -112,18 +130,22 @@ const Page = () => {
               <div className="relative h-full mb-[1.778vh] w-[28.477vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--71px)] px-[1.088vw] py-[0.889vh] text-[#FFFFFFCC] cursor-pointer">
                 {inputVal ? inputVal : "Upload Footage"}
                 <input
-                ref={uploadRef}
+                  ref={uploadRef}
                   type="file"
                   id="upload"
                   className="pointer-events-none absolute opacity-0 inset-0 cursor-pointer"
-                  onChange={(e)=>{handleFileChange(e)}}
-                  
+                  onChange={(e) => {
+                    handleFileChange(e);
+                  }}
                 />
               </div>
 
               {/* Button for uploading footage with background color, padding, text color, and rounded corners */}
-              <label onClick={()=>console.log(uploadRef.current)
-              } htmlFor="upload" className="cursor-pointer font-bold bg-[var(--highlight-yellow)] px-[1.892vw] py-[--sy-10px] text-black rounded-[var(--33px)]">
+              <label
+                onClick={() => console.log(uploadRef.current)}
+                htmlFor="upload"
+                className="cursor-pointer font-bold bg-[var(--highlight-yellow)] px-[1.892vw] py-[--sy-10px] text-black rounded-[var(--33px)]"
+              >
                 Upload Footage
               </label>
             </div>
@@ -137,6 +159,10 @@ const Page = () => {
                 className="absolute opacity-0 inset-0 cursor-pointer"
                 value={"I’ll do this later"}
                 onChange={() => setDoLater((prev) => !prev)}
+                onClick={()=>{
+                  dispatch(addFile(null))
+                  localStorage.removeItem('uploadedFile');
+                }}
               />
             </div>
           </div>

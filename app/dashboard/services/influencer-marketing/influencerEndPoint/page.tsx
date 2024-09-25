@@ -5,13 +5,16 @@ import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxT
 import Link from "next/link";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { addOption } from "@/app/reducers/serviceSlice";
+import { RootState } from "@/app/Store/store";
 
 const Page = () => {
   const router = useRouter();
   const [saveProgress, setSaveProgress] = useState(false);
+  const file = useSelector((state:RootState) => state.service.file);
+console.log(file);
 
   const dispatch = useDispatch();
   const route = useRouter();
@@ -50,6 +53,7 @@ const Page = () => {
       const data = await axios.post(`https://api.creativejuicebox.com/api/v1/services/initialize-service`,{
         type:"influencer marketing",
         totalSteps:7,
+        fileUrl_5:file,
         options:optionsArray
       },{
         headers:{

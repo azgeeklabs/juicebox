@@ -13,15 +13,11 @@ const Page = () => {
   const dispatch = useDispatch();
   const route = useRouter();
   const nextFunc = () => {
-    console.log("//////////////////////");
-    const selected = document.querySelector(
-      "input[type='radio']:checked"
-    ) as HTMLInputElement;
     const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (document.querySelector("input[type='radio']:checked")) {
       itemsArray.push({
-        name: "selected rank",
+        name: "trying to rank for",
         choice: (
           document.querySelector(
             "input[type='radio']:checked"
@@ -30,7 +26,7 @@ const Page = () => {
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
         dispatch(addOption({
-          name: "selected rank",
+          name: "trying to rank for",
           choice: (
             document.querySelector(
               "input[type='radio']:checked"

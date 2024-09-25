@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/Store/store";
-import { addOption } from "@/app/reducers/serviceSlice";
+import { addFile, addOption } from "@/app/reducers/serviceSlice";
 
 function Page() {
   const router = useRouter();
@@ -20,16 +20,36 @@ function Page() {
   const route = useRouter();
   const [fileSrc, setFileSrc] = useState<any>(null);
   const dispatch = useDispatch();
-  const handleFileChange = (event:any) => {
+  const convertFileToBase64 = (file:any) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const handleFileChange = async (event:any) => {
     const file = event.target.files[0];
-    setInputVal(file.name)
+    setInputVal(file?.name)
+    console.log(file);
     
+
     if (file) {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => {
-        setFileSrc(fileReader.result);
+      // Convert file to Base64 for storing in localStorage
+      const base64File = await convertFileToBase64(file);
+
+      // Store file metadata and Base64 string in localStorage
+      const fileData = {
+        name: file.name,
+        type: file.type,
+        size: file.size,
+        base64: base64File,
       };
+      localStorage.setItem('uploadedFile', JSON.stringify(fileData));
+
+      // Store the file in Redux
+      dispatch(addFile(file));
     }
   };
   const nextFunc = () => {
@@ -37,23 +57,21 @@ function Page() {
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (haveVideo && !doLater && inputVal) {
       itemsArray.push({
-        name: "video promo",
+        name: "Do you already have a video promo, or would you like us to create one for you?",
         choice: (
           document.querySelector(
             'input[type="radio"]:checked'
           ) as HTMLInputElement
         ).value,
-        file: `${inputVal}`,
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
         dispatch(addOption({
-          name: "video promo",
+          name: "Do you already have a video promo, or would you like us to create one for you?",
           choice: (
             document.querySelector(
               'input[type="radio"]:checked'
             ) as HTMLInputElement
           ).value,
-          file: `${inputVal}`,
         }))
       route.push("/dashboard/services/influencer-marketing/influencerEndPoint");
     } else if (
@@ -62,7 +80,7 @@ function Page() {
       document.querySelector('input[type="radio"]:checked')
     ) {
       itemsArray.push({
-        name: "video promo",
+        name: "Do you already have a video promo, or would you like us to create one for you?",
         choice: (
           document.querySelector(
             'input[type="radio"]:checked'
@@ -72,7 +90,7 @@ function Page() {
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
       
         dispatch(addOption({
-          name: "video promo",
+          name: "Do you already have a video promo, or would you like us to create one for you?",
           choice: (
             document.querySelector(
               'input[type="radio"]:checked'
@@ -82,7 +100,7 @@ function Page() {
       route.push("/dashboard/services/influencer-marketing/influencerEndPoint");
     } else if (doLater) {
       itemsArray.push({
-        name: "video promo",
+        name: "Do you already have a video promo, or would you like us to create one for you?",
         choice: (
           document.querySelector(
             'input[type="checkbox"]:checked'
@@ -92,7 +110,7 @@ function Page() {
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
      
         dispatch(addOption({
-          name: "video promo",
+          name: "Do you already have a video promo, or would you like us to create one for you?",
           choice: (
             document.querySelector(
               'input[type="checkbox"]:checked'
@@ -158,6 +176,8 @@ function Page() {
                     setDoLater(false)
                   }
                   setInputVal("")
+                  dispatch(addFile(null))
+                  typeof window !== "undefined" && localStorage.removeItem("uploadedFile")
                 }}
                 btnSize="xl"
                 inputType="radio"
@@ -210,6 +230,10 @@ function Page() {
                     haveVideo ? "cursor-pointer" : ""
                   }`}
                   onChange={() => setDoLater((prev) => !prev)}
+                  onClick={()=>{
+                    dispatch(addFile(null))
+                    localStorage.removeItem('uploadedFile');
+                  }}
                 />
               </div>
             </div>

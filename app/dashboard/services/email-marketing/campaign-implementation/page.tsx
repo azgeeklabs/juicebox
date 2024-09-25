@@ -13,22 +13,18 @@ const page = () => {
   const dispatch = useDispatch();
   const route = useRouter();
   const nextFunc = () => {
-    console.log("//////////////////////");
-    const selected = document.querySelector(
-      "input[type='radio']:checked"
-    ) as HTMLInputElement;
     const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (document.querySelector("input[type='checkbox']:checked")) {
       const checkedValues = Array.from(document.querySelectorAll("input[type='checkbox']:checked"))
   .map((checkbox) => (checkbox as HTMLInputElement).value);
       itemsArray.push({
-        name: "campaign type to implement",
+        name: "What type of campaign would you like to implement?",
         choice: checkedValues.join(","),
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
         dispatch(addOption({
-          name: "campaign type to implement",
+          name: "What type of campaign would you like to implement?",
           choice: checkedValues.join(","),
         }))
       route.push("/dashboard/services/email-marketing/campaign-followers");

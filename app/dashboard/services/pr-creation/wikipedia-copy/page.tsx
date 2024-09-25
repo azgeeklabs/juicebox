@@ -6,7 +6,7 @@ import styles from "./wikipediaCopy.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/Store/store";
 import { useRouter } from "next/navigation";
-import { addOption } from "@/app/reducers/serviceSlice";
+import { addFile, addOption } from "@/app/reducers/serviceSlice";
 
 const Page = () => {
   const route = useRouter();
@@ -14,15 +14,44 @@ const Page = () => {
   const [haveCopy, setHaveCopy] = useState(false);
   const dispatch = useDispatch();
 
-  const handleFileChange = (e: any) => {
-    setFile(e.target.files[0]);
+  const convertFileToBase64 = (file:any) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const handleFileChange = async (event:any) => {
+    const fileUrl = event.target.files[0];
+    setFile(fileUrl?.name)
+    console.log(file);
+    
+
+    if (file) {
+      // Convert file to Base64 for storing in localStorage
+      const base64File = await convertFileToBase64(file);
+
+      // Store file metadata and Base64 string in localStorage
+      const fileData = {
+        name: file.name,
+        type: file.type,
+        size: file.size,
+        base64: base64File,
+      };
+      localStorage.setItem('uploadedFile', JSON.stringify(fileData));
+
+      // Store the file in Redux
+      dispatch(addFile(fileUrl));
+    }
   };
 
   const nextFunc = () => {
     const storedItems =
       typeof window !== "undefined" && localStorage.getItem("selectedOption");
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
-    if (haveCopy && file.name) {
+    if (haveCopy && file) {
       itemsArray.push({
         name: "wikipedia copy",
         choice: (
@@ -30,7 +59,6 @@ const Page = () => {
             'input[type="radio"]:checked'
           ) as HTMLInputElement
         ).value,
-        file: `${file.name}`,
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
       dispatch(
@@ -41,7 +69,6 @@ const Page = () => {
               'input[type="radio"]:checked'
             ) as HTMLInputElement
           ).value,
-          file: `${file.name}`,
         })
       );
       route.push("/dashboard/services/pr-creation/product-service");
@@ -101,7 +128,10 @@ const Page = () => {
                 I have a copy
               </CustomCheckBoxText>
               <CustomCheckBoxText
-                onClick={() => setHaveCopy(false)}
+                onClick={() => {setHaveCopy(false)
+                  dispatch(addFile(null))
+                  typeof window !== "undefined" && localStorage.removeItem("uploadedFile")
+                }}
                 btnSize="xl"
                 inputType="radio"
                 name="copyAnswer"
@@ -125,7 +155,7 @@ const Page = () => {
                     <label htmlFor="file-upload" className="cursor-pointer">
                       <div className="flex items-center gap-[--5px]">
                         {file ? (
-                          file.name
+                          file
                         ) : (
                           <>
                             <svg

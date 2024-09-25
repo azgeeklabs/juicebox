@@ -17,6 +17,7 @@ const Page = () => {
   const [mesg,setMesg] = useState("")
   const all = useSelector((state: RootState) => state.service);
   const route = useRouter();
+  const [disabled,setDisabled] = useState(true)
   const dispatch = useDispatch();
 
   const handlePaste = async () => {
@@ -33,7 +34,7 @@ const Page = () => {
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (haveWebsite && !doLater && pastedText) {
       itemsArray.push({
-        name: "website domain",
+        name: "Do you have a domain for your website?",
         choice: (
           document.querySelector(
             'input[type="radio"]:checked'
@@ -43,7 +44,7 @@ const Page = () => {
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
         dispatch(addOption({
-          name: "website domain",
+          name: "Do you have a domain for your website?",
           choice: (
             document.querySelector(
               'input[type="radio"]:checked'
@@ -60,7 +61,7 @@ const Page = () => {
       mesg == "Domain available"
     ) {
       itemsArray.push({
-        name: "website domain",
+        name: "Do you have a domain for your website?",
         choice: (
           document.querySelector(
             'input[type="radio"]:checked'
@@ -71,7 +72,7 @@ const Page = () => {
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
       
         dispatch(addOption({
-          name: "website domain",
+          name: "Do you have a domain for your website?",
           choice: (
             document.querySelector(
               'input[type="radio"]:checked'
@@ -82,7 +83,7 @@ const Page = () => {
       route.push("/dashboard/services/web-design/website-technology");
     } else if (doLater) {
       itemsArray.push({
-        name: "website domain",
+        name: "Do you have a domain for your website?",
         choice: (
           document.querySelector(
             'input[type="checkbox"]:checked'
@@ -92,7 +93,7 @@ const Page = () => {
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
      
         dispatch(addOption({
-          name: "website domain",
+          name: "Do you have a domain for your website?",
           choice: (
             document.querySelector(
               'input[type="checkbox"]:checked'
@@ -153,7 +154,9 @@ const Page = () => {
             >
               {/* CustomCheckBoxText component for selecting options */}
               <CustomCheckBoxText
-                onClick={() => setHaveWebsite(true)}
+                onClick={() => {setHaveWebsite(true)
+                  setDisabled(false)
+                }}
                 btnSize="xl"
                 inputType="radio"
                 name="styleAnswer"
@@ -162,7 +165,9 @@ const Page = () => {
                 I have a domain
               </CustomCheckBoxText>
               <CustomCheckBoxText
-                onClick={() => setHaveWebsite(false)}
+                onClick={() => {setHaveWebsite(false)
+                  setDisabled(false)
+                }}
                 btnSize="xl"
                 inputType="radio"
                 name="styleAnswer"
@@ -183,6 +188,7 @@ const Page = () => {
               <div className="flex gap-[1vw] items-start mb-[1.2vw]">
                 {/* Product Link input field */}
                 <input
+                disabled={disabled}
                   value={pastedText}
                   onChange={(e) => setPastedText(e.target.value)}
                   onKeyDown={()=>{if (!haveWebsite) {

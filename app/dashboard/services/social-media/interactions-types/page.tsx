@@ -25,14 +25,14 @@ const Page = () => {
       const itemsArray = storedItems ? JSON.parse(storedItems) : [];
       
       itemsArray.push({
-        name: "interaction types",
+        name: "What types of interactions do you want us to handle?",
         choice: selected.value,
       });
       
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
       dispatch(
         addOption({
-          name: "interaction types",
+          name: "What types of interactions do you want us to handle?",
           choice: selected.value,
         })
       );

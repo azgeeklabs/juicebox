@@ -5,15 +5,18 @@ import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxT
 import Link from "next/link";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { addOption } from "@/app/reducers/serviceSlice";
+import { RootState } from "@/app/Store/store";
 
 const Page = () => {
   const [saveProgress, setSaveProgress] = useState(false);
 
   const dispatch = useDispatch();
   const route = useRouter();
+  const file = useSelector((state:RootState) => state.service.file);
+console.log(file);
 
   async function makeService() {
     const optionsItems = localStorage.getItem("selectedOption");
@@ -40,6 +43,7 @@ const Page = () => {
     }
     console.log({
       type:"Web design",
+      fileUrl_4:file,
       totalSteps:10,
       options:optionsArray
     })
@@ -49,6 +53,7 @@ const Page = () => {
       const data = await axios.post(`https://api.creativejuicebox.com/api/v1/services/initialize-service`,{
         type:"Web design",
         totalSteps:10,
+        fileUrl_4:file,
         options:optionsArray
       },{
         headers:{

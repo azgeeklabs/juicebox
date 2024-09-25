@@ -40,7 +40,7 @@ const Page = () => {
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (haveWebsite && !doLater && pastedText) {
       itemsArray.push({
-        name: "redesign or build website",
+        name: "Do you want to redesign an existing website or build your website from scratch?",
         choice: (
           document.querySelector(
             'input[type="radio"]:checked'
@@ -50,7 +50,7 @@ const Page = () => {
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
         dispatch(addOption({
-          name: "redesign or build website",
+          name: "Do you want to redesign an existing website or build your website from scratch?",
           choice: (
             document.querySelector(
               'input[type="radio"]:checked'
@@ -65,7 +65,7 @@ const Page = () => {
       document.querySelector('input[type="radio"]:checked')
     ) {
       itemsArray.push({
-        name: "redesign or build website",
+        name: "Do you want to redesign an existing website or build your website from scratch?",
         choice: (
           document.querySelector(
             'input[type="radio"]:checked'
@@ -75,7 +75,7 @@ const Page = () => {
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
       
         dispatch(addOption({
-          name: "redesign or build website",
+          name: "Do you want to redesign an existing website or build your website from scratch?",
           choice: (
             document.querySelector(
               'input[type="radio"]:checked'
@@ -85,7 +85,7 @@ const Page = () => {
       route.push("/dashboard/services/web-design/website-type");
     } else if (doLater) {
       itemsArray.push({
-        name: "redesign or build website",
+        name: "Do you want to redesign an existing website or build your website from scratch?",
         choice: (
           document.querySelector(
             'input[type="checkbox"]:checked'
@@ -95,7 +95,7 @@ const Page = () => {
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
      
         dispatch(addOption({
-          name: "redesign or build website",
+          name: "Do you want to redesign an existing website or build your website from scratch?",
           choice: (
             document.querySelector(
               'input[type="checkbox"]:checked'

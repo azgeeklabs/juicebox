@@ -7,7 +7,7 @@ import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/Store/store";
 import { useRouter } from "next/navigation";
-import { addOption } from "@/app/reducers/serviceSlice";
+import { addFile, addOption } from "@/app/reducers/serviceSlice";
 
 const Page = () => {
   const [haveArticle, setHaveArticle] = useState(false);
@@ -18,18 +18,36 @@ const Page = () => {
   const [fileSrc, setFileSrc] = useState<any>(null);
   const dispatch = useDispatch();
 
-  const handleFileChange = (event:any) => {
+  const convertFileToBase64 = (file:any) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const handleFileChange = async (event:any) => {
     const file = event.target.files[0];
-    setInputVal(file.name)
+    setInputVal(file?.name)
+    console.log(file);
     
+
     if (file) {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => {
-        
-        
-        setFileSrc(fileReader.result);
+      // Convert file to Base64 for storing in localStorage
+      const base64File = await convertFileToBase64(file);
+
+      // Store file metadata and Base64 string in localStorage
+      const fileData = {
+        name: file.name,
+        type: file.type,
+        size: file.size,
+        base64: base64File,
       };
+      localStorage.setItem('uploadedFile', JSON.stringify(fileData));
+
+      // Store the file in Redux
+      dispatch(addFile(file));
     }
   };
 
@@ -38,23 +56,21 @@ const Page = () => {
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (haveArticle && !doLater && inputVal) {
       itemsArray.push({
-        name: "article",
+        name: "Do you already have an article, or would you like us to create one for you?",
         choice: (
           document.querySelector(
             'input[type="radio"]:checked'
           ) as HTMLInputElement
         ).value,
-        file: `${inputVal}`,
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
         dispatch(addOption({
-          name: "article",
+          name: "Do you already have an article, or would you like us to create one for you?",
           choice: (
             document.querySelector(
               'input[type="radio"]:checked'
             ) as HTMLInputElement
           ).value,
-          file: `${inputVal}`,
         }))
       route.push("/dashboard/services/seo-link-building/advertising-details");
     } else if (
@@ -63,7 +79,7 @@ const Page = () => {
       document.querySelector('input[type="radio"]:checked')
     ) {
       itemsArray.push({
-        name: "article",
+        name: "Do you already have an article, or would you like us to create one for you?",
         choice: (
           document.querySelector(
             'input[type="radio"]:checked'
@@ -73,7 +89,7 @@ const Page = () => {
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
       
         dispatch(addOption({
-          name: "article",
+          name: "Do you already have an article, or would you like us to create one for you?",
           choice: (
             document.querySelector(
               'input[type="radio"]:checked'
@@ -83,7 +99,7 @@ const Page = () => {
       route.push("/dashboard/services/seo-link-building/advertising-details");
     } else if (doLater) {
       itemsArray.push({
-        name: "article",
+        name: "Do you already have an article, or would you like us to create one for you?",
         choice: (
           document.querySelector(
             'input[type="checkbox"]:checked'
@@ -93,7 +109,7 @@ const Page = () => {
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
      
         dispatch(addOption({
-          name: "article",
+          name: "Do you already have an article, or would you like us to create one for you?",
           choice: (
             document.querySelector(
               'input[type="checkbox"]:checked'
@@ -207,6 +223,10 @@ const Page = () => {
                     haveArticle ? "cursor-pointer" : ""
                   }`}
                   onChange={() => setDoLater((prev) => !prev)}
+                  onClick={()=>{
+                    dispatch(addFile(null))
+                    localStorage.removeItem('uploadedFile');
+                  }}
                 />
               </div>
             </div>

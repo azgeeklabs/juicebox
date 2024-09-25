@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
 import styles from "./orm-service.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
@@ -128,41 +128,43 @@ const ORMService = () => {
     }
   };
 
-  const all = useSelector((state:RootState)=>state.service)
+  const all = useSelector((state: RootState) => state.service);
   const dispatch = useDispatch();
   const route = useRouter();
   const nextFunc = () => {
-    const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const storedItems =
+      typeof window !== "undefined" && localStorage.getItem("selectedOption");
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
-    if (document.querySelector("input[type='radio']:checked")) {
-      const addedObj:{
-        name:string,
-        choice?:string,
-        ans?:string
-      } = {name:"platform"
-        ,choice: (
+    if (document.querySelector("input[type='radio']:checked") && pastedText) {
+      const addedObj: {
+        name: string;
+        choice?: string;
+        ans?: string;
+      } = {
+        name: "platform",
+        choice: (
           document.querySelector(
             "input[type='radio']:checked"
           ) as HTMLInputElement
         ).value,
-      }
-      if (pastedText) {
-        addedObj.ans = pastedText
-      }
-      itemsArray.push(addedObj)
+      };
+      addedObj.ans = pastedText;
+
+      itemsArray.push(addedObj);
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-        dispatch(addOption(addedObj))
+      dispatch(addOption(addedObj));
       route.push("/dashboard/services/orm-service/remove-reviews");
     }
   };
-  useEffect(()=>{
-console.log(all);
-
-  },[all])
-
+  useEffect(() => {
+    console.log(all);
+  }, [all]);
 
   return (
-    <NextPrevNav nextLink="/dashboard/services/orm-service/remove-reviews" nextFunc={nextFunc}>
+    <NextPrevNav
+      nextLink="/dashboard/services/orm-service/remove-reviews"
+      nextFunc={nextFunc}
+    >
       {/* // Main container div with relative positioning */}
       <div className="h-full relative">
         {/* Inner container for the video end point section with custom styles */}
@@ -226,11 +228,14 @@ console.log(all);
                   placeholder="URL"
                   value={pastedText}
                   className="flex-grow h-full mb-[1vw] w-[19.773vw] bg-[var(--dark-gray-3)] outline-none rounded-[var(--10px)] px-[1.088vw] py-[0.5vw] placeholder:text-[#FFFFFFCC]"
-                  onChange={(e)=>setPastedText(e.target.value)}
+                  onChange={(e) => setPastedText(e.target.value)}
                 />
 
                 {/* Paste Link button */}
-                <button onClick={handlePaste} className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.4vw] text-black rounded-[var(--33px)] font-bold">
+                <button
+                  onClick={handlePaste}
+                  className="bg-[var(--highlight-yellow)] px-[1.892vw] py-[0.4vw] text-black rounded-[var(--33px)] font-bold"
+                >
                   Paste Link
                 </button>
               </div>

@@ -19,10 +19,6 @@ function Page() {
   const all = useSelector((state: RootState) => state.service.options);
 
   const nextFunc = () => {
-    console.log("//////////////////////");
-    const selected = document.querySelector(
-      "input[type='radio']:checked"
-    ) as HTMLInputElement;
     const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (document.querySelector("input[type='checkbox']:checked") || inputVal) {
@@ -30,7 +26,7 @@ function Page() {
         document.querySelectorAll("input[type='checkbox']:checked")
       ).map((checkbox) => (checkbox as HTMLInputElement).value);
       const newItem: any = {
-        name: "additional features",
+        name: "Do you have any additional features in mind?",
       };
 
       // Add `choice` key if any checkbox is checked

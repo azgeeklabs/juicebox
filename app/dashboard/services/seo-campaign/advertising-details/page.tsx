@@ -38,7 +38,7 @@ const Page = () => {
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (doLater) {
       itemsArray.push({
-        name: "advertising service",
+        name: "What product/service are you advertising?",
         choice: (
           document.querySelector(
             'input[type="checkbox"]:checked'
@@ -48,7 +48,7 @@ const Page = () => {
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
       dispatch(
         addOption({
-          name: "advertising service",
+          name: "What product/service are you advertising?",
           choice: (
             document.querySelector(
               'input[type="checkbox"]:checked'
@@ -60,13 +60,13 @@ const Page = () => {
       route.push("/dashboard/services/seo-campaign/rank-selection");
     } else if (inputVal) {
       itemsArray.push({
-        name: "advertising service",
+        name: "What product/service are you advertising?",
         ans: `${inputVal}`,
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
       dispatch(
         addOption({
-          name: "advertising service",
+          name: "What product/service are you advertising?",
           ans: `${inputVal}`,
         })
       );

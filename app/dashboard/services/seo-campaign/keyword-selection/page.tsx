@@ -18,22 +18,18 @@ export default function Page() {
   const all = useSelector((state: RootState) => state.service.options);
 
   const nextFunc = () => {
-    console.log("//////////////////////");
-    const selected = document.querySelector(
-      "input[type='radio']:checked"
-    ) as HTMLInputElement;
     const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (document.querySelector("input[type='checkbox']:checked") || addedKeywords.length > 0) {
       const checkedValues = Array.from(document.querySelectorAll("input[type='checkbox']:checked"))
   .map((checkbox) => (checkbox as HTMLInputElement).value);
       itemsArray.push({
-        name: "keywords search engine",
+        name: "What keywords do you want the user to search by when finding your product?",
         choice: checkedValues && !addedKeywords ? checkedValues.join(",") : addedKeywords && !checkedValues ? addedKeywords.join(",") : [...checkedValues,...addedKeywords].join(",")
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
         dispatch(addOption({
-          name: "keywords search engine",
+          name: "What keywords do you want the user to search by when finding your product?",
           choice: checkedValues && !addedKeywords ? checkedValues.join(",") : addedKeywords && !checkedValues ? addedKeywords.join(",") : [...checkedValues,...addedKeywords].join(","),
         }))
       route.push("/dashboard/services/seo-campaign/analysis-estimate");

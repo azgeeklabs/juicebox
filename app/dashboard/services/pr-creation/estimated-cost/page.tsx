@@ -4,17 +4,21 @@ import styles from "./estimatedCost.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { addOption } from "@/app/reducers/serviceSlice";
+import { RootState } from "@/app/Store/store";
 
 const Page = () => {
 
   const [saveProgress, setSaveProgress] = useState(false);
   const dispatch = useDispatch();
   const route = useRouter();
+  const file = useSelector((state:RootState)=>state.service.file)
 
   async function makeService() {
+    console.log(file);
+    
     const optionsItems = localStorage.getItem("selectedOption");
     const optionsArray = optionsItems ? JSON.parse(optionsItems) : [];
     console.log(optionsArray,"//////////optionsArray/////////////");
@@ -39,7 +43,8 @@ const Page = () => {
     }
     console.log({
       type:"pr creation wikipedia",
-      totalSteps:6,
+      totalSteps:5,
+      fileUrl_1:file,
       options:optionsArray
     })
     
@@ -47,7 +52,8 @@ const Page = () => {
     try {
       const data = await axios.post(`https://api.creativejuicebox.com/api/v1/services/initialize-service`,{
         type:"pr creation wikipedia",
-        totalSteps:6,
+        totalSteps:5,
+        fileUrl_1:file,
         options:optionsArray
       },{
         headers:{

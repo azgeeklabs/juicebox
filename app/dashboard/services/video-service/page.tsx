@@ -51,13 +51,13 @@ export default function Page() {
         "selectedOption",
         JSON.stringify([
           {
-            name: "video",
+            name: "What type of video would you like to create?",
             choice: (document.querySelector("input[type='radio']:checked") as HTMLInputElement).value,
           },
         ])
       );
         dispatch(addOption({
-          name: "video",
+          name: "What type of video would you like to create?",
           choice: (document.querySelector("input[type='radio']:checked") as HTMLInputElement).value,
         },))
       console.log(all);

@@ -17,7 +17,7 @@ const Page = () => {
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (document.querySelector("input[type='radio']:checked")) {
       itemsArray.push({
-        name: "email campaign type",
+        name: "Can you tell us more about your product/service?",
         choice: (
           document.querySelector(
             "input[type='radio']:checked"
@@ -26,7 +26,7 @@ const Page = () => {
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
         dispatch(addOption({
-          name: "email campaign type",
+          name: "Can you tell us more about your product/service?",
           choice: (
             document.querySelector(
               "input[type='radio']:checked"

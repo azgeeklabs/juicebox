@@ -34,14 +34,14 @@ const Page = () => {
       const itemsArray = storedItems ? JSON.parse(storedItems) : [];
       
       itemsArray.push({
-        name: "task to handle",
+        name: "What do you want us to do for your social media page?",
         choice: selected.value,
       });
       
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
       dispatch(
         addOption({
-          name: "task to handle",
+          name: "What do you want us to do for your social media page?",
           choice: selected.value,
         })
       );

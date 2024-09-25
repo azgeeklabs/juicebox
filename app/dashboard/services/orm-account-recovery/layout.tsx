@@ -5,7 +5,7 @@ import AccountRecoveryContextProvider from "./_accountRecoveryContext/_accountRe
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/Store/store";
 import { useRouter } from "next/navigation";
-import { changeOption } from "@/app/reducers/serviceSlice";
+import { addFile, changeOption } from "@/app/reducers/serviceSlice";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
 
@@ -30,6 +30,35 @@ const layout = ({ children }: { children: React.ReactNode }) => {
     "suspension-approvel",
     "estimated-cost",
   ];
+  const loadFileFromLocalStorage = () => {
+    const fileData = typeof window !== "undefined" && localStorage.getItem('uploadedFile');
+    if (fileData) {
+      const { name, type, size, base64 } = JSON.parse(fileData);
+  
+      // Convert Base64 back to a File object (this isn't exact but provides structure)
+      const byteString = atob(base64.split(',')[1]);
+      const ab = new ArrayBuffer(byteString.length);
+      const ia = new Uint8Array(ab);
+      for (let i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+      }
+      const blob = new Blob([ab], { type });
+      const file = new File([blob], name, { type });
+  
+      return file;
+    }
+    return null;
+  };
+
+  useEffect(() => {
+    // On component mount, load the file from localStorage into Redux
+    const storedFile = loadFileFromLocalStorage();
+    console.log("yes",storedFile);
+    
+    if (storedFile) {
+      dispatch(addFile(storedFile));
+    }
+  }, [dispatch]);
   const [currentPath, setCurrentPath] = useState(0);
   const [currentLocation, setCurrentLocation] = useState("");
 

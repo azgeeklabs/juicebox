@@ -59,7 +59,7 @@ const Page = () => {
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (dontHaveChannel) {
       itemsArray.push({
-        name: "youtube channel",
+        name: "Do you have an existing YouTube channel?",
         choice: (
           document.querySelector(
             'input[type="checkbox"]:checked'
@@ -68,7 +68,7 @@ const Page = () => {
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
     dispatch(addOption({
-      name: "youtube channel",
+      name: "Do you have an existing YouTube channel?",
       choice: (
         document.querySelector(
           'input[type="checkbox"]:checked'
@@ -79,12 +79,12 @@ const Page = () => {
       route.push("/dashboard/services/video-service/video-style");
     } else if (inputVal) {
       itemsArray.push({
-        name: "youtube channel",
+        name: "Do you have an existing YouTube channel?",
         ans: `${inputVal}`,
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
       dispatch(addOption({
-        name: "youtube channel",
+        name: "Do you have an existing YouTube channel?",
         ans: `${inputVal}`,
       }));
       route.push("/dashboard/services/video-service/video-style");

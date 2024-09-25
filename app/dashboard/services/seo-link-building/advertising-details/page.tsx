@@ -17,10 +17,13 @@ const Page = () => {
   const [link,setLink] = useState("")
   const [text,setText] = useState("")
   const route = useRouter()
+  const file = useSelector((state:RootState) => state.service.file);
+console.log(file);
   const handlePaste = async () => {
     try {
       const text = await navigator.clipboard.readText();
       setPastedText(text);
+      setLink(text)
     } catch (error) {
       console.error("Failed to read clipboard contents: ", error);
     }
@@ -32,7 +35,7 @@ const Page = () => {
     console.log(optionsArray,"//////////optionsArray/////////////");
     if (link && text) {
       optionsArray.push({
-        name:"product details",
+        name:"Share with us more details about your product!",
         data:{
           fieldOne:link,
           fieldTwo:text,
@@ -43,6 +46,7 @@ const Page = () => {
     console.log({
       type:"SEO link building",
       totalSteps:3,
+      fileUrl_1:file,
       options:optionsArray
     })
     
@@ -51,6 +55,7 @@ const Page = () => {
       const data = await axios.post(`https://api.creativejuicebox.com/api/v1/services/initialize-service`,{
         type:"SEO link building",
         totalSteps:3,
+        fileUrl_1:file,
         options:optionsArray
       },{
         headers:{
@@ -65,7 +70,7 @@ const Page = () => {
         const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
         const itemsArray = storedItems ? JSON.parse(storedItems) : [];
         itemsArray.push({
-          name:"product details",
+          name:"Share with us more details about your product!",
           data:{
             fieldOne:link,
             fieldTwo:text,
@@ -74,7 +79,7 @@ const Page = () => {
         })
         localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
           dispatch(addOption({
-            name:"product details",
+            name:"Share with us more details about your product!",
             data:{
               fieldOne:link,
               fieldTwo:text,

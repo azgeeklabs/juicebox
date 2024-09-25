@@ -327,11 +327,11 @@ const Page = () => {
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
   
       itemsArray.push({
-        name: "websites to publish on",
+        name: "Your press release will be published on the following websites:",
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
       dispatch(addOption({
-        name: "websites to publish on",
+        name: "Your press release will be published on the following websites:",
       }));
       router.push("/dashboard/services/press-release/pr-ready");
     

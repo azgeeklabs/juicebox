@@ -15,15 +15,11 @@ function NicheSelection() {
   const dispatch = useDispatch();
   const route = useRouter();
   const nextFunc = () => {
-    console.log("//////////////////////");
-    const selected = document.querySelector(
-      "input[type='radio']:checked"
-    ) as HTMLInputElement;
     const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (document.querySelector("input[type='radio']:checked")) {
       itemsArray.push({
-        name: "your niche",
+        name: "Identifying the Niche for Your Campaign",
         choice: (
           document.querySelector(
             "input[type='radio']:checked"
@@ -32,7 +28,7 @@ function NicheSelection() {
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
         dispatch(addOption({
-          name: "your niche",
+          name: "Identifying the Niche for Your Campaign",
           choice: (
             document.querySelector(
               "input[type='radio']:checked"

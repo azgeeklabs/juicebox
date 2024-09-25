@@ -4,15 +4,18 @@ import styles from "./videoEndPoint.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { addOption, incrementTotalSteps } from "@/app/reducers/serviceSlice";
 import axios from "axios";
+import { RootState } from "@/app/Store/store";
 
 const Page = () => {
   const [saveProgress, setSaveProgress] = useState(false);
   const dispatch = useDispatch();
   const route = useRouter();
+  const file = useSelector((state:RootState) => state.service.file);
+console.log(file);
 
   async function makeService() {
     const optionsItems = localStorage.getItem("selectedOption");
@@ -47,6 +50,7 @@ const Page = () => {
       const data = await axios.post(`https://api.creativejuicebox.com/api/v1/services/initialize-service`,{
         type:"video",
         totalSteps:12,
+        fileUrl_7:file,
         options:optionsArray
       },{
         headers:{

@@ -157,12 +157,12 @@ const suspendedDate = () => {
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (isChanged) {
       itemsArray.push({
-        name: "suspension date",
+        name: "Please provide the date your account was suspended",
         ans: `${Number(selectedDay.replace(/(st|nd|rd|th)$/i, "")) < 10 ? "0"+Number(selectedDay.replace(/(st|nd|rd|th)$/i, "")) : Number(selectedDay.replace(/(st|nd|rd|th)$/i, ""))}-${Number(selectedMonth) < 10 ? "0"+selectedMonth : selectedMonth}-${selectedYear}`,
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
         dispatch(addOption({
-          name: "suspension date",
+          name: "Please provide the date your account was suspended",
           ans: `${Number(selectedDay.replace(/(st|nd|rd|th)$/i, "")) < 10 ? "0"+Number(selectedDay.replace(/(st|nd|rd|th)$/i, "")) : Number(selectedDay.replace(/(st|nd|rd|th)$/i, ""))}-${Number(selectedMonth) < 10 ? "0"+selectedMonth : selectedMonth}-${selectedYear}`,
         }))
       route.push("/dashboard/services/orm-account-recovery/suspended-account");

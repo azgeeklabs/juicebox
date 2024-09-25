@@ -25,12 +25,12 @@ function FollowerRange() {
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (num) {
       itemsArray.push({
-        name: "follower range",
+        name: "What is the Follower Range for Influencers in Your Campaign?",
         ans: String(num),
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
         dispatch(addOption({
-          name: "follower range",
+          name: "What is the Follower Range for Influencers in Your Campaign?",
           ans: String(num),
         }))
       route.push("/dashboard/services/influencer-marketing/influencer-list");

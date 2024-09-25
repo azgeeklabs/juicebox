@@ -22,21 +22,18 @@ function Page() {
   const all = useSelector((state:RootState)=>state.service)
   const dispatch = useDispatch();
   const nextFunc = () => {
-    const selected = document.querySelector(
-      "input[type='radio']:checked"
-    ) as HTMLInputElement;
     const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     
     if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement)?.value == "I have a list") {
       itemsArray.push({
-        name: "email contacts",
+        name: "Do you already have the emails you would like to include in your campaign?",
         choice:(document.querySelector("input[type='radio']:checked") as HTMLInputElement).value,
         ans: String(shownValue),
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
         dispatch(addOption({
-          name: "email contacts",
+          name: "Do you already have the emails you would like to include in your campaign?",
           choice: (
             document.querySelector(
               "input[type='radio']:checked"
@@ -47,7 +44,7 @@ function Page() {
       router.push("/dashboard/services/email-marketing/campaign-implementation");
     } else if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement)?.value == "Provide email leads") {
       itemsArray.push({
-        name: "email contacts",
+        name: "Do you already have the emails you would like to include in your campaign?",
         choice: (
           document.querySelector(
             "input[type='radio']:checked"
@@ -57,7 +54,7 @@ function Page() {
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
         dispatch(addOption({
-          name: "email contacts",
+          name: "Do you already have the emails you would like to include in your campaign?",
           choice: (
             document.querySelector(
               "input[type='radio']:checked"

@@ -21,7 +21,7 @@ const Page = () => {
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (document.querySelector("input[type='radio']:checked")) {
       itemsArray.push({
-        name: "video style",
+        name: "Would you like this video to match the style of the videos you've already published on your channel?",
         choice: (
           document.querySelector(
             "input[type='radio']:checked"
@@ -30,7 +30,7 @@ const Page = () => {
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
         dispatch(addOption({
-          name: "video style",
+          name: "Would you like this video to match the style of the videos you've already published on your channel?",
           choice: (
             document.querySelector(
               "input[type='radio']:checked"

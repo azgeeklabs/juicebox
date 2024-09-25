@@ -24,12 +24,12 @@ const Page = () => {
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (num) {
       itemsArray.push({
-        name: "follow ups number",
+        name: "How many follow ups would you like in your campaign?",
         ans: `${String(num)} Follow Up`,
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
         dispatch(addOption({
-          name: "follow ups number",
+          name: "How many follow ups would you like in your campaign?",
           ans: `${String(num)} Follow Up`,
         }))
       route.push("/dashboard/services/email-marketing/emailEndPoint");

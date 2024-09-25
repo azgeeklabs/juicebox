@@ -28,13 +28,13 @@ function ORMNegativePressRemoval() {
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (links.length > 0) {
       itemsArray.push({
-        name: "link to remove",
+        name: "What links would you like to remove?",
         choice: links.join(","),
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
       dispatch(
         addOption({
-          name: "link to remove",
+          name: "What links would you like to remove?",
           choice: links.join(","),
         })
       );

@@ -25,14 +25,14 @@ const Page = () => {
       const itemsArray = storedItems ? JSON.parse(storedItems) : [];
       
       itemsArray.push({
-        name: "ad style",
+        name: "Do you have a specific style for your ads?",
         choice: selected.value,
       });
       
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
       dispatch(
         addOption({
-          name: "ad style",
+          name: "Do you have a specific style for your ads?",
           choice: selected.value,
         })
       );

@@ -67,12 +67,12 @@ console.log(dimension?.innerText);
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (!firstVal && !secondVal && !checked && document.querySelector("input[type='radio']:checked")) {
       itemsArray.push({
-        name: "platform",
+        name: "What platform are you running your ad on?",
         ans: `${selected.value} (${dimension?.innerText})`,
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
       dispatch(addOption({
-        name: "platform",
+        name: "What platform are you running your ad on?",
         ans: `${selected.value} (${dimension?.innerText})`,
       }));
     route.push("/dashboard/services/video-service/advertising");
@@ -80,12 +80,12 @@ console.log(dimension?.innerText);
       console.log(checked,firstVal,secondVal);
       
       itemsArray.push({
-        name: "platform",
+        name: "What platform are you running your ad on?",
         ans: `${firstVal} X ${secondVal}`,
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
       dispatch(addOption({
-        name: "platform",
+        name: "What platform are you running your ad on?",
         ans: `${firstVal} X ${secondVal}`,
       }));
 

@@ -176,12 +176,12 @@ function AccountRecovery() {
     const checkedValues = Array.from(document.querySelectorAll("input[type='checkbox']:checked")).map((e)=>(e as HTMLInputElement).value)
     if (document.querySelector("input[type='checkbox']:checked")) {
       itemsArray.push({
-        name: "digital product",
+        name: "Which social media account would you like to recover?",
         choice: checkedValues.join(","),
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
         dispatch(addOption({
-          name: "digital product",
+          name: "Which social media account would you like to recover?",
           choice: checkedValues.join(","),
         }))
       route.push("/dashboard/services/social-media/social-media-task");

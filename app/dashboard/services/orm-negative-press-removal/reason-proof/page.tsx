@@ -7,37 +7,57 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/Store/store";
 import { useRouter } from "next/navigation";
-import { addOption } from "@/app/reducers/serviceSlice";
+import { addFile, addOption } from "@/app/reducers/serviceSlice";
 const ReasonProof = () => {
   const [file, setFile] = useState<any>(null);
 
-  const handleFileChange = (event: any) => {
-    const file = event.target.files[0];
-    console.log(event.target.files[0]);
+  const convertFileToBase64 = (file:any) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  };
 
-    setFile(file?.name);
+  const handleFileChange = async (event:any) => {
+    const file = event.target.files[0];
+    setFile(file?.name)
+    console.log(file);
+    
+
+    if (file) {
+      // Convert file to Base64 for storing in localStorage
+      const base64File = await convertFileToBase64(file);
+
+      // Store file metadata and Base64 string in localStorage
+      const fileData = {
+        name: file.name,
+        type: file.type,
+        size: file.size,
+        base64: base64File,
+      };
+      localStorage.setItem('uploadedFile', JSON.stringify(fileData));
+
+      // Store the file in Redux
+      dispatch(addFile(file));
+    }
   };
 
   const all = useSelector((state: RootState) => state.service);
   const dispatch = useDispatch();
   const route = useRouter();
   const nextFunc = () => {
-    console.log("//////////////////////");
-    const selected = document.querySelector(
-      "input[type='radio']:checked"
-    ) as HTMLInputElement;
     const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (file) {
       itemsArray.push({
-        name: "upload documentation",
-        file: file,
+        name: "upload documentation supporting the reason for removal.",
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
       dispatch(
         addOption({
-          name: "upload documentation",
-          file: file,
+          name: "upload documentation supporting the reason for removal.",
         })
       );
       route.push(

@@ -22,7 +22,7 @@ function Page() {
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (document.querySelector("input[type='radio']:checked")) {
       itemsArray.push({
-        name: "wikipedia type",
+        name: "What is the type of Wikipedia page do you want?",
         choice: (
           document.querySelector(
             "input[type='radio']:checked"
@@ -31,7 +31,7 @@ function Page() {
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
         dispatch(addOption({
-          name: "wikipedia type",
+          name: "What is the type of Wikipedia page do you want?",
           choice: (
             document.querySelector(
               "input[type='radio']:checked"

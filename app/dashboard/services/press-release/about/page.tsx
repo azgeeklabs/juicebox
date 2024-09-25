@@ -18,7 +18,7 @@ const Page = () => {
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (document.querySelector("input[type='radio']:checked")) {
       itemsArray.push({
-        name: "press release type",
+        name: "What is your press release about?",
         choice: (
           document.querySelector(
             "input[type='radio']:checked"
@@ -28,7 +28,7 @@ const Page = () => {
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
       dispatch(
         addOption({
-          name: "press release type",
+          name: "What is your press release about?",
           choice: (
             document.querySelector(
               "input[type='radio']:checked"

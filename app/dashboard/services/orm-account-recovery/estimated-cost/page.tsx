@@ -5,14 +5,17 @@ import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxT
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import { useRouter } from "next/navigation";
 import { accountRecoveryContext } from "../_accountRecoveryContext/_accountRecoveryContext";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { addOption } from "@/app/reducers/serviceSlice";
+import { RootState } from "@/app/Store/store";
 
 const Page = () => {
   const [saveProgress, setSaveProgress] = useState(false);
   const { isSexual } = useContext(accountRecoveryContext);
   const router = useRouter();
+  const file = useSelector((state:RootState) => state.service.file);
+console.log(file);
 //   useEffect(()=>{
 // if (isSexual) {
 //   router.push("/dashboard/services/orm-account-recovery/reject-recovery")
@@ -48,6 +51,7 @@ const Page = () => {
     console.log({
       type:"orm-account-recovery",
       totalSteps:6,
+      fileUrl_4:file,
       options:optionsArray
     })
     
@@ -56,6 +60,7 @@ const Page = () => {
       const data = await axios.post(`https://api.creativejuicebox.com/api/v1/services/initialize-service`,{
         type:"orm-account-recovery",
         totalSteps:6,
+        fileUrl_4:file,
         options:optionsArray
       },{
         headers:{

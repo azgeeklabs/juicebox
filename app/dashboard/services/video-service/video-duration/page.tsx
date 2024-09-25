@@ -35,7 +35,7 @@ const Page = () => {
     if (saveProgress) {
      
       itemsArray.push({
-        name: "video duration",
+        name: "How long would you like the video to be?",
         choice: (
           document.querySelector(
             'input[type="checkbox"]:checked'
@@ -45,7 +45,7 @@ const Page = () => {
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
       
         dispatch(addOption({
-          name: "video duration",
+          name: "How long would you like the video to be?",
           choice: (
             document.querySelector(
               'input[type="checkbox"]:checked'
@@ -56,13 +56,13 @@ const Page = () => {
     } else if (duration && num > 0) {
       
       itemsArray.push({
-        name: "video duration",
+        name: "How long would you like the video to be?",
         ans: `${duration}`,
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
       
         dispatch(addOption({
-          name: "video duration",
+          name: "How long would you like the video to be?",
           ans: `${duration}`,
         }))
      

@@ -25,20 +25,16 @@ function Page() {
   const all = useSelector((state:RootState)=>state.service)
   const dispatch = useDispatch();
   const nextFunc = () => {
-    console.log("//////////////////////");
-    const selected = document.querySelector(
-      "input[type='radio']:checked"
-    ) as HTMLInputElement;
     const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (pastedText) {
       itemsArray.push({
-        name: "landing page link",
+        name: "Provide us with the landing page of your service!",
         ans: pastedText
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
         dispatch(addOption({
-          name: "landing page link",
+          name: "Provide us with the landing page of your service!",
           ans: pastedText
         }))
       router.push("/dashboard/services/email-marketing/email-contacts");

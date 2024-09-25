@@ -126,15 +126,11 @@ function AccountRecovery() {
   const dispatch = useDispatch();
   const route = useRouter();
   const nextFunc = () => {
-    console.log("//////////////////////");
-    const selected = document.querySelector(
-      "input[type='radio']:checked"
-    ) as HTMLInputElement;
     const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (document.querySelector("input[type='radio']:checked")) {
       itemsArray.push({
-        name: "account to recover",
+        name: "Which social media account would you like to recover?",
         choice: (
           document.querySelector(
             "input[type='radio']:checked"
@@ -143,7 +139,7 @@ function AccountRecovery() {
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
         dispatch(addOption({
-          name: "account to recover",
+          name: "Which social media account would you like to recover?",
           choice: (
             document.querySelector(
               "input[type='radio']:checked"

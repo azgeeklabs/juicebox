@@ -51,7 +51,7 @@ const Page = () => {
     try {
       const data = await axios.post(`https://api.creativejuicebox.com/api/v1/services/initialize-service`,{
         type:"application design flow",
-        totalSteps:12,
+        totalSteps:6,
         options:optionsArray
       },{
         headers:{
