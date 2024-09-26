@@ -6,7 +6,6 @@ import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { addOption } from "@/app/reducers/serviceSlice";
-import { it } from "node:test";
 const RewriteWebsite = () => {
   const data = ["Re-write copy", "Write a new copy"];
   const dispatch = useDispatch();
@@ -16,7 +15,7 @@ const RewriteWebsite = () => {
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (document.querySelector("input[type='radio']:checked")) {
       itemsArray.push({
-        name: "rewrite your existing website copy ?",
+        name: "Would you like us to rewrite your existing website copy?",
         choice: (
           document.querySelector(
             "input[type='radio']:checked"
@@ -25,7 +24,7 @@ const RewriteWebsite = () => {
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
         dispatch(addOption({
-          name: "rewrite your existing website copy ?",
+          name: "Would you like us to rewrite your existing website copy?",
           choice: (
             document.querySelector(
               "input[type='radio']:checked"

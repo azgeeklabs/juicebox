@@ -19,13 +19,13 @@ const WebsiteNiche = () => {
      const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
      const itemsArray = storedItems ? JSON.parse(storedItems) : [];
      itemsArray.push({
-       name:"website's niche",
+       name:"What Is the Focus and Niche of Your Website?",
        choice:niche,
        ans:shownValue
      })
      localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
        dispatch(addOption({
-         name:"website's niche",
+         name:"What Is the Focus and Niche of Your Website?",
          choice:niche,
          ans:shownValue
        }))

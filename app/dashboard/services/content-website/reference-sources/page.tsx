@@ -42,13 +42,13 @@ function ORMNegativePressRemoval() {
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (haveSources && links.length > 0) {
       itemsArray.push({
-        name: "sources to reference",
+        name: "Do you have specific sources you would like us to reference?",
         ans: links.join(","),
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
       dispatch(
         addOption({
-          name: "sources to reference",
+          name: "Do you have specific sources you would like us to reference?",
           ans: links.join(","),
         })
       );
@@ -57,7 +57,7 @@ function ORMNegativePressRemoval() {
       !haveSources && document.querySelector('input[type="radio"]:checked') ) {
         
       itemsArray.push({
-        name: "sources to reference",
+        name: "Do you have specific sources you would like us to reference?",
         choice: (
           document.querySelector(
             'input[type="radio"]:checked'
@@ -68,7 +68,7 @@ function ORMNegativePressRemoval() {
 
       dispatch(
         addOption({
-          name: "sources to reference",
+          name: "Do you have specific sources you would like us to reference?",
           choice: (
             document.querySelector(
               'input[type="radio"]:checked'

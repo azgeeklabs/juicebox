@@ -32,7 +32,7 @@ const LiveWebsite = () => {
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (haveWebsite && !doLater && pastedText) {
       itemsArray.push({
-        name: "have website or not",
+        name: "Do you have a live website?",
         choice: (
           document.querySelector(
             'input[type="radio"]:checked'
@@ -42,7 +42,7 @@ const LiveWebsite = () => {
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
         dispatch(addOption({
-          name: "have website or not",
+          name: "Do you have a live website?",
           choice: (
             document.querySelector(
               'input[type="radio"]:checked'
@@ -61,7 +61,7 @@ const LiveWebsite = () => {
       document.querySelector('input[type="radio"]:checked')
     ) {
       itemsArray.push({
-        name: "have website or not",
+        name: "Do you have a live website?",
         choice: (
           document.querySelector(
             'input[type="radio"]:checked'
@@ -71,7 +71,7 @@ const LiveWebsite = () => {
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
       
         dispatch(addOption({
-          name: "have website or not",
+          name: "Do you have a live website?",
           choice: (
             document.querySelector(
               'input[type="radio"]:checked'
@@ -85,7 +85,7 @@ const LiveWebsite = () => {
         }`);
     } else if (doLater) {
       itemsArray.push({
-        name: "have website or not",
+        name: "Do you have a live website?",
         choice: (
           document.querySelector(
             'input[type="checkbox"]:checked'
@@ -95,7 +95,7 @@ const LiveWebsite = () => {
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
      
         dispatch(addOption({
-          name: "have website or not",
+          name: "Do you have a live website?",
           choice: (
             document.querySelector(
               'input[type="checkbox"]:checked'

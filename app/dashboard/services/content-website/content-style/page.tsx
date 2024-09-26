@@ -15,7 +15,7 @@ const RewriteWebsite = () => {
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (document.querySelector("input[type='radio']:checked")) {
       itemsArray.push({
-        name: "written content tone",
+        name: "How do you want the written content tone to be?",
         choice: (
           document.querySelector(
             "input[type='radio']:checked"
@@ -24,7 +24,7 @@ const RewriteWebsite = () => {
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
         dispatch(addOption({
-          name: "written content tone",
+          name: "How do you want the written content tone to be?",
           choice: (
             document.querySelector(
               "input[type='radio']:checked"

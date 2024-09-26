@@ -29,7 +29,7 @@ const CreateArtical = () => {
     const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (haveArticle && !doLater && pastedText) {
       itemsArray.push({
-        name: "have article or not",
+        name: "Do you already have an article, or would you like us to create one for you?",
         choice: (
           document.querySelector(
             'input[type="radio"]:checked'
@@ -39,7 +39,7 @@ const CreateArtical = () => {
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
         dispatch(addOption({
-          name: "have article or not",
+          name: "Do you already have an article, or would you like us to create one for you?",
           choice: (
             document.querySelector(
               'input[type="radio"]:checked'
@@ -54,7 +54,7 @@ const CreateArtical = () => {
       document.querySelector('input[type="radio"]:checked')
     ) {
       itemsArray.push({
-        name: "have article or not",
+        name: "Do you already have an article, or would you like us to create one for you?",
         choice: (
           document.querySelector(
             'input[type="radio"]:checked'
@@ -64,7 +64,7 @@ const CreateArtical = () => {
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
       
         dispatch(addOption({
-          name: "have article or not",
+          name: "Do you already have an article, or would you like us to create one for you?",
           choice: (
             document.querySelector(
               'input[type="radio"]:checked'
@@ -74,7 +74,7 @@ const CreateArtical = () => {
         route.push(`/dashboard/services/pr-placement/questionnaire`);
     } else if (doLater) {
       itemsArray.push({
-        name: "have article or not",
+        name: "Do you already have an article, or would you like us to create one for you?",
         choice: (
           document.querySelector(
             'input[type="checkbox"]:checked'
@@ -84,7 +84,7 @@ const CreateArtical = () => {
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
      
         dispatch(addOption({
-          name: "have article or not",
+          name: "Do you already have an article, or would you like us to create one for you?",
           choice: (
             document.querySelector(
               'input[type="checkbox"]:checked'

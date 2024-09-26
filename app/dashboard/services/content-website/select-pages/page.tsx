@@ -15,12 +15,12 @@ function ContentWebsite() {
     const checkedValues = Array.from(document.querySelectorAll("input[type='checkbox']:checked")).map((e)=>(e as HTMLInputElement).value)
     if (checkedValues.length > 0) {
       itemsArray.push({
-        name: "select pages",
+        name: "select the screens you wish to update.",
         choice: checkedValues.join(","),
       });
       localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
         dispatch(addOption({
-          name: "select pages",
+          name: "select the screens you wish to update.",
           choice: checkedValues.join(","),
         }))
       route.push("/dashboard/services/content-website/content-style");
