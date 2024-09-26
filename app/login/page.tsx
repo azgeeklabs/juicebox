@@ -1,12 +1,12 @@
 "use client";
 import { Divider } from "@mui/material";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { useAuth } from "../_context/AuthContext";
 import { useFormik, FormikHelpers } from "formik";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import * as Yup from "yup";
-import  {useGoogleLogin}  from "@react-oauth/google";
+import { useGoogleLogin } from "@react-oauth/google";
 import { useRouter } from "next/navigation";
 
 interface FormValues {
@@ -17,10 +17,21 @@ interface FormValues {
 const Page = () => {
   const { login, googleLogin } = useAuth();
   const router = useRouter();
+  const [forgetPassEmail, setForgetPassEmail] = useState<string>("");
+  const [forgetModal, setForgetModal] = useState<boolean>(false);
+  const [forgetErrorMsg, setForgetErrorMsg] = useState<string>("");
+  const [resetCode, setResetCode] = useState<string>("");
+  const [resetModal, setResetModal] = useState<boolean>(false);
+  const [resetCodeMsg, setResetCodeMsg] = useState<string>("");
+  const [resetCodeEmail, setResetCodeEmail] = useState<string>("");
+  const [newPassword, setNewPassword] = useState<string>("");
+  const [newPasswordModal, setNewPasswordModal] = useState<boolean>(false);
+  const [resetPassMsg, setResetPassMsg] = useState<string>("");
 
   const initialValues: FormValues = {
     email: "",
     password: "",
+    
   };
 
   const onSubmit = async (
@@ -36,6 +47,109 @@ const Page = () => {
       setSubmitting(false);
     }
   };
+
+  async function forgetPass() {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/forgot-password`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: forgetPassEmail, // assuming you need to pass the user's email for password recovery
+          }),
+        }
+      );
+
+      // Parse the response into JSON format
+      const data = await response.json();
+
+      // Check if the response contains a specific error message
+      if (data?.status == "Success") {
+        console.log(data);
+        setForgetPassEmail("");
+        setForgetErrorMsg("");
+        setResetModal(true);
+        setForgetModal(false);
+      } else {
+        console.log(data);
+        setForgetErrorMsg(data?.message);
+        setForgetPassEmail("");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  }
+  async function resetCodeFunc() {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/verify-reset-code`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            resetCode: resetCode, // assuming you need to pass the user's email for password recovery
+          }),
+        }
+      );
+
+      // Parse the response into JSON format
+      const data = await response.json();
+      console.log(data);
+
+      // Check if the response contains a specific error message
+      if (data?.status == "Success") {
+        setResetCode("");
+        setResetCodeMsg("");
+        setNewPasswordModal(true)
+        setResetModal(false)
+      } else {
+        setResetCode("");
+        setResetCodeMsg(data?.message);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  }
+  async function resetPass() {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/reset-password`,
+        {
+          method: "put",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: resetCodeEmail,
+            newPassword: newPassword, // assuming you need to pass the user's email for password recovery
+          }),
+        }
+      );
+
+      // Parse the response into JSON format
+      const data = await response.json();
+      console.log(data);
+
+      // Check if the response contains a specific error message
+      if (data?.status == "success") {
+        setResetPassMsg("")
+        setNewPassword("")
+        setResetCodeEmail("")
+        setNewPasswordModal(false)
+      } else if (data?.status == "fail") {
+        setResetPassMsg(data?.message)
+        setResetCodeEmail("")
+        setNewPassword("")
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  }
 
   const validationSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email").required("Email is required"),
@@ -230,7 +344,7 @@ const Page = () => {
         <div className="bg-[#272727] px-[--40px] py-[--sy-60px] rounded-[--15px] w-full mb-[--sy-16px]">
           <form onSubmit={handleSubmit}>
             <h2 className=" text-center mb-[--sy-40px] text-[--32px]">Login</h2>
-            <div className=" flex flex-col gap-[--sy-16px] mb-[--sy-50px]">
+            <div className=" flex flex-col gap-[--sy-16px] mb-[--sy-15px]">
               <label htmlFor="Email" className=" font-medium">
                 Email
               </label>
@@ -298,6 +412,12 @@ const Page = () => {
                 </p>
               ) : null}
             </div>
+            <p
+              onClick={() => setForgetModal(true)}
+              className=" w-fit ml-auto cursor-pointer underline font-medium text-[--16px] tracking-tight mb-[--sy-25px]"
+            >
+              Forget Password?
+            </p>
             <button
               disabled={!(isValid && dirty)}
               className=" block rounded-[--39px] text-black bg-[--highlight-yellow] w-full py-[--sy-19px] font-bold mb-[--sy-40px]"
@@ -366,6 +486,135 @@ const Page = () => {
             Sign up
           </Link>
         </p>
+      </div>
+      <div
+        className={`${
+          forgetModal ? "absolute inset-0 flex overflow-hidden" : " hidden"
+        }  flex justify-center items-center bg-transparent backdrop-blur-sm`}
+      >
+        <div className=" py-[--sy-15px] px-[--40px] rounded-[--12px] bg-[#272727] !min-w-[clamp(29vw,_30vw,_1000px)] min-h-[clamp(14vw,_15vw,_600px)] grid place-items-center relative">
+          <div className=" w-full">
+            <label htmlFor="email" className=" mb-[--sy-10px] block">
+              Enter Your Email
+            </label>
+            <input
+              type="text"
+              id="email"
+              value={forgetPassEmail}
+              onChange={(e) => setForgetPassEmail(e.target.value)}
+              className="w-full focus-within:border-[1px] outline-none mb-[--sy-30px] focus-within:border-solid focus-within:border-[#F8F24B] rounded-[--4px] bg-[#484848] placeholder:text-gray-400 py-[--sy-8px] px-[--14px]"
+              placeholder="Email"
+            />
+            {forgetErrorMsg ? (
+              <p className=" -translate-y-[--sy-25px] ml-[--2px] text-red-800">
+                {forgetErrorMsg}
+              </p>
+            ) : null}
+            <button
+              onClick={() => forgetPass()}
+              className=" w-fit mx-auto py-[--sy-6px] px-[--10px] rounded-[--4px] cursor-pointer text-black font-semibold bg-[#cac63d] flex justify-center items-center"
+            >
+              Confirm
+            </button>
+          </div>
+          <span
+            className=" text-[#F8F24B] font-medium text-[--14px] absolute right-[--12px] top-[--sy-12px] cursor-pointer"
+            onClick={() => setForgetModal(false)}
+          >
+            Close
+          </span>
+        </div>
+      </div>
+      <div
+        className={`${
+          resetModal ? "absolute inset-0 flex overflow-hidden" : " hidden"
+        } justify-center items-center bg-transparent backdrop-blur-sm`}
+      >
+        <div className=" py-[--sy-15px] px-[--40px] rounded-[--12px] bg-[#272727] !min-w-[clamp(29vw,_30vw,_1000px)] min-h-[clamp(14vw,_15vw,_600px)] grid place-items-center relative">
+          <div className=" w-full">
+            <label htmlFor="resetCode" className=" mb-[--sy-10px] block">
+              Enter the reset code sent to your email
+            </label>
+            <input
+              type="text"
+              id="resetCode"
+              value={resetCode}
+              onChange={(e) => setResetCode(e.target.value)}
+              className="w-full focus-within:border-[1px] outline-none mb-[--sy-30px] focus-within:border-solid focus-within:border-[#F8F24B] rounded-[--4px] bg-[#484848] placeholder:text-gray-400 py-[--sy-8px] px-[--14px]"
+              placeholder="Reset Code"
+            />
+            {resetCodeMsg ? (
+              <p className=" -translate-y-[--sy-25px] ml-[--2px] text-red-800">
+                {resetCodeMsg}
+              </p>
+            ) : null}
+            <button
+              onClick={() => resetCodeFunc()}
+              className=" w-fit mx-auto py-[--sy-6px] px-[--10px] rounded-[--4px] cursor-pointer text-black font-semibold bg-[#cac63d] flex justify-center items-center"
+            >
+              Confirm
+            </button>
+          </div>
+          <span
+            className=" text-[#F8F24B] font-medium text-[--14px] absolute right-[--12px] top-[--sy-12px] cursor-pointer"
+            onClick={() => setResetModal(false)}
+          >
+            Close
+          </span>
+        </div>
+      </div>
+      <div
+        className={`${
+          newPasswordModal ? "absolute inset-0 flex overflow-hidden" : " hidden"
+        } justify-center items-center bg-transparent backdrop-blur-sm`}
+      >
+        <div className=" py-[--sy-15px] px-[--40px] rounded-[--12px] bg-[#272727] !min-w-[clamp(29vw,_30vw,_1000px)] min-h-[clamp(14vw,_15vw,_600px)] grid place-items-center relative">
+          <div className=" w-full">
+            <div>
+              <label htmlFor="email" className=" mb-[--sy-10px] block">
+                Enter your email
+              </label>
+              <input
+                type="text"
+                id="email"
+                value={resetCodeEmail}
+                onChange={(e) => setResetCodeEmail(e.target.value)}
+                className="w-full focus-within:border-[1px] outline-none mb-[--sy-20px] focus-within:border-solid focus-within:border-[#F8F24B] rounded-[--4px] bg-[#484848] placeholder:text-gray-400 py-[--sy-8px] px-[--14px]"
+                placeholder="Email"
+              />
+            </div>
+            <div className=" mb-[--sy-35px]">
+              <label htmlFor="password" className=" mb-[--sy-10px] block">
+                Enter your new password
+              </label>
+              <input
+                type="password"
+                id="password"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                className="w-full focus-within:border-[1px] outline-none focus-within:border-solid focus-within:border-[#F8F24B] rounded-[--4px] bg-[#484848] placeholder:text-gray-400 py-[--sy-8px] px-[--14px]"
+                placeholder="********"
+              />
+            </div>
+            {resetPassMsg ? (
+              <p className=" -translate-y-[--sy-25px] ml-[--2px] text-red-800">
+                {resetPassMsg}
+              </p>
+            ) : null}
+            <button
+              onClick={() => resetPass()}
+              className=" w-fit mx-auto py-[--sy-6px] px-[--10px] rounded-[--4px] cursor-pointer text-black font-semibold bg-[#cac63d] flex justify-center items-center"
+            >
+              Reset Password
+            </button>
+          </div>
+          <span
+            className=" text-[#F8F24B] font-medium text-[--14px] absolute right-[--12px] top-[--sy-12px] cursor-pointer"
+            onClick={() => setNewPasswordModal(false)}
+          >
+            Close
+          </span>
+        </div>
       </div>
     </div>
   );

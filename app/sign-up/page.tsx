@@ -255,7 +255,7 @@ const Page = () => {
                 <label htmlFor="password">Password</label>
                 <div className=" relative">
                   <input
-                    type="text"
+                    type="password"
                     name="password"
                     onChange={handleChange}
                     onBlur={handleBlur}
