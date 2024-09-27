@@ -222,15 +222,11 @@ body {
   height: 100vh;
   color: var(--white);
   font-family: "Barlow", sans-serif;
+  line-height: normal;
+  font-size: var(--16px);
   overflow-x: hidden;
   width: 100vw;
 }
-
-* {
-  line-height: normal;
-  font-size: var(--16px);
-}
-
 /* ===== End Global ===== */
 
 /* ===== Start Layout ===== */
