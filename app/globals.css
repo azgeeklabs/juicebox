@@ -424,6 +424,7 @@ html.lenis body {
 
 /* ===== End LandingPage Slider ===== */
 
+/* ===== Start Number Input Spin Buttons ===== */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -434,32 +435,48 @@ input[type="number"]::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+/* ===== End Number Input Spin Buttons ===== */
+
+/* ===== Start Character Styling ===== */
 .vi__character {
   border-radius: var(--42px);
   width: var(--96px) !important;
   background-color: #484848;
   border: none;
 }
+
 :where(.vi__character--selected) {
   outline: 2px solid var(--highlight-yellow) !important;
   color: var(--highlight-yellow) !important;
 }
+/* ===== End Character Styling ===== */
+
+/* ===== Start OTP Verification Styling ===== */
 .otp-verification .CustomCheckBoxText_customCheckBoxText__t7xAA div {
   font-weight: 700;
 }
+/* ===== End OTP Verification Styling ===== */
 
+/* ===== Start Subscription Service Cards ===== */
 .subscriptions .serviceCard_serviceCard___Z8OC {
   width: 250px !important;
 }
+/* ===== End Subscription Service Cards ===== */
 
+/* ===== Start Page Content Adjustments ===== */
 div.pageContent:has(> section.services-page) {
   padding-inline: 0;
 }
+
 .css-y9l3cp {
   width: 100% !important;
 }
+/* ===== End Page Content Adjustments ===== */
+
+/* ===== Start Signup Phone Input Styling ===== */
 .signup input.react-international-phone-input {
   background-color: #484848 !important;
   color: white;
   border: none;
 }
+/* ===== End Signup Phone Input Styling ===== */
