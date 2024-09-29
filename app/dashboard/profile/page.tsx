@@ -1,12 +1,182 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./profile.module.css";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import profile from "../../../public/assets/profile.png";
+import { useAuth } from "@/app/_context/AuthContext";
+import { jwtDecode } from "jwt-decode";
+import { useFormik } from "formik";
+import toast from "react-hot-toast";
+import * as Yup from "yup";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
 const Page = () => {
+  const { user, logout } = useAuth();
+  console.log(user);
+
   const router = useRouter();
+  const [userData, setUserData] = useState<any>(null);
+  async function getMe() {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/get-me`,
+      {
+        headers: {
+          Authorization: `Bearer ${user?.token}`,
+        },
+      }
+    );
+    const data = await response.json();
+    console.log(data);
+    if (data.message == "User recently changed his password. please login again..") {
+      toast("Password recently changed. Please login again!", {
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+      });
+      logout();
+    }
+    setUserData(data.data);
+  }
+
+  async function updateMe(values: any) {
+    // Create an object with only the changed fields
+    const changedValues = Object.keys(values).reduce((acc, key) => {
+      if (values[key] !== "" && values[key] !== userData[key]) {
+        acc[key] = values[key];
+      }
+      return acc;
+    }, {} as Record<string, any>);
+
+    // Only send the request if there are changed values
+    if (Object.keys(changedValues).length > 0) {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/update-me`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user?.token}`,
+          },
+          body: JSON.stringify(changedValues),
+        }
+      );
+      const res = await response.json();
+      console.log(res);
+      if (res.message == "User updated") {
+        setUserData({ ...userData, ...changedValues });
+        formik.resetForm();
+        toast("Profile updated successfully!", {
+          icon: "👏",
+          style: {
+            borderRadius: "10px",
+            background: "#333",
+            color: "#fff",
+          },
+        });
+      } else {
+        toast("Failed to update profile", {
+          icon: "🚨",
+          style: {
+            borderRadius: "10px",
+            background: "#333",
+            color: "#fff",
+          },
+        });
+      }
+    } else {
+      console.log("No changes to update");
+    }
+  }
+  const validationSchema = Yup.object().shape({
+    currentPassword: Yup.string()
+      .min(8, "Password must be at least 8 characters long")
+      .matches(/[a-z]/, "Password must contain at least one lowercase letter")
+      .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
+      .matches(/\d/, "Password must contain at least one number")
+      .matches(
+        /[@$!%*?&]/,
+        "Password must contain at least one special character"
+      )
+      .required("Password is required"),
+    newPassword: Yup.string()
+      .min(8, "Password must be at least 8 characters long")
+      .matches(/[a-z]/, "Password must contain at least one lowercase letter")
+      .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
+      .matches(/\d/, "Password must contain at least one number")
+      .matches(
+        /[@$!%*?&]/,
+        "Password must contain at least one special character"
+      )
+      .required("Password is required"),
+  });
+
+  async function updatePassword(values: any) {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/change-my-password`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user?.token}`,
+        },
+        body: JSON.stringify(values),
+      }
+    );
+    const data = await response.json();
+    console.log(data);
+    if (data.message == 'Password updated successfully') {
+      passwordFormik.resetForm();
+      toast("Password updated successfully!", {
+        icon: "🔒",
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+      });
+    } else {
+      toast(data.message, {
+        icon: "🚨",
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+      });
+    }
+    
+  }
+
+  const formik = useFormik({
+    initialValues: {
+      firstName: userData?.firstName || "",
+      lastName: userData?.lastName || "",
+      email: userData?.email || "",
+      phoneNumber: userData?.phoneNumber || "",
+      address: userData?.address || "",
+      DOB: userData?.DOB || "",
+      country: userData?.country || "",
+      org: userData?.org || "",
+      city: userData?.city || "",
+      role: userData?.role || "",
+    },
+    onSubmit: updateMe,
+  });
+  const passwordFormik = useFormik({
+    initialValues: {
+      currentPassword: "",
+      newPassword: "",
+    },
+    validationSchema,
+    onSubmit: updatePassword,
+  });
+
+  useEffect(() => {
+    getMe();
+  }, []);
 
   return (
     <>
@@ -15,11 +185,17 @@ const Page = () => {
           <div className=" col-span-1 rounded-[--15px] bg-[#353535] px-[--25px] pt-[--sy-18px] pb-[--sy-31px] relative h-full flex flex-col">
             <div className=" flex justify-between items-center mb-[--sy-31px]">
               <div className=" absolute -top-[30px] w-[--75px]">
-              <Image
-                src={profile}
-                alt="profile"
-                className="w-[--75px]"
-              />
+                {userData?.avatar ? (
+                  <Image
+                    src={userData?.avatar}
+                    width={75}
+                    height={75}
+                    alt="profile"
+                    className="w-[--75px] rounded-full"
+                  />
+                ) : (
+                  <div className=" w-[--75px] h-[--75px] rounded-full bg-black"></div>
+                )}
               </div>
               <div className=" ml-auto">
                 <p className="text-[#B1B1B1] text-[--10px] mb-[--sy-8px] leading-[12px]">
@@ -31,7 +207,9 @@ const Page = () => {
               </div>
             </div>
             <div className=" flex justify-between items-center mb-[--sy-40px]">
-              <h1 className=" text-[--24px] font-semibold">Cameron Williamson</h1>
+              <h1 className=" text-[--24px] font-semibold">
+                {userData?.firstName} {userData?.lastName}
+              </h1>
               <span className=" bg-[--highlight-yellow] rounded-[--30px] px-[--11px] py-[--sy-6px] text-black text-[--10px] leading-[11.2px] font-semibold">
                 Entrepreneur
               </span>
@@ -165,10 +343,18 @@ const Page = () => {
             </p>
           </div>
           <div className=" col-span-2 flex flex-col gap-[--sy-20px] h-full">
-            <div className="rounded-[--15px] bg-[#353535] px-[--34px] py-[--sy-24px] w-full">
-              <h2 className="text-[--24px] mb-[--sy-20px] font-semibold">
-                General Information
-              </h2>
+            <div className="rounded-[--15px] bg-[#353535] px-[--34px] py-[--sy-14px] w-full">
+              <div className="flex justify-between items-center mb-[--sy-10px]">
+                <h2 className="text-[--24px] font-semibold">
+                  Personal Information
+                </h2>
+                <button
+                  onClick={() => formik.handleSubmit()}
+                  className="bg-[--highlight-yellow] rounded-[--6px] px-[--20px] py-[--sy-8px] text-black text-[--14px] leading-[11.2px] font-bold"
+                >
+                  Edit
+                </button>
+              </div>
               <div className=" flex flex-col gap-[--sy-22px] w-full">
                 <div className=" w-full flex justify-between items-center gap-[--42px]">
                   <div className=" w-full flex flex-col gap-[--sy-14px]">
@@ -176,7 +362,12 @@ const Page = () => {
                       First Name
                     </label>
                     <input
-                      placeholder="John"
+                      placeholder={
+                        userData?.firstName ? userData?.firstName : "John"
+                      }
+                      value={formik.values.firstName}
+                      onChange={formik.handleChange}
+                      name="firstName"
                       type="text"
                       className="outline-none placeholder:text-[#b1b1b1] block w-full px-[--12px] py-[--sy-5px] rounded-[--3px] border-none bg-[#484848]"
                     />
@@ -186,7 +377,12 @@ const Page = () => {
                       Last Name
                     </label>
                     <input
-                      placeholder="Doe"
+                      placeholder={
+                        userData?.lastName ? userData?.lastName : "Doe"
+                      }
+                      value={formik.values.lastName}
+                      onChange={formik.handleChange}
+                      name="lastName"
                       type="text"
                       className="outline-none placeholder:text-[#b1b1b1] block w-full px-[--12px] py-[--sy-5px] rounded-[--3px] border-none bg-[#484848]"
                     />
@@ -196,7 +392,12 @@ const Page = () => {
                   <div className=" w-full flex flex-col gap-[--sy-14px]">
                     <label className="text-[--14px] font-medium">Email</label>
                     <input
-                      placeholder="Johndoe@gmail.com"
+                      placeholder={
+                        userData?.email ? userData?.email : "Johndoe@gmail.com"
+                      }
+                      value={formik.values.email}
+                      onChange={formik.handleChange}
+                      name="email"
                       type="text"
                       className="outline-none placeholder:text-[#b1b1b1] block w-full px-[--12px] py-[--sy-5px] rounded-[--3px] border-none bg-[#484848]"
                     />
@@ -206,7 +407,14 @@ const Page = () => {
                       Phone Number
                     </label>
                     <input
-                      placeholder="+02 115 486 632 059"
+                      placeholder={
+                        userData?.phoneNumber
+                          ? userData?.phoneNumber
+                          : "+02 115 486 632 059"
+                      }
+                      value={formik.values.phoneNumber}
+                      onChange={formik.handleChange}
+                      name="phoneNumber"
                       type="text"
                       className="outline-none placeholder:text-[#b1b1b1] block w-full px-[--12px] py-[--sy-5px] rounded-[--3px] border-none bg-[#484848]"
                     />
@@ -216,7 +424,14 @@ const Page = () => {
                   <div className=" w-full flex flex-col gap-[--sy-14px]">
                     <label className="text-[--14px] font-medium">Address</label>
                     <input
-                      placeholder="123, internet ST"
+                      placeholder={
+                        userData?.address
+                          ? userData?.address
+                          : "123, internet ST"
+                      }
+                      value={formik.values.address}
+                      onChange={formik.handleChange}
+                      name="address"
                       type="text"
                       className="outline-none placeholder:text-[#b1b1b1] block w-full px-[--12px] py-[--sy-5px] rounded-[--3px] border-none bg-[#484848]"
                     />
@@ -226,7 +441,10 @@ const Page = () => {
                       Date of birth
                     </label>
                     <input
-                      placeholder="15/20/1996"
+                      placeholder={userData?.DOB ? userData?.DOB.split("T")[0] : "15/20/1996"}
+                      name="DOB"
+                      value={formik.values.DOB}
+                      onChange={formik.handleChange}
                       type="text"
                       className="outline-none placeholder:text-[#b1b1b1] block w-full px-[--12px] py-[--sy-5px] rounded-[--3px] border-none bg-[#484848]"
                     />
@@ -236,16 +454,24 @@ const Page = () => {
                   <div className=" w-full flex flex-col gap-[--sy-14px]">
                     <label className="text-[--14px] font-medium">Country</label>
                     <input
-                      placeholder="USA"
+                      placeholder={
+                        userData?.country ? userData?.country : "USA"
+                      }
+                      name="country"
                       type="text"
+                      value={formik.values.country}
+                      onChange={formik.handleChange}
                       className="outline-none placeholder:text-[#b1b1b1] block w-full px-[--12px] py-[--sy-5px] rounded-[--3px] border-none bg-[#484848]"
                     />
                   </div>
                   <div className=" w-full flex flex-col gap-[--sy-14px]">
                     <label className="text-[--14px] font-medium">City</label>
                     <input
-                      placeholder="NYC"
+                      placeholder={userData?.city ? userData?.city : "NYC"}
+                      name="city"
                       type="text"
+                      value={formik.values.city}
+                      onChange={formik.handleChange}
                       className="outline-none placeholder:text-[#b1b1b1] block w-full px-[--12px] py-[--sy-5px] rounded-[--3px] border-none bg-[#484848]"
                     />
                   </div>
@@ -256,16 +482,22 @@ const Page = () => {
                       Organization
                     </label>
                     <input
-                      placeholder="GEEKLABS"
+                      placeholder={userData?.org ? userData?.org : "GEEKLABS"}
+                      name="org"
                       type="text"
+                      value={formik.values.org}
+                      onChange={formik.handleChange}
                       className="outline-none placeholder:text-[#b1b1b1] block w-full px-[--12px] py-[--sy-5px] rounded-[--3px] border-none bg-[#484848]"
                     />
                   </div>
                   <div className=" w-full flex flex-col gap-[--sy-14px]">
                     <label className="text-[--14px] font-medium">Role</label>
                     <input
-                      placeholder="CEO"
+                      placeholder={userData?.role ? userData?.role : "CEO"}
+                      name="role"
                       type="text"
+                      value={formik.values.role}
+                      onChange={formik.handleChange}
                       className="outline-none placeholder:text-[#b1b1b1] block w-full px-[--12px] py-[--sy-5px] rounded-[--3px] border-none bg-[#484848]"
                     />
                   </div>
@@ -273,33 +505,84 @@ const Page = () => {
               </div>
             </div>
             <div className="rounded-[--15px] bg-[#353535] px-[--34px] py-[--sy-24px] w-full h-full">
-              <h2 className="text-[--24px] mb-[--sy-20px] font-semibold">
-                Password Information
-              </h2>
+              <div className="flex justify-between items-center mb-[--sy-10px]">
+                <h2 className="text-[--24px] font-semibold">
+                  Password Information
+                </h2>
+                <button onClick={()=>passwordFormik.handleSubmit()} className="bg-[--highlight-yellow] rounded-[--6px] px-[--20px] py-[--sy-8px] text-black text-[--14px] leading-[11.2px] font-bold">
+                  Change
+                </button>
+              </div>
               <div className=" flex flex-col gap-[--sy-22px] w-full">
-                <div className=" w-full flex justify-between items-center gap-[--42px]">
-                  <div className=" w-full flex flex-col gap-[--sy-14px]">
-                    <label className="text-[--14px] font-medium">
-                      Current Password
-                    </label>
-                    <input
-                      placeholder="**********"
-                      type="password"
-                      className="outline-none placeholder:text-[#b1b1b1] block w-full px-[--12px] py-[--sy-5px] rounded-[--3px] border-none bg-[#484848]"
-                    />
+                {userData && !userData.googleId ? (
+                  <div className="w-full flex justify-between items-start gap-[--42px]">
+                    <div className="w-full flex flex-col gap-[--sy-14px]">
+                      <label className="text-[--14px] font-medium">
+                        Current Password
+                      </label>
+                      <div className="relative">
+                        <input
+                          placeholder="**********"
+                          value={passwordFormik.values.currentPassword}
+                          onChange={passwordFormik.handleChange}
+                          onBlur={passwordFormik.handleBlur}
+                          type="password"
+                          name="currentPassword"
+                          className="outline-none placeholder:text-[#b1b1b1] block w-full px-[--12px] py-[--sy-5px] rounded-[--3px] border-none bg-[#484848]"
+                        />
+                        {passwordFormik.errors.currentPassword &&
+                        passwordFormik.touched.currentPassword ? (
+                          <div className="absolute top-1/2 -translate-y-1/2 right-[--8px]">
+                            <ErrorOutlineIcon
+                              sx={{
+                                color: "#991b1b",
+                              }}
+                            />
+                          </div>
+                        ) : null}
+                      </div>
+                      {passwordFormik.errors.currentPassword &&
+                      passwordFormik.touched.currentPassword ? (
+                        <p className="text-red-800 font-semibold text-[--14px] -translate-y-[--sy-10px] pl-[--6px]">
+                          {passwordFormik.errors.currentPassword}
+                        </p>
+                      ) : null}
+                    </div>
+                    <div className="w-full flex flex-col gap-[--sy-14px]">
+                      <label className="text-[--14px] font-medium">
+                        New Password
+                      </label>
+                      <div className="relative">
+                        <input
+                          placeholder="**********"
+                          type="password"
+                          name="newPassword"
+                          value={passwordFormik.values.newPassword}
+                          onChange={passwordFormik.handleChange}
+                          onBlur={passwordFormik.handleBlur}
+                          className="outline-none placeholder:text-[#b1b1b1] block w-full px-[--12px] py-[--sy-5px] rounded-[--3px] border-none bg-[#484848]"
+                        />
+                        {passwordFormik.errors.newPassword &&
+                        passwordFormik.touched.newPassword ? (
+                          <div className="absolute top-1/2 -translate-y-1/2 right-[--8px]">
+                            <ErrorOutlineIcon
+                              sx={{
+                                color: "#991b1b",
+                              }}
+                            />
+                          </div>
+                        ) : null}
+                      </div>
+                      {passwordFormik.errors.newPassword &&
+                      passwordFormik.touched.newPassword ? (
+                        <p className="text-red-800 font-semibold text-[--14px] -translate-y-[--sy-10px] pl-[--6px]">
+                          {passwordFormik.errors.newPassword}
+                        </p>
+                      ) : null}
+                    </div>
                   </div>
-                  <div className=" w-full flex flex-col gap-[--sy-14px]">
-                    <label className="text-[--14px] font-medium">
-                      New Password
-                    </label>
-                    <input
-                      placeholder="**********"
-                      type="password"
-                      className="outline-none placeholder:text-[#b1b1b1] block w-full px-[--12px] py-[--sy-5px] rounded-[--3px] border-none bg-[#484848]"
-                    />
-                  </div>
-                </div>
-                <div className=" w-full flex justify-between items-center gap-[--42px]">
+                ) : null}
+                <div className=" w-full flex justify-between items-start gap-[--42px]">
                   <div className=" w-full flex flex-col gap-[--sy-14px]">
                     <label className="text-[--14px] font-medium">
                       Security Question

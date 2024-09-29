@@ -19,6 +19,25 @@ const Page = () => {
   const route = useRouter()
   const file = useSelector((state:RootState) => state.service.file);
 console.log(file);
+const loadFileFromLocalStorage = () => {
+  const fileData = typeof window !== "undefined" && localStorage.getItem('uploadedFile');
+  if (fileData) {
+    const { name, type, size, base64 } = JSON.parse(fileData);
+
+    // Convert Base64 back to a File object (this isn't exact but provides structure)
+    const byteString = atob(base64.split(',')[1]);
+    const ab = new ArrayBuffer(byteString.length);
+    const ia = new Uint8Array(ab);
+    for (let i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+    const blob = new Blob([ab], { type });
+    const file = new File([blob], name, { type });
+
+    return file;
+  }
+  return null;
+};
   const handlePaste = async () => {
     try {
       const text = await navigator.clipboard.readText();
@@ -55,7 +74,7 @@ console.log(file);
       const data = await axios.post(`https://api.creativejuicebox.com/api/v1/services/initialize-service`,{
         type:"SEO link building",
         totalSteps:3,
-        fileUrl_1:file,
+        fileUrl_1:file || (typeof window !== "undefined" && loadFileFromLocalStorage()),
         options:optionsArray
       },{
         headers:{

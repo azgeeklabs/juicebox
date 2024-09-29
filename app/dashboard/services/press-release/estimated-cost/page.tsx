@@ -15,6 +15,25 @@ const Page = () => {
   const dispatch = useDispatch();
   const file = useSelector((state:RootState) => state.service.file);
 console.log(file);
+const loadFileFromLocalStorage = () => {
+  const fileData = typeof window !== "undefined" && localStorage.getItem('uploadedFile');
+  if (fileData) {
+    const { name, type, size, base64 } = JSON.parse(fileData);
+
+    // Convert Base64 back to a File object (this isn't exact but provides structure)
+    const byteString = atob(base64.split(',')[1]);
+    const ab = new ArrayBuffer(byteString.length);
+    const ia = new Uint8Array(ab);
+    for (let i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+    const blob = new Blob([ab], { type });
+    const file = new File([blob], name, { type });
+
+    return file;
+  }
+  return null;
+};
 
   async function makeService() {
     const optionsItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
@@ -50,7 +69,7 @@ console.log(file);
       const data = await axios.post(`https://api.creativejuicebox.com/api/v1/services/initialize-service`,{
         type:"press release",
         totalSteps:6,
-        fileUrl_2:file,
+        fileUrl_2:file || (typeof window !== "undefined" && loadFileFromLocalStorage()),
         options:optionsArray
       },{
         headers:{

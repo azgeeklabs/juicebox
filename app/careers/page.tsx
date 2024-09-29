@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./careers.module.css";
 import NavBar from "../_components/NavBar/NavBar";
 import Footer from "../Footer";
@@ -69,9 +69,58 @@ const FilterBtn = ({ children, active, handClick }: FilterBtnProps) => {
 };
 
 const Careers = () => {
-  const [filter, setFilter] = useState("Web Development");
+  const [filter, setFilter] = useState("");
+  const [shownJob, setShownJob] = useState<any>({});
+  const [vacancies, setVacancies] = useState<any>([]);
+  const [jobs, setJobs] = useState([]);
+  const [id, setId] = useState<any>(null);
+  const [applicationData, setApplicationData] = useState<Record<string, any>>({
+    fullName: "",
+    email: "",
+    phoneNumber: "",
+    cv: "",
+    portfolioLink: "",
+    linkedInProfile: "",
+  });
+  async function getCareers() {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/vacancy/get-all-vacancies`,
+      {
+        method: "GET",
+      }
+    );
+    const data = await res.json();
+    console.log(data);
+    setVacancies(data.data);
+    setJobs(data.data.map((job: any) => job.title));
+    setShownJob(data.data[0]);
+    setId(data.data[0]._id);
+  }
 
-  const jobs = ["Web Development", "UI/UX", "Front-End"];
+  async function submitApplication(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("name", applicationData.fullName);
+    formData.append("email", applicationData.email);
+    formData.append("phoneNumber", applicationData.phoneNumber);
+    formData.append("cv", applicationData.cv);
+    formData.append("portfolioLink", applicationData.portfolioLink);
+    formData.append("linkedInProfile", applicationData.linkedInProfile);
+    formData.append("vacancyId", id);
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/vacancy/add-career`,
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+    const data = await res.json();
+    console.log(data);
+  }
+
+  useEffect(() => {
+    getCareers();
+  }, []);
 
   return (
     <>
@@ -102,6 +151,13 @@ const Careers = () => {
                     handClick={() => {
                       setFilter(job);
                       console.log(filter);
+                      setShownJob(
+                        vacancies.find((vacancy: any) => vacancy.title === job)
+                      );
+                      setId(
+                        vacancies.find((vacancy: any) => vacancy.title === job)
+                          ?._id
+                      );
                     }}
                     active={filter === job}
                   >
@@ -115,63 +171,44 @@ const Careers = () => {
               <div className="flex flex-col gap-[--sy-48px] border-[--2px] border-[--highlight-yellow] rounded-[--32px] px-[--55px] py-[--41px]">
                 <header>
                   <h3 className="text-[--highlight-yellow] text-[--28px] font-bold">
-                    {filter}
+                    {shownJob.title}
                   </h3>
                   <p className="text-[--15px] mt-4 max-w-[450px] ">
-                    We're seeking a Senior Backend Developer to join our team
-                    and contribute to the development of our cutting-edge
-                    products and services.
+                    {shownJob.description}
                   </p>
                 </header>
                 <div className="flex flex-col gap-[--sy-20px]">
                   <h4 className="text-[--22px] font-bold">Responsibilities</h4>
                   <ul className="list-disc pl-6">
-                    <li className="text-[--17px]">
-                      Develop and maintain backend services
-                    </li>
-                    <li className="text-[--17px]">
-                      Collaborate with the front-end team to develop APIs
-                    </li>
-                    <li className="text-[--17px]">
-                      Optimize application performance
-                    </li>
-                    <li className="text-[--17px]">
-                      Write clean, maintainable code
-                    </li>
+                    {shownJob.responsibilities
+                      ?.split(",")
+                      .map((responsibility: string) => (
+                        <li key={responsibility} className="text-[--17px]">
+                          {responsibility}
+                        </li>
+                      ))}
                   </ul>
                 </div>
                 <div className="flex flex-col gap-[--sy-20px]">
                   <h4 className="text-[--22px] font-bold">Benefits</h4>
                   <ul className="list-disc pl-6">
-                    <li className="text-[--17px]">
-                      Competitive salary and benefits.{" "}
-                    </li>
-                    <li className="text-[--17px]">
-                      Opportunities for professional growth and remote work
-                      options.{" "}
-                    </li>
-                    <li className="text-[--17px]">
-                      Dynamic work environment focused on innovation and
-                      collaboration.{" "}
-                    </li>
+                    {shownJob.benefits?.split(",").map((benefit: string) => (
+                      <li key={benefit} className="text-[--17px]">
+                        {benefit.trim()}
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 <div className="flex flex-col gap-[--sy-20px]">
                   <h4 className="text-[--22px] font-bold">Requirement</h4>
                   <ul className="list-disc pl-6">
-                    <li className="text-[--17px]">
-                      3 years of backend development experience.
-                    </li>
-                    <li className="text-[--17px]">
-                      Proficiency in Java, Python, or Node.js.
-                    </li>
-                    <li className="text-[--17px]">
-                      Strong understanding of software architecture and cloud
-                      platforms.
-                    </li>
-                    <li className="text-[--17px]">
-                      Problem-solving and communication skills.{" "}
-                    </li>
+                    {shownJob.requirements
+                      ?.split(",")
+                      .map((requirement: string) => (
+                        <li key={requirement} className="text-[--17px]">
+                          {requirement.trim()}
+                        </li>
+                      ))}
                   </ul>
                 </div>
               </div>
@@ -191,12 +228,19 @@ const Careers = () => {
                   />
                 </svg>
                 <div className="relative w-[--366px] bg-[--primary-black] [box-shadow:0px_4px_12.2px_0px_#000000A3] rounded-[--20px] px-[--36px] py-[--43px]">
-                  <form className="flex flex-col gap-[--sy-20px]">
+                  <form onSubmit={submitApplication} className="flex flex-col gap-[--sy-20px]">
                     <div>
                       <label className="text-[--15px]" htmlFor="name">
                         Full Name*
                       </label>
                       <input
+                        value={applicationData.fullName}
+                        onChange={(e) =>
+                          setApplicationData({
+                            ...applicationData,
+                            fullName: e.target.value,
+                          })
+                        }
                         type="text"
                         id="name"
                         placeholder="Enter your full name"
@@ -208,6 +252,13 @@ const Careers = () => {
                         Email*
                       </label>
                       <input
+                        value={applicationData.email}
+                        onChange={(e) =>
+                          setApplicationData({
+                            ...applicationData,
+                            email: e.target.value,
+                          })
+                        }
                         type="email"
                         id="email"
                         placeholder="Enter your email address"
@@ -219,6 +270,13 @@ const Careers = () => {
                         Phone Number*
                       </label>
                       <input
+                        value={applicationData.phoneNumber}
+                        onChange={(e) =>
+                          setApplicationData({
+                            ...applicationData,
+                            phoneNumber: e.target.value,
+                          })
+                        }
                         type="tel"
                         id="phone"
                         placeholder="Enter your phone number"
@@ -231,13 +289,27 @@ const Careers = () => {
                         Upload CV*
                       </label>
                       <div className="relative cursor-pointer text-center w-full px-[--13px] py-[--8px] rounded-[--5px] text-[#4F4F4F] mt-[--16px] border border-[#4F4F4F]">
-                        Attach PDF
                         <input
                           type="file"
+                          name="cv"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) {
+                              setApplicationData({
+                                ...applicationData,
+                                cv: file,
+                              });
+                            }
+                          }}
                           id="cv"
                           accept=".pdf"
-                          className="absolute w-full h-full opacity-0"
+                          className="absolute inset-0 opacity-0 placeholder:text-[#4F4F4F]"
                         />
+                        <span className="inline-block w-full">
+                          {applicationData.cv
+                            ? applicationData.cv.name
+                            : "Attach PDF"}
+                        </span>
                       </div>
                     </div>
                     <div>
@@ -245,6 +317,13 @@ const Careers = () => {
                         Portfolio Link
                       </label>
                       <input
+                        value={applicationData.portfolioLink}
+                        onChange={(e) =>
+                          setApplicationData({
+                            ...applicationData,
+                            portfolioLink: e.target.value,
+                          })
+                        }
                         type="url"
                         id="portfolio"
                         placeholder="Enter your portfolio link"
@@ -257,6 +336,13 @@ const Careers = () => {
                         LinkedIn Profile
                       </label>
                       <input
+                        value={applicationData.linkedInProfile}
+                        onChange={(e) =>
+                          setApplicationData({
+                            ...applicationData,
+                            linkedInProfile: e.target.value,
+                          })
+                        }
                         type="url"
                         id="linkedin"
                         placeholder="Enter your LinkedIn profile link"
@@ -264,7 +350,10 @@ const Careers = () => {
                       />
                     </div>
 
-                    <button className="mx-auto text-[--14px] w-fit font-bold bg-[--highlight-yellow] text-[--primary-black] rounded-[--30px] px-[--45px] py-[--13px] mt-[--16px]">
+                    <button
+                      type="submit"
+                      className="mx-auto text-[--14px] w-fit font-bold bg-[--highlight-yellow] text-[--primary-black] rounded-[--30px] px-[--45px] py-[--13px] mt-[--16px]"
+                    >
                       Submit Application
                     </button>
                   </form>

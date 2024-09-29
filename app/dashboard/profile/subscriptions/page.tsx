@@ -1,14 +1,27 @@
 "use client"
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./subscriptions.module.css";
 import ServiceCard from "@/app/_components/serviceCard/ServiceCard";
+import { useAuth } from "@/app/_context/AuthContext";
 
 const Billing = () => {
 
   const [isDown, setIsDown] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const {user} = useAuth();
+
+  async function getSubscriptions(){
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/get-all-services`,{
+      method:"GET",
+      headers:{
+        Authorization: `Bearer ${user?.token}`,
+      }
+    })
+    const data = await response.json();
+    console.log(data);
+  }
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement> ) => {
     setIsDown(true);
@@ -31,6 +44,10 @@ const Billing = () => {
     const walk = (x - startX) * 2; // Multiply by 2 for faster scrolling
     e.currentTarget.scrollLeft = scrollLeft - walk;
   };
+
+  useEffect(()=>{
+    getSubscriptions();
+  },[])
 
   return (
     <div className={`${styles.subscriptions} w-full h-full subscriptions`}>

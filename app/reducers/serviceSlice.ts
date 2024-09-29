@@ -1,6 +1,7 @@
 // serviceSlice.ts
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { useEffect } from "react";
 
 const loadFileFromLocalStorage = () => {
   const fileData = typeof window !== "undefined" && localStorage.getItem('uploadedFile');
@@ -21,6 +22,7 @@ const loadFileFromLocalStorage = () => {
   }
   return null;
 };
+
 
 // Define the structure for the option data
 interface OptionData {

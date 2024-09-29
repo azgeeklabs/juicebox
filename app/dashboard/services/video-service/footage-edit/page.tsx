@@ -51,6 +51,7 @@ const Page = () => {
       localStorage.setItem('uploadedFile', JSON.stringify(fileData));
 
       // Store the file in Redux
+      console.log(file);
       dispatch(addFile(file));
     }
   };

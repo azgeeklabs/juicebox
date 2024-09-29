@@ -9,6 +9,7 @@ import React, {
 } from "react";
 import axios from "axios";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import toast from "react-hot-toast";
 
 const initialState: { token: string | null } = {
   token: null,
@@ -38,9 +39,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   function getToken() {
     if (typeof window !== "undefined") {
       const token = typeof window !== "undefined" && localStorage.getItem("token");
-      return token ? `Bearer ${token}` : null;
+      return token ? `${token}` : null;
     } else {
-      return `Bearer ${user?.token}` || null;
+      return `${user?.token}` || null;
     }
   }
 
@@ -83,9 +84,17 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     console.log(response);
     if (response.status === 200) {
       console.log("Registration successful please login");
-      localStorage.setItem("token", response.data.token);
-      setUser({ token: response.data.token }); // Redirect to a protected route
+      localStorage.setItem("token", response.data.data.token);
+      setUser({ token: response.data.data.token }); // Redirect to a protected route
       router.push("/dashboard");
+      toast(response.data.message, {
+        icon: "👏",
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+      });
     }
   };
 
@@ -100,21 +109,29 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     // Replace with your actual registration API request
     console.log(userDetails);
     
-    const response: { success: boolean } = await axios.post(
+    const response: { success: boolean,data:any } = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/signup`,
       userDetails
     );
     console.log(response);
     
-    if (response) {
+    if (response.data.message == "User created successfully! Please verify your email.") {
       router.push("/login"); // Redirect to the login page
+      toast(response.data.message, {
+        icon: "👏",
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+      });
     }
   };
 
   const logout = () => {
     localStorage.removeItem("token");
     setUser(initialState);
-    router.push("/login"); // Redirect to login page
+    router.replace("/login"); // Redirect to login page
   };
 
   const googleLogin = async (response: any) => {
