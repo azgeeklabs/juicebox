@@ -5,9 +5,10 @@ const nextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
-  output: "export",
+  // output: "export",
   images: { unoptimized: true },
-  trailingSlash: true,
+  reactStrictMode: false,
+  // trailingSlash: true,
 };
 
 export default nextConfig;
