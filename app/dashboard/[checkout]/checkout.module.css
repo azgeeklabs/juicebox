@@ -46,3 +46,21 @@
     opacity: 1;
     transform: scale(1);
   }
+  .detailsContainer {
+    scrollbar-width: thin;
+    scrollbar-color: #F8F24B #353535;
+  }
+  
+  .detailsContainer::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .detailsContainer::-webkit-scrollbar-track {
+    background: #353535;
+  }
+  
+  .detailsContainer::-webkit-scrollbar-thumb {
+    background-color: #F8F24B;
+    border-radius: 4px;
+    border: 2px solid #353535;
+  }

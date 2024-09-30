@@ -110,7 +110,12 @@ const Page = () => {
             ).value,
           })
         );
-        route.push("/dashboard/services");
+        console.log((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value);
+        
+        if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value === "Let's make this video!") {
+          route.replace(`/dashboard/${data.data.data._id}`);
+        }
+        // route.push("/dashboard/services");
       } else if (document.querySelector("input[type='checkbox']:checked")) {
         itemsArray.push({
           name: "estimated cost",
