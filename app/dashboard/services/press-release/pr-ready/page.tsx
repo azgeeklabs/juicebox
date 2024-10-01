@@ -237,8 +237,8 @@ const Page = () => {
                   }`}
                   onChange={() => setDoLater((prev) => !prev)}
                   onClick={()=>{
+                    typeof window !== "undefined" && localStorage.removeItem('uploadedFile');
                     dispatch(addFile(null))
-                    localStorage.removeItem('uploadedFile');
                   }}
                 />
               </div>

@@ -129,8 +129,8 @@ const Page = () => {
               </CustomCheckBoxText>
               <CustomCheckBoxText
                 onClick={() => {setHaveCopy(false)
-                  dispatch(addFile(null))
                   typeof window !== "undefined" && localStorage.removeItem("uploadedFile")
+                  dispatch(addFile(null))
                 }}
                 btnSize="xl"
                 inputType="radio"

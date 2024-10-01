@@ -1,10 +1,11 @@
 "use client"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import MainWrapper from "../_components/layout/MainWrapper";
 import ProtectedRoute from "../_components/ProtectedRoute";
 import { usePathname, useRouter } from "next/navigation";
 import { addFile } from "../reducers/serviceSlice";
 import { useEffect } from "react";
+import { RootState } from "../Store/store";
 
 export default function RootLayout({
   children,
@@ -12,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-
+const file = useSelector((state: RootState) => state.service.file);
   const dispatch = useDispatch();
 const router = useRouter();
 const pathname = usePathname();
@@ -41,6 +42,7 @@ console.log(pathname);
 
 
 useEffect(() => {
+  console.log(file);
   console.log("Route changed, reloading file from localStorage");
   loadFileFromLocalStorage();
 }, [pathname]);

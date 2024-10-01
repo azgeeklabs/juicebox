@@ -71,7 +71,7 @@ const loadFileFromLocalStorage = () => {
       const data = await axios.post(`https://api.creativejuicebox.com/api/v1/services/initialize-service`,{
         type:"Web design",
         totalSteps:10,
-        fileUrl_4:file || (typeof window !== "undefined" && loadFileFromLocalStorage()),
+        fileUrl_4:(typeof window !== "undefined" && loadFileFromLocalStorage()),
         options:optionsArray
       },{
         headers:{
@@ -101,7 +101,29 @@ const loadFileFromLocalStorage = () => {
               ) as HTMLInputElement
             ).value,
           }))
-      route.push("/dashboard/services");
+          if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value === "Let's make this website!") {
+            route.replace(`/dashboard/${data.data.data._id}`);
+          }
+      // route.push("/dashboard/services");
+      if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value !== "Let's make this website!") {
+        try {
+          const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/call-sales`, JSON.stringify({
+            serviceId: data.data.data._id,
+          }),{
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${
+            typeof window !== "undefined" && localStorage.getItem("token")
+          }`,
+            },
+          })
+          console.log(response);
+          route.replace("/dashboard/services");
+        } catch (error) {
+          console.log(error);
+          
+        }
+      }
 
       } else if (document.querySelector("input[type='checkbox']:checked")) {
         itemsArray.push({

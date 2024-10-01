@@ -170,8 +170,8 @@ const Page = () => {
                     setDoLater(false)
                   }
                   setInputVal("")
-                  dispatch(addFile(null))
                   typeof window !== "undefined" && localStorage.removeItem("uploadedFile")
+                  dispatch(addFile(null))
                 }}
                 btnSize="xl"
                 inputType="radio"
@@ -229,8 +229,8 @@ const Page = () => {
                   }`}
                   onChange={() => setDoLater((prev) => !prev)}
                   onClick={()=>{
+                    typeof window !== "undefined" && localStorage.removeItem('uploadedFile');
                     dispatch(addFile(null))
-                    localStorage.removeItem('uploadedFile');
                   }}
                 />
               </div>

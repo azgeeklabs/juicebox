@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./dashboard.module.css";
 import CustomCheckBoxText from "../_components/customCheckBox/CustomCheckBoxText";
 import CustomCheckBox from "../_components/customCheckBox/CustomCheckBox";
@@ -11,15 +11,15 @@ import { AnimatedTooltip } from "../_components/animatedTooltip/AnimatedTooltip"
 import ClientApprovalTable from "../_components/dashboard/Client Approval/ClientApprovalTable";
 import dynamic from "next/dynamic";
 import { number } from "yup";
+import { useAuth } from "../_context/AuthContext";
 
-const Calender = dynamic(() => import('../_components/dashboard/calender/Calender'), { ssr: false })
+const Calender = dynamic(
+  () => import("../_components/dashboard/calender/Calender"),
+  { ssr: false }
+);
 
 const svg = (
-  <svg
-    viewBox="0 0 21 21"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <svg viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
     <mask
       id="mask0_1488_3803"
       style={{ maskType: "luminance" }}
@@ -110,28 +110,88 @@ const people = [
     id: 1,
     name: "Mostafa Sakr",
     designation: "Front-End Developer",
-    image:
-      "/assets/mostafa-sakr.png",
+    image: "/assets/mostafa-sakr.png",
   },
   {
     id: 2,
     name: "Mostafa Sakr",
     designation: "Front-End Developer",
-    image:
-      "/assets/mostafa-sakr.png",
+    image: "/assets/mostafa-sakr.png",
   },
   {
     id: 3,
     name: "Abdulrahman Zaki",
     designation: "Front-End Developer",
-    image:
-      "/assets/abdulrahman-zaki.jpg",
+    image: "/assets/abdulrahman-zaki.jpg",
   },
 ];
 
 
 
 export default function Page() {
+  const [meetings, setMeetings] = useState([]);
+  const { user } = useAuth();
+
+  const formatDate = (dateStr: string): string => {
+    const date = new Date(dateStr);
+    
+    // Options for formatting the date
+    const options: Intl.DateTimeFormatOptions = {
+      weekday: 'long', // Full name of the day (e.g., Sunday)
+      year: undefined, // Exclude the year
+      month: 'short', // Short month name (e.g., Feb)
+      day: 'numeric', // Numeric day (e.g., 9)
+    };
+  
+    // Format the date as "Sunday, Feb 9"
+    const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
+  
+    // Add the appropriate suffix for the day (st, nd, rd, th)
+    const day = date.getDate();
+    const suffix = (day >= 11 && day <= 13) ? 'th' : ['st', 'nd', 'rd'][day % 10 - 1] || 'th';
+  
+    return `${formattedDate}${suffix}`;
+  };
+  const formatTime = (timeStr: string): string => {
+    // Add a valid date if only time is provided
+    const fullTimeStr = `1970-01-01T${timeStr}`; // Appending a dummy date
+    
+    const date = new Date(fullTimeStr);
+    
+    // Check if the date is valid
+    if (isNaN(date.getTime())) {
+      return "Invalid time string";
+    }
+  
+    // Format the time in 12-hour format with AM/PM
+    const formattedTime = date.toLocaleTimeString('en-US', {
+      hour: 'numeric', 
+      minute: 'numeric',
+      hour12: true, // Ensures AM/PM format
+      timeZone: 'UTC'
+    });
+  
+    return formattedTime;
+  };
+
+async function getMeeting() {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/get-all-meetings`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${user?.token}`,
+      },
+    }
+  );
+  const data = await response.json();
+  console.log(data);
+  setMeetings(data.data)
+}
+useEffect(() => {
+  getMeeting();
+}, []);
   return (
     <div className="flex h-full gap-[1vw]">
       {/* ===== Start Left Side ===== */}
@@ -348,7 +408,6 @@ export default function Page() {
           {/* ===== End This Week Deliverables Card ===== */}
         </div>
         {/* ===== End On Going Projects & This Week Deliverables Card ===== */}
-
       </div>
       {/* ===== End Left Side ===== */}
 
@@ -364,30 +423,20 @@ export default function Page() {
             {/* ===== Start Up Coming Meetings ===== */}
             <div className="w-full h-full flex flex-col gap-[1vw]">
               <span className="font-semibold">Up Coming Meetings</span>
-              <div className={styles.up_coming_meetings}>
-                <div className="flex justify-between items-center">
-                  <div className="flex flex-col gap-[var(--sy-8px)]">
-                    <span className=" text-[#F8F24B]">Sunday. Feb 9th</span>
-                    <span className="">9:30 AM</span>
+              {meetings?.map((m:any,i:any)=>{
+                return(<div className={styles.up_coming_meetings}>
+                  <div className="flex justify-between items-center">
+                    <div className="flex flex-col gap-[var(--sy-8px)]">
+                      <span className=" text-[#F8F24B]">{formatDate(m?.date.split("T")[0])}</span>
+                      <span className="">{formatTime(m?.date.split("T")[1])}</span>
+                    </div>
+  
+                    <div className="flex items-center justify-center pr-[1vw]">
+                      <AnimatedTooltip items={people} />
+                    </div>
                   </div>
-
-                  <div className="flex items-center justify-center pr-[1vw]">
-                    <AnimatedTooltip items={people} />
-                  </div>
-                </div>
-              </div>
-              <div className={styles.up_coming_meetings}>
-                <div className="flex justify-between items-center">
-                  <div className="flex flex-col gap-[var(--sy-8px)]">
-                    <span className=" text-[#F8F24B]">Sunday. Feb 9th</span>
-                    <span className="">9:30 AM</span>
-                  </div>
-
-                  <div className="flex items-center justify-center pr-[1vw]">
-                    <AnimatedTooltip items={people} />
-                  </div>
-                </div>
-              </div>
+                </div>)
+              })}
             </div>
             {/* ===== End Up Coming Meetings ===== */}
           </div>
@@ -395,7 +444,7 @@ export default function Page() {
         {/* ===== End Calendar & Up Coming Meetings Card ===== */}
 
         {/* ===== Start Client Approval Card ===== */}
-        <div className={styles.card + ' flex-grow '}>
+        <div className={styles.card + " flex-grow "}>
           <div className={styles.header}>
             <h6>Client Approval</h6>
           </div>

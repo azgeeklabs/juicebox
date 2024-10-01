@@ -78,7 +78,29 @@ const Page = () => {
               ) as HTMLInputElement
             ).value,
           }))
-      route.push("/dashboard/services");
+          if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value === "Start now") {
+            router.replace(`/dashboard/${data.data.data._id}`);
+          }
+      // router.push("/dashboard/services");
+      if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value !== "Start now") {
+        try {
+          const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/call-sales`, JSON.stringify({
+            serviceId: data.data.data._id,
+          }),{
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${
+            typeof window !== "undefined" && localStorage.getItem("token")
+          }`,
+            },
+          })
+          console.log(response);
+          router.replace("/dashboard/services");
+        } catch (error) {
+          console.log(error);
+          
+        }
+      }
 
       } else if (document.querySelector("input[type='checkbox']:checked")) {
         itemsArray.push({

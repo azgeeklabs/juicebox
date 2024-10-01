@@ -49,6 +49,8 @@ const Page = () => {
         base64: base64File,
       };
       localStorage.setItem('uploadedFile', JSON.stringify(fileData));
+      (document.querySelector("input[type='checkbox']") as HTMLInputElement).checked = false;
+      setDoLater(false)
 
       // Store the file in Redux
       console.log(file);
@@ -161,8 +163,8 @@ const Page = () => {
                 value={"I’ll do this later"}
                 onChange={() => setDoLater((prev) => !prev)}
                 onClick={()=>{
+                  typeof window !== "undefined" && localStorage.removeItem('uploadedFile');
                   dispatch(addFile(null))
-                  localStorage.removeItem('uploadedFile');
                 }}
               />
             </div>

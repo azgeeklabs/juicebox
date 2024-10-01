@@ -74,7 +74,7 @@ const loadFileFromLocalStorage = () => {
       const data = await axios.post(`https://api.creativejuicebox.com/api/v1/services/initialize-service`,{
         type:"SEO link building",
         totalSteps:3,
-        fileUrl_1:file || (typeof window !== "undefined" && loadFileFromLocalStorage()),
+        fileUrl_1: (typeof window !== "undefined" && loadFileFromLocalStorage()),
         options:optionsArray
       },{
         headers:{
