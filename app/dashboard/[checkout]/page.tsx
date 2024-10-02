@@ -13,8 +13,9 @@ import {
   CardExpiryElement,
   CardCvcElement,
 } from "@stripe/react-stripe-js";
+import toast from "react-hot-toast";
 const stripePromise = loadStripe(
-  "pk_test_51PNAn4Bizf1bE4kF5t6GuaMhTbT9nU02TJD0Sw0ANJBD8BFfjiVamDKYXDPsS8YIpNTlLddW2MmM88gxwZ6AmMTG00nOn5E1kP"
+  "pk_test_51PuUZYRswDdUj3se7a6BDKPC5S12F0JUlTtn0ZT1DTf521dAkBSPSSKvg7oobLVKT9gTfCELUioNjPlS3yRHmZZ400dmJCi20w"
 );
 
 const Checkout = ({ params }: { params: { checkout: string } }) => {
@@ -61,7 +62,7 @@ const Checkout = ({ params }: { params: { checkout: string } }) => {
       const serviceId = checkout; // Make sure checkout is correctly passed
   
       console.log(serviceId, token);
-      console.log(String(checkoutData.userId)); // Ensure userId is a string
+      console.log(String(checkoutData?.userId)); // Ensure userId is a string
   
       try {
         console.log(serviceId, paymentMethod.id);
@@ -81,21 +82,24 @@ const Checkout = ({ params }: { params: { checkout: string } }) => {
             }),
           }
         );
-  
+        
         const result = await response.json();
         console.log("Response from server:", result);
   
-        const { client_secret, error } = result;
-        if (error) {
+        const { clientSecret, status } = result;
+        if (status === "success") {
+          toast.success("Payment successful");
+        } else {
           console.log("[error]", error);
+          toast.error(result?.message || "An error occurred");
           return;
         }
   
-        console.log(client_secret);
+        console.log(clientSecret);
   
         // Confirm the PaymentIntent with the card details
         const { error: confirmError, paymentIntent } = await stripe.confirmCardPayment(
-          client_secret,
+          clientSecret,
           {
             payment_method: {
               card: cardNumberElement,
@@ -110,7 +114,9 @@ const Checkout = ({ params }: { params: { checkout: string } }) => {
   
         if (confirmError) {
           console.log("[error]", confirmError);
+          toast.error("Payment failed");
         } else if (paymentIntent && paymentIntent.status === "succeeded") {
+          toast.success("Payment successful");
           console.log("[PaymentIntent]", paymentIntent.status, paymentIntent.id);
         }
       } catch (err) {
@@ -158,12 +164,12 @@ const Checkout = ({ params }: { params: { checkout: string } }) => {
               )}
               <div className=" flex gap-[--39px] justify-between items-center">
                 <p>Subscription: Monthly</p>
-                <p>Duration: {checkoutData.estimatedDuration} Days</p>
+                <p>Duration: {checkoutData?.estimatedDuration} Days</p>
               </div>
             </div>
             <p className="flex items-center gap-[--8px] text-[--20px]">
               <span className=" text-[--32px] font-bold">
-                ${checkoutData.totalPrice}{" "}
+                ${checkoutData?.totalPrice}{" "}
               </span>{" "}
               /month
             </p>

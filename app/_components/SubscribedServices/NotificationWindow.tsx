@@ -70,7 +70,7 @@ const NotificationWindow = () => {
               return (
                 <div key={i} className={styles.notification_item}>
                   <p className=" font-bold text-[--10px] mb-[--sy-12px] leading-[12.1px]">
-                    {n.serviceId.type.replace(/service/ig,"")} Service update! Check it out now!
+                    {n?.serviceId?.type?.replace(/service/ig,"")} Service update! Check it out now!
                   </p>
                   <div className=" flex items-center gap-[--9px]">
                     <span className=" font-medium text-[--10px] leading-[12.1px] px-[--9px] py-[--sy-5px] rounded-[--55px] bg-[#F8F24B] text-[#1D1D1D]">
