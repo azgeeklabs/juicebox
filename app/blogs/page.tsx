@@ -4,25 +4,20 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import Footer from "../Footer";
 import NavBar from "../_components/NavBar/NavBar";
-import { useAuth } from "../_context/AuthContext";
-const Page = () => {
-  const { user } = useAuth();
 
+const Page = () => {
   async function getBlogs() {
     const data = await fetch(
-      `https://api.creativejuicebox.com/api/v1/users/get-all-blogs`,
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      }
+      `https://api.creativejuicebox.com/api/v1/blogs/get-all-blogs`
     );
     const res = await data.json();
     console.log(res);
   }
+
   useEffect(() => {
     getBlogs();
   }, []);
+
   return (
     <div className="pt-[--sy-100px]">
       <NavBar />
