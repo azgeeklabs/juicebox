@@ -125,44 +125,44 @@ const Checkout = ({ params }: { params: { checkout: string } }) => {
           return;
         }
 
-        console.log(clientSecret);
+        // console.log(clientSecret);
 
-        // Confirm the PaymentIntent with the card details
-        const { error: confirmError, paymentIntent } =
-          await stripe.confirmCardPayment(clientSecret, {
-            payment_method: {
-              card: cardNumberElement,
-              billing_details: {
-                // Optional: add more billing details like name or email
-                // name: user?.name,
-                // email: user?.email,
-              },
-            },
-          });
+        // // Confirm the PaymentIntent with the card details
+        // const { error: confirmError, paymentIntent } =
+        //   await stripe.confirmCardPayment(clientSecret, {
+        //     payment_method: {
+        //       card: cardNumberElement,
+        //       billing_details: {
+        //         // Optional: add more billing details like name or email
+        //         // name: user?.name,
+        //         // email: user?.email,
+        //       },
+        //     },
+        //   });
 
-        if (confirmError) {
-          console.log("[error]", confirmError);
-          toast.error("Payment failed", {
-            style: {
-              borderRadius: "10px",
-              background: "#333",
-              color: "#fff",
-            },
-          });
-        } else if (paymentIntent && paymentIntent.status === "succeeded") {
-          toast.success("Payment successful", {
-            style: {
-              borderRadius: "10px",
-              background: "#333",
-              color: "#fff",
-            },
-          });
-          console.log(
-            "[PaymentIntent]",
-            paymentIntent.status,
-            paymentIntent.id
-          );
-        }
+        // if (confirmError) {
+        //   console.log("[error]", confirmError);
+        //   toast.error("Payment failed", {
+        //     style: {
+        //       borderRadius: "10px",
+        //       background: "#333",
+        //       color: "#fff",
+        //     },
+        //   });
+        // } else if (paymentIntent && paymentIntent.status === "succeeded") {
+        //   toast.success("Payment successful", {
+        //     style: {
+        //       borderRadius: "10px",
+        //       background: "#333",
+        //       color: "#fff",
+        //     },
+        //   });
+        //   console.log(
+        //     "[PaymentIntent]",
+        //     paymentIntent.status,
+        //     paymentIntent.id
+        //   );
+        // }
       } catch (err) {
         console.error("Error during API call:", err);
       }
