@@ -31,42 +31,42 @@ const Checkout = ({ params }: { params: { checkout: string } }) => {
   // Initialize Stripe.js with your publishable key
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-  
+
     if (!stripe || !elements) return;
-  
+
     // Retrieve individual elements
     const cardNumberElement = elements.getElement(CardNumberElement);
     const cardExpiryElement = elements.getElement(CardExpiryElement);
     const cardCvcElement = elements.getElement(CardCvcElement);
-  
+
     if (!cardNumberElement || !cardExpiryElement || !cardCvcElement) return;
-  
+
     // Create a payment method using the card information
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: cardNumberElement, // Ensure this is correctly bound to the card number
     });
-  
+
     if (error) {
       console.error("[error]", error);
       setPaymentError(error?.message || "An error occurred");
       return;
     }
-  
+
     if (paymentMethod && paymentMethod.id) {
       console.log("Payment Method ID:", paymentMethod.id);
       // setPaymentMethodId(paymentMethod.id);
-  
+
       // Now you can call your backend with this paymentMethodId
       const token = user?.token; // Ensure token is correctly fetched
       const serviceId = checkout; // Make sure checkout is correctly passed
-  
+
       console.log(serviceId, token);
       console.log(String(checkoutData?.userId)); // Ensure userId is a string
-  
+
       try {
         console.log(serviceId, paymentMethod.id);
-        
+
         // Call your backend API with the paymentMethodId
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/purchase-service`,
@@ -82,25 +82,54 @@ const Checkout = ({ params }: { params: { checkout: string } }) => {
             }),
           }
         );
-        
+
         const result = await response.json();
         console.log("Response from server:", result);
-  
-        const { clientSecret, status } = result;
-        if (status === "success") {
-          toast.success("Payment successful");
-        } else {
-          console.log("[error]", error);
-          toast.error(result?.message || "An error occurred");
+
+        const { data: clientSecret, status, success, message } = result;
+
+        console.log(status);
+
+        if (!success || status === "fail") {
+          console.log(message);
+          console.log(`[error] ${message}`);
+          toast.error(message, {
+            style: {
+              borderRadius: "10px",
+              background: "#333",
+              color: "#fff",
+            },
+          });
           return;
         }
-  
+
+        if (success) {
+          console.log(success, "success");
+          toast.success(message, {
+            style: {
+              borderRadius: "10px",
+              background: "#333",
+              color: "#fff",
+            },
+          });
+        } else {
+          console.log("[error]", message);
+          toast.error(message || "An error occurred", {
+            style: {
+              borderRadius: "10px",
+              background: "#333",
+              color: "#fff",
+            },
+          });
+
+          return;
+        }
+
         console.log(clientSecret);
-  
+
         // Confirm the PaymentIntent with the card details
-        const { error: confirmError, paymentIntent } = await stripe.confirmCardPayment(
-          clientSecret,
-          {
+        const { error: confirmError, paymentIntent } =
+          await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
               card: cardNumberElement,
               billing_details: {
@@ -109,22 +138,37 @@ const Checkout = ({ params }: { params: { checkout: string } }) => {
                 // email: user?.email,
               },
             },
-          }
-        );
-  
+          });
+
         if (confirmError) {
           console.log("[error]", confirmError);
-          toast.error("Payment failed");
+          toast.error("Payment failed", {
+            style: {
+              borderRadius: "10px",
+              background: "#333",
+              color: "#fff",
+            },
+          });
         } else if (paymentIntent && paymentIntent.status === "succeeded") {
-          toast.success("Payment successful");
-          console.log("[PaymentIntent]", paymentIntent.status, paymentIntent.id);
+          toast.success("Payment successful", {
+            style: {
+              borderRadius: "10px",
+              background: "#333",
+              color: "#fff",
+            },
+          });
+          console.log(
+            "[PaymentIntent]",
+            paymentIntent.status,
+            paymentIntent.id
+          );
         }
       } catch (err) {
         console.error("Error during API call:", err);
       }
     }
   };
-  
+
   async function getCheckoutData() {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/get-service/${checkout}`,
