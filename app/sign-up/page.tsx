@@ -41,10 +41,12 @@ const Page = () => {
     { setSubmitting }: FormikHelpers<FormValues>
   ) => {
     console.log(values);
+    const parsedNumber = parsePhoneNumberFromString(values.phoneNumber);
     try {
       await register({
         ...values,
-        phoneNumber: values.phoneNumber.replace("+", ""),
+        ISD: "+" + parsedNumber?.countryCallingCode || "",
+        phoneNumber: parsedNumber?.nationalNumber || "",
       });
     } catch (error) {
       console.error(error);
@@ -287,21 +289,21 @@ const Page = () => {
               <div className=" flex flex-col gap-[--sy-16px] flex-1">
                 <label htmlFor="repassword">Re-enter Password</label>
                 <div className=" relative">
-                <input
-                  name="passwordConfirm"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.passwordConfirm}
-                  type="password"
-                  id="passwordConfirm"
-                  placeholder="*******"
-                  className={`${
-                    errors.passwordConfirm && touched.passwordConfirm
-                      ? "border-red-900 border-[2px]"
-                      : ""
-                  } bg-[#484848] outline-none w-full px-[--11px] py-[--sy-8px] rounded-[--3px]`}
-                />
-                {errors.passwordConfirm && touched.passwordConfirm ? (
+                  <input
+                    name="passwordConfirm"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.passwordConfirm}
+                    type="password"
+                    id="passwordConfirm"
+                    placeholder="*******"
+                    className={`${
+                      errors.passwordConfirm && touched.passwordConfirm
+                        ? "border-red-900 border-[2px]"
+                        : ""
+                    } bg-[#484848] outline-none w-full px-[--11px] py-[--sy-8px] rounded-[--3px]`}
+                  />
+                  {errors.passwordConfirm && touched.passwordConfirm ? (
                     <div className="absolute top-1/2 -translate-y-1/2 right-[--8px]">
                       <ErrorOutlineIcon
                         sx={{
@@ -326,11 +328,8 @@ const Page = () => {
                 value={values.phoneNumber}
                 onChange={(value, countryData) => {
                   console.log(countryData);
-                  setFieldValue(
-                    "phoneNumber",
-                    value.replace(`+${countryData.country.dialCode}`, "")
-                  );
-                  setFieldValue("ISD", `+${countryData.country.dialCode}`);
+                  setFieldValue("phoneNumber", value); // Store the full phone number including country code
+                  setFieldValue("ISD", `+${countryData.country.dialCode}`); // Optionally store the ISD separately
                 }}
                 onBlur={handleBlur}
               />
