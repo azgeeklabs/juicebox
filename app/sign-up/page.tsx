@@ -228,7 +228,7 @@ const Page = () => {
                     onBlur={handleBlur}
                     value={values.DOB}
                     id="DOB"
-                    placeholder="15/2/1996"
+                    placeholder="1996/15/02"
                     className={`${
                       errors.DOB && touched.DOB
                         ? "border-red-900 border-[2px]"
