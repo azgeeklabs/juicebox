@@ -141,12 +141,17 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       router.push("/dashboard");
     }
   };
+  const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
+
+if (!clientId) {
+    throw new Error('Google Client ID is not defined.');
+}
 
   return (
     <AuthContext.Provider
       value={{ user, login, register, logout, googleLogin }}
     >
-      <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!}>
+      <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string}>
         {children}
       </GoogleOAuthProvider>
     </AuthContext.Provider>

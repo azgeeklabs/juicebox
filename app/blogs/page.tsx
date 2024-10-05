@@ -1,17 +1,26 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 // import styles from "./disclaimer.module.css";
 import Link from "next/link";
 import Footer from "../Footer";
 import NavBar from "../_components/NavBar/NavBar";
+import Image from "next/image";
+import { useAuth } from "../_context/AuthContext";
 
 const Page = () => {
+  const [blogs, setBlogs] = useState([]);
+  const {user} = useAuth()
   async function getBlogs() {
     const data = await fetch(
-      `https://api.creativejuicebox.com/api/v1/blogs/get-all-blogs`
+      `https://api.creativejuicebox.com/api/v1/blogs/get-all-blogs`,{
+        headers:{
+          "Authorization" : `Bearer ${user?.token}`
+        }
+      }
     );
     const res = await data.json();
     console.log(res);
+    setBlogs(res.data.data);
   }
 
   useEffect(() => {
@@ -21,7 +30,7 @@ const Page = () => {
   return (
     <div className="pt-[--sy-100px]">
       <NavBar />
-      <div className=" w-full pt-[135px] mb-[500px]">
+      <div className=" w-full pt-[135px] mb-[--542px]">
         <div className=" w-full px-[--65px]">
           <h1 className=" text-center text-[--96px] text-[--highlight-yellow] [font-family:Alfa_Slab_One] mb-[--sy-80px]">
             Juice Blog
@@ -36,58 +45,32 @@ const Page = () => {
               What’s The Juice?
             </div>
             <div className=" flex gap-[--40px] flex-wrap">
-              <div className=" w-[calc(50%_-_var(--40px))]">
-                <div className=" w-full bg-[#4848482B] rounded-[--18px] mb-[--sy-30px] h-[clamp(320px,_50vh,_481px)]"></div>
-                <h3 className=" font-semibold text-[--24px] mb-[--sy-25px] text-[#F8F24B]">
-                  LATEST NEWS
-                </h3>
-                <p className=" font-semibold text-[--27px] mb-[--sy-25px]">
-                  Apple Vision Pro Review: High Hopes & Mixed Feelings
-                </p>
-                <p className=" text-[--22px] text-[#777777]">
-                  Lorem ipsum dolor sit amet consectetur. At at vulputate at eu
-                  lectus elit neque. Purus in sed eget justo ac in at dictum.
-                </p>
-              </div>
-              <div className=" w-[calc(50%_-_var(--40px))]">
-                <div className=" w-full bg-[#4848482B] rounded-[--18px] mb-[--sy-30px] h-[clamp(320px,_50vh,_481px)]"></div>
-                <h3 className=" font-semibold text-[--24px] mb-[--sy-25px] text-[#F8F24B]">
-                  LATEST NEWS
-                </h3>
-                <p className=" font-semibold text-[--27px] mb-[--sy-25px]">
-                  Apple Vision Pro Review: High Hopes & Mixed Feelings
-                </p>
-                <p className=" text-[--22px] text-[#777777]">
-                  Lorem ipsum dolor sit amet consectetur. At at vulputate at eu
-                  lectus elit neque. Purus in sed eget justo ac in at dictum.
-                </p>
-              </div>
-              <div className=" w-[calc(50%_-_var(--40px))]">
-                <div className=" w-full bg-[#4848482B] rounded-[--18px] mb-[--sy-30px] h-[clamp(320px,_50vh,_481px)]"></div>
-                <h3 className=" font-semibold text-[--24px] mb-[--sy-25px] text-[#F8F24B]">
-                  LATEST NEWS
-                </h3>
-                <p className=" font-semibold text-[--27px] mb-[--sy-25px]">
-                  Apple Vision Pro Review: High Hopes & Mixed Feelings
-                </p>
-                <p className=" text-[--22px] text-[#777777]">
-                  Lorem ipsum dolor sit amet consectetur. At at vulputate at eu
-                  lectus elit neque. Purus in sed eget justo ac in at dictum.
-                </p>
-              </div>
-              <div className=" w-[calc(50%_-_var(--40px))]">
-                <div className=" w-full bg-[#4848482B] rounded-[--18px] mb-[--sy-30px] h-[clamp(320px,_50vh,_481px)]"></div>
-                <h3 className=" font-semibold text-[--24px] mb-[--sy-25px] text-[#F8F24B]">
-                  LATEST NEWS
-                </h3>
-                <p className=" font-semibold text-[--27px] mb-[--sy-25px]">
-                  Apple Vision Pro Review: High Hopes & Mixed Feelings
-                </p>
-                <p className=" text-[--22px] text-[#777777]">
-                  Lorem ipsum dolor sit amet consectetur. At at vulputate at eu
-                  lectus elit neque. Purus in sed eget justo ac in at dictum.
-                </p>
-              </div>
+              {blogs?.map((b: any, i) => {
+                return (
+                  <div className=" w-[calc(50%_-_var(--40px))]">
+                    <Link href={`/blogs/${b?._id}`}>
+                      <div className=" w-full bg-[#4848482B] rounded-[--18px] mb-[--sy-30px] h-[clamp(320px,_50vw,_481px)]">
+                        <Image
+                          src={`${b?.mediaUrl}`}
+                          width={100}
+                          height={100}
+                          alt=""
+                          className=" !h-[clamp(320px,_50vw,_481px)] w-full rounded-[--18px]"
+                        ></Image>
+                      </div>
+                      <h3 className=" font-semibold text-[--24px] mb-[--sy-25px] text-[#F8F24B]">
+                        {b?.spot}
+                      </h3>
+                      <p className=" font-semibold text-[--27px] mb-[--sy-25px]">
+                        {b?.title}
+                      </p>
+                      <p className=" text-[--22px] text-[#777777]">
+                        {b?.content}
+                      </p>
+                    </Link>
+                  </div>
+                );
+              })}
             </div>
           </section>
           <h1 className=" text-center text-[--48px] text-[--highlight-yellow] [font-family:Alfa_Slab_One] mb-[--sy-70px]">
@@ -131,7 +114,7 @@ const Page = () => {
         </div>
       </div>
       <footer
-        className="relative w-full mt-[300px] bg-[#1d1d1d] h-[calc(var(--sy-170px)_*_2)] custom-hidden"
+        className="relative w-full mt-[--sy-400px] bg-[#1d1d1d] h-[calc(var(--sy-170px)_*_2)] custom-hidden"
         id="footer"
       >
         <svg
@@ -178,8 +161,7 @@ const Page = () => {
         <div className=" absolute inset-0 grid grid-cols-6 px-[--102px] text-[#F8F24B] z-[6]">
           <div className=" col-span-2">
             <svg
-              width="306"
-              height="189"
+            className="w-[--313px]"
               viewBox="0 0 306 189"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -431,7 +413,7 @@ const Page = () => {
           </div>
           <div className=" col-span-1 relative">
             <svg
-              className=" absolute left-1/2 -top-2/3 -translate-x-1/2 -translate-y-1/4 w-[--202px] h-[--sy-190px]"
+              className=" absolute left-1/2 -top-2/3 -translate-x-1/2 -translate-y-1/4 w-[--202px] "
               viewBox="0 0 206 291"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"

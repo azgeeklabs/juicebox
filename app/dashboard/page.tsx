@@ -423,7 +423,7 @@ useEffect(() => {
             {/* ===== Start Up Coming Meetings ===== */}
             <div className="w-full h-full flex flex-col gap-[1vw]">
               <span className="font-semibold">Up Coming Meetings</span>
-              {meetings?.map((m:any,i:any)=>{
+              {meetings?.length > 0 ? meetings?.map((m:any,i:any)=>{
                 return(<div className={styles.up_coming_meetings}>
                   <div className="flex justify-between items-center">
                     <div className="flex flex-col gap-[var(--sy-8px)]">
@@ -436,7 +436,7 @@ useEffect(() => {
                     </div>
                   </div>
                 </div>)
-              })}
+              }) : <h2>No meetings for this user</h2>}
             </div>
             {/* ===== End Up Coming Meetings ===== */}
           </div>

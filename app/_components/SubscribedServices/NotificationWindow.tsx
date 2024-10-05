@@ -66,7 +66,7 @@ const NotificationWindow = () => {
         </div>
         <div className={styles.tabs_content + " tabs-stage"}>
           <div id="Alerts" className="tab space-y-4 py-[--sy-8px]">
-            {notifications?.map((n: any, i: any) => {
+            {notifications?.length > 0 ? notifications?.map((n: any, i: any) => {
               return (
                 <div key={i} className={styles.notification_item}>
                   <p className=" font-bold text-[--10px] mb-[--sy-12px] leading-[12.1px]">
@@ -82,7 +82,7 @@ const NotificationWindow = () => {
                   </div>
                 </div>
               );
-            })}
+            }) : <h2>No notifications available</h2>}
           </div>
         </div>
       </div>

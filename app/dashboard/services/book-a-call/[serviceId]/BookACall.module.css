@@ -1,0 +1,10 @@
+.BookACall select {
+    background-color: #484848;
+    padding: var(--sy-10px) var(--10px);
+    border-radius: 5px;
+}
+.BookACall input::-webkit-outer-spin-button,
+.BookACall input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

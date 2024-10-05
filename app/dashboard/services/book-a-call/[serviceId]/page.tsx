@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import "../../../_components/dashboard/calender/Calender.css";
+import "../../../../_components/dashboard/calender/Calender.css";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
@@ -10,7 +10,10 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { addOption } from "@/app/reducers/serviceSlice";
 import axios from "axios";
-const Page = () => {
+import { useAuth } from "@/app/_context/AuthContext";
+const Page = ({params}:{params:{serviceId:string}}) => {
+  const [hourVal,setHourVal] = useState("")
+  const [minuteVal,setMinuteVal] = useState("")
   const [selectedDay, setSelectedDay] = useState<string>(
     `${new Date().getDate().toString()}${getOrdinal(new Date().getDate())}`
   );
@@ -142,6 +145,29 @@ const Page = () => {
       />
     </svg>
   );
+  const {user} = useAuth()
+
+  async function bookACall() {
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/call-sales`,{
+        method:"POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user?.token}`,
+        },
+        body: JSON.stringify({
+          serviceId: params.serviceId,
+        }),
+      })
+      const data = await res.json()
+      console.log(data);
+      
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
+
   useEffect(() => {
     if (selectedDay && selectedMonth && selectedYear) {
       setChangedDate(
@@ -271,24 +297,28 @@ const Page = () => {
                 {/* Input fields for hours and minutes */}
                 <input
                   type="number"
+                  value={hourVal}
+                  onChange={(e)=>setHourVal(e.target.value)}
                   placeholder="00"
                   className="w-[3vw] text-center py-[--sy-10px] rounded-[5px] bg-[#484848] inline-block outline-none"
                 />
                 <span>:</span>
                 <input
                   type="number"
+                  value={minuteVal}
+                  onChange={(e)=>setMinuteVal(e.target.value)}
                   placeholder="00"
                   className="w-[3vw] py-[--sy-10px] text-center rounded-[5px] bg-[#484848] inline-block outline-none"
                 />
                 <span className="bg-[#484848] py-[--sy-10px] inline-block px-[--10px] rounded-[5px]">
-                  PM
+                  {Number(hourVal) >= 12 ? "PM" : "AM"}
                 </span>
               </div>
             </div>
             {/* Button to book the call */}
             <button
               className="bg-[--highlight-yellow] font-bold py-[--sy-15px] px-[--38px] rounded-[33px] text-black"
-              onClick={() => nextFunc()}
+              onClick={() => bookACall()}
             >
               Book Call
             </button>

@@ -103,27 +103,11 @@ console.log(file);
             ).value,
           }))
           if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value === "Let's start") {
-            router.replace(`/dashboard/${data.data.data._id}`);
+            router.replace(`/dashboard/checkout/${data.data.data._id}`);
           }
       // router.push("/dashboard/services");
       if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value !== "Let's start") {
-        try {
-          const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/call-sales`, JSON.stringify({
-            serviceId: data.data.data._id,
-          }),{
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${
-            typeof window !== "undefined" && localStorage.getItem("token")
-          }`,
-            },
-          })
-          console.log(response);
-          router.replace("/dashboard/services");
-        } catch (error) {
-          console.log(error);
-          
-        }
+        router.replace(`/dashboard/services/book-a-call/${data.data.data._id}`);
       }
 
       } else if (document.querySelector("input[type='checkbox']:checked")) {
