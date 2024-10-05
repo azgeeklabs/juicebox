@@ -41,7 +41,7 @@ const Page = () => {
       });
     }
     try {
-      const data = await axios.post(`https://api.creativejuicebox.com/api/v1/services/initialize-service`,{
+      const data = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/initialize-service`,{
         type:"content website",
         totalSteps:contentWebsiteRoute == "haveWebsite" ? 9: 10,
         options:optionsArray

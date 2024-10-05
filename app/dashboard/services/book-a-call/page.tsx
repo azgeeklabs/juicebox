@@ -167,7 +167,7 @@ const Page = () => {
       
       try {
         const data = await axios.post(
-          `https://api.creativejuicebox.com/api/v1/services/initialize-service`,
+          `${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/initialize-service`,
           {
             type: "book a call",
             totalSteps: 1,

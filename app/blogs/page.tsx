@@ -8,7 +8,7 @@ import NavBar from "../_components/NavBar/NavBar";
 const Page = () => {
   async function getBlogs() {
     const data = await fetch(
-      `https://api.creativejuicebox.com/api/v1/blogs/get-all-blogs`
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/blogs/get-all-blogs`
     );
     const res = await data.json();
     console.log(res);

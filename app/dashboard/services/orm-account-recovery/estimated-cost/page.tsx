@@ -76,7 +76,7 @@ console.log(file);
     
     
     try {
-      const data = await axios.post(`https://api.creativejuicebox.com/api/v1/services/initialize-service`,{
+      const data = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/initialize-service`,{
         type:"orm-account-recovery",
         totalSteps:6,
         fileUrl_4: (typeof window !== "undefined" && loadFileFromLocalStorage()),

@@ -69,7 +69,7 @@ console.log(file);
     
     
     try {
-      const data = await axios.post(`https://api.creativejuicebox.com/api/v1/services/initialize-service`,{
+      const data = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/initialize-service`,{
         type:"influencer marketing",
         totalSteps:7,
         fileUrl_5:(typeof window !== "undefined" && loadFileFromLocalStorage()),

@@ -110,7 +110,7 @@ const Page = () => {
 
   async function checkDomain() {
     try {
-      const data:any = await axios.post('https://api.creativejuicebox.com/api/v1/services/validate-domain',{
+      const data:any = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/validate-domain`,{
         domain:pastedText
       },{
         headers:{
