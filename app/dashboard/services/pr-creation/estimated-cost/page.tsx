@@ -69,7 +69,7 @@ const Page = () => {
     
     
     try {
-      const data = await axios.post(`https://api.creativejuicebox.com/api/v1/services/initialize-service`,{
+      const data = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/initialize-service`,{
         type:"pr creation wikipedia",
         totalSteps:5,
         fileUrl_1:(typeof window !== "undefined" && loadFileFromLocalStorage()),
