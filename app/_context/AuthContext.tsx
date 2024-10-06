@@ -87,7 +87,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       localStorage.setItem("token", response.data.data.token);
       setUser({ token: response.data.data.token }); // Redirect to a protected route
       router.push("/dashboard");
-      toast(response.data.message, {
+      (response.data.message, {
         icon: "👏",
         style: {
           borderRadius: "10px",
@@ -117,7 +117,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     
     if (response.data.message == "User created successfully! Please verify your email.") {
       router.push("/login"); // Redirect to the login page
-      toast(response.data.message, {
+      (response.data.message, {
         icon: "👏",
         style: {
           borderRadius: "10px",
@@ -144,7 +144,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
 
 if (!clientId) {
-    throw new Error('Google Client ID is not defined.');
+    // throw new Error('Google Client ID is not defined.');
+    .error('Google Client ID is not defined.');
 }
 
   return (
