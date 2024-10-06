@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./home.css";
 import Hero from "./01hero/Hero";
 import AboutUs from "./02about-us/AboutUs";
@@ -88,11 +88,6 @@ export default function Home() {
   const ourWorkRef = useRef(null);
   const leftImgWrapperRef = useRef(null);
   const rightImgWrapperRef = useRef(null);
-  const leftImgRef = useRef(null);
-  const rightImgRef = useRef(null);
-  const caseStudyRef = useRef(null);
-  const numberRef = useRef(null);
-  const descriptionRef = useRef(null);
 
   useEffect(() => {
     // console.log(`ScrollTrigger.getAll() on mount:`, ScrollTrigger.getAll());
@@ -137,6 +132,8 @@ export default function Home() {
   }, []);
 
   // ===== Start Our Work =====
+  const [indexState, setIndexState] = useState(0);
+
   useEffect(() => {
     if (!ourWorkRef.current) return;
     const totalSections = data.length;
@@ -155,6 +152,7 @@ export default function Home() {
       onUpdate: (self) => {
         const progress = self.progress * (totalSections - 1);
         const index = Math.floor(progress);
+        setIndexState(index);
         const sectionProgress = progress - index;
 
         gsap.to(leftImgWrapperRef.current, {
@@ -166,25 +164,6 @@ export default function Home() {
           xPercent: 120 * sectionProgress,
           duration: 0.2,
         });
-
-        // Update content based on scroll direction
-        if (sectionProgress === 0) {
-          if (leftImgRef.current) {
-            leftImgRef.current.src = data[index].img1;
-          }
-          if (rightImgRef.current) {
-            rightImgRef.current.src = data[index].img2;
-          }
-          if (caseStudyRef.current) {
-            caseStudyRef.current.textContent = data[index].caseStudy;
-          }
-          if (numberRef.current) {
-            numberRef.current.textContent = data[index].number;
-          }
-          if (descriptionRef.current) {
-            descriptionRef.current.textContent = data[index].description;
-          }
-        }
       },
     });
 
@@ -225,22 +204,18 @@ export default function Home() {
       <div className="home_ourWork_container">
         <section className="home_ourWork" ref={ourWorkRef} id="our-work">
           <div className="home_ourWork_leftImg" ref={leftImgWrapperRef}>
-            <img
-              ref={leftImgRef}
-              src="/home/06our-work/1-1.svg"
-              alt="Left Img"
-            />
+            <img src={data[indexState].img1} alt="Left Img" />
           </div>
 
           <div className="home_ourWork_content">
             <h2>Our Work</h2>
             <div className="home_ourWork_caseStudy">
               <p>
-                <span ref={caseStudyRef}>CASE STUDY</span>
+                <span>{data[indexState].caseStudy}</span>
                 <br />
-                <span ref={numberRef}>NUMBER ONE</span>
+                <span>{data[indexState].number}</span>
               </p>
-              <h3 ref={descriptionRef}>Web Development</h3>
+              <h3>{data[indexState].description}</h3>
             </div>
             <div className="flex justify-center items-center mt-[--sy-30px] cursor-pointer">
               <Link href="/case-study" target="_blank">
@@ -250,11 +225,7 @@ export default function Home() {
           </div>
 
           <div className="home_ourWork_rightImg" ref={rightImgWrapperRef}>
-            <img
-              ref={rightImgRef}
-              src="/home/06our-work/1-2.svg"
-              alt="Right Img"
-            />
+            <img src={data[indexState].img2} alt="Right Img" />
           </div>
         </section>
       </div>
