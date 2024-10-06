@@ -20,15 +20,16 @@ const AuthContext = createContext({
   login: (credentials: { email: string; password: string }) =>
     Promise.resolve(),
   logout: () => {},
-  register: (userDetails: {   firstName: string;
+  register: (userDetails: {
+    firstName: string;
     lastName: string;
     email: string;
     password: string;
     passwordConfirm: string;
     ISD: string;
     phoneNumber: string;
-    DOB: string; }) =>
-    Promise.resolve(),
+    DOB: string;
+  }) => Promise.resolve(),
   googleLogin: (response: any) => Promise.resolve(),
 });
 
@@ -38,7 +39,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   function getToken() {
     if (typeof window !== "undefined") {
-      const token = typeof window !== "undefined" && localStorage.getItem("token");
+      const token =
+        typeof window !== "undefined" && localStorage.getItem("token");
       return token ? `${token}` : null;
     } else {
       return `${user?.token}` || null;
@@ -47,7 +49,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     // Check if the user is logged in on component mount
-    const token = getToken()
+    const token = getToken();
     if (token) {
       setUser({ token });
     }
@@ -57,7 +59,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     // Add a request interceptor
     axios.interceptors.request.use((config) => {
       // Do something before request is sent
-      config.headers.Authorization = `Bearer ${typeof window !== "undefined" && localStorage.getItem("token")}`;
+      config.headers.Authorization = `Bearer ${
+        typeof window !== "undefined" && localStorage.getItem("token")
+      }`;
       return config;
     });
   }, [user.token]);
@@ -98,24 +102,29 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
-  const register = async (userDetails: {  firstName: string;
+  const register = async (userDetails: {
+    firstName: string;
     lastName: string;
     email: string;
     password: string;
     passwordConfirm: string;
     ISD: string;
     phoneNumber: string;
-    DOB: string; }) => {
+    DOB: string;
+  }) => {
     // Replace with your actual registration API request
     console.log(userDetails);
-    
-    const response: { success: boolean,data:any } = await axios.post(
+
+    const response: { success: boolean; data: any } = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/signup`,
       userDetails
     );
     console.log(response);
-    
-    if (response.data.message == "User created successfully! Please verify your email.") {
+
+    if (
+      response.data.message ==
+      "User created successfully! Please verify your email."
+    ) {
       router.push("/login"); // Redirect to the login page
       toast(response.data.message, {
         icon: "👏",
@@ -143,15 +152,18 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
   const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
 
-if (!clientId) {
-    throw new Error('Google Client ID is not defined.');
-}
+  if (!clientId) {
+    // throw new Error("Google Client ID is not defined.");
+    toast.error("Google Client ID is not defined.");
+  }
 
   return (
     <AuthContext.Provider
       value={{ user, login, register, logout, googleLogin }}
     >
-      <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string}>
+      <GoogleOAuthProvider
+        clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string}
+      >
         {children}
       </GoogleOAuthProvider>
     </AuthContext.Provider>

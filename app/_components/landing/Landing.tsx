@@ -3,7 +3,7 @@ import React, { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Draggable } from "gsap/Draggable";
+// import { Draggable } from "gsap/Draggable";
 import Lenis from "lenis";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -56,7 +56,7 @@ const arrow = (
 );
 
 if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger, useGSAP, Draggable);
+  gsap.registerPlugin(ScrollTrigger, useGSAP);
 }
 
 export default function Landing() {

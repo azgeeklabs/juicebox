@@ -106,7 +106,7 @@ const Page = ({ params }: { params: { blogId: string } }) => {
         </div>
       </div>
       <footer
-        className="relative w-full mt-[300px] bg-[#1d1d1d] h-[calc(var(--sy-170px)_*_2)] custom-hidden"
+        className="relative w-full mt-[300px] bg-[#1d1d1d] h-[calc(var(--sy-170px)_*_2)]"
         id="footer"
       >
         <svg
