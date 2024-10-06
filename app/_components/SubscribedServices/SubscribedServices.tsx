@@ -1,11 +1,12 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./SubscribedServices.module.css";
 import ServiceCard from "../serviceCard/ServiceCard";
 import NotificationWindow from "./NotificationWindow";
 import CustomBtn from "../btn/CustomBtn";
 import classNames from "classnames";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/app/_context/AuthContext";
 
 export default function SubscribedServices() {
   const router = useRouter();
@@ -101,6 +102,28 @@ export default function SubscribedServices() {
     </svg>
   );
 
+  const [finished, setFinished] = useState<any>([]);
+  const { user } = useAuth();
+
+  async function getSubscriptions() {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/get-purchased-services`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${user?.token}`,
+        },
+      }
+    );
+    const data = await response.json();
+    console.log(data);
+    setFinished(data.data);
+  }
+
+  useEffect(() => {
+    getSubscriptions();
+  }, []);
+
   return (
     <div
       className={
@@ -111,7 +134,7 @@ export default function SubscribedServices() {
       <div
         className={classNames(
           styles.servicesCards,
-          "flex items-center gap-[1vw] cursor-pointer"
+          "flex items-center gap-[1vw] cursor-pointer overflow-x-auto"
         )}
       >
         {/* Profile Card */}
@@ -129,21 +152,16 @@ export default function SubscribedServices() {
         </div>
 
         {/* Services Cards */}
-        <ServiceCard
-          title="Web Design"
-          phase="Ideation Phase"
-          timeleft="26 Days Left"
-        />
-        <ServiceCard
-          title="Application Design"
-          phase="Ideation Phase"
-          timeleft="26 Days Left"
-        />
-        <ServiceCard
-          title="Web Development"
-          phase="Ideation Phase"
-          timeleft="26 Days Left"
-        />
+        {finished?.map((s: any, i: any) => {
+          return (
+            <ServiceCard
+              title={(s?.type as string).replace(/services/ig,"")}
+              phase="Ideation Phase"
+              timeleft={`${s?.estimatedDuration} Days Left`}
+            />
+          );
+        })}
+        
 
         {/* Add Service Button */}
         <CustomBtn>
