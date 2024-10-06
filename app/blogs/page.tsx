@@ -114,7 +114,7 @@ const Page = () => {
         </div>
       </div>
       <footer
-        className="relative w-full mt-[--sy-400px] bg-[#1d1d1d] h-[calc(var(--sy-170px)_*_2)] custom-hidden"
+        className="relative w-full mt-[--sy-400px] bg-[#1d1d1d] h-[calc(var(--sy-170px)_*_2)]"
         id="footer"
       >
         <svg

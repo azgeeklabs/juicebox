@@ -5,7 +5,7 @@ import React from "react";
 const Footer = () => {
   return (
     <footer
-      className="relative w-full mt-[300px] bg-[#F8F24B] h-[calc(var(--sy-170px)_*_2)] custom-hidden"
+      className="relative w-full mt-[300px] bg-[#F8F24B] h-[calc(var(--sy-170px)_*_2)]"
       id="footer"
     >
       <svg
