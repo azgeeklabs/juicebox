@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./videoEndPoint.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
@@ -15,6 +15,7 @@ const Page = () => {
   const dispatch = useDispatch();
   const route = useRouter();
   const file = useSelector((state: RootState) => state.service.file);
+  const [serviceData, setServiceData] = useState<any>(null);
   console.log(file);
   const loadFileFromLocalStorage = () => {
     const fileData =
@@ -40,25 +41,7 @@ const Page = () => {
   async function makeService() {
     const optionsItems = localStorage.getItem("selectedOption");
     const optionsArray = optionsItems ? JSON.parse(optionsItems) : [];
-    if (document.querySelector("input[type='radio']:checked")) {
-      optionsArray.push({
-        name: "estimated cost",
-        choice: (
-          document.querySelector(
-            "input[type='radio']:checked"
-          ) as HTMLInputElement
-        ).value,
-      });
-    } else if (document.querySelector("input[type='checkbox']:checked")) {
-      optionsArray.push({
-        name: "estimated cost",
-        choice: (
-          document.querySelector(
-            "input[type='checkbox']:checked"
-          ) as HTMLInputElement
-        ).value,
-      });
-    }
+    
     console.log({
       type: "video",
       totalSteps: 12,
@@ -74,7 +57,7 @@ const Page = () => {
         `${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/initialize-service`,
         {
           type: "video",
-          totalSteps: 12,
+          totalSteps: 11,
           fileUrl_7:
             (typeof window !== "undefined" && loadFileFromLocalStorage()),
           options: optionsArray,
@@ -93,27 +76,7 @@ const Page = () => {
         typeof window !== "undefined" && localStorage.getItem("selectedOption");
       const itemsArray = storedItems ? JSON.parse(storedItems) : [];
       if (document.querySelector("input[type='radio']:checked")) {
-        itemsArray.push({
-          name: "estimated cost",
-          choice: (
-            document.querySelector(
-              "input[type='radio']:checked"
-            ) as HTMLInputElement
-          ).value,
-        });
-        localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-
-        dispatch(
-          addOption({
-            name: "estimated cost",
-            choice: (
-              document.querySelector(
-                "input[type='radio']:checked"
-              ) as HTMLInputElement
-            ).value,
-          })
-        );
-        console.log((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value);
+        
         
         if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value === "Let's make this video!") {
           route.replace(`/dashboard/checkout/${data.data.data._id}`);
@@ -123,25 +86,7 @@ const Page = () => {
         }
         // route.push("/dashboard/services");
       } else if (document.querySelector("input[type='checkbox']:checked")) {
-        itemsArray.push({
-          name: "estimated cost",
-          choice: (
-            document.querySelector(
-              "input[type='checkbox']:checked"
-            ) as HTMLInputElement
-          ).value,
-        });
-        localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-        dispatch(
-          addOption({
-            name: "estimated cost",
-            choice: (
-              document.querySelector(
-                "input[type='checkbox']:checked"
-              ) as HTMLInputElement
-            ).value,
-          })
-        );
+        
         route.push("/dashboard/services");
       }
     } catch (error) {
@@ -151,6 +96,41 @@ const Page = () => {
   const nextFunc = () => {
     makeService();
   };
+
+  async function initializeService() {
+    const optionsItems =
+      typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const optionsArray = optionsItems ? JSON.parse(optionsItems) : [];
+    try {
+      const data = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/initialize-service`,
+        {
+          type: "video",
+          totalSteps: 11,
+          fileUrl_7:
+            (typeof window !== "undefined" && loadFileFromLocalStorage()),
+          options: optionsArray,
+        },
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Token ${
+              typeof window !== "undefined" && localStorage.getItem("token")
+            }`,
+          },
+        }
+      );
+      console.log(data);
+      setServiceData(data);
+    } catch (error) {
+      console.log(error, "////////////error////////////");
+    }
+  }
+
+  useEffect(() => {
+    initializeService();
+  }, []);
+
   return (
     // Main container div with relative positioning
     <NextPrevNav
@@ -171,8 +151,8 @@ const Page = () => {
               {/* Main heading with margin bottom and underlined text */}
               <h2>
                 Based on everything you told us, <u>the estimated cost</u> of
-                this <hr className="border-0" /> video is <span>$XXX</span> and
-                would take around <span>40 Days</span> to finish.
+                this <hr className="border-0" /> video is <span>${serviceData.data.data.totalPrice}</span> and
+                would take around <span>{serviceData.data.data.estimatedDuration}</span> Days to finish.
               </h2>
             </div>
 

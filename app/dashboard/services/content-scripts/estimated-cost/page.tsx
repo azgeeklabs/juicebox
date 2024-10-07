@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./estimatedCost.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
@@ -13,113 +13,93 @@ const Page = () => {
   const [saveProgress, setSaveProgress] = useState(false);
   const dispatch = useDispatch();
   const route = useRouter();
+  const [serviceData, setServiceData] = useState<any>();
 
-  const userOptions = useSelector((state:RootState)=>state.service.options)
+  const userOptions = useSelector((state: RootState) => state.service.options);
   console.log(userOptions);
-  
+
   async function makeService() {
     // const optionsItems = localStorage.getItem("selectedOption");
     const optionsArray = [...userOptions];
+    console.log({
+      type: "content scripts",
+      totalSteps: 8,
+      options: optionsArray,
+    });
+
+    const storedItems =
+      typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (document.querySelector("input[type='radio']:checked")) {
-      optionsArray.push({
-        name: "estimated cost",
-        choice: (
+      if (
+        (
           document.querySelector(
             "input[type='radio']:checked"
           ) as HTMLInputElement
-        ).value,
-      });
-    } else if (document.querySelector("input[type='checkbox']:checked")) {
-      optionsArray.push({
-        name: "estimated cost",
-        choice: (
-          document.querySelector(
-            "input[type='checkbox']:checked"
-          ) as HTMLInputElement
-        ).value,
-      });
-    }
-    console.log({
-      type:"content scripts",
-      totalSteps:9,
-      options:optionsArray
-    })
-    
-    
-    try {
-      const data = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/initialize-service`,{
-        type:"content scripts",
-        totalSteps:9,
-        options:optionsArray
-      },{
-        headers:{
-          "Content-Type": "multipart/form-data",
-            Authorization: `Token ${typeof window !== "undefined" && localStorage.getItem("token")}`,
-        }
-      })
-      console.log(data);
-      const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
-      const itemsArray = storedItems ? JSON.parse(storedItems) : [];
-      if (document.querySelector("input[type='radio']:checked")) {
-        itemsArray.push({
-          name: "estimated cost",
-          choice: (
-            document.querySelector(
-              "input[type='radio']:checked"
-            ) as HTMLInputElement
-          ).value,
-        });
-        localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-       
-          dispatch(addOption({
-            name: "estimated cost",
-            choice: (
-              document.querySelector(
-                "input[type='radio']:checked"
-              ) as HTMLInputElement
-            ).value,
-          }))
-          if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value === "Start Now") {
-            route.replace(`/dashboard/checkout/${data.data.data._id}`);
-          }
+        ).value === "Start Now"
+      ) {
+        route.replace(`/dashboard/checkout/${serviceData?.data.data._id}`);
+      }
       // router.push("/dashboard/services");
-      if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value !== "Start Now") {
-        route.replace(`/dashboard/services/book-a-call/${data.data.data._id}`);
+      if (
+        (
+          document.querySelector(
+            "input[type='radio']:checked"
+          ) as HTMLInputElement
+        ).value !== "Start Now"
+      ) {
+        route.replace(
+          `/dashboard/services/book-a-call/${serviceData?.data.data._id}`
+        );
       }
-
-      } else if (document.querySelector("input[type='checkbox']:checked")) {
-        itemsArray.push({
-          name: "estimated cost",
-          choice: (
-            document.querySelector(
-              "input[type='checkbox']:checked"
-            ) as HTMLInputElement
-          ).value,
-        });
-        localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-        dispatch(addOption({
-          name: "estimated cost",
-          choice: (
-            document.querySelector(
-              "input[type='checkbox']:checked"
-            ) as HTMLInputElement
-          ).value,
-        }))
+    } else if (document.querySelector("input[type='checkbox']:checked")) {
       route.push("/dashboard/services");
-      }
-      
-    } catch (error) {
-      console.log(error,"////////////error////////////");
-      
     }
   }
   const nextFunc = () => {
-      makeService()
+    makeService();
   };
+
+  async function initializeService() {
+    const optionsItems =
+      typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const optionsArray = optionsItems ? JSON.parse(optionsItems) : [];
+    try {
+      const data = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/initialize-service`,
+        {
+          type: "content scripts",
+          totalSteps: 8,
+          options: optionsArray,
+        },
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Token ${
+              typeof window !== "undefined" && localStorage.getItem("token")
+            }`,
+          },
+        }
+      );
+      console.log(data);
+      setServiceData(data);
+    } catch (error) {
+      console.log(error, "////////////error////////////");
+    }
+  }
+
+  useEffect(() => {
+    initializeService();
+  }, []);
 
   return (
     // Main container div with relative positioning
-    <NextPrevNav nextLink="/dashboard/services" nextFunc={nextFunc} nextText="All Done" backLink="/dashboard/services/content-scripts/duration-of-video">
+    <NextPrevNav
+      nextLink="/dashboard/services"
+      nextFunc={nextFunc}
+      nextText="All Done"
+      backLink="/dashboard/services/content-scripts/duration-of-video"
+    >
       <div className="h-full relative w-full">
         {/* Inner container for the video end point section with custom styles */}
         <div
@@ -147,7 +127,13 @@ const Page = () => {
                 inputType="radio"
                 name="estimatedCost"
                 value={"Book a call"}
-              onClick={()=> document.querySelectorAll("input[type='checkbox']:checked").forEach((e,i)=>(e as HTMLInputElement).checked = false)}
+                onClick={() =>
+                  document
+                    .querySelectorAll("input[type='checkbox']:checked")
+                    .forEach(
+                      (e, i) => ((e as HTMLInputElement).checked = false)
+                    )
+                }
               >
                 Book a call
               </CustomCheckBoxText>
@@ -156,7 +142,13 @@ const Page = () => {
                 inputType="radio"
                 name="estimatedCost"
                 value={"Start Now"}
-              onClick={()=> document.querySelectorAll("input[type='checkbox']:checked").forEach((e,i)=>(e as HTMLInputElement).checked = false)}
+                onClick={() =>
+                  document
+                    .querySelectorAll("input[type='checkbox']:checked")
+                    .forEach(
+                      (e, i) => ((e as HTMLInputElement).checked = false)
+                    )
+                }
               >
                 Start Now
               </CustomCheckBoxText>
@@ -173,12 +165,17 @@ const Page = () => {
                 value={"Save my Progress"}
                 className={`absolute opacity-0 inset-0 cursor-pointer`}
                 onChange={() => setSaveProgress((prev) => !prev)}
-                onClick={()=>document.querySelectorAll("input[type='radio']:checked").forEach((e,i)=>(e as HTMLInputElement).checked = false)}
+                onClick={() =>
+                  document
+                    .querySelectorAll("input[type='radio']:checked")
+                    .forEach(
+                      (e, i) => ((e as HTMLInputElement).checked = false)
+                    )
+                }
               />
             </div>
           </div>
         </div>
-        
       </div>
     </NextPrevNav>
   );

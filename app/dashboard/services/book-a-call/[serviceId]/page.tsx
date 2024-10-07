@@ -11,9 +11,9 @@ import { useRouter } from "next/navigation";
 import { addOption } from "@/app/reducers/serviceSlice";
 import axios from "axios";
 import { useAuth } from "@/app/_context/AuthContext";
-const Page = ({params}:{params:{serviceId:string}}) => {
-  const [hourVal,setHourVal] = useState("")
-  const [minuteVal,setMinuteVal] = useState("")
+const Page = ({ params }: { params: { serviceId: string } }) => {
+  const [hourVal, setHourVal] = useState("");
+  const [minuteVal, setMinuteVal] = useState("");
   const [selectedDay, setSelectedDay] = useState<string>(
     `${new Date().getDate().toString()}${getOrdinal(new Date().getDate())}`
   );
@@ -145,26 +145,29 @@ const Page = ({params}:{params:{serviceId:string}}) => {
       />
     </svg>
   );
-  const {user} = useAuth()
+  const { user } = useAuth();
 
   async function bookACall() {
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/call-sales`,{
-        method:"POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${user?.token}`,
-        },
-        body: JSON.stringify({
-          serviceId: params.serviceId,
-        }),
-      })
-      const data = await res.json()
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/schedule-call`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user?.token}`,
+          },
+          body: JSON.stringify({
+            serviceId: params.serviceId,
+            date: "2024-11-02",
+            time: "3PM",
+          }),
+        }
+      );
+      const data = await res.json();
       console.log(data);
-      
     } catch (error) {
       console.log(error);
-      
     }
   }
 
@@ -190,7 +193,7 @@ const Page = ({params}:{params:{serviceId:string}}) => {
         }-${selectedYear}`,
       });
       console.log(itemsArray);
-      
+
       try {
         const data = await axios.post(
           `${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/initialize-service`,
@@ -213,7 +216,6 @@ const Page = ({params}:{params:{serviceId:string}}) => {
       } catch (error) {
         console.log(error, "////////////error////////////");
       }
-      
     }
   };
   return (
@@ -298,7 +300,7 @@ const Page = ({params}:{params:{serviceId:string}}) => {
                 <input
                   type="number"
                   value={hourVal}
-                  onChange={(e)=>setHourVal(e.target.value)}
+                  onChange={(e) => setHourVal(e.target.value)}
                   placeholder="00"
                   className="w-[3vw] text-center py-[--sy-10px] rounded-[5px] bg-[#484848] inline-block outline-none"
                 />
@@ -306,7 +308,7 @@ const Page = ({params}:{params:{serviceId:string}}) => {
                 <input
                   type="number"
                   value={minuteVal}
-                  onChange={(e)=>setMinuteVal(e.target.value)}
+                  onChange={(e) => setMinuteVal(e.target.value)}
                   placeholder="00"
                   className="w-[3vw] py-[--sy-10px] text-center rounded-[5px] bg-[#484848] inline-block outline-none"
                 />
@@ -335,8 +337,8 @@ const Page = ({params}:{params:{serviceId:string}}) => {
                       console.log(e);
                       setChangedDate(`${e.$y}-${e.$M + 1}-${e.$D}`);
                       setSelectedDay(`${e.$D}${getOrdinal(e.$D)}`);
-                      setSelectedMonth(`${e.$M+1}`)
-                      setSelectedYear(`${e.$y}`)
+                      setSelectedMonth(`${e.$M + 1}`);
+                      setSelectedYear(`${e.$y}`);
                     }}
                     slots={{
                       rightArrowIcon: RightArrow,

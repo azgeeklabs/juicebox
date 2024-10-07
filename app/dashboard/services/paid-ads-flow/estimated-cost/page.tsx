@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./estimatedCost.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
@@ -13,6 +13,7 @@ const Page = () => {
   const [saveProgress, setSaveProgress] = useState(false);
   const dispatch = useDispatch();
   const route = useRouter();
+  const [serviceData,setServiceData] = useState<any>()
 
   const userOptions = useSelector((state:RootState)=>state.service.options)
   console.log(userOptions);
@@ -20,29 +21,39 @@ const Page = () => {
   async function makeService() {
     // const optionsItems = localStorage.getItem("selectedOption");
     const optionsArray = [...userOptions];
-    if (document.querySelector("input[type='radio']:checked")) {
-      optionsArray.push({
-        name: "estimated cost",
-        choice: (
-          document.querySelector(
-            "input[type='radio']:checked"
-          ) as HTMLInputElement
-        ).value,
-      });
-    } else if (document.querySelector("input[type='checkbox']:checked")) {
-      optionsArray.push({
-        name: "estimated cost",
-        choice: (
-          document.querySelector(
-            "input[type='checkbox']:checked"
-          ) as HTMLInputElement
-        ).value,
-      });
-    }
+    
+    
+      const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
+      const itemsArray = storedItems ? JSON.parse(storedItems) : [];
+      if (document.querySelector("input[type='radio']:checked")) {
+        
+          if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value === "Start Now") {
+            route.replace(`/dashboard/checkout/${serviceData.data.data._id}`);
+          }
+      // router.push("/dashboard/services");
+      if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value !== "Start Now") {
+        route.replace(`/dashboard/services/book-a-call/${serviceData.data.data._id}`);
+      }
+
+      } else if (document.querySelector("input[type='checkbox']:checked")) {
+        
+      route.push("/dashboard/services");
+      }
+      
+    
+  }
+  const nextFunc = () => {
+      makeService()
+  };
+
+  async function initializeService() {
+    const optionsItems =
+      typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const optionsArray = optionsItems ? JSON.parse(optionsItems) : [];
     try {
       const data = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/initialize-service`,{
         type:"paid ads flow",
-        totalSteps:6,
+        totalSteps:5,
         options:optionsArray
       },{
         headers:{
@@ -51,64 +62,15 @@ const Page = () => {
         }
       })
       console.log(data);
-      const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
-      const itemsArray = storedItems ? JSON.parse(storedItems) : [];
-      if (document.querySelector("input[type='radio']:checked")) {
-        itemsArray.push({
-          name: "estimated cost",
-          choice: (
-            document.querySelector(
-              "input[type='radio']:checked"
-            ) as HTMLInputElement
-          ).value,
-        });
-        localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-       
-          dispatch(addOption({
-            name: "estimated cost",
-            choice: (
-              document.querySelector(
-                "input[type='radio']:checked"
-              ) as HTMLInputElement
-            ).value,
-          }))
-          if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value === "Start Now") {
-            route.replace(`/dashboard/checkout/${data.data.data._id}`);
-          }
-      // router.push("/dashboard/services");
-      if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value !== "Start Now") {
-        route.replace(`/dashboard/services/book-a-call/${data.data.data._id}`);
-      }
-
-      } else if (document.querySelector("input[type='checkbox']:checked")) {
-        itemsArray.push({
-          name: "estimated cost",
-          choice: (
-            document.querySelector(
-              "input[type='checkbox']:checked"
-            ) as HTMLInputElement
-          ).value,
-        });
-        localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-        dispatch(addOption({
-          name: "estimated cost",
-          choice: (
-            document.querySelector(
-              "input[type='checkbox']:checked"
-            ) as HTMLInputElement
-          ).value,
-        }))
-      route.push("/dashboard/services");
-      }
-      
+      setServiceData(data);
     } catch (error) {
-      console.log(error,"////////////error////////////");
-      
+      console.log(error, "////////////error////////////");
     }
   }
-  const nextFunc = () => {
-      makeService()
-  };
+
+  useEffect(() => {
+    initializeService();
+  }, []);
 
   return (
     // Main container div with relative positioning

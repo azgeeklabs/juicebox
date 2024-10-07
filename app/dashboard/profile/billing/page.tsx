@@ -1,8 +1,43 @@
+"use client"
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./billing.module.css";
+import { useAuth } from "@/app/_context/AuthContext";
+import { useState } from "react";
+import { toast } from "react-hot-toast";
 
 const Billing = () => {
+  const { user, logout } = useAuth();
+  const [userData, setUserData] = useState<any>(null);
+  const [data, setData] = useState<any>(null);
+  async function getMe() {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/get-me`,
+      {
+        headers: {
+          Authorization: `Bearer ${user?.token}`,
+        },
+      }
+    );
+    const data = await response.json();
+    console.log(data);
+    if (data.message == "User recently changed his password. please login again..") {
+      toast("Password recently changed. Please login again!", {
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+      });
+      logout();
+    }
+    console.log(data.data);
+    setUserData(data?.data.linkedCards[data?.data.linkedCards.length - 1]);
+    setData(data?.data);
+  }
+  useEffect(() => {
+    getMe();
+  }, []);
   return (
     <div className=" w-full h-full">
       <h1 className=" text-[--32px] font-semibold mb-[--sy-24px]">
@@ -83,10 +118,10 @@ const Billing = () => {
             </div>
             <div className="text-black flex justify-between items-center w-full absolute bottom-[15%] px-[--23px]">
               <div className=" flex flex-col gap-[--sy-4px] font-medium">
-                <span className=" font-medium">John Doe Johnny</span>
-                <span className=" font-medium">1234 XXXX XXXX</span>
+                <span className=" font-medium">{data?.firstName} {data?.lastName}</span>
+                <span className=" font-medium">{`XXXX XXXX XXXX ${userData?.last4}`}</span>
               </div>
-             <span className=" font-medium">12/24</span>
+             <span className=" font-medium">{userData?.expDate.split("/")[0] > 9 ? userData?.expDate.split("/")[0] : `0${userData?.expDate.split("/")[0]}`}/{userData?.expDate.split("/")[1].slice(2,)}</span>
             </div>
 
             <Link

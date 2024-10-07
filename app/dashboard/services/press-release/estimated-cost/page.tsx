@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./estimatedCost.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
@@ -13,6 +13,7 @@ const Page = () => {
   const router = useRouter();
   const [saveProgress, setSaveProgress] = useState(false);
   const dispatch = useDispatch();
+  const [serviceData, setServiceData] = useState<any>(null);
   const file = useSelector((state:RootState) => state.service.file);
 console.log(file);
 const loadFileFromLocalStorage = () => {
@@ -38,93 +39,31 @@ const loadFileFromLocalStorage = () => {
   async function makeService() {
     const optionsItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
     const optionsArray = optionsItems ? JSON.parse(optionsItems) : [];
-    if (document.querySelector("input[type='radio']:checked")) {
-      optionsArray.push({
-        name: "estimated cost",
-        choice: (
-          document.querySelector(
-            "input[type='radio']:checked"
-          ) as HTMLInputElement
-        ).value,
-      });
-    } else if (document.querySelector("input[type='checkbox']:checked")) {
-      optionsArray.push({
-        name: "estimated cost",
-        choice: (
-          document.querySelector(
-            "input[type='checkbox']:checked"
-          ) as HTMLInputElement
-        ).value,
-      });
-    }
+    
     console.log({
       type:"press release",
-      totalSteps:6,
+      totalSteps:5,
       fileUrl_2:file,
       options:optionsArray
     })
     
     
     try {
-      const data = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/initialize-service`,{
-        type:"press release",
-        totalSteps:6,
-        fileUrl_2:(typeof window !== "undefined" && loadFileFromLocalStorage()),
-        options:optionsArray
-      },{
-        headers:{
-          "Content-Type": "multipart/form-data",
-            Authorization: `Token ${typeof window !== "undefined" && localStorage.getItem("token")}`,
-        }
-      })
-      console.log(data);
+     
       const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
       const itemsArray = storedItems ? JSON.parse(storedItems) : [];
       if (document.querySelector("input[type='radio']:checked")) {
-        itemsArray.push({
-          name: "estimated cost",
-          choice: (
-            document.querySelector(
-              "input[type='radio']:checked"
-            ) as HTMLInputElement
-          ).value,
-        });
-        localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-       
-          dispatch(addOption({
-            name: "estimated cost",
-            choice: (
-              document.querySelector(
-                "input[type='radio']:checked"
-              ) as HTMLInputElement
-            ).value,
-          }))
+        
           if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value === "Start Now") {
-            router.replace(`/dashboard/checkout/${data.data.data._id}`);
+            router.replace(`/dashboard/checkout/${serviceData.data.data._id}`);
           }
       // router.push("/dashboard/services");
       if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value !== "Start Now") {
-        router.replace(`/dashboard/services/book-a-call/${data.data.data._id}`);
+        router.replace(`/dashboard/services/book-a-call/${serviceData.data.data._id}`);
       }
 
       } else if (document.querySelector("input[type='checkbox']:checked")) {
-        itemsArray.push({
-          name: "estimated cost",
-          choice: (
-            document.querySelector(
-              "input[type='checkbox']:checked"
-            ) as HTMLInputElement
-          ).value,
-        });
-        localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-        dispatch(addOption({
-          name: "estimated cost",
-          choice: (
-            document.querySelector(
-              "input[type='checkbox']:checked"
-            ) as HTMLInputElement
-          ).value,
-        }))
+        
       router.push("/dashboard/services");
       }
       
@@ -136,6 +75,34 @@ const loadFileFromLocalStorage = () => {
   const nextFunc = () => {
       makeService()
   };
+
+
+  async function initializeService() {
+    const optionsItems =
+      typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const optionsArray = optionsItems ? JSON.parse(optionsItems) : [];
+    try {
+      const data = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/initialize-service`,{
+        type:"press release",
+        totalSteps:5,
+        fileUrl_2:(typeof window !== "undefined" && loadFileFromLocalStorage()),
+        options:optionsArray
+      },{
+        headers:{
+          "Content-Type": "multipart/form-data",
+            Authorization: `Token ${typeof window !== "undefined" && localStorage.getItem("token")}`,
+        }
+      })
+      console.log(data);
+      setServiceData(data);
+    } catch (error) {
+      console.log(error, "////////////error////////////");
+    }
+  }
+
+  useEffect(() => {
+    initializeService();
+  }, []);
 
   return (
     // Main container div with relative positioning
@@ -152,8 +119,8 @@ const loadFileFromLocalStorage = () => {
             {/* Main heading with margin bottom and underlined text */}
             <h2 className="mb-[1.5vw]">
               Based on everything you told us, <u>the estimated cost</u> of this{" "}
-              <hr className="border-0" /> video is <span>$XXX</span> and would
-              take around <span>40 Days</span> to finish.
+              <hr className="border-0" /> video is <span>${serviceData?.data?.data.totalPrice}</span> and would
+              take around <span>{serviceData?.data?.data.estimatedDuration} Days</span> to finish.
             </h2>
           </div>
 

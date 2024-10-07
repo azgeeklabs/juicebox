@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./estimatedCost.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import NextPrevNav from "@/app/_components/NextPrevNav/NextPrevNav";
@@ -12,6 +12,7 @@ import { RootState } from "@/app/Store/store";
 const Page = () => {
   const router = useRouter();
   const [saveProgress, setSaveProgress] = useState(false);
+  const [serviceData,setServiceData] = useState<any>()
   const dispatch = useDispatch();
   const file = useSelector((state:RootState) => state.service.file);
 console.log(file);
@@ -39,94 +40,32 @@ const loadFileFromLocalStorage = () => {
     const optionsItems = localStorage.getItem("selectedOption");
     const optionsArray = optionsItems ? JSON.parse(optionsItems) : [];
     console.log(optionsArray,"//////////optionsArray/////////////");
-    if (document.querySelector("input[type='radio']:checked")) {
-      optionsArray.push({
-        name: "estimated cost",
-        choice: (
-          document.querySelector(
-            "input[type='radio']:checked"
-          ) as HTMLInputElement
-        ).value,
-      });
-    } else if (document.querySelector("input[type='checkbox']:checked")) {
-      optionsArray.push({
-        name: "estimated cost",
-        choice: (
-          document.querySelector(
-            "input[type='checkbox']:checked"
-          ) as HTMLInputElement
-        ).value,
-      });
-    }
+   
     console.log({
       type:"orm negative press removal",
-      totalSteps:4,
+      totalSteps:3,
       fileUrl_2:file,
       options:optionsArray
     })
     
     
     try {
-      const data = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/initialize-service`,{
-        type:"orm negative press removal",
-        totalSteps:4,
-        fileUrl_2:(typeof window !== "undefined" && loadFileFromLocalStorage()),
-        options:optionsArray
-      },{
-        headers:{
-          "Content-Type": "multipart/form-data",
-            Authorization: `Token ${typeof window !== "undefined" && localStorage.getItem("token")}`,
-        }
-      })
-      console.log(data);
+      
       const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
       const itemsArray = storedItems ? JSON.parse(storedItems) : [];
       if (document.querySelector("input[type='radio']:checked")) {
-        itemsArray.push({
-          name: "estimated cost",
-          choice: (
-            document.querySelector(
-              "input[type='radio']:checked"
-            ) as HTMLInputElement
-          ).value,
-        });
-        localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-       
-          dispatch(addOption({
-            name: "estimated cost",
-            choice: (
-              document.querySelector(
-                "input[type='radio']:checked"
-              ) as HTMLInputElement
-            ).value,
-          }))
+        
           if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value === "Start Now!") {
-            router.replace(`/dashboard/checkout/${data.data.data._id}`);
+            router.replace(`/dashboard/checkout/${serviceData?.data.data._id}`);
           }
       // router.push("/dashboard/services");
       if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value !== "Start Now!") {
-        router.replace(`/dashboard/services/book-a-call/${data.data.data._id}`);
+        router.replace(`/dashboard/services/book-a-call/${serviceData?.data.data._id}`);
       }
 
 
       } else if (document.querySelector("input[type='checkbox']:checked")) {
-        itemsArray.push({
-          name: "estimated cost",
-          choice: (
-            document.querySelector(
-              "input[type='checkbox']:checked"
-            ) as HTMLInputElement
-          ).value,
-        });
-        localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-        dispatch(addOption({
-          name: "estimated cost",
-          choice: (
-            document.querySelector(
-              "input[type='checkbox']:checked"
-            ) as HTMLInputElement
-          ).value,
-        }))
+        
       router.push("/dashboard/services");
       }
       
@@ -138,6 +77,33 @@ const loadFileFromLocalStorage = () => {
   const nextFunc = () => {
       makeService()
   };
+
+  async function initializeService() {
+    const optionsItems =
+      typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const optionsArray = optionsItems ? JSON.parse(optionsItems) : [];
+    try {
+      const data = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/initialize-service`,{
+        type:"orm negative press removal",
+        totalSteps:3,
+        fileUrl_2:(typeof window !== "undefined" && loadFileFromLocalStorage()),
+        options:optionsArray
+      },{
+        headers:{
+          "Content-Type": "multipart/form-data",
+            Authorization: `Token ${typeof window !== "undefined" && localStorage.getItem("token")}`,
+        }
+      })
+      console.log(data);
+      setServiceData(data);
+    } catch (error) {
+      console.log(error, "////////////error////////////");
+    }
+  }
+
+  useEffect(() => {
+    initializeService();
+  }, []);
 
   return (
     // Main container div with relative positioning
@@ -154,8 +120,8 @@ const loadFileFromLocalStorage = () => {
               {/* Main heading with margin bottom and underlined text */}
               <h2 className="mb-[1.5vw]">
                 Based on your selections, the estimated cost for your project
-                <hr className="border-0" /> is <span>$1000</span> and it will
-                take approximately <span>15-20</span> days to complete.
+                <hr className="border-0" /> is <span>${serviceData?.data.data.totalPrice}</span> and it will
+                take approximately <span>{serviceData?.data.data.estimatedDuration}</span> days to complete.
               </h2>
             </div>
 

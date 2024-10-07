@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./monetizationEndPoint.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
@@ -11,6 +11,7 @@ import axios from "axios";
 const Page = () => {
   const router = useRouter();
   const [saveProgress, setSaveProgress] = useState(false);
+  const [serviceData,setServiceData] = useState<any>(null)
 
   const dispatch = useDispatch();
   const route = useRouter();
@@ -19,91 +20,30 @@ const Page = () => {
     const optionsItems = localStorage.getItem("selectedOption");
     const optionsArray = optionsItems ? JSON.parse(optionsItems) : [];
     console.log(optionsArray,"//////////optionsArray/////////////");
-    if (document.querySelector("input[type='radio']:checked")) {
-      optionsArray.push({
-        name: "estimated cost",
-        choice: (
-          document.querySelector(
-            "input[type='radio']:checked"
-          ) as HTMLInputElement
-        ).value,
-      });
-    } else if (document.querySelector("input[type='checkbox']:checked")) {
-      optionsArray.push({
-        name: "estimated cost",
-        choice: (
-          document.querySelector(
-            "input[type='checkbox']:checked"
-          ) as HTMLInputElement
-        ).value,
-      });
-    }
+   
     console.log({
       type:"PR Monetization",
-      totalSteps:6,
+      totalSteps:5,
       options:optionsArray
     })
     
     
     try {
-      const data = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/initialize-service`,{
-        type:"PR Monetization",
-        totalSteps:6,
-        options:optionsArray
-      },{
-        headers:{
-          "Content-Type": "multipart/form-data",
-            Authorization: `Token ${typeof window !== "undefined" && localStorage.getItem("token")}`,
-        }
-      })
-      console.log(data);
+      
       const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
       const itemsArray = storedItems ? JSON.parse(storedItems) : [];
       if (document.querySelector("input[type='radio']:checked")) {
-        itemsArray.push({
-          name: "estimated cost",
-          choice: (
-            document.querySelector(
-              "input[type='radio']:checked"
-            ) as HTMLInputElement
-          ).value,
-        });
-        localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-       
-          dispatch(addOption({
-            name: "estimated cost",
-            choice: (
-              document.querySelector(
-                "input[type='radio']:checked"
-              ) as HTMLInputElement
-            ).value,
-          }))
+        
           if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value === "Start now") {
-            router.replace(`/dashboard/checkout/${data.data.data._id}`);
+            router.replace(`/dashboard/checkout/${serviceData.data.data._id}`);
           }
       // router.push("/dashboard/services");
       if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value !== "Start now") {
-        router.replace(`/dashboard/services/book-a-call/${data.data.data._id}`);
+        router.replace(`/dashboard/services/book-a-call/${serviceData.data.data._id}`);
       }
 
       } else if (document.querySelector("input[type='checkbox']:checked")) {
-        itemsArray.push({
-          name: "estimated cost",
-          choice: (
-            document.querySelector(
-              "input[type='checkbox']:checked"
-            ) as HTMLInputElement
-          ).value,
-        });
-        localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-        dispatch(addOption({
-          name: "estimated cost",
-          choice: (
-            document.querySelector(
-              "input[type='checkbox']:checked"
-            ) as HTMLInputElement
-          ).value,
-        }))
+        
       route.push("/dashboard/services");
       }
       
@@ -115,6 +55,34 @@ const Page = () => {
   const nextFunc = () => {
       makeService()
   };
+
+
+  async function initializeService() {
+    const optionsItems =
+      typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const optionsArray = optionsItems ? JSON.parse(optionsItems) : [];
+    try {
+      const data = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/initialize-service`,{
+        type:"PR Monetization",
+        totalSteps:5,
+        options:optionsArray
+      },{
+        headers:{
+          "Content-Type": "multipart/form-data",
+            Authorization: `Token ${typeof window !== "undefined" && localStorage.getItem("token")}`,
+        }
+      })
+      console.log(data);
+      setServiceData(data);
+    } catch (error) {
+      console.log(error, "////////////error////////////");
+    }
+  }
+
+  useEffect(() => {
+    initializeService();
+  }, []);
+
   return (
     <div className={`${styles.monetizationEndPoint} flex flex-col justify-between h-full w-full`}>
       {/* Inner container with relative positioning and full height */}
@@ -130,7 +98,7 @@ const Page = () => {
               {/* Main heading with bottom margin and underlined text */}
               <h2 className="mb-[--sy-48px]">
                 Based on everything you told us, the estimated
-                cost of this <br /> service is <span> $XXX </span> and would take around <span>40 Days</span> to finish.
+                cost of this <br /> service is <span> ${serviceData?.data.data.totalPrice} </span> and would take around <span>{serviceData?.data.data.estimatedDuration} Days</span> to finish.
               </h2>
             </div>
 

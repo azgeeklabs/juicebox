@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./SubscribedServices.module.css";
 import ServiceCard from "../serviceCard/ServiceCard";
 import NotificationWindow from "./NotificationWindow";
@@ -10,6 +10,10 @@ import { useAuth } from "@/app/_context/AuthContext";
 
 export default function SubscribedServices() {
   const router = useRouter();
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [isDown, setIsDown] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
 
   const profilePic = (
     <svg
@@ -105,6 +109,38 @@ export default function SubscribedServices() {
   const [finished, setFinished] = useState<any>([]);
   const { user } = useAuth();
 
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement> ) => {
+    setIsDown(true);
+    setStartX(e.pageX - e.currentTarget.offsetLeft);
+    setScrollLeft(e.currentTarget.scrollLeft);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDown(false);
+  };
+
+  const handleMouseUp = () => {
+    setIsDown(false);
+  };
+  const scroll = (e: React.WheelEvent) => {
+    if (carouselRef.current === null) return;
+    if (e.deltaY == 0) return;
+    e.preventDefault();
+    carouselRef.current.scrollTo({
+      left: carouselRef.current.scrollLeft + e.deltaY * 3,
+      behavior: "smooth",
+    });
+  };
+
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - e.currentTarget.offsetLeft;
+    const walk = (x - startX) * 2; // Multiply by 2 for faster scrolling
+    e.currentTarget.scrollLeft = scrollLeft - walk;
+  };
+
   async function getSubscriptions() {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/get-purchased-services`,
@@ -134,7 +170,7 @@ export default function SubscribedServices() {
       <div
         className={classNames(
           styles.servicesCards,
-          "flex items-center gap-[1vw] cursor-pointer overflow-x-auto"
+          "flex items-center gap-[1vw] cursor-pointer overflow-x-hidden"
         )}
       >
         {/* Profile Card */}
@@ -152,17 +188,26 @@ export default function SubscribedServices() {
         </div>
 
         {/* Services Cards */}
-        {finished?.map((s: any, i: any) => {
-          return (
-            <ServiceCard
-              title={(s?.type as string).replace(/services/ig,"")}
-              phase="Ideation Phase"
-              timeleft={`${s?.estimatedDuration} Days Left`}
-            />
-          );
-        })}
-        
-
+        <div
+            className={`${styles.services} px-[--20px] py-[--sy-16px] w-full overflow-x-hidden cursor-pointer services h-full`} onMouseDown={handleMouseDown}
+            onMouseLeave={handleMouseLeave}
+            onMouseUp={handleMouseUp}
+            onMouseMove={handleMouseMove}
+            onWheel={scroll}
+            ref={carouselRef}
+          >
+            <div className=" flex gap-[--8px] w-full">
+            {finished?.map((s: any, i: any) => {
+              return (
+                <ServiceCard
+                  title={(s?.type as string).replace(/services/gi, "")}
+                  phase="Ideation Phase"
+                  timeleft={`${s?.estimatedDuration} Days Left`}
+                />
+              );
+            })}
+            </div>
+          </div>
         {/* Add Service Button */}
         <CustomBtn>
           <svg viewBox="0 0 19 19" xmlns="http://www.w3.org/2000/svg">

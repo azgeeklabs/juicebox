@@ -1,5 +1,5 @@
-"use client"
-import React, { useState } from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import styles from "./web-design-endpoint.module.css";
 import CustomCheckBoxText from "@/app/_components/customCheckBox/CustomCheckBoxText";
 import Link from "next/link";
@@ -12,136 +12,116 @@ import { RootState } from "@/app/Store/store";
 
 const Page = () => {
   const [saveProgress, setSaveProgress] = useState(false);
+  const [serviceData, setServiceData] = useState<any>(null);
 
   const dispatch = useDispatch();
   const route = useRouter();
-  const file = useSelector((state:RootState) => state.service.file);
-console.log(file);
-const loadFileFromLocalStorage = () => {
-  const fileData = typeof window !== "undefined" && localStorage.getItem('uploadedFile');
-  if (fileData) {
-    const { name, type, size, base64 } = JSON.parse(fileData);
+  const file = useSelector((state: RootState) => state.service.file);
+  console.log(file);
+  const loadFileFromLocalStorage = () => {
+    const fileData =
+      typeof window !== "undefined" && localStorage.getItem("uploadedFile");
+    if (fileData) {
+      const { name, type, size, base64 } = JSON.parse(fileData);
 
-    // Convert Base64 back to a File object (this isn't exact but provides structure)
-    const byteString = atob(base64.split(',')[1]);
-    const ab = new ArrayBuffer(byteString.length);
-    const ia = new Uint8Array(ab);
-    for (let i = 0; i < byteString.length; i++) {
-      ia[i] = byteString.charCodeAt(i);
+      // Convert Base64 back to a File object (this isn't exact but provides structure)
+      const byteString = atob(base64.split(",")[1]);
+      const ab = new ArrayBuffer(byteString.length);
+      const ia = new Uint8Array(ab);
+      for (let i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+      }
+      const blob = new Blob([ab], { type });
+      const file = new File([blob], name, { type });
+
+      return file;
     }
-    const blob = new Blob([ab], { type });
-    const file = new File([blob], name, { type });
-
-    return file;
-  }
-  return null;
-};
+    return null;
+  };
   async function makeService() {
     const optionsItems = localStorage.getItem("selectedOption");
     const optionsArray = optionsItems ? JSON.parse(optionsItems) : [];
-    console.log(optionsArray,"//////////optionsArray/////////////");
+    console.log(optionsArray, "//////////optionsArray/////////////");
+
+    console.log({
+      type: "Web design",
+      fileUrl_4: file,
+      totalSteps: 9,
+      options: optionsArray,
+    });
+
+    const storedItems =
+      typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const itemsArray = storedItems ? JSON.parse(storedItems) : [];
     if (document.querySelector("input[type='radio']:checked")) {
-      optionsArray.push({
-        name: "estimated cost",
-        choice: (
+      if (
+        (
           document.querySelector(
             "input[type='radio']:checked"
           ) as HTMLInputElement
-        ).value,
-      });
-    } else if (document.querySelector("input[type='checkbox']:checked")) {
-      optionsArray.push({
-        name: "estimated cost",
-        choice: (
-          document.querySelector(
-            "input[type='checkbox']:checked"
-          ) as HTMLInputElement
-        ).value,
-      });
-    }
-    console.log({
-      type:"Web design",
-      fileUrl_4:file,
-      totalSteps:10,
-      options:optionsArray
-    })
-    
-    
-    try {
-      const data = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/initialize-service`,{
-        type:"Web design",
-        totalSteps:10,
-        fileUrl_4:(typeof window !== "undefined" && loadFileFromLocalStorage()),
-        options:optionsArray
-      },{
-        headers:{
-          "Content-Type": "multipart/form-data",
-            Authorization: `Token ${typeof window !== "undefined" && localStorage.getItem("token")}`,
-        }
-      })
-      console.log(data);
-      const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
-      const itemsArray = storedItems ? JSON.parse(storedItems) : [];
-      if (document.querySelector("input[type='radio']:checked")) {
-        itemsArray.push({
-          name: "estimated cost",
-          choice: (
-            document.querySelector(
-              "input[type='radio']:checked"
-            ) as HTMLInputElement
-          ).value,
-        });
-        localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-       
-          dispatch(addOption({
-            name: "estimated cost",
-            choice: (
-              document.querySelector(
-                "input[type='radio']:checked"
-              ) as HTMLInputElement
-            ).value,
-          }))
-          if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value === "Let's make this website!") {
-            route.replace(`/dashboard/checkout/${data.data.data._id}`);
-          }
+        ).value === "Let's make this website!"
+      ) {
+        route.replace(`/dashboard/checkout/${serviceData.data.data._id}`);
+      }
       // route.push("/dashboard/services");
-      if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value !== "Let's make this website!") {
-        route.replace(`/dashboard/services/book-a-call/${data.data.data._id}`);
+      if (
+        (
+          document.querySelector(
+            "input[type='radio']:checked"
+          ) as HTMLInputElement
+        ).value !== "Let's make this website!"
+      ) {
+        route.replace(
+          `/dashboard/services/book-a-call/${serviceData.data.data._id}`
+        );
       }
-
-      } else if (document.querySelector("input[type='checkbox']:checked")) {
-        itemsArray.push({
-          name: "estimated cost",
-          choice: (
-            document.querySelector(
-              "input[type='checkbox']:checked"
-            ) as HTMLInputElement
-          ).value,
-        });
-        localStorage.setItem("selectedOption", JSON.stringify(itemsArray));
-        dispatch(addOption({
-          name: "estimated cost",
-          choice: (
-            document.querySelector(
-              "input[type='checkbox']:checked"
-            ) as HTMLInputElement
-          ).value,
-        }))
+    } else if (document.querySelector("input[type='checkbox']:checked")) {
       route.push("/dashboard/services");
-      }
-      
-    } catch (error) {
-      console.log(error,"////////////error////////////");
-      
     }
   }
   const nextFunc = () => {
-      makeService()
+    makeService();
   };
+
+  async function initializeService() {
+    const optionsItems =
+      typeof window !== "undefined" && localStorage.getItem("selectedOption");
+    const optionsArray = optionsItems ? JSON.parse(optionsItems) : [];
+    try {
+      const data = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/initialize-service`,
+        {
+          type: "Web design",
+          totalSteps: 9,
+          fileUrl_4:
+            typeof window !== "undefined" && loadFileFromLocalStorage(),
+          options: optionsArray,
+        },
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Token ${
+              typeof window !== "undefined" && localStorage.getItem("token")
+            }`,
+          },
+        }
+      );
+      console.log(data);
+      setServiceData(data);
+    } catch (error) {
+      console.log(error, "////////////error////////////");
+    }
+  }
+
+  useEffect(() => {
+    initializeService();
+  }, []);
+
   return (
     <NextPrevNav
       backLink="/dashboard/services/web-design/host-selection"
-      nextLink="/dashboard/services" nextFunc={nextFunc}
+      nextLink="/dashboard/services"
+      nextFunc={nextFunc}
       nextText="All Done"
     >
       {/* Main container div with relative positioning */}
@@ -156,8 +136,8 @@ const loadFileFromLocalStorage = () => {
             <div className="text-center mx-auto mb-[--sy-40px]">
               {/* Main heading with margin bottom and underlined text */}
               <h2>
-                The cost for this website will be around <span>$1000</span> and
-                will <span>15-20</span> <br /> Months to be fully depolyed
+                The cost for this website will be around <span>${serviceData.data.data.totalPrice}</span> and
+                will <span>{serviceData.data.data.estimatedDuration}</span> <br /> Months to be fully depolyed
               </h2>
             </div>
 
@@ -171,7 +151,13 @@ const loadFileFromLocalStorage = () => {
                 inputType="radio"
                 name="styleAnswer"
                 value={"Book a call with our experts"}
-                onClick={()=> document.querySelectorAll("input[type='checkbox']:checked").forEach((e,i)=>(e as HTMLInputElement).checked = false)}
+                onClick={() =>
+                  document
+                    .querySelectorAll("input[type='checkbox']:checked")
+                    .forEach(
+                      (e, i) => ((e as HTMLInputElement).checked = false)
+                    )
+                }
               >
                 Book a call with our experts
               </CustomCheckBoxText>
@@ -180,7 +166,13 @@ const loadFileFromLocalStorage = () => {
                 inputType="radio"
                 name="styleAnswer"
                 value={"Let's make this website!"}
-                onClick={()=> document.querySelectorAll("input[type='checkbox']:checked").forEach((e,i)=>(e as HTMLInputElement).checked = false)}
+                onClick={() =>
+                  document
+                    .querySelectorAll("input[type='checkbox']:checked")
+                    .forEach(
+                      (e, i) => ((e as HTMLInputElement).checked = false)
+                    )
+                }
               >
                 Let's make this website!
               </CustomCheckBoxText>
@@ -196,8 +188,13 @@ const loadFileFromLocalStorage = () => {
                 name="saveProgress"
                 value={"Save my Progress"}
                 className={`absolute opacity-0 inset-0 cursor-pointer`}
-                onChange={() => {setSaveProgress((prev) => !prev);
-                  document.querySelectorAll("input[type='radio']:checked").forEach((e,i)=>(e as HTMLInputElement).checked = false)
+                onChange={() => {
+                  setSaveProgress((prev) => !prev);
+                  document
+                    .querySelectorAll("input[type='radio']:checked")
+                    .forEach(
+                      (e, i) => ((e as HTMLInputElement).checked = false)
+                    );
                 }}
               />
             </div>

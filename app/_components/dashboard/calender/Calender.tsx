@@ -24,7 +24,7 @@ const LeftArrow = () => (
   </svg>
 );
 
-const Calender = () => {
+const Calender = ({selectedDate, setSelectedDate}: {selectedDate: string, setSelectedDate: (date: string) => void}) => {
   return (
     <section className="overflow-x-hidden overflow-y-auto py-[--sy-5px]">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -33,6 +33,12 @@ const Calender = () => {
           slots={{ rightArrowIcon: RightArrow, leftArrowIcon: LeftArrow }}
           dayOfWeekFormatter={(weekday) => `${weekday.format("ddd")}`}
           className="custom-calender"
+          onChange={(e) => {
+            console.log(e);
+            setSelectedDate(`${e.$y}-${Number(e.$M) + 1 > 9 ? (Number(e.$M) + 1) : `0${Number(e.$M) + 1}`}-${e.$D > 9 ? e.$D : `0${e.$D}`}`);
+            console.log(`${e.$y}-${Number(e.$M) + 1 > 9 ? (Number(e.$M) + 1) : `0${Number(e.$M) + 1}`}-${e.$D > 9 ? e.$D : `0${e.$D}`}`);
+            
+          }}
         />
       </LocalizationProvider>
     </section>
