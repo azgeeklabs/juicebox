@@ -12,7 +12,8 @@ import ClientApprovalTable from "../_components/dashboard/Client Approval/Client
 import dynamic from "next/dynamic";
 import { number } from "yup";
 import { useAuth } from "../_context/AuthContext";
-import Slider from "react-slick";
+// import Slider from "react-slick";
+// dynamic import 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -20,6 +21,8 @@ const Calender = dynamic(
   () => import("../_components/dashboard/calender/Calender"),
   { ssr: false }
 );
+
+const Slider = dynamic(() => import("react-slick"), { ssr: false });
 
 const settings = {
   fade: true,
