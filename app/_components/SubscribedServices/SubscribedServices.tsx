@@ -209,8 +209,8 @@ export default function SubscribedServices() {
             </div>
           </div>
         {/* Add Service Button */}
-        <CustomBtn>
-          <svg viewBox="0 0 19 19" xmlns="http://www.w3.org/2000/svg">
+        <CustomBtn onClick={()=>router.push("/dashboard/services")}>
+          <svg viewBox="0 0 19 19" xmlns="http://www.w3.org/2000/svg" onClick={()=>router.push("/dashboard/services")}>
             <path
               d="M1.88208 9.5H16.8821M9.38208 2V17"
               stroke="white"
