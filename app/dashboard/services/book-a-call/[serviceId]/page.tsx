@@ -11,9 +11,10 @@ import { useRouter } from "next/navigation";
 import { addOption } from "@/app/reducers/serviceSlice";
 import axios from "axios";
 import { useAuth } from "@/app/_context/AuthContext";
+import toast from "react-hot-toast";
 const Page = ({ params }: { params: { serviceId: string } }) => {
-  const [hourVal, setHourVal] = useState("");
-  const [minuteVal, setMinuteVal] = useState("");
+  const [hourVal, setHourVal] = useState("00");
+  const [minuteVal, setMinuteVal] = useState("00");
   const [selectedDay, setSelectedDay] = useState<string>(
     `${new Date().getDate().toString()}${getOrdinal(new Date().getDate())}`
   );
@@ -159,13 +160,39 @@ const Page = ({ params }: { params: { serviceId: string } }) => {
           },
           body: JSON.stringify({
             serviceId: params.serviceId,
-            date: "2024-11-02",
-            time: "3PM",
+            date: `${
+              Number(selectedDay.replace(/(st|nd|rd|th)$/i, "")) < 10
+                ? "0" + Number(selectedDay.replace(/(st|nd|rd|th)$/i, ""))
+                : Number(selectedDay.replace(/(st|nd|rd|th)$/i, ""))
+            }-${
+              Number(selectedMonth) < 10 ? "0" + selectedMonth : selectedMonth
+            }-${selectedYear}`,
+            time: `${hourVal}:${minuteVal}${
+              Number(hourVal) >= 12 ? "PM" : "AM"
+            }`,
           }),
         }
       );
       const data = await res.json();
       console.log(data);
+      if (data.success) {
+        toast.success(data.message, {
+          style: {
+            borderRadius: "10px",
+            background: "#333",
+            color: "#fff",
+          },
+        });
+      } else {
+        toast.error(data.message, {
+          style: {
+            borderRadius: "10px",
+            background: "#333",
+            color: "#fff",
+          },
+        });
+      }
+      route.replace("/dashboard/services");
     } catch (error) {
       console.log(error);
     }
@@ -300,7 +327,13 @@ const Page = ({ params }: { params: { serviceId: string } }) => {
                 <input
                   type="number"
                   value={hourVal}
-                  onChange={(e) => setHourVal(e.target.value)}
+                  onChange={(e) => {
+                    const newValue = e.target.value;
+                    // Ensure the value is numeric and not more than 2 digits
+                    if (/^\d{0,2}$/.test(newValue)) {
+                      setHourVal(newValue);
+                    }
+                  }}
                   placeholder="00"
                   className="w-[3vw] text-center py-[--sy-10px] rounded-[5px] bg-[#484848] inline-block outline-none"
                 />
@@ -308,7 +341,13 @@ const Page = ({ params }: { params: { serviceId: string } }) => {
                 <input
                   type="number"
                   value={minuteVal}
-                  onChange={(e) => setMinuteVal(e.target.value)}
+                  onChange={(e) => {
+                    const newValue = e.target.value;
+                    // Ensure the value is numeric and not more than 2 digits
+                    if (/^\d{0,2}$/.test(newValue)) {
+                      setMinuteVal(newValue);
+                    }
+                  }}
                   placeholder="00"
                   className="w-[3vw] py-[--sy-10px] text-center rounded-[5px] bg-[#484848] inline-block outline-none"
                 />

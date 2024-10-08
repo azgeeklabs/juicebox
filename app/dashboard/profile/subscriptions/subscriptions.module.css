@@ -23,9 +23,6 @@
   user-select: none; /* Prevent text selection */
 }
 
-.services:active, .services:active * {
-  cursor: grabbing; /* Change cursor when dragging */
-}
 .services a {
   pointer-events: none;
 }

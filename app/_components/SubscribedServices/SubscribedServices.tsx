@@ -7,6 +7,7 @@ import CustomBtn from "../btn/CustomBtn";
 import classNames from "classnames";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/app/_context/AuthContext";
+import { toast } from "react-hot-toast";
 
 export default function SubscribedServices() {
   const router = useRouter();
@@ -141,6 +142,24 @@ export default function SubscribedServices() {
     e.currentTarget.scrollLeft = scrollLeft - walk;
   };
 
+  const [userData, setUserData] = useState<any>(null);
+  async function getMe() {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/get-me`,
+      {
+        headers: {
+          Authorization: `Bearer ${user?.token}`,
+        },
+      }
+    );
+    const data = await response.json();
+    console.log(data?.data);
+    setUserData(data?.data);
+  }
+
+
+
+
   async function getSubscriptions() {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/get-purchased-services`,
@@ -158,12 +177,13 @@ export default function SubscribedServices() {
 
   useEffect(() => {
     getSubscriptions();
+    getMe();
   }, []);
 
   return (
     <div
       className={
-        styles.subscribedServices + " flex justify-between items-center"
+        styles.subscribedServices + " flex justify-between items-center gap-x-2"
       }
     >
       {/* ===== Start Services Cards ===== */}
@@ -181,9 +201,9 @@ export default function SubscribedServices() {
           }}
         >
           <div className={classNames(styles.profilePic)}>{profilePic}</div>
-          <div className={classNames(styles.profileInfo)}>
-            <span className={classNames(styles.profileName)}>John Doe</span>
-            <span className={classNames(styles.profileBalance)}>400$</span>
+          <div className={classNames(styles.profileInfo)} onClick={()=>router.replace("/dashboard/profile")}>
+            <span className={classNames(styles.profileName)}>{userData?.firstName} {userData?.lastName}</span>
+            <span className={classNames(styles.profileBalance)}>${userData?.balance}</span>
           </div>
         </div>
 
@@ -200,9 +220,9 @@ export default function SubscribedServices() {
             {finished?.map((s: any, i: any) => {
               return (
                 <ServiceCard
-                  title={(s?.type as string).replace(/services/gi, "")}
+                  title={(s?.service?.type ? s.service.type.replace(/service/gi, "") : "")}
                   phase="Ideation Phase"
-                  timeleft={`${s?.estimatedDuration} Days Left`}
+                  timeleft={`${s?.service?.estimatedDuration} Days Left`}
                 />
               );
             })}

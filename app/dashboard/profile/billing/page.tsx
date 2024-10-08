@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import styles from "./billing.module.css";
@@ -10,6 +10,7 @@ const Billing = () => {
   const { user, logout } = useAuth();
   const [userData, setUserData] = useState<any>(null);
   const [data, setData] = useState<any>(null);
+  const [ongoingServices, setOngoingServices] = useState<any>([]);
   async function getMe() {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/get-me`,
@@ -21,7 +22,9 @@ const Billing = () => {
     );
     const data = await response.json();
     console.log(data);
-    if (data.message == "User recently changed his password. please login again..") {
+    if (
+      data.message == "User recently changed his password. please login again.."
+    ) {
       toast("Password recently changed. Please login again!", {
         style: {
           borderRadius: "10px",
@@ -35,7 +38,58 @@ const Billing = () => {
     setUserData(data?.data.linkedCards[data?.data.linkedCards.length - 1]);
     setData(data?.data);
   }
+
+  const [services, setServices] = useState<any>([]);
+
+  const addDaysAndFormat = (dateString: string, daysToAdd: any) => {
+    console.log(daysToAdd);
+
+    const date = new Date(dateString); // Convert the input string to a Date object
+    date.setDate(date.getDate() + daysToAdd); // Add the specified number of days
+
+    return new Intl.DateTimeFormat("en-GB", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    }).format(date);
+  };
+
+  async function getOngoingServices() {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/get-all-services-process`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${user?.token}`,
+        },
+      }
+    );
+    const data = await response.json();
+    console.log(data);
+    setOngoingServices(data.data);
+  }
+
   useEffect(() => {
+    getOngoingServices();
+  }, []);
+
+  async function getSubscriptions() {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/get-purchased-services`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${user?.token}`,
+        },
+      }
+    );
+    const data = await response.json();
+    console.log(data);
+    setServices(data.data);
+  }
+
+  useEffect(() => {
+    getSubscriptions();
     getMe();
   }, []);
   return (
@@ -118,10 +172,23 @@ const Billing = () => {
             </div>
             <div className="text-black flex justify-between items-center w-full absolute bottom-[15%] px-[--23px]">
               <div className=" flex flex-col gap-[--sy-4px] font-medium">
-                <span className=" font-medium">{data?.firstName} {data?.lastName}</span>
-                <span className=" font-medium">{`XXXX XXXX XXXX ${userData?.last4}`}</span>
+                <span className=" font-medium">
+                  {data?.firstName
+                    ? `${data?.firstName} ${data?.lastName}`
+                    : ""}
+                </span>
+                <span className=" font-medium">
+                  {userData?.last4
+                    ? `XXXX XXXX XXXX ${userData?.last4}`
+                    : "XXXX XXXX XXXX XXXX"}
+                </span>
               </div>
-             <span className=" font-medium">{userData?.expDate.split("/")[0] > 9 ? userData?.expDate.split("/")[0] : `0${userData?.expDate.split("/")[0]}`}/{userData?.expDate.split("/")[1].slice(2,)}</span>
+              <span className=" font-medium">
+                {userData?.expDate ? `${userData?.expDate.split("/")[0] > 9
+                  ? userData?.expDate.split("/")[0]
+                  : `0${userData?.expDate.split("/")[0]}`}
+                /${userData?.expDate.split("/")[1].slice(2)}` : ""}
+              </span>
             </div>
 
             <Link
@@ -140,13 +207,25 @@ const Billing = () => {
               <div className=" flex justify-center w-1/3">
                 <div className=" flex flex-col gap-[--sy-20px] w-1/3">
                   <h4 className=" font-semibold">Monthly Payment</h4>
-                  <span className="text-[--32px] font-semibold">$200</span>
+                  <span className="text-[--32px] font-semibold">
+                    $
+                    {services.reduce(
+                      (acc: any, curr: any) => acc + curr.service.totalPrice,
+                      0
+                    )}
+                  </span>
                 </div>
               </div>
               <div className=" flex justify-end w-1/3">
                 <div className=" flex flex-col gap-[--sy-20px] ">
                   <h4 className=" font-semibold">Total Amount Paid</h4>
-                  <span className="text-[--32px] font-semibold">$600</span>
+                  <span className="text-[--32px] font-semibold">
+                    $
+                    {services.reduce(
+                      (acc: any, curr: any) => acc + curr.service.totalPrice,
+                      0
+                    )}
+                  </span>
                 </div>
               </div>
             </div>
@@ -154,12 +233,16 @@ const Billing = () => {
             <div className=" flex justify-between items-center w-full px-[--40px]">
               <div className=" flex flex-col gap-[--sy-20px] w-1/3">
                 <h4 className=" font-semibold">Total Orders</h4>
-                <span className="text-[--32px] font-semibold">26</span>
+                <span className="text-[--32px] font-semibold">
+                  {services.length}
+                </span>
               </div>
               <div className=" flex justify-center w-1/3">
                 <div className=" flex flex-col gap-[--sy-20px] w-1/3">
                   <h4 className=" font-semibold">Total Ongoing Services</h4>
-                  <span className="text-[--32px] font-semibold">25</span>
+                  <span className="text-[--32px] font-semibold">
+                    {ongoingServices.length}
+                  </span>
                 </div>
               </div>
               <div className=" flex justify-end w-1/3">
@@ -194,21 +277,28 @@ const Billing = () => {
           <li className=" w-[20%] text-center">PDF</li>
         </ul>
         <div className={`${styles.tableBody} overflow-y-scroll h-[37vh]`}>
-          {Array(6)
-            .fill(0)
-            .map((e) => (
-              <ul className=" w-full flex justify-between items-center py-[--sy-16px] border-b-[1px] border-[#3f3f3f]">
-                <li className=" w-[20%] text-center">Invoice 0001</li>
-                <li className=" w-[20%] text-center">07 January 2025</li>
-                <li className=" w-[20%] text-center">SEO</li>
-                <li className=" w-[20%] text-center">$200</li>
-                <li className=" w-[20%] text-center">
-                  <button className=" px-[--24px] py-[--sy-8px] rounded-[--26px] text-black bg-[#F8F24B] font-semibold">
-                    Download
-                  </button>
-                </li>
-              </ul>
-            ))}
+          {services.map((e: any, i: any) => (
+            <ul
+              key={i}
+              className=" w-full flex justify-between items-center py-[--sy-16px] border-b-[1px] border-[#3f3f3f]"
+            >
+              <li className=" w-[20%] text-center">{e?.payment._id}</li>
+              <li className=" w-[20%] text-center">
+                {addDaysAndFormat(e?.payment?.createdAt, 0)}
+              </li>
+              <li className=" w-[20%] text-center">
+                {e?.service.type.replace(/service/gi, "")}
+              </li>
+              <li className=" w-[20%] text-center">
+                ${e?.service?.totalPrice}
+              </li>
+              <li className=" w-[20%] text-center">
+                <button className=" px-[--24px] py-[--sy-8px] rounded-[--26px] text-black bg-[#F8F24B] font-semibold">
+                  Download
+                </button>
+              </li>
+            </ul>
+          ))}
         </div>
       </div>
     </div>
