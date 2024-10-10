@@ -35,11 +35,11 @@ const Page = () => {
       if (document.querySelector("input[type='radio']:checked")) {
         
           if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value === "Start now") {
-            router.replace(`/dashboard/checkout/${serviceData.data.data._id}`);
+            router.replace(`/dashboard/checkout/${serviceData?.data.data._id}`);
           }
       // router.push("/dashboard/services");
       if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value !== "Start now") {
-        router.replace(`/dashboard/services/book-a-call/${serviceData.data.data._id}`);
+        router.replace(`/dashboard/services/book-a-call/${serviceData?.data.data._id}`);
       }
 
       } else if (document.querySelector("input[type='checkbox']:checked")) {

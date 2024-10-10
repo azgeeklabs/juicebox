@@ -36,7 +36,7 @@ const Page = () => {
           ) as HTMLInputElement
         ).value === "Start now"
       ) {
-        route.replace(`/dashboard/checkout/${serviceData.data.data._id}`);
+        route.replace(`/dashboard/checkout/${serviceData?.data.data._id}`);
       }
       // router.push("/dashboard/services");
       if (
@@ -46,7 +46,7 @@ const Page = () => {
           ) as HTMLInputElement
         ).value !== "Start now"
       ) {
-        route.replace(`/dashboard/services/book-a-call/${serviceData.data.data._id}`);
+        route.replace(`/dashboard/services/book-a-call/${serviceData?.data.data._id}`);
       }
     } else if (document.querySelector("input[type='checkbox']:checked")) {
       route.push("/dashboard/services");

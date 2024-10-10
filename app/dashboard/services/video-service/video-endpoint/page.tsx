@@ -151,8 +151,8 @@ const Page = () => {
               {/* Main heading with margin bottom and underlined text */}
               <h2>
                 Based on everything you told us, <u>the estimated cost</u> of
-                this <hr className="border-0" /> video is <span>${serviceData.data.data.totalPrice}</span> and
-                would take around <span>{serviceData.data.data.estimatedDuration}</span> Days to finish.
+                this <hr className="border-0" /> video is <span>${serviceData?.data.data.totalPrice}</span> and
+                would take around <span>{serviceData?.data.data.estimatedDuration}</span> Days to finish.
               </h2>
             </div>
 

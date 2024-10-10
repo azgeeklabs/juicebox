@@ -48,7 +48,7 @@ const Page = () => {
             ) as HTMLInputElement
           ).value === "Start Now"
         ) {
-          router.replace(`/dashboard/checkout/${serviceData.data.data._id}`);
+          router.replace(`/dashboard/checkout/${serviceData?.data.data._id}`);
         }
         // router.push("/dashboard/services");
         if (
@@ -59,7 +59,7 @@ const Page = () => {
           ).value !== "Start Now"
         ) {
           router.replace(
-            `/dashboard/services/book-a-call/${serviceData.data.data._id}`
+            `/dashboard/services/book-a-call/${serviceData?.data.data._id}`
           );
         }
       } else if (document.querySelector("input[type='checkbox']:checked")) {
@@ -131,8 +131,8 @@ const Page = () => {
               {/* Main heading with margin bottom and underlined text */}
               <h2>
                 Based on your selections, the estimated cost for your project
-                <hr className="border-0" /> is <span>${serviceData.data.data.totalPrice}</span> and it will
-                take approximately <span>{serviceData.data.data.estimatedDuration}</span> days to complete.
+                <hr className="border-0" /> is <span>${serviceData?.data.data.totalPrice}</span> and it will
+                take approximately <span>{serviceData?.data.data.estimatedDuration}</span> days to complete.
               </h2>
             </div>
 

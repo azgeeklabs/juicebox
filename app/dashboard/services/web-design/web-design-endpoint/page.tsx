@@ -61,7 +61,7 @@ const Page = () => {
           ) as HTMLInputElement
         ).value === "Let's make this website!"
       ) {
-        route.replace(`/dashboard/checkout/${serviceData.data.data._id}`);
+        route.replace(`/dashboard/checkout/${serviceData?.data.data._id}`);
       }
       // route.push("/dashboard/services");
       if (
@@ -72,7 +72,7 @@ const Page = () => {
         ).value !== "Let's make this website!"
       ) {
         route.replace(
-          `/dashboard/services/book-a-call/${serviceData.data.data._id}`
+          `/dashboard/services/book-a-call/${serviceData?.data.data._id}`
         );
       }
     } else if (document.querySelector("input[type='checkbox']:checked")) {
@@ -136,8 +136,8 @@ const Page = () => {
             <div className="text-center mx-auto mb-[--sy-40px]">
               {/* Main heading with margin bottom and underlined text */}
               <h2>
-                The cost for this website will be around <span>${serviceData.data.data.totalPrice}</span> and
-                will <span>{serviceData.data.data.estimatedDuration}</span> <br /> Months to be fully depolyed
+                The cost for this website will be around <span>${serviceData?.data.data.totalPrice}</span> and
+                will <span>{serviceData?.data.data.estimatedDuration}</span> <br /> Months to be fully depolyed
               </h2>
             </div>
 

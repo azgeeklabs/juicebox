@@ -8,6 +8,8 @@ import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import * as Yup from "yup";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
+import { AxiosError } from "axios";
 
 interface FormValues {
   email: string;
@@ -43,6 +45,11 @@ const Page = () => {
       await login(values);
     } catch (error) {
       console.error(error);
+      if (error instanceof AxiosError) {
+        toast.error(error.response?.data.errors[0]?.msg || 'An error occurred');
+      } else {
+        toast.error('An unexpected error occurred');
+      }
     } finally {
       setSubmitting(false);
     }

@@ -10,6 +10,8 @@ import { PhoneInput } from "react-international-phone";
 import { parsePhoneNumberFromString } from "libphonenumber-js";
 import "react-international-phone/style.css";
 import styles from "./signUp.module.css";
+import { toast } from "react-hot-toast";
+import { AxiosError } from "axios";
 
 type FormValues = {
   firstName: string;
@@ -50,6 +52,11 @@ const Page = () => {
       });
     } catch (error) {
       console.error(error);
+      if (error instanceof AxiosError) {
+        toast.error(error.response?.data.errors[0]?.msg || 'An error occurred');
+      } else {
+        toast.error('An unexpected error occurred');
+      }
     } finally {
       setSubmitting(false);
     }
