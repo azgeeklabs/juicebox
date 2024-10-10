@@ -33,7 +33,6 @@ const Page = () => {
   const initialValues: FormValues = {
     email: "",
     password: "",
-    
   };
 
   const onSubmit = async (
@@ -45,10 +44,19 @@ const Page = () => {
       await login(values);
     } catch (error) {
       console.error(error);
+      if ((error as any)?.response?.data.message) {
+        toast.error(
+          (error as any)?.response?.data.message || "An error occurred"
+        );
+      }
+
       if (error instanceof AxiosError) {
-        toast.error(error.response?.data.errors[0]?.msg || 'An error occurred');
+        toast.error(
+          error?.response?.data.errors[0]?.msg || "An error occurred"
+        );
+        toast.error(error?.response?.data.message || "An error occurred");
       } else {
-        toast.error('An unexpected error occurred');
+        toast.error("An unexpected error occurred");
       }
     } finally {
       setSubmitting(false);
@@ -112,8 +120,8 @@ const Page = () => {
       if (data?.status == "Success") {
         setResetCode("");
         setResetCodeMsg("");
-        setNewPasswordModal(true)
-        setResetModal(false)
+        setNewPasswordModal(true);
+        setResetModal(false);
       } else {
         setResetCode("");
         setResetCodeMsg(data?.message);
@@ -144,14 +152,14 @@ const Page = () => {
 
       // Check if the response contains a specific error message
       if (data?.status == "success") {
-        setResetPassMsg("")
-        setNewPassword("")
-        setResetCodeEmail("")
-        setNewPasswordModal(false)
+        setResetPassMsg("");
+        setNewPassword("");
+        setResetCodeEmail("");
+        setNewPasswordModal(false);
       } else if (data?.status == "fail") {
-        setResetPassMsg(data?.message)
-        setResetCodeEmail("")
-        setNewPassword("")
+        setResetPassMsg(data?.message);
+        setResetCodeEmail("");
+        setNewPassword("");
       }
     } catch (error) {
       console.error("Error:", error);
