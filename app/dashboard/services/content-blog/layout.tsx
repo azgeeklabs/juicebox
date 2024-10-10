@@ -12,7 +12,6 @@ const layout = ({ children }: { children: React.ReactNode }) => {
     "",
     "create-website",
     "word-count",
-    "blog-write-style",
     "reference-sources",
     "estimated-cost",
   ];
@@ -78,17 +77,14 @@ const layout = ({ children }: { children: React.ReactNode }) => {
     const pathname = window.location.pathname;
     const page = pathname.split("/")[4];
     const index = path.findIndex((p) => p === page);
-    console.log(route);
-    console.log(index);
     
     const selectedOption = typeof window !== "undefined" && localStorage.getItem("selectedOption");
     const parsed = selectedOption ? JSON.parse(selectedOption) : [];
-    console.log(parsed);
-    console.log(parsed.length);
     console.log(Boolean(parsed.length == index));
-    console.log(parsed.length);
 
     if (Boolean(parsed.length > index)) {
+      console.log("lllllllllllllllllllllllleeeeeeeeeeeeee");
+
       let selectedOption = localStorage.getItem("selectedOption");
       let parsed = selectedOption ? JSON.parse(selectedOption) : [];
       parsed = parsed.filter((r: string, idx: number) => idx < index);
@@ -103,6 +99,10 @@ const layout = ({ children }: { children: React.ReactNode }) => {
         }`
       );
     } else if (Boolean(parsed.length < index)) {
+      console.log("sadwqewqecxzdwqe");
+      console.log(path);
+      
+      
       let selectedOption = localStorage.getItem("selectedOption");
       let parsed = selectedOption ? JSON.parse(selectedOption) : [];
       parsed = parsed.filter((r: string, idx: number) => idx < index);

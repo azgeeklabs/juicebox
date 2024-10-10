@@ -251,10 +251,10 @@ export default function Page() {
       <div className="w-2/3 flex flex-col gap-[1vw]">
         {/* ===== Start Application Design Card ===== */}
         <div className="slider-container">
-          {finished.length > 0 && (
+          {finished?.length > 0 && (
             <Slider {...settings}>
-              {finished.length > 0 ? (
-                finished.map((f: any, i: any) => {
+              {finished?.length > 0 ? (
+                finished?.map((f: any, i: any) => {
                   return (
                     <div>
                       <div className={styles.card}>
@@ -344,8 +344,8 @@ export default function Page() {
                 styles.on_going_projects_card_body
               )}
             >
-              {finished.length > 0 ? (
-                finished.map((f: any, i: any) => {
+              {finished?.length > 0 ? (
+                finished?.map((f: any, i: any) => {
                   const options = f?.processes[0]?.options;
                   return (
                     <ServiceCard
@@ -494,8 +494,8 @@ export default function Page() {
                 styles.this_week_deliverables_card_body
               )}
             >
-              {finished.length > 0 ? (
-                finished.map((f: any, i: any) => {
+              {finished?.length > 0 ? (
+                finished?.map((f: any, i: any) => {
                   if (f?.service?.estimatedDuration <= 7) {
                     return (
                       <CongratulationMessage key={i} icon={svg} data={f} />

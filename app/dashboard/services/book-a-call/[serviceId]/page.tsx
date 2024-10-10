@@ -392,16 +392,15 @@ const Page = ({ params }: { params: { serviceId: string } }) => {
           </div>
         </div>
         {/* Message for unavailable time */}
-        <div className="w-[65%] ml-auto">
+        {/* <div className="w-[65%] ml-auto">
           <div className="relative">
             <div className="bg-[#353535] rounded-[5px] py-[--sy-10px] px-[--23px] ml-[0.2vw] relative z-[10] text-[--18px] font-medium">
               Unfortunately, we’re unavailable at the time you selected. Could
               you please choose another time?
             </div>
-            {/* Highlight overlay */}
             <div className="absolute w-full h-full bg-[--highlight-yellow] rounded-[7px] top-0 z-[0] left-0"></div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
