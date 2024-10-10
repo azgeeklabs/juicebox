@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./checkout.module.css";
 import CustomCheckBox from "@/app/_components/customCheckBox/CustomCheckBox";
 import { useAuth } from "@/app/_context/AuthContext";
@@ -14,12 +14,16 @@ import {
   CardCvcElement,
 } from "@stripe/react-stripe-js";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
+import { globalContext } from "@/app/_context/GlobalContext";
 const stripePromise = loadStripe(
   "pk_test_51PuUZYRswDdUj3se7a6BDKPC5S12F0JUlTtn0ZT1DTf521dAkBSPSSKvg7oobLVKT9gTfCELUioNjPlS3yRHmZZ400dmJCi20w"
 );
 
 const Checkout = ({ params }: { params: { checkout: string } }) => {
   const [paymentError, setPaymentError] = useState<string | null>(null);
+  const route = useRouter()
+  const {setIsCheckout, isCheckout} = useContext(globalContext)
 
   const [checkoutData, setCheckoutData] = useState<any>({});
   const { checkout } = params;
@@ -112,6 +116,8 @@ const Checkout = ({ params }: { params: { checkout: string } }) => {
               color: "#fff",
             },
           });
+          setIsCheckout(!isCheckout)
+          route.replace("/dashboard")
         } else {
           console.log("[error]", message);
           toast.error(message || "An error occurred", {

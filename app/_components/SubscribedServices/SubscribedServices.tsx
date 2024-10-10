@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import styles from "./SubscribedServices.module.css";
 import ServiceCard from "../serviceCard/ServiceCard";
 import NotificationWindow from "./NotificationWindow";
@@ -8,6 +8,7 @@ import classNames from "classnames";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/app/_context/AuthContext";
 import { toast } from "react-hot-toast";
+import { globalContext } from "@/app/_context/GlobalContext";
 
 export default function SubscribedServices() {
   const router = useRouter();
@@ -15,6 +16,7 @@ export default function SubscribedServices() {
   const [isDown, setIsDown] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const {isCheckout} = useContext(globalContext)
 
   const profilePic = (
     <svg
@@ -179,6 +181,12 @@ export default function SubscribedServices() {
     getSubscriptions();
     getMe();
   }, []);
+
+  useEffect(()=>{
+    console.log(isCheckout);
+    
+      getSubscriptions();
+  },[isCheckout])
 
   return (
     <div

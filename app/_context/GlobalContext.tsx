@@ -6,6 +6,8 @@ const initialContextState = {
   setOpen: (open: boolean) => {},
   step: 1,
   setStep: (step: number) => {},
+  isCheckout: false,
+  setIsCheckout: (isCheckout: boolean) => {},
 };
 
 // 1- create context, export it
@@ -23,12 +25,16 @@ export default function GlobalContextProvider({
   // StepProgress state
   const [step, setStep] = useState<number>(0);
 
+  const [isCheckout, setIsCheckout] = useState<boolean>(false)
+
   // Create a context value object
   const contextValue = {
     open,
     setOpen,
     step,
     setStep,
+    isCheckout,
+    setIsCheckout,
   };
 
   return (

@@ -139,7 +139,7 @@
 .custom-calender
   .MuiPickersSlideTransition-root.MuiDayCalendar-slideTransition {
   overflow-y: hidden;
-  height: clamp(100px, calc(24vh + 0.1rem), 6000px);
+  min-height: clamp(100px, calc(17vh + 0.1rem), 6000px);
 }
 
 .custom-calender
@@ -173,6 +173,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.MuiPickersDay-root.MuiPickersDay-dayWithMargin.MuiPickersDay-hiddenDaySpacingFiller.MuiPickersDay-hiddenDaySpacingFiller.css-1ayjnp4-MuiPickersDay-root{
+  width: clamp(16px, calc(1.3vw + 0.1rem), 800px);
+  height: clamp(16px, calc(1.3vw + 0.1rem), 800px);
 }
 
 /* ===== End Calender ===== */
