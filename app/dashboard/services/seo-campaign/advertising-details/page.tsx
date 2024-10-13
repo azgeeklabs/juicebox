@@ -91,7 +91,7 @@ const Page = () => {
         </div>
         <div className="mx-auto w-fit">
           <h3 className=" mb-[--sy-16px]">
-            Product Link <span>(if exists)</span>
+            Product Link   <span>(if exists)</span>
           </h3>
           <div className=" flex gap-[1vw] items-start mb-[1.5vw]">
             <input

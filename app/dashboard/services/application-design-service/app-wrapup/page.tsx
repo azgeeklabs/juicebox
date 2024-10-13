@@ -37,11 +37,11 @@ const Page = () => {
       const itemsArray = storedItems ? JSON.parse(storedItems) : [];
       if (document.querySelector("input[type='radio']:checked")) {
         
-          if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value === "Let's make this video!") {
+          if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value === "Let's build this app!") {
             route.replace(`/dashboard/checkout/${serviceData?.data.data._id}`);
           }
       // router.push("/dashboard/services");
-      if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value !== "Let's make this video!") {
+      if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value !== "Let's build this app!") {
         route.replace(`/dashboard/services/book-a-call/${serviceData?.data.data._id}`);
       }
 
@@ -128,10 +128,10 @@ const Page = () => {
               btnSize="xl"
               inputType="radio"
               name="styleAnswer"
-              value={"Let's make this video!"}
+              value={"Let's build this app!"}
               onClick={()=> document.querySelectorAll("input[type='checkbox']:checked").forEach((e,i)=>(e as HTMLInputElement).checked = false)}
             >
-              Let's make this video!
+              Let's build this app!
             </CustomCheckBoxText>
           </div>
 

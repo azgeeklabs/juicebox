@@ -143,7 +143,7 @@ const Page = () => {
                 Do you already have a brand identity, or would you like <br /> us to
                 create one for you?
               </h2>
-              <p>
+              <p className="text-[#FFFFFFCC]">
                 Our talented designers can create a brand identity for you in <br /> no
                 time, or you can provide your own!
               </p>
@@ -176,10 +176,10 @@ const Page = () => {
                 btnSize="xl"
                 inputType="radio"
                 name="styleAnswer"
-                value={"Create one for me!"}
+                value={"Make one for me!"}
 
               >
-                Create one for me!
+                Make one for me!
               </CustomCheckBoxText>
             </div>
 

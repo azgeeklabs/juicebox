@@ -286,8 +286,8 @@ console.log(all);
           <h1 className="text-[--30px] font-bold">
             What type of project are you working on?
           </h1>
-          <p className="text-[--18px] w-[60%]">
-            Please select the option that best describes your project type. This
+          <p className="text-[--18px] text-center text-[#FFFFFFCC]">
+            Please select the option that best describes your project type. <br /> This
             helps us understand the specific requirements for your project.
           </p>
         </div>

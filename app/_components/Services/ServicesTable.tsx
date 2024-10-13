@@ -39,7 +39,7 @@ export default function ServicesTable({
     {
       service: "SEO Campaign",
       information:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Struggling to climb the search ranks?",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
       path: "/dashboard/services/seo-campaign",
@@ -47,7 +47,7 @@ export default function ServicesTable({
     {
       service: "SEO Link Building",
       information:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Need more authority and traffic?",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
       path: "/dashboard/services/seo-link-building",
@@ -55,15 +55,15 @@ export default function ServicesTable({
     {
       service: "PR Monetization",
       information:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Want to turn PR into profit?",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
       path: "/dashboard/services/pr-monetization",
     },
     {
-      service: "Web Design",
+      service: "Website Development",
       information:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Is your website outdated or slow?",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
       path: "/dashboard/services/web-design",
@@ -71,7 +71,7 @@ export default function ServicesTable({
     {
       service: "Influencer Marketing",
       information:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Want to reach a wider audience?",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
       path: "/dashboard/services/influencer-marketing",
@@ -79,7 +79,7 @@ export default function ServicesTable({
     {
       service: "Email Marketing",
       information:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Need better engagement from your emails?",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
       path: "/dashboard/services/email-marketing",
@@ -87,7 +87,7 @@ export default function ServicesTable({
     {
       service: "ORM Account Recovery",
       information:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Locked out of your account?",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
       path: "/dashboard/services/orm-account-recovery",
@@ -95,7 +95,7 @@ export default function ServicesTable({
     {
       service: "ORM Negative Press Removal",
       information:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Are negative reviews hurting your business?",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
       path: "/dashboard/services/orm-negative-press-removal",
@@ -103,7 +103,7 @@ export default function ServicesTable({
     {
       service: "ORM Service",
       information:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Struggling to get positive reviews?",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
       path: "/dashboard/services/orm-service",
@@ -111,7 +111,7 @@ export default function ServicesTable({
     {
       service: "Press Release",
       information:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Don’t have time to write press releases? ",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
       path: "/dashboard/services/press-release",
@@ -119,15 +119,15 @@ export default function ServicesTable({
     {
       service: "Social Media",
       information:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Too busy to manage social media?",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
       path: "/dashboard/services/social-media",
     },
     {
-      service: "Content Blog",
+      service: "Content Blog Post",
       information:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Struggling to keep your blog updated?",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
       path: "/dashboard/services/content-blog",
@@ -135,7 +135,7 @@ export default function ServicesTable({
     {
       service: "PR Creation Wikipedia",
       information:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Want your brand on Wikipedia?",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
       path: "/dashboard/services/pr-creation",
@@ -143,7 +143,7 @@ export default function ServicesTable({
     {
       service: "Content Press Release",
       information:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Need a press release that stands out?",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
       path: "/dashboard/services/content-press-release",
@@ -151,7 +151,7 @@ export default function ServicesTable({
     {
       service: "Content Scripts",
       information:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Need a script that sells? ",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
       path: "/dashboard/services/content-scripts",
@@ -159,15 +159,15 @@ export default function ServicesTable({
     {
       service: "PR Placement",
       information:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Need help getting media coverage?",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
       path: "/dashboard/services/pr-placement",
     },
     {
-      service: "Content Website",
+      service: "Content Website Copy",
       information:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Is your website copy falling flat?",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
       path: "/dashboard/services/content-website",
@@ -175,7 +175,7 @@ export default function ServicesTable({
     {
       service: "Paid Ads",
       information:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Need help getting the ROI you want from ads?",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
       path: "/dashboard/services/paid-ads-flow",

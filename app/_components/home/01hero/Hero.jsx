@@ -305,11 +305,11 @@ export default function Hero() {
           </defs>
         </svg>
         <div className=" w-[40%]">
-          <h2 className="[font-family:Alfa_Slab_One] text-[#F8F24B] text-[--33px] mb-[--sy-30px]">
-            Easiest <br /> Process
+          <h2 className="[font-family:Alfa_Slab_One] text-[#F8F24B] text-[--33px] mb-[--sy-30px] uppercase">
+            Thirsty?
           </h2>
           <button className=" text-black bg-[#F8F24B] text-[--11px] font-medium px-[--13px] pt-[--sy-6px] pb-[--sy-6px] flex gap-[--6px] items-center rounded-[--26px] transition-all duration-300">
-            Book a call
+            Take a sip
             <svg
               className="transition-all duration-300"
               width="17"
@@ -353,37 +353,40 @@ export default function Hero() {
         <div className=" flex flex-col gap-[--sy-20px]">
           <div className=" flex flex-col gap-[--sy-12px]">
             <h4 className=" text-[#F8F24B] text-[--17px] [font-family:Alfa_Slab_One]">
-              Sign Up
+              Pick a service!
             </h4>
             <p className=" font-medium text-[--12px]">
-              Sign up and check what we all about, and feel free to schedule a
-              call if you have any questions.
+              Choose from our wide range of digital services. jump in and start
+              your projects.
+            </p>
+          </div>
+
+          <div className=" flex flex-col gap-[--sy-12px]">
+            <h4 className=" text-[#F8F24B] text-[--17px] [font-family:Alfa_Slab_One]">
+              1 minute = 1 project
+            </h4>
+            <p className=" font-medium text-[--12px]">
+              60 seconds questionnaire to optimize your project and provide you
+              with all the information you need to better assist your decision
+              making process!
             </p>
           </div>
           <div className=" flex flex-col gap-[--sy-12px]">
             <h4 className=" text-[#F8F24B] text-[--17px] [font-family:Alfa_Slab_One]">
-              Pick a service
+              Sign up, it's free!
             </h4>
             <p className=" font-medium text-[--12px]">
-              Pile on as many requests as you want, we're ready to jump in and
-              start the process.
+              Join juice Box's world for free and get started whenever you
+              please!
             </p>
           </div>
           <div className=" flex flex-col gap-[--sy-12px]">
             <h4 className=" text-[#F8F24B] text-[--17px] [font-family:Alfa_Slab_One]">
-              1 min questionnaire
+              Take it or leave it!
             </h4>
             <p className=" font-medium text-[--12px]">
-              Easiest way to understand your project in under 60 secs!
-            </p>
-          </div>
-          <div className=" flex flex-col gap-[--sy-12px]">
-            <h4 className=" text-[#F8F24B] text-[--17px] [font-family:Alfa_Slab_One]">
-              Check it out
-            </h4>
-            <p className=" font-medium text-[--12px]">
-              Review as you move along, we'll keep things rolling with the next
-              tasks to make sure you get the most out of your subscription
+              Review your project in detail as you go. Want to make changes? No
+              problem, no commitment!
             </p>
           </div>
           <div className=" flex flex-col gap-[--sy-12px]">
@@ -391,8 +394,8 @@ export default function Hero() {
               What’s next?
             </h4>
             <p className=" font-medium text-[--12px]">
-              We quickly move on to the next task on your list, ensuring a
-              smooth and efficient workflow.
+              You don't have to wait to start a new project, hop on to your next
+              project seamlessly as we ensure reliable workflow.
             </p>
           </div>
         </div>
@@ -426,8 +429,11 @@ export default function Hero() {
         </p>
         <div className=" flex flex-col gap-[--sy-22px]">
           <div className=" relative flex justify-between items-center px-[--14px] py-[--sy-6px] service transition-all duration-200 z-[1]">
-            <span className="text-[--17px] relative z-[1] transition-all duration-200">
-              Web Design
+            <span
+              className="text-[--17px] relative z-[1] transition-all duration-200"
+              onClick={() => router.push("/dashboard/services/web-design")}
+            >
+              Website Development
             </span>
             <svg
               className="z-[1] relative transition-all duration-200"
@@ -472,8 +478,11 @@ export default function Hero() {
             <div className="bg-[#f8f24b] h-full w-[1%] absolute left-0 top-0 layer z-[0] transition-all duration-300"></div>
           </div>
           <div className=" relative flex justify-between items-center px-[--14px] py-[--sy-6px] service transition-all duration-200 z-[1]">
-            <span className="text-[--17px] relative z-[1] transition-all duration-200">
-              Web Design
+            <span
+              className="text-[--17px] relative z-[1] transition-all duration-200"
+              onClick={() => router.push("/dashboard/services/pr-placement")}
+            >
+              PR Placement
             </span>
             <svg
               className="z-[1] relative transition-all duration-200"
@@ -518,8 +527,11 @@ export default function Hero() {
             <div className="bg-[#f8f24b] h-full w-[1%] absolute left-0 top-0 layer z-[0] transition-all duration-300"></div>
           </div>
           <div className=" relative flex justify-between items-center px-[--14px] py-[--sy-6px] service transition-all duration-200 z-[1]">
-            <span className="text-[--17px] relative z-[1] transition-all duration-200">
-              Web Design
+            <span
+              className="text-[--17px] relative z-[1] transition-all duration-200"
+              onClick={() => router.push("/dashboard/services/content-scripts")}
+            >
+              Content Scripts
             </span>
             <svg
               className="z-[1] relative transition-all duration-200"
@@ -631,9 +643,8 @@ export default function Hero() {
           </span>
         </h2>
         <p className=" font-medium mb-[--sy-25px] text-[--17px] leading-[--sy-20px]">
-          Discover our all-encompassing SaaS solution offering a <br /> wide
-          range of digital services tailored for agencies. <br /> If you can
-          imagine it, we’ve got it covered!
+          Who says you can’t have it ALL? Get ALL of our services for one price,
+          no overhead!
         </p>
         <div className=" flex gap-[--sy-22px]">
           <div className=" relative flex flex-col gap-[--sy-16px] px-[--13px] py-[--sy-20px] unlimitedBox overflow-hidden hover:text-black transition-all duration-200">
@@ -813,10 +824,10 @@ export default function Hero() {
       </div>
       <div className=" col-span-3 w-full border-[3px] group hover:border-[#f8f24b] relative border-[#1d1d1d] transition-all duration-200 pt-[--sy-35px] pb-[--sy-40px] -translate-y-12 h-fit pl-[--42px] pr-[--45px] rounded-[--35px]">
         <p className=" w-[60%] ml-auto font-semibold text-[--14px] mb-[--sy-40px] leading-[--sy-17px]">
-          Discover our all-encompassing SaaS solution offering a wide range{" "}
-          <br /> of digital services tailored for agencies. If you can imagine
-          it, we’ve <br />
-          got it covered!
+          Running an agency is tough—juggling client demands, managing projects,
+          and keeping up with customer support can be overwhelming. With our
+          White Label backend services, we handle your customer support, project
+          management, and technical tasks, all under your brand.
         </p>
         <div className=" grid grid-cols-7 place-content-between ">
           <div className=" col-span-1 text-[--24px] [font-family:Alfa_Slab_One] text-nowrap -rotate-90 -translate-y-[27%] translate-x-[--30px] float-start justify-center items-center">

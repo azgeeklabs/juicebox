@@ -32,19 +32,19 @@ const Page = () => {
     },
     {
       img: img2,
-      title: "Facebook reel",
-    },
-    {
-      img: img3,
       title: "Instagram reel",
     },
     {
-      img: img4,
+      img: img3,
       title: "Instagram Post",
     },
     {
-      img: img5,
+      img: img4,
       title: "Facebook Post",
+    },
+    {
+      img: img5,
+      title: "Facebook reel",
     },
     {
       img: img6,

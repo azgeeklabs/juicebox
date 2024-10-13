@@ -138,7 +138,7 @@ const Page = () => {
             </h4>
           </div>
           {/* Container for buttons with flexbox layout, width fit, margin auto, and gap between buttons */}
-          <div className={`${styles.btns} flex w-fit mx-auto gap-[--22px]`}>
+          <div className={`${styles.btns} flex w-fit mx-auto gap-[--22px] mb-[--sy-71px]`}>
             {/* CustomCheckBoxText component for selecting options */}
             <CustomCheckBoxText
               onClick={() => setHaveScript(true)}
@@ -161,14 +161,12 @@ const Page = () => {
               btnSize="xl"
               inputType="radio"
               name="styleAnswer"
-              value={"Make one for me!"}
+              value={"Make one for me"}
             >
-              Make one for me!
+              Make one for me
             </CustomCheckBoxText>
           </div>
         </div>
-        {/* Divider */}
-        <hr className={`${styles.divider}`} />
 
         <div
           className={`mx-auto w-full ${
@@ -177,7 +175,7 @@ const Page = () => {
         >
           {/* Product Link field with optional span */}
           <h3 className="mb-[--sy-14px] font-semibold text-[--20px]">
-            Script URL
+          Website URL
           </h3>
           <div className="flex gap-[1vw] items-start mb-[--sy-24px]">
             {/* Product Link input field */}

@@ -159,9 +159,9 @@ const Page = () => {
                 btnSize="xl"
                 inputType="radio"
                 name="articleSelectionAnswer"
-                value={"I’ve got my own article"}
+                value={"I’ve got my own"}
               >
-                I’ve got my own article
+                I’ve got my own
               </CustomCheckBoxText>
               <CustomCheckBoxText
                 onClick={() => {setHaveArticle(false);
@@ -174,9 +174,9 @@ const Page = () => {
                 btnSize="xl"
                 inputType="radio"
                 name="articleSelectionAnswer"
-                value={"Make one for me!"}
+                value={"Make one for me"}
               >
-                Make one for me!
+                Make one for me
               </CustomCheckBoxText>
             </div>
             <div

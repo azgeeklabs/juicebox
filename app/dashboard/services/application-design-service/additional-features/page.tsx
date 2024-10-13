@@ -552,7 +552,7 @@ function Page() {
           <h1 className="text-[--32px] font-bold">
             Do you have any additional features in mind?
           </h1>
-          <p className="text-[--18px]">
+          <p className="text-[--18px] text-[#FFFFFFCC]">
             Here are some common features that would go well with your project!
           </p>
         </div>
@@ -597,7 +597,7 @@ function Page() {
             <textarea
               onChange={(e) => setInputVal(e.target.value)}
               className="w-full p-[var(--16px)] bg-[--dark-gray-3] rounded-[var(--8px)] resize-none"
-              placeholder="Type here..."
+              placeholder="Features..."
               rows={4}
             />
           </div>

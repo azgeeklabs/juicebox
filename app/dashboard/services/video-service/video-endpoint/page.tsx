@@ -78,10 +78,10 @@ const Page = () => {
       if (document.querySelector("input[type='radio']:checked")) {
         
         
-        if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value === "Let's make this video!") {
+        if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value === "Make this video!") {
           route.replace(`/dashboard/checkout/${data.data.data._id}`);
         }
-        if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value !== "Let's make this video!") {
+        if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value !== "Make this video!") {
           route.replace(`/dashboard/services/book-a-call/${data.data.data._id}`);
         }
         // route.push("/dashboard/services");
@@ -165,7 +165,7 @@ const Page = () => {
                 btnSize="xl"
                 inputType="radio"
                 name="styleAnswer"
-                value={"Book a call with our experts"}
+                value={"Book a call"}
                 onClick={() =>
                   document
                     .querySelectorAll("input[type='checkbox']:checked")
@@ -174,13 +174,13 @@ const Page = () => {
                     )
                 }
               >
-                Book a call with our experts
+                Book a call
               </CustomCheckBoxText>
               <CustomCheckBoxText
                 btnSize="xl"
                 inputType="radio"
                 name="styleAnswer"
-                value={"Let's make this video!"}
+                value={"Make this video!"}
                 onClick={() =>
                   document
                     .querySelectorAll("input[type='checkbox']:checked")
@@ -189,7 +189,7 @@ const Page = () => {
                     )
                 }
               >
-                Let's make this video!
+                Make this video!
               </CustomCheckBoxText>
             </div>
 

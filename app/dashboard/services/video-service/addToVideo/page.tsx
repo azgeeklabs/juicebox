@@ -89,8 +89,7 @@ const all = useSelector((state:RootState)=>state.service)
 
             {/* // Subheading with embedded horizontal rules */}
             <h4>
-              We have a variety of video styles, pick the one you think would
-              complement <hr className="border-0" /> the video style you want!
+            Our talented video editors possess a wide range of skills, from 2D animations to B-rolls and motion graphics. <br /> You are free to choose any of these options to enhance your project.
             </h4>
           </div>
 
