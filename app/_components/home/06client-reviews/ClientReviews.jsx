@@ -118,7 +118,6 @@ export default function ClientReviews() {
     </svg>
   );
 
-
   return (
     <section className="home_clientReviews">
       <div className="home_clientReviews_title">
@@ -244,11 +243,8 @@ export default function ClientReviews() {
           <div className="flex flex-col items-center justify-center h-full">
             <div className="home_clientReviewsWrapper_reviewCard mb-[--sy-66px]">
               {avatarImg}
-              <h3>John Doe</h3>
-              <p>
-                “Lorem ipsum dolor sit amet consectetur. Fermentum felis
-                suscipit egestas velit non amet. Sit.”
-              </p>
+              <h3>Brad Kent Jr</h3>
+              <p>“Reliable, always in touch. Thank you guys!”</p>
               {starsImg}
             </div>
             {moreReviewsBtn}

@@ -97,8 +97,9 @@ export default function AboutUs() {
         <div className="home_aboutAs_values_cardWapper">
           <div className="home_aboutAs_values_card">
             <p>
-              Lorem ipsum dolor sit amet consectetur. Vivamusid pellentesque
-              molestie donec quis. Sed ut vulputate ante
+              We build trust by acting with honesty, openness, and fairness in
+              all interactions. Transparency is at the core of our relationships
+              with clients, partners, and employees.
             </p>
           </div>
 
@@ -115,13 +116,14 @@ export default function AboutUs() {
         <div className="home_aboutAs_values_cardWapper">
           <div className="home_aboutAs_values_card">
             <p>
-              Lorem ipsum dolor sit amet consectetur. Vivamusid pellentesque
-              molestie donec quis. Sed ut vulputate ante
+              Our approach to innovation starts with understanding the needs of
+              our users. We strive to create solutions that deliver real value,
+              putting the user experience at the forefront of everything we do.
             </p>
           </div>
 
           <div className="home_aboutAs_values_card">
-            <span>1</span>
+            <span>2</span>
             <p>
               <span>User-Centric</span>
               <span>Innovation</span>
@@ -133,13 +135,15 @@ export default function AboutUs() {
         <div className="home_aboutAs_values_cardWapper">
           <div className="home_aboutAs_values_card">
             <p>
-              Lorem ipsum dolor sit amet consectetur. Vivamusid pellentesque
-              molestie donec quis. Sed ut vulputate ante
+              We are committed to delivering top-quality results by paying
+              attention to detail and executing every task with precision. Our
+              focus on excellence ensures that we consistently exceed
+              expectations.
             </p>
           </div>
 
           <div className="home_aboutAs_values_card">
-            <span>1</span>
+            <span>3</span>
             <p>
               <span>Excellence in</span>
               <span>Execution</span>

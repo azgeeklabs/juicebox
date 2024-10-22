@@ -53,9 +53,9 @@ const Page = () => {
     } catch (error) {
       console.error(error);
       if (error instanceof AxiosError) {
-        toast.error(error.response?.data.errors[0]?.msg || 'An error occurred');
+        toast.error(error.response?.data.errors[0]?.msg || "An error occurred");
       } else {
-        toast.error('An unexpected error occurred');
+        toast.error("An unexpected error occurred");
       }
     } finally {
       setSubmitting(false);
@@ -112,14 +112,14 @@ const Page = () => {
     <div
       className={`${styles.signup} signup bg-[#181818] h-full w-full flex items-center flex-col py-[--sy-30px] overflow-y-auto`}
     >
-      <div className=" px-[--38px] py-[--sy-33px] rounded-[--14px] bg-[#272727] mb-[--sy-30px]">
+      <div className=" px-[--38px] py-[--sy-33px] rounded-[--14px] bg-[#272727] mb-[--sy-30px] min-w-[--635px]">
         <h1 className=" font-semibold text-[--30px] mb-[--sy-20px]">
           Get Started Now
         </h1>
         <p className=" mb-[--sy-18px] text-[#b1b1b1]">
-          Lorem ipsum dolor sit amet consectetur. Et amet suscipit quisque
-          consectetur <br /> maecenas amet elit. Vitae orci fringilla commodo
-          dignissim vulputate ac. Egestas.
+          Join the world of Creative Juice Box and have all your business needs
+          <br />
+          in one place, get it ALL done today!
         </p>
         <form onSubmit={handleSubmit}>
           <div className=" flex flex-col gap-[--sy-21px] mb-[--sy-40px]">

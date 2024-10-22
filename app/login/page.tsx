@@ -10,6 +10,7 @@ import { useGoogleLogin } from "@react-oauth/google";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import { AxiosError } from "axios";
+import image from "@/public/assets/bg-1.svg";
 
 interface FormValues {
   email: string;
@@ -304,14 +305,14 @@ const Page = () => {
   return (
     <div className=" bg-[#181818] h-full w-full grid place-items-center grid-cols-2 items-center gap-x-[--102px] px-[240px]">
       <div className="  col-span-1">
-        <h1 className="text-[#F8F24B] text-[--40px] font-semibold mb-[-sy-28px]">
+        <h1 className="text-[#F8F24B] text-[--60px] font-semibold mb-[-sy-28px]">
           Welcome Back!
         </h1>
-        <p className="text-[--20px] font-medium mb-[--sy-80px]">
+        <p className="text-[--29px] font-medium mb-[--sy-80px]">
           You have new updates! Log back in to check out your ongoing projects!
         </p>
-        <div className=" flex flex-col gap-[--sy-19px]">
-          <div className=" bg-[#F8F24B] rounded-[--48px] px-[--40px] py-[--sy-22px] font-bold flex justify-between items-center text-[--17px] text-black">
+        <div className="relative flex flex-col gap-[--sy-19px]">
+          {/* <div className=" bg-[#F8F24B] rounded-[--48px] px-[--40px] py-[--sy-22px] font-bold flex justify-between items-center text-[--17px] text-black">
             <h4>John Website</h4>
             <svg
               className="w-[--18px] h-[--18px]"
@@ -352,6 +353,9 @@ const Page = () => {
                 fill="#181818"
               />
             </svg>
+          </div> */}
+          <div className="absolute bottom-0 left-0 flex justify-center items-center">
+            <img src={image.src} className="w-[--51px]" alt="logo" />
           </div>
         </div>
       </div>
