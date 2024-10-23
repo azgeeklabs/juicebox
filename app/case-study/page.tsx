@@ -112,9 +112,10 @@ const Page = () => {
                 GROWTH
               </span>
               <p className=" pl-[--60px] py-[--sy-7px] border-l-[1px] border-white text-[--24px]">
-                Lorem ipsum dolor sit amet consectetur. Arcu odio et in aliquet
-                lacus adipiscing neque volutpat. Sapien sed vulputate sapien
-                nibh duis.{" "}
+                Increase Subscription Rates: Expand the user base by 20% in the
+                next 12 months through targeted marketing campaigns and
+                strategic partnerships, offering businesses a clear ROI from
+                AI-powered automation.
               </p>
             </div>
             <div
@@ -125,9 +126,10 @@ const Page = () => {
                 TRUST
               </span>
               <p className=" pl-[--60px] py-[--sy-7px] border-l-[1px] border-white text-[--24px]">
-                Lorem ipsum dolor sit amet consectetur. Arcu odio et in aliquet
-                lacus adipiscing neque volutpat. Sapien sed vulputate sapien
-                nibh duis.{" "}
+                Positive Customer Feedback Loop: Actively collect user feedback
+                and integrate suggested improvements into quarterly updates,
+                showing customers that their input shapes the platform’s
+                evolution.
               </p>
             </div>
             <div
@@ -138,9 +140,9 @@ const Page = () => {
                 UPLIFT
               </span>
               <p className=" pl-[--60px] py-[--sy-7px] border-l-[1px] border-white text-[--24px]">
-                Lorem ipsum dolor sit amet consectetur. Arcu odio et in aliquet
-                lacus adipiscing neque volutpat. Sapien sed vulputate sapien
-                nibh duis.{" "}
+                Improve AI Accuracy & Relevance: Continuously refine AI
+                algorithms based on customer feedback and real-time data,
+                leading to a 15% uplift in AI-generated content quality.
               </p>
             </div>
           </div>
@@ -157,7 +159,7 @@ const Page = () => {
               </span>
               <p className=" flex flex-col gap-[--sy-10px] justify-center text-[--24px] px-[--44px] border-l-[3px] border-l-[#353535]">
                 Content Writing Module
-                <ul className="pl-[--51px] list-disc">
+                {/* <ul className="pl-[--51px] list-disc">
                   <li className=" text-[--17px]">
                     Set up the platform's architecture for content creation.
                   </li>
@@ -169,7 +171,7 @@ const Page = () => {
                     Implement quality assurance features for grammar, tone, and
                     style consistency.
                   </li>
-                </ul>
+                </ul> */}
               </p>
             </div>
             <div className=" flex border-b-[3px] border-b-[#353535]">
@@ -178,7 +180,7 @@ const Page = () => {
               </span>
               <p className=" flex flex-col gap-[--sy-10px] justify-center text-[--24px] px-[--44px] border-l-[3px] border-l-[#353535]">
                 Video Creation Module
-                <ul className="pl-[--51px] list-disc">
+                {/* <ul className="pl-[--51px] list-disc">
                   <li className=" text-[--17px]">
                     Build the video generation module, allowing users to create
                     videos from text or templates.
@@ -190,7 +192,7 @@ const Page = () => {
                   <li className=" text-[--17px]">
                     Implement video rendering and export functionalities.
                   </li>
-                </ul>
+                </ul> */}
               </p>
             </div>
             <div className=" flex border-b-[3px] border-b-[#353535]">
@@ -199,7 +201,7 @@ const Page = () => {
               </span>
               <p className=" flex flex-col gap-[--sy-10px] justify-center text-[--24px] px-[--44px] border-l-[3px] border-l-[#353535]">
                 Accounting Module
-                <ul className="pl-[--51px] list-disc">
+                {/* <ul className="pl-[--51px] list-disc">
                   <li className=" text-[--17px]">
                     Design the back-end for automated accounting services,
                     including invoicing, expense tracking, and tax calculations.
@@ -212,7 +214,7 @@ const Page = () => {
                     Develop dashboards for financial insights and compliance
                     checks.
                   </li>
-                </ul>
+                </ul> */}
               </p>
             </div>
             <div className=" flex border-b-[3px] border-b-[#353535]">
@@ -221,7 +223,7 @@ const Page = () => {
               </span>
               <p className=" flex flex-col gap-[--sy-10px] justify-center text-[--24px] px-[--44px] border-l-[3px] border-l-[#353535]">
                 Finance Module
-                <ul className="pl-[--51px] list-disc">
+                {/* <ul className="pl-[--51px] list-disc">
                   <li className=" text-[--17px]">
                     Build financial planning and analysis tools (budgeting,
                     forecasting, and investment analysis).
@@ -234,7 +236,7 @@ const Page = () => {
                     Ensure secure data handling and integration with external
                     financial systems.
                   </li>
-                </ul>
+                </ul> */}
               </p>
             </div>
             <div className=" flex border-b-[3px] border-b-[#353535]">
@@ -243,7 +245,7 @@ const Page = () => {
               </span>
               <p className=" flex flex-col gap-[--sy-10px] justify-center text-[--24px] px-[--44px] border-l-[3px] border-l-[#353535]">
                 Human Resource Management Module
-                <ul className="pl-[--51px] list-disc">
+                {/* <ul className="pl-[--51px] list-disc">
                   <li className=" text-[--17px]">
                     Set up the HR management system for employee data, payroll,
                     and benefits.
@@ -256,7 +258,7 @@ const Page = () => {
                     Add features for performance tracking, recruitment, and
                     talent management.
                   </li>
-                </ul>
+                </ul> */}
               </p>
             </div>
             <div className=" flex">
@@ -265,7 +267,7 @@ const Page = () => {
               </span>
               <p className=" flex flex-col gap-[--sy-10px] justify-center text-[--24px] px-[--44px] border-l-[3px] border-l-[#353535]">
                 Social Media Management Module
-                <ul className="pl-[--51px] list-disc">
+                {/* <ul className="pl-[--51px] list-disc">
                   <li className=" text-[--17px]">
                     Develop tools for scheduling, posting, and monitoring social
                     media content across platforms.
@@ -278,7 +280,7 @@ const Page = () => {
                     Build automation features for social media campaigns and
                     reporting.
                   </li>
-                </ul>
+                </ul> */}
               </p>
             </div>
           </div>
