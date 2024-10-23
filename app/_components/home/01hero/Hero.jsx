@@ -837,37 +837,37 @@ export default function Hero() {
             <div className="hover:bg-[#f8f24b] hover:text-black transition-all duration-200 product col-span-1 rounded-[--28px] border-[1px] border-[#f8f24b] pl-[--8px]  py-[--sy-12px] flex gap-[--22px] items-center">
               <span className="w-[--40px] aspect-square rounded-full bg-[#f8f24b] inline-block self-center"></span>
               <p className="text-[--11px] [font-family:Alfa_Slab_One]">
-                Customizable <br /> Products
+                Customer <br /> Care Services
               </p>
             </div>
             <div className="hover:bg-[#f8f24b] hover:text-black transition-all duration-200 product col-span-1 rounded-[--28px] border-[1px] border-[#f8f24b] pl-[--8px]  py-[--sy-12px] flex gap-[--22px] items-center">
               <span className="w-[--40px] aspect-square rounded-full bg-[#f8f24b] inline-block self-center"></span>
               <p className="text-[--11px] [font-family:Alfa_Slab_One]">
-                Customizable <br /> Products
+                Website <br /> Development
               </p>
             </div>
             <div className="hover:bg-[#f8f24b] hover:text-black transition-all duration-200 product col-span-1 rounded-[--28px] border-[1px] border-[#f8f24b] pl-[--8px]  py-[--sy-12px] flex gap-[--22px] items-center">
               <span className="w-[--40px] aspect-square rounded-full bg-[#f8f24b] inline-block self-center"></span>
               <p className="text-[--11px] [font-family:Alfa_Slab_One]">
-                Customizable <br /> Products
+                Digital <br /> Solutions
               </p>
             </div>
             <div className="hover:bg-[#f8f24b] hover:text-black transition-all duration-200 product col-span-1 rounded-[--28px] border-[1px] border-[#f8f24b] pl-[--8px]  py-[--sy-12px] flex gap-[--22px] items-center">
               <span className="w-[--40px] aspect-square rounded-full bg-[#f8f24b] inline-block self-center"></span>
               <p className="text-[--11px] [font-family:Alfa_Slab_One]">
-                Customizable <br /> Products
+                Design <br /> Services
               </p>
             </div>
             <div className="hover:bg-[#f8f24b] hover:text-black transition-all duration-200 product col-span-1 rounded-[--28px] border-[1px] border-[#f8f24b] pl-[--8px]  py-[--sy-12px] flex gap-[--22px] items-center">
               <span className="w-[--40px] aspect-square rounded-full bg-[#f8f24b] inline-block self-center"></span>
               <p className="text-[--11px] [font-family:Alfa_Slab_One]">
-                Customizable <br /> Products
+                Video <br /> Creation
               </p>
             </div>
             <div className="hover:bg-[#f8f24b] hover:text-black transition-all duration-200 product col-span-1 rounded-[--28px] border-[1px] border-[#f8f24b] pl-[--8px]  py-[--sy-12px] flex gap-[--22px] items-center">
               <span className="w-[--40px] aspect-square rounded-full bg-[#f8f24b] inline-block self-center"></span>
               <p className="text-[--11px] [font-family:Alfa_Slab_One]">
-                Customizable <br /> Products
+                Content <br /> Creation
               </p>
             </div>
           </div>

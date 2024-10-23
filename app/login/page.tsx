@@ -305,6 +305,9 @@ const Page = () => {
   return (
     <div className=" bg-[#181818] h-full w-full grid place-items-center grid-cols-2 items-center gap-x-[--102px] px-[240px]">
       <div className="  col-span-1">
+        <div className="flex justify-center items-center">
+          <img src={image.src} className="w-[--542px]" alt="logo" />
+        </div>
         <h1 className="text-[#F8F24B] text-[--60px] font-semibold mb-[-sy-28px]">
           Welcome Back!
         </h1>
@@ -354,9 +357,6 @@ const Page = () => {
               />
             </svg>
           </div> */}
-          <div className="absolute bottom-0 left-0 flex justify-center items-center">
-            <img src={image.src} className="w-[--51px]" alt="logo" />
-          </div>
         </div>
       </div>
       <div className="col-span-1 w-full">

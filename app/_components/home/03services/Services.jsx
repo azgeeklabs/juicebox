@@ -33,8 +33,8 @@ export default function Services() {
                 <h3>Elevate Your Brand with our PR Services</h3>
                 <p>
                   At Juice Box, our expert PR services are designed to amplify
-                  your brand's voice, engage your audience, and elevate your
-                  market presence.
+                  your brand's voice, <br />
+                  engage your audience, and elevate your market presence.
                 </p>
               </div>
               <ul>
@@ -93,11 +93,12 @@ export default function Services() {
 
             <div className="slide-content">
               <div>
-                <h3>Elevate Your Brand with our PR Services</h3>
+                <h3>Elevate Your Brand with our UI/UX Services</h3>
                 <p>
-                  At Juice Box, our expert PR services are designed to amplify
-                  your brand's voice, engage your audience, and elevate your
-                  market presence.
+                  create visually stunning, user-friendly designs that enhance
+                  engagement,
+                  <br />
+                  improve usability, and drive business growth.
                 </p>
               </div>
               <ul>
@@ -156,11 +157,10 @@ export default function Services() {
 
             <div className="slide-content">
               <div>
-                <h3>Elevate Your Brand with our PR Services</h3>
+                <h3>Elevate Your Brand with our Web Dev Services</h3>
                 <p>
-                  At Juice Box, our expert PR services are designed to amplify
-                  your brand's voice, engage your audience, and elevate your
-                  market presence.
+                  build fast, secure, and scalable websites that deliver
+                  exceptional user experiences and drive business success.
                 </p>
               </div>
               <ul>
@@ -219,11 +219,11 @@ export default function Services() {
 
             <div className="slide-content">
               <div>
-                <h3>Elevate Your Brand with our PR Services</h3>
+                <h3>Elevate Your Brand with our Marketing Services</h3>
                 <p>
-                  At Juice Box, our expert PR services are designed to amplify
-                  your brand's voice, engage your audience, and elevate your
-                  market presence.
+                  boost your online presence, attract targeted audiences,
+                  <br /> and drive measurable business growth through strategic
+                  campaigns.
                 </p>
               </div>
               <ul>
@@ -403,11 +403,10 @@ export default function Services() {
             </a>
             <div className="slide-content">
               <div>
-                <h3>Elevate Your Brand with our PR Services</h3>
+                <h3 className="text-[--111px]!">And More!</h3>
                 <p>
-                  At Juice Box, our expert PR services are designed to amplify
-                  your brand's voice, engage your audience, and elevate your
-                  market presence.
+                  Explore our wide range of rare services you’d not find
+                  anywhere else!
                 </p>
               </div>
               <ul>

@@ -75,7 +75,11 @@ const Footer = () => {
                 @creativejuiceboxagency
               </span>
             </Link>
-            <Link href={"https://x.com/Agency_JuiceBox"} target="_blank" className="w-fit flex items-center gap-[--16px]">
+            <Link
+              href={"https://x.com/Agency_JuiceBox"}
+              target="_blank"
+              className="w-fit flex items-center gap-[--16px]"
+            >
               <svg
                 viewBox="0 0 21 17"
                 fill="none"
@@ -117,7 +121,7 @@ const Footer = () => {
                 hello@creativejuicebox.com
               </span>
             </Link>
-            <div className=" flex items-center gap-[--16px]">
+            {/* <div className=" flex items-center gap-[--16px]">
               <svg
                 viewBox="0 0 17 17"
                 fill="none"
@@ -143,7 +147,7 @@ const Footer = () => {
               <span className="text-[--14px] font-semibold">
                 +02 0245896321
               </span>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className=" col-span-1 ">
@@ -156,27 +160,55 @@ const Footer = () => {
               <Link href={"#about-us"} className=" font-semibold text-[--14px]">
                 About Us
               </Link>
-              <Link href={"/dashboard/services"} target="_blank" className=" font-semibold text-[--14px]">
+              <Link
+                href={"/dashboard/services"}
+                target="_blank"
+                className=" font-semibold text-[--14px]"
+              >
                 Services
               </Link>
-              <Link href={"/dashboard/infinity"} target="_blank" className=" font-semibold text-[--14px]">
+              <Link
+                href={"/dashboard/infinity"}
+                target="_blank"
+                className=" font-semibold text-[--14px]"
+              >
                 Infinity Services
               </Link>
-              <Link href={"/dashboard/white-label"} target="_blank" className=" font-semibold text-[--14px]">
+              <Link
+                href={"/dashboard/white-label"}
+                target="_blank"
+                className=" font-semibold text-[--14px]"
+              >
                 White Label
               </Link>
             </div>
             <div className=" flex flex-col gap-[--sy-16px]">
-              <Link href={"/careers"} target="_blank" className=" font-semibold text-[--14px]">
+              <Link
+                href={"/careers"}
+                target="_blank"
+                className=" font-semibold text-[--14px]"
+              >
                 Careers
               </Link>
-              <Link href={"/disclaimer"} target="_blank" className=" font-semibold text-[--14px]">
+              <Link
+                href={"/disclaimer"}
+                target="_blank"
+                className=" font-semibold text-[--14px]"
+              >
                 Disclaimer
               </Link>
-              <Link href={"/privacy-policy"} target="_blank" className=" font-semibold text-[--14px]">
+              <Link
+                href={"/privacy-policy"}
+                target="_blank"
+                className=" font-semibold text-[--14px]"
+              >
                 Privacy & Policy
               </Link>
-              <Link href={""} target="_blank" className=" font-semibold text-[--14px]">
+              <Link
+                href={""}
+                target="_blank"
+                className=" font-semibold text-[--14px]"
+              >
                 Support
               </Link>
             </div>

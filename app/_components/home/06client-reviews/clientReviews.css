@@ -67,10 +67,14 @@
 }
 
 .home_clientReviews_logosSlider .slick-slide {
-  margin-top: var(--sy-17px);
+  /* margin-top: var(--sy-17px); */
 }
 
 .home_clientReviews_logosSlider .slick-slide img {
-  margin: auto;
-  width: 80% !important;
+  /* margin: auto; */
+  /* width: 40% !important; */
+}
+
+.home_clientReviews_logosSlider div {
+  height: 100% !important;
 }
