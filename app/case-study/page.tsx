@@ -105,13 +105,13 @@ const Page = () => {
           </h3>
           <div className=" w-full flex flex-col gap-[--sy-15px] mb-[--sy-100px]">
             <div
-              className={`${styles.objective} rounded-[--19px] bg-[#1d1d1d] flex items-center gap-[--60px]`}
+              className={`${styles.objective} rounded-[--19px] bg-[#1d1d1d] flex items-center`}
             >
-              <span className=" font-bold text-[--33px]">
+              <span className=" font-bold text-[--33px] w-[25%]">
                 REVENUE <br />
                 GROWTH
               </span>
-              <p className=" pl-[--60px] py-[--sy-7px] border-l-[1px] border-white text-[--24px]">
+              <p className=" pl-[--60px] py-[--sy-7px] border-l-[1px] border-white text-[--24px] w-[95%]">
                 Increase Subscription Rates: Expand the user base by 20% in the
                 next 12 months through targeted marketing campaigns and
                 strategic partnerships, offering businesses a clear ROI from
@@ -119,13 +119,13 @@ const Page = () => {
               </p>
             </div>
             <div
-              className={`${styles.objective} rounded-[--19px] bg-[#1d1d1d] flex items-center gap-[--60px]`}
+              className={`${styles.objective} rounded-[--19px] bg-[#1d1d1d] flex items-center`}
             >
-              <span className=" font-bold text-[--33px]">
+              <span className=" font-bold text-[--33px] w-[25%]">
                 CUSTOMER <br />
                 TRUST
               </span>
-              <p className=" pl-[--60px] py-[--sy-7px] border-l-[1px] border-white text-[--24px]">
+              <p className=" pl-[--60px] py-[--sy-7px] border-l-[1px] border-white text-[--24px] w-[95%]">
                 Positive Customer Feedback Loop: Actively collect user feedback
                 and integrate suggested improvements into quarterly updates,
                 showing customers that their input shapes the platform’s
@@ -133,13 +133,13 @@ const Page = () => {
               </p>
             </div>
             <div
-              className={`${styles.objective} rounded-[--19px] bg-[#1d1d1d] flex items-center gap-[--60px]`}
+              className={`${styles.objective} rounded-[--19px] bg-[#1d1d1d] flex items-center`}
             >
-              <span className=" font-bold text-[--33px]">
+              <span className=" font-bold text-[--33px] w-[25%]">
                 SCORE <br />
                 UPLIFT
               </span>
-              <p className=" pl-[--60px] py-[--sy-7px] border-l-[1px] border-white text-[--24px]">
+              <p className=" pl-[--60px] py-[--sy-7px] border-l-[1px] border-white text-[--24px] w-[95%]">
                 Improve AI Accuracy & Relevance: Continuously refine AI
                 algorithms based on customer feedback and real-time data,
                 leading to a 15% uplift in AI-generated content quality.
