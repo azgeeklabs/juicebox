@@ -668,9 +668,9 @@ export default function Hero() {
                     fill="#F8F24B"
                   />
                 </svg>
-                <span className="font-bold"> Infinity</span>
+                <span className="font-bold text-[--12px]"> UNLIMITED</span>
               </div>
-              <span className="font-bold">Services</span>
+              <span className="font-bold">DESIGN</span>
             </div>
             <p className=" text-[--12px] text-[#1d1d1d] font-medium">
               Request multiple services at once!
@@ -726,9 +726,9 @@ export default function Hero() {
                     fill="#F8F24B"
                   />
                 </svg>
-                <span className="font-bold"> Infinity</span>
+                <span className="font-bold text-[--12px]"> UNLIMITED</span>
               </div>
-              <span className="font-bold">Services</span>
+              <span className="font-bold">VIDEOS</span>
             </div>
             <p className=" text-[--12px] text-[#1d1d1d] font-medium">
               Request multiple services at once!
@@ -784,9 +784,9 @@ export default function Hero() {
                     fill="#F8F24B"
                   />
                 </svg>
-                <span className="font-bold"> Infinity</span>
+                <span className="font-bold text-[--12px]">UNLIMITED</span>
               </div>
-              <span className="font-bold">Services</span>
+              <span className="font-bold">CONTENT</span>
             </div>
             <p className=" text-[--12px] text-[#1d1d1d] font-medium">
               Request multiple services at once!
