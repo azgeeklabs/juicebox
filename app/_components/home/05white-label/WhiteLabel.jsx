@@ -75,22 +75,14 @@ export default function WhiteLabel() {
         <div className="home_whiteLabel_card">
           <div className="home_whiteLabel_card_title">
             <span></span>
-            <h3>
-              Customer Care
-              <br />
-              Services
-            </h3>
+            <h3>Customer Service</h3>
           </div>
           <div className="home_whiteLabel_card_content">
             <div>
               <p>
-                Unlock new potential for your business with our comprehensive
-                white label solutions.
-              </p>
-              <p>
-                Our ready-to-deploy products and services allow you to quickly
-                enhance your offerings without the hassle of in-house
-                development.
+                Provide exceptional customer support under your brand, ensuring
+                a seamless experience for your clients with our skilled,
+                dedicated team.
               </p>
             </div>
             <svg
@@ -111,22 +103,14 @@ export default function WhiteLabel() {
         <div className="home_whiteLabel_card">
           <div className="home_whiteLabel_card_title">
             <span></span>
-            <h3>
-              Back End
-              <br />
-              Solutions
-            </h3>
+            <h3>Backend</h3>
           </div>
           <div className="home_whiteLabel_card_content">
             <div>
               <p>
-                Unlock new potential for your business with our comprehensive
-                white label solutions.
-              </p>
-              <p>
-                Our ready-to-deploy products and services allow you to quickly
-                enhance your offerings without the hassle of in-house
-                development.
+                Power your operations with our robust, scalable backend
+                infrastructure, fully white-labeled to integrate seamlessly with
+                your existing systems.
               </p>
             </div>
             <svg
@@ -155,13 +139,9 @@ export default function WhiteLabel() {
           <div className="home_whiteLabel_card_content">
             <div>
               <p>
-                Unlock new potential for your business with our comprehensive
-                white label solutions.
-              </p>
-              <p>
-                Our ready-to-deploy products and services allow you to quickly
-                enhance your offerings without the hassle of in-house
-                development.
+                Elevate your brand’s voice through high-quality, engaging
+                content tailored to your audience, all crafted to appear as your
+                unique creation.
               </p>
             </div>
             <svg
@@ -190,13 +170,9 @@ export default function WhiteLabel() {
           <div className="home_whiteLabel_card_content">
             <div>
               <p>
-                Unlock new potential for your business with our comprehensive
-                white label solutions.
-              </p>
-              <p>
-                Our ready-to-deploy products and services allow you to quickly
-                enhance your offerings without the hassle of in-house
-                development.
+                Expand your service offerings under your brand, delivering
+                expertly managed solutions that reinforce your brand identity
+                and customer loyalty.
               </p>
             </div>
             <svg
