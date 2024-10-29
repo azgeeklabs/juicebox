@@ -1,0 +1,8 @@
+.card {
+    overflow-y: scroll; /* Only vertical scrollbar */
+    scrollbar-width: none; /* For Firefox */
+  }
+  
+  .card::-webkit-scrollbar { /* For WebKit browsers */
+    display: none;
+  }
