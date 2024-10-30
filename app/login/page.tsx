@@ -30,6 +30,7 @@ const Page = () => {
   const [newPassword, setNewPassword] = useState<string>("");
   const [newPasswordModal, setNewPasswordModal] = useState<boolean>(false);
   const [resetPassMsg, setResetPassMsg] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const initialValues: FormValues = {
     email: "",
@@ -41,6 +42,7 @@ const Page = () => {
     { setSubmitting }: FormikHelpers<FormValues>
   ) => {
     console.log(values);
+    setIsLoading(true);
     try {
       await login(values);
     } catch (error) {
@@ -60,6 +62,7 @@ const Page = () => {
         toast.error("An unexpected error occurred");
       }
     } finally {
+      setIsLoading(false);
       setSubmitting(false);
     }
   };
@@ -176,6 +179,7 @@ const Page = () => {
     onSuccess: async (response: any) => {
       try {
         if (response?.access_token) {
+          setIsLoading(true);
           const userInfoResponse = await fetch(
             "https://www.googleapis.com/oauth2/v3/userinfo",
             {
@@ -215,7 +219,8 @@ const Page = () => {
                     console.log("error");
                   }
                 })
-                .catch((error) => console.error(error));
+                .catch((error) => console.error(error))
+                .finally(() => setIsLoading(false));
               // try {
               //   // Fetch the picture as a blob
               //   const pictureResponse = fetch(data?.picture, {
@@ -282,6 +287,7 @@ const Page = () => {
         }
       } catch (error) {
         console.error(error);
+        setIsLoading(false);
       }
     },
   });
@@ -301,6 +307,18 @@ const Page = () => {
     validationSchema,
     onSubmit: (values, helpers) => onSubmit(values, helpers),
   });
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <img
+          src={image.src}
+          className="animate-pulse animat w-[--313px]"
+          alt="logo"
+        />
+      </div>
+    );
+  }
 
   return (
     <div className=" bg-[#181818] h-full w-full grid place-items-center grid-cols-2 items-center gap-x-[--102px] px-[240px]">
