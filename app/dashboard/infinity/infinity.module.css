@@ -1,8 +1,32 @@
 .card {
-    overflow-y: scroll; /* Only vertical scrollbar */
-    scrollbar-width: none; /* For Firefox */
+  overflow-y: scroll; /* Only vertical scrollbar */
+  scrollbar-width: none; /* For Firefox */
+}
+
+.card::-webkit-scrollbar {
+  /* For WebKit browsers */
+  display: none;
+}
+.infinityText {
+  background-image: url("../../../public/Wave.png");
+   -webkit-background-clip: text;
+   background-clip: text; 
+  background-repeat: repeat-x;
+  animation: wave 10s linear infinite;
+}
+
+@keyframes wave {
+  0% {
+    background-position: left -100px top 80px;
   }
-  
-  .card::-webkit-scrollbar { /* For WebKit browsers */
-    display: none;
+  40% {
+    background-position: left 1800px top -50px;
   }
+  80% {
+    background-position: left 1800px top -50px;
+  }
+  100% {
+    background-position: left 240px top 80px;
+  }
+}
+

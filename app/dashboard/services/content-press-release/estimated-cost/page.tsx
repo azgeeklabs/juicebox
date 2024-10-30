@@ -7,13 +7,14 @@ import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { addOption } from "@/app/reducers/serviceSlice";
+import LoadingScreen from "@/app/_components/loadingScreen/LoadingScreen";
 
 const Page = () => {
   const [saveProgress, setSaveProgress] = useState(false);
   const dispatch = useDispatch();
   const route = useRouter();
   const [serviceData, setServiceData] = useState<any>();
-
+  const [isLoading, setIsLoading] = useState(true);
   async function makeService() {
     const optionsItems = localStorage.getItem("selectedOption");
     const optionsArray = optionsItems ? JSON.parse(optionsItems) : [];
@@ -80,6 +81,9 @@ const Page = () => {
       );
       console.log(data);
       setServiceData(data);
+      if (data?.data?.data) {
+        setIsLoading(false);
+      }
     } catch (error) {
       console.log(error, "////////////error////////////");
     }
@@ -91,7 +95,7 @@ const Page = () => {
 
   return (
     // Main container div with relative positioning
-    <NextPrevNav
+    isLoading ? <LoadingScreen /> : <NextPrevNav
       nextLink="/dashboard/services"
       nextFunc={nextFunc}
       nextText="All Done"

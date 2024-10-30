@@ -7,11 +7,13 @@ import { useRouter } from "next/navigation";
 import { addOption } from "@/app/reducers/serviceSlice";
 import { useDispatch } from "react-redux";
 import axios from "axios";
+import LoadingScreen from "@/app/_components/loadingScreen/LoadingScreen";
 
 const Page = () => {
   const router = useRouter();
   const [saveProgress, setSaveProgress] = useState(false);
-  const [serviceData,setServiceData] = useState<any>(null)
+  const [serviceData, setServiceData] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const dispatch = useDispatch();
   const route = useRouter();
@@ -19,61 +21,77 @@ const Page = () => {
   async function makeService() {
     const optionsItems = localStorage.getItem("selectedOption");
     const optionsArray = optionsItems ? JSON.parse(optionsItems) : [];
-    console.log(optionsArray,"//////////optionsArray/////////////");
-   
+    console.log(optionsArray, "//////////optionsArray/////////////");
+
     console.log({
-      type:"PR Monetization",
-      totalSteps:5,
-      options:optionsArray
-    })
-    
-    
+      type: "PR Monetization",
+      totalSteps: 5,
+      options: optionsArray,
+    });
+
     try {
-      
-      const storedItems = typeof window !== "undefined" && localStorage.getItem("selectedOption");
+      const storedItems =
+        typeof window !== "undefined" && localStorage.getItem("selectedOption");
       const itemsArray = storedItems ? JSON.parse(storedItems) : [];
       if (document.querySelector("input[type='radio']:checked")) {
-        
-          if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value === "Start now") {
-            router.replace(`/dashboard/checkout/${serviceData?.data.data._id}`);
-          }
-      // router.push("/dashboard/services");
-      if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value !== "Start now") {
-        router.replace(`/dashboard/services/book-a-call/${serviceData?.data.data._id}`);
-      }
-
+        if (
+          (
+            document.querySelector(
+              "input[type='radio']:checked"
+            ) as HTMLInputElement
+          ).value === "Start now"
+        ) {
+          router.replace(`/dashboard/checkout/${serviceData?.data.data._id}`);
+        }
+        // router.push("/dashboard/services");
+        if (
+          (
+            document.querySelector(
+              "input[type='radio']:checked"
+            ) as HTMLInputElement
+          ).value !== "Start now"
+        ) {
+          router.replace(
+            `/dashboard/services/book-a-call/${serviceData?.data.data._id}`
+          );
+        }
       } else if (document.querySelector("input[type='checkbox']:checked")) {
-        
-      route.push("/dashboard/services");
+        route.push("/dashboard/services");
       }
-      
     } catch (error) {
-      console.log(error,"////////////error////////////");
-      
+      console.log(error, "////////////error////////////");
     }
   }
   const nextFunc = () => {
-      makeService()
+    makeService();
   };
-
 
   async function initializeService() {
     const optionsItems =
       typeof window !== "undefined" && localStorage.getItem("selectedOption");
     const optionsArray = optionsItems ? JSON.parse(optionsItems) : [];
     try {
-      const data = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/initialize-service`,{
-        type:"PR Monetization",
-        totalSteps:5,
-        options:optionsArray
-      },{
-        headers:{
-          "Content-Type": "multipart/form-data",
-            Authorization: `Token ${typeof window !== "undefined" && localStorage.getItem("token")}`,
+      const data = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/initialize-service`,
+        {
+          type: "PR Monetization",
+          totalSteps: 5,
+          options: optionsArray,
+        },
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Token ${
+              typeof window !== "undefined" && localStorage.getItem("token")
+            }`,
+          },
         }
-      })
+      );
       console.log(data);
       setServiceData(data);
+      if (data?.data?.data) {
+        setIsLoading(false);
+      }
     } catch (error) {
       console.log(error, "////////////error////////////");
     }
@@ -83,8 +101,12 @@ const Page = () => {
     initializeService();
   }, []);
 
-  return (
-    <div className={`${styles.monetizationEndPoint} flex flex-col justify-between h-full w-full`}>
+  return isLoading ? (
+    <LoadingScreen />
+  ) : (
+    <div
+      className={`${styles.monetizationEndPoint} flex flex-col justify-between h-full w-full`}
+    >
       {/* Inner container with relative positioning and full height */}
       <div className="h-full relative mb-[--sy-50px]">
         {/* Container for the video end point section with custom styles and flexbox centering */}
@@ -97,8 +119,12 @@ const Page = () => {
             <div className="text-center mx-auto">
               {/* Main heading with bottom margin and underlined text */}
               <h2 className="mb-[--sy-48px]">
-                Based on everything you told us, the estimated
-                cost of this <br /> service is <span> ${serviceData?.data.data.totalPrice} </span> and would take around <span>{serviceData?.data.data.estimatedDuration} Days</span> to finish.
+                Based on everything you told us, the estimated cost of this{" "}
+                <br /> service is{" "}
+                <span> ${serviceData?.data.data.totalPrice} </span> and would
+                take around{" "}
+                <span>{serviceData?.data.data.estimatedDuration} Days</span> to
+                finish.
               </h2>
             </div>
 
@@ -112,7 +138,13 @@ const Page = () => {
                 inputType="radio"
                 name="styleAnswer"
                 value={"Book a call"}
-                onClick={()=> document.querySelectorAll("input[type='checkbox']:checked").forEach((e,i)=>(e as HTMLInputElement).checked = false)}
+                onClick={() =>
+                  document
+                    .querySelectorAll("input[type='checkbox']:checked")
+                    .forEach(
+                      (e, i) => ((e as HTMLInputElement).checked = false)
+                    )
+                }
               >
                 Book a call
               </CustomCheckBoxText>
@@ -123,7 +155,13 @@ const Page = () => {
                 inputType="radio"
                 name="styleAnswer"
                 value={"Start now"}
-              onClick={()=> document.querySelectorAll("input[type='checkbox']:checked").forEach((e,i)=>(e as HTMLInputElement).checked = false)}
+                onClick={() =>
+                  document
+                    .querySelectorAll("input[type='checkbox']:checked")
+                    .forEach(
+                      (e, i) => ((e as HTMLInputElement).checked = false)
+                    )
+                }
               >
                 Start now
               </CustomCheckBoxText>
@@ -132,9 +170,21 @@ const Page = () => {
             {/* Button for saving progress with various styling */}
             <button className="cursor-pointer block w-fit mx-auto px-[0.52vw] relative py-[0.533vh] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200 underline">
               Save my Progress
-              <input type="checkbox" className=" inset-0 absolute opacity-0 cursor-pointer" value={"Save my Progress"} onChange={() => {setSaveProgress((prev) => !prev)
+              <input
+                type="checkbox"
+                className=" inset-0 absolute opacity-0 cursor-pointer"
+                value={"Save my Progress"}
+                onChange={() => {
+                  setSaveProgress((prev) => !prev);
                 }}
-                onClick={()=>document.querySelectorAll("input[type='radio']:checked").forEach((e,i)=>(e as HTMLInputElement).checked = false)}/>
+                onClick={() =>
+                  document
+                    .querySelectorAll("input[type='radio']:checked")
+                    .forEach(
+                      (e, i) => ((e as HTMLInputElement).checked = false)
+                    )
+                }
+              />
             </button>
           </div>
         </div>
@@ -153,9 +203,9 @@ const Page = () => {
         {/* Link for completing the process, styled with background color, text color, padding, rounded corners, and font weight */}
         <Link
           href={"/dashboard/services"}
-          onClick={(e)=>{
+          onClick={(e) => {
             e.preventDefault();
-            nextFunc()
+            nextFunc();
           }}
           className="bg-[var(--highlight-yellow)] text-black px-[2vw] py-[0.889vh] w-fit rounded-[var(--41px)] font-bold"
         >

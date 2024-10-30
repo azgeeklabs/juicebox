@@ -9,12 +9,14 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { addOption } from "@/app/reducers/serviceSlice";
 import { RootState } from "@/app/Store/store";
+import LoadingScreen from "@/app/_components/loadingScreen/LoadingScreen";
 
 const Page = () => {
   const [saveProgress, setSaveProgress] = useState(false);
   const { isSexual } = useContext(accountRecoveryContext);
   const [serviceData,setServiceData] = useState<any>()
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(true);
   const file = useSelector((state:RootState) => state.service.file);
 console.log(file);
 //   useEffect(()=>{
@@ -117,6 +119,9 @@ console.log(file);
       })
       console.log(data);
       setServiceData(data);
+      if (data?.data?.data) {
+        setIsLoading(false);
+      }
     } catch (error) {
       console.log(error, "////////////error////////////");
     }
@@ -128,7 +133,7 @@ console.log(file);
 
   return (
     // Main container div with relative positioning
-    <NextPrevNav nextLink="/dashboard/services" nextText="All Done" nextFunc={nextFunc}>
+    isLoading ? <LoadingScreen /> : <NextPrevNav nextLink="/dashboard/services" nextText="All Done" nextFunc={nextFunc}>
       <div className="h-full relative w-full">
         {/* Inner container for the video end point section with custom styles */}
         <div

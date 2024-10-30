@@ -23,7 +23,7 @@ export default function ServicesTable({
     {
       service: "Video Editing",
       information:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Delivering professional results that bring your vision to life effortlessly!",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
       path: "/dashboard/services/video-service",
@@ -31,7 +31,7 @@ export default function ServicesTable({
     {
       service: "Application Design",
       information:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Tired of clunky, hard-to-use apps?",
       clientProjects: "656 Projects",
       getStarted: "Start Now!",
       path: "/dashboard/services/application-design-service",

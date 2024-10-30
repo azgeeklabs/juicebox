@@ -9,12 +9,14 @@ import { useRouter } from "next/navigation";
 import { addOption, incrementTotalSteps } from "@/app/reducers/serviceSlice";
 import axios from "axios";
 import { RootState } from "@/app/Store/store";
+import LoadingScreen from "@/app/_components/loadingScreen/LoadingScreen";
 
 const Page = () => {
   const [saveProgress, setSaveProgress] = useState(false);
   const dispatch = useDispatch();
   const route = useRouter();
   const file = useSelector((state: RootState) => state.service.file);
+  const [isLoading, setIsLoading] = useState(true);
   const [serviceData, setServiceData] = useState<any>(null);
   console.log(file);
   const loadFileFromLocalStorage = () => {
@@ -41,7 +43,7 @@ const Page = () => {
   async function makeService() {
     const optionsItems = localStorage.getItem("selectedOption");
     const optionsArray = optionsItems ? JSON.parse(optionsItems) : [];
-    
+
     console.log({
       type: "video",
       totalSteps: 12,
@@ -51,42 +53,30 @@ const Page = () => {
     try {
       if (file) {
         console.log(file);
-        
       }
-      const data = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/initialize-service`,
-        {
-          type: "video",
-          totalSteps: 11,
-          fileUrl_7:
-            (typeof window !== "undefined" && loadFileFromLocalStorage()),
-          options: optionsArray,
-        },
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Token ${
-              typeof window !== "undefined" && localStorage.getItem("token")
-            }`,
-          },
-        }
-      );
-      console.log(data);
-      const storedItems =
-        typeof window !== "undefined" && localStorage.getItem("selectedOption");
-      const itemsArray = storedItems ? JSON.parse(storedItems) : [];
       if (document.querySelector("input[type='radio']:checked")) {
-        
-        
-        if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value === "Make this video!") {
-          route.replace(`/dashboard/checkout/${data.data.data._id}`);
+        if (
+          (
+            document.querySelector(
+              "input[type='radio']:checked"
+            ) as HTMLInputElement
+          ).value === "Make this video!"
+        ) {
+          route.replace(`/dashboard/checkout/${serviceData?.data.data._id}`);
         }
-        if ((document.querySelector("input[type='radio']:checked") as HTMLInputElement).value !== "Make this video!") {
-          route.replace(`/dashboard/services/book-a-call/${data.data.data._id}`);
+        if (
+          (
+            document.querySelector(
+              "input[type='radio']:checked"
+            ) as HTMLInputElement
+          ).value !== "Make this video!"
+        ) {
+          route.replace(
+            `/dashboard/services/book-a-call/${serviceData?.data.data._id}`
+          );
         }
         // route.push("/dashboard/services");
       } else if (document.querySelector("input[type='checkbox']:checked")) {
-        
         route.push("/dashboard/services");
       }
     } catch (error) {
@@ -108,7 +98,7 @@ const Page = () => {
           type: "video",
           totalSteps: 11,
           fileUrl_7:
-            (typeof window !== "undefined" && loadFileFromLocalStorage()),
+            typeof window !== "undefined" && loadFileFromLocalStorage(),
           options: optionsArray,
         },
         {
@@ -122,6 +112,9 @@ const Page = () => {
       );
       console.log(data);
       setServiceData(data);
+      if (data?.data?.data) {
+        setIsLoading(false);
+      }
     } catch (error) {
       console.log(error, "////////////error////////////");
     }
@@ -133,92 +126,99 @@ const Page = () => {
 
   return (
     // Main container div with relative positioning
-    <NextPrevNav
-      nextLink="/dashboard/services"
-      backLink="/dashboard/services/video-service/video-duration"
-      nextText="All Done"
-      nextFunc={() => nextFunc()}
-    >
-      <div className="h-full relative">
-        {/* Inner container for the video end point section with custom styles */}
-        <div
-          className={`${styles.videoEndPoint} w-full h-full flex justify-center items-center`}
-        >
-          {/* Nested div for content */}
-          <div>
-            {/* Text center alignment and margin bottom */}
-            <div className="text-center mx-auto mb-[--46px]">
-              {/* Main heading with margin bottom and underlined text */}
-              <h2>
-                Based on everything you told us, <u>the estimated cost</u> of
-                this <hr className="border-0" /> video is <span>${serviceData?.data.data.totalPrice}</span> and
-                would take around <span>{serviceData?.data.data.estimatedDuration}</span> Days to finish.
-              </h2>
-            </div>
+    isLoading ? (
+      <LoadingScreen />
+    ) : (
+      <NextPrevNav
+        nextLink="/dashboard/services"
+        backLink="/dashboard/services/video-service/video-duration"
+        nextText="All Done"
+        nextFunc={() => nextFunc()}
+      >
+        <div className="h-full relative">
+          {/* Inner container for the video end point section with custom styles */}
+          <div
+            className={`${styles.videoEndPoint} w-full h-full flex justify-center items-center`}
+          >
+            {/* Nested div for content */}
+            <div>
+              {/* Text center alignment and margin bottom */}
+              <div className="text-center mx-auto mb-[--46px]">
+                {/* Main heading with margin bottom and underlined text */}
+                <h2>
+                  Based on everything you told us, <u>the estimated cost</u> of
+                  this <hr className="border-0" /> video is{" "}
+                  <span>${serviceData?.data.data.totalPrice}</span> and would
+                  take around{" "}
+                  <span>{serviceData?.data.data.estimatedDuration}</span> Days
+                  to finish.
+                </h2>
+              </div>
 
-            {/* Container for buttons with flexbox layout, width fit, margin auto, and gap between buttons */}
-            <div
-              className={`${styles.btns} flex w-fit mx-auto gap-[--22px] mb-[--sy-16px]`}
-            >
-              {/* CustomCheckBoxText component for selecting options */}
-              <CustomCheckBoxText
-                btnSize="xl"
-                inputType="radio"
-                name="styleAnswer"
-                value={"Book a call"}
-                onClick={() =>
-                  document
-                    .querySelectorAll("input[type='checkbox']:checked")
-                    .forEach(
-                      (e, i) => ((e as HTMLInputElement).checked = false)
-                    )
-                }
+              {/* Container for buttons with flexbox layout, width fit, margin auto, and gap between buttons */}
+              <div
+                className={`${styles.btns} flex w-fit mx-auto gap-[--22px] mb-[--sy-16px]`}
               >
-                Book a call
-              </CustomCheckBoxText>
-              <CustomCheckBoxText
-                btnSize="xl"
-                inputType="radio"
-                name="styleAnswer"
-                value={"Make this video!"}
-                onClick={() =>
-                  document
-                    .querySelectorAll("input[type='checkbox']:checked")
-                    .forEach(
-                      (e, i) => ((e as HTMLInputElement).checked = false)
-                    )
-                }
-              >
-                Make this video!
-              </CustomCheckBoxText>
-            </div>
+                {/* CustomCheckBoxText component for selecting options */}
+                <CustomCheckBoxText
+                  btnSize="xl"
+                  inputType="radio"
+                  name="styleAnswer"
+                  value={"Book a call"}
+                  onClick={() =>
+                    document
+                      .querySelectorAll("input[type='checkbox']:checked")
+                      .forEach(
+                        (e, i) => ((e as HTMLInputElement).checked = false)
+                      )
+                  }
+                >
+                  Book a call
+                </CustomCheckBoxText>
+                <CustomCheckBoxText
+                  btnSize="xl"
+                  inputType="radio"
+                  name="styleAnswer"
+                  value={"Make this video!"}
+                  onClick={() =>
+                    document
+                      .querySelectorAll("input[type='checkbox']:checked")
+                      .forEach(
+                        (e, i) => ((e as HTMLInputElement).checked = false)
+                      )
+                  }
+                >
+                  Make this video!
+                </CustomCheckBoxText>
+              </div>
 
-            {/* Link component for saving progress */}
-            <div
-              className={`relative block w-fit mx-auto px-[0.52vw] py-[0.3vw] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200 `}
-            >
-              Save my Progress
-              <input
-                type="checkbox"
-                name="saveProgress"
-                value={"Save my Progress"}
-                className={`absolute opacity-0 inset-0 cursor-pointer`}
-                onChange={() => {
-                  setSaveProgress((prev) => !prev);
-                }}
-                onClick={() =>
-                  document
-                    .querySelectorAll("input[type='radio']:checked")
-                    .forEach(
-                      (e, i) => ((e as HTMLInputElement).checked = false)
-                    )
-                }
-              />
+              {/* Link component for saving progress */}
+              <div
+                className={`relative block w-fit mx-auto px-[0.52vw] py-[0.3vw] hover:bg-[#484848] rounded-[var(--32px)] transition-all duration-200 `}
+              >
+                Save my Progress
+                <input
+                  type="checkbox"
+                  name="saveProgress"
+                  value={"Save my Progress"}
+                  className={`absolute opacity-0 inset-0 cursor-pointer`}
+                  onChange={() => {
+                    setSaveProgress((prev) => !prev);
+                  }}
+                  onClick={() =>
+                    document
+                      .querySelectorAll("input[type='radio']:checked")
+                      .forEach(
+                        (e, i) => ((e as HTMLInputElement).checked = false)
+                      )
+                  }
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </NextPrevNav>
+      </NextPrevNav>
+    )
   );
 };
 

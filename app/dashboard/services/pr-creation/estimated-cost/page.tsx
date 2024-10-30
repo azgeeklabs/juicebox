@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { addOption } from "@/app/reducers/serviceSlice";
 import { RootState } from "@/app/Store/store";
+import LoadingScreen from "@/app/_components/loadingScreen/LoadingScreen";
 
 const Page = () => {
 
@@ -15,6 +16,7 @@ const Page = () => {
   const [serviceData,setServiceData] = useState<any>()
   const dispatch = useDispatch();
   const route = useRouter();
+  const [isLoading, setIsLoading] = useState(true);
   const file = useSelector((state:RootState)=>state.service.file)
   const loadFileFromLocalStorage = () => {
     const fileData = typeof window !== "undefined" && localStorage.getItem('uploadedFile');
@@ -97,6 +99,9 @@ const Page = () => {
       })
       console.log(data);
       setServiceData(data);
+      if (data?.data?.data) {
+        setIsLoading(false);
+      }
     } catch (error) {
       console.log(error, "////////////error////////////");
     }
@@ -108,7 +113,7 @@ const Page = () => {
 
   return (
     // Main container div with relative positioning
-    <NextPrevNav nextLink="/dashboard/services" nextFunc={nextFunc} nextText="All Done" backLink="/dashboard/services/pr-creation/wikipedia-info">
+    isLoading ? <LoadingScreen /> : <NextPrevNav nextLink="/dashboard/services" nextFunc={nextFunc} nextText="All Done" backLink="/dashboard/services/pr-creation/wikipedia-info">
       <div className="h-full relative w-full">
       {/* Inner container for the video end point section with custom styles */}
       <div

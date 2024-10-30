@@ -103,7 +103,7 @@ export default function WhiteLabel() {
         <div className="home_whiteLabel_card">
           <div className="home_whiteLabel_card_title">
             <span></span>
-            <h3>Backend</h3>
+            <h3>Back End Solutions</h3>
           </div>
           <div className="home_whiteLabel_card_content">
             <div>

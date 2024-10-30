@@ -221,7 +221,7 @@ const Page = () => {
             fill="#616161"
           />
         </svg>
-        <h3 className="text-[--64px] font-bold text-center text-[#616161] mb-[--sy-100px]">
+        <h3 className={`text-[--64px] font-bold text-center text-white text-opacity-10 mb-[--sy-100px] ${styles.infinityText}`}>
           Unlimited Services
         </h3>
         <div className="w-[60%] flex gap-[--17px] items-center mx-auto justify-center">

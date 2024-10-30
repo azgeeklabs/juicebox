@@ -32,14 +32,14 @@ export default function Page() {
           name: "What keywords do you want the user to search by when finding your product?",
           choice: checkedValues && !addedKeywords ? checkedValues.join(",") : addedKeywords && !checkedValues ? addedKeywords.join(",") : [...checkedValues,...addedKeywords].join(","),
         }))
-      route.push("/dashboard/services/seo-campaign/analysis-estimate");
+      route.push("/dashboard/services/seo-campaign/seo-campaign-endpoint");
     }
   };
 
   return (
     <NextPrevNav
       backLink="/dashboard/services/seo-campaign/rank-selection"
-      nextLink="/dashboard/services/seo-campaign/analysis-estimate" nextFunc={()=>nextFunc()}
+      nextLink="/dashboard/services/seo-campaign/seo-campaign-endpoint" nextFunc={()=>nextFunc()}
     >
       <section className={classNames(styles.keywordSelection, "w-full")}>
         <div className={classNames(styles.container, "w-full ")}>

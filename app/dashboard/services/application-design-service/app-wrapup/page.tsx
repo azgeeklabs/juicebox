@@ -10,12 +10,13 @@ import { addOption } from "@/app/reducers/serviceSlice";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
+import LoadingScreen from "@/app/_components/loadingScreen/LoadingScreen";
 
 const Page = () => {
   const { step, setStep } = useContext(globalContext);
   const [saveProgress, setSaveProgress] = useState(false);
   const [serviceData,setServiceData] = useState<any>(null)
-
+  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
   const route = useRouter();
 
@@ -75,6 +76,9 @@ const Page = () => {
       console.log(data);
       
       setServiceData(data)
+      if (data?.data?.data) {
+        setIsLoading(false);
+      }
       
     } catch (error) {
       console.log(error,"////////////error////////////");
@@ -86,7 +90,7 @@ const Page = () => {
   },[])
 
   return (
-    <NextPrevNav
+    isLoading ? <LoadingScreen /> : <NextPrevNav
       nextLink="/dashboard/services" nextFunc={()=>nextFunc()}
       nextText="All Done"
       backLink="/dashboard/services/application-design-service/additional-features"

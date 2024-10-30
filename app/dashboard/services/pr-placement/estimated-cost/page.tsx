@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/Store/store";
 import axios from "axios";
 import { addOption } from "@/app/reducers/serviceSlice";
+import LoadingScreen from "@/app/_components/loadingScreen/LoadingScreen";
 
 const Page = () => {
   const router = useRouter();
@@ -15,7 +16,7 @@ const Page = () => {
   const dispatch = useDispatch();
   const route = useRouter();
   const [serviceData,setServiceData] = useState<any>()
-
+  const [isLoading, setIsLoading] = useState(true);
   const userOptions = useSelector((state:RootState)=>state.service.options)
   console.log(userOptions);
   
@@ -61,6 +62,9 @@ const Page = () => {
       })
       console.log(data);
       setServiceData(data);
+      if (data?.data?.data) {
+        setIsLoading(false);
+      }
     } catch (error) {
       console.log(error, "////////////error////////////");
     }
@@ -72,7 +76,7 @@ const Page = () => {
 
   return (
     // Main container div with relative positioning
-    <NextPrevNav nextLink="/dashboard/services" nextText="All Done" nextFunc={nextFunc}>
+    isLoading ? <LoadingScreen /> : <NextPrevNav nextLink="/dashboard/services" nextText="All Done" nextFunc={nextFunc}>
       <div className="h-full relative w-full ">
         {/* Inner container for the video end point section with custom styles */}
         <div

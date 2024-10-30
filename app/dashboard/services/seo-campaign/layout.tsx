@@ -15,7 +15,6 @@ const layout = ({ children }: { children: React.ReactNode }) => {
     "advertising-details",
     "rank-selection",
     "keyword-selection",
-    "analysis-estimate",
     "seo-campaign-endpoint",
   ];
 

@@ -8,12 +8,14 @@ import { addOption } from "@/app/reducers/serviceSlice";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
+import LoadingScreen from "@/app/_components/loadingScreen/LoadingScreen";
 
 const Page = () => {
   const [saveProgress, setSaveProgress] = useState(false);
   const dispatch = useDispatch();
   const route = useRouter();
   const [serviceData, setServiceData] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   async function makeService() {
     const optionsItems = localStorage.getItem("selectedOption");
@@ -62,7 +64,7 @@ const Page = () => {
         `${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/initialize-service`,
         {
           type: "SEO campaign",
-          totalSteps: 5,
+          totalSteps: 4,
           options: optionsArray,
         },
         {
@@ -76,6 +78,9 @@ const Page = () => {
       );
       console.log(data);
       setServiceData(data);
+      if (data?.data?.data) {
+        setIsLoading(false);
+      }
     } catch (error) {
       console.log(error, "////////////error////////////");
     }
@@ -86,8 +91,8 @@ const Page = () => {
   }, []);
 
   return (
-    <NextPrevNav
-      backLink="/dashboard/services/seo-campaign/analysis-estimate"
+    isLoading ? <LoadingScreen /> : <NextPrevNav
+      backLink="/dashboard/services/seo-campaign/keyword-selection"
       nextLink="/dashboard/services/"
       nextFunc={() => nextFunc()}
       nextText="All Done"
