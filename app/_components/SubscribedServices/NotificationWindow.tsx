@@ -16,9 +16,7 @@ const NotificationWindow = () => {
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/get-all-user-notifications`,
       {
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${user?.token}`,
-        },
+        credentials: "include",
       }
     );
     const data = await res.json();

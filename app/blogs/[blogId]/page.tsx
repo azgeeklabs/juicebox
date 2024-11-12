@@ -13,9 +13,7 @@ const Page = ({ params }: { params: { blogId: string } }) => {
   async function getBlog() {
     const data = await fetch(
       `https://api.creativejuicebox.com/api/v1/blogs/get-blog/${params.blogId}`,{
-        headers:{
-          "Authorization" : `Bearer ${user?.token}`
-        }
+        credentials: "include",
       }
     );
     const res = await data.json();

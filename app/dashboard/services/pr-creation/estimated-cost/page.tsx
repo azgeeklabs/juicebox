@@ -94,8 +94,8 @@ const Page = () => {
       },{
         headers:{
           "Content-Type": "multipart/form-data",
-            Authorization: `Token ${typeof window !== "undefined" && localStorage.getItem("token")}`,
-        }
+        },
+        withCredentials: true,
       })
       console.log(data);
       setServiceData(data);

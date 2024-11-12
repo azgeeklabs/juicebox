@@ -156,8 +156,8 @@ const Page = ({ params }: { params: { serviceId: string } }) => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${user?.token}`,
           },
+          credentials: "include",
           body: JSON.stringify({
             serviceId: params.serviceId,
             date: `${
@@ -232,10 +232,8 @@ const Page = ({ params }: { params: { serviceId: string } }) => {
           {
             headers: {
               "Content-Type": "multipart/form-data",
-              Authorization: `Token ${
-                typeof window !== "undefined" && localStorage.getItem("token")
-              }`,
             },
+            withCredentials: true,
           }
         );
         console.log(data);

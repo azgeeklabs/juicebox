@@ -212,8 +212,8 @@ export default function Page() {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${user?.token}`,
         },
+        credentials: "include",
       }
     );
     const data = await response.json();
@@ -228,9 +228,7 @@ export default function Page() {
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/get-all-services-process`,
       {
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${user?.token}`,
-        },
+        credentials: "include",
       }
     );
     const data = await response.json();

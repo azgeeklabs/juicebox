@@ -12,8 +12,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     if (
       typeof window !== "undefined" &&
-      !user.token &&
-      !localStorage.getItem("token")
+      localStorage.getItem("token") !== "true"
     ) {
       router.push("/login");
     } else {
@@ -34,6 +33,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
     );
   }
 
+  
   return <>{children}</>;
 };
 

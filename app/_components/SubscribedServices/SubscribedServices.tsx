@@ -149,9 +149,7 @@ export default function SubscribedServices() {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/get-me`,
       {
-        headers: {
-          Authorization: `Bearer ${user?.token}`,
-        },
+        credentials: "include",
       }
     );
     const data = await response.json();
@@ -167,9 +165,7 @@ export default function SubscribedServices() {
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/get-purchased-services`,
       {
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${user?.token}`,
-        },
+        credentials: "include",
       }
     );
     const data = await response.json();

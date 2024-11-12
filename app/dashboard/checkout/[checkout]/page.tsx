@@ -78,8 +78,8 @@ const Checkout = ({ params }: { params: { checkout: string } }) => {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
             },
+            credentials: "include",
             body: JSON.stringify({
               serviceId: serviceId,
               paymentMethodId: paymentMethod.id,
@@ -181,8 +181,8 @@ const Checkout = ({ params }: { params: { checkout: string } }) => {
       {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${user?.token}`,
         },
+        credentials: "include",
       }
     );
     const data = await res.json();

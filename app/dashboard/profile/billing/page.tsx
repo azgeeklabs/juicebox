@@ -15,9 +15,7 @@ const Billing = () => {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/get-me`,
       {
-        headers: {
-          Authorization: `Bearer ${user?.token}`,
-        },
+        credentials: "include",
       }
     );
     const data = await response.json();
@@ -59,9 +57,7 @@ const Billing = () => {
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/get-all-services-process`,
       {
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${user?.token}`,
-        },
+        credentials: "include",
       }
     );
     const data = await response.json();
@@ -78,9 +74,7 @@ const Billing = () => {
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/get-purchased-services`,
       {
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${user?.token}`,
-        },
+        credentials: "include",
       }
     );
     const data = await response.json();
@@ -209,7 +203,7 @@ const Billing = () => {
                   <h4 className=" font-semibold">Monthly Payment</h4>
                   <span className="text-[--32px] font-semibold">
                     $
-                    {services.reduce(
+                    {services?.reduce(
                       (acc: any, curr: any) => acc + curr.service.totalPrice,
                       0
                     )}
@@ -221,7 +215,7 @@ const Billing = () => {
                   <h4 className=" font-semibold">Total Amount Paid</h4>
                   <span className="text-[--32px] font-semibold">
                     $
-                    {services.reduce(
+                    {services?.reduce(
                       (acc: any, curr: any) => acc + curr.service.totalPrice,
                       0
                     )}
@@ -234,14 +228,14 @@ const Billing = () => {
               <div className=" flex flex-col gap-[--sy-20px] w-1/3">
                 <h4 className=" font-semibold">Total Orders</h4>
                 <span className="text-[--32px] font-semibold">
-                  {services.length}
+                  {services?.length}
                 </span>
               </div>
               <div className=" flex justify-center w-1/3">
                 <div className=" flex flex-col gap-[--sy-20px] w-1/3">
                   <h4 className=" font-semibold">Total Ongoing Services</h4>
                   <span className="text-[--32px] font-semibold">
-                    {ongoingServices.length}
+                    {ongoingServices?.length}
                   </span>
                 </div>
               </div>
@@ -277,7 +271,7 @@ const Billing = () => {
           <li className=" w-[20%] text-center">PDF</li>
         </ul>
         <div className={`${styles.tableBody} overflow-y-scroll h-[37vh]`}>
-          {services.map((e: any, i: any) => (
+          {services?.map((e: any, i: any) => (
             <ul
               key={i}
               className=" w-full flex justify-between items-center py-[--sy-16px] border-b-[1px] border-[#3f3f3f]"

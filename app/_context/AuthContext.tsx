@@ -83,13 +83,18 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     // Replace with your actual login API request
     const response: any = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/login`,
-      credentials
+      credentials,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true
+      }
     );
     console.log(response);
     if (response.status === 200) {
       console.log("Registration successful please login");
-      localStorage.setItem("token", response.data.data.token);
-      setUser({ token: response.data.data.token }); // Redirect to a protected route
+      localStorage.setItem("token", "true");
       router.push("/dashboard");
       toast(response.data.message, {
         icon: "👏",
@@ -145,7 +150,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const googleLogin = async (response: any) => {
     if (response.token) {
-      localStorage.setItem("token", response.token);
+      localStorage.setItem("token", "true");
       await setUser({ token: response.token });
       router.push("/dashboard");
     }

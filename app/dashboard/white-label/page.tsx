@@ -14,16 +14,14 @@ const Page = () => {
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/get-purchased-services`,
       {
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${user?.token}`,
-        },
+        credentials: 'include',  // Important to include cookies in the request
       }
     );
     const data = await response.json();
     console.log(data);
-    setServices(data.data);
+    setServices(data?.data);
     setTotalPrice(
-      data.data.reduce(
+      data?.data?.reduce(
         (acc: any, curr: any) => acc + curr.service.totalPrice,
         0
       )

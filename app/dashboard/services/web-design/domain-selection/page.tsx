@@ -113,9 +113,7 @@ const Page = () => {
       const data:any = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/services/validate-domain`,{
         domain:pastedText
       },{
-        headers:{
-          Authorization:`Bearer ${typeof window !== "undefined" && localStorage.getItem("token")}`
-        }
+        withCredentials: true,
       })
       console.log(data);
       setMesg(data?.data?.message)

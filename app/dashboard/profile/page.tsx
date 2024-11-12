@@ -19,16 +19,16 @@ const Page = () => {
   const [userData, setUserData] = useState<any>(null);
   async function getMe() {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/get-me`,
-      {
-        headers: {
-          Authorization: `Bearer ${user?.token}`,
-        },
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/get-me`, {
+        credentials: 'include',  // Important to include cookies in the request
       }
+      
     );
     const data = await response.json();
     console.log(data);
-    if (data.message == "User recently changed his password. please login again..") {
+    if (
+      data.message == "User recently changed his password. please login again.."
+    ) {
       toast("Password recently changed. Please login again!", {
         style: {
           borderRadius: "10px",
@@ -58,8 +58,8 @@ const Page = () => {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${user?.token}`,
           },
+          credentials: "include",
           body: JSON.stringify(changedValues),
         }
       );
@@ -120,14 +120,14 @@ const Page = () => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${user?.token}`,
         },
+        credentials: "include",
         body: JSON.stringify(values),
       }
     );
     const data = await response.json();
     console.log(data);
-    if (data.message == 'Password updated successfully') {
+    if (data.message == "Password updated successfully") {
       passwordFormik.resetForm();
       toast("Password updated successfully!", {
         icon: "🔒",
@@ -147,7 +147,6 @@ const Page = () => {
         },
       });
     }
-    
   }
 
   const formik = useFormik({
@@ -441,7 +440,11 @@ const Page = () => {
                       Date of birth
                     </label>
                     <input
-                      placeholder={userData?.DOB ? userData?.DOB.split("T")[0] : "15/20/1996"}
+                      placeholder={
+                        userData?.DOB
+                          ? userData?.DOB.split("T")[0]
+                          : "15/20/1996"
+                      }
                       name="DOB"
                       value={formik.values.DOB}
                       onChange={formik.handleChange}
@@ -509,7 +512,10 @@ const Page = () => {
                 <h2 className="text-[--24px] font-semibold">
                   Password Information
                 </h2>
-                <button onClick={()=>passwordFormik.handleSubmit()} className="bg-[--highlight-yellow] rounded-[--6px] px-[--20px] py-[--sy-8px] text-black text-[--14px] leading-[11.2px] font-bold">
+                <button
+                  onClick={() => passwordFormik.handleSubmit()}
+                  className="bg-[--highlight-yellow] rounded-[--6px] px-[--20px] py-[--sy-8px] text-black text-[--14px] leading-[11.2px] font-bold"
+                >
                   Change
                 </button>
               </div>
